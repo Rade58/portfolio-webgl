@@ -6,6 +6,7 @@ const canvasSketch = require("canvas-sketch");
 const settings = {
     animate: true,
     context: "webgl",
+    dimensions: [512, 512],
 };
 const settingsFunc = (settings, canvas) => {
     if (canvas) {

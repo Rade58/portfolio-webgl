@@ -20,7 +20,7 @@ const Sketch: FunctionComponent = () => {
         border: crimson solid 4px;
       `}
     >
-      <canvas className="canvas" ref={canvasRef}></canvas>;
+      <canvas className="canvas" ref={canvasRef}></canvas>
     </div>
   );
 };
