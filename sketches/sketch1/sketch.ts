@@ -172,7 +172,10 @@ canvasSketch(
   settingsFunc(settings, document.querySelector("canvas.canvas"))
 );
 
-/* export default () => {
-  canvasSketch(sketch, settings);
-};
- */
+/*
+export default () => {
+  canvasSketch(
+    sketch,
+    settingsFunc(settings, document.querySelector("canvas.canvas"))
+  );
+}; */
