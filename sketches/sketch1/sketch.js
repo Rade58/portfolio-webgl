@@ -74,7 +74,3 @@ var sketch = function (_a) {
     };
 };
 canvas_sketch_1["default"](sketch, settings);
-/* export default () => {
-  canvasSketch(sketch, settings);
-};
- */
