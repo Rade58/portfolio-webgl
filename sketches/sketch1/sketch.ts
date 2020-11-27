@@ -179,3 +179,5 @@ export default () => {
     settingsFunc(settings, document.querySelector("canvas.canvas"))
   );
 }; */
+
+export {};

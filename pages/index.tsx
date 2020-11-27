@@ -8,7 +8,7 @@ const PageName: FunctionComponent = () => {
 
   useEffect(() => {
     if (canvasRef.current) {
-      import("../src/sketch");
+      import("../src/sketches/sketch");
     }
   }, [canvasRef]);
 
