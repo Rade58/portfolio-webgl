@@ -1,10 +1,10 @@
 "use strict";
 exports.__esModule = true;
-var glsl = require("glslify");
-var Random = require("canvas-sketch-util/random");
-global.THREE = require("three");
+var glslify_1 = require("glslify");
+var three_1 = require("three");
 require("three/examples/js/controls/OrbitControls");
-var canvasSketch = require("canvas-sketch");
+var canvas_sketch_1 = require("canvas-sketch");
+global.THREE = three_1["default"];
 var settings = {
     animate: true,
     context: "webgl"
@@ -27,9 +27,9 @@ var sketch = function (_a) {
     var geometry = new global.THREE.SphereGeometry(1, 16, 32);
     var baseGeom = new global.THREE.IcosahedronGeometry(1, 1);
     var points = baseGeom.vertices;
-    var vertexShader = glsl(/* glsl */ "\n\n    varying vec3 vPosition;\n\n    varying vec2 vUv;\n\n    void main(){\n\n      vUv = uv;\n\n      vPosition = position;\n\n      gl_Position = projectionMatrix * modelViewMatrix * vec4(position.xyz, 1.0);\n\n    }\n\n  ");
+    var vertexShader = glslify_1["default"](/* glsl */ "\n\n    varying vec3 vPosition;\n\n    varying vec2 vUv;\n\n    void main(){\n\n      vUv = uv;\n\n      vPosition = position;\n\n      gl_Position = projectionMatrix * modelViewMatrix * vec4(position.xyz, 1.0);\n\n    }\n\n  ");
     // DAKLE DODAO SAM COLOR MIX DOLE
-    var fragmentShader = glsl(/* glsl */ "\n\n    #define PI 3.14;\n\n    // #define int POINT_COUNT;\n\n    #pragma glslify: noise = require(glsl-noise/simplex/3d)\n\n    varying vec3 vPosition;\n\n\n    uniform vec3 points[POINT_COUNT];\n\n    varying vec2 vUv;\n    uniform vec3 color;\n    uniform float time;\n\n    void main(){\n\n      float dist = 10000.0;\n\n\n      for (int i = 0; i < POINT_COUNT; i++){\n        vec3 p = points[i];\n        float d = distance(vPosition, p);\n\n        dist = min(d, dist);\n      }\n\n      float mask = step(0.16, dist);\n\n      mask = 1.0 - mask;\n\n      vec3 fragColor = mix(color, vec3(1.0), mask);\n\n      gl_FragColor = vec4(vec3(fragColor), 1.0);\n    }\n  ");
+    var fragmentShader = glslify_1["default"](/* glsl */ "\n\n    #define PI 3.14;\n\n    // #define int POINT_COUNT;\n\n    #pragma glslify: noise = require(glsl-noise/simplex/3d)\n\n    varying vec3 vPosition;\n\n\n    uniform vec3 points[POINT_COUNT];\n\n    varying vec2 vUv;\n    uniform vec3 color;\n    uniform float time;\n\n    void main(){\n\n      float dist = 10000.0;\n\n\n      for (int i = 0; i < POINT_COUNT; i++){\n        vec3 p = points[i];\n        float d = distance(vPosition, p);\n\n        dist = min(d, dist);\n      }\n\n      float mask = step(0.16, dist);\n\n      mask = 1.0 - mask;\n\n      vec3 fragColor = mix(color, vec3(1.0), mask);\n\n      gl_FragColor = vec4(vec3(fragColor), 1.0);\n    }\n  ");
     var material = new global.THREE.ShaderMaterial({
         fragmentShader: fragmentShader,
         vertexShader: vertexShader,
@@ -73,7 +73,7 @@ var sketch = function (_a) {
         }
     };
 };
-canvasSketch(sketch, settings);
+canvas_sketch_1["default"](sketch, settings);
 /* export default () => {
   canvasSketch(sketch, settings);
 };

@@ -15,8 +15,8 @@
     "gi": "git add -A && git commit -am ':octocat: :space_invader:' && git push",
     "g2": "git add -A && git commit -am ':octocat: :space_invader:'",
     "sketch": "concurrently 'npm run ts-dev' 'npm run sketch-dev'",
-    "sketch-dev": "canvas-sketch sketches/sketch1/sketch.ts --hot --open",
-    "ts-dev": "tsc sketches/sketch1/sketch.ts --isolatedModules false --w",
+    "sketch-dev": "canvas-sketch sketches/sketch1/sketch.js --hot --open",
+    "ts-dev": "tsc sketches/sketch1/sketch.ts --w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
