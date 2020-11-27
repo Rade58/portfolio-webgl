@@ -1,23 +1,14 @@
 /* eslint react/react-in-jsx-scope: 0 */
 /* eslint jsx-a11y/anchor-is-valid: 1 */
-import { FunctionComponent, useEffect, useRef } from "react";
-// import sketch from "../src/sketch";
+import { FunctionComponent, Fragment } from "react";
+import Sketch from "../src/components/Sketch";
 
-const PageName: FunctionComponent = () => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    if (canvasRef.current) {
-      import("../src/sketches/sketch");
-    }
-  }, [canvasRef]);
-
+const Index: FunctionComponent = () => {
   return (
-    <div>
-      <canvas className="canvas" ref={canvasRef}></canvas>
-      {/* :space-invader: */}
-    </div>
+    <Fragment>
+      <Sketch />
+    </Fragment>
   );
 };
 
-export default PageName;
+export default Index;
