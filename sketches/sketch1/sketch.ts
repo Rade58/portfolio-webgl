@@ -25,6 +25,17 @@ const settings: SettingsI = {
   // attributes: { antialis: true },
 };
 
+const settingsFunc = (
+  settings: SettingsI,
+  canvas?: HTMLCanvasElement
+): SettingsI => {
+  if (canvas) {
+    settings.canvas = canvas;
+  }
+
+  return settings;
+};
+
 const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // Create a renderer
   const renderer = new global.THREE.WebGLRenderer({
@@ -156,7 +167,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   };
 };
 
-canvasSketch(sketch, settings);
+canvasSketch(sketch, settingsFunc(settings, document.querySelector("canvas")));
 
 /* export default () => {
   canvasSketch(sketch, settings);

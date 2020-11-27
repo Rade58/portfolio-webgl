@@ -3,9 +3,12 @@ const Random = require("canvas-sketch-util/random");
 global.THREE = require("three");
 require("three/examples/js/controls/OrbitControls");
 const canvasSketch = require("canvas-sketch");
-const settings = {
-    animate: true,
-    context: "webgl",
+const settingsFunc = (settings, canvas) => {
+    const settingsOb = {
+        animate: true,
+        context: "webgl",
+    };
+    return settingsOb;
 };
 const sketch = ({ context }) => {
     // Create a renderer
@@ -121,7 +124,7 @@ const sketch = ({ context }) => {
         },
     };
 };
-canvasSketch(sketch, settings);
+canvasSketch(sketch, settingsFunc());
 export {};
 /* export default () => {
   canvasSketch(sketch, settings);

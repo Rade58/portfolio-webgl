@@ -10,7 +10,7 @@ export interface SketchPropsI {
   gl: WebGL2RenderingContext;
 
   context: CanvasRenderingContext2D | { canvas: HTMLCanvasElement };
-  canvas: CanvasRect;
+  canvas: HTMLCanvasElement;
 
   time: number;
   playhead: number;
@@ -57,7 +57,7 @@ export interface SettingsI {
   resizeCanvas?: boolean;
   styleCanvas?: boolean;
   // DOM SETTINGS
-  canvas?: undefined | CanvasRect; // NISAM SIGURAN DA LI JE OVO PRAVI TYPE (verujem da jeste)
+  canvas?: undefined | HTMLCanvasElement; // NISAM SIGURAN DA LI JE OVO PRAVI TYPE (verujem da jeste)
   context?: CanvasRenderingContext2D | "webgl";
   attributes?: any;
   parent?: HTMLElement | boolean;
