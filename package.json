@@ -31,9 +31,16 @@
   "homepage": "https://github.com/Rade58/portfolio#readme",
   "dependencies": {
     "@xstate/react": "^1.0.3",
+    "animejs": "^3.2.1",
+    "dotenv-load": "^2.0.0",
+    "gsap": "^3.5.1",
     "next": "^10.0.3",
+    "next-compose-plugins": "^2.2.1",
+    "next-env": "^1.1.1",
+    "next-react-svg": "^1.1.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "theme-ui": "^0.3.4",
     "xstate": "^4.14.1"
   },
   "devDependencies": {
