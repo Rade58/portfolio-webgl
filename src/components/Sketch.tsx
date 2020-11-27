@@ -3,8 +3,6 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 import { FunctionComponent, useRef, useEffect } from "react";
-import { css } from "@emotion/core";
-import styled from "@emotion/styled";
 
 const Sketch: FunctionComponent = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -15,7 +13,11 @@ const Sketch: FunctionComponent = () => {
     }
   }, [canvasRef]);
 
-  return <canvas className="canvas" ref={canvasRef}></canvas>;
+  return (
+    <div>
+      <canvas className="canvas" ref={canvasRef}></canvas>;
+    </div>
+  );
 };
 
 export default Sketch;
