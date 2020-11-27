@@ -6,17 +6,15 @@ import {
   threeType,
 } from "./my_types";
 
-import glsl from "glslify";
+const glsl = require("glslify");
 
-import Random from "canvas-sketch-util/random";
+const Random = require("canvas-sketch-util/random");
 
-import THREE from "three";
+global.THREE = require("three") as threeType;
 
-import "three/examples/js/controls/OrbitControls";
+require("three/examples/js/controls/OrbitControls");
 
-import canvasSketch from "canvas-sketch";
-
-global.THREE = THREE as threeType;
+const canvasSketch = require("canvas-sketch");
 
 const settings: SettingsI = {
   animate: true,
@@ -164,5 +162,3 @@ canvasSketch(sketch, settings);
   canvasSketch(sketch, settings);
 };
  */
-
-export {};

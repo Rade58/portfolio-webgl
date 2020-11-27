@@ -16,7 +16,7 @@
     "g2": "git add -A && git commit -am ':octocat: :space_invader:'",
     "sketch": "concurrently 'npm run ts-dev' 'npm run sketch-dev'",
     "sketch-dev": "canvas-sketch sketches/sketch1/sketch.js --hot --open",
-    "ts-dev": "tsc sketches/sketch1/sketch.ts --w",
+    "ts-dev": "tsc sketches/sketch1/sketch.ts --allowUmdGlobalAccess true --esModuleInterop true --isolatedModules true --moduleResolution 'node' --target ES6 --w",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
