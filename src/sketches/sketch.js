@@ -129,10 +129,3 @@ const sketch = ({ context }) => {
 };
 canvasSketch(sketch, settingsFunc(settings, document.querySelector("canvas.canvas")));
 export {};
-/*
-export default () => {
-  canvasSketch(
-    sketch,
-    settingsFunc(settings, document.querySelector("canvas.canvas"))
-  );
-}; */
