@@ -15,7 +15,7 @@ const PageName: FunctionComponent = () => {
   return (
     <div>
       <canvas className="canvas" ref={canvasRef}></canvas>
-      :space-invader:
+      {/* :space-invader: */}
     </div>
   );
 };
