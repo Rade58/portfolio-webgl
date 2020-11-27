@@ -14,9 +14,9 @@
     "format:check": "prettier --ignore-path ./.gitignore --check \"./**/*.{html,json,js,ts,jsx,tsx,css}\"",
     "gi": "git add -A && git commit -am ':octocat: :space_invader:' && git push",
     "g2": "git add -A && git commit -am ':octocat: :space_invader:'",
-    "sketch": "concurrently 'npm run ts-dev' 'npm run sketch-dev'",
+    "sketch-dev": "concurrently 'npm run ts-dev' 'npm run sketch'",
     "sketch-build": "npm run ts-build && rm -rf src/sketches && mkdir -p src/sketches && mv sketches/sketch1/sketch.js src/sketches/sketch.js",
-    "sketch-dev": "canvas-sketch sketches/sketch1/sketch.js --hot --open",
+    "sketch": "canvas-sketch sketches/sketch1/sketch.js --hot --open",
     "ts-dev": "tsc sketches/sketch1/sketch.ts --allowUmdGlobalAccess true --esModuleInterop true --isolatedModules true --moduleResolution 'node' --target ES6 --w",
     "ts-build": "tsc sketches/sketch1/sketch.ts --allowUmdGlobalAccess true --esModuleInterop true --isolatedModules true --moduleResolution 'node' --target ES6",
     "test": "echo \"Error: no test specified\" && exit 1"
