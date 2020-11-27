@@ -167,7 +167,10 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   };
 };
 
-canvasSketch(sketch, settingsFunc(settings, document.querySelector("canvas")));
+canvasSketch(
+  sketch,
+  settingsFunc(settings, document.querySelector("canvas.canvas"))
+);
 
 /* export default () => {
   canvasSketch(sketch, settings);
