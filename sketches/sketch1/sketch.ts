@@ -19,6 +19,7 @@ const canvasSketch = require("canvas-sketch");
 const settings: SettingsI = {
   animate: true,
   context: "webgl",
+  duration: 18,
   // dimensions: [512, 512],
   // fps: 24,
   // duration: 8,
@@ -151,9 +152,9 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     },
     // Update & render your scene here
     render({ time, playhead }) {
-      material.uniforms.time.value = time;
-      // material.uniforms.time.value = playhead * Math.PI * 2;
-      // mesh.rotation.z = playhead * Math.PI * 2;
+      // material.uniforms.time.value = time;
+      material.uniforms.time.value = playhead * Math.PI * 2;
+      mesh.rotation.z = playhead * Math.PI * 2;
       // mesh.rotation.y = playhead * Math.PI * 2;
       // ---------------------------------------------
       controls.update();
