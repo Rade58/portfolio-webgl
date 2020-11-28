@@ -53,10 +53,12 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   const scene = new global.THREE.Scene();
 
-  const geometry = new global.THREE.SphereGeometry(0.5, 16, 32);
-
+  // -----  ICOSAHEDRON----------------------------------------
   const baseGeom = new global.THREE.IcosahedronGeometry(1, 1);
   const points = baseGeom.vertices;
+  //-----------------------------------------------------------
+
+  // ----------------- VERTEX SHADER ---------------------------------
 
   const vertexShader = glsl(/* glsl */ `
 
@@ -75,7 +77,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   `);
 
-  // DAKLE DODAO SAM COLOR MIX DOLE
+  // -------------FRAGMENT SHADER -----------------------
 
   const fragmentShader = glsl(/* glsl */ `
 
@@ -103,6 +105,9 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     }
   `);
 
+  // -------------------------------------------------------------
+  // -------------------------------------------------------------
+
   /* const shadermaterial = new global.THREE.ShaderMaterial({
     fragmentShader,
     vertexShader,
@@ -117,13 +122,15 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     },
   }); */
 
-  //   -------------------   SPHERE --------------------------------
+  //  -------------------   SPHERE --------------------------------
 
+  const sphereGeometry = new global.THREE.SphereGeometry(0.5, 16, 32);
   const sphereMaterial = new global.THREE.MeshStandardMaterial({
     color: "crimson",
+    wireframe: true,
   });
 
-  const sphereMesh = new global.THREE.Mesh(geometry, sphereMaterial);
+  const sphereMesh = new global.THREE.Mesh(sphereGeometry, sphereMaterial);
 
   sphereMesh.rotation.x = 4;
   sphereMesh.rotation.z = 4;
