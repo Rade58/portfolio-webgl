@@ -75,14 +75,30 @@ const sketch = ({ context }) => {
     // -------------------
     const planeVertexShader = glsl(/* glsl */ `
 
+    #pragma glslify: noise = require('glsl-noise/simplex/3d');
+
+
     varying vec2 vUv;
     varying vec3 vPosition;
+
+    uniform float time;
+
 
     void main(){
       vUv = uv;
       vPosition = position;
 
-      gl_Position = projectionMatrix * modelViewMatrix * vec4(position.xyz, 1.0);
+      vec3 vertices = position.xyz;
+      float stretch = time;
+      float amplitude = 0.16;
+      float frequency = 1.22;
+
+
+
+      // vertices.xyz *= sin(position.z + stretch);
+
+
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(vertices, 1.0);
 
     }
 
@@ -90,7 +106,7 @@ const sketch = ({ context }) => {
   `);
     const planeFragmentShader = glsl(/* glsl */ `
 
-    #pragma glslify: snoise4 = require(glsl-noise/simplex/4d);
+    #pragma glslify: noise = require('glsl-noise/simplex/3d');
 
     varying vec2 vUv;
     varying vec3 vPosition;
@@ -98,7 +114,11 @@ const sketch = ({ context }) => {
 
     void main(){
 
-      gl_FragColor = vec4(1.0, 0.8, 0.2, 1.0);
+
+      float n = noise(vec3(1.0, 0.2, 0.1));
+
+
+      gl_FragColor = vec4(vec3(vUv.x), 1.0);
 
     }
 
@@ -129,7 +149,7 @@ const sketch = ({ context }) => {
     sphereMesh.rotation.z = 4;
     scene.add(sphereMesh);
     // ---------------------- PLANE -------------------------------------
-    const planeGeometry = new global.THREE.PlaneGeometry(28, 28, 28, 28);
+    const planeGeometry = new global.THREE.IcosahedronGeometry(48, 8);
     const planeMaterial = new global.THREE.MeshNormalMaterial({
         // color: "crimson",
         // wireframe: true,
@@ -138,10 +158,13 @@ const sketch = ({ context }) => {
     const planeShaderMaterial = new global.THREE.ShaderMaterial({
         vertexShader: planeVertexShader,
         fragmentShader: planeFragmentShader,
+        uniforms: {
+            time: { value: 0 },
+        },
     });
     const planeMesh = new global.THREE.Mesh(planeGeometry, planeShaderMaterial);
-    // planeMesh.position.z = 2;
-    planeMesh.rotation.x = -Math.PI / 2;
+    planeMesh.position.y = -1;
+    // planeMesh.rotation.x = -Math.PI / 2;
     scene.add(planeMesh);
     // --------------------------------------------------------------
     // ------------------- HELPERS -------------------------------
@@ -177,6 +200,9 @@ const sketch = ({ context }) => {
             // material.uniforms.time.value = playhead * Math.PI * 2;
             // mesh.rotation.z = playhead * Math.PI * 2;
             // mesh.rotation.y = playhead * Math.PI * 2;
+            // ---------------------------------------------
+            planeShaderMaterial.uniforms.time.value = time;
+            // ---------------------------------------------
             // ---------------------------------------------
             controls.update();
             renderer.render(scene, camera);
