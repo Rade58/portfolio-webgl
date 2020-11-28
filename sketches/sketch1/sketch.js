@@ -81,6 +81,9 @@ const sketch = ({ context }) => {
     void main(){
       vUv = uv;
       vPosition = position;
+
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position.xyz, 1.0);
+
     }
 
 

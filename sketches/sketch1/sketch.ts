@@ -112,6 +112,9 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     void main(){
       vUv = uv;
       vPosition = position;
+
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position.xyz, 1.0);
+
     }
 
 
