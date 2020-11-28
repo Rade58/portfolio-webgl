@@ -188,7 +188,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   // ---------------------- PLANE -------------------------------------
 
-  const planeGeometry = new global.THREE.IcosahedronGeometry(48, 8);
+  const planeGeometry = new global.THREE.PlaneGeometry(48, 48, 48, 48);
   const planeMaterial = new global.THREE.MeshNormalMaterial({
     // color: "crimson",
     // wireframe: true,
