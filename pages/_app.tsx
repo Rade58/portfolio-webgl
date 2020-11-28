@@ -22,7 +22,14 @@ export default function App({ Component, pageProps }: AppProps) {
             flexDirection: "row",
             margin: 0,
           },
-          html: {},
+          html: {
+            width: "100%",
+            height: "100%",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "row",
+          },
         }}
       />
 
