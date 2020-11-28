@@ -14,21 +14,21 @@ export default function App({ Component, pageProps }: AppProps) {
       <Global
         styles={{
           body: {
-            width: "100%",
-            height: "100%",
+            width: "100vw",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "row",
+            boxSizing: "border-box",
             margin: 0,
           },
           html: {
-            width: "100%",
-            height: "100%",
+            width: "100vw",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             flexDirection: "row",
+            boxSizing: "border-box",
           },
         }}
       />

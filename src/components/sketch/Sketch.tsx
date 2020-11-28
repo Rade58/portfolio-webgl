@@ -17,7 +17,8 @@ const Sketch: FunctionComponent = () => {
   return (
     <div
       sx={{
-        border: "crimson solid 2px",
+        /* NEMOJ NIKAD STAVLJATI BORDER OKO CANVASA, POCECE DA IZLAZI SVE OUT OF SCREEN */
+        border: "crimson solid 0px",
       }}
     >
       <canvas className="canvas" ref={canvasRef}></canvas>
