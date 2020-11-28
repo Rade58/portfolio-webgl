@@ -19,6 +19,11 @@
     "sketch": "canvas-sketch sketches/sketch1/sketch.js --hot --open",
     "ts-dev": "tsc sketches/sketch1/sketch.ts --allowUmdGlobalAccess true --esModuleInterop true --isolatedModules true --moduleResolution 'node' --target ES6 --w",
     "ts-build": "tsc sketches/sketch1/sketch.ts --allowUmdGlobalAccess true --esModuleInterop true --isolatedModules true --moduleResolution 'node' --target ES6",
+    "sketch-dev2": "concurrently 'npm run ts-dev2' 'npm run sketch2'",
+    "sketch2": "canvas-sketch sketches/sketch2/sketch.js --hot --open",
+    "ts-dev2": "tsc sketches/sketch2/sketch.ts --allowUmdGlobalAccess true --esModuleInterop true --isolatedModules true --moduleResolution 'node' --target ES6 --w",
+    "ts-build2": "tsc sketches/sketch2/sketch.ts --allowUmdGlobalAccess true --esModuleInterop true --isolatedModules true --moduleResolution 'node' --target ES6",
+
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

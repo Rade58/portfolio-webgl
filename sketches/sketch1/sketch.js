@@ -38,6 +38,7 @@ const sketch = ({ context }) => {
       vUv = uv;
       vPosition = position;
 
+
       gl_Position = projectionMatrix * modelViewMatrix * vec4(position.xyz, 1.0);
 
     }
@@ -88,17 +89,20 @@ const sketch = ({ context }) => {
       vUv = uv;
       vPosition = position;
 
-      vec3 vertices = position.xyz;
+
+      vec3 vert = position.xyz;
+
+
       float stretch = time;
       float amplitude = 0.16;
       float frequency = 1.22;
 
 
 
-      // vertices.xyz *= sin(position.z + stretch);
+      float noizeTest = noise(vert);
 
 
-      gl_Position = projectionMatrix * modelViewMatrix * vec4(vertices, 1.0);
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
 
     }
 
@@ -111,6 +115,8 @@ const sketch = ({ context }) => {
     varying vec2 vUv;
     varying vec3 vPosition;
 
+    uniform float time;
+
 
     void main(){
 
@@ -118,7 +124,7 @@ const sketch = ({ context }) => {
       float n = noise(vec3(1.0, 0.2, 0.1));
 
 
-      gl_FragColor = vec4(vec3(vUv.x), 1.0);
+      gl_FragColor = vec4( 1.0, 0.8, 1.0, 1.0);
 
     }
 
@@ -149,7 +155,7 @@ const sketch = ({ context }) => {
     sphereMesh.rotation.z = 4;
     scene.add(sphereMesh);
     // ---------------------- PLANE -------------------------------------
-    const planeGeometry = new global.THREE.IcosahedronGeometry(48, 8);
+    const planeGeometry = new global.THREE.PlaneGeometry(48, 48, 48, 48);
     const planeMaterial = new global.THREE.MeshNormalMaterial({
         // color: "crimson",
         // wireframe: true,
@@ -161,10 +167,11 @@ const sketch = ({ context }) => {
         uniforms: {
             time: { value: 0 },
         },
+        wireframe: true,
     });
     const planeMesh = new global.THREE.Mesh(planeGeometry, planeShaderMaterial);
     planeMesh.position.y = -1;
-    // planeMesh.rotation.x = -Math.PI / 2;
+    planeMesh.rotation.x = -Math.PI / 2;
     scene.add(planeMesh);
     // --------------------------------------------------------------
     // ------------------- HELPERS -------------------------------
