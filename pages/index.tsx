@@ -6,6 +6,7 @@ import Sketch from "../src/components/Sketch";
 const Index: FunctionComponent = () => {
   return (
     <Fragment>
+      Welcome
       <Sketch />
     </Fragment>
   );
