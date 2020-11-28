@@ -20,17 +20,14 @@ const sketch = ({ context }) => {
         canvas: context.canvas,
     });
     renderer.setClearColor("#3a3d42", 1);
-    const camera = new global.THREE.PerspectiveCamera(50, 1, 0.01, 100);
-    camera.position.set(0, 0, -4);
-    camera.lookAt(new global.THREE.Vector3());
-    // eslint-disable-next-line
-    // @ts-ignore
-    const controls = new global.THREE.OrbitControls(camera, context.canvas);
     const scene = new global.THREE.Scene();
-    const geometry = new global.THREE.SphereGeometry(0.5, 16, 32);
+    // -----  ICOSAHEDRON----------------------------------------
     const baseGeom = new global.THREE.IcosahedronGeometry(1, 1);
     const points = baseGeom.vertices;
-    const vertexShader = glsl(/* glsl */ `
+    //-----------------------------------------------------------
+    // ----------------- VERTEX SHADER ---------------------------------
+    // ----------------- FOR THE SPHERE ----------------------------
+    const sphereVertexShader = glsl(/* glsl */ `
 
     varying vec3 vPosition;
 
@@ -46,8 +43,8 @@ const sketch = ({ context }) => {
     }
 
   `);
-    // DAKLE DODAO SAM COLOR MIX DOLE
-    const fragmentShader = glsl(/* glsl */ `
+    // -------------FRAGMENT SHADER -----------------------
+    const sphereFragmentShader = glsl(/* glsl */ `
 
     #define PI 3.14;
 
@@ -72,42 +69,97 @@ const sketch = ({ context }) => {
       gl_FragColor = vec4(vec3(fragColor), 1.0);
     }
   `);
+    // -------------------------------------------------------------
+    // -------------------------------------------------------------
+    // ----------------- VERTEX SAHDER FOR THE PLANE
+    // -------------------
+    const planeVertexShader = glsl(/* glsl */ `
+
+    varying vec2 vUv;
+    varying vec3 vPosition;
+
+    void main(){
+      vUv = uv;
+      vPosition = position;
+    }
+
+
+  `);
+    const planeFragmentShader = glsl(/* glsl */ `
+
+    #pragma glslify: snoise4 = require(glsl-noise/simplex/4d);
+
+    varying vec2 vUv;
+    varying vec3 vPosition;
+
+
+    void main(){
+
+      gl_FragColor = vec4(1.0, 0.8, 0.2, 1.0);
+
+    }
+
+  `);
+    // ------------------------------------------------------------
+    //  -------------------   SPHERE --------------------------------
+    //  ------------------- ---------------- --------------------------------
     /* const shadermaterial = new global.THREE.ShaderMaterial({
-      fragmentShader,
-      vertexShader,
-      uniforms: {
-        color: { value: new global.THREE.Color("crimson") },
-        time: { value: 0 },
-        points: { value: points },
-      },
+        fragmentShader,
+        vertexShader,
+        uniforms: {
+          color: { value: new global.THREE.Color("crimson") },
+          time: { value: 0 },
+          points: { value: points },
+        },
   
-      defines: {
-        POINT_COUNT: points.length,
-      },
-    }); */
-    //   -------------------   SPHERE --------------------------------
+        defines: {
+          POINT_COUNT: points.length,
+        },
+      }); */
+    const sphereGeometry = new global.THREE.SphereGeometry(0.5, 16, 32);
     const sphereMaterial = new global.THREE.MeshStandardMaterial({
         color: "crimson",
+        wireframe: true,
     });
-    const sphereMesh = new global.THREE.Mesh(geometry, sphereMaterial);
+    const sphereMesh = new global.THREE.Mesh(sphereGeometry, sphereMaterial);
     sphereMesh.rotation.x = 4;
     sphereMesh.rotation.z = 4;
     scene.add(sphereMesh);
     // ---------------------- PLANE -------------------------------------
     const planeGeometry = new global.THREE.PlaneGeometry(28, 28, 28, 28);
-    const planeMaterial = new global.THREE.MeshStandardMaterial({
-        color: "crimson",
-        wireframe: true,
+    const planeMaterial = new global.THREE.MeshNormalMaterial({
+        // color: "crimson",
+        // wireframe: true,
+        flatShading: true,
     });
-    const planeMesh = new global.THREE.Mesh(planeGeometry, planeMaterial);
+    const planeShaderMaterial = new global.THREE.ShaderMaterial({
+        vertexShader: planeVertexShader,
+        fragmentShader: planeFragmentShader,
+    });
+    const planeMesh = new global.THREE.Mesh(planeGeometry, planeShaderMaterial);
     // planeMesh.position.z = 2;
-    planeMesh.rotation.x = Math.PI / 2;
+    planeMesh.rotation.x = -Math.PI / 2;
     scene.add(planeMesh);
     // --------------------------------------------------------------
     // ------------------- HELPERS -------------------------------
     // scene.add(new global.THREE.GridHelper(9, 58));
     scene.add(new global.THREE.AxesHelper(4));
     // -----------------------------------------------------------
+    // ------------------- LIGHT -----------------
+    const light = new global.THREE.PointLight("white", 1);
+    scene.add(light);
+    light.position.z = -3;
+    light.position.y = 3;
+    // ----------------------------------------------
+    // -------------------------- CAMERA ----------------------------------
+    const camera = new global.THREE.PerspectiveCamera(50, 1, 0.01, 100);
+    camera.position.set(0, 2, -4);
+    camera.lookAt(new global.THREE.Vector3());
+    // controls
+    // eslint-disable-next-line
+    // @ts-ignore
+    const controls = new global.THREE.OrbitControls(camera, context.canvas);
+    // -------------------------------------------------------------------
     return {
         // Handle resize events here
         resize({ pixelRatio, viewportWidth, viewportHeight }) {
