@@ -36,7 +36,6 @@
   "homepage": "https://github.com/Rade58/portfolio#readme",
   "dependencies": {
     "@emotion/react": "^11.1.1",
-    "@emotion/styled": "^11.0.0",
     "@theme-ui/presets": "^0.3.4",
     "@theme-ui/typography": "^0.3.4",
     "@xstate/react": "^1.0.3",
