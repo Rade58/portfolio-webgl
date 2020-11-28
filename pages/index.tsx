@@ -2,6 +2,7 @@
 /* eslint jsx-a11y/anchor-is-valid: 1 */
 import { FunctionComponent, Fragment } from "react";
 import Other from "../src/components/Other";
+import OtherSec from "../src/components/OtherSec";
 import Sketch from "../src/components/sketch/Sketch";
 
 const Index: FunctionComponent = () => {
@@ -10,6 +11,7 @@ const Index: FunctionComponent = () => {
       Welcome
       <Sketch />
       <Other />
+      <OtherSec />
     </Fragment>
   );
 };
