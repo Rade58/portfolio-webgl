@@ -19,7 +19,7 @@ const canvasSketch = require("canvas-sketch");
 const settings: SettingsI = {
   animate: true,
   context: "webgl",
-  dimensions: [512, 512],
+  // dimensions: [512, 512],
   // fps: 24,
   // duration: 8,
   // attributes: { antialis: true },
