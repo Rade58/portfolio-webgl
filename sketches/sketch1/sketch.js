@@ -19,7 +19,7 @@ const sketch = ({ context }) => {
     const renderer = new global.THREE.WebGLRenderer({
         canvas: context.canvas,
     });
-    renderer.setClearColor("#fff", 1);
+    renderer.setClearColor("#3a3d42", 1);
     const camera = new global.THREE.PerspectiveCamera(50, 1, 0.01, 100);
     camera.position.set(0, 0, -4);
     camera.lookAt(new global.THREE.Vector3());
@@ -27,7 +27,6 @@ const sketch = ({ context }) => {
     // @ts-ignore
     const controls = new global.THREE.OrbitControls(camera, context.canvas);
     const scene = new global.THREE.Scene();
-    // const geometry = new global.THREE.BoxGeometry(1, 1, 1);
     const geometry = new global.THREE.SphereGeometry(1, 16, 32);
     const baseGeom = new global.THREE.IcosahedronGeometry(1, 1);
     const points = baseGeom.vertices;
@@ -40,7 +39,6 @@ const sketch = ({ context }) => {
     void main(){
 
       vUv = uv;
-
       vPosition = position;
 
       gl_Position = projectionMatrix * modelViewMatrix * vec4(position.xyz, 1.0);
@@ -57,32 +55,19 @@ const sketch = ({ context }) => {
 
     #pragma glslify: noise = require(glsl-noise/simplex/3d)
 
+    varying vec2 vUv;
     varying vec3 vPosition;
-
 
     uniform vec3 points[POINT_COUNT];
 
-    varying vec2 vUv;
     uniform vec3 color;
     uniform float time;
 
     void main(){
 
-      float dist = 10000.0;
 
+      vec3 fragColor = vec3(0.2, 0.6, 0.2);
 
-      for (int i = 0; i < POINT_COUNT; i++){
-        vec3 p = points[i];
-        float d = distance(vPosition, p);
-
-        dist = min(d, dist);
-      }
-
-      float mask = step(0.16, dist);
-
-      mask = 1.0 - mask;
-
-      vec3 fragColor = mix(color, vec3(1.0), mask);
 
       gl_FragColor = vec4(vec3(fragColor), 1.0);
     }
@@ -115,7 +100,7 @@ const sketch = ({ context }) => {
         render({ time, playhead }) {
             // material.uniforms.time.value = time;
             material.uniforms.time.value = playhead * Math.PI * 2;
-            mesh.rotation.z = playhead * Math.PI * 2;
+            // mesh.rotation.z = playhead * Math.PI * 2;
             // mesh.rotation.y = playhead * Math.PI * 2;
             // ---------------------------------------------
             controls.update();
