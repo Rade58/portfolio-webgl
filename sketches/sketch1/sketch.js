@@ -27,7 +27,7 @@ const sketch = ({ context }) => {
     // @ts-ignore
     const controls = new global.THREE.OrbitControls(camera, context.canvas);
     const scene = new global.THREE.Scene();
-    const geometry = new global.THREE.SphereGeometry(1, 16, 32);
+    const geometry = new global.THREE.SphereGeometry(0.5, 16, 32);
     const baseGeom = new global.THREE.IcosahedronGeometry(1, 1);
     const points = baseGeom.vertices;
     const vertexShader = glsl(/* glsl */ `
@@ -72,22 +72,42 @@ const sketch = ({ context }) => {
       gl_FragColor = vec4(vec3(fragColor), 1.0);
     }
   `);
-    const material = new global.THREE.ShaderMaterial({
-        fragmentShader,
-        vertexShader,
-        uniforms: {
-            color: { value: new global.THREE.Color("crimson") },
-            time: { value: 0 },
-            points: { value: points },
-        },
-        defines: {
-            POINT_COUNT: points.length,
-        },
+    /* const shadermaterial = new global.THREE.ShaderMaterial({
+      fragmentShader,
+      vertexShader,
+      uniforms: {
+        color: { value: new global.THREE.Color("crimson") },
+        time: { value: 0 },
+        points: { value: points },
+      },
+  
+      defines: {
+        POINT_COUNT: points.length,
+      },
+    }); */
+    //   -------------------   SPHERE --------------------------------
+    const sphereMaterial = new global.THREE.MeshStandardMaterial({
+        color: "crimson",
     });
-    const mesh = new global.THREE.Mesh(geometry, material);
-    mesh.rotation.x = 4;
-    mesh.rotation.z = 4;
-    scene.add(mesh);
+    const sphereMesh = new global.THREE.Mesh(geometry, sphereMaterial);
+    sphereMesh.rotation.x = 4;
+    sphereMesh.rotation.z = 4;
+    scene.add(sphereMesh);
+    // ---------------------- PLANE -------------------------------------
+    const planeGeometry = new global.THREE.PlaneGeometry(28, 28, 28, 28);
+    const planeMaterial = new global.THREE.MeshStandardMaterial({
+        color: "crimson",
+        wireframe: true,
+    });
+    const planeMesh = new global.THREE.Mesh(planeGeometry, planeMaterial);
+    // planeMesh.position.z = 2;
+    planeMesh.rotation.x = Math.PI / 2;
+    scene.add(planeMesh);
+    // --------------------------------------------------------------
+    // ------------------- HELPERS -------------------------------
+    // scene.add(new global.THREE.GridHelper(9, 58));
+    scene.add(new global.THREE.AxesHelper(4));
+    // -----------------------------------------------------------
     return {
         // Handle resize events here
         resize({ pixelRatio, viewportWidth, viewportHeight }) {
@@ -99,7 +119,7 @@ const sketch = ({ context }) => {
         // Update & render your scene here
         render({ time, playhead }) {
             // material.uniforms.time.value = time;
-            material.uniforms.time.value = playhead * Math.PI * 2;
+            // material.uniforms.time.value = playhead * Math.PI * 2;
             // mesh.rotation.z = playhead * Math.PI * 2;
             // mesh.rotation.y = playhead * Math.PI * 2;
             // ---------------------------------------------

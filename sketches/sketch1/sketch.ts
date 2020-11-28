@@ -53,7 +53,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   const scene = new global.THREE.Scene();
 
-  const geometry = new global.THREE.SphereGeometry(1, 16, 32);
+  const geometry = new global.THREE.SphereGeometry(0.5, 16, 32);
 
   const baseGeom = new global.THREE.IcosahedronGeometry(1, 1);
   const points = baseGeom.vertices;
@@ -103,7 +103,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     }
   `);
 
-  const material = new global.THREE.ShaderMaterial({
+  /* const shadermaterial = new global.THREE.ShaderMaterial({
     fragmentShader,
     vertexShader,
     uniforms: {
@@ -115,14 +115,43 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     defines: {
       POINT_COUNT: points.length,
     },
+  }); */
+
+  //   -------------------   SPHERE --------------------------------
+
+  const sphereMaterial = new global.THREE.MeshStandardMaterial({
+    color: "crimson",
   });
 
-  const mesh = new global.THREE.Mesh(geometry, material);
+  const sphereMesh = new global.THREE.Mesh(geometry, sphereMaterial);
 
-  mesh.rotation.x = 4;
-  mesh.rotation.z = 4;
+  sphereMesh.rotation.x = 4;
+  sphereMesh.rotation.z = 4;
 
-  scene.add(mesh);
+  scene.add(sphereMesh);
+
+  // ---------------------- PLANE -------------------------------------
+
+  const planeGeometry = new global.THREE.PlaneGeometry(28, 28, 28, 28);
+  const planeMaterial = new global.THREE.MeshStandardMaterial({
+    color: "crimson",
+    wireframe: true,
+  });
+  const planeMesh = new global.THREE.Mesh(planeGeometry, planeMaterial);
+
+  // planeMesh.position.z = 2;
+  planeMesh.rotation.x = Math.PI / 2;
+
+  scene.add(planeMesh);
+
+  // --------------------------------------------------------------
+
+  // ------------------- HELPERS -------------------------------
+
+  // scene.add(new global.THREE.GridHelper(9, 58));
+  scene.add(new global.THREE.AxesHelper(4));
+
+  // -----------------------------------------------------------
 
   return {
     // Handle resize events here
@@ -135,7 +164,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     // Update & render your scene here
     render({ time, playhead }) {
       // material.uniforms.time.value = time;
-      material.uniforms.time.value = playhead * Math.PI * 2;
+      // material.uniforms.time.value = playhead * Math.PI * 2;
       // mesh.rotation.z = playhead * Math.PI * 2;
       // mesh.rotation.y = playhead * Math.PI * 2;
       // ---------------------------------------------
