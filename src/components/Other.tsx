@@ -10,7 +10,9 @@ const Other: FunctionComponent = () => {
       css={css`
         border: crimson solid 1px;
       `}
-    ></div>
+    >
+      Text
+    </div>
   );
 };
 
