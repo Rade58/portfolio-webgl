@@ -15,11 +15,7 @@ const Sketch: FunctionComponent = () => {
   }, [canvasRef]);
 
   return (
-    <div
-      sx={{
-        border: "crimson solid 2px",
-      }}
-    >
+    <div>
       <canvas className="canvas" ref={canvasRef}></canvas>
     </div>
   );
