@@ -6,7 +6,7 @@ const canvasSketch = require("canvas-sketch");
 const settings = {
     animate: true,
     context: "webgl",
-    duration: 18,
+    duration: 28,
 };
 const settingsFunc = (settings, canvas) => {
     if (canvas) {
@@ -124,9 +124,9 @@ const sketch = ({ context }) => {
 
     void main(){
 
-      float n = noise(vec3(1.0, time, 0.1));
+      // float n = noise(vec3(1.0, time, 0.1));
 
-      vec3 fragColor = mix(color, vec3(vUv.x * 0.4, 0.1 * n, vUv.y * 0.6), time);
+      vec3 fragColor = mix(color, vec3(vUv.x * 0.8, 0.4, vUv.y * 0.6), time);
 
 
 
@@ -176,7 +176,7 @@ const sketch = ({ context }) => {
             time: { value: 0 },
             color: { value: new global.THREE.Color("#bb7fa9") },
         },
-        wireframe: true,
+        // wireframe: true,
         flatShading: true,
     });
     const planeMesh = new global.THREE.Mesh(planeGeometry, planeShaderMaterial);
@@ -208,6 +208,17 @@ const sketch = ({ context }) => {
     // @ts-ignore
     const controls = new global.THREE.OrbitControls(camera, context.canvas);
     // -------------------------------------------------------------------
+    // MOUSEMOVE ---------------------------------------
+    /* context.canvas.addEventListener("mousemove", (e) => {
+      const value = e.clientX * 0.008 * Math.random();
+  
+      console.log(value);
+  
+      planeShaderMaterial.uniforms.time.value =
+        value !== Infinity && value < 8 ? value * 0.028 : Math.random() * 0.28;
+      // planeMesh.rotation.z = Math.sin(value * Math.PI * 2);
+    }); */
+    // -------------------------------------------------
     return {
         // Handle resize events here
         resize({ pixelRatio, viewportWidth, viewportHeight }) {
@@ -224,7 +235,7 @@ const sketch = ({ context }) => {
             // mesh.rotation.y = playhead * Math.PI * 2;
             // TALASI NA PLANE-U
             // ---------------------------------------------
-            planeShaderMaterial.uniforms.time.value = playhead * 2 * Math.PI;
+            planeShaderMaterial.uniforms.time.value = Math.sin(playhead * 2 * Math.PI);
             // ---------------------------------------------
             // ---------------------------------------------
             controls.update();
