@@ -168,7 +168,7 @@ const sketch = ({ context }) => {
     sphereMesh.rotation.z = 4;
     scene.add(sphereMesh);
     // ---------------------- PLANE -------------------------------------
-    const planeGeometry = new global.THREE.PlaneGeometry(48, 48, 148, 148);
+    const planeGeometry = new global.THREE.PlaneGeometry(48, 48, 248, 248);
     const planeMaterial = new global.THREE.MeshNormalMaterial({
         // color: "crimson",
         // wireframe: true,
@@ -206,7 +206,7 @@ const sketch = ({ context }) => {
     // --------------------------------------------------------------------
     // -------------------------- CAMERA ----------------------------------
     const camera = new global.THREE.PerspectiveCamera(50, 1, 0.01, 100);
-    camera.position.set(-8, 2, 1);
+    camera.position.set(-6, 3.8, 0);
     camera.lookAt(new global.THREE.Vector3());
     // controls
     // eslint-disable-next-line
