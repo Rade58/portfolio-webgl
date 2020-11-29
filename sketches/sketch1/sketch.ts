@@ -130,7 +130,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
 
 
-      float noizeTest = noise(vert);
+      // float noizeTest = noise(vert);
 
 
       gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);

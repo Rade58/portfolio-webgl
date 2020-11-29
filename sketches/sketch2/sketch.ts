@@ -20,7 +20,6 @@ const settings: SettingsI = {
   context: "webgl",
   duration: 18,
   // fps: 24,
-  // duration: 8,
   // attributes: { antialis: true },
 };
 
@@ -107,7 +106,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   const planeVertexShader = glsl(/* glsl */ `
 
-    #pragma glslify: noise = require('glsl-noise/simplex/3d');
+    #pragma glslify: noise3d = require('glsl-noise/simplex/3d');
 
 
     varying vec2 vUv;
@@ -115,25 +114,26 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
     uniform float time;
 
+    float amplitude = 0.28;
+    float frequency = 0.90;
 
     void main(){
       vUv = uv;
       vPosition = position;
 
 
+    float stretch = time;
+
       vec3 vert = position.xyz;
 
 
-      float stretch = time;
-      float amplitude = 0.16;
-      float frequency = 1.22;
+      float noizeTest = noise3d(vec3(vert.x * frequency,vert.y * frequency, stretch)) * amplitude;
 
+      vert.z += noizeTest;
+      vert.y += noizeTest;
+      vert.x += noizeTest;
 
-
-      float noizeTest = noise(vert);
-
-
-      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(vert, 1.0);
 
     }
 
@@ -148,15 +148,22 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     varying vec3 vPosition;
 
     uniform float time;
+    uniform vec3 color;
+
+    uniform mat4 modelMatrix;
 
 
     void main(){
 
+      float n = noise(vec3(1.0, time, 0.1));
 
-      float n = noise(vec3(1.0, 0.2, 0.1));
+      vec3 fragColor = mix(color, vec3(vUv.x * 0.4, 0.1 * n, vUv.y * 0.6), time);
 
 
-      gl_FragColor = vec4( 1.0, 0.8, 1.0, 1.0);
+
+
+
+      gl_FragColor = vec4(vec3(fragColor), 1.0);
 
     }
 
@@ -194,7 +201,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   // ---------------------- PLANE -------------------------------------
 
-  const planeGeometry = new global.THREE.PlaneGeometry(48, 48, 48, 48);
+  const planeGeometry = new global.THREE.PlaneGeometry(48, 48, 148, 148);
   const planeMaterial = new global.THREE.MeshNormalMaterial({
     // color: "crimson",
     // wireframe: true,
@@ -205,8 +212,10 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     fragmentShader: planeFragmentShader,
     uniforms: {
       time: { value: 0 },
+      color: { value: new global.THREE.Color("#bb7fa9") },
     },
     wireframe: true,
+    flatShading: true,
   });
 
   const planeMesh = new global.THREE.Mesh(planeGeometry, planeShaderMaterial);
@@ -216,21 +225,27 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   scene.add(planeMesh);
 
+  // ------------------- LIGHT -----------------
+
+  const light = new global.THREE.PointLight("white", 1);
+  scene.add(light);
+  light.position.z = -18;
+  light.position.y = 8;
+
+  const ambientLight = new global.THREE.AmbientLight("crimson", 1);
+  ambientLight.position.y = 8;
+  ambientLight.position.z = 8;
+  // scene.add(ambientLight);
+
   // --------------------------------------------------------------
 
   // ------------------- HELPERS -------------------------------
 
   // scene.add(new global.THREE.GridHelper(9, 58));
   scene.add(new global.THREE.AxesHelper(4));
+  scene.add(new global.THREE.PointLightHelper(light));
 
   // -----------------------------------------------------------
-
-  // ------------------- LIGHT -----------------
-
-  const light = new global.THREE.PointLight("white", 1);
-  scene.add(light);
-  light.position.z = -3;
-  light.position.y = 3;
 
   // ----------------------------------------------
 
@@ -261,8 +276,11 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       // material.uniforms.time.value = playhead * Math.PI * 2;
       // mesh.rotation.z = playhead * Math.PI * 2;
       // mesh.rotation.y = playhead * Math.PI * 2;
+
+      // TALASI NA PLANE-U
+
       // ---------------------------------------------
-      planeShaderMaterial.uniforms.time.value = time;
+      planeShaderMaterial.uniforms.time.value = playhead * 2 * Math.PI;
 
       // ---------------------------------------------
       // ---------------------------------------------
