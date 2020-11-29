@@ -101,6 +101,11 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   // -------------------------------------------------------------
   // -------------------------------------------------------------
+  // -------------------------------------------------------------
+  // -------------------------------------------------------------
+  // -------------------------------------------------------------
+  // -------------------------------------------------------------
+  // -------------------------------------------------------------
 
   // ----------------- VERTEX SAHDER FOR THE PLANE
   // -------------------
@@ -159,12 +164,12 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       // float n = noise(vec3(1.0, time, 0.1));
 
       vec3 fragColor = mix(color, vec3(vUv.x * 0.8, 0.4, vUv.y * 0.6), time);
+      vec3 myColor = normalize(vPosition) * 0.5 + 0.5;
+
+      vec3 otherColor = vec3(vUv.x, 0.4, vUv.y);
 
 
-
-
-
-      gl_FragColor = vec4(vec3(fragColor), 1.0);
+      gl_FragColor = vec4(otherColor, 1.0);
 
     }
 
@@ -215,7 +220,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       time: { value: 0 },
       color: { value: new global.THREE.Color("#bb7fa9") },
     },
-    // wireframe: true,
+    wireframe: true,
     flatShading: true,
   });
 
@@ -228,9 +233,9 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   // ------------------- LIGHT -----------------
 
-  const light = new global.THREE.PointLight("white", 1);
+  const light = new global.THREE.PointLight("white", 2);
   scene.add(light);
-  light.position.z = -18;
+  light.position.z = 18;
   light.position.y = 8;
 
   const ambientLight = new global.THREE.AmbientLight("crimson", 1);
@@ -253,7 +258,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // -------------------------- CAMERA ----------------------------------
 
   const camera = new global.THREE.PerspectiveCamera(50, 1, 0.01, 100);
-  camera.position.set(0, 2, -4);
+  camera.position.set(-8, 2, 1);
   camera.lookAt(new global.THREE.Vector3());
 
   // controls
