@@ -156,7 +156,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       color2 = color2 + vUv.xyy;
 
 
-      // -----------------------------------------
+      // -----------------  OVO JE RELEVANT, SVE OKO OVOGA JE NEKA VEZBA  ------------------------
       // CENTAR GRADIENT-A
 
       vec2 center = vec2(0.5, 0.5);
@@ -186,7 +186,6 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       //
       // -----------------------------------------
       // vec3 col = vec3(d) /* * vec3(0.2, 0.3, 0.6) + 0.1 */;
-
 
 
       gl_FragColor = vec4(myColor, 1.0);
