@@ -106,8 +106,37 @@ const sketch = ({ context }) => {
       color2 = color2 + vUv.xyy;
 
 
+      // -----------------------------------------
+      // CENTAR GRADIENT-A
 
-      gl_FragColor = vec4(color2, 1.0);
+      vec2 center = vec2(0.5, 0.5);
+
+      // VECI BROJ KRUGOVA
+
+      vec2 pos = mod(vUv * 6.0, 1.0);
+
+
+      // DISTANCE
+      float d = distance(pos, center);
+
+      // MASKING
+
+      // d = 0.5 - d;  // DA UCINIM DA IMAM BELE KRUGOVE NA CRNOJ POZADINI
+                    // DAKORISTIS SAMO d IMAO BI CRNE KRUGOVE
+                    // ALI MOGU DA KORISTIM I   mask = 1.0 - mask
+
+      float mask = step(0.01, d);
+
+      mask = 1.0 - mask;
+
+      vec3 myColor = vec3(mask);
+      //
+      // -----------------------------------------
+      // vec3 col = vec3(d) /* * vec3(0.2, 0.3, 0.6) + 0.1 */;
+
+
+
+      gl_FragColor = vec4(myColor, 1.0);
 
     }
 
