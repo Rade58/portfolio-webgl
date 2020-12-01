@@ -168,11 +168,19 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
       // d = 0.5 - d;
 
-      float mask = step(0.01, d);
+      float mask = step(0.25, d);
 
-      mask = 1.0 - mask;
+      // NECE TREBATI JER KORISTIM MIX
+      // mask = 1.0 - mask;
 
-      vec3 myColor = vec3(mask);
+      // UMESTO DA SAMO KORISTIM     vec3(mask);
+      // vec3 myColor = vec3(mask);
+
+
+      // VRSIM COLOR INTERPOLATION
+      // DVA VEC3 PREDSTAVLJAJU DVE BOJE
+      //
+      vec3 myColor = mix(vec3(1.0), vec3(0.0), mask);  // OPET CU IMATI BELE KRUGOVE NA CRNOM BACKGROUNDU
 
       // vec3 col = vec3(d) /* * vec3(0.2, 0.3, 0.6) + 0.1 */;
 
@@ -212,8 +220,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   const controls = new global.THREE.OrbitControls(camera, context.canvas);
   //
 
-  // --------------------------------------------------------------
-  // -------- LIGHT, HELPERS --------------------------------------
+  // ----------------------------------------------------------------
+  // ---------------------- LIGHT, HELPERS --------------------------
   const light = new global.THREE.PointLight("white", 1);
   light.position.y = 9;
   light.position.z = 9;
@@ -224,8 +232,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   scene.add(new global.THREE.AxesHelper(4));
   scene.add(new global.THREE.PointLightHelper(light));
 
-  // -------------------------------------------------------------
-  // -------------------------------------------------------------
+  // ---------------------------------------------------------------
+  // ---------------------------------------------------------------
 
   return {
     // Handle resize events here
