@@ -75,8 +75,14 @@ const sketch = ({ context }) => {
 
       vPosition = position;
       vUv = uv;
+      /*
+      vec3 transformed = position.xyz;
 
-      gl_Position = projectionMatrix * modelViewMatrix * vec4(position.xyz, 1.0);
+      transformed.xz -= 1.0;
+      transformed.yz -= 0.2;
+      */
+
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
 
     }
 
@@ -90,7 +96,18 @@ const sketch = ({ context }) => {
 
     void main() {
 
-      gl_FragColor = vec4(vec3(vUv.x), 1.0);
+
+      vec3 color = vec3(0.0, 0.0, 0.0);
+
+      vec3 color2 = color + vec3(0.8) * 0.25;
+
+      color2.x = sin(vUv.y);
+
+      color2 = color2 + vUv.xyy;
+
+
+
+      gl_FragColor = vec4(color2, 1.0);
 
     }
 
@@ -101,9 +118,9 @@ const sketch = ({ context }) => {
         vertexShader: vShad,
         fragmentShader: fShad,
     }));
-    boxM.scale.setScalar(2);
+    boxM.scale.setScalar(2.4);
     scene.add(boxM);
-    boxM.position.y = 1;
+    boxM.position.y = 1.4;
     // --------------------- CAMERA, CONTROLS --------------------
     // -----------------------------------------------------------
     // -----------------------------------------------------------
