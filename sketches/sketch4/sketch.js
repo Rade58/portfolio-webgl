@@ -23,14 +23,33 @@ const sketch = ({ context }) => {
     // GEOMETRY MATERIAL AND MESH
     const boxGeometry = new global.THREE.BoxGeometry(1, 1, 1, 1, 1, 1);
     //
-    const boxMaterial = new global.THREE.MeshBasicMaterial({
-        color: "crimson",
-        wireframe: true,
+    const boxMaterial = new global.THREE.MeshNormalMaterial({
+    // color: "crimson",
+    // wireframe: true,
     });
     const boxMesh = new global.THREE.Mesh(boxGeometry, boxMaterial);
     scene.add(boxMesh);
-    //
-    // CAMERA, CONTROLS, HELPERS
+    // ----------------------------------------------------------
+    // ----------------------------------------------------------
+    // ----------------------------------------------------------
+    // ----------------------------------------------------------
+    // ----------------------------------------------------------
+    const icoPosition = new global.THREE.Vector3(0, 0, 0);
+    icoPosition.setScalar(2);
+    const icosahedronGeometry = new global.THREE.IcosahedronGeometry(1, 1);
+    const icosahedronMaterial = new global.THREE.MeshNormalMaterial({
+        // color: "crimson",
+        flatShading: true,
+    });
+    const icosahMesh = new global.THREE.Mesh(icosahedronGeometry, icosahedronMaterial);
+    icosahMesh.position.copy(icoPosition);
+    icosahMesh.position.set(2, 0, 0);
+    const coords = [0, 0, 0];
+    icosahMesh.position.fromArray(coords);
+    scene.add(icosahMesh);
+    // --------------------- CAMERA, CONTROLS --------------------
+    // -----------------------------------------------------------
+    // -----------------------------------------------------------
     const camera = new global.THREE.PerspectiveCamera(50, 1, 0.01, 100);
     camera.position.set(4, 0, 0);
     camera.lookAt(new global.THREE.Vector3());
@@ -38,6 +57,17 @@ const sketch = ({ context }) => {
     // @ts-ignore
     const controls = new global.THREE.OrbitControls(camera, context.canvas);
     //
+    // LIGHT, HELPERS
+    const light = new global.THREE.PointLight("white", 1);
+    light.position.y = 4;
+    light.position.z = 4;
+    scene.add(light);
+    // helpers
+    scene.add(new global.THREE.GridHelper(8, 58, "purple", "olive"));
+    scene.add(new global.THREE.AxesHelper(4));
+    scene.add(new global.THREE.PointLightHelper(light));
+    // -----------------------------------------------------------
+    // -----------------------------------------------------------
     return {
         // Handle resize events here
         resize({ pixelRatio, viewportWidth, viewportHeight }) {
