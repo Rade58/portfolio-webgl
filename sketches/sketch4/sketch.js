@@ -34,24 +34,37 @@ const sketch = ({ context }) => {
     // ----------------------------------------------------------
     // ----------------------------------------------------------
     // ----------------------------------------------------------
+    const color1 = new global.THREE.Color("crimson");
     const icoPosition = new global.THREE.Vector3(0, 0, 0);
     icoPosition.setScalar(2);
     const icosahedronGeometry = new global.THREE.IcosahedronGeometry(1, 1);
-    const icosahedronMaterial = new global.THREE.MeshNormalMaterial({
-        // color: "crimson",
+    const icosahedronMaterial = new global.THREE.MeshStandardMaterial({
+        color: "purple",
         flatShading: true,
     });
     const icosahMesh = new global.THREE.Mesh(icosahedronGeometry, icosahedronMaterial);
+    const colorVec3 = new global.THREE.Vector3(0.4, 0.6, 0.8);
+    icosahedronMaterial.color.copy(color1);
+    icosahedronMaterial.color.setScalar(0.8);
+    icosahedronMaterial.color.r = 0.1;
+    icosahedronMaterial.color.g = 0.4;
+    icosahedronMaterial.color.b = 0.6;
+    icosahedronMaterial.color.setHSL(0.4, 0.6, 0.8);
     icosahMesh.position.copy(icoPosition);
     icosahMesh.position.set(2, 0, 0);
-    const coords = [0, 0, 0];
+    const coords = [-2, 2, -2];
     icosahMesh.position.fromArray(coords);
+    icosahMesh.rotation.y = 2;
+    const rotationEuler = new global.THREE.Euler(8, 3 * 3.14 - 1, 0);
+    icosahMesh.rotation.copy(rotationEuler);
+    icosahMesh.scale.x = 2;
     scene.add(icosahMesh);
+    console.log(icosahMesh.position.toArray());
     // --------------------- CAMERA, CONTROLS --------------------
     // -----------------------------------------------------------
     // -----------------------------------------------------------
     const camera = new global.THREE.PerspectiveCamera(50, 1, 0.01, 100);
-    camera.position.set(4, 0, 0);
+    camera.position.set(6, 4, 4);
     camera.lookAt(new global.THREE.Vector3());
     // eslint-disable-next-line
     // @ts-ignore
@@ -59,8 +72,8 @@ const sketch = ({ context }) => {
     //
     // LIGHT, HELPERS
     const light = new global.THREE.PointLight("white", 1);
-    light.position.y = 4;
-    light.position.z = 4;
+    light.position.y = 9;
+    light.position.z = 9;
     scene.add(light);
     // helpers
     scene.add(new global.THREE.GridHelper(8, 58, "purple", "olive"));
