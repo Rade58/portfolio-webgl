@@ -52,7 +52,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   const boxMesh = new global.THREE.Mesh(boxGeometry, boxMaterial);
 
-  scene.add(boxMesh);
+  // scene.add(boxMesh);
 
   // ----------------------------------------------------------
   // ----------------------------------------------------------
@@ -103,9 +103,96 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   icosahMesh.scale.x = 2;
 
-  scene.add(icosahMesh);
+  // scene.add(icosahMesh);
 
   console.log(icosahMesh.position.toArray());
+
+  // DRAWING TRIANGLES -----------------------------------------------
+  // -----------------------------------------------------------------
+
+  const trianglesGeometry = new global.THREE.Geometry();
+
+  const vertices: globalThis.THREE.Vector3[] = [
+    new global.THREE.Vector3(0, 1, 0),
+    new global.THREE.Vector3(1, 0, 0),
+    new global.THREE.Vector3(0, 0, 0),
+    new global.THREE.Vector3(1, 1, 0),
+  ];
+  const faces: globalThis.THREE.Face3[] = [
+    new global.THREE.Face3(0, 1, 2),
+    new global.THREE.Face3(0, 3, 1),
+  ];
+
+  const trianglesMaterial = new global.THREE.MeshNormalMaterial({
+    side: global.THREE.DoubleSide,
+    colorWrite: true,
+  });
+  const trianglesMesh = new global.THREE.Mesh(
+    trianglesGeometry,
+    trianglesMaterial
+  );
+
+  trianglesGeometry.vertices = vertices;
+  trianglesGeometry.faces = faces;
+
+  trianglesGeometry.computeVertexNormals();
+
+  trianglesMesh.position.setScalar(4);
+
+  scene.add(trianglesMesh);
+
+  // OTHER TRIANGLE
+  // OTHER TRIANGLE
+  // OTHER TRIANGLE
+  // OTHER TRIANGLE
+
+  const trianglesGeometry2 = new global.THREE.BufferGeometry();
+
+  const vertices2: globalThis.THREE.Vector3[] = [
+    new global.THREE.Vector3(0, 1, 0),
+    new global.THREE.Vector3(1, 0, 0),
+    new global.THREE.Vector3(0, 0, 0),
+    new global.THREE.Vector3(1, 1, 0),
+  ];
+  const faces2: number[][] = [
+    [0, 1, 2],
+    [0, 3, 1],
+  ];
+
+  const flatFaces = faces2.flat();
+
+  const facesArray = new Uint16Array(flatFaces);
+  const facesAttribute = new global.THREE.BufferAttribute(facesArray, 1);
+  trianglesGeometry2.setIndex(facesAttribute);
+
+  const flatVertices = vertices2
+    .map((vec3) => {
+      const coordsArr = vec3.toArray();
+
+      return coordsArr;
+    })
+    .flat();
+
+  const fArray = new Float32Array(flatVertices);
+
+  const vertsAttribute = new global.THREE.BufferAttribute(fArray, 3);
+
+  console.log({ vertsAttribute, facesAttribute });
+
+  const trianglesMaterial2 = new global.THREE.MeshNormalMaterial({
+    side: global.THREE.DoubleSide,
+    colorWrite: true,
+  });
+  const trianglesMesh2 = new global.THREE.Mesh(
+    trianglesGeometry2,
+    trianglesMaterial2
+  );
+
+  trianglesGeometry2.setAttribute("position", vertsAttribute);
+
+  trianglesGeometry2.computeVertexNormals();
+
+  scene.add(trianglesMesh2);
 
   // --------------------- CAMERA, CONTROLS --------------------
   // -----------------------------------------------------------
