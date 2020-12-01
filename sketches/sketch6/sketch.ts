@@ -182,6 +182,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
                            // DA MESH BUDE CRN SA BELIM GRADIENT KRUGOVIMA
 
       vec3 myColor = vec3(mask);
+
       //
       // -----------------------------------------
       // vec3 col = vec3(d) /* * vec3(0.2, 0.3, 0.6) + 0.1 */;
