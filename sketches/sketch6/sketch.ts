@@ -169,7 +169,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       // DISTANCE
       float d = distance(pos, center);
 
-      // MASKING
+      // MASKING USTVARI PRAVI TAKVO STANJE DA JE GRADIENT GRANICA, ODNOSNO COLOR STOP
+      // USTVARI JASNO VIDLJIVA LINIJA, DAKLE COLOR STOP NIJE GRADUAL VEC JASAN TAKORECI
 
       // d = 0.5 - d;  // DA UCINIM DA IMAM BELE KRUGOVE NA CRNOJ POZADINI
                     // DAKORISTIS SAMO d IMAO BI CRNE KRUGOVE
@@ -177,7 +178,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
       float mask = step(0.01, d);
 
-      mask = 1.0 - mask;
+      mask = 1.0 - mask;   // EVO OVO TI JE UPRAVO BILO TO DA INVERT-UJES
+                           // DA MESH BUDE CRN SA BELIM GRADIENT KRUGOVIMA
 
       vec3 myColor = vec3(mask);
       //
