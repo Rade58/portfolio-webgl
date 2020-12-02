@@ -41,25 +41,60 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   const scene = new global.THREE.Scene();
   //
 
-  // GEOMETRY MATERIAL AND MESH
-  const boxGeometry = new global.THREE.BoxGeometry(1, 1, 1, 1, 1, 1);
   //
+  const sphereGeo = new global.THREE.SphereGeometry(2, 12, 12);
+  //
+  const sphereShaderMaterial = new global.THREE.ShaderMaterial({
+    wireframe: true,
+  });
 
-  const boxM = new global.THREE.Mesh(
-    boxGeometry,
-    new global.THREE.ShaderMaterial({})
-  );
+  const sphereMesh = new global.THREE.Mesh(sphereGeo, sphereShaderMaterial);
 
-  boxM.scale.setScalar(2.4);
+  // sphereMesh.scale.setScalar(2.4);
+  scene.add(sphereMesh);
+  /*
+  sphereMesh.position.y = 2.6; */
 
-  scene.add(boxM);
-  boxM.position.y = 1.4;
+  // PRVO SI NARAVNO POSTAVIO SAM ICOSAHEDRON TAMO GDE SI POSTAVIO I SPHERE
+  // CISTO RADI PROVERE OVO RADIM
+
+  const icosaGeometry = new global.THREE.IcosahedronGeometry(2, 1);
+
+  const icoMaterial = new global.THREE.MeshNormalMaterial({
+    flatShading: true,
+  });
+
+  const icosaMesh = new global.THREE.Mesh(icosaGeometry, icoMaterial);
+
+  icosaMesh.position.fromArray(sphereMesh.position.toArray());
+
+  scene.add(icosaMesh);
+
+  // KAD SAM GA STAVIO UZIMAM MU VERTICES
+
+  const icoVertices = icosaMesh.geometry.vertices;
+
+  // NA TIM VERTICES-OVIM STAVLJAM MESH-EVE KRUGOVA
+
+  const circleGeo = new global.THREE.CircleGeometry(0.1);
+
+  const circleMaterial = new global.THREE.MeshNormalMaterial({});
+
+  icoVertices.forEach((vec3) => {
+    const circleMesh = new global.THREE.Mesh(circleGeo, circleMaterial);
+
+    circleMesh.position.fromArray(vec3.toArray());
+
+    circleMesh.lookAt(0, 0, 0);
+
+    scene.add(circleMesh);
+  });
 
   // --------------------- CAMERA, CONTROLS --------------------
   // -----------------------------------------------------------
   // -----------------------------------------------------------
   const camera = new global.THREE.PerspectiveCamera(50, 1, 0.01, 100);
-  camera.position.set(6, 3, 3);
+  camera.position.set(10, 6, 3);
 
   camera.lookAt(new global.THREE.Vector3());
 
@@ -76,7 +111,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   scene.add(light);
 
   // helpers
-  scene.add(new global.THREE.GridHelper(8, 58, "purple", "olive"));
+  // scene.add(new global.THREE.GridHelper(8, 58, "purple", "olive"));
   scene.add(new global.THREE.AxesHelper(4));
   scene.add(new global.THREE.PointLightHelper(light));
 
