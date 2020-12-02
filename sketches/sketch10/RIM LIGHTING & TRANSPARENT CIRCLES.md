@@ -4,3 +4,16 @@ ZELIM DA VIDIM I MATERIAL IZNUTRA, TAKORECI (A TO CU URADITI NAKON STO INTRODUCE
 
 [RIM LIGHTING CODE KOPITRAM IZ SNIPPETS-A](https://github.com/Rade58/canvas_webgl_creative_coding/blob/8_6_CUSTOM_GRADIENT_SHADER/GLSL%20snippets.md#glsl--rim-light-shader)
 
+# BAVICU SE I ANTIALISASINGOM
+
+INSTALIRACU SLEDECE
+
+- `npm i glsl-aastep --save`
+
+MORACES PODESITI I `extensions` -> `derivatives` NA SHADER MATERIAL-U
+
+# TAKODJE KONACNO DA UCINIS DA SVE IZGLEDA SUPLJE
+
+KORISTIS `discard` KEYWORD ZA OVAJ SLUCAJ
+
+`if(mask > 0.5) discard`

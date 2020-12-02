@@ -55,7 +55,6 @@
     "sketch10": "canvas-sketch sketches/sketch10/sketch.js --hot --open",
     "ts-dev10": "tsc sketches/sketch10/sketch.ts --allowUmdGlobalAccess true --esModuleInterop true --isolatedModules true --moduleResolution 'node' --target ES6 --w",
     "ts-build10": "tsc sketches/sketch10/sketch.ts --allowUmdGlobalAccess true --esModuleInterop true --isolatedModules true --moduleResolution 'node' --target ES6",
-
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -81,6 +80,7 @@
     "canvas-sketch": "^0.7.4",
     "canvas-sketch-util": "^1.10.0",
     "dotenv-load": "^2.0.0",
+    "glsl-aastep": "^1.0.1",
     "glsl-hsl2rgb": "^1.1.0",
     "glsl-noise": "0.0.0",
     "glslify": "^7.1.1",

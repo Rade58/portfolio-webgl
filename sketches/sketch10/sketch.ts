@@ -70,6 +70,12 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   `);
 
   const fragmentShader = glsl(/* glsl */ `
+
+
+    #pragma glslify: aastep = require('glsl-aastep');
+
+
+
     varying vec2 vUv;
     varying vec3 vPosition;
 
@@ -77,6 +83,19 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
     uniform vec3 color;
     uniform float time;
+
+
+    uniform mat4 modelMatrix;
+
+    float sphereRim (vec3 spherePosition) {
+      vec3 normal = normalize(spherePosition.xyz);
+      vec3 worldNormal = normalize(mat3(modelMatrix) * normal.xyz);
+      vec3 worldPosition = (modelMatrix * vec4(spherePosition, 1.0)).xyz;
+      vec3 V = normalize(cameraPosition - worldPosition);
+      float rim = 1.0 - max(dot(V, worldNormal), 0.0);
+      return pow(smoothstep(0.0, 1.0, rim), 0.5);
+    }
+
 
 
     void main(){
@@ -94,12 +113,22 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
         dist = min(d, dist);
       }
 
-      // BITNO JE DA SI DODAO
-      float mask = step(0.25 + sin(time + vUv.y * 16.58) * 0.18, dist);
+
+      // KORISTIO SI OVDE ANTIALIASED STEP
+      float mask = aastep(0.28, dist);
 
 
+      // OVO CE RECI DA AKO SMO INSIDE THE CIRCLE    DISCARD-UJ fragment
+      if(mask < 0.5) discard;
+      // MOCI CES VIDETI KRIOZ KRUGOVE, I ZATO STO SI DOLE NA SHADER MATERIALU DEFINISAO TWO SIDED ZA sides
 
-      vec3 fragColor = mix(color, vec3(cos(2.4), 0.2, sin(time + vUv.y + 0.1) * 0.4),mask);
+      float rim = sphereRim(vPosition);
+
+
+      vec3 fragColor = mix(color, vec3(cos(2.4), 0.2, sin(time + vUv.y + 0.1)),mask);
+
+      // ENHANCE FRAG COLOR BASED ON SOME RIM AMOUNT
+      fragColor += rim * 0.25;
 
 
 
@@ -129,7 +158,13 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     defines: {
       BROJ_TEMENA: icoVertices.length,
     },
+    extensions: {
+      derivatives: true,
+    },
+
     flatShading: false,
+
+    side: global.THREE.DoubleSide,
   });
 
   const sphereMesh = new global.THREE.Mesh(sphereGeo, sphereShaderMaterial);
