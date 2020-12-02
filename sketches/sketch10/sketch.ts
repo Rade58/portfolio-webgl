@@ -39,10 +39,6 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   const renderer = new global.THREE.WebGLRenderer({ canvas: context.canvas });
   renderer.setClearColor("#000");
   const scene = new global.THREE.Scene();
-  //
-
-  // PRVO SI NARAVNO POSTAVIO SAM ICOSAHEDRON TAMO GDE SI POSTAVIO I SPHERE
-  // CISTO RADI PROVERE OVO RADIM
 
   const icosaGeometry = new global.THREE.IcosahedronGeometry(2, 1);
 
@@ -52,10 +48,9 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   const icosaMesh = new global.THREE.Mesh(icosaGeometry, icoMaterial);
 
-  // ------------------  DODAVANJE ICOSAHEDRON VERTICES-OVA INTO FRAGMENT SHADER ----
-
-  // ------------------------------------------------------------------------------
-  const icoVertices = icosaMesh.geometry.vertices; // OVO JE MOGLO DA SE UZME I DIREKTNO SA GEOMETRIJE, ALI NEMA VEZE
+  // ----------------------------------------------------------------
+  // ----------------------------------------------------------------
+  const icoVertices = icosaMesh.geometry.vertices;
 
   const vertexShader = glsl(/* glsl */ `
 
@@ -99,7 +94,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
         dist = min(d, dist);
       }
 
-      // BITNO JE DA SI DODAO DIST, A OVO SA SINUSOM CE KREIRATI ANIMACIJU
+      // BITNO JE DA SI DODAO
       float mask = step(0.25 + sin(time + vUv.y * 16.58) * 0.18, dist);
 
 
@@ -134,6 +129,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     defines: {
       BROJ_TEMENA: icoVertices.length,
     },
+    flatShading: false,
   });
 
   const sphereMesh = new global.THREE.Mesh(sphereGeo, sphereShaderMaterial);
@@ -147,8 +143,9 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   // sphereMesh.scale.setScalar(2.4);
   scene.add(sphereMesh);
-  /*
-  sphereMesh.position.y = 2.6; */
+
+  sphereMesh.position.y = 2.6;
+  sphereMesh.position.x = 2.6;
 
   // OVO JE SAMO ZA PROVERU DA LI KRUGOVE LEZE NA PRAVOM MESTU, KASNIJE SE MOZE UKLONITI
 
@@ -207,6 +204,9 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     render({ time, playhead }) {
       // ---------------------------------------------
       sphereShaderMaterial.uniforms.time.value = time * Math.PI * 0.2;
+
+      sphereMesh.rotation.y = Math.PI * 2 * playhead;
+
       // ---------------------------------------------
       controls.update();
       renderer.render(scene, camera);
