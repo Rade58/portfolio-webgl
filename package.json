@@ -43,6 +43,10 @@
     "sketch7": "canvas-sketch sketches/sketch7/sketch.js --hot --open",
     "ts-dev7": "tsc sketches/sketch7/sketch.ts --allowUmdGlobalAccess true --esModuleInterop true --isolatedModules true --moduleResolution 'node' --target ES6 --w",
     "ts-build7": "tsc sketches/sketch7/sketch.ts --allowUmdGlobalAccess true --esModuleInterop true --isolatedModules true --moduleResolution 'node' --target ES6",
+    "sketch-dev8": "concurrently 'npm run ts-dev8' 'npm run sketch8'",
+    "sketch8": "canvas-sketch sketches/sketch8/sketch.js --hot --open",
+    "ts-dev8": "tsc sketches/sketch8/sketch.ts --allowUmdGlobalAccess true --esModuleInterop true --isolatedModules true --moduleResolution 'node' --target ES6 --w",
+    "ts-build8": "tsc sketches/sketch8/sketch.ts --allowUmdGlobalAccess true --esModuleInterop true --isolatedModules true --moduleResolution 'node' --target ES6",
 
     "test": "echo \"Error: no test specified\" && exit 1"
   },
