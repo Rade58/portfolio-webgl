@@ -44,7 +44,9 @@ const sketch = ({ context }) => {
     const icoVertices = icosaMesh.geometry.vertices;
     // NA TIM VERTICES-OVIM STAVLJAM MESH-EVE KRUGOVA
     const circleGeo = new global.THREE.CircleGeometry(0.1);
-    const circleMaterial = new global.THREE.MeshNormalMaterial({});
+    const circleMaterial = new global.THREE.MeshNormalMaterial({
+        side: global.THREE.BackSide,
+    });
     icoVertices.forEach((vec3) => {
         const circleMesh = new global.THREE.Mesh(circleGeo, circleMaterial);
         circleMesh.position.fromArray(vec3.toArray());
