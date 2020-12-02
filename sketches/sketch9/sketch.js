@@ -31,6 +31,7 @@ const sketch = ({ context }) => {
     // ------------------------------------------------------------------------------
     const icoVertices = icosaMesh.geometry.vertices; // OVO JE MOGLO DA SE UZME I DIREKTNO SA GEOMETRIJE, ALI NEMA VEZE
     const vertexShader = glsl(/* glsl */ `
+
     varying vec2 vUv;
     varying vec3 vPosition
 
@@ -39,7 +40,7 @@ const sketch = ({ context }) => {
       vUv = uv;
       vPosition = position;
 
-      gl_Position = projectionMatrix * model|ViewMatrix * vec4(position.xyz, 1.0);
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position.xyz, 1.0);
 
     }
 
