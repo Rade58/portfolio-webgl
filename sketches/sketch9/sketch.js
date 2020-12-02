@@ -33,7 +33,7 @@ const sketch = ({ context }) => {
     const vertexShader = glsl(/* glsl */ `
 
     varying vec2 vUv;
-    varying vec3 vPosition
+    varying vec3 vPosition;
 
     void main(){
 
@@ -47,6 +47,42 @@ const sketch = ({ context }) => {
 
   `);
     const fragmentShader = glsl(/* glsl */ `
+    varying vec2 vUv;
+    varying vec3 vPosition;
+
+    uniform vec3 temena[BROJ_TEMENA];
+
+    uniform vec3 color;
+    uniform float time;
+
+
+    void main(){
+
+      // OVO MU DODJE KAO VARIJABLA KOJA JE IZVAN LOOP-A A U KOJU STAVLJAM VREDNOST min-A
+
+      float dist = 10000.0;
+
+      for (int i = 0; i < BROJ_TEMENA; i++){
+        // TRENUTNI VERTEX; ODNSNO TRENUTNO TEME
+        vec3 vertice = temena[i];
+
+        float d = distance(vPosition, vertice);
+
+        dist = min(d, dist);
+      }
+
+      // BITNO JE DA SI DODAO DIST, A OVO SA SINUSOM CE KREIRATI ANIMACIJU
+      float mask = step(0.25 + sin(time + vUv.y * 16.58) * 0.18, dist);
+
+
+
+      vec3 fragColor = mix(color * 0.61, vec3(0.6, 0.2, cos(vUv.y * time) * 0.4),mask);
+
+
+
+      gl_FragColor = vec4(fragColor, 1.0);
+
+    }
 
 
   `);
@@ -54,13 +90,26 @@ const sketch = ({ context }) => {
     const sphereGeo = new global.THREE.SphereGeometry(2, 12, 12);
     //
     const sphereShaderMaterial = new global.THREE.ShaderMaterial({
-        wireframe: true,
+        // wireframe: true,
+        // DODAJEM SHADER
+        vertexShader,
+        fragmentShader,
+        // DODAJE UNIFORMS
+        uniforms: {
+            temena: { value: icoVertices },
+            color: { value: new global.THREE.Color("crimson") },
+            time: { value: 0 },
+        },
+        // DODAJEM DEFINES
+        defines: {
+            BROJ_TEMENA: icoVertices.length,
+        },
     });
     const sphereMesh = new global.THREE.Mesh(sphereGeo, sphereShaderMaterial);
     // -----------------------------------------------------------------------------
     // -----------------------------------------------------------------------------
     icosaMesh.position.fromArray(sphereMesh.position.toArray());
-    scene.add(icosaMesh);
+    // scene.add(icosaMesh);
     // sphereMesh.scale.setScalar(2.4);
     scene.add(sphereMesh);
     /*
@@ -74,7 +123,7 @@ const sketch = ({ context }) => {
         const circleMesh = new global.THREE.Mesh(circleGeo, circleMaterial);
         circleMesh.position.fromArray(vec3.toArray());
         circleMesh.lookAt(0, 0, 0);
-        scene.add(circleMesh);
+        // scene.add(circleMesh);
     });
     // --------------------- CAMERA, CONTROLS --------------------
     // -----------------------------------------------------------
@@ -109,6 +158,7 @@ const sketch = ({ context }) => {
         // Update & render your scene here
         render({ time, playhead }) {
             // ---------------------------------------------
+            sphereShaderMaterial.uniforms.time.value = time * Math.PI * 0.2;
             // ---------------------------------------------
             controls.update();
             renderer.render(scene, camera);
