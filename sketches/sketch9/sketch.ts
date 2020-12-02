@@ -78,7 +78,9 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   const circleGeo = new global.THREE.CircleGeometry(0.1);
 
-  const circleMaterial = new global.THREE.MeshNormalMaterial({});
+  const circleMaterial = new global.THREE.MeshNormalMaterial({
+    side: global.THREE.BackSide,
+  });
 
   icoVertices.forEach((vec3) => {
     const circleMesh = new global.THREE.Mesh(circleGeo, circleMaterial);
