@@ -20,17 +20,6 @@ const sketch = ({ context }) => {
     renderer.setClearColor("#000");
     const scene = new global.THREE.Scene();
     //
-    //
-    const sphereGeo = new global.THREE.SphereGeometry(2, 12, 12);
-    //
-    const sphereShaderMaterial = new global.THREE.ShaderMaterial({
-        wireframe: true,
-    });
-    const sphereMesh = new global.THREE.Mesh(sphereGeo, sphereShaderMaterial);
-    // sphereMesh.scale.setScalar(2.4);
-    scene.add(sphereMesh);
-    /*
-    sphereMesh.position.y = 2.6; */
     // PRVO SI NARAVNO POSTAVIO SAM ICOSAHEDRON TAMO GDE SI POSTAVIO I SPHERE
     // CISTO RADI PROVERE OVO RADIM
     const icosaGeometry = new global.THREE.IcosahedronGeometry(2, 1);
@@ -38,11 +27,44 @@ const sketch = ({ context }) => {
         flatShading: true,
     });
     const icosaMesh = new global.THREE.Mesh(icosaGeometry, icoMaterial);
+    // ------------------  DODAVANJE ICOSAHEDRON VERTICES-OVA INTO FRAGMENT SHADER ----
+    // ------------------------------------------------------------------------------
+    const icoVertices = icosaMesh.geometry.vertices; // OVO JE MOGLO DA SE UZME I DIREKTNO SA GEOMETRIJE, ALI NEMA VEZE
+    const vertexShader = glsl(/* glsl */ `
+    varying vec2 vUv;
+    varying vec3 vPosition
+
+    void main(){
+
+      vUv = uv;
+      vPosition = position;
+
+      gl_Position = projectionMatrix * model|ViewMatrix * vec4(position.xyz, 1.0);
+
+    }
+
+
+  `);
+    const fragmentShader = glsl(/* glsl */ `
+
+
+  `);
+    //
+    const sphereGeo = new global.THREE.SphereGeometry(2, 12, 12);
+    //
+    const sphereShaderMaterial = new global.THREE.ShaderMaterial({
+        wireframe: true,
+    });
+    const sphereMesh = new global.THREE.Mesh(sphereGeo, sphereShaderMaterial);
+    // -----------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------
     icosaMesh.position.fromArray(sphereMesh.position.toArray());
     scene.add(icosaMesh);
-    // KAD SAM GA STAVIO UZIMAM MU VERTICES
-    const icoVertices = icosaMesh.geometry.vertices;
-    // NA TIM VERTICES-OVIM STAVLJAM MESH-EVE KRUGOVA
+    // sphereMesh.scale.setScalar(2.4);
+    scene.add(sphereMesh);
+    /*
+    sphereMesh.position.y = 2.6; */
+    // OVO JE SAMO ZA PROVERU DA LI KRUGOVE LEZE NA PRAVOM MESTU, KASNIJE SE MOZE UKLONITI
     const circleGeo = new global.THREE.CircleGeometry(0.1);
     const circleMaterial = new global.THREE.MeshNormalMaterial({
         side: global.THREE.BackSide,
