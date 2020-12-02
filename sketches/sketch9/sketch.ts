@@ -104,7 +104,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
 
 
-      vec3 fragColor = mix(color * 0.61, vec3(0.6, 0.2, sin(time + vUv.y + 0.1) * 0.4),mask);
+      vec3 fragColor = mix(color, vec3(cos(2.4), 0.2, sin(time + vUv.y + 0.1) * 0.4),mask);
 
 
 
