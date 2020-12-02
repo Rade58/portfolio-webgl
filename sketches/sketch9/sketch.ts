@@ -44,7 +44,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // GEOMETRY MATERIAL AND MESH
   const boxGeometry = new global.THREE.BoxGeometry(1, 1, 1, 1, 1, 1);
   //
-
+  /*
   const boxMaterial = new global.THREE.MeshNormalMaterial({
     // color: "crimson",
     // wireframe: true,
@@ -53,14 +53,14 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   const boxMesh = new global.THREE.Mesh(boxGeometry, boxMaterial);
 
   // scene.add(boxMesh);
-
+ */
   // ----------------------------------------------------------
   // ----------------------------------------------------------
   // ----------------------------------------------------------
   // ----------------------------------------------------------
   // ----------------------------------------------------------
 
-  const color1 = new global.THREE.Color("crimson");
+  /* const color1 = new global.THREE.Color("crimson");
 
   const icoPosition = new global.THREE.Vector3(0, 0, 0);
 
@@ -101,7 +101,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   icosahMesh.rotation.copy(rotationEuler);
 
-  icosahMesh.scale.x = 2;
+  icosahMesh.scale.x = 2; */
 
   // scene.add(icosahMesh);
 
