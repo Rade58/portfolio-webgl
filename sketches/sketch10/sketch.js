@@ -92,7 +92,7 @@ const sketch = ({ context }) => {
       float mask = aastep(0.28, dist);
 
 
-      // OVO CE RECI DA AKO SMO INSIDE THE CIRCLE    DISCARD-UJ fragment
+      // OVO CE RECI DA AKO SMO INSIDE THE CIRCLE    NEMOJ DA DRW-UJES FRAGMENT
       if(mask < 0.5) discard;
       // MOCI CES VIDETI KRIOZ KRUGOVE, I ZATO STO SI DOLE NA SHADER MATERIALU DEFINISAO TWO SIDED ZA sides
 
