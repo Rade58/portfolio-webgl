@@ -43,7 +43,15 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // const icosaGeometry = new global.THREE.IcosahedronGeometry(2, 1);
 
   // -----------------------------------------------------------------------------
-  const planeGeo = new global.THREE.PlaneGeometry();
+  const planeGeo = new global.THREE.PlaneGeometry(8, 8, 28, 28);
+
+  const planeShaderMaterial = new global.THREE.ShaderMaterial({
+    wireframe: true,
+  });
+
+  const planeMesh = new global.THREE.Mesh(planeGeo, planeShaderMaterial);
+
+  scene.add(planeMesh);
 
   // -----------------------------------------------------------------------------
   // -----------------------------------------------------------------------------
