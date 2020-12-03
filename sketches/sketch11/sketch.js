@@ -154,6 +154,7 @@ const sketch = ({ context }) => {
     });
     const icosaMesh = new global.THREE.Mesh(icosaGeo, icosaMaterial);
     icosaMesh.scale.x = 1.4;
+    icosaMesh.position.y = -1.4;
     scene.add(icosaMesh);
     // -----------------------------------------------------------------------------
     // -----------------------------------------------------------------------------
