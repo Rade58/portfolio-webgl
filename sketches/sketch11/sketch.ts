@@ -95,9 +95,24 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   const fragmentShader = glsl(/* glsl */ `
     varying vec2 vUv;
 
+    uniform float time;
+
+
+
     void main () {
-      vec3 fragColor = vec3(vUv.x);
-      gl_FragColor = vec4(fragColor, 1.0);
+      vec3 fragColor = vec3(vUv.x * 0.4);
+
+      vec2 center = vec2(0.5, 0.5);
+      vec2 pos = mod(vUv * 2.0, 1.0);
+
+      float d = distance(vUv.xy, center);
+
+      float mask = step(time* 0.025, d);
+
+      vec3 col = mix(vec3(0.8), fragColor,mask);
+
+
+      gl_FragColor = vec4(col, 1.0);
     }
 
 `);
@@ -105,10 +120,10 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   //
 
   // -----------------------------------------------------------------------------
-  const planeGeo = new global.THREE.PlaneGeometry(8, 8, 28, 28);
+  const planeGeo = new global.THREE.PlaneGeometry(18, 18, 48, 48);
 
   const planeShaderMaterial = new global.THREE.ShaderMaterial({
-    wireframe: true,
+    // wireframe: true,
     vertexShader,
     vertexColors: true,
     fragmentShader,
@@ -170,7 +185,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     render({ time, playhead }) {
       // ----------------------------------------------------
       // console.log({ time });
-      planeShaderMaterial.uniforms.time.value = time * Math.PI * 2 * 0.025;
+      planeShaderMaterial.uniforms.time.value = playhead * 20;
       // ----------------------------------------------------
       controls.update();
       renderer.render(scene, camera);
