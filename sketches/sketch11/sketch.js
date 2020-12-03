@@ -91,8 +91,8 @@ const sketch = ({ context }) => {
 
       float d = distance(vUv.xy, center);
 
-      // float mask = step(time* 0.025, d);   // ANIMIRANO SA time
-      float mask = aastep(0.1, d);  // NIJE ANIMIRANO
+      float mask = aastep(time* 0.025, d);   // ANIMIRANO SA time
+      // float mask = aastep(0.1, d);  // NIJE ANIMIRANO
 
       if(mask < 0.5) discard;
 
