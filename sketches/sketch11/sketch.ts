@@ -150,10 +150,10 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   const planeMesh = new global.THREE.Mesh(planeGeo, planeShaderMaterial);
 
   planeMesh.rotation.x = (3 * Math.PI) / 2;
-  planeMesh.position.z = 2;
+  // planeMesh.position.z = 2;
   scene.add(planeMesh);
 
-  // -------------- FINDING CENTRAL VERTICE OF THE PLANE ----------------------------
+  // -------------- FINDING CENTRAL VERTICE OF THE PLANE (POKAZALO SE KAO NESTO STA NECU KORISTITI) ----------------------------
 
   const planeVertices = planeMesh.geometry.vertices;
 
@@ -178,9 +178,38 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   circleMesh.position.copy(middleVertice);
 
+  // ----- CIRCLE IN MIDDLE VERTICE
   // scene.add(circleMesh);  // NA KRAJU MI CIRCLE NIJE NI TREBAO
 
-  // ----- CIRCLE IN MIDDLE VERTICE
+  // --------- ADDING CILINDER
+  const cylinderGeo = new global.THREE.CylinderGeometry(3, 3, 4, 28, 28, true);
+
+  const cylinderMaterial = new global.THREE.MeshBasicMaterial({
+    // color: "white",
+    color: "black",
+  });
+
+  const cylinderMesh = new global.THREE.Mesh(cylinderGeo, cylinderMaterial);
+
+  // cylinderMesh.position.copy(middleVertice);
+
+  cylinderMesh.position.y = -2.5;
+
+  scene.add(cylinderMesh);
+
+  // ------  SPACE SHIP
+
+  const icosaGeo = new global.THREE.IcosahedronGeometry(1.8, 1);
+
+  const icosaMaterial = new global.THREE.MeshNormalMaterial({
+    flatShading: true,
+  });
+
+  const icosaMesh = new global.THREE.Mesh(icosaGeo, icosaMaterial);
+
+  icosaMesh.scale.x = 1.4;
+
+  scene.add(icosaMesh);
 
   // -----------------------------------------------------------------------------
   // -----------------------------------------------------------------------------
