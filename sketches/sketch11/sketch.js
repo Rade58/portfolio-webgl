@@ -135,7 +135,7 @@ const sketch = ({ context }) => {
     const circleMesh = new global.THREE.Mesh(circleGeo, new global.THREE.MeshNormalMaterial({}));
     circleMesh.rotation.copy(planeMesh.rotation);
     circleMesh.position.copy(middleVertice);
-    scene.add(circleMesh);
+    // scene.add(circleMesh);  // NA KRAJU MI CIRCLE NIJE NI TREBAO
     // ----- CIRCLE IN MIDDLE VERTICE
     // -----------------------------------------------------------------------------
     // -----------------------------------------------------------------------------

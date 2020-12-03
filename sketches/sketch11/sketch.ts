@@ -178,7 +178,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   circleMesh.position.copy(middleVertice);
 
-  scene.add(circleMesh);
+  // scene.add(circleMesh);  // NA KRAJU MI CIRCLE NIJE NI TREBAO
 
   // ----- CIRCLE IN MIDDLE VERTICE
 
