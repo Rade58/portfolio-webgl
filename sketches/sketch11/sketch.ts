@@ -180,7 +180,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   scene.add(sphereMesh);
 
   sphereMesh.position.y = 2.6;
-  sphereMesh.position.x = 2.6;
+  sphereMesh.position.x = -8.6;
+  sphereMesh.position.z = -8.6;
 
   // OVO JE SAMO ZA PROVERU DA LI KRUGOVE LEZE NA PRAVOM MESTU, KASNIJE SE MOZE UKLONITI
 
@@ -203,7 +204,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // -----------------------------------------------------------
   // -----------------------------------------------------------
   const camera = new global.THREE.PerspectiveCamera(50, 1, 0.01, 100);
-  camera.position.set(10, 6, 3);
+  camera.position.set(18, 6, 3);
 
   camera.lookAt(new global.THREE.Vector3());
 
