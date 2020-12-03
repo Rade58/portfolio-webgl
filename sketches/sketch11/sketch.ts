@@ -97,10 +97,12 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
     uniform float time;
 
+    uniform vec3 color;
+
 
 
     void main () {
-      vec3 fragColor = vec3(vUv.x * 0.4);
+      vec3 fragColor = vec3(vUv.x * 0.1);
 
       vec2 center = vec2(0.5, 0.5);
       vec2 pos = mod(vUv * 2.0, 1.0);
@@ -109,7 +111,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
       float mask = step(time* 0.025, d);
 
-      vec3 col = mix(vec3(0.8), fragColor,mask);
+      vec3 col = mix(vec3(0.8), color,mask);
 
 
       gl_FragColor = vec4(col, 1.0);
@@ -129,6 +131,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     fragmentShader,
     uniforms: {
       time: { value: 0 },
+      color: { value: new global.THREE.Color("#971245") },
     },
     flatShading: false,
   });

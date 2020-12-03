@@ -10,7 +10,7 @@ const Other: FunctionComponent = () => {
       css={css`
         border: crimson solid 1px;
         width: 100vw;
-        color: #8b2b53;
+        color: #971245;
       `}
     >
       Text
