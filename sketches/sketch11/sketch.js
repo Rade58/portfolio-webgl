@@ -47,24 +47,24 @@ const sketch = ({ context }) => {
 
       float stretch = time;
 
-      vec3 vert = position.xyz;
+      vec3 transformedPos = position.xyz;
 
 
-      float noize4d = snoise4(vec4(vert.x * frequency,vert.y * frequency, vert.z * frequency, stretch)) * amplitude;
+      float noize4d = snoise4(vec4(transformedPos.x * frequency,transformedPos.y * frequency, transformedPos.z * frequency, stretch)) * amplitude;
 
-      // float noize3d = snoise3(vec3(vert.x * frequency,vert.y * frequency, stretch)) * amplitude;
+      // float noize3d = snoise3(vec3(transformedPos.x * frequency,transformedPos.y * frequency, stretch)) * amplitude;
 
-      vert.x += noize4d;
-      vert.z += noize4d;
-      vert.y += noize4d;
+      transformedPos.x += noize4d;
+      transformedPos.z += noize4d;
+      transformedPos.y += noize4d;
 
             /*
-       vert.x += noize3d;
-       vert.z += noize3d;
-       vert.y += noize3d;
+       transformedPos.x += noize3d;
+       transformedPos.z += noize3d;
+       transformedPos.y += noize3d;
             */
 
-      gl_Position = projectionMatrix * modelViewMatrix * vec4(vert.xyz, 1.0);
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(transformedPos.xyz, 1.0);
     }
 
 
@@ -84,6 +84,7 @@ const sketch = ({ context }) => {
     const planeShaderMaterial = new global.THREE.ShaderMaterial({
         wireframe: true,
         vertexShader,
+        vertexColors: true,
         fragmentShader,
         uniforms: {
             time: { value: 0 },
@@ -91,7 +92,7 @@ const sketch = ({ context }) => {
         flatShading: false,
     });
     const planeMesh = new global.THREE.Mesh(planeGeo, planeShaderMaterial);
-    planeMesh.rotation.x = Math.PI / 2;
+    planeMesh.rotation.x = (3 * Math.PI) / 2;
     scene.add(planeMesh);
     // -----------------------------------------------------------------------------
     // -----------------------------------------------------------------------------
