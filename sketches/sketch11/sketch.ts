@@ -109,7 +109,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
       float d = distance(vUv.xy, center);
 
-      float mask = step(time* 0.025, d);
+      // float mask = step(time* 0.025, d);   // ANIMIRANO SA time
+      float mask = step(0.1, d);  // NIJE ANIMIRANO
 
       vec3 col = mix(vec3(0.8), color,mask);
 
@@ -122,7 +123,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   //
 
   // -----------------------------------------------------------------------------
-  const planeGeo = new global.THREE.PlaneGeometry(18, 18, 48, 48);
+  const planeGeo = new global.THREE.PlaneGeometry(38, 38, 68, 68);
 
   const planeShaderMaterial = new global.THREE.ShaderMaterial({
     wireframe: true,
