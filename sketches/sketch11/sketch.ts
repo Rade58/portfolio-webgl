@@ -123,9 +123,9 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   const planeGeo = new global.THREE.PlaneGeometry(18, 18, 48, 48);
 
   const planeShaderMaterial = new global.THREE.ShaderMaterial({
-    // wireframe: true,
+    wireframe: true,
     vertexShader,
-    vertexColors: true,
+    // vertexColors: true,
     fragmentShader,
     uniforms: {
       time: { value: 0 },
