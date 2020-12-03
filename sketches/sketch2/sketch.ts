@@ -123,7 +123,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       vPosition = position;
 
 
-    float stretch = time;
+      float stretch = time;
 
       vec3 vert = position.xyz;
 

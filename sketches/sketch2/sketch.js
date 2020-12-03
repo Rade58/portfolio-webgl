@@ -198,7 +198,7 @@ const sketch = ({ context }) => {
     scene.add(new global.THREE.AxesHelper(4));
     scene.add(new global.THREE.PointLightHelper(light));
     // -----------------------------------------------------------
-    // ----------------------------------------------
+    // --------------------------------------------------------------------
     // -------------------------- CAMERA ----------------------------------
     const camera = new global.THREE.PerspectiveCamera(50, 1, 0.01, 100);
     camera.position.set(0, 2, -4);

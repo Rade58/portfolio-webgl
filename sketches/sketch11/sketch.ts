@@ -42,14 +42,84 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   // const icosaGeometry = new global.THREE.IcosahedronGeometry(2, 1);
 
+  // ------------- SHADERS -------------- SHADERS -----------------
+  const vertexShader = glsl(/* glsl */ `
+
+#pragma glslify: snoise4 = require(glsl-noise/simplex/4d)
+    #pragma glslify: snoise3 = require('glsl-noise/simplex/3d');
+
+    varying vec2 vUv;
+    varying vec3 vPosition;
+
+    varying vec3 transformed;
+
+    //
+    uniform float time;
+    float amplitude = 0.58;
+    float frequency = 0.48;
+    //
+
+
+
+
+    void main () {
+      vPosition = position;
+      vUv = uv;
+
+
+      float stretch = time;
+
+      vec3 vert = position.xyz;
+
+
+      float noize4d = snoise4(vec4(vert.x * frequency,vert.y * frequency, vert.z * frequency, stretch)) * amplitude;
+
+      // float noize3d = snoise3(vec3(vert.x * frequency,vert.y * frequency, stretch)) * amplitude;
+
+      vert.x += noize4d;
+      vert.z += noize4d;
+      vert.y += noize4d;
+
+            /*
+       vert.x += noize3d;
+       vert.z += noize3d;
+       vert.y += noize3d;
+            */
+
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(vert.xyz, 1.0);
+    }
+
+
+  `);
+
+  const fragmentShader = glsl(/* glsl */ `
+    varying vec2 vUv;
+
+    void main () {
+      vec3 fragColor = vec3(vUv.x);
+      gl_FragColor = vec4(fragColor, 1.0);
+    }
+
+`);
+
+  //
+
   // -----------------------------------------------------------------------------
   const planeGeo = new global.THREE.PlaneGeometry(8, 8, 28, 28);
 
   const planeShaderMaterial = new global.THREE.ShaderMaterial({
     wireframe: true,
+    vertexShader,
+    fragmentShader,
+    uniforms: {
+      time: { value: 0 },
+    },
+    flatShading: false,
   });
 
   const planeMesh = new global.THREE.Mesh(planeGeo, planeShaderMaterial);
+
+  planeMesh.rotation.x = Math.PI / 2;
 
   scene.add(planeMesh);
 
@@ -97,9 +167,10 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     },
     // Update & render your scene here
     render({ time, playhead }) {
-      // ---------------------------------------------
-
-      // ---------------------------------------------
+      // ----------------------------------------------------
+      // console.log({ time });
+      planeShaderMaterial.uniforms.time.value = time * Math.PI * 2 * 0.025;
+      // ----------------------------------------------------
       controls.update();
       renderer.render(scene, camera);
     },
