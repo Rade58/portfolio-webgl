@@ -93,6 +93,11 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   `);
 
   const fragmentShader = glsl(/* glsl */ `
+
+
+    #pragma glslify: aastep = require('glsl-aastep');
+
+
     varying vec2 vUv;
 
     uniform float time;
@@ -110,7 +115,9 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       float d = distance(vUv.xy, center);
 
       // float mask = step(time* 0.025, d);   // ANIMIRANO SA time
-      float mask = step(0.1, d);  // NIJE ANIMIRANO
+      float mask = aastep(0.1, d);  // NIJE ANIMIRANO
+
+      if(mask < 0.5) discard;
 
       vec3 col = mix(vec3(0.8), color,mask);
 
@@ -128,20 +135,52 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   const planeShaderMaterial = new global.THREE.ShaderMaterial({
     wireframe: true,
     vertexShader,
-    // vertexColors: true,
+    vertexColors: true,
     fragmentShader,
     uniforms: {
       time: { value: 0 },
       color: { value: new global.THREE.Color("#971245") },
     },
     flatShading: false,
+    extensions: {
+      derivatives: true,
+    },
   });
 
   const planeMesh = new global.THREE.Mesh(planeGeo, planeShaderMaterial);
 
   planeMesh.rotation.x = (3 * Math.PI) / 2;
-
+  planeMesh.position.z = 2;
   scene.add(planeMesh);
+
+  // -------------- FINDING CENTRAL VERTICE OF THE PLANE ----------------------------
+
+  const planeVertices = planeMesh.geometry.vertices;
+
+  console.log(planeVertices.length);
+
+  const planeFaces = planeMesh.geometry.faces;
+
+  console.log(planeFaces.length);
+
+  const middleVertice = planeVertices[Math.round(planeVertices.length / 2)];
+
+  console.log(middleVertice);
+
+  const circleGeo = new global.THREE.CircleGeometry(2, 22);
+
+  const circleMesh = new global.THREE.Mesh(
+    circleGeo,
+    new global.THREE.MeshNormalMaterial({})
+  );
+
+  circleMesh.rotation.copy(planeMesh.rotation);
+
+  circleMesh.position.copy(middleVertice);
+
+  scene.add(circleMesh);
+
+  // ----- CIRCLE IN MIDDLE VERTICE
 
   // -----------------------------------------------------------------------------
   // -----------------------------------------------------------------------------
@@ -153,7 +192,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // -----------------------------------------------------------
   // -----------------------------------------------------------
   const camera = new global.THREE.PerspectiveCamera(50, 1, 0.01, 100);
-  camera.position.set(12, 6, 3);
+  camera.position.set(22, 6, 4);
 
   camera.lookAt(new global.THREE.Vector3());
 
