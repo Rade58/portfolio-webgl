@@ -248,7 +248,7 @@ const sketch = ({ context }) => {
 
       if(mask < 0.5) discard;
 
-      vec3 col = mix(vec3(0.0), color,mask);
+      vec3 col = mix(vec3(vUv.x * 0.8, vUv.x, vUv.y * 0.2), color,mask);
 
       gl_FragColor = vec4(col, 1.0);
     }
