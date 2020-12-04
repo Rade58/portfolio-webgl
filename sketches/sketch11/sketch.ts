@@ -122,7 +122,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
       if(mask < 0.5) discard;
 
-      vec3 col = mix(vec3(0.8), color, mask);
+      vec3 col = mix(vec3(0.8, vUv.y, vUv.x), color, mask);
 
 
       gl_FragColor = vec4(col, 1.0);
@@ -161,15 +161,15 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   const planeVertices = planeMesh.geometry.vertices;
 
-  console.log(planeVertices.length);
+  // console.log(planeVertices.length);
 
   const planeFaces = planeMesh.geometry.faces;
 
-  console.log(planeFaces.length);
+  // console.log(planeFaces.length);
 
   const middleVertice = planeVertices[Math.round(planeVertices.length / 2)];
 
-  console.log(middleVertice);
+  // console.log(middleVertice);
 
   const circleGeo = new global.THREE.CircleGeometry(2, 22);
 
