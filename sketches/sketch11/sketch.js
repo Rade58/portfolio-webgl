@@ -147,14 +147,30 @@ const sketch = ({ context }) => {
     // cylinderMesh.position.copy(middleVertice);
     cylinderMesh.position.y = -2.5;
     scene.add(cylinderMesh);
-    // ------  SPACE SHIP
-    const icosaGeo = new global.THREE.IcosahedronGeometry(1.8, 1);
-    const icosaMaterial = new global.THREE.MeshNormalMaterial({
-        flatShading: true,
+    // ------  SPACE SHIP --------------------------------------------
+    // ---------------------------------------------------------------
+    const icosaGeo = new global.THREE.IcosahedronGeometry(1.8, 6);
+    // USING TEXTURE LOADER
+    const difuseTexturePath = "public/sci-fi/sci-fi-panel1-albedo.png";
+    const normalTexturePath = "public/sci-fi/sci-fi-panel1-normal-ogl.png";
+    const textureLoader = new global.THREE.TextureLoader();
+    const map = textureLoader.load(difuseTexturePath);
+    const normalMap = textureLoader.load(normalTexturePath);
+    map.wrapS = map.wrapT = global.THREE.RepeatWrapping;
+    map.repeat.set(3, 2).multiplyScalar(1.2);
+    normalMap.wrapS = normalMap.wrapT = global.THREE.RepeatWrapping;
+    normalMap.repeat.copy(map.repeat);
+    //
+    const icosaMaterial = new global.THREE.MeshStandardMaterial({
+        flatShading: false,
+        map,
+        normalMap,
+        roughness: 0.76,
+        metalness: 0.6,
     });
     const icosaMesh = new global.THREE.Mesh(icosaGeo, icosaMaterial);
     icosaMesh.scale.x = 1.4;
-    icosaMesh.position.y = -1.4;
+    icosaMesh.position.y = 1.4;
     scene.add(icosaMesh);
     // -----------------------------------------------------------------------------
     // -----------------------------------------------------------------------------
@@ -173,8 +189,8 @@ const sketch = ({ context }) => {
     // ----------------------------------------------------------------
     // ---------------------- LIGHT, HELPERS --------------------------
     const light = new global.THREE.PointLight("white", 1);
-    light.position.y = 9;
-    light.position.z = 9;
+    light.position.y = 19;
+    light.position.z = 12;
     scene.add(light);
     // helpers
     // scene.add(new global.THREE.GridHelper(8, 58, "purple", "olive"));

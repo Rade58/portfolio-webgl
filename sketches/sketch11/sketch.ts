@@ -199,7 +199,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   // ------  SPACE SHIP --------------------------------------------
   // ---------------------------------------------------------------
-  const icosaGeo = new global.THREE.IcosahedronGeometry(1.8, 1);
+  const icosaGeo = new global.THREE.IcosahedronGeometry(1.8, 6);
 
   // USING TEXTURE LOADER
   const difuseTexturePath = "public/sci-fi/sci-fi-panel1-albedo.png";
@@ -217,7 +217,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   //
 
   const icosaMaterial = new global.THREE.MeshStandardMaterial({
-    flatShading: true,
+    flatShading: false,
     map,
     normalMap,
     roughness: 0.76,
@@ -228,7 +228,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   icosaMesh.scale.x = 1.4;
 
-  icosaMesh.position.y = -1.4;
+  icosaMesh.position.y = 1.4;
 
   scene.add(icosaMesh);
 
@@ -254,8 +254,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // ----------------------------------------------------------------
   // ---------------------- LIGHT, HELPERS --------------------------
   const light = new global.THREE.PointLight("white", 1);
-  light.position.y = 9;
-  light.position.z = 9;
+  light.position.y = 19;
+  light.position.z = 12;
   scene.add(light);
 
   // helpers
