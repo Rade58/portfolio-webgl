@@ -94,7 +94,7 @@ const sketch = ({ context }) => {
 
       float d = distance(vUv.xy, center);
 
-      float mask = aastep(mousemove * 0.18, d);   // ANIMIRANO SA time
+      float mask = aastep(mousemove * 0.11, d);   // ANIMIRANO SA time
       // float mask = aastep(0.1, d);  // NIJE ANIMIRANO
 
       if(mask < 0.5) discard;
@@ -108,7 +108,7 @@ const sketch = ({ context }) => {
   `);
     //
     // -----------------------------------------------------------------------------
-    const planeGeo = new global.THREE.PlaneGeometry(38, 38, 68, 68);
+    const planeGeo = new global.THREE.PlaneGeometry(78, 78, 68, 68);
     const planeShaderMaterial = new global.THREE.ShaderMaterial({
         wireframe: true,
         vertexShader,
@@ -177,8 +177,8 @@ const sketch = ({ context }) => {
     icosaMesh.position.y = 6.4;
     scene.add(icosaMesh);
     // ----------------------------SECOND PLANE -------------------------------
-    // ------------------------------------------------------------------------
-    const planeGeo2 = new global.THREE.PlaneGeometry(38, 38, 1, 1);
+    // ---------------------------------DODACU I RIM LIGHTING---------------------------------------
+    const planeGeo2 = new global.THREE.PlaneGeometry(78, 78, 1, 1);
     const vertexPlane2Shader = glsl(/* glsl */ `
 
 #pragma glslify: snoise4 = require(glsl-noise/simplex/4d)
@@ -222,6 +222,7 @@ const sketch = ({ context }) => {
 
     #pragma glslify: aastep = require('glsl-aastep');
 
+    varying vec3 vPosition;
 
     varying vec2 vUv;
 
@@ -232,9 +233,27 @@ const sketch = ({ context }) => {
     uniform float mousemove;
 
 
+    uniform mat4 modelMatrix;
+
+    float sphereRim (vec3 spherePosition) {
+      vec3 normal = normalize(spherePosition.xyz);
+      vec3 worldNormal = normalize(mat3(modelMatrix) * normal.xyz);
+      vec3 worldPosition = (modelMatrix * vec4(spherePosition, 1.0)).xyz;
+      vec3 V = normalize(cameraPosition - worldPosition);
+      float rim = 1.0 - max(dot(V, worldNormal), 0.0);
+      return pow(smoothstep(0.0, 1.0, rim), 0.5);
+    }
+
+
+
+
 
 
     void main () {
+
+
+      float rim = sphereRim(vPosition);
+
 
       vec3 fragColor = vec3(vUv.x * 0.1);
 
@@ -243,12 +262,15 @@ const sketch = ({ context }) => {
 
       float d = distance(vUv.xy, center);
 
-      float mask = aastep(mousemove * 0.18, d);   // ANIMIRANO SA time
+      float mask = aastep(mousemove * 0.11, d);   // ANIMIRANO SA time
       // float mask = aastep(0.08, d);  // NIJE ANIMIRANO
 
       if(mask < 0.5) discard;
 
-      vec3 col = mix(vec3(vUv.x * 0.8, vUv.x, vUv.y * 0.2), color,mask);
+      vec3 col = mix(vec3(vUv.x, vUv.x, vUv.y), color,mask);
+
+      col += rim * 0.068;
+
 
       gl_FragColor = vec4(col, 1.0);
     }
@@ -272,6 +294,50 @@ const sketch = ({ context }) => {
     scene.add(plane2Mesh);
     // -----------------------------------------------------------------------------
     // -----------------------------------------------------------------------------
+    // ------ THIRD PLANE
+    const thirdPlaneVertShader = glsl(/* glsl */ `
+
+    varying vec2 vUv;
+    varying vec3 vPosition;
+
+    void main () {
+      vPosition = position;
+      vUv = uv;
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(position.xyz, 1.0);
+    }
+
+  `);
+    const thirdPlaneFragShader = glsl(/* glsl */ `
+
+    varying vec2 vUv;
+
+    uniform float time;
+
+    void main () {
+      vec3 fragColor = vec3(vUv.x);
+
+      fragColor *= time * 0.2;
+
+      gl_FragColor = vec4(fragColor, 1.0);
+    }
+
+  `);
+    const thirdPlaneShaderMaterial = new global.THREE.ShaderMaterial({
+        // wireframe: true,
+        vertexShader: thirdPlaneVertShader,
+        fragmentShader: thirdPlaneFragShader,
+        uniforms: {
+            time: { value: 0 },
+        },
+    });
+    const thirdPlaneMesh = new global.THREE.Mesh(planeGeo2, thirdPlaneShaderMaterial);
+    thirdPlaneMesh.rotation.copy(plane2Mesh.rotation);
+    thirdPlaneMesh.position.y = -2;
+    thirdPlaneMesh.scale.setScalar(0.7);
+    scene.add(thirdPlaneMesh);
+    // -----------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------
+    // -----------------------------------------------------------------------------
     // ----------------   MOUSE MOVMENT ---------------------------------
     // -------
     let control = 0.001;
@@ -286,7 +352,7 @@ const sketch = ({ context }) => {
         const width = e.target.offsetWidth;
         const height = e.target.offsetHeight;
         control = control < 0.01 ? 0.01 : control;
-        spacehipY = spacehipY > 5.4 ? 5.4 : spacehipY;
+        spacehipY = spacehipY > 12.4 ? 12.4 : spacehipY;
         control = control > 1 ? 1 : control;
         spacehipY = spacehipY < -4 ? -4 : spacehipY;
         if (e.clientY > currentPositionY) {
@@ -305,12 +371,18 @@ const sketch = ({ context }) => {
           outerInnerState = "outer";
         } */
         if (outerInnerState === "outer") {
-            control += 0.012;
-            spacehipY += 0.082;
+            control += 0.062;
+            spacehipY += 0.22;
         }
         else {
-            control -= 0.011;
-            spacehipY -= 0.12;
+            if (height / 2 < e.clientY) {
+                control -= 0.012;
+                spacehipY -= 0.8;
+            }
+            else {
+                control -= 0.0062;
+                spacehipY -= 0.2;
+            }
         }
         plane2ShaderMaterial.uniforms.mousemove.value = planeShaderMaterial.uniforms.mousemove.value = control;
         icosaMesh.position.y = spacehipY;
@@ -322,7 +394,7 @@ const sketch = ({ context }) => {
     // -----------------------------------------------------------
     // -----------------------------------------------------------
     const camera = new global.THREE.PerspectiveCamera(50, 1, 0.01, 100);
-    camera.position.set(-18, 5.08, 18);
+    camera.position.set(-44, 12.08, 38);
     camera.lookAt(new global.THREE.Vector3());
     // eslint-disable-next-line
     // @ts-ignore
@@ -359,6 +431,9 @@ const sketch = ({ context }) => {
             // icosaMesh.position.y = playhead * 10;
             // ------ icosahedron rotation
             icosaMesh.rotation.y = Math.PI * 2 * playhead;
+            // ----------------------------------------------------
+            // THIRD PLANE
+            thirdPlaneShaderMaterial.uniforms.time.value = time;
             // ----------------------------------------------------
             controls.update();
             renderer.render(scene, camera);
