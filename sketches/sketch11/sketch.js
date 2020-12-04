@@ -258,11 +258,11 @@ const sketch = ({ context }) => {
       vec3 fragColor = vec3(vUv.x * 0.1);
 
       vec2 center = vec2(0.5, 0.5);
-      vec2 pos = mod(vUv * 2.0, 1.0);
+      vec2 pos = mod(vUv * 5.0, 1.0);
 
-      float d = distance(vUv.xy, center);
+      float d = distance(pos, center);
 
-      float mask = aastep(mousemove * 0.11, d);   // ANIMIRANO SA time
+      float mask = aastep(mousemove * 0.34, d);   // ANIMIRANO SA time
       // float mask = aastep(0.08, d);  // NIJE ANIMIRANO
 
       if(mask < 0.5) discard;
@@ -333,7 +333,7 @@ const sketch = ({ context }) => {
     const thirdPlaneMesh = new global.THREE.Mesh(planeGeo2, thirdPlaneShaderMaterial);
     thirdPlaneMesh.rotation.copy(plane2Mesh.rotation);
     thirdPlaneMesh.position.y = -2;
-    thirdPlaneMesh.scale.setScalar(0.7);
+    thirdPlaneMesh.scale.setScalar(6);
     scene.add(thirdPlaneMesh);
     // -----------------------------------------------------------------------------
     // -----------------------------------------------------------------------------
