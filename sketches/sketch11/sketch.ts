@@ -347,6 +347,10 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // -------
   let control = 0.001;
 
+  let spacehipY = icosaMesh.position.y - 10;
+
+  icosaMesh.position.y = spacehipY;
+
   let outerInnerState: "outer" | "inner" = "outer";
 
   context.canvas.addEventListener("mousemove", (e) => {
@@ -363,12 +367,17 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
     if (outerInnerState === "outer") {
       control += 0.001;
+
+      spacehipY += 0.01;
     } else {
       control -= 0.001;
+
+      spacehipY -= 0.01;
     }
 
     plane2ShaderMaterial.uniforms.mousemove.value = planeShaderMaterial.uniforms.mousemove.value = control;
 
+    icosaMesh.position.y = spacehipY;
     // const move = e.clientX
   });
 
