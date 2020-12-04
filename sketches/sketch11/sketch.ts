@@ -279,7 +279,9 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     render({ time, playhead }) {
       // ----------------------------------------------------
       // console.log({ time });
-      planeShaderMaterial.uniforms.time.value = playhead * 20;
+      planeShaderMaterial.uniforms.time.value = Math.sin(
+        Math.PI * 2 * playhead * 1.8
+      );
 
       // ------ icosahedron rotation
 
