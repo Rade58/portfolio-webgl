@@ -99,7 +99,8 @@ const sketch = ({ context }) => {
 
       if(mask < 0.5) discard;
 
-      vec3 col = mix(vec3(0.8, vUv.y, vUv.x), color, mask);
+      // vec3 col = mix(vec3(0.8), color, mask);
+      vec3 col = mix(vec3(0.8), vec3(0.8, vUv.y, vUv.x), mask);
 
 
       gl_FragColor = vec4(col, 1.0);
@@ -271,7 +272,8 @@ const sketch = ({ context }) => {
 
       if(mask < 0.5) discard;
 
-      vec3 col = mix(vec3(vUv.x, vUv.x, vUv.y), color,mask);
+      // vec3 col = mix(vec3(0.6), color,mask);
+      vec3 col = mix(vec3(0.6), vec3(0.46, 0.2, vUv.x),mask);
 
       col += rim * 0.068;
 
@@ -320,7 +322,7 @@ const sketch = ({ context }) => {
     void main () {
       // vec3 fragColor = vec3(vUv.x, 0.4, 0.2 * time * vUv.y);
 
-      vec3 fragColor = 0.5 + 0.5 * cos(time * 0.16 + vUv.xyx + vec3(0.6, 1.0, 3.0));
+      vec3 fragColor = 0.4 + 0.5 * cos(time * 0.26 + vUv.xyx + vec3(0.9, 1.0, 0.64));
 
 
       // fragColor *= time * 0.2;
@@ -441,7 +443,7 @@ const sketch = ({ context }) => {
             icosaMesh.rotation.y = Math.PI * 2 * playhead;
             // ----------------------------------------------------
             // THIRD PLANE
-            thirdPlaneShaderMaterial.uniforms.time.value = time;
+            thirdPlaneShaderMaterial.uniforms.time.value = Math.sin(Math.PI * 2 * time * 0.088);
             // ----------------------------------------------------
             controls.update();
             renderer.render(scene, camera);
