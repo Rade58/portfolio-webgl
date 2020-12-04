@@ -312,7 +312,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
       if(mask < 0.5) discard;
 
-      vec3 col = mix(vec3(0.0), color,mask);
+      vec3 col = mix(vec3(vUv.x, 0.6, vUv.y), color,mask);
 
       gl_FragColor = vec4(col, 1.0);
     }
@@ -352,7 +352,6 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   icosaMesh.position.y = spacehipY;
 
   let outerInnerState: "outer" | "inner" = "outer";
-
   let currentPositionY = 0;
   // let upperDownerState: "up" | "down" = "up";
 
