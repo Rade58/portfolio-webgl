@@ -278,22 +278,39 @@ const sketch = ({ context }) => {
     let spacehipY = icosaMesh.position.y - 10;
     icosaMesh.position.y = spacehipY;
     let outerInnerState = "outer";
+    let currentPositionY = 0;
+    // let upperDownerState: "up" | "down" = "up";
     context.canvas.addEventListener("mousemove", (e) => {
         // console.log("y", e.clientY);
         // console.log("x", e.clientX);
-        if (control >= 1) {
+        const width = e.target.offsetWidth;
+        const height = e.target.offsetHeight;
+        control = control < 0.01 ? 0.01 : control;
+        spacehipY = spacehipY > 5.4 ? 5.4 : spacehipY;
+        control = control > 1 ? 1 : control;
+        spacehipY = spacehipY < -4 ? -4 : spacehipY;
+        if (e.clientY > currentPositionY) {
             outerInnerState = "inner";
         }
-        if (control <= 0.018) {
+        else {
             outerInnerState = "outer";
         }
+        currentPositionY = e.clientY;
+        /*
+        if (control >= 1) {
+          outerInnerState = "inner";
+        }
+    
+        if (control <= 0.018) {
+          outerInnerState = "outer";
+        } */
         if (outerInnerState === "outer") {
-            control += 0.001;
-            spacehipY += 0.01;
+            control += 0.012;
+            spacehipY += 0.082;
         }
         else {
-            control -= 0.001;
-            spacehipY -= 0.01;
+            control -= 0.011;
+            spacehipY -= 0.12;
         }
         plane2ShaderMaterial.uniforms.mousemove.value = planeShaderMaterial.uniforms.mousemove.value = control;
         icosaMesh.position.y = spacehipY;
