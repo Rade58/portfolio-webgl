@@ -221,13 +221,13 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     flatShading: false,
     map,
     normalMap,
-    roughness: 0.76,
-    metalness: 0.2,
+    roughness: 2.76,
+    metalness: 0.4,
   });
 
   const icosaMesh = new global.THREE.Mesh(icosaGeo, icosaMaterial);
 
-  // icosaMesh.scale.x = 1.4;
+  icosaMesh.scale.x = 1.4;
 
   icosaMesh.position.y = 1.4;
 
@@ -243,7 +243,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // -----------------------------------------------------------
   // -----------------------------------------------------------
   const camera = new global.THREE.PerspectiveCamera(50, 1, 0.01, 100);
-  camera.position.set(-18, 7, 18);
+  camera.position.set(-18, 5.08, 18);
 
   camera.lookAt(new global.THREE.Vector3());
 
@@ -280,6 +280,11 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       // ----------------------------------------------------
       // console.log({ time });
       planeShaderMaterial.uniforms.time.value = playhead * 20;
+
+      // ------ icosahedron rotation
+
+      icosaMesh.rotation.y = Math.PI * 2 * playhead;
+
       // ----------------------------------------------------
       controls.update();
       renderer.render(scene, camera);
