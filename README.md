@@ -4,6 +4,6 @@
 
 TEXTURE SAM NASAO OVDE:
 
-<https://freepbr.com/materials/sci-fi-panel1/>
+<https://texturehaven.com/tex/?c=rock&t=mossy_rock>
 
 

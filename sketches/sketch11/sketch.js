@@ -151,13 +151,13 @@ const sketch = ({ context }) => {
     // ---------------------------------------------------------------
     const icosaGeo = new global.THREE.IcosahedronGeometry(1.8, 6);
     // USING TEXTURE LOADER
-    const difuseTexturePath = "public/sci-fi/sci-fi-panel1-albedo.png";
-    const normalTexturePath = "public/sci-fi/sci-fi-panel1-normal-ogl.png";
+    const difuseTexturePath = "public/black-stone/damp-dungeon-floor_albedo.png";
+    const normalTexturePath = "public/black-stone/damp-dungeon-floor_normal-dx.png";
     const textureLoader = new global.THREE.TextureLoader();
     const map = textureLoader.load(difuseTexturePath);
     const normalMap = textureLoader.load(normalTexturePath);
     map.wrapS = map.wrapT = global.THREE.RepeatWrapping;
-    map.repeat.set(3, 2).multiplyScalar(1.2);
+    map.repeat.set(1, 2).multiplyScalar(1.2);
     normalMap.wrapS = normalMap.wrapT = global.THREE.RepeatWrapping;
     normalMap.repeat.copy(map.repeat);
     //
@@ -166,10 +166,10 @@ const sketch = ({ context }) => {
         map,
         normalMap,
         roughness: 0.76,
-        metalness: 0.6,
+        metalness: 0.2,
     });
     const icosaMesh = new global.THREE.Mesh(icosaGeo, icosaMaterial);
-    icosaMesh.scale.x = 1.4;
+    // icosaMesh.scale.x = 1.4;
     icosaMesh.position.y = 1.4;
     scene.add(icosaMesh);
     // -----------------------------------------------------------------------------
@@ -180,7 +180,7 @@ const sketch = ({ context }) => {
     // -----------------------------------------------------------
     // -----------------------------------------------------------
     const camera = new global.THREE.PerspectiveCamera(50, 1, 0.01, 100);
-    camera.position.set(22, 6, 4);
+    camera.position.set(-18, 7, 18);
     camera.lookAt(new global.THREE.Vector3());
     // eslint-disable-next-line
     // @ts-ignore
