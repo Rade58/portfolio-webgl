@@ -376,8 +376,8 @@ const sketch = ({ context }) => {
         }
         else {
             if (height / 2 < e.clientY) {
-                control -= 0.012;
-                spacehipY -= 0.8;
+                control -= 0.018;
+                spacehipY -= 0.9;
             }
             else {
                 control -= 0.0062;

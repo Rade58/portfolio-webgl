@@ -465,9 +465,9 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       spacehipY += 0.22;
     } else {
       if (height / 2 < e.clientY) {
-        control -= 0.012;
+        control -= 0.018;
 
-        spacehipY -= 0.8;
+        spacehipY -= 0.9;
       } else {
         control -= 0.0062;
 
