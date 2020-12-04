@@ -260,12 +260,12 @@ const sketch = ({ context }) => {
       vec3 fragColor = vec3(vUv.x * 0.1);
 
       vec2 center = vec2(0.5, 0.5);
-      vec2 pos = mod(vUv * 3.0, 1.0);
+      vec2 pos = mod(vUv * 1.0, 1.0);
 
       float d = distance(pos, center);
 
-      // float mask = aastep(mousemove * 0.11, d);   // ANIMIRANO SA time
-      float mask = aastep(mousemove * 0.41, d);   // ANIMIRANO SA time
+      float mask = aastep(mousemove * 0.11, d);   // ANIMIRANO SA time
+      // float mask = aastep(mousemove * 0.41, d);   // ANIMIRANO SA time
 
       // float mask = aastep(0.08, d);  // NIJE ANIMIRANO
 
@@ -337,7 +337,7 @@ const sketch = ({ context }) => {
     const thirdPlaneMesh = new global.THREE.Mesh(planeGeo2, thirdPlaneShaderMaterial);
     thirdPlaneMesh.rotation.copy(plane2Mesh.rotation);
     thirdPlaneMesh.position.y = -2;
-    thirdPlaneMesh.scale.setScalar(6);
+    thirdPlaneMesh.scale.setScalar(0.38);
     scene.add(thirdPlaneMesh);
     // -----------------------------------------------------------------------------
     // -----------------------------------------------------------------------------
@@ -409,6 +409,7 @@ const sketch = ({ context }) => {
     const light = new global.THREE.PointLight("white", 1);
     light.position.y = 19;
     light.position.z = 12;
+    light.position.x = -54;
     scene.add(light);
     // helpers
     // scene.add(new global.THREE.GridHelper(8, 58, "purple", "olive"));
