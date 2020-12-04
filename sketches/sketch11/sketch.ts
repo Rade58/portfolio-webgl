@@ -133,7 +133,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   //
 
   // -----------------------------------------------------------------------------
-  const planeGeo = new global.THREE.PlaneGeometry(78, 78, 68, 68);
+  const planeGeo = new global.THREE.PlaneGeometry(108, 108, 68, 68);
 
   const planeShaderMaterial = new global.THREE.ShaderMaterial({
     wireframe: true,
@@ -240,7 +240,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // ----------------------------SECOND PLANE -------------------------------
   // ---------------------------------DODACU I RIM LIGHTING---------------------------------------
 
-  const planeGeo2 = new global.THREE.PlaneGeometry(78, 78, 1, 1);
+  const planeGeo2 = new global.THREE.PlaneGeometry(108, 108, 1, 1);
 
   const vertexPlane2Shader = glsl(/* glsl */ `
 
@@ -389,9 +389,12 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     uniform float time;
 
     void main () {
-      vec3 fragColor = vec3(vUv.x, 0.4, 0.2 * time * vUv.y);
+      // vec3 fragColor = vec3(vUv.x, 0.4, 0.2 * time * vUv.y);
 
-      fragColor *= time * 0.2;
+      vec3 fragColor = 0.5 + 0.5 * cos(time * 0.16 + vUv.xyx + vec3(0.6, 1.0, 3.0));
+
+
+      // fragColor *= time * 0.2;
 
       gl_FragColor = vec4(fragColor, 1.0);
     }
