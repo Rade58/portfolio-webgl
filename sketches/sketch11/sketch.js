@@ -23,7 +23,7 @@ const sketch = ({ context }) => {
     // ------------- SHADERS -------------- SHADERS -----------------
     const vertexShader = glsl(/* glsl */ `
 
-#pragma glslify: snoise4 = require(glsl-noise/simplex/4d)
+    #pragma glslify: snoise4 = require(glsl-noise/simplex/4d)
     #pragma glslify: snoise3 = require('glsl-noise/simplex/3d');
 
     varying vec2 vUv;
@@ -82,6 +82,9 @@ const sketch = ({ context }) => {
     uniform vec3 color;
 
 
+    uniform float mousemove;
+
+
 
     void main () {
       vec3 fragColor = vec3(vUv.x * 0.1);
@@ -91,7 +94,7 @@ const sketch = ({ context }) => {
 
       float d = distance(vUv.xy, center);
 
-      float mask = aastep(time* 0.18, d);   // ANIMIRANO SA time
+      float mask = aastep(mousemove * 0.18, d);   // ANIMIRANO SA time
       // float mask = aastep(0.1, d);  // NIJE ANIMIRANO
 
       if(mask < 0.5) discard;
@@ -114,6 +117,7 @@ const sketch = ({ context }) => {
         uniforms: {
             time: { value: 0 },
             color: { value: new global.THREE.Color("#971245") },
+            mousemove: { value: 0 },
         },
         flatShading: false,
         extensions: {
@@ -225,6 +229,9 @@ const sketch = ({ context }) => {
 
     uniform vec3 color;
 
+    uniform float mousemove;
+
+
 
 
     void main () {
@@ -236,7 +243,7 @@ const sketch = ({ context }) => {
 
       float d = distance(vUv.xy, center);
 
-      float mask = aastep(time* 0.18, d);   // ANIMIRANO SA time
+      float mask = aastep(mousemove * 0.18, d);   // ANIMIRANO SA time
       // float mask = aastep(0.08, d);  // NIJE ANIMIRANO
 
       if(mask < 0.5) discard;
@@ -256,6 +263,7 @@ const sketch = ({ context }) => {
         uniforms: {
             color: { value: new global.THREE.Color("#341944") },
             time: { value: 0 },
+            mousemove: { value: 0 },
         },
     });
     const plane2Mesh = new global.THREE.Mesh(planeGeo2, plane2ShaderMaterial);
@@ -264,6 +272,28 @@ const sketch = ({ context }) => {
     scene.add(plane2Mesh);
     // -----------------------------------------------------------------------------
     // -----------------------------------------------------------------------------
+    // ----------------   MOUSE MOVMENT ---------------------------------
+    // -------
+    let control = 0.001;
+    let outerInnerState = "outer";
+    context.canvas.addEventListener("mousemove", (e) => {
+        // console.log("y", e.clientY);
+        // console.log("x", e.clientX);
+        if (control >= 1) {
+            outerInnerState = "inner";
+        }
+        if (control <= 0.048) {
+            outerInnerState = "outer";
+        }
+        if (outerInnerState === "outer") {
+            control += 0.001;
+        }
+        else {
+            control -= 0.001;
+        }
+        plane2ShaderMaterial.uniforms.mousemove.value = planeShaderMaterial.uniforms.mousemove.value = control;
+        // const move = e.clientX
+    });
     // -----------------------------------------------------------------------------
     // -----------------------------------------------------------------------------
     // --------------------- CAMERA, CONTROLS --------------------
