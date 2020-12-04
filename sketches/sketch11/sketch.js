@@ -33,8 +33,8 @@ const sketch = ({ context }) => {
 
     //
     uniform float time;
-    float amplitude = 0.58;
-    float frequency = 0.48;
+    float amplitude = 0.78;
+    float frequency = 0.38;
     //
 
 
@@ -191,8 +191,8 @@ const sketch = ({ context }) => {
 
     //
     // uniform float time;
-    float amplitude = 0.58;
-    float frequency = 0.48;
+    float amplitude = 0.78;
+    float frequency = 0.38;
     //
 
 
@@ -221,6 +221,8 @@ const sketch = ({ context }) => {
 
 
     #pragma glslify: aastep = require('glsl-aastep');
+
+    #pragma glslify: snoise3 = require('glsl-noise/simplex/3d');
 
     varying vec3 vPosition;
 
@@ -258,11 +260,13 @@ const sketch = ({ context }) => {
       vec3 fragColor = vec3(vUv.x * 0.1);
 
       vec2 center = vec2(0.5, 0.5);
-      vec2 pos = mod(vUv * 5.0, 1.0);
+      vec2 pos = mod(vUv * 3.0, 1.0);
 
       float d = distance(pos, center);
 
-      float mask = aastep(mousemove * 0.34, d);   // ANIMIRANO SA time
+      // float mask = aastep(mousemove * 0.11, d);   // ANIMIRANO SA time
+      float mask = aastep(mousemove * 0.41, d);   // ANIMIRANO SA time
+
       // float mask = aastep(0.08, d);  // NIJE ANIMIRANO
 
       if(mask < 0.5) discard;
@@ -290,7 +294,7 @@ const sketch = ({ context }) => {
     });
     const plane2Mesh = new global.THREE.Mesh(planeGeo2, plane2ShaderMaterial);
     plane2Mesh.rotation.copy(planeMesh.rotation);
-    plane2Mesh.position.y = -0.42;
+    plane2Mesh.position.y = -0.62;
     scene.add(plane2Mesh);
     // -----------------------------------------------------------------------------
     // -----------------------------------------------------------------------------
