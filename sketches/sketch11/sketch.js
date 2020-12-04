@@ -91,18 +91,18 @@ const sketch = ({ context }) => {
 
       float d = distance(vUv.xy, center);
 
-      // float mask = aastep(time* 0.025, d);   // ANIMIRANO SA time
-      float mask = aastep(0.1, d);  // NIJE ANIMIRANO
+      float mask = aastep(time* 0.18, d);   // ANIMIRANO SA time
+      // float mask = aastep(0.1, d);  // NIJE ANIMIRANO
 
       if(mask < 0.5) discard;
 
-      vec3 col = mix(vec3(0.8), color,mask);
+      vec3 col = mix(vec3(0.8), color, mask);
 
 
       gl_FragColor = vec4(col, 1.0);
     }
 
-`);
+  `);
     //
     // -----------------------------------------------------------------------------
     const planeGeo = new global.THREE.PlaneGeometry(38, 38, 68, 68);
@@ -146,7 +146,7 @@ const sketch = ({ context }) => {
     const cylinderMesh = new global.THREE.Mesh(cylinderGeo, cylinderMaterial);
     // cylinderMesh.position.copy(middleVertice);
     cylinderMesh.position.y = -2.5;
-    scene.add(cylinderMesh);
+    // scene.add(cylinderMesh);
     // ------  SPACE SHIP --------------------------------------------
     // ---------------------------------------------------------------
     const icosaGeo = new global.THREE.IcosahedronGeometry(1.8, 6);
@@ -170,8 +170,98 @@ const sketch = ({ context }) => {
     });
     const icosaMesh = new global.THREE.Mesh(icosaGeo, icosaMaterial);
     icosaMesh.scale.x = 1.4;
-    icosaMesh.position.y = 1.4;
+    icosaMesh.position.y = 6.4;
     scene.add(icosaMesh);
+    // ----------------------------SECOND PLANE -------------------------------
+    // ------------------------------------------------------------------------
+    const planeGeo2 = new global.THREE.PlaneGeometry(38, 38, 1, 1);
+    const vertexPlane2Shader = glsl(/* glsl */ `
+
+#pragma glslify: snoise4 = require(glsl-noise/simplex/4d)
+    #pragma glslify: snoise3 = require('glsl-noise/simplex/3d');
+
+    varying vec2 vUv;
+    varying vec3 vPosition;
+
+    varying vec3 transformed;
+
+    //
+    // uniform float time;
+    float amplitude = 0.58;
+    float frequency = 0.48;
+    //
+
+
+
+
+    void main () {
+      vPosition = position;
+      vUv = uv;
+
+
+      // float stretch = time;
+
+      vec3 transformedPos = position.xyz;
+
+
+      // float noize4d = snoise4(vec4(transformedPos.x * frequency,transformedPos.y * frequency, transformedPos.z * frequency, stretch)) * amplitude;
+
+      // float noize3d = snoise3(vec3(transformedPos.x * frequency,transformedPos.y * frequency, stretch)) * amplitude;
+
+      gl_Position = projectionMatrix * modelViewMatrix * vec4(transformedPos.xyz, 1.0);
+    }
+
+
+  `);
+    const fragmentPlane2Shader = glsl(/* glsl */ `
+
+
+    #pragma glslify: aastep = require('glsl-aastep');
+
+
+    varying vec2 vUv;
+
+    uniform float time;
+
+    uniform vec3 color;
+
+
+
+    void main () {
+
+      vec3 fragColor = vec3(vUv.x * 0.1);
+
+      vec2 center = vec2(0.5, 0.5);
+      vec2 pos = mod(vUv * 2.0, 1.0);
+
+      float d = distance(vUv.xy, center);
+
+      float mask = aastep(time* 0.18, d);   // ANIMIRANO SA time
+      // float mask = aastep(0.08, d);  // NIJE ANIMIRANO
+
+      if(mask < 0.5) discard;
+
+      vec3 col = mix(vec3(0.0), color,mask);
+
+      gl_FragColor = vec4(col, 1.0);
+    }
+
+`);
+    const plane2ShaderMaterial = new global.THREE.ShaderMaterial({
+        vertexShader: vertexPlane2Shader,
+        fragmentShader: fragmentPlane2Shader,
+        extensions: {
+            derivatives: true,
+        },
+        uniforms: {
+            color: { value: new global.THREE.Color("#341944") },
+            time: { value: 0 },
+        },
+    });
+    const plane2Mesh = new global.THREE.Mesh(planeGeo2, plane2ShaderMaterial);
+    plane2Mesh.rotation.copy(planeMesh.rotation);
+    plane2Mesh.position.y = -0.42;
+    scene.add(plane2Mesh);
     // -----------------------------------------------------------------------------
     // -----------------------------------------------------------------------------
     // -----------------------------------------------------------------------------
@@ -210,7 +300,11 @@ const sketch = ({ context }) => {
         render({ time, playhead }) {
             // ----------------------------------------------------
             // console.log({ time });
-            planeShaderMaterial.uniforms.time.value = Math.sin(Math.PI * 2 * playhead * 1.8);
+            planeShaderMaterial.uniforms.time.value = plane2ShaderMaterial.uniforms.time.value = Math.sin(Math.PI * 2 * playhead * 1.8);
+            const max = 4;
+            const min = 2 - max;
+            // console.log({ playhead });
+            // icosaMesh.position.y = playhead * 10;
             // ------ icosahedron rotation
             icosaMesh.rotation.y = Math.PI * 2 * playhead;
             // ----------------------------------------------------
