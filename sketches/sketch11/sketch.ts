@@ -361,7 +361,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       outerInnerState = "inner";
     }
 
-    if (control <= 0.048) {
+    if (control <= 0.018) {
       outerInnerState = "outer";
     }
 

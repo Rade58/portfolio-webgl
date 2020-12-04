@@ -284,7 +284,7 @@ const sketch = ({ context }) => {
         if (control >= 1) {
             outerInnerState = "inner";
         }
-        if (control <= 0.048) {
+        if (control <= 0.018) {
             outerInnerState = "outer";
         }
         if (outerInnerState === "outer") {
