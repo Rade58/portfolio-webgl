@@ -385,7 +385,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     uniform float time;
 
     void main () {
-      vec3 fragColor = vec3(vUv.x);
+      vec3 fragColor = vec3(vUv.x, 0.4, 0.2 * time * vUv.y);
 
       fragColor *= time * 0.2;
 
