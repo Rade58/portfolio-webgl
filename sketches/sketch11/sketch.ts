@@ -197,12 +197,31 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   scene.add(cylinderMesh);
 
-  // ------  SPACE SHIP
-
+  // ------  SPACE SHIP --------------------------------------------
+  // ---------------------------------------------------------------
   const icosaGeo = new global.THREE.IcosahedronGeometry(1.8, 1);
 
-  const icosaMaterial = new global.THREE.MeshNormalMaterial({
+  // USING TEXTURE LOADER
+  const difuseTexturePath = "public/sci-fi/sci-fi-panel1-albedo.png";
+  const normalTexturePath = "public/sci-fi/sci-fi-panel1-normal-ogl.png";
+
+  const textureLoader = new global.THREE.TextureLoader();
+
+  const map = textureLoader.load(difuseTexturePath);
+  const normalMap = textureLoader.load(normalTexturePath);
+
+  map.wrapS = map.wrapT = global.THREE.RepeatWrapping;
+  map.repeat.set(3, 2).multiplyScalar(1.2);
+  normalMap.wrapS = normalMap.wrapT = global.THREE.RepeatWrapping;
+  normalMap.repeat.copy(map.repeat);
+  //
+
+  const icosaMaterial = new global.THREE.MeshStandardMaterial({
     flatShading: true,
+    map,
+    normalMap,
+    roughness: 0.76,
+    metalness: 0.6,
   });
 
   const icosaMesh = new global.THREE.Mesh(icosaGeo, icosaMaterial);
