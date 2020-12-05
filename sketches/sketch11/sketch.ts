@@ -494,9 +494,9 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       // POMERAM KAMERU DO SHIP-A
 
       TweenMax.to(camera.position, 3, {
-        x: 9,
-        z: 9,
-        y: 18,
+        x: 12,
+        z: 12,
+        y: 28,
         ease: Power2.easeInOut,
       });
     }
