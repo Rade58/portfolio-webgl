@@ -357,18 +357,18 @@ const sketch = ({ context }) => {
     // ANIMATIONS ------------------------------------------------------------
     // WITH EASING -----------------------------------------------------------
     const bezierFn = BeziearEasing(0.42, 0.56, 0.65, 0.27);
-    icosaMesh.position.y = -4;
+    icosaMesh.position.y = -6;
     context.canvas.addEventListener("click", () => {
-        TweenMax.to(icosaMesh.position, 6, {
+        TweenMax.to(icosaMesh.position, 3, {
             y: 12,
-            ease: Elastic.easeIn,
+            ease: Elastic.easeInOut,
         });
-        TweenMax.to(plane2ShaderMaterial.uniforms.mousemove, 8, {
-            value: 1.2,
+        TweenMax.to(plane2ShaderMaterial.uniforms.mousemove, 6, {
+            value: 0.8,
             ease: Elastic.easeOut,
         });
-        TweenMax.to(planeShaderMaterial.uniforms.mousemove, 8, {
-            value: 1.2,
+        TweenMax.to(planeShaderMaterial.uniforms.mousemove, 6, {
+            value: 0.8,
             ease: Elastic.easeOut,
         });
     });
