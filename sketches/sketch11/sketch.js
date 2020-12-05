@@ -1,5 +1,8 @@
+import { TweenMax, Elastic } from "gsap";
 const glsl = require("glslify");
 const Random = require("canvas-sketch-util/random");
+const eases = require("eases");
+const BeziearEasing = require("bezier-easing");
 global.THREE = require("three");
 require("three/examples/js/controls/OrbitControls");
 const canvasSketch = require("canvas-sketch");
@@ -347,55 +350,27 @@ const sketch = ({ context }) => {
     // -----------------------------------------------------------------------------
     // -----------------------------------------------------------------------------
     // -----------------------------------------------------------------------------
-    // ----------------   MOUSE MOVMENT ---------------------------------
+    // ----------------   ANIMATIONS  ---------------------------------
     // -------
-    let control = 0.001;
-    let spacehipY = icosaMesh.position.y - 10;
-    icosaMesh.position.y = spacehipY;
-    let outerInnerState = "outer";
-    let currentPositionY = 0;
     // let upperDownerState: "up" | "down" = "up";
-    context.canvas.addEventListener("mousemove", (e) => {
-        // console.log("y", e.clientY);
-        // console.log("x", e.clientX);
-        const width = e.target.offsetWidth;
-        const height = e.target.offsetHeight;
-        control = control < 0.01 ? 0.01 : control;
-        spacehipY = spacehipY > 12.4 ? 12.4 : spacehipY;
-        control = control > 1 ? 1 : control;
-        spacehipY = spacehipY < -4 ? -4 : spacehipY;
-        if (e.clientY > currentPositionY) {
-            outerInnerState = "inner";
-        }
-        else {
-            outerInnerState = "outer";
-        }
-        currentPositionY = e.clientY;
-        /*
-        if (control >= 1) {
-          outerInnerState = "inner";
-        }
-    
-        if (control <= 0.018) {
-          outerInnerState = "outer";
-        } */
-        if (outerInnerState === "outer") {
-            control += 0.062;
-            spacehipY += 0.22;
-        }
-        else {
-            if (height / 2 < e.clientY) {
-                control -= 0.018;
-                spacehipY -= 0.9;
-            }
-            else {
-                control -= 0.0062;
-                spacehipY -= 0.2;
-            }
-        }
-        plane2ShaderMaterial.uniforms.mousemove.value = planeShaderMaterial.uniforms.mousemove.value = control;
-        icosaMesh.position.y = spacehipY;
-        // const move = e.clientX
+    const bezier1 = BeziearEasing(0.42, 0.56, 0.65, 0.27);
+    // ANIMATIONS ------------------------------------------------------------
+    // WITH EASING -----------------------------------------------------------
+    const bezierFn = BeziearEasing(0.42, 0.56, 0.65, 0.27);
+    icosaMesh.position.y = -4;
+    context.canvas.addEventListener("click", () => {
+        TweenMax.to(icosaMesh.position, 6, {
+            y: 12,
+            ease: Elastic.easeIn,
+        });
+        TweenMax.to(plane2ShaderMaterial.uniforms.mousemove, 8, {
+            value: 1.2,
+            ease: Elastic.easeOut,
+        });
+        TweenMax.to(planeShaderMaterial.uniforms.mousemove, 8, {
+            value: 1.2,
+            ease: Elastic.easeOut,
+        });
     });
     // -----------------------------------------------------------------------------
     // -----------------------------------------------------------------------------
@@ -456,4 +431,3 @@ const sketch = ({ context }) => {
     };
 };
 canvasSketch(sketch, settingsFunc(settings, document.querySelector("canvas.canvas")));
-export {};

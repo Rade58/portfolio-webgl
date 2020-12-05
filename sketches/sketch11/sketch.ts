@@ -443,10 +443,22 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   const bezierFn = BeziearEasing(0.42, 0.56, 0.65, 0.27);
 
+  icosaMesh.position.y = -4;
+
   context.canvas.addEventListener("click", () => {
     TweenMax.to(icosaMesh.position, 6, {
       y: 12,
-      ease: Elastic.easeInOut,
+      ease: Elastic.easeIn,
+    });
+
+    TweenMax.to(plane2ShaderMaterial.uniforms.mousemove, 8, {
+      value: 1.2,
+      ease: Elastic.easeOut,
+    });
+
+    TweenMax.to(planeShaderMaterial.uniforms.mousemove, 8, {
+      value: 1.2,
+      ease: Elastic.easeOut,
     });
   });
 
