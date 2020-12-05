@@ -6,7 +6,7 @@ import {
   threeType,
 } from "./my_types";
 
-import { TweenMax, Elastic } from "gsap";
+import { TweenMax, Elastic, Power2 } from "gsap";
 
 const glsl = require("glslify");
 const Random = require("canvas-sketch-util/random");
@@ -429,41 +429,6 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   // -----------------------------------------------------------------------------
   // -----------------------------------------------------------------------------
-  // -----------------------------------------------------------------------------
-
-  // ----------------   ANIMATIONS  ---------------------------------
-  // -------
-
-  // let upperDownerState: "up" | "down" = "up";
-
-  const bezier1 = BeziearEasing(0.42, 0.56, 0.65, 0.27);
-
-  // ANIMATIONS ------------------------------------------------------------
-  // WITH EASING -----------------------------------------------------------
-
-  const bezierFn = BeziearEasing(0.42, 0.56, 0.65, 0.27);
-
-  icosaMesh.position.y = -6;
-
-  context.canvas.addEventListener("click", () => {
-    TweenMax.to(icosaMesh.position, 3, {
-      y: 12,
-      ease: Elastic.easeInOut,
-    });
-
-    TweenMax.to(plane2ShaderMaterial.uniforms.mousemove, 6, {
-      value: 0.8,
-      ease: Elastic.easeOut,
-    });
-
-    TweenMax.to(planeShaderMaterial.uniforms.mousemove, 6, {
-      value: 0.8,
-      ease: Elastic.easeOut,
-    });
-  });
-
-  // -----------------------------------------------------------------------------
-  // -----------------------------------------------------------------------------
 
   // --------------------- CAMERA, CONTROLS --------------------
   // -----------------------------------------------------------
@@ -490,6 +455,52 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // scene.add(new global.THREE.GridHelper(8, 58, "purple", "olive"));
   scene.add(new global.THREE.AxesHelper(4));
   scene.add(new global.THREE.PointLightHelper(light));
+
+  // -----------------------------------------------------------------------------
+  // -----------------------------------------------------------------------------
+  // -----------------------------------------------------------------------------
+
+  // ----------------   ANIMATIONS  ---------------------------------
+  // -------
+
+  // ANIMATIONS ------------------------------------------------------------
+  // WITH EASING --------------------------------------------------
+  // --------------------  GSAP STUFF  ----------------------------
+
+  icosaMesh.position.y = -6;
+
+  context.canvas.addEventListener("click", (e) => {
+    if (e.ctrlKey) {
+      // gradient i izlazak shipa iz vode
+      TweenMax.to(icosaMesh.position, 1.4, {
+        y: 12,
+        ease: Elastic.easeInOut,
+      });
+
+      TweenMax.to(plane2ShaderMaterial.uniforms.mousemove, 3, {
+        value: 0.8,
+        ease: Elastic.easeOut,
+      });
+
+      TweenMax.to(planeShaderMaterial.uniforms.mousemove, 3, {
+        value: 0.8,
+        ease: Elastic.easeOut,
+      });
+
+      camera.lookAt(icosaMesh.position);
+    }
+
+    if (e.shiftKey) {
+      // POMERAM KAMERU DO SHIP-A
+
+      TweenMax.to(camera.position, 3, {
+        x: 9,
+        z: 9,
+        y: 18,
+        ease: Power2.easeInOut,
+      });
+    }
+  });
 
   // ---------------------------------------------------------------
   // ---------------------------------------------------------------
