@@ -11,3 +11,5 @@ BUY THE WAY, KORISTIM `TweenMax`
 A EVO TI I VISUALIZER
 
 <https://greensock.com/ease-visualizer/>
+
+## DO SADA VIDIM DA GSAP JESTE ODLICAN IZBOR ZA OVO
