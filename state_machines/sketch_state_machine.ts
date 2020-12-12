@@ -86,8 +86,8 @@ export const sketchService = interpret(sketchMachine);
 
 sketchService.onTransition((state, event) => {
   console.log("SKETCH STATE MACHINE");
-  console.log(`TRANSITIONING TO ${state.value} FINITE STATE`);
-  console.log(`COSEQUENCE OF ${event.type} EVENT`);
+  console.log(`TRANSITIONING TO - ${state.value} - FINITE STATE`);
+  console.log(`COSEQUENCE OF - ${event.type} - EVENT`);
   console.log("-------------------------------------");
 });
 
