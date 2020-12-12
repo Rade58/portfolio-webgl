@@ -1,4 +1,3 @@
-import { Console } from "console";
 import { createMachine, assign, interpret } from "xstate";
 
 // ---- FINITE STATES  n'   EVENTS ----
