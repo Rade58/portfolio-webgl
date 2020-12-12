@@ -8,7 +8,7 @@ const TestPage: FunctionComponent = () => {
     <div>
       <button
         onClick={() => {
-          sketchService.send({ type: EE.TOGGLE });
+          // sketchService.send({ type: EE.TOGGLE });
         }}
       >
         toggle
