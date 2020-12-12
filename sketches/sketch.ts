@@ -246,6 +246,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   const controls = new global.THREE.OrbitControls(camera, context.canvas);
 
   // -------------------------------------------------------------------
+  //-----------------------  RETURN------------------------------------
 
   return {
     // Handle resize events here
@@ -281,13 +282,5 @@ canvasSketch(
   sketch,
   settingsFunc(settings, document.querySelector("canvas.canvas"))
 );
-
-/*
-export default () => {
-  canvasSketch(
-    sketch,
-    settingsFunc(settings, document.querySelector("canvas.canvas"))
-  );
-}; */
 
 export {};
