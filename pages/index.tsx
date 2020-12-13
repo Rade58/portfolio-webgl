@@ -15,9 +15,9 @@ const Index: FunctionComponent<{
 
   return (
     <Fragment>
-      <div dangerouslySetInnerHTML={{ __html: htmlContentString }}></div>
+      {/* <div dangerouslySetInnerHTML={{ __html: htmlContentString }}></div> */}
       {/* Welcome */}
-      {/* <Sketch /> */}
+      <Sketch />
       {/* <Other /> */}
       {/* <OtherSec /> */}
     </Fragment>
@@ -27,7 +27,7 @@ const Index: FunctionComponent<{
 export function getStaticProps() {
   const htmlPath = path.resolve(process.cwd(), "./sketch/index.html");
 
-  // console.log({ htmlPath });
+  console.log({ htmlPath });
 
   const htmlContent = fs.readFileSync(htmlPath);
   const htmlContentString = htmlContent.toString("utf-8");

@@ -9,6 +9,10 @@ import {
 const glsl = require("glslify");
 const Random = require("canvas-sketch-util/random");
 
+const planeVertexShader = require("vertex.glsl");
+
+const planeFragmentShader = require("fragment.glsl");
+
 global.THREE = require("three") as threeType;
 
 require("three/examples/js/controls/OrbitControls");
@@ -53,114 +57,11 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // ----------------- VERTEX SHADER ---------------------------------
   // ----------------- FOR THE SPHERE ----------------------------
 
-  const sphereVertexShader = glsl(/* glsl */ `
-
-    varying vec3 vPosition;
-
-    varying vec2 vUv;
-
-    void main(){
-
-      vUv = uv;
-      vPosition = position;
-
-
-      gl_Position = projectionMatrix * modelViewMatrix * vec4(position.xyz, 1.0);
-
-    }
-
-  `);
-
-  // -------------FRAGMENT SHADER -----------------------
-
-  const sphereFragmentShader = glsl(/* glsl */ `
-
-    #define PI 3.14;
-
-    // #define int POINT_COUNT;
-
-    #pragma glslify: noise = require(glsl-noise/simplex/3d)
-
-    varying vec2 vUv;
-    varying vec3 vPosition;
-
-    uniform vec3 points[POINT_COUNT];
-
-    uniform vec3 color;
-    uniform float time;
-
-    void main(){
-
-
-      vec3 fragColor = vec3(0.2, 0.6, 0.2);
-
-
-      gl_FragColor = vec4(vec3(fragColor), 1.0);
-    }
-  `);
-
   // -------------------------------------------------------------
   // -------------------------------------------------------------
 
   // ----------------- VERTEX SAHDER FOR THE PLANE
   // -------------------
-
-  const planeVertexShader = glsl(/* glsl */ `
-
-    #pragma glslify: noise = require('glsl-noise/simplex/3d');
-
-
-    varying vec2 vUv;
-    varying vec3 vPosition;
-
-    uniform float time;
-
-
-    void main(){
-      vUv = uv;
-      vPosition = position;
-
-
-      vec3 vert = position.xyz;
-
-
-      float stretch = time;
-      float amplitude = 0.16;
-      float frequency = 1.22;
-
-
-
-      float noizeTest = noise(vert);
-
-
-      gl_Position = projectionMatrix * modelViewMatrix * vec4(position * noizeTest, 1.0);
-
-    }
-
-
-  `);
-
-  const planeFragmentShader = glsl(/* glsl */ `
-
-    #pragma glslify: noise = require('glsl-noise/simplex/3d');
-
-    varying vec2 vUv;
-    varying vec3 vPosition;
-
-    uniform float time;
-
-
-    void main(){
-
-
-      float n = noise(vec3(1.0, 0.2, 0.1));
-
-
-      gl_FragColor = vec4( 1.0, 0.8, 1.0, 1.0);
-
-    }
-
-  `);
 
   // ------------------------------------------------------------
   //  -------------------   SPHERE --------------------------------
