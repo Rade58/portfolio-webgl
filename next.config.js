@@ -25,7 +25,7 @@ dotenvLoad();
 
 const svgReactPlugin = withReactSvg({
   // OVDE INCLUDE-UJEM FOLDER GDE CE BITI SVGS
-  include: path.resolve(__dirname, "workshop/images/svgs"),
+  include: path.resolve(__dirname, "svgs"),
 
   // KADA BUDEM IMPORT-OVAO SVG-JEVE IZ OVOG FOLDERA, USTVARI
   // NECE SE IMPORTOVATI STRING (PATH ILI SVG)
@@ -38,7 +38,27 @@ const svgReactPlugin = withReactSvg({
 
 const envPlugin = nextEnv();
 
-module.exports = withPlugins([envPlugin, svgReactPlugin]);
+// module.exports = withPlugins([envPlugin, svgReactPlugin]);
+
+module.exports = (phase, { defaultConfig }) => {
+  if (phase === PHASE_DEVELOPMENT_SERVER) console.log("Development");
+  if (phase === PHASE_PRODUCTION_BUILD) console.log("Production");
+
+  const newConfig = { ...defaultConfig };
+
+  /* newConfig.webpack = (config, options) => {
+    config.module.rules.push({
+      test: /\.(glsl|frag|vert)$/,
+      use: [require.resolve("raw-loader"), require.resolve("glslify-loader")],
+    });
+
+    return config;
+  };
+ */
+  return withPlugins([envPlugin, svgReactPlugin])(phase, {
+    newConfig,
+  });
+};
 
 // OVO DOLE SAM COMMENTOVAO OUT
 // const withNextEnv = nextEnv();
