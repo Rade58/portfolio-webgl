@@ -10,7 +10,7 @@ const Sketch: FunctionComponent = () => {
 
   useEffect(() => {
     if (canvasRef.current) {
-      import("../../sketches/sketch");
+      // import("../../sketches/sketch");
     }
   }, [canvasRef]);
 
@@ -21,7 +21,9 @@ const Sketch: FunctionComponent = () => {
         border: "crimson solid 0px",
       }}
     >
-      <canvas className="canvas" ref={canvasRef}></canvas>
+      {/* <canvas className="canvas" ref={canvasRef}></canvas> */}
+
+      <div id="canvas-iframe" /* dangerouslySetInnerHTML="" */ />
     </div>
   );
 };

@@ -38,15 +38,15 @@ const svgReactPlugin = withReactSvg({
 
 const envPlugin = nextEnv();
 
-// module.exports = withPlugins([envPlugin, svgReactPlugin]);
+module.exports = withPlugins([envPlugin, svgReactPlugin]);
 
-module.exports = (phase, { defaultConfig }) => {
+/* module.exports = (phase, { defaultConfig }) => {
   if (phase === PHASE_DEVELOPMENT_SERVER) console.log("Development");
   if (phase === PHASE_PRODUCTION_BUILD) console.log("Production");
 
   const newConfig = { ...defaultConfig };
 
-  /* newConfig.webpack = (config, options) => {
+  newConfig.webpack = (config, options) => {
     config.module.rules.push({
       test: /\.(glsl|frag|vert)$/,
       use: [require.resolve("raw-loader"), require.resolve("glslify-loader")],
@@ -54,11 +54,11 @@ module.exports = (phase, { defaultConfig }) => {
 
     return config;
   };
- */
+
   return withPlugins([envPlugin, svgReactPlugin])(phase, {
     newConfig,
   });
-};
+}; */
 
 // OVO DOLE SAM COMMENTOVAO OUT
 // const withNextEnv = nextEnv();
