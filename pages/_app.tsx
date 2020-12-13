@@ -15,19 +15,19 @@ export default function App({ Component, pageProps }: AppProps) {
         styles={{
           body: {
             width: "100vw",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "row",
+            // display: "flex",
+            // justifyContent: "center",
+            // alignItems: "center",
+            // flexDirection: "row",
             boxSizing: "border-box",
             margin: 0,
           },
           html: {
             width: "100vw",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            flexDirection: "row",
+            // display: "flex",
+            // justifyContent: "center",
+            // alignItems: "center",
+            // flexDirection: "row",
             boxSizing: "border-box",
           },
         }}

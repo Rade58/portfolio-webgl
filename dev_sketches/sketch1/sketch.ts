@@ -561,4 +561,14 @@ export default () => {
   );
 }; */
 
+const button = document.createElement("button");
+
+button.textContent = "Switch";
+
+document.body.append(button);
+
+button.style.position = "fixed";
+button.style.top = "0px";
+button.style.left = "0px";
+
 export {};
