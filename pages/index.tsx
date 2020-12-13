@@ -8,6 +8,8 @@ import Sketch from "../components/sketch/Sketch";
 import fs from "fs";
 import path from "path";
 
+import DOMPurify from "dompurify";
+
 const Index: FunctionComponent<{
   htmlContentString: string;
 }> = ({ htmlContentString }) => {
@@ -31,11 +33,12 @@ export function getStaticProps() {
 
   const htmlContent = fs.readFileSync(htmlPath);
   const htmlContentString = htmlContent.toString("utf-8");
+  const htmlCleanContentString = DOMPurify.sanatize(htmlContentString);
 
   return {
     props: {
       // blah: 1,
-      htmlContentString,
+      htmlContentString: htmlCleanContentString,
     },
   };
 }
