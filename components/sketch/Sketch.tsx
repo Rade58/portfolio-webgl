@@ -10,7 +10,7 @@ const Sketch: FunctionComponent = () => {
 
   useEffect(() => {
     if (canvasRef.current) {
-      import("../../sketches/sketch");
+      // import("../../sketches/sketch");
     }
   }, [canvasRef]);
 

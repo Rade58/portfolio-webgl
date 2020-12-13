@@ -15,9 +15,9 @@ const Index: FunctionComponent<{
 
   return (
     <Fragment>
-      {/* <div dangerouslySetInnerHTML={{ __html: htmlContentString }}></div> */}
+      <div dangerouslySetInnerHTML={{ __html: htmlContentString }}></div>
       {/* Welcome */}
-      <Sketch />
+      {/* <Sketch /> */}
       {/* <Other /> */}
       {/* <OtherSec /> */}
     </Fragment>
