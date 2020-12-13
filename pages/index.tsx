@@ -25,7 +25,7 @@ const Index: FunctionComponent<{
 };
 
 export function getStaticProps() {
-  const htmlPath = path.resolve(process.cwd(), "./sketch/index.html");
+  const htmlPath = path.resolve(process.cwd(), "./👽RadeDev🦉.html");
 
   console.log({ htmlPath });
 

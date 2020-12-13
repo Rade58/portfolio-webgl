@@ -20,6 +20,7 @@ require("three/examples/js/controls/OrbitControls");
 const canvasSketch = require("canvas-sketch");
 
 const settings: SettingsI = {
+  name: "synth",
   animate: true,
   context: "webgl",
   duration: 28,
