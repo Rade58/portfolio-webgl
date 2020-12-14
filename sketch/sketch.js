@@ -6,42 +6,43 @@ const eases = require("eases");
 const BeziearEasing = require("bezier-easing");
 //
 // THREEJS
-global.THREE = require("three");
+global.T = require("three");
 require("three/examples/js/controls/OrbitControls");
 // CANVAS-SKETCH
 const canvasSketch = require("canvas-sketch");
 const sketch = ({ context }) => {
-    // RENDERER AND SCENE
-    // STAVLJAM
-    const renderer = new global.THREE.WebGLRenderer({ canvas: context.canvas });
+    // ODAVDE CU UZETI REGFERENCU canvas-A I DODELITI JE
+    // CONTEXT-U
+    // STO SE SVE TREBA DOGODITI ON STATE INIT
+    const renderer = new global.T.WebGLRenderer({ canvas: context.canvas });
     renderer.setClearColor("#000");
-    const scene = new global.THREE.Scene();
-    // ------------- SHADERS -------------- SHADERS -----------------
-    // ------------- SHADERS -------------- SHADERS -----------------
-    // GEOMETRIES AND MESH
-    // -------------   ------------------   -----------------  -----------------------------
-    // ----------------   --------------  --------------------  ---------------------------
+    const scene = new global.T.Scene();
     // --------------------- CAMERA, CONTROLS --------------------
     // -----------------------------------------------------------
     // -----------------------------------------------------------
-    const camera = new global.THREE.PerspectiveCamera(50, 1, 0.01, 100);
+    const camera = new global.T.PerspectiveCamera(50, 1, 0.01, 100);
     camera.position.set(-44, 12.08, 38);
-    camera.lookAt(new global.THREE.Vector3());
+    camera.lookAt(new global.T.Vector3());
     // eslint-disable-next-line
     // @ts-ignore
-    const controls = new global.THREE.OrbitControls(camera, context.canvas);
+    const controls = new global.T.OrbitControls(camera, context.canvas);
     //
     // ----------------------------------------------------------------
     // ---------------------- LIGHT, HELPERS --------------------------
-    const light = new global.THREE.PointLight("white", 1);
+    const light = new global.T.PointLight("white", 1);
     light.position.y = 19;
     light.position.z = 12;
     light.position.x = -54;
     scene.add(light);
     // helpers
-    // scene.add(new global.THREE.GridHelper(8, 58, "purple", "olive"));
-    scene.add(new global.THREE.AxesHelper(4));
-    scene.add(new global.THREE.PointLightHelper(light));
+    // scene.add(new global.T.GridHelper(8, 58, "purple", "olive"));
+    scene.add(new global.T.AxesHelper(4));
+    scene.add(new global.T.PointLightHelper(light));
+    // ------------- SHADERS -------------- SHADERS -----------------
+    // ------------- SHADERS -------------- SHADERS -----------------
+    // GEOMETRIES AND MESH
+    // -------------   ------------------   -----------------  -----------------------------
+    // ----------------   --------------  --------------------  ---------------------------
     // -----------------------------------------------------------------------------
     // -----------------------------------------------------------------------------
     // -----------------------------------------------------------------------------

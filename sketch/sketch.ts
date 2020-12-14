@@ -19,22 +19,13 @@ require("three/examples/js/controls/OrbitControls");
 const canvasSketch = require("canvas-sketch");
 
 const sketch = ({ context }: SketchPropsI): SketchReturnType => {
-  // RENDERER AND SCENE
-
-  // STAVLJAM
+  // ODAVDE CU UZETI REGFERENCU canvas-A I DODELITI JE
+  // CONTEXT-U
+  // STO SE SVE TREBA DOGODITI ON STATE INIT
 
   const renderer = new global.THREE.WebGLRenderer({ canvas: context.canvas });
   renderer.setClearColor("#000");
   const scene = new global.THREE.Scene();
-
-  // ------------- SHADERS -------------- SHADERS -----------------
-  // ------------- SHADERS -------------- SHADERS -----------------
-
-  // GEOMETRIES AND MESH
-
-  // -------------   ------------------   -----------------  -----------------------------
-  // ----------------   --------------  --------------------  ---------------------------
-
   // --------------------- CAMERA, CONTROLS --------------------
   // -----------------------------------------------------------
   // -----------------------------------------------------------
@@ -60,6 +51,13 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // scene.add(new global.THREE.GridHelper(8, 58, "purple", "olive"));
   scene.add(new global.THREE.AxesHelper(4));
   scene.add(new global.THREE.PointLightHelper(light));
+  // ------------- SHADERS -------------- SHADERS -----------------
+  // ------------- SHADERS -------------- SHADERS -----------------
+
+  // GEOMETRIES AND MESH
+
+  // -------------   ------------------   -----------------  -----------------------------
+  // ----------------   --------------  --------------------  ---------------------------
 
   // -----------------------------------------------------------------------------
   // -----------------------------------------------------------------------------
