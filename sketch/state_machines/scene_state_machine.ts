@@ -176,6 +176,25 @@ const sceneMachine = createMachine<
             },
           };
         }),
+        ({
+          renderer,
+          camera,
+          cameraLookAtVector,
+          lights: { pointLight },
+          scene,
+          helpers,
+        }): void => {
+          renderer.setClearColor("#000");
+          camera.position.set(-44, 12.08, 38);
+          camera.lookAt(cameraLookAtVector);
+          pointLight.position.set(19, 12, -54);
+
+          scene
+            .add(pointLight)
+            .add(helpers.axes)
+            .add(helpers.grid)
+            .add(helpers.pointLightHelper);
+        },
       ],
     },
   },
