@@ -17,7 +17,8 @@ const eases = require("eases");
 const BeziearEasing = require("bezier-easing"); */
 //
 // ------------- SHADERS --------------
-
+import plane0Vertex from "./glsl_stuff/plane0Vertex";
+import plane0Fragment from "./glsl_stuff/plane0Fragment";
 //
 // THREEJS
 global.THREE = require("three") as threeType;
@@ -43,15 +44,16 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   const plane0Geo = new global.THREE.PlaneGeometry(58, 68, 18, 18);
 
   //   ----------- MATERIALS  -----------
-  const plane0Material = new global.THREE.MeshNormalMaterial({
-    wireframe: true,
+  const plane0Material = new global.THREE.ShaderMaterial({
+    vertexShader: plane0Vertex,
+    fragmentShader: plane0Fragment,
   });
 
   //  ----------- MESHES   ---------------
   const plane0Mesh = new global.THREE.Mesh(plane0Geo, plane0Material);
 
   // ----------- INITIAL POSITIONING AND ROTATING FOR MESHES --------------------
-  plane0Mesh.rotation.x = Math.PI / 2;
+  plane0Mesh.rotation.x = -Math.PI / 2;
 
   // ------------- ADDING MESHES ------------------------
   scene.add(plane0Mesh);
@@ -63,7 +65,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // -----------------------------------------------------------
   // -----------------------------------------------------------
   const camera = new global.THREE.PerspectiveCamera(50, 1, 0.01, 100);
-  camera.position.set(-44, 12.08, 38);
+  camera.position.set(-14, 12.08, 38);
 
   camera.lookAt(new global.THREE.Vector3());
 
@@ -74,9 +76,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // ----------------------------------------------------------------
   // ---------------------- LIGHT, HELPERS --------------------------
   const light = new global.THREE.PointLight("white", 1);
-  light.position.y = 19;
-  light.position.z = 12;
-  light.position.x = -54;
+  light.position.set(-19, 18, 29);
   scene.add(light);
 
   //          helpers
