@@ -3,11 +3,12 @@
 // SETTINGS OBJECT STUFF  -----------------
 import settings, { settingsFunc } from "./sketch-settings";
 //
-// glslify AND GLSL LIBRARIES
+// glslify AND GLSL LIBRARIES (MOZDA OVDE NE TREBA DA BUDE)
+/*
 const glsl = require("glslify");
 const Random = require("canvas-sketch-util/random");
 const eases = require("eases");
-const BeziearEasing = require("bezier-easing");
+const BeziearEasing = require("bezier-easing"); */
 //
 // ------------- SHADERS --------------
 //
@@ -36,7 +37,7 @@ const sketch = ({ context }) => {
     });
     //  ----------- MESHES   ---------------
     const plane0Mesh = new global.THREE.Mesh(plane0Geo, plane0Material);
-    // ----------- INITIAL POSITIONING FOR MESHES --------------------
+    // ----------- INITIAL POSITIONING AND ROTATING FOR MESHES --------------------
     plane0Mesh.rotation.x = Math.PI / 2;
     // ------------- ADDING MESHES ------------------------
     scene.add(plane0Mesh);
