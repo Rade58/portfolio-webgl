@@ -7,6 +7,11 @@ import {
 } from "./my_types";
 
 import { TweenMax, Elastic, Power2 } from "gsap";
+import {
+  sceneService,
+  fse,
+  EE,
+} from "../../state_machines/scene_state_machine";
 
 const glsl = require("glslify");
 const Random = require("canvas-sketch-util/random");
