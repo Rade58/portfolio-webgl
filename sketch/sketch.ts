@@ -1,59 +1,36 @@
 // TYPE-OVI
-import {
-  SettingsI,
-  SketchPropsI,
-  SketchReturnType,
-  threeType,
-} from "./my_types";
+import { SketchPropsI, SketchReturnType, threeType } from "./my_types";
 
+import settings, { settingsFunc } from "./sketch-settings";
+import { sceneService, fse, EE } from "../state_machines/scene_state_machine";
+
+// GSAP
 import { TweenMax, Elastic, Power2 } from "gsap";
-/* import {
-  sceneService,
-  fse,
-  EE,
-} from "../../state_machines/scene_state_machine"; */
-
+// SHADER LIBRARIES
 const glsl = require("glslify");
 const Random = require("canvas-sketch-util/random");
 const eases = require("eases");
 const BeziearEasing = require("bezier-easing");
-
+//
+// THREEJS
 global.THREE = require("three") as threeType;
-
 require("three/examples/js/controls/OrbitControls");
-
+// CANVAS-SKETCH
 const canvasSketch = require("canvas-sketch");
-
-const settings: SettingsI = {
-  name: "synth",
-  animate: true,
-  context: "webgl",
-  duration: 28,
-  // fps: 24,
-  // attributes: { antialis: true },
-};
-
-const settingsFunc = (
-  settings: SettingsI,
-  canvas?: HTMLCanvasElement
-): SettingsI => {
-  if (canvas) {
-    settings.canvas = canvas;
-  }
-
-  return settings;
-};
 
 const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // RENDERER AND SCENE
+
+  // STAVLJAM
+
   const renderer = new global.THREE.WebGLRenderer({ canvas: context.canvas });
   renderer.setClearColor("#000");
   const scene = new global.THREE.Scene();
 
-  // const icosaGeometry = new global.THREE.IcosahedronGeometry(2, 1);
+  // ------------- SHADERS -------------- SHADERS -----------------
+  // ------------- SHADERS -------------- SHADERS -----------------
 
-  // ------------- SHADERS -------------- SHADERS -----------------
-  // ------------- SHADERS -------------- SHADERS -----------------
+  // GEOMETRIES AND MESH
 
   // -------------   ------------------   -----------------  -----------------------------
   // ----------------   --------------  --------------------  ---------------------------
@@ -112,9 +89,6 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       // console.log({ time });
 
       // ----------------------------------------------------
-      // THIRD PLANE
-
-      // ----------------------------------------------------
       controls.update();
       renderer.render(scene, camera);
     },
@@ -128,16 +102,10 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
 canvasSketch(
   sketch,
+  // querySelectotr OVDE NISTA NE RADI JER SE SIGURNO NECE BIRATI ELEMENT
+  // SAM CE GA CANVAS SKETCH UGRADITI
   settingsFunc(settings, document.querySelector("canvas.canvas"))
 );
-
-/*
-export default () => {
-  canvasSketch(
-    sketch,
-    settingsFunc(settings, document.querySelector("canvas.canvas"))
-  );
-}; */
 
 const button = document.createElement("button");
 

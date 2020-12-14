@@ -1,50 +1,44 @@
 import { createMachine, assign, interpret } from "xstate";
 
+// -----  CONSTANTS  ------
+import { THICK_RATE } from "../constants";
+
 // ---- FINITE STATES  n'   EVENTS ----
 
 export enum fse {
+  init = "init",
   idle = "idle",
-  blah = "blah",
 }
 
 export enum EE {
-  TOGGLE = "TOGGLE",
   PLACEHOLDER = "PLACEHOLDER",
-
-  //
-  TICK = "TICK",
 }
 
 // ----------------------------------
 
 // ---- MACHINES GENERIC TYPRES ----
 interface MachineContextGenericI {
-  tick: number;
+  placeholder: string;
 }
 
-type machineEventGenericType =
-  | { type: EE.TICK }
-  | {
-      type: EE.TOGGLE;
-    }
-  | {
-      type: EE.PLACEHOLDER;
-      payload: {
-        placeholder: string;
-      };
-    };
+type machineEventGenericType = {
+  type: EE.PLACEHOLDER;
+  payload: {
+    placeholder: string;
+  };
+};
 
 type machineFiniteStateGenericType =
   | {
-      value: fse.idle;
+      value: fse.init;
       context: {
-        tick: number;
+        placeholder: string;
       };
     }
   | {
-      value: fse.blah;
+      value: fse.idle;
       context: {
-        tick: number;
+        placeholder: string;
       };
     };
 
@@ -60,29 +54,9 @@ const sceneMachine = createMachine<
   machineFiniteStateGenericType
 >({
   id: "sketch_state_machine",
-  initial: fse.idle,
-  context: {
-    tick: 0,
-  },
-  on: {
-    [EE.TICK]: {},
-  },
-  states: {
-    [fse.idle]: {
-      on: {
-        [EE.TOGGLE]: {
-          target: fse.blah,
-        },
-      },
-    },
-    [fse.blah]: {
-      on: {
-        [EE.TOGGLE]: {
-          target: fse.idle,
-        },
-      },
-    },
-  },
+  initial: fse.init,
+  context: { placeholder: "" },
+  states: {},
 });
 
 // -----------------------------------------------------
