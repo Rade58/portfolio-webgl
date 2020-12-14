@@ -2,7 +2,7 @@
 import { SketchPropsI, SketchReturnType, threeType } from "./my_types";
 
 import settings, { settingsFunc } from "./sketch-settings";
-import { sceneService, fse, EE } from "../state_machines/scene_state_machine";
+import { sceneService, fse, EE } from "./state_machines/scene_state_machine";
 
 // GSAP
 import { TweenMax, Elastic, Power2 } from "gsap";
@@ -13,17 +13,24 @@ const eases = require("eases");
 const BeziearEasing = require("bezier-easing");
 //
 // THREEJS
-global.THREE = require("three") as threeType;
-require("three/examples/js/controls/OrbitControls");
+// global.THREE = require("three") as threeType;
+// require("three/examples/js/controls/OrbitControls");
 // CANVAS-SKETCH
 const canvasSketch = require("canvas-sketch");
 
 const sketch = ({ context }: SketchPropsI): SketchReturnType => {
+  sceneService.send({
+    type: EE.INIT_SCENE,
+    payload: {
+      canvas: context.canvas,
+    },
+  });
+
   // ODAVDE CU UZETI REGFERENCU canvas-A I DODELITI JE
   // CONTEXT-U
   // STO SE SVE TREBA DOGODITI ON STATE INIT
 
-  const renderer = new global.THREE.WebGLRenderer({ canvas: context.canvas });
+  /* const renderer = new global.THREE.WebGLRenderer({ canvas: context.canvas });
   renderer.setClearColor("#000");
   const scene = new global.THREE.Scene();
   // --------------------- CAMERA, CONTROLS --------------------
@@ -50,7 +57,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // helpers
   // scene.add(new global.THREE.GridHelper(8, 58, "purple", "olive"));
   scene.add(new global.THREE.AxesHelper(4));
-  scene.add(new global.THREE.PointLightHelper(light));
+  scene.add(new global.THREE.PointLightHelper(light)); */
   // ------------- SHADERS -------------- SHADERS -----------------
   // ------------- SHADERS -------------- SHADERS -----------------
 
@@ -76,6 +83,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   return {
     // Handle resize events here
     resize({ pixelRatio, viewportWidth, viewportHeight }) {
+      const { renderer, camera } = sceneService.state.context;
+
       renderer.setPixelRatio(pixelRatio);
       renderer.setSize(viewportWidth, viewportHeight, false);
       camera.aspect = viewportWidth / viewportHeight;
@@ -87,11 +96,16 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       // console.log({ time });
 
       // ----------------------------------------------------
+
+      const { controls, renderer, scene, camera } = sceneService.state.context;
+
       controls.update();
       renderer.render(scene, camera);
     },
     // Dispose of events & renderer for cleaner hot-reloading
     unload() {
+      const { controls, renderer } = sceneService.state.context;
+
       controls.dispose();
       renderer.dispose();
     },
