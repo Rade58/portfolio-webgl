@@ -50,7 +50,7 @@ type machineFiniteStateGenericType =
 // ------------------- MACHINE ---------------------------
 // -------------------------------------------------------
 
-const sketchMachine = createMachine<
+const sceneMachine = createMachine<
   MachineContextGenericI,
   machineEventGenericType,
   machineFiniteStateGenericType
@@ -81,13 +81,13 @@ const sketchMachine = createMachine<
 // -----------------------------------------------------
 // -----------------------------------------------------
 
-export const sketchService = interpret(sketchMachine);
+export const sceneService = interpret(sceneMachine);
 
-sketchService.onTransition((state, event) => {
+sceneService.onTransition((state, event) => {
   console.log("SKETCH STATE MACHINE");
   console.log(`TRANSITIONING TO - ${state.value} - FINITE STATE`);
   console.log(`COSEQUENCE OF - ${event.type} - EVENT`);
   console.log("-------------------------------------");
 });
 
-sketchService.start();
+sceneService.start();

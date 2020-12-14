@@ -33,12 +33,11 @@ export function getStaticProps() {
 
   const htmlContent = fs.readFileSync(htmlPath);
   const htmlContentString = htmlContent.toString("utf-8");
-  const htmlCleanContentString = DOMPurify.sanatize(htmlContentString);
 
   return {
     props: {
       // blah: 1,
-      htmlContentString: htmlCleanContentString,
+      htmlContentString /*: htmlCleanContentString*/,
     },
   };
 }
