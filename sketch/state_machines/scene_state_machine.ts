@@ -10,6 +10,9 @@ export enum fse {
 export enum EE {
   TOGGLE = "TOGGLE",
   PLACEHOLDER = "PLACEHOLDER",
+
+  //
+  TICK = "TICK",
 }
 
 // ----------------------------------
@@ -20,6 +23,7 @@ interface MachineContextGenericI {
 }
 
 type machineEventGenericType =
+  | { type: EE.TICK }
   | {
       type: EE.TOGGLE;
     }
@@ -59,6 +63,9 @@ const sceneMachine = createMachine<
   initial: fse.idle,
   context: {
     tick: 0,
+  },
+  on: {
+    [EE.TICK]: {},
   },
   states: {
     [fse.idle]: {
