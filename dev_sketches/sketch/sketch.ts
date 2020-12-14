@@ -33,27 +33,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   const renderer = new global.THREE.WebGLRenderer({ canvas: context.canvas });
   renderer.setClearColor("#000");
   const scene = new global.THREE.Scene();
-  // -------------   ------------------   -----------------  ------------ ---------------
+  // -------------   ------------------   -----------------  ------------ --------------
   // ----------------   --------------  --------------------  ---------------------------
-  //   -----------------     SCENE SETUP  -----------------------------------------------
-  //   ----------------------------------------------------------------------------------
-  //   ----------- GEMETRIES ------------
-
-  const plane0Geo = new global.THREE.PlaneGeometry(58, 68, 18, 18);
-
-  //   ----------- MATERIALS  -----------
-  const plane0Material = new global.THREE.MeshNormalMaterial({
-    wireframe: true,
-  });
-
-  //  ----------- MESHES   ---------------
-  const plane0Mesh = new global.THREE.Mesh(plane0Geo, plane0Material);
-
-  // ----------- INITIAL POSITIONING FOR MESHES --------------------
-  plane0Mesh.rotation.x = Math.PI / 2;
-
-  // ------------- ADDING MESHES ------------------------
-  scene.add(plane0Mesh);
 
   // ---------------------------------------------------------------------------------
   // ---------------------------------------------------------------------------------
@@ -79,7 +60,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   scene.add(light);
 
   //          helpers
-  // scene.add(new global.THREE.GridHelper(8, 58, "purple", "olive"));
+  scene.add(new global.THREE.GridHelper(8, 58, "purple", "olive"));
   scene.add(new global.THREE.AxesHelper(4));
   scene.add(new global.THREE.PointLightHelper(light));
 
