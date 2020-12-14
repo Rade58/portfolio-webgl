@@ -1,4 +1,4 @@
-import { SettingsI } from "./my_types";
+import { SettingsI } from "./types/my_types";
 
 export const settingsFunc = (
   settings: SettingsI,
