@@ -105,8 +105,9 @@ const sketch = ({ context }) => {
     // plane0Mesh.scale.setScalar(0.9);
     seaPlaneMesh.rotation.x = (3 * Math.PI) / 2;
     seaPlaneMesh.position.y = -0.5;
+    seaPlaneMesh.scale.setScalar(3);
     middlePlaneMesh.rotation.copy(seaPlaneMesh.rotation);
-    middlePlaneMesh.scale.set(4, 4, 4);
+    middlePlaneMesh.scale.set(8, 8, 0);
     middlePlaneMesh.position.y = -1.2;
     icosaMesh.scale.setScalar(184);
     // icosaMesh.position.y = 1;
