@@ -23,6 +23,8 @@ import middlePlaneVertex from "./glsl_stuff/middlePlaneVertex";
 import middlePlaneFragment from "./glsl_stuff/middlePlaneFragment";
 import starsIcosaVertes from "./glsl_stuff/starsIcosaVertex";
 import starsIcosaFragmant from "./glsl_stuff/starsIcosaFragment";
+// import secondStarsVertex from "./glsl_stuff/secondStarsVertex";
+// import secondStarsFragment from "./glsl_stuff/secondStarsFragment";
 //
 // THREEJS
 global.THREE = require("three");
@@ -105,9 +107,9 @@ const sketch = ({ context }) => {
     // plane0Mesh.scale.setScalar(0.9);
     seaPlaneMesh.rotation.x = (3 * Math.PI) / 2;
     seaPlaneMesh.position.y = -0.5;
-    seaPlaneMesh.scale.setScalar(3);
+    // seaPlaneMesh.scale.setScalar(3);
     middlePlaneMesh.rotation.copy(seaPlaneMesh.rotation);
-    middlePlaneMesh.scale.set(8, 8, 0);
+    middlePlaneMesh.scale.set(4, 4, 4);
     middlePlaneMesh.position.y = -1.2;
     icosaMesh.scale.setScalar(184);
     // icosaMesh.position.y = 1;
