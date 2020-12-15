@@ -21,8 +21,8 @@ import seaPlaneVertex from "./glsl_stuff/seaPlaneVertex";
 import seaPlaneFragmant from "./glsl_stuff/seaPlaneFragment";
 import middlePlaneVertex from "./glsl_stuff/middlePlaneVertex";
 import middlePlaneFragment from "./glsl_stuff/middlePlaneFragment";
-import starsBoxVertes from "./glsl_stuff/starsBoxVertex";
-import starsBoxFragmant from "./glsl_stuff/starsBoxFragment";
+import starsIcosaVertes from "./glsl_stuff/starsIcosaVertex";
+import starsIcosaFragmant from "./glsl_stuff/starsIcosaFragment";
 //
 // THREEJS
 global.THREE = require("three");
@@ -45,7 +45,7 @@ const sketch = ({ context }) => {
     //   ----------- GEMETRIES ------------
     const plane0Geo = new global.THREE.PlaneGeometry(28, 28, 8, 8);
     const seaPlaneGeo = new global.THREE.PlaneGeometry(108, 108, 68, 68);
-    const boxGeometry = new global.THREE.BoxGeometry(1, 1, 1, 1, 1, 1);
+    const icosaGeo = new global.THREE.IcosahedronGeometry(1, 2);
     // -------------------------------------------------------------------------
     // -------------------------------------------------------------------------
     // -------------------------------------------------------------------------
@@ -86,9 +86,9 @@ const sketch = ({ context }) => {
             circleSize: { value: 0 },
         },
     });
-    const boxShaderMaterial = new global.THREE.ShaderMaterial({
-        vertexShader: starsBoxVertes,
-        fragmentShader: starsBoxFragmant,
+    const icosaShaderMaterial = new global.THREE.ShaderMaterial({
+        vertexShader: starsIcosaVertes,
+        fragmentShader: starsIcosaFragmant,
         side: global.THREE.BackSide,
         uniforms: {
             time: { value: 0 },
@@ -98,7 +98,7 @@ const sketch = ({ context }) => {
     const plane0Mesh = new global.THREE.Mesh(plane0Geo, plane0Material);
     const seaPlaneMesh = new global.THREE.Mesh(seaPlaneGeo, seaPlaneShaderMaterial);
     const middlePlaneMesh = new global.THREE.Mesh(plane0Geo, planeMiddleShaderMaterial);
-    const boxMesh = new global.THREE.Mesh(boxGeometry, boxShaderMaterial);
+    const icosaMesh = new global.THREE.Mesh(icosaGeo, icosaShaderMaterial);
     // ------INITIAL POSITIONING AND ROTATING FOR MESHES --------------------
     plane0Mesh.rotation.x = -Math.PI / 2;
     plane0Mesh.position.y = -1.29;
@@ -108,13 +108,13 @@ const sketch = ({ context }) => {
     middlePlaneMesh.rotation.copy(seaPlaneMesh.rotation);
     middlePlaneMesh.scale.set(4, 4, 4);
     middlePlaneMesh.position.y = -1.2;
-    boxMesh.scale.setScalar(144);
-    boxMesh.position.y = 1;
+    icosaMesh.scale.setScalar(184);
+    // icosaMesh.position.y = 1;
     // ------------- ADDING MESHES ------------------------
     scene.add(plane0Mesh);
     scene.add(seaPlaneMesh);
     scene.add(middlePlaneMesh);
-    scene.add(boxMesh);
+    scene.add(icosaMesh);
     // -------  ADDING MESHES TO STATE MACHINE CONTEXT   --------------------------------
     // ----------------------------------------------------------------------------------
     // ---------------------------------------------------------------------------------
@@ -186,9 +186,9 @@ const sketch = ({ context }) => {
             plane0Material.uniforms.playhead.value = playhead;
             seaPlaneShaderMaterial.uniforms.time.value = playhead;
             planeMiddleShaderMaterial.uniforms.time.value = playhead;
-            boxShaderMaterial.uniforms.time.value = playhead;
-            boxMesh.rotation.x = Math.sin(Math.PI * playhead);
-            boxMesh.rotation.z = Math.sin(Math.PI * playhead);
+            icosaShaderMaterial.uniforms.time.value = playhead;
+            icosaMesh.rotation.x = Math.sin(Math.PI * playhead);
+            icosaMesh.rotation.z = Math.sin(Math.PI * playhead);
             //-----------------------------------------------------
             //-----------------------------------------------------
             controls.update();

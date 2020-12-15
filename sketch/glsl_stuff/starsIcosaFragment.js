@@ -1,5 +1,4 @@
 const glsl = require("glslify");
-
 export default glsl(/* glsl */ `
 
     #pragma glslify: snoise3 = require('glsl-noise/simplex/3d');
@@ -21,7 +20,7 @@ export default glsl(/* glsl */ `
 
       vec3 color2 = color + vec3(0.8) * 0.25;
 
-      color2.x = sin(vUv.y);
+      color2.x = sin(vUv.y) *n;
 
       color2 = color2 + vUv.xyy;
 
@@ -33,7 +32,7 @@ export default glsl(/* glsl */ `
       vec2 center = vec2(0.5 , 0.5);
 
       // VECI BROJ KRUGOVA
-      vec2 pos = mod(vUv * sin(n * 3.14) * 18.0, 1.0);
+      vec2 pos = mod(vUv * sin(time * 3.14) * 48.0, 1.0);
 
 
       // DISTANCE
