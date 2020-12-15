@@ -220,6 +220,9 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
       planeMiddleShaderMaterial.uniforms.time.value = playhead;
 
+      boxMesh.rotation.x = Math.sin(Math.PI * playhead);
+      boxMesh.rotation.z = Math.sin(Math.PI * playhead);
+
       //-----------------------------------------------------
       //-----------------------------------------------------
 

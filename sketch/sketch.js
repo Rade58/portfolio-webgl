@@ -183,6 +183,8 @@ const sketch = ({ context }) => {
             plane0Material.uniforms.playhead.value = playhead;
             seaPlaneShaderMaterial.uniforms.time.value = playhead;
             planeMiddleShaderMaterial.uniforms.time.value = playhead;
+            boxMesh.rotation.x = Math.sin(Math.PI * playhead);
+            boxMesh.rotation.z = Math.sin(Math.PI * playhead);
             //-----------------------------------------------------
             //-----------------------------------------------------
             controls.update();
