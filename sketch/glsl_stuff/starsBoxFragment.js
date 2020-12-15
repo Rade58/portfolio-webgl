@@ -12,13 +12,15 @@ export default glsl(/* glsl */ `
     void main() {
 
 
+      //  AND NOIZE
+      float n = sin(3.14 * snoise3(vec3(0.2, 0.1 * time, 0.1 * time)));
+
+
       vec3 color = vec3(0.0, 0.0, 0.0);
 
       vec3 color2 = color + vec3(0.8) * 0.25;
 
-      //  AND NOIZE
-      float n = snoize(color2);
-      color2.x = sin(vUv.y * n);
+      color2.x = sin(vUv.y);
 
       color2 = color2 + vUv.xyy;
 
@@ -27,10 +29,10 @@ export default glsl(/* glsl */ `
       // CENTAR GRADIENT-A
 
 
-      vec2 center = vec2(0.5, 0.5);
+      vec2 center = vec2(0.5 , 0.5);
 
       // VECI BROJ KRUGOVA
-      vec2 pos = mod(vUv * 24.0, 1.0);
+      vec2 pos = mod(vUv * sin(n * 3.14) * 18.0, 1.0);
 
 
       // DISTANCE

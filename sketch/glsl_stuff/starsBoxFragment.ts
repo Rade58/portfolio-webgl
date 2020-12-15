@@ -3,7 +3,7 @@ const glsl = require("glslify");
 export default glsl(/* glsl */ `
 
     #pragma glslify: snoise3 = require('glsl-noise/simplex/3d');
-    #pragma glslify: hslToRgb = require('glsl-hsl2rgb');
+
 
     varying vec3 vPosition;
     varying vec2 vUv;
@@ -12,10 +12,9 @@ export default glsl(/* glsl */ `
 
     void main() {
 
-      //  color noise
-      float noiseForColor = noise(vec3(center * 1.8, time));
 
-
+      //  AND NOIZE
+      float n = sin(3.14 * snoise3(vec3(0.2, 0.1 * time, 0.1 * time)));
 
 
       vec3 color = vec3(0.0, 0.0, 0.0);
@@ -31,10 +30,10 @@ export default glsl(/* glsl */ `
       // CENTAR GRADIENT-A
 
 
-      vec2 center = vec2(0.5, 0.5);
+      vec2 center = vec2(0.5 , 0.5);
 
       // VECI BROJ KRUGOVA
-      vec2 pos = mod(vUv * 24.0, 1.0);
+      vec2 pos = mod(vUv * sin(n * 3.14) * 18.0, 1.0);
 
 
       // DISTANCE
@@ -59,12 +58,7 @@ export default glsl(/* glsl */ `
       // -----------------------------------------
       // vec3 col = vec3(d) /* * vec3(0.2, 0.3, 0.6) + 0.1 */;
 
-
-
-      vec3 noiseColor = hslToRgb(0.1 * n, 0.2 *n, 0.4)
-
-
-      gl_FragColor = vec4(mix(myColor, noiseColor), 1.0);
+      gl_FragColor = vec4(myColor, 1.0);
 
     }
 
