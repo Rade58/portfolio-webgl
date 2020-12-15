@@ -105,15 +105,6 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     },
   });
 
-  const secondStarsShaderMaterial = new global.THREE.ShaderMaterial({
-    vertexShader: secondStarsVertex,
-    fragmentShader: secondStarsFragment,
-    side: global.THREE.BackSide,
-    uniforms: {
-      time: { value: 0 },
-    },
-  });
-
   //  ----------- MESHES   ---------------
   const plane0Mesh = new global.THREE.Mesh(plane0Geo, plane0Material);
   const seaPlaneMesh = new global.THREE.Mesh(
@@ -127,11 +118,6 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   );
 
   const boxMesh = new global.THREE.Mesh(boxGeometry, boxShaderMaterial);
-
-  const secondStarsMesh = new global.THREE.Mesh(
-    boxGeometry,
-    secondStarsShaderMaterial
-  );
 
   // ------INITIAL POSITIONING AND ROTATING FOR MESHES --------------------
   plane0Mesh.rotation.x = -Math.PI / 2;
@@ -148,14 +134,11 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   boxMesh.scale.setScalar(144);
   boxMesh.position.y = 1;
 
-  secondStarsMesh.scale.copy(boxMesh.scale);
-
   // ------------- ADDING MESHES ------------------------
   scene.add(plane0Mesh);
   scene.add(seaPlaneMesh);
   scene.add(middlePlaneMesh);
   scene.add(boxMesh);
-  scene.add(secondStarsMesh);
 
   // -------  ADDING MESHES TO STATE MACHINE CONTEXT   --------------------------------
   // ----------------------------------------------------------------------------------
