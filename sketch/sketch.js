@@ -18,6 +18,8 @@ import plane0Vertex from "./glsl_stuff/plane0Vertex";
 import plane0Fragment from "./glsl_stuff/plane0Fragment";
 import seaPlaneVertex from "./glsl_stuff/seaPlaneVertex";
 import seaPlaneFragmant from "./glsl_stuff/seaPlaneFragment";
+import middlePlaneVertex from "./glsl_stuff/middlePlaneVertex";
+import middlePlaneFragment from "./glsl_stuff/middlePlaneFragment";
 //
 // THREEJS
 global.THREE = require("three");
@@ -64,17 +66,33 @@ const sketch = ({ context }) => {
             derivatives: true,
         },
     });
+    const planeMiddleShaderMaterial = new global.THREE.ShaderMaterial({
+        vertexShader: middlePlaneVertex,
+        fragmentShader: middlePlaneFragment,
+        extensions: {
+            derivatives: true,
+        },
+        uniforms: {
+            color: { value: new global.THREE.Color("#341944") },
+            time: { value: 0 },
+            circleSize: { value: 0 },
+        },
+    });
     //  ----------- MESHES   ---------------
     const plane0Mesh = new global.THREE.Mesh(plane0Geo, plane0Material);
     const seaPlaneMesh = new global.THREE.Mesh(seaPlaneGeo, seaPlaneShaderMaterial);
-    // planeMesh.position.z = 2;
+    const middlePlaneMesh = new global.THREE.Mesh(plane0Geo, planeMiddleShaderMaterial);
     // ----------- INITIAL POSITIONING AND ROTATING FOR MESHES --------------------
     plane0Mesh.rotation.x = -Math.PI / 2;
     plane0Mesh.position.y = -4;
     seaPlaneMesh.rotation.x = (3 * Math.PI) / 2;
+    middlePlaneMesh.rotation.copy(seaPlaneMesh.rotation);
+    middlePlaneMesh.scale.set(4, 4, 4);
+    middlePlaneMesh.position.y = -1.2;
     // ------------- ADDING MESHES ------------------------
     scene.add(plane0Mesh);
     scene.add(seaPlaneMesh);
+    scene.add(middlePlaneMesh);
     // ---------------------------------------------------------------------------------
     // ---------------------------------------------------------------------------------
     // ---------------------------------------------------------------------------------
@@ -101,9 +119,13 @@ const sketch = ({ context }) => {
     // -----------------------------------------------------------------
     // -----------------------------------------------------------------
     // -----------------------------------------------------------------
-    // --------------------  GSAP STUFF  -------------------------------
+    // --------------------  GSAP STUFF  (ADDING LISTENERS TO BUTTONS) -------------------------------
     context.canvas.addEventListener("click", (e) => {
         TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
+            value: 0.8,
+            ease: Elastic.easeOut,
+        });
+        TweenMax.to(planeMiddleShaderMaterial.uniforms.circleSize, 3, {
             value: 0.8,
             ease: Elastic.easeOut,
         });
