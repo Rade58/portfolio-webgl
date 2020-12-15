@@ -97,6 +97,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   const boxShaderMaterial = new global.THREE.ShaderMaterial({
     vertexShader: starsBoxVertes,
     fragmentShader: starsBoxFragmant,
+    side: global.THREE.BackSide,
   });
   //  ----------- MESHES   ---------------
   const plane0Mesh = new global.THREE.Mesh(plane0Geo, plane0Material);
@@ -124,6 +125,9 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   middlePlaneMesh.scale.set(4, 4, 4);
   middlePlaneMesh.position.y = -1.2;
 
+  boxMesh.scale.setScalar(144);
+  boxMesh.position.y = 1;
+
   // ------------- ADDING MESHES ------------------------
   scene.add(plane0Mesh);
   scene.add(seaPlaneMesh);
@@ -139,7 +143,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // --------------------- CAMERA, CONTROLS --------------------
   // -----------------------------------------------------------
   // -----------------------------------------------------------
-  const camera = new global.THREE.PerspectiveCamera(50, 1, 0.01, 200);
+  const camera = new global.THREE.PerspectiveCamera(50, 1, 0.01, 400);
   camera.position.set(-14, 12.08, 38);
 
   const cameraLookAtVector = new global.THREE.Vector3();

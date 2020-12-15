@@ -1,5 +1,4 @@
 const glsl = require("glslify");
-
 export default glsl(/* glsl */ `
 
     varying vec3 vPosition;
