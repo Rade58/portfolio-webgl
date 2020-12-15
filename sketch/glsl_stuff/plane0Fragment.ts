@@ -16,13 +16,13 @@ export default glsl(/* glsl */ `
 
     float dist = length(center);
 
-    float alpha = smoothstep(18.0 * 0.186, 0.18, dist);
+    float alpha = smoothstep(16.0 * 0.486, 0.48, dist);
 
-    float n = noise(vec3(center * 1.8, sin(playhead * 3.14) * 0.38));
+    float n = noise(vec3(center * 2.2, sin(playhead * 3.14) * 0.68));
 
     vec3 color = hslToRgb(
       0.8 + n * 0.18,
-      0.4,
+      0.68,
       0.6
     );
 

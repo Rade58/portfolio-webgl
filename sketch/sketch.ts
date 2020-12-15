@@ -19,6 +19,8 @@ const BeziearEasing = require("bezier-easing"); */
 // ------------- SHADERS --------------
 import plane0Vertex from "./glsl_stuff/plane0Vertex";
 import plane0Fragment from "./glsl_stuff/plane0Fragment";
+import seaPlaneVertex from "./glsl_stuff/seaPlaneVertex";
+import seaPlaneFragmant from "./glsl_stuff/seaPlaneFragment";
 //
 // THREEJS
 global.THREE = require("three") as threeType;
@@ -41,7 +43,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   //   ----------------------------------------------------------------------------------
   //   ----------- GEMETRIES ------------
 
-  const plane0Geo = new global.THREE.PlaneGeometry(58, 68, 18, 18);
+  const plane0Geo = new global.THREE.PlaneGeometry(28, 28, 8, 8);
+  const seaPlaneGeo = new global.THREE.PlaneGeometry(108, 108, 68, 68);
 
   //   ----------- MATERIALS  -----------
   const plane0Material = new global.THREE.ShaderMaterial({
@@ -54,14 +57,39 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     },
   });
 
+  const seaPlaneShaderMaterial = new global.THREE.ShaderMaterial({
+    wireframe: true,
+    vertexShader: seaPlaneVertex,
+    vertexColors: true,
+    fragmentShader: seaPlaneFragmant,
+    uniforms: {
+      time: { value: 0 },
+      color: { value: new global.THREE.Color("#971245") },
+      circleSize: { value: 0 },
+    },
+    flatShading: false,
+    extensions: {
+      derivatives: true,
+    },
+  });
   //  ----------- MESHES   ---------------
   const plane0Mesh = new global.THREE.Mesh(plane0Geo, plane0Material);
+  const seaPlaneMesh = new global.THREE.Mesh(
+    seaPlaneGeo,
+    seaPlaneShaderMaterial
+  );
+
+  // planeMesh.position.z = 2;
 
   // ----------- INITIAL POSITIONING AND ROTATING FOR MESHES --------------------
   plane0Mesh.rotation.x = -Math.PI / 2;
+  plane0Mesh.position.y = -4;
+
+  seaPlaneMesh.rotation.x = (3 * Math.PI) / 2;
 
   // ------------- ADDING MESHES ------------------------
   scene.add(plane0Mesh);
+  scene.add(seaPlaneMesh);
 
   // ---------------------------------------------------------------------------------
   // ---------------------------------------------------------------------------------
@@ -69,10 +97,12 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // --------------------- CAMERA, CONTROLS --------------------
   // -----------------------------------------------------------
   // -----------------------------------------------------------
-  const camera = new global.THREE.PerspectiveCamera(50, 1, 0.01, 100);
+  const camera = new global.THREE.PerspectiveCamera(50, 1, 0.01, 200);
   camera.position.set(-14, 12.08, 38);
 
-  camera.lookAt(new global.THREE.Vector3());
+  const cameraLookAtVector = new global.THREE.Vector3();
+
+  camera.lookAt(cameraLookAtVector);
 
   // eslint-disable-next-line
   // @ts-ignore
@@ -115,6 +145,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       // time RELATED UNIFORMS
 
       plane0Material.uniforms.playhead.value = playhead;
+
+      seaPlaneShaderMaterial.uniforms.time.value = playhead;
 
       //-----------------------------------------------------
       //-----------------------------------------------------
