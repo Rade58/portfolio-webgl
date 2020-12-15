@@ -23,6 +23,8 @@ import seaPlaneVertex from "./glsl_stuff/seaPlaneVertex";
 import seaPlaneFragmant from "./glsl_stuff/seaPlaneFragment";
 import middlePlaneVertex from "./glsl_stuff/middlePlaneVertex";
 import middlePlaneFragment from "./glsl_stuff/middlePlaneFragment";
+import starsBoxVertes from "./glsl_stuff/starsBoxVertex";
+import starsBoxFragmant from "./glsl_stuff/starsBoxFragment";
 //
 // THREEJS
 global.THREE = require("three") as threeType;
@@ -47,7 +49,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   const plane0Geo = new global.THREE.PlaneGeometry(28, 28, 8, 8);
   const seaPlaneGeo = new global.THREE.PlaneGeometry(108, 108, 68, 68);
-  const icosaGeo = new global.THREE.IcosahedronBufferGeometry(4, 2);
+  const boxGeometry = new global.THREE.BoxGeometry(1, 1, 1, 1, 1, 1);
 
   // -------------------------------------------------------------------------
   // -------------------------------------------------------------------------
@@ -92,10 +94,10 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     },
   });
 
-  const icosaShaderMaterial = new global.THREE.MeshNormalMaterial({
-    wireframe: true,
+  const boxShaderMaterial = new global.THREE.ShaderMaterial({
+    vertexShader: starsBoxVertes,
+    fragmentShader: starsBoxFragmant,
   });
-
   //  ----------- MESHES   ---------------
   const plane0Mesh = new global.THREE.Mesh(plane0Geo, plane0Material);
   const seaPlaneMesh = new global.THREE.Mesh(
@@ -108,9 +110,9 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     planeMiddleShaderMaterial
   );
 
-  const icosaMesh = new global.THREE.Mesh(icosaGeo, icosaShaderMaterial);
+  const boxMesh = new global.THREE.Mesh(boxGeometry, boxShaderMaterial);
 
-  // ----------- INITIAL POSITIONING AND ROTATING FOR MESHES --------------------
+  // ------INITIAL POSITIONING AND ROTATING FOR MESHES --------------------
   plane0Mesh.rotation.x = -Math.PI / 2;
   plane0Mesh.position.y = -1.29;
   // plane0Mesh.scale.setScalar(0.9);
@@ -126,7 +128,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   scene.add(plane0Mesh);
   scene.add(seaPlaneMesh);
   scene.add(middlePlaneMesh);
-  scene.add(icosaMesh);
+  scene.add(boxMesh);
 
   // -------  ADDING MESHES TO STATE MACHINE CONTEXT   --------------------------------
   // ----------------------------------------------------------------------------------
