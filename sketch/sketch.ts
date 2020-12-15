@@ -102,7 +102,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   // ----------- INITIAL POSITIONING AND ROTATING FOR MESHES --------------------
   plane0Mesh.rotation.x = -Math.PI / 2;
-  plane0Mesh.position.y = -4;
+  plane0Mesh.position.y = -1.29;
+  // plane0Mesh.scale.setScalar(0.9);
 
   seaPlaneMesh.rotation.x = (3 * Math.PI) / 2;
 
