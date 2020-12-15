@@ -47,6 +47,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   const plane0Geo = new global.THREE.PlaneGeometry(28, 28, 8, 8);
   const seaPlaneGeo = new global.THREE.PlaneGeometry(108, 108, 68, 68);
+  const icosaGeo = new global.THREE.IcosahedronBufferGeometry(1, 2);
 
   //   ----------- MATERIALS  -----------
   const plane0Material = new global.THREE.ShaderMaterial({
@@ -88,6 +89,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     },
   });
 
+  const icosaShaderMaterial = new global.THREE.MeshNormalMaterial({});
+
   //  ----------- MESHES   ---------------
   const plane0Mesh = new global.THREE.Mesh(plane0Geo, plane0Material);
   const seaPlaneMesh = new global.THREE.Mesh(
@@ -99,6 +102,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     plane0Geo,
     planeMiddleShaderMaterial
   );
+
+  const icosaMesh = new global.THREE.Mesh(icosaGeo, icosaShaderMaterial);
 
   // ----------- INITIAL POSITIONING AND ROTATING FOR MESHES --------------------
   plane0Mesh.rotation.x = -Math.PI / 2;
@@ -116,6 +121,10 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   scene.add(plane0Mesh);
   scene.add(seaPlaneMesh);
   scene.add(middlePlaneMesh);
+  scene.add(icosaMesh);
+
+  // -------  ADDING MESHES TO STATE MACHINE CONTEXT   --------------------------------
+  // ----------------------------------------------------------------------------------
 
   // ---------------------------------------------------------------------------------
   // ---------------------------------------------------------------------------------
