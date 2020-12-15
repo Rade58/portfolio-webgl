@@ -13,9 +13,8 @@ export default glsl(/* glsl */ `
     void main() {
 
 
-      vec3 color = vec3(0.0, 0.0, 0.0);
 
-      vec3 color2 = color + vec3(0.8) * 0.25;
+      vec3 color2 = vec3(0.8) * 0.25;
 
       color2.x = sin(vUv.y);
 
