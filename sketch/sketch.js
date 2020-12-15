@@ -3,6 +3,9 @@
 // SETTINGS OBJECT STUFF  -----------------
 import settings, { settingsFunc } from "./sketch-settings";
 //
+// ANIMATION LIBRATRIES
+import { TweenMax, Elastic } from "gsap";
+//
 // glslify AND GLSL LIBRARIES (MOZDA OVDE NE TREBA DA BUDE)
 /*
 const glsl = require("glslify");
@@ -99,6 +102,12 @@ const sketch = ({ context }) => {
     // -----------------------------------------------------------------
     // -----------------------------------------------------------------
     // --------------------  GSAP STUFF  -------------------------------
+    context.canvas.addEventListener("click", (e) => {
+        TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
+            value: 0.8,
+            ease: Elastic.easeOut,
+        });
+    });
     // ---------------------------------------------------------------
     // ---------------------------------------------------------------
     // ---------------------------------------------------------------

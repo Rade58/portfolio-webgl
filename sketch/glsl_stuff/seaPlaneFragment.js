@@ -3,13 +3,9 @@ export default glsl(/* glsl */ `
 
   #pragma glslify: aastep = require('glsl-aastep');
 
-
   varying vec2 vUv;
 
   uniform float time;
-
-  uniform vec3 color;
-
 
   uniform float circleSize;
 
@@ -28,7 +24,6 @@ export default glsl(/* glsl */ `
 
     if(mask < 0.5) discard;
 
-    // vec3 col = mix(vec3(0.8), color, mask);
     vec3 col = mix(vec3(0.8), vec3(0.8, vUv.y, vUv.x), mask);
 
 
