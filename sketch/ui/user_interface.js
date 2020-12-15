@@ -1,6 +1,5 @@
 const upButton = document.createElement("button");
 const downButton = document.createElement("button");
-
 const upButtonCss = /* css */ `
   position: fixed;
   top: 10vh;
@@ -15,13 +14,10 @@ const downButtonCss = /* css */ `
 `;
 upButton.style.cssText = upButtonCss;
 downButton.style.cssText = downButtonCss;
-
 upButton.textContent = "up";
 downButton.textContent = "down";
-
 const elements = {
-  up: upButton,
-  down: downButton,
+    up: upButton,
+    down: downButton,
 };
-
 export default elements;

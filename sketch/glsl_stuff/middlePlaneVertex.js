@@ -15,6 +15,8 @@ export default glsl(/* glsl */ `
     float frequency = 0.38;
     //
 
+    uniform float time;
+
 
 
 
@@ -23,7 +25,7 @@ export default glsl(/* glsl */ `
       vUv = uv;
 
 
-      // float stretch = time;
+      float stretch = time;
 
       vec3 transformedPos = position.xyz;
 

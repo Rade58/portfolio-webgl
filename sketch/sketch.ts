@@ -1,15 +1,15 @@
 // TYPE-OVI
 import { SketchPropsI, SketchReturnType, threeType } from "./types/my_types";
 //
-// -------- UI INITIALIZATION ---------
-
+// -------- UI STUFF ---------
+import uiElements from "./ui/user_interface";
 // SETTINGS OBJECT STUFF  -----------------
 import settings, { settingsFunc } from "./sketch-settings";
 //
 // ANIMATION LIBRATRIES
 import { TweenMax, Elastic, Power2 } from "gsap";
 //
-// glslify AND GLSL LIBRARIES (MOZDA OVDE NE TREBA DA BUDE)
+// ----- MOZDA CU KORISTITI ALI VEROVATNO NE -------
 /*
 const glsl = require("glslify");
 const Random = require("canvas-sketch-util/random");
@@ -32,8 +32,8 @@ require("three/examples/js/controls/OrbitControls");
 //
 const canvasSketch = require("canvas-sketch");
 
+// -------------------------------------------------------------------------------------------
 //------------------------------------- SKETCH -----------------------------------------------
-
 const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   //   ------------- RENDERER AND SCENE --------------------
   const renderer = new global.THREE.WebGLRenderer({ canvas: context.canvas });
@@ -106,6 +106,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // plane0Mesh.scale.setScalar(0.9);
 
   seaPlaneMesh.rotation.x = (3 * Math.PI) / 2;
+  seaPlaneMesh.position.y = -0.5;
 
   middlePlaneMesh.rotation.copy(seaPlaneMesh.rotation);
   middlePlaneMesh.scale.set(4, 4, 4);
@@ -149,7 +150,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // -----------------------------------------------------------------
   // --------------------  GSAP STUFF  (ADDING LISTENERS TO BUTTONS) -------------------------------
 
-  context.canvas.addEventListener("click", (e) => {
+  uiElements.up.addEventListener("click", (e) => {
     TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
       value: 0.8,
       ease: Elastic.easeOut,
@@ -157,6 +158,18 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
     TweenMax.to(planeMiddleShaderMaterial.uniforms.circleSize, 3, {
       value: 0.8,
+      ease: Elastic.easeOut,
+    });
+  });
+
+  uiElements.down.addEventListener("click", (e) => {
+    TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
+      value: 0,
+      ease: Elastic.easeOut,
+    });
+
+    TweenMax.to(planeMiddleShaderMaterial.uniforms.circleSize, 3, {
+      value: 0,
       ease: Elastic.easeOut,
     });
   });
@@ -185,6 +198,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
       seaPlaneShaderMaterial.uniforms.time.value = playhead;
 
+      planeMiddleShaderMaterial.uniforms.time.value = playhead;
+
       //-----------------------------------------------------
       //-----------------------------------------------------
 
@@ -199,6 +214,11 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     },
   };
 };
+
+// ------------ UI ELEMENTS APPENDING ------------------------
+
+document.body.append(uiElements.up);
+document.body.append(uiElements.down);
 
 // --------------- SKETCH INITIALIZATION  --------------------
 
