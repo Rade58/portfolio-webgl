@@ -47,8 +47,11 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   const plane0Geo = new global.THREE.PlaneGeometry(28, 28, 8, 8);
   const seaPlaneGeo = new global.THREE.PlaneGeometry(108, 108, 68, 68);
-  const icosaGeo = new global.THREE.IcosahedronBufferGeometry(1, 2);
+  const icosaGeo = new global.THREE.IcosahedronBufferGeometry(4, 2);
 
+  // -------------------------------------------------------------------------
+  // -------------------------------------------------------------------------
+  // -------------------------------------------------------------------------
   //   ----------- MATERIALS  -----------
   const plane0Material = new global.THREE.ShaderMaterial({
     vertexShader: plane0Vertex,
@@ -89,7 +92,9 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     },
   });
 
-  const icosaShaderMaterial = new global.THREE.MeshNormalMaterial({});
+  const icosaShaderMaterial = new global.THREE.MeshNormalMaterial({
+    wireframe: true,
+  });
 
   //  ----------- MESHES   ---------------
   const plane0Mesh = new global.THREE.Mesh(plane0Geo, plane0Material);

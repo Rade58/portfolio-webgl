@@ -43,6 +43,12 @@ const sketch = ({ context }) => {
     //   ----------- GEMETRIES ------------
     const plane0Geo = new global.THREE.PlaneGeometry(28, 28, 8, 8);
     const seaPlaneGeo = new global.THREE.PlaneGeometry(108, 108, 68, 68);
+    const icosaGeo = new global.THREE.IcosahedronBufferGeometry(4, 2);
+    // -------------   TWEAKING ICOSAHEDRON ------------------------------------
+    const icoPositions = icosaGeo.getAttribute("position");
+    const verticesCount = icoPositions.count;
+    const triangleCount = verticesCount / 3;
+    // -------------------------------------------------------------------------
     //   ----------- MATERIALS  -----------
     const plane0Material = new global.THREE.ShaderMaterial({
         vertexShader: plane0Vertex,
@@ -80,10 +86,14 @@ const sketch = ({ context }) => {
             circleSize: { value: 0 },
         },
     });
+    const icosaShaderMaterial = new global.THREE.MeshNormalMaterial({
+        wireframe: true,
+    });
     //  ----------- MESHES   ---------------
     const plane0Mesh = new global.THREE.Mesh(plane0Geo, plane0Material);
     const seaPlaneMesh = new global.THREE.Mesh(seaPlaneGeo, seaPlaneShaderMaterial);
     const middlePlaneMesh = new global.THREE.Mesh(plane0Geo, planeMiddleShaderMaterial);
+    const icosaMesh = new global.THREE.Mesh(icosaGeo, icosaShaderMaterial);
     // ----------- INITIAL POSITIONING AND ROTATING FOR MESHES --------------------
     plane0Mesh.rotation.x = -Math.PI / 2;
     plane0Mesh.position.y = -1.29;
@@ -97,6 +107,9 @@ const sketch = ({ context }) => {
     scene.add(plane0Mesh);
     scene.add(seaPlaneMesh);
     scene.add(middlePlaneMesh);
+    scene.add(icosaMesh);
+    // -------  ADDING MESHES TO STATE MACHINE CONTEXT   --------------------------------
+    // ----------------------------------------------------------------------------------
     // ---------------------------------------------------------------------------------
     // ---------------------------------------------------------------------------------
     // ---------------------------------------------------------------------------------
