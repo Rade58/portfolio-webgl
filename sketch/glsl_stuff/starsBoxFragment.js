@@ -1,9 +1,13 @@
 const glsl = require("glslify");
 export default glsl(/* glsl */ `
 
+    #pragma glslify: snoise3 = require('glsl-noise/simplex/3d');
+
+
     varying vec3 vPosition;
     varying vec2 vUv;
 
+    uniform float time;
 
     void main() {
 
@@ -20,11 +24,13 @@ export default glsl(/* glsl */ `
       // -----------------  OVO JE RELEVANT, SVE OKO OVOGA JE NEKA VEZBA  ------------------------
       // CENTAR GRADIENT-A
 
+      // VECI BROJ KRUGOVA
+      //  AND NOIZE
+      float n = snoise3(vec3(vUv * 0.6, time ));
+
       vec2 center = vec2(0.5, 0.5);
 
-      // VECI BROJ KRUGOVA
-
-      vec2 pos = mod(vUv * 16.0, 1.0);
+      vec2 pos = mod(vUv * 26.0, 1.0);
 
 
       // DISTANCE
@@ -37,6 +43,7 @@ export default glsl(/* glsl */ `
                     // DAKORISTIS SAMO d IMAO BI CRNE KRUGOVE
                     // ALI MOGU DA KORISTIM I   mask = 1.0 - mask
 
+
       float mask = step(0.01, d);
 
       mask = 1.0 - mask;   // EVO OVO TI JE UPRAVO BILO TO DA INVERT-UJES
@@ -47,7 +54,6 @@ export default glsl(/* glsl */ `
       //
       // -----------------------------------------
       // vec3 col = vec3(d) /* * vec3(0.2, 0.3, 0.6) + 0.1 */;
-
 
       gl_FragColor = vec4(myColor, 1.0);
 

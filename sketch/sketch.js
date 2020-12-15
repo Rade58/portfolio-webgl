@@ -90,6 +90,9 @@ const sketch = ({ context }) => {
         vertexShader: starsBoxVertes,
         fragmentShader: starsBoxFragmant,
         side: global.THREE.BackSide,
+        uniforms: {
+            time: { value: 0 },
+        },
     });
     //  ----------- MESHES   ---------------
     const plane0Mesh = new global.THREE.Mesh(plane0Geo, plane0Material);
@@ -183,6 +186,7 @@ const sketch = ({ context }) => {
             plane0Material.uniforms.playhead.value = playhead;
             seaPlaneShaderMaterial.uniforms.time.value = playhead;
             planeMiddleShaderMaterial.uniforms.time.value = playhead;
+            boxShaderMaterial.uniforms.time.value = playhead;
             boxMesh.rotation.x = Math.sin(Math.PI * playhead);
             boxMesh.rotation.z = Math.sin(Math.PI * playhead);
             //-----------------------------------------------------
