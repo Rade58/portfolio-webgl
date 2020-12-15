@@ -37,6 +37,11 @@ const sketch = ({ context }) => {
     const plane0Material = new global.THREE.ShaderMaterial({
         vertexShader: plane0Vertex,
         fragmentShader: plane0Fragment,
+        uniforms: {
+            playhead: {
+                value: 0,
+            },
+        },
     });
     //  ----------- MESHES   ---------------
     const plane0Mesh = new global.THREE.Mesh(plane0Geo, plane0Material);
@@ -88,6 +93,10 @@ const sketch = ({ context }) => {
         render({ time, playhead }) {
             // ----------------------------------------------------
             // ----------------------------------------------------
+            // time RELATED UNIFORMS
+            plane0Material.uniforms.playhead.value = playhead;
+            //-----------------------------------------------------
+            //-----------------------------------------------------
             controls.update();
             renderer.render(scene, camera);
         },

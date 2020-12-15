@@ -1,7 +1,4 @@
 const glsl = require("glslify");
-const Random = require("canvas-sketch-util/random");
-const eases = require("eases");
-const BeziearEasing = require("bezier-easing");
 export default glsl(/* glsl */ `
 
   varying vec3 vNormal;
