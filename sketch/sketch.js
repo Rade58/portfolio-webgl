@@ -161,7 +161,7 @@ const sketch = ({ context }) => {
     icosaItemMesh.scale.setScalar(34);
     icosaItemMesh.position.set(158, 48, 78);
     icosaItemMesh.rotation.y = Math.PI / 2;
-    icosaItemMesh.rotation.x = -Math.PI / 18;
+    icosaItemMesh.rotation.z = -Math.PI / 12;
     // ------------- ADDING MESHES ------------------------
     scene.add(plane0Mesh);
     scene.add(seaPlaneMesh);

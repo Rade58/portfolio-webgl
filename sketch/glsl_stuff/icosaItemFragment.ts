@@ -27,7 +27,7 @@ export default glsl(/* glsl */ `
 
       vec2 center = vec2(0.5, 0.5);
 
-      vec2 pos = mod(vPosition.yy * 6.0, 1.0);
+      vec2 pos = mod(vPosition.yy * 14.0, 1.0);
 
 
       float d = distance(pos, center);
