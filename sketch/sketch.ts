@@ -27,6 +27,7 @@ import starsIcosaVertes from "./glsl_stuff/starsIcosaVertex";
 import starsIcosaFragmant from "./glsl_stuff/starsIcosaFragment";
 import icosaItemVertex from "./glsl_stuff/icosaItemVertex";
 import icosaItemFragment from "./glsl_stuff/icosaItemFragment";
+import wireframeSeaFragment from "./glsl_stuff/wireframeSeaFragment";
 //
 // THREEJS
 global.THREE = require("three") as threeType;
@@ -153,7 +154,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     polygonOffsetUnits: 0.1,
     vertexShader: seaPlaneVertex,
     vertexColors: true,
-    fragmentShader: seaPlaneFragmant,
+    fragmentShader: wireframeSeaFragment,
     uniforms: {
       time: { value: 0 },
       color: { value: new global.THREE.Color("#971245") },
