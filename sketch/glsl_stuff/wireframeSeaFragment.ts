@@ -4,6 +4,7 @@ export default glsl(/* glsl */ `
   #pragma glslify: aastep = require('glsl-aastep');
 
   varying vec2 vUv;
+  varying vec3 vPosition;
 
   uniform float time;
 

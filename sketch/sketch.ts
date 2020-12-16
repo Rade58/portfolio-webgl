@@ -53,7 +53,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   const plane0Geo = new global.THREE.PlaneGeometry(108, 108, 8, 8);
   const seaPlaneGeo = new global.THREE.PlaneGeometry(108, 108, 58, 58);
   // const icosaGeo = new global.THREE.IcosahedronGeometry(1, 2);
-  const icosaGeo = new global.THREE.SphereGeometry(1, 6, 6);
+  const icosaGeo = new global.THREE.SphereGeometry(1, 16, 28);
 
   // -------------------------------------------------------------------------
   // -------------------------------------------------------------------------
@@ -105,7 +105,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     uniforms: {
       time: { value: 0 },
     },
-    flatShading: true,
+    flatShading: false,
   });
 
   const icosaItemShaderMaterial = new global.THREE.ShaderMaterial({
@@ -190,8 +190,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   icosaMesh.scale.setScalar(184);
   // icosaMesh.position.y = 1;
 
-  icosaItemMesh.scale.setScalar(10);
-  icosaItemMesh.position.set(78, 18, 78);
+  icosaItemMesh.scale.setScalar(20);
+  icosaItemMesh.position.set(78, 48, 78);
 
   // ------------- ADDING MESHES ------------------------
   scene.add(plane0Mesh);
@@ -248,6 +248,11 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       value: 0.8,
       ease: Elastic.easeOut,
     });
+
+    TweenMax.to(seaWireframeShaderMaterial.uniforms.circleSize, 3, {
+      value: 0.8,
+      ease: Elastic.easeOut,
+    });
   });
 
   uiElements.down.addEventListener("click", (e) => {
@@ -257,6 +262,11 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     });
 
     TweenMax.to(planeMiddleShaderMaterial.uniforms.circleSize, 3, {
+      value: 0,
+      ease: Elastic.easeOut,
+    });
+
+    TweenMax.to(seaWireframeShaderMaterial.uniforms.circleSize, 3, {
       value: 0,
       ease: Elastic.easeOut,
     });

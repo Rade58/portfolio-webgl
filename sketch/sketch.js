@@ -49,7 +49,7 @@ const sketch = ({ context }) => {
     const plane0Geo = new global.THREE.PlaneGeometry(108, 108, 8, 8);
     const seaPlaneGeo = new global.THREE.PlaneGeometry(108, 108, 58, 58);
     // const icosaGeo = new global.THREE.IcosahedronGeometry(1, 2);
-    const icosaGeo = new global.THREE.SphereGeometry(1, 6, 6);
+    const icosaGeo = new global.THREE.SphereGeometry(1, 16, 28);
     // -------------------------------------------------------------------------
     // -------------------------------------------------------------------------
     // -------------------------------------------------------------------------
@@ -97,7 +97,7 @@ const sketch = ({ context }) => {
         uniforms: {
             time: { value: 0 },
         },
-        flatShading: true,
+        flatShading: false,
     });
     const icosaItemShaderMaterial = new global.THREE.ShaderMaterial({
         vertexShader: icosaItemVertex,
@@ -155,8 +155,8 @@ const sketch = ({ context }) => {
     middlePlaneMesh.position.y = -3.3;
     icosaMesh.scale.setScalar(184);
     // icosaMesh.position.y = 1;
-    icosaItemMesh.scale.setScalar(10);
-    icosaItemMesh.position.set(78, 18, 78);
+    icosaItemMesh.scale.setScalar(20);
+    icosaItemMesh.position.set(78, 48, 78);
     // ------------- ADDING MESHES ------------------------
     scene.add(plane0Mesh);
     scene.add(seaPlaneMesh);
@@ -202,6 +202,10 @@ const sketch = ({ context }) => {
             value: 0.8,
             ease: Elastic.easeOut,
         });
+        TweenMax.to(seaWireframeShaderMaterial.uniforms.circleSize, 3, {
+            value: 0.8,
+            ease: Elastic.easeOut,
+        });
     });
     uiElements.down.addEventListener("click", (e) => {
         TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
@@ -209,6 +213,10 @@ const sketch = ({ context }) => {
             ease: Elastic.easeOut,
         });
         TweenMax.to(planeMiddleShaderMaterial.uniforms.circleSize, 3, {
+            value: 0,
+            ease: Elastic.easeOut,
+        });
+        TweenMax.to(seaWireframeShaderMaterial.uniforms.circleSize, 3, {
             value: 0,
             ease: Elastic.easeOut,
         });

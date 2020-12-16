@@ -6,4 +6,4 @@ node_modules
 
 # dev SKETCHES JAVASCRIPT FILES
 dev_sketches/**/*.js
-sketch/**/*.js
+sketch/**/**/*.js
