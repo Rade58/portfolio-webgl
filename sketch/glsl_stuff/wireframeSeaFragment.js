@@ -24,7 +24,7 @@ export default glsl(/* glsl */ `
 
     if(mask < 0.5) discard;
 
-    vec3 col = mix(vec3(0.2), vec3(0.8, vUv.y, vUv.x), mask);
+    vec3 col = mix(vec3(0.1), vec3(vUv.x, vUv.x, vUv.x), mask);
 
 
     gl_FragColor = vec4(col, 1.0);
