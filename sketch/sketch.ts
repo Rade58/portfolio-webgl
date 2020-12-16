@@ -25,8 +25,8 @@ import middlePlaneVertex from "./glsl_stuff/middlePlaneVertex";
 import middlePlaneFragment from "./glsl_stuff/middlePlaneFragment";
 import starsIcosaVertes from "./glsl_stuff/starsIcosaVertex";
 import starsIcosaFragmant from "./glsl_stuff/starsIcosaFragment";
-// import secondStarsVertex from "./glsl_stuff/secondStarsVertex";
-// import secondStarsFragment from "./glsl_stuff/secondStarsFragment";
+import icosaItemVertex from "./glsl_stuff/icosaItemVertex";
+import icosaItemFragment from "./glsl_stuff/icosaItemFragment";
 //
 // THREEJS
 global.THREE = require("three") as threeType;
@@ -105,7 +105,11 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     },
   });
 
-  const icosaItemShaderMaterial = new global.THREE.ShaderMaterial();
+  const icosaItemShaderMaterial = new global.THREE.ShaderMaterial({
+    vertexShader: icosaItemVertex,
+    fragmentShader: icosaItemFragment,
+    side: global.THREE.DoubleSide,
+  });
 
   //  ----------- MESHES   ---------------
   const plane0Mesh = new global.THREE.Mesh(plane0Geo, plane0Material);
