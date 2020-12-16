@@ -305,14 +305,14 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
       seaPlaneShaderMaterial.uniforms.time.value = seaWireframeShaderMaterial.uniforms.time.value = playhead;
 
-      planeMiddleShaderMaterial.uniforms.time.value = playhead;
+      // planeMiddleShaderMaterial.uniforms.time.value = playhead;
 
       icosaShaderMaterial.uniforms.time.value = playhead;
 
       icosaMesh.rotation.x = Math.sin(Math.PI * playhead);
       icosaMesh.rotation.z = Math.sin(Math.PI * playhead);
 
-      icosaItemShaderMaterial.uniforms.time.value = playhead * 0.1;
+      // icosaItemShaderMaterial.uniforms.time.value = playhead * 0.1;
 
       // icosaItemMesh.rotation.y = time * 100;
 
