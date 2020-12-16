@@ -155,8 +155,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   icosaMesh.scale.setScalar(184);
   // icosaMesh.position.y = 1;
 
-  icosaItemMesh.scale.setScalar(4);
-  icosaItemMesh.position.y = 9;
+  icosaItemMesh.scale.setScalar(10);
+  icosaItemMesh.position.set(78, 18, 78);
 
   // ------------- ADDING MESHES ------------------------
   scene.add(plane0Mesh);
