@@ -49,8 +49,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   //   ----------------------------------------------------------------------------------
   //   ----------- GEMETRIES ------------
 
-  const plane0Geo = new global.THREE.PlaneGeometry(28, 28, 8, 8);
-  const seaPlaneGeo = new global.THREE.PlaneGeometry(108, 108, 68, 68);
+  const plane0Geo = new global.THREE.PlaneGeometry(108, 108, 8, 8);
+  const seaPlaneGeo = new global.THREE.PlaneGeometry(108, 108, 58, 58);
   // const icosaGeo = new global.THREE.IcosahedronGeometry(1, 2);
   const icosaGeo = new global.THREE.SphereGeometry(1, 6, 6);
 
@@ -69,7 +69,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   });
 
   const seaPlaneShaderMaterial = new global.THREE.ShaderMaterial({
-    wireframe: true,
+    // wireframe: true,
     vertexShader: seaPlaneVertex,
     vertexColors: true,
     fragmentShader: seaPlaneFragmant,
@@ -104,6 +104,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     uniforms: {
       time: { value: 0 },
     },
+    flatShading: true,
   });
 
   const icosaItemShaderMaterial = new global.THREE.ShaderMaterial({
@@ -139,19 +140,50 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     icosaGeo,
     icosaItemShaderMaterial
   );
+  // -----------------------------------------------------------------
+  // -------- CREATING AND ADDING WIREFRAME ACROSS OVER THE COLORS ----------------
+  const seaEdgesGeometry = new global.THREE.WireframeGeometry(
+    seaPlaneMesh.geometry
+  );
+
+  const seaWireframeShaderMaterial = new global.THREE.ShaderMaterial({
+    // wireframe: true,
+    polygonOffset: true,
+    polygonOffsetFactor: 0.1, // positive value pushes polygon further away
+    polygonOffsetUnits: 0.1,
+    vertexShader: seaPlaneVertex,
+    vertexColors: true,
+    fragmentShader: seaPlaneFragmant,
+    uniforms: {
+      time: { value: 0 },
+      color: { value: new global.THREE.Color("#971245") },
+      circleSize: { value: 0 },
+    },
+    flatShading: false,
+    extensions: {
+      derivatives: true,
+    },
+  });
+
+  const seaWireframe = new global.THREE.LineSegments(
+    seaEdgesGeometry,
+    seaWireframeShaderMaterial
+  );
+
+  seaPlaneMesh.add(seaWireframe);
 
   // ------INITIAL POSITIONING AND ROTATING FOR MESHES --------------------
   plane0Mesh.rotation.x = -Math.PI / 2;
-  plane0Mesh.position.y = -1.29;
+  plane0Mesh.position.y = -4.39;
   // plane0Mesh.scale.setScalar(0.9);
 
   seaPlaneMesh.rotation.x = (3 * Math.PI) / 2;
-  seaPlaneMesh.position.y = -0.2;
-  // seaPlaneMesh.scale.setScalar(3);
+  // seaPlaneMesh.position.y = -4.2;
+  seaPlaneMesh.scale.setScalar(3.4);
 
   middlePlaneMesh.rotation.copy(seaPlaneMesh.rotation);
-  middlePlaneMesh.scale.set(4, 4, 4);
-  middlePlaneMesh.position.y = -1.2;
+  middlePlaneMesh.scale.copy(seaPlaneMesh.scale);
+  middlePlaneMesh.position.y = -3.3;
 
   icosaMesh.scale.setScalar(184);
   // icosaMesh.position.y = 1;
@@ -162,9 +194,11 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // ------------- ADDING MESHES ------------------------
   scene.add(plane0Mesh);
   scene.add(seaPlaneMesh);
-  scene.add(middlePlaneMesh);
+  // scene.add(middlePlaneMesh);
   scene.add(icosaMesh);
   scene.add(icosaItemMesh);
+
+  // -----------------------------------------------------------------
 
   // -------  ADDING MESHES TO STATE MACHINE CONTEXT   --------------------------------
   // ----------------------------------------------------------------------------------
@@ -248,7 +282,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
       plane0Material.uniforms.playhead.value = playhead;
 
-      seaPlaneShaderMaterial.uniforms.time.value = playhead;
+      seaPlaneShaderMaterial.uniforms.time.value = seaWireframeShaderMaterial.uniforms.time.value = playhead;
 
       planeMiddleShaderMaterial.uniforms.time.value = playhead;
 
