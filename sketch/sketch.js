@@ -47,7 +47,8 @@ const sketch = ({ context }) => {
     //   ----------- GEMETRIES ------------
     const plane0Geo = new global.THREE.PlaneGeometry(28, 28, 8, 8);
     const seaPlaneGeo = new global.THREE.PlaneGeometry(108, 108, 68, 68);
-    const icosaGeo = new global.THREE.IcosahedronGeometry(1, 2);
+    // const icosaGeo = new global.THREE.IcosahedronGeometry(1, 2);
+    const icosaGeo = new global.THREE.SphereGeometry(1, 6, 6);
     // -------------------------------------------------------------------------
     // -------------------------------------------------------------------------
     // -------------------------------------------------------------------------
