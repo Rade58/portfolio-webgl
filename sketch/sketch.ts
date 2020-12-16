@@ -190,8 +190,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   icosaMesh.scale.setScalar(184);
   // icosaMesh.position.y = 1;
 
-  icosaItemMesh.scale.setScalar(20);
-  icosaItemMesh.position.set(78, 48, 78);
+  icosaItemMesh.scale.setScalar(34);
+  icosaItemMesh.position.set(148, 48, 78);
 
   // ------------- ADDING MESHES ------------------------
   scene.add(plane0Mesh);
@@ -224,8 +224,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   //
   // ----------------------------------------------------------------
   // ---------------------- LIGHT, HELPERS --------------------------
-  const light = new global.THREE.PointLight("white", 1);
-  light.position.set(-19, 18, 29);
+  const light = new global.THREE.PointLight("white", 2);
+  light.position.set(-19, 68, 29);
   scene.add(light);
 
   //          helpers

@@ -17,7 +17,7 @@ export default glsl(/* glsl */ `
 
       vec2 center = vec2(0.5, 0.5);
 
-      vec2 pos = mod(vPosition.yy * 4.0, 1.0);
+      vec2 pos = mod(vPosition.yy * 6.0, 1.0);
 
 
       float d = distance(pos, center);
@@ -26,7 +26,7 @@ export default glsl(/* glsl */ `
 
       if(mask < 0.5) discard;
 
-      gl_FragColor = vec4(mix(vec3(0.6 * vUv.y, 0.2 * vUv.y, 0.4), vec3(0.8, 0.4 * sin(vPosition.y), 0.2), mask), 1.0);
+      gl_FragColor = vec4(mix(vec3(0.6 * vUv.y, 0.2 * vUv.y, 0.4 * vUv.y), vec3(0.8, 0.4 * sin(vPosition.y), 0.2), mask), 1.0);
 
     }
 
