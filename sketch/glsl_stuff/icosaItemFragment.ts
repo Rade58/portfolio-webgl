@@ -21,7 +21,7 @@ export default glsl(/* glsl */ `
 
 
       float d = distance(pos, center);
-      float mask = step(sin(time * 3.14 + vUv.x) * 0.2, d);
+      float mask = smoothstep(sin(time * 3.14 + vUv.x) * 0.2,sin(time * 3.14 + vUv.x) * 0.3, d);
       mask = 1.0 - mask;
 
       if(mask < 0.5) discard;
