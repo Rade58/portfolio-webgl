@@ -155,8 +155,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   icosaMesh.scale.setScalar(184);
   // icosaMesh.position.y = 1;
 
-  icosaItemMesh.scale.setScalar(2);
-  icosaItemMesh.position.y = 4;
+  icosaItemMesh.scale.setScalar(4);
+  icosaItemMesh.position.y = 9;
 
   // ------------- ADDING MESHES ------------------------
   scene.add(plane0Mesh);
@@ -256,7 +256,9 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       icosaMesh.rotation.x = Math.sin(Math.PI * playhead);
       icosaMesh.rotation.z = Math.sin(Math.PI * playhead);
 
-      icosaItemShaderMaterial.uniforms.time.value = playhead;
+      icosaItemShaderMaterial.uniforms.time.value = playhead * 0.1;
+
+      icosaItemMesh.rotation.y = time * 100;
 
       //-----------------------------------------------------
       //-----------------------------------------------------
