@@ -109,6 +109,15 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     vertexShader: icosaItemVertex,
     fragmentShader: icosaItemFragment,
     side: global.THREE.DoubleSide,
+    flatShading: true,
+    uniforms: {
+      time: {
+        value: 0,
+      },
+      deformation: {
+        value: 0,
+      },
+    },
   });
 
   //  ----------- MESHES   ---------------
@@ -145,6 +154,9 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   icosaMesh.scale.setScalar(184);
   // icosaMesh.position.y = 1;
+
+  icosaItemMesh.scale.setScalar(2);
+  icosaItemMesh.position.y = 4;
 
   // ------------- ADDING MESHES ------------------------
   scene.add(plane0Mesh);

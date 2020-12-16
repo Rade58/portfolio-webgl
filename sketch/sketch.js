@@ -23,8 +23,8 @@ import middlePlaneVertex from "./glsl_stuff/middlePlaneVertex";
 import middlePlaneFragment from "./glsl_stuff/middlePlaneFragment";
 import starsIcosaVertes from "./glsl_stuff/starsIcosaVertex";
 import starsIcosaFragmant from "./glsl_stuff/starsIcosaFragment";
-// import secondStarsVertex from "./glsl_stuff/secondStarsVertex";
-// import secondStarsFragment from "./glsl_stuff/secondStarsFragment";
+import icosaItemVertex from "./glsl_stuff/icosaItemVertex";
+import icosaItemFragment from "./glsl_stuff/icosaItemFragment";
 //
 // THREEJS
 global.THREE = require("three");
@@ -96,11 +96,26 @@ const sketch = ({ context }) => {
             time: { value: 0 },
         },
     });
+    const icosaItemShaderMaterial = new global.THREE.ShaderMaterial({
+        vertexShader: icosaItemVertex,
+        fragmentShader: icosaItemFragment,
+        side: global.THREE.DoubleSide,
+        flatShading: true,
+        uniforms: {
+            time: {
+                value: 0,
+            },
+            deformation: {
+                value: 0,
+            },
+        },
+    });
     //  ----------- MESHES   ---------------
     const plane0Mesh = new global.THREE.Mesh(plane0Geo, plane0Material);
     const seaPlaneMesh = new global.THREE.Mesh(seaPlaneGeo, seaPlaneShaderMaterial);
     const middlePlaneMesh = new global.THREE.Mesh(plane0Geo, planeMiddleShaderMaterial);
     const icosaMesh = new global.THREE.Mesh(icosaGeo, icosaShaderMaterial);
+    const icosaItemMesh = new global.THREE.Mesh(icosaGeo, icosaItemShaderMaterial);
     // ------INITIAL POSITIONING AND ROTATING FOR MESHES --------------------
     plane0Mesh.rotation.x = -Math.PI / 2;
     plane0Mesh.position.y = -1.29;
@@ -113,11 +128,14 @@ const sketch = ({ context }) => {
     middlePlaneMesh.position.y = -1.2;
     icosaMesh.scale.setScalar(184);
     // icosaMesh.position.y = 1;
+    icosaItemMesh.scale.setScalar(2);
+    icosaItemMesh.position.y = 4;
     // ------------- ADDING MESHES ------------------------
     scene.add(plane0Mesh);
     scene.add(seaPlaneMesh);
     scene.add(middlePlaneMesh);
     scene.add(icosaMesh);
+    scene.add(icosaItemMesh);
     // -------  ADDING MESHES TO STATE MACHINE CONTEXT   --------------------------------
     // ----------------------------------------------------------------------------------
     // ---------------------------------------------------------------------------------
