@@ -210,6 +210,7 @@ const sketch = ({ context }) => {
             icosaShaderMaterial.uniforms.time.value = playhead;
             icosaMesh.rotation.x = Math.sin(Math.PI * playhead);
             icosaMesh.rotation.z = Math.sin(Math.PI * playhead);
+            icosaItemShaderMaterial.uniforms.time.value = playhead;
             //-----------------------------------------------------
             //-----------------------------------------------------
             controls.update();

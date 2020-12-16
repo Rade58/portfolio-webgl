@@ -256,6 +256,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       icosaMesh.rotation.x = Math.sin(Math.PI * playhead);
       icosaMesh.rotation.z = Math.sin(Math.PI * playhead);
 
+      icosaItemShaderMaterial.uniforms.time.value = playhead;
+
       //-----------------------------------------------------
       //-----------------------------------------------------
 
