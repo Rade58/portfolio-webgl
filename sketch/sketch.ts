@@ -154,7 +154,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     polygonOffsetUnits: 1,
     wireframeLinewidth: 1,
     vertexShader: seaPlaneVertex,
-    vertexColors: true,
+    // vertexColors: true,
     fragmentShader: wireframeSeaFragment,
     uniforms: {
       time: { value: 0 },
@@ -176,7 +176,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   // ------INITIAL POSITIONING AND ROTATING FOR MESHES --------------------
   plane0Mesh.rotation.x = -Math.PI / 2;
-  plane0Mesh.position.y = -4.39;
+  plane0Mesh.position.y = -2.89;
   // plane0Mesh.scale.setScalar(0.9);
 
   seaPlaneMesh.rotation.x = (3 * Math.PI) / 2;
