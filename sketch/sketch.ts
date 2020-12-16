@@ -305,7 +305,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
       icosaItemShaderMaterial.uniforms.time.value = playhead * 0.1;
 
-      icosaItemMesh.rotation.y = time * 100;
+      // icosaItemMesh.rotation.y = time * 100;
 
       //-----------------------------------------------------
       //-----------------------------------------------------
