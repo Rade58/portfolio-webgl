@@ -125,8 +125,9 @@ const sketch = ({ context }) => {
     const seaWireframeShaderMaterial = new global.THREE.ShaderMaterial({
         // wireframe: true,
         polygonOffset: true,
-        polygonOffsetFactor: 0.1,
-        polygonOffsetUnits: 0.1,
+        polygonOffsetFactor: 1,
+        polygonOffsetUnits: 1,
+        wireframeLinewidth: 1,
         vertexShader: seaPlaneVertex,
         vertexColors: true,
         fragmentShader: wireframeSeaFragment,
@@ -135,7 +136,7 @@ const sketch = ({ context }) => {
             color: { value: new global.THREE.Color("#971245") },
             circleSize: { value: 0 },
         },
-        flatShading: false,
+        // flatShading: false,
         extensions: {
             derivatives: true,
         },
