@@ -146,6 +146,8 @@ const sketch = ({ context }) => {
     });
     const seaWireframe = new global.THREE.LineSegments(seaEdgesGeometry, seaWireframeShaderMaterial);
     seaPlaneMesh.add(seaWireframe);
+    // seaWireframe.position.y = seaWireframe.position.y + 2.2;
+    // -----------------------------------------------------------------------
     // ------INITIAL POSITIONING AND ROTATING FOR MESHES --------------------
     plane0Mesh.rotation.x = -Math.PI / 2;
     plane0Mesh.position.y = -2.89;
