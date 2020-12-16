@@ -121,6 +121,9 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
         value: 0,
       },
     },
+    extensions: {
+      derivatives: true,
+    },
   });
 
   //  ----------- MESHES   ---------------
