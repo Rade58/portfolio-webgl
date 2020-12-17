@@ -199,7 +199,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // icosaMesh.position.y = 1;
 
   icosaItemMesh.scale.setScalar(44);
-  icosaItemMesh.position.set(164, 48, 78);
+  icosaItemMesh.position.set(164, 64, 78);
   icosaItemMesh.rotation.y = Math.PI / 2;
   icosaItemMesh.rotation.z = -Math.PI / 12;
 
