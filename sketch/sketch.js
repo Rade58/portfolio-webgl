@@ -151,7 +151,7 @@ const sketch = ({ context }) => {
     // ------INITIAL POSITIONING AND ROTATING FOR MESHES --------------------
     plane0Mesh.rotation.x = -Math.PI / 2;
     plane0Mesh.position.y = -2.89;
-    // plane0Mesh.scale.setScalar(0.9);
+    plane0Mesh.scale.setScalar(1.2);
     seaPlaneMesh.rotation.x = (3 * Math.PI) / 2;
     // seaPlaneMesh.position.y = -4.2;
     seaPlaneMesh.scale.setScalar(3.4);
@@ -251,8 +251,8 @@ const sketch = ({ context }) => {
             seaPlaneShaderMaterial.uniforms.time.value = seaWireframeShaderMaterial.uniforms.time.value = playhead;
             // planeMiddleShaderMaterial.uniforms.time.value = playhead;
             icosaShaderMaterial.uniforms.time.value = playhead;
-            icosaMesh.rotation.x = Math.sin(Math.PI * playhead);
-            icosaMesh.rotation.z = Math.sin(Math.PI * playhead);
+            icosaMesh.rotation.x = Math.sin(Math.PI * playhead * 0.6);
+            icosaMesh.rotation.z = Math.sin(Math.PI * playhead * 0.5);
             // icosaItemShaderMaterial.uniforms.time.value = playhead * 0.1;
             // icosaItemMesh.rotation.y = time * 100;
             //-----------------------------------------------------

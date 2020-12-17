@@ -21,7 +21,7 @@ export default glsl(/* glsl */ `
 
       vec3 color2 = color + vec3(0.8) * 0.25;
 
-      color2.x = sin(vUv.y) *n;
+      color2.x = sin(vPosition.x) *n;
 
       color2 = color2 + vUv.xyy;
 
@@ -30,7 +30,7 @@ export default glsl(/* glsl */ `
       // CENTAR GRADIENT-A
 
 
-      vec2 center = vec2(0.5 , 0.5);
+      vec2 center = vec2(0.5 , 0.5 + n * 0.4);
 
       // VECI BROJ KRUGOVA
       vec2 pos = mod(vUv * sin(time * 3.14) * 48.0, 1.0);
