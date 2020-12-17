@@ -102,7 +102,7 @@ const sketch = ({ context }) => {
     const icosaItemShaderMaterial = new global.THREE.ShaderMaterial({
         vertexShader: icosaItemVertex,
         fragmentShader: icosaItemFragment,
-        side: global.THREE.DoubleSide,
+        // side: global.THREE.DoubleSide,
         flatShading: true,
         uniforms: {
             time: {
@@ -160,8 +160,8 @@ const sketch = ({ context }) => {
     middlePlaneMesh.position.y = -3.3;
     icosaMesh.scale.setScalar(184);
     // icosaMesh.position.y = 1;
-    icosaItemMesh.scale.setScalar(44);
-    icosaItemMesh.position.set(166, 64, 78);
+    icosaItemMesh.scale.setScalar(34);
+    icosaItemMesh.position.set(146, 64, 78);
     icosaItemMesh.rotation.y = Math.PI / 2;
     icosaItemMesh.rotation.z = -Math.PI / 12;
     // ------------- ADDING MESHES ------------------------
@@ -194,7 +194,7 @@ const sketch = ({ context }) => {
     scene.add(light);
     // adding light to a sun
     const directionalLight = new global.THREE.DirectionalLight("crimson", 8);
-    directionalLight.target = icosaItemMesh;
+    directionalLight.target.position.copy(icosaItemMesh.position);
     directionalLight.position.copy(icosaItemMesh.position);
     scene.add(directionalLight);
     //          helpers
