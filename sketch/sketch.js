@@ -150,8 +150,8 @@ const sketch = ({ context }) => {
     // -----------------------------------------------------------------------
     // ------INITIAL POSITIONING AND ROTATING FOR MESHES --------------------
     plane0Mesh.rotation.x = -Math.PI / 2;
-    plane0Mesh.position.y = -2.89;
-    plane0Mesh.scale.setScalar(1.2);
+    plane0Mesh.position.y = -3.08;
+    plane0Mesh.scale.setScalar(1.6);
     seaPlaneMesh.rotation.x = (3 * Math.PI) / 2;
     // seaPlaneMesh.position.y = -4.2;
     seaPlaneMesh.scale.setScalar(3.4);

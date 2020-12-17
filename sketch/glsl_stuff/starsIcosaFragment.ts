@@ -33,7 +33,7 @@ export default glsl(/* glsl */ `
       vec2 center = vec2(0.5 , 0.5 + n * 0.4);
 
       // VECI BROJ KRUGOVA
-      vec2 pos = mod(vUv * sin(time * 3.14) * 48.0, 1.0);
+      vec2 pos = mod(vUv * sin(time * 3.14) * 38.0, 1.0);
 
 
       // DISTANCE
