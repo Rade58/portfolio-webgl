@@ -27,6 +27,7 @@ import starsIcosaVertes from "./glsl_stuff/starsIcosaVertex";
 import starsIcosaFragmant from "./glsl_stuff/starsIcosaFragment";
 import icosaItemVertex from "./glsl_stuff/icosaItemVertex";
 import icosaItemFragment from "./glsl_stuff/icosaItemFragment";
+import wireframeSeaVertex from "./glsl_stuff/wireframeSeaVertex";
 import wireframeSeaFragment from "./glsl_stuff/wireframeSeaFragment";
 //
 // THREEJS
@@ -156,7 +157,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     polygonOffsetFactor: 1, // positive value pushes polygon further away
     polygonOffsetUnits: 1,
     wireframeLinewidth: 1,
-    vertexShader: seaPlaneVertex,
+    vertexShader: wireframeSeaVertex,
     // vertexColors: true,
     fragmentShader: wireframeSeaFragment,
     uniforms: {
@@ -197,8 +198,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   icosaMesh.scale.setScalar(184);
   // icosaMesh.position.y = 1;
 
-  icosaItemMesh.scale.setScalar(34);
-  icosaItemMesh.position.set(158, 48, 78);
+  icosaItemMesh.scale.setScalar(44);
+  icosaItemMesh.position.set(164, 48, 78);
   icosaItemMesh.rotation.y = Math.PI / 2;
   icosaItemMesh.rotation.z = -Math.PI / 12;
 
