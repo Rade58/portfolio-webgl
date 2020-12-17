@@ -157,7 +157,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     polygonOffsetFactor: 1, // positive value pushes polygon further away
     polygonOffsetUnits: 1,
     wireframeLinewidth: 1,
-    vertexShader: wireframeSeaVertex,
+    vertexShader: seaPlaneVertex,
     // vertexColors: true,
     fragmentShader: wireframeSeaFragment,
     uniforms: {
@@ -199,7 +199,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // icosaMesh.position.y = 1;
 
   icosaItemMesh.scale.setScalar(44);
-  icosaItemMesh.position.set(164, 64, 78);
+  icosaItemMesh.position.set(166, 64, 78);
   icosaItemMesh.rotation.y = Math.PI / 2;
   icosaItemMesh.rotation.z = -Math.PI / 12;
 
@@ -234,9 +234,15 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   //
   // ----------------------------------------------------------------
   // ---------------------- LIGHT, HELPERS --------------------------
-  const light = new global.THREE.PointLight("white", 2);
-  light.position.set(-19, 68, 29);
+  const light = new global.THREE.PointLight("white", 8);
+  light.position.set(158, 68, 29);
   scene.add(light);
+
+  // adding light to a sun
+  const directionalLight = new global.THREE.DirectionalLight("crimson", 8);
+  directionalLight.target = icosaItemMesh;
+  directionalLight.position.copy(icosaItemMesh.position);
+  scene.add(directionalLight);
 
   //          helpers
   // scene.add(new global.THREE.GridHelper(8, 58, "purple", "olive"));

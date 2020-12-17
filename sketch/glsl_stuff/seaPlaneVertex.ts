@@ -13,7 +13,7 @@ export default glsl(/* glsl */ `
 
     //
     uniform float time;
-    float amplitude = 0.88;
+    float amplitude = 0.98;
     float frequency = 0.68;
     //
 

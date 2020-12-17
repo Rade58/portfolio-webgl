@@ -25,7 +25,6 @@ import starsIcosaVertes from "./glsl_stuff/starsIcosaVertex";
 import starsIcosaFragmant from "./glsl_stuff/starsIcosaFragment";
 import icosaItemVertex from "./glsl_stuff/icosaItemVertex";
 import icosaItemFragment from "./glsl_stuff/icosaItemFragment";
-import wireframeSeaVertex from "./glsl_stuff/wireframeSeaVertex";
 import wireframeSeaFragment from "./glsl_stuff/wireframeSeaFragment";
 //
 // THREEJS
@@ -132,7 +131,7 @@ const sketch = ({ context }) => {
         polygonOffsetFactor: 1,
         polygonOffsetUnits: 1,
         wireframeLinewidth: 1,
-        vertexShader: wireframeSeaVertex,
+        vertexShader: seaPlaneVertex,
         // vertexColors: true,
         fragmentShader: wireframeSeaFragment,
         uniforms: {
@@ -162,7 +161,7 @@ const sketch = ({ context }) => {
     icosaMesh.scale.setScalar(184);
     // icosaMesh.position.y = 1;
     icosaItemMesh.scale.setScalar(44);
-    icosaItemMesh.position.set(164, 64, 78);
+    icosaItemMesh.position.set(166, 64, 78);
     icosaItemMesh.rotation.y = Math.PI / 2;
     icosaItemMesh.rotation.z = -Math.PI / 12;
     // ------------- ADDING MESHES ------------------------
@@ -190,9 +189,14 @@ const sketch = ({ context }) => {
     //
     // ----------------------------------------------------------------
     // ---------------------- LIGHT, HELPERS --------------------------
-    const light = new global.THREE.PointLight("white", 2);
-    light.position.set(-19, 68, 29);
+    const light = new global.THREE.PointLight("white", 8);
+    light.position.set(158, 68, 29);
     scene.add(light);
+    // adding light to a sun
+    const directionalLight = new global.THREE.DirectionalLight("crimson", 8);
+    directionalLight.target = icosaItemMesh;
+    directionalLight.position.copy(icosaItemMesh.position);
+    scene.add(directionalLight);
     //          helpers
     // scene.add(new global.THREE.GridHelper(8, 58, "purple", "olive"));
     scene.add(new global.THREE.AxesHelper(4));

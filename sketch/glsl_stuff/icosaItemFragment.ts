@@ -40,7 +40,7 @@ export default glsl(/* glsl */ `
 
       float rim = sphereRim(vPosition);
 
-      fragColor += rim * 0.28;
+      fragColor += rim * 0.48;
 
       gl_FragColor = vec4(fragColor, 1.0);
 
