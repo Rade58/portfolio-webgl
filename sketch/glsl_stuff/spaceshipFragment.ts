@@ -7,6 +7,18 @@ export default glsl(/* glsl */ `
   varying vec2 vUv;
   uniform float time;
 
+
+  uniform mat4 modelMatrix;
+  float sphereRim (vec3 spherePosition) {
+    vec3 normal = normalize(spherePosition.xyz);
+    vec3 worldNormal = normalize(mat3(modelMatrix) * normal.xyz);
+    vec3 worldPosition = (modelMatrix * vec4(spherePosition, 1.0)).xyz;
+    vec3 V = normalize(cameraPosition - worldPosition);
+    float rim = 1.0 - max(dot(V, worldNormal), 0.0);
+    return pow(smoothstep(0.0, 1.0, rim), 0.5);
+  }
+
+
   void main(){
 
     vec2 center = vec2(0.5,0.5);
@@ -29,15 +41,19 @@ export default glsl(/* glsl */ `
 
     // MNOZIM OVDE SA MALIM BROJEM NA KRAJU ZBOG DRASTICNOG OFFSET-A, USTVARI SCALE-UJEM NOISE DOWN
 
-    float offset = noise(vec3(noiseInput.xx, time)) * 0.18;
+    float offset = noise(vec3(noiseInput.yy, time)) * 0.18;
 
-    float mask = smoothstep(0.34 + offset, 0.38 + offset, d);
+    float mask = smoothstep(0.24 + offset, 0.38 + offset, d);
 
     mask = 1.0 - mask;
 
+    if(mask > 0.5) discard;
 
+    float rim = sphereRim(vPosition);
 
     vec3 interpolated = mix(vec3(0.2,0.3,0.6), vec3(0.6, 0.4, 0.8),mask);
+
+    interpolated += rim * 0.2;
 
     gl_FragColor = vec4(vec3(interpolated), 1.0);
   }

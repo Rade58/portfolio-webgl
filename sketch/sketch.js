@@ -126,6 +126,9 @@ const sketch = ({ context }) => {
                 value: 0,
             },
         },
+        extensions: {
+            derivatives: true,
+        },
     });
     //  ----------- MESHES   ---------------
     const plane0Mesh = new global.THREE.Mesh(plane0Geo, plane0Material);
