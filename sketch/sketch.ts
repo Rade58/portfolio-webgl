@@ -140,7 +140,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     extensions: {
       derivatives: true,
     },
-    side: global.THREE.DoubleSide,
+    // side: global.THREE.DoubleSide,
     flatShading: false,
   });
 
@@ -355,7 +355,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
       // icosaItemMesh.rotation.y = time * 100;
 
-      spacehipShaderMaterial.uniforms.time.value = -playhead * 0.6;
+      spacehipShaderMaterial.uniforms.time.value = -playhead;
       // spaceshipMesh.rotation.y = Math.sin(Math.PI * playhead * 2400);
       //-----------------------------------------------------
       //-----------------------------------------------------

@@ -129,7 +129,7 @@ const sketch = ({ context }) => {
         extensions: {
             derivatives: true,
         },
-        side: global.THREE.DoubleSide,
+        // side: global.THREE.DoubleSide,
         flatShading: false,
     });
     //  ----------- MESHES   ---------------
@@ -287,7 +287,7 @@ const sketch = ({ context }) => {
             icosaMesh.rotation.z = Math.sin(Math.PI * playhead * 0.5);
             // icosaItemShaderMaterial.uniforms.time.value = playhead * 0.1;
             // icosaItemMesh.rotation.y = time * 100;
-            spacehipShaderMaterial.uniforms.time.value = -playhead * 0.6;
+            spacehipShaderMaterial.uniforms.time.value = -playhead;
             // spaceshipMesh.rotation.y = Math.sin(Math.PI * playhead * 2400);
             //-----------------------------------------------------
             //-----------------------------------------------------
