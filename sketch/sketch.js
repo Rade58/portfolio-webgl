@@ -51,7 +51,7 @@ const sketch = ({ context }) => {
     const plane0Geo = new global.THREE.PlaneGeometry(108, 108, 8, 8);
     const seaPlaneGeo = new global.THREE.PlaneGeometry(108, 108, 58, 58);
     const icosaGeo = new global.THREE.SphereGeometry(1, 16, 28);
-    const spaceshipGeo = new global.THREE.IcosahedronGeometry(1, 2);
+    const spaceshipGeo = new global.THREE.IcosahedronGeometry(1, 1);
     // -------------------------------------------------------------------------
     // -------------------------------------------------------------------------
     // -------------------------------------------------------------------------
