@@ -132,6 +132,11 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   const spacehipShaderMaterial = new global.THREE.ShaderMaterial({
     vertexShader: spaceshipVertex,
     fragmentShader: spaceshipFragment,
+    uniforms: {
+      time: {
+        value: 0,
+      },
+    },
   });
 
   //  ----------- MESHES   ---------------
@@ -194,7 +199,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // seaWireframe.position.y = seaWireframe.position.y + 2.2;
 
   // -----------------------------------------------------------------------
-
+  // -----------------------------------------------------------------------
   // ------INITIAL POSITIONING AND ROTATING FOR MESHES --------------------
   plane0Mesh.rotation.x = -Math.PI / 2;
   plane0Mesh.position.y = -3.3;
@@ -221,7 +226,9 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   spaceshipMesh.scale.z = 3;
   spaceshipMesh.position.y = 8;
 
+  // ----------------------------------------------------
   // ------------- ADDING MESHES ------------------------
+  // ----------------------------------------------------
   scene.add(plane0Mesh);
   scene.add(seaPlaneMesh);
   // scene.add(middlePlaneMesh);
@@ -229,10 +236,10 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   scene.add(icosaItemMesh);
   scene.add(spaceshipMesh);
 
-  // -----------------------------------------------------------------
-
-  // -------  ADDING MESHES TO STATE MACHINE CONTEXT   --------------------------------
-  // ----------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------
+  // -------  ADDING MESHES TO STATE MACHINE CONTEXT  --------------------------------
+  // ---------------------------------------------------------------------------------
 
   // ---------------------------------------------------------------------------------
   // ---------------------------------------------------------------------------------
