@@ -140,6 +140,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     extensions: {
       derivatives: true,
     },
+    side: global.THREE.DoubleSide,
   });
 
   //  ----------- MESHES   ---------------
