@@ -31,7 +31,7 @@ export default glsl(/* glsl */ `
 
     float offset = noise(vec3(noiseInput.xx, time)) * 0.18;
 
-    float mask = smoothstep(0.34 + offset, 0.35 + offset, d);
+    float mask = smoothstep(0.34 + offset, 0.38 + offset, d);
 
     mask = 1.0 - mask;
 
