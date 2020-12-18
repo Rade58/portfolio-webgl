@@ -158,7 +158,7 @@ const sketch = ({ context }) => {
     // ------INITIAL POSITIONING AND ROTATING FOR MESHES --------------------
     plane0Mesh.rotation.x = -Math.PI / 2;
     plane0Mesh.position.y = -3.3;
-    plane0Mesh.scale.setScalar(1.2);
+    plane0Mesh.scale.setScalar(0.8);
     seaPlaneMesh.rotation.x = (3 * Math.PI) / 2;
     // seaPlaneMesh.position.y = -4.2;
     seaPlaneMesh.scale.setScalar(3.4);
@@ -171,12 +171,17 @@ const sketch = ({ context }) => {
     icosaItemMesh.position.set(146, 64, 78);
     icosaItemMesh.rotation.y = Math.PI / 2;
     icosaItemMesh.rotation.z = -Math.PI / 12;
+    spaceshipMesh.scale.y = 8;
+    spaceshipMesh.scale.x = 2;
+    spaceshipMesh.scale.z = 3;
+    spaceshipMesh.position.y = 8;
     // ------------- ADDING MESHES ------------------------
     scene.add(plane0Mesh);
     scene.add(seaPlaneMesh);
     // scene.add(middlePlaneMesh);
     scene.add(icosaMesh);
     scene.add(icosaItemMesh);
+    scene.add(spaceshipMesh);
     // -----------------------------------------------------------------
     // -------  ADDING MESHES TO STATE MACHINE CONTEXT   --------------------------------
     // ----------------------------------------------------------------------------------
