@@ -56,7 +56,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   const plane0Geo = new global.THREE.PlaneGeometry(108, 108, 8, 8);
   const seaPlaneGeo = new global.THREE.PlaneGeometry(108, 108, 58, 58);
   const icosaGeo = new global.THREE.SphereGeometry(1, 16, 28);
-  const spaceshipGeo = new global.THREE.IcosahedronGeometry(1, 1);
+  const spaceshipGeo = new global.THREE.IcosahedronGeometry(1, 6);
 
   // -------------------------------------------------------------------------
   // -------------------------------------------------------------------------
@@ -141,6 +141,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       derivatives: true,
     },
     side: global.THREE.DoubleSide,
+    flatShading: false,
   });
 
   //  ----------- MESHES   ---------------
@@ -225,10 +226,11 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   icosaItemMesh.rotation.y = Math.PI / 2;
   icosaItemMesh.rotation.z = -Math.PI / 12;
 
-  spaceshipMesh.scale.y = 8;
+  /* spaceshipMesh.scale.y = 8;
   spaceshipMesh.scale.x = 2;
-  spaceshipMesh.scale.z = 3;
+  spaceshipMesh.scale.z = 3; */
   spaceshipMesh.position.y = 8;
+  spaceshipMesh.scale.setScalar(7);
 
   // ----------------------------------------------------
   // ------------- ADDING MESHES ------------------------
@@ -353,8 +355,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
       // icosaItemMesh.rotation.y = time * 100;
 
-      spacehipShaderMaterial.uniforms.time.value = playhead;
-
+      spacehipShaderMaterial.uniforms.time.value = -playhead * 0.6;
+      // spaceshipMesh.rotation.y = Math.sin(Math.PI * playhead * 2400);
       //-----------------------------------------------------
       //-----------------------------------------------------
 
