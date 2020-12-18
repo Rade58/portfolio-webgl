@@ -25,7 +25,7 @@ export default glsl(/* glsl */ `
       vUv = uv;
 
 
-      float stretch = -sin(time * 3.14) * 2.2;
+      float stretch = -sin(time * 3.14) * 6.2;
 
       vec3 transformedPos = position.xyz;
 

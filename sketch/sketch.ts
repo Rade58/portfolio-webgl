@@ -144,6 +144,12 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     flatShading: false,
   });
 
+  const cageShaderMaterial = new global.THREE.ShaderMaterial({
+    vertexShader: plane0Vertex,
+    fragmentShader: plane0Fragment,
+    wireframe: true,
+  });
+
   //  ----------- MESHES   ---------------
   const plane0Mesh = new global.THREE.Mesh(plane0Geo, plane0Material);
   const seaPlaneMesh = new global.THREE.Mesh(
@@ -167,6 +173,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     spaceshipGeo,
     spacehipShaderMaterial
   );
+
+  const cageMesh = new global.THREE.Mesh(spaceshipGeo, cageShaderMaterial);
 
   // -----------------------------------------------------------------
   // -------- CREATING AND ADDING WIREFRAME ACROSS OVER THE COLORS ----------------
@@ -230,7 +238,10 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   spaceshipMesh.scale.x = 2;
   spaceshipMesh.scale.z = 3; */
   spaceshipMesh.position.y = 8;
-  spaceshipMesh.scale.setScalar(7);
+  spaceshipMesh.scale.setScalar(5.8);
+
+  cageMesh.position.copy(spaceshipMesh.position);
+  cageMesh.scale.setScalar(9.4);
 
   // ----------------------------------------------------
   // ------------- ADDING MESHES ------------------------
@@ -241,6 +252,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   scene.add(icosaMesh);
   scene.add(icosaItemMesh);
   scene.add(spaceshipMesh);
+  scene.add(cageMesh);
 
   // ---------------------------------------------------------------------------------
   // ---------------------------------------------------------------------------------
@@ -356,7 +368,10 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       // icosaItemMesh.rotation.y = time * 100;
 
       spacehipShaderMaterial.uniforms.time.value = -playhead;
-      // spaceshipMesh.rotation.y = Math.sin(Math.PI * playhead * 2400);
+      // spaceshipMesh.rotation.y = -Math.sin(Math.PI * playhead) * 2;
+
+      // cageMesh.rotation.y = Math.sin(Math.PI * playhead) * 12;
+
       //-----------------------------------------------------
       //-----------------------------------------------------
 
