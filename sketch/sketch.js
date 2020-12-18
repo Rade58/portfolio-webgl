@@ -26,6 +26,8 @@ import starsIcosaFragmant from "./glsl_stuff/starsIcosaFragment";
 import icosaItemVertex from "./glsl_stuff/icosaItemVertex";
 import icosaItemFragment from "./glsl_stuff/icosaItemFragment";
 import wireframeSeaFragment from "./glsl_stuff/wireframeSeaFragment";
+import spaceshipVertex from "./glsl_stuff/spaceshipVertex";
+import spaceshipFragment from "./glsl_stuff/spaceshipFragment";
 //
 // THREEJS
 global.THREE = require("three");
@@ -48,8 +50,8 @@ const sketch = ({ context }) => {
     //   ----------- GEMETRIES ------------
     const plane0Geo = new global.THREE.PlaneGeometry(108, 108, 8, 8);
     const seaPlaneGeo = new global.THREE.PlaneGeometry(108, 108, 58, 58);
-    // const icosaGeo = new global.THREE.IcosahedronGeometry(1, 2);
     const icosaGeo = new global.THREE.SphereGeometry(1, 16, 28);
+    const spaceshipGeo = new global.THREE.IcosahedronGeometry(1, 2);
     // -------------------------------------------------------------------------
     // -------------------------------------------------------------------------
     // -------------------------------------------------------------------------
@@ -116,12 +118,17 @@ const sketch = ({ context }) => {
             derivatives: true,
         },
     });
+    const spacehipShaderMaterial = new global.THREE.ShaderMaterial({
+        vertexShader: spaceshipVertex,
+        fragmentShader: spaceshipFragment,
+    });
     //  ----------- MESHES   ---------------
     const plane0Mesh = new global.THREE.Mesh(plane0Geo, plane0Material);
     const seaPlaneMesh = new global.THREE.Mesh(seaPlaneGeo, seaPlaneShaderMaterial);
     const middlePlaneMesh = new global.THREE.Mesh(plane0Geo, planeMiddleShaderMaterial);
     const icosaMesh = new global.THREE.Mesh(icosaGeo, icosaShaderMaterial);
     const icosaItemMesh = new global.THREE.Mesh(icosaGeo, icosaItemShaderMaterial);
+    const spaceshipMesh = new global.THREE.Mesh(spaceshipGeo, spacehipShaderMaterial);
     // -----------------------------------------------------------------
     // -------- CREATING AND ADDING WIREFRAME ACROSS OVER THE COLORS ----------------
     const seaEdgesGeometry = new global.THREE.WireframeGeometry(seaPlaneMesh.geometry);
@@ -151,7 +158,7 @@ const sketch = ({ context }) => {
     // ------INITIAL POSITIONING AND ROTATING FOR MESHES --------------------
     plane0Mesh.rotation.x = -Math.PI / 2;
     plane0Mesh.position.y = -3.3;
-    plane0Mesh.scale.setScalar(1.6);
+    plane0Mesh.scale.setScalar(1.2);
     seaPlaneMesh.rotation.x = (3 * Math.PI) / 2;
     // seaPlaneMesh.position.y = -4.2;
     seaPlaneMesh.scale.setScalar(3.4);

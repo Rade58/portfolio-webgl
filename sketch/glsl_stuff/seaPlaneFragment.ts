@@ -20,7 +20,7 @@ export default glsl(/* glsl */ `
 
     float d = distance(vUv.xy, center);
 
-    float mask = aastep(circleSize * 0.11, d);   // ANIMIRANO SA time
+    float mask = aastep(circleSize * 0.08, d);   // ANIMIRANO SA time
     // float mask = aastep(0.1, d);  // NIJE ANIMIRANO
 
     if(mask < 0.5) discard;
