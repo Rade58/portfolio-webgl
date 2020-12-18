@@ -10,6 +10,7 @@ import settings, { settingsFunc } from "./sketch-settings";
 import { TweenMax, Elastic, Power2 } from "gsap";
 //
 // ----- MOZDA CU KORISTITI ALI VEROVATNO NE -------
+
 /*
 const glsl = require("glslify");
 const Random = require("canvas-sketch-util/random");
@@ -55,8 +56,13 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   const plane0Geo = new global.THREE.PlaneGeometry(108, 108, 8, 8);
   const seaPlaneGeo = new global.THREE.PlaneGeometry(108, 108, 58, 58);
+  // let seaPlaneGeo = new global.THREE.RingGeometry(0.01, 98, 24, 16);
   const icosaGeo = new global.THREE.SphereGeometry(1, 16, 28);
   const spaceshipGeo = new global.THREE.IcosahedronGeometry(1, 6);
+
+  // seaPlaneGeo = bspB.union(bspA);
+
+  // const extrudedGeo = new global.THREE.ExtrudeGeometry(,)
 
   // -------------------------------------------------------------------------
   // -------------------------------------------------------------------------
@@ -246,6 +252,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // ----------------------------------------------------
   // ------------- ADDING MESHES ------------------------
   // ----------------------------------------------------
+
   scene.add(plane0Mesh);
   scene.add(seaPlaneMesh);
   // scene.add(middlePlaneMesh);
