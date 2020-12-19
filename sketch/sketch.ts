@@ -411,6 +411,18 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     scene.remove(middlePlaneMesh);
   });
 
+  // preventing snapshots
+  window.addEventListener("keydown", (e) => {
+    if (
+      (e.ctrlKey && (e.key === "S" || e.key === "s")) ||
+      (e.shiftKey && e.ctrlKey && (e.key === "S" || e.key === "s"))
+    ) {
+      e.stopImmediatePropagation();
+      e.preventDefault();
+      console.log("snaphot prevented");
+    }
+  });
+
   // -----------------------------------------------------------------------
   // -----------------------------------------------------------------------
 
