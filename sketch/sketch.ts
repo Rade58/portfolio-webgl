@@ -151,7 +151,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   });
 
   const cageShaderMaterial = new global.THREE.ShaderMaterial({
-    vertexShader: plane0Vertex,
+    vertexShader: spaceshipVertex,
     fragmentShader: plane0Fragment,
     wireframe: true,
   });
