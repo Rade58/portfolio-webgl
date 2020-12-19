@@ -365,6 +365,28 @@ const sketch = ({ context }) => {
         seaPlaneMesh.material.needsUpdate = true;
         seaPlaneMesh.add(seaWireframe);
         scene.remove(middlePlaneMesh);
+        TweenMax.to(controls.object.rotation, 12, {
+            y: 2 * Math.PI,
+            ease: Quad.easeInOut,
+        });
+        TweenMax.to(cageMesh.position, 4, {
+            y: -24,
+            ease: Elastic.easeInOut,
+        });
+        TweenMax.to(spaceshipMesh.position, 4, {
+            y: -24,
+        });
+        TweenMax.to(controls.object, 4, {
+            y: -24,
+            ease: Elastic.easeIn,
+        });
+        const newValuesTarget = sunMesh.position.toArray();
+        TweenMax.to(controls.target, 9, {
+            x: newValuesTarget[0],
+            y: newValuesTarget[1],
+            z: newValuesTarget[2],
+            ease: Quad.easeIn,
+        });
     });
     // preventing snapshots
     window.addEventListener("keydown", (e) => {
