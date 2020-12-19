@@ -336,7 +336,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // -----------------------------------------------------------------------
 
   controls.object.position.copy(camera.position);
-  controls.object.position.x = -1;
+  controls.object.position.x = 1;
   controls.object.position.y = 140;
   controls.object.position.z = 0;
 
@@ -374,7 +374,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       ease: Quad.easeIn,
     });
 
-    // controls.object.position.set(-1, 96, 0);
+    // controls.object.position.x = 1;
   });
 
   uiElements.down.addEventListener("click", (e) => {
@@ -396,6 +396,26 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       value: 0,
       ease: Elastic.easeOut,
     });
+
+    TweenMax.to(spaceshipMesh.position, 2, {
+      y: 198,
+      // x: 22,
+      ease: Quad.easeIn,
+    });
+
+    const scaleArr = cageMesh.scale.toArray();
+
+    const blah = scaleArr.map((num) => {
+      console.log(num);
+
+      return 2;
+    });
+
+    /* TweenMax.to(cageMesh.scale, 6, {
+
+      // x: 22,
+      ease: Quad.easeIn,
+    }); */
   });
 
   // -----------------------------------------------------------------------
