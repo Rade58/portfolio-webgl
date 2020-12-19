@@ -116,14 +116,14 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     uniforms: {
       time: { value: 0 },
     },
-    flatShading: true,
+    flatShading: false,
   });
 
   const sunShaderMaterial = new global.THREE.ShaderMaterial({
     vertexShader: icosaItemVertex,
     fragmentShader: icosaItemFragment,
     // side: global.THREE.DoubleSide,
-    flatShading: true,
+    flatShading: false,
     uniforms: {
       time: {
         value: 0,
@@ -211,7 +211,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       color: { value: new global.THREE.Color("#971245") },
       circleSize: { value: 0 },
     },
-    // flatShading: false,
+    flatShading: false,
     extensions: {
       derivatives: true,
     },
@@ -265,7 +265,6 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   scene.add(sunMesh);
   scene.add(spaceshipMesh);
   scene.add(cageMesh);
-
   // seaPlaneMesh.add(seaWireframe);
 
   // ---------------------------------------------------------------------------------
