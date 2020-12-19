@@ -252,7 +252,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   spaceshipMesh.scale.setScalar(1.8);
 
   cageMesh.position.copy(spaceshipMesh.position);
-  cageMesh.scale.setScalar(3.4);
+  cageMesh.scale.setScalar(9.4);
 
   // ----------------------------------------------------
   // ------------- ADDING MESHES ------------------------
