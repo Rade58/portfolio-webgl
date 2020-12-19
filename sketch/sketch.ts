@@ -243,8 +243,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   skyMesh.scale.setScalar(484);
   // skyMesh.position.y = 1;
 
-  sunMesh.scale.setScalar(34);
-  sunMesh.position.set(246, 64, 78);
+  sunMesh.scale.setScalar(64);
+  sunMesh.position.set(392, 34, 78);
   sunMesh.rotation.y = Math.PI / 2;
   sunMesh.rotation.z = -Math.PI / 12;
 
