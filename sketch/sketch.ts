@@ -7,7 +7,7 @@ import uiElements from "./ui/user_interface";
 import settings, { settingsFunc } from "./sketch-settings";
 //
 // ANIMATION LIBRATRIES
-import { TweenMax, Elastic, Power2 } from "gsap";
+import { TweenMax, Elastic, Power2, Quad } from "gsap";
 //
 // ----- MOZDA CU KORISTITI ALI VEROVATNO NE -------
 
@@ -33,11 +33,13 @@ import wireframeSeaFragment from "./glsl_stuff/wireframeSeaFragment";
 import spaceshipVertex from "./glsl_stuff/spaceshipVertex";
 import spaceshipFragment from "./glsl_stuff/spaceshipFragment";
 //
+
 // THREEJS
 global.THREE = require("three") as threeType;
 //
 //
 require("three/examples/js/controls/OrbitControls");
+require("three/examples/js/controls/TrackballControls.js");
 //
 const canvasSketch = require("canvas-sketch");
 
@@ -55,7 +57,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   //   ----------- GEMETRIES ------------
 
   const plane0Geo = new global.THREE.PlaneGeometry(108, 108, 8, 8);
-  const seaPlaneGeo = new global.THREE.PlaneGeometry(108, 108, 78, 78);
+  const seaPlaneGeo = new global.THREE.PlaneGeometry(108, 108, 98, 98);
   // let seaPlaneGeo = new global.THREE.RingGeometry(0.01, 98, 24, 16);
   const icosaGeo = new global.THREE.SphereGeometry(1, 16, 28);
   const spaceshipGeo = new global.THREE.IcosahedronGeometry(1, 6);
@@ -175,7 +177,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   const icosaMesh = new global.THREE.Mesh(icosaGeo, icosaShaderMaterial);
 
-  const icosaItemMesh = new global.THREE.Mesh(
+  const skySphereMesh = new global.THREE.Mesh(
     icosaGeo,
     icosaItemShaderMaterial
   );
@@ -186,6 +188,10 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   );
 
   const cageMesh = new global.THREE.Mesh(spaceshipGeo, cageShaderMaterial);
+
+  const spaceshipGroup = new global.THREE.Group();
+
+  spaceshipGroup.add(spaceshipMesh, cageMesh);
 
   // -----------------------------------------------------------------
   // -------- CREATING AND ADDING WIREFRAME ACROSS OVER THE COLORS ----------------
@@ -226,24 +232,24 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // -----------------------------------------------------------------------
   // ------INITIAL POSITIONING AND ROTATING FOR MESHES --------------------
   plane0Mesh.rotation.x = -Math.PI / 2;
-  plane0Mesh.position.y = -3.3;
+  plane0Mesh.position.y = -5.9;
   plane0Mesh.scale.setScalar(0.8);
 
   seaPlaneMesh.rotation.x = (3 * Math.PI) / 2;
   // seaPlaneMesh.position.y = -4.2;
-  seaPlaneMesh.scale.setScalar(2.2);
+  seaPlaneMesh.scale.setScalar(6.2);
 
   middlePlaneMesh.rotation.copy(seaPlaneMesh.rotation);
   middlePlaneMesh.scale.copy(seaPlaneMesh.scale);
   middlePlaneMesh.position.y = -3.3;
 
-  icosaMesh.scale.setScalar(184);
+  icosaMesh.scale.setScalar(484);
   // icosaMesh.position.y = 1;
 
-  icosaItemMesh.scale.setScalar(34);
-  icosaItemMesh.position.set(146, 64, 78);
-  icosaItemMesh.rotation.y = Math.PI / 2;
-  icosaItemMesh.rotation.z = -Math.PI / 12;
+  skySphereMesh.scale.setScalar(34);
+  skySphereMesh.position.set(146, 64, 78);
+  skySphereMesh.rotation.y = Math.PI / 2;
+  skySphereMesh.rotation.z = -Math.PI / 12;
 
   /* spaceshipMesh.scale.y = 8;
   spaceshipMesh.scale.x = 2;
@@ -262,7 +268,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   scene.add(seaPlaneMesh);
   // scene.add(middlePlaneMesh);
   scene.add(icosaMesh);
-  scene.add(icosaItemMesh);
+  scene.add(skySphereMesh);
   scene.add(spaceshipMesh);
   scene.add(cageMesh);
 
@@ -277,8 +283,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // --------------------- CAMERA, CONTROLS --------------------
   // -----------------------------------------------------------
   // -----------------------------------------------------------
-  const camera = new global.THREE.PerspectiveCamera(50, 1, 0.01, 400);
-  camera.position.set(-14, 12.08, 38);
+  const camera = new global.THREE.PerspectiveCamera(50, 1, 0.01, 600);
+  camera.position.set(-114, 12.08, 38);
 
   const cameraLookAtVector = new global.THREE.Vector3();
 
@@ -287,6 +293,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // eslint-disable-next-line
   // @ts-ignore
   const controls = new global.THREE.OrbitControls(camera, context.canvas);
+  // const controls = new global.THREE.TrackballControls(camera, context.canvas);
   //
   // ----------------------------------------------------------------
   // ---------------------- LIGHT, HELPERS --------------------------
@@ -296,8 +303,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   // adding light to a sun
   const directionalLight = new global.THREE.DirectionalLight("crimson", 8);
-  directionalLight.target.position.copy(icosaItemMesh.position);
-  directionalLight.position.copy(icosaItemMesh.position);
+  directionalLight.target.position.copy(skySphereMesh.position);
+  directionalLight.position.copy(skySphereMesh.position);
   scene.add(directionalLight);
 
   //          helpers
@@ -325,6 +332,18 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       value: 0.8,
       ease: Elastic.easeOut,
     });
+
+    // camera movement
+    controls.object.position.copy(camera.position);
+
+    controls.target = spaceshipMesh.position;
+
+    TweenMax.to(cageMesh.position, 2, {
+      y: 28,
+      ease: Quad.easeIn,
+    }).then(() => {});
+
+    controls.object.position.set(0, 40, 0);
   });
 
   uiElements.down.addEventListener("click", (e) => {
@@ -378,7 +397,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
       // icosaItemShaderMaterial.uniforms.time.value = playhead * 0.1;
 
-      // icosaItemMesh.rotation.y = time * 100;
+      // skySphereMesh.rotation.y = time * 100;
 
       spacehipShaderMaterial.uniforms.time.value = -playhead;
       cageShaderMaterial.uniforms.time.value = -playhead;
