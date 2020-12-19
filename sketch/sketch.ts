@@ -373,6 +373,11 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       // x: 22,
       ease: Quad.easeIn,
     });
+    TweenMax.to(spaceshipMesh.position, 2, {
+      y: 20,
+      // x: 22,
+      ease: Quad.easeIn,
+    });
 
     TweenMax.to(controls.object.position, 4, {
       x: 40,

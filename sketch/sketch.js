@@ -300,6 +300,11 @@ const sketch = ({ context }) => {
             // x: 22,
             ease: Quad.easeIn,
         });
+        TweenMax.to(spaceshipMesh.position, 2, {
+            y: 20,
+            // x: 22,
+            ease: Quad.easeIn,
+        });
         TweenMax.to(controls.object.position, 4, {
             x: 40,
             z: 0,
