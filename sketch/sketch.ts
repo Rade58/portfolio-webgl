@@ -411,6 +411,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
     TweenMax.to(controls.object.position, 2, {
       x: 0.4,
+      z: 0.4,
       ease: Elastic.easeIn,
     });
 
