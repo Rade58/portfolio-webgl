@@ -3,7 +3,7 @@ const glsl = require("glslify");
 export default glsl(/* glsl */ `
 
 
-#pragma glslify: snoise4 = require(glsl-noise/simplex/4d)
+    #pragma glslify: snoise4 = require(glsl-noise/simplex/4d)
     #pragma glslify: snoise3 = require('glsl-noise/simplex/3d');
 
     varying vec2 vUv;

@@ -57,7 +57,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   //   ----------- GEMETRIES ------------
 
   const plane0Geo = new global.THREE.PlaneGeometry(108, 108, 8, 8);
-  const seaPlaneGeo = new global.THREE.PlaneGeometry(108, 108, 98, 98);
+  const seaPlaneGeo = new global.THREE.PlaneGeometry(108, 108, 168, 168);
   // let seaPlaneGeo = new global.THREE.RingGeometry(0.01, 98, 24, 16);
   const icosaGeo = new global.THREE.SphereGeometry(1, 16, 28);
   const spaceshipGeo = new global.THREE.IcosahedronGeometry(1, 6);
@@ -119,7 +119,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     flatShading: true,
   });
 
-  const icosaItemShaderMaterial = new global.THREE.ShaderMaterial({
+  const sunShaderMaterial = new global.THREE.ShaderMaterial({
     vertexShader: icosaItemVertex,
     fragmentShader: icosaItemFragment,
     // side: global.THREE.DoubleSide,
@@ -175,12 +175,9 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     planeMiddleShaderMaterial
   );
 
-  const icosaMesh = new global.THREE.Mesh(icosaGeo, icosaShaderMaterial);
+  const skyMesh = new global.THREE.Mesh(icosaGeo, icosaShaderMaterial);
 
-  const skySphereMesh = new global.THREE.Mesh(
-    icosaGeo,
-    icosaItemShaderMaterial
-  );
+  const sunMesh = new global.THREE.Mesh(icosaGeo, sunShaderMaterial);
 
   const spaceshipMesh = new global.THREE.Mesh(
     spaceshipGeo,
@@ -232,7 +229,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // -----------------------------------------------------------------------
   // ------INITIAL POSITIONING AND ROTATING FOR MESHES --------------------
   plane0Mesh.rotation.x = -Math.PI / 2;
-  plane0Mesh.position.y = -5.9;
+  plane0Mesh.position.y = -3.9;
   plane0Mesh.scale.setScalar(0.8);
 
   seaPlaneMesh.rotation.x = (3 * Math.PI) / 2;
@@ -243,13 +240,13 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   middlePlaneMesh.scale.copy(seaPlaneMesh.scale);
   middlePlaneMesh.position.y = -3.3;
 
-  icosaMesh.scale.setScalar(484);
-  // icosaMesh.position.y = 1;
+  skyMesh.scale.setScalar(484);
+  // skyMesh.position.y = 1;
 
-  skySphereMesh.scale.setScalar(34);
-  skySphereMesh.position.set(146, 64, 78);
-  skySphereMesh.rotation.y = Math.PI / 2;
-  skySphereMesh.rotation.z = -Math.PI / 12;
+  sunMesh.scale.setScalar(34);
+  sunMesh.position.set(246, 64, 78);
+  sunMesh.rotation.y = Math.PI / 2;
+  sunMesh.rotation.z = -Math.PI / 12;
 
   /* spaceshipMesh.scale.y = 8;
   spaceshipMesh.scale.x = 2;
@@ -267,8 +264,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   scene.add(plane0Mesh);
   scene.add(seaPlaneMesh);
   // scene.add(middlePlaneMesh);
-  scene.add(icosaMesh);
-  scene.add(skySphereMesh);
+  scene.add(skyMesh);
+  scene.add(sunMesh);
   scene.add(spaceshipMesh);
   scene.add(cageMesh);
 
@@ -283,7 +280,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // --------------------- CAMERA, CONTROLS --------------------
   // -----------------------------------------------------------
   // -----------------------------------------------------------
-  const camera = new global.THREE.PerspectiveCamera(50, 1, 0.01, 600);
+  const camera = new global.THREE.PerspectiveCamera(50, 1, 0.01, 900);
   camera.position.set(-114, 12.08, 38);
 
   const cameraLookAtVector = new global.THREE.Vector3();
@@ -303,8 +300,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   // adding light to a sun
   const directionalLight = new global.THREE.DirectionalLight("crimson", 8);
-  directionalLight.target.position.copy(skySphereMesh.position);
-  directionalLight.position.copy(skySphereMesh.position);
+  directionalLight.target.position.copy(sunMesh.position);
+  directionalLight.position.copy(sunMesh.position);
   scene.add(directionalLight);
 
   //          helpers
@@ -392,12 +389,12 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
       icosaShaderMaterial.uniforms.time.value = playhead;
 
-      icosaMesh.rotation.x = Math.sin(Math.PI * playhead * 0.6);
-      icosaMesh.rotation.z = Math.sin(Math.PI * playhead * 0.5);
+      skyMesh.rotation.x = Math.sin(Math.PI * playhead * 0.6);
+      skyMesh.rotation.z = Math.sin(Math.PI * playhead * 0.5);
 
-      // icosaItemShaderMaterial.uniforms.time.value = playhead * 0.1;
+      // sunShaderMaterial.uniforms.time.value = playhead * 0.1;
 
-      // skySphereMesh.rotation.y = time * 100;
+      // sunMesh.rotation.y = time * 100;
 
       spacehipShaderMaterial.uniforms.time.value = -playhead;
       cageShaderMaterial.uniforms.time.value = -playhead;
