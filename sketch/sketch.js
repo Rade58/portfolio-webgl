@@ -296,14 +296,14 @@ const sketch = ({ context }) => {
             ease: Elastic.easeOut,
         });
         TweenMax.to(cageMesh.position, 2, {
-            y: 158,
+            y: 138,
             // x: 22,
             ease: Quad.easeIn,
         });
-        TweenMax.to(controls.object.position, 1, {
+        TweenMax.to(controls.object.position, 4, {
             x: 40,
             z: 0,
-            y: 157,
+            y: 136,
             ease: Power2.easeOut,
         });
     });
@@ -325,13 +325,19 @@ const sketch = ({ context }) => {
             ease: Elastic.easeOut,
         });
         TweenMax.to(spaceshipMesh.position, 2, {
-            y: 158,
+            y: 138,
             // x: 22,
             ease: Quad.easeIn,
         });
         const scaleArr = cageMesh.scale.toArray();
         const newValuesScal = scaleArr.map((num) => {
             return num * 0.4;
+        });
+        TweenMax.to(cageMesh.scale, 9, {
+            x: newValuesScal[0],
+            y: newValuesScal[1],
+            z: newValuesScal[2],
+            ease: Quad.easeIn,
         });
         /* TweenMax.to(controls.object.position, 1, {
           x: 2,
@@ -343,12 +349,6 @@ const sketch = ({ context }) => {
           ease: Elastic.easeIn,
         });
      */
-        TweenMax.to(cageMesh.scale, 9, {
-            x: newValuesScal[0],
-            y: newValuesScal[1],
-            z: newValuesScal[2],
-            ease: Quad.easeIn,
-        });
     });
     // -----------------------------------------------------------------------
     // ------------------- TEST UPDATING MATERIAL ----------------------------
