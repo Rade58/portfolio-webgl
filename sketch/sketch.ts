@@ -109,7 +109,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     },
   });
 
-  const icosaShaderMaterial = new global.THREE.ShaderMaterial({
+  const starsShaderMaterial = new global.THREE.ShaderMaterial({
     vertexShader: starsIcosaVertes,
     fragmentShader: starsIcosaFragmant,
     side: global.THREE.BackSide,
@@ -175,7 +175,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     planeMiddleShaderMaterial
   );
 
-  const skyMesh = new global.THREE.Mesh(icosaGeo, icosaShaderMaterial);
+  const skyMesh = new global.THREE.Mesh(icosaGeo, starsShaderMaterial);
 
   const sunMesh = new global.THREE.Mesh(icosaGeo, sunShaderMaterial);
 
@@ -387,7 +387,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
       // planeMiddleShaderMaterial.uniforms.time.value = playhead;
 
-      icosaShaderMaterial.uniforms.time.value = playhead;
+      starsShaderMaterial.uniforms.time.value = playhead;
 
       skyMesh.rotation.x = Math.sin(Math.PI * playhead * 0.6);
       skyMesh.rotation.z = Math.sin(Math.PI * playhead * 0.5);
