@@ -191,7 +191,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   spaceshipGroup.add(spaceshipMesh, cageMesh);
 
   // -----------------------------------------------------------------
-  // -------- CREATING AND ADDING WIREFRAME ACROSS OVER THE COLORS ----------------
+  // --- CREATING AND ADDING WIREFRAME ACROSS OVER THE COLORS --------
+  // -----------------------------------------------------------------
   const seaEdgesGeometry = new global.THREE.WireframeGeometry(
     seaPlaneMesh.geometry
   );
