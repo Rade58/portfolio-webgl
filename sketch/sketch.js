@@ -328,10 +328,12 @@ const sketch = ({ context }) => {
         const newValuesScal = scaleArr.map((num) => {
             return num * 0.4;
         });
+        TweenMax.to(controls.object.position, 1, {
+            x: 2,
+            ease: Elastic.easeIn,
+        });
         TweenMax.to(controls.object.position, 2, {
-            x: 0.4,
-            z: 0.4,
-            y: 198,
+            y: 184,
             ease: Elastic.easeIn,
         });
         TweenMax.to(cageMesh.scale, 9, {
