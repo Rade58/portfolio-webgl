@@ -139,6 +139,11 @@ const sketch = ({ context }) => {
         vertexShader: spaceshipVertex,
         fragmentShader: plane0Fragment,
         wireframe: true,
+        uniforms: {
+            time: {
+                value: 0,
+            },
+        },
     });
     //  ----------- MESHES   ---------------
     const plane0Mesh = new global.THREE.Mesh(plane0Geo, plane0Material);
@@ -300,6 +305,7 @@ const sketch = ({ context }) => {
             // icosaItemShaderMaterial.uniforms.time.value = playhead * 0.1;
             // icosaItemMesh.rotation.y = time * 100;
             spacehipShaderMaterial.uniforms.time.value = -playhead;
+            cageShaderMaterial.uniforms.time.value = -playhead;
             // spaceshipMesh.rotation.y = -Math.sin(Math.PI * playhead) * 2;
             // cageMesh.rotation.y = Math.sin(Math.PI * playhead) * 12;
             //-----------------------------------------------------

@@ -154,6 +154,11 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     vertexShader: spaceshipVertex,
     fragmentShader: plane0Fragment,
     wireframe: true,
+    uniforms: {
+      time: {
+        value: 0,
+      },
+    },
   });
 
   //  ----------- MESHES   ---------------
@@ -376,6 +381,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       // icosaItemMesh.rotation.y = time * 100;
 
       spacehipShaderMaterial.uniforms.time.value = -playhead;
+      cageShaderMaterial.uniforms.time.value = -playhead;
       // spaceshipMesh.rotation.y = -Math.sin(Math.PI * playhead) * 2;
 
       // cageMesh.rotation.y = Math.sin(Math.PI * playhead) * 12;
