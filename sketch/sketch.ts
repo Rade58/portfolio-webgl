@@ -466,8 +466,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       ease: Quad.easeIn,
     });
 
-    TweenMax.to(controls.object.position, 12, {
-      y: 2,
+    TweenMax.to(controls.object.position, 6, {
+      y: 8,
       ease: Quad.easeInOut,
     });
 

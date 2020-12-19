@@ -375,8 +375,8 @@ const sketch = ({ context }) => {
             z: newValuesTarget[2],
             ease: Quad.easeIn,
         });
-        TweenMax.to(controls.object.position, 12, {
-            y: 2,
+        TweenMax.to(controls.object.position, 6, {
+            y: 8,
             ease: Quad.easeInOut,
         });
         TweenMax.to(cageMesh.position, 4, {
