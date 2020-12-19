@@ -319,6 +319,9 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // -----------------------------------------------------------------------
 
   controls.object.position.copy(camera.position);
+  controls.object.position.x = -1;
+  controls.object.position.y = 140;
+  controls.object.position.z = 0;
 
   controls.target = spaceshipMesh.position;
 
@@ -349,7 +352,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       ease: Quad.easeIn,
     });
 
-    controls.object.position.set(-1, 96, 0);
+    // controls.object.position.set(-1, 96, 0);
   });
 
   uiElements.down.addEventListener("click", (e) => {
