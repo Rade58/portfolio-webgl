@@ -326,6 +326,7 @@ const sketch = ({ context }) => {
         // ovo ide posle
         seaPlaneMesh.material.needsUpdate = true;
         seaPlaneMesh.add(seaWireframe);
+        scene.remove(middlePlaneMesh);
     });
     // -----------------------------------------------------------------------
     // -----------------------------------------------------------------------

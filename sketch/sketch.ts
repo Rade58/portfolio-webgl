@@ -405,6 +405,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     seaPlaneMesh.material.needsUpdate = true;
 
     seaPlaneMesh.add(seaWireframe);
+    scene.remove(middlePlaneMesh);
   });
 
   // -----------------------------------------------------------------------
