@@ -296,11 +296,13 @@ const sketch = ({ context }) => {
             ease: Elastic.easeOut,
         });
         TweenMax.to(cageMesh.position, 2, {
-            y: 198,
+            y: 168,
             // x: 22,
             ease: Quad.easeIn,
         });
-        // controls.object.position.x = 1;
+        controls.object.position.x = 20;
+        controls.object.position.z = 0;
+        controls.object.position.y = 168;
     });
     uiElements.down.addEventListener("click", (e) => {
         TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
@@ -320,7 +322,7 @@ const sketch = ({ context }) => {
             ease: Elastic.easeOut,
         });
         TweenMax.to(spaceshipMesh.position, 2, {
-            y: 198,
+            y: 168,
             // x: 22,
             ease: Quad.easeIn,
         });
