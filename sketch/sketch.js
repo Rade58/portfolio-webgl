@@ -185,7 +185,7 @@ const sketch = ({ context }) => {
     // -----------------------------------------------------------------------
     // ------INITIAL POSITIONING AND ROTATING FOR MESHES --------------------
     plane0Mesh.rotation.x = -Math.PI / 2;
-    plane0Mesh.position.y = -3.9;
+    plane0Mesh.position.y = -3.4;
     plane0Mesh.scale.setScalar(0.8);
     seaPlaneMesh.rotation.x = (3 * Math.PI) / 2;
     // seaPlaneMesh.position.y = -4.2;
@@ -247,8 +247,8 @@ const sketch = ({ context }) => {
     scene.add(directionalLight);
     //          helpers
     // scene.add(new global.THREE.GridHelper(8, 58, "purple", "olive"));
-    scene.add(new global.THREE.AxesHelper(4));
     scene.add(new global.THREE.PointLightHelper(light));
+    scene.add(new global.THREE.AxesHelper(4));
     // -----------------------------------------------------------------
     // -----------------------------------------------------------------
     // -----------------------------------------------------------------
