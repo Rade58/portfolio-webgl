@@ -296,14 +296,14 @@ const sketch = ({ context }) => {
             ease: Elastic.easeOut,
         });
         TweenMax.to(cageMesh.position, 2, {
-            y: 138,
+            y: 128,
             // x: 22,
             ease: Quad.easeIn,
         });
         TweenMax.to(controls.object.position, 4, {
             x: 40,
             z: 0,
-            y: 136,
+            y: 125,
             ease: Power2.easeOut,
         });
     });
@@ -325,7 +325,7 @@ const sketch = ({ context }) => {
             ease: Elastic.easeOut,
         });
         TweenMax.to(spaceshipMesh.position, 2, {
-            y: 138,
+            y: 128,
             // x: 22,
             ease: Quad.easeIn,
         });
