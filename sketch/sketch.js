@@ -69,8 +69,23 @@ const sketch = ({ context }) => {
             },
         },
     });
-    const seaPlaneShaderMaterial = new global.THREE.ShaderMaterial({
+    const seaPlaneShaderMaterialWireframed = new global.THREE.ShaderMaterial({
         wireframe: true,
+        vertexShader: seaPlaneVertex,
+        vertexColors: true,
+        fragmentShader: seaPlaneFragmant,
+        uniforms: {
+            time: { value: 0 },
+            color: { value: new global.THREE.Color("#971245") },
+            circleSize: { value: 0 },
+        },
+        flatShading: false,
+        extensions: {
+            derivatives: true,
+        },
+    });
+    const seaPlaneShaderMaterial = new global.THREE.ShaderMaterial({
+        wireframe: false,
         vertexShader: seaPlaneVertex,
         vertexColors: true,
         fragmentShader: seaPlaneFragmant,
@@ -148,7 +163,7 @@ const sketch = ({ context }) => {
     });
     //  ----------- MESHES   ---------------
     const plane0Mesh = new global.THREE.Mesh(plane0Geo, plane0Material);
-    const seaPlaneMesh = new global.THREE.Mesh(seaPlaneGeo, seaPlaneShaderMaterial);
+    const seaPlaneMesh = new global.THREE.Mesh(seaPlaneGeo, seaPlaneShaderMaterialWireframed);
     const middlePlaneMesh = new global.THREE.Mesh(plane0Geo, planeMiddleShaderMaterial);
     const skyMesh = new global.THREE.Mesh(icosaGeo, starsShaderMaterial);
     const sunMesh = new global.THREE.Mesh(icosaGeo, sunShaderMaterial);
@@ -257,11 +272,19 @@ const sketch = ({ context }) => {
     controls.object.position.z = 0;
     controls.target = spaceshipMesh.position;
     // -----------------------------------------------------------------------
+    // ------------------- TEST UPDATING MATERIAL ----------------------------
+    // seaPlaneMesh.material.needsUpdate;
+    // -----------------------------------------------------------------------
+    // -----------------------------------------------------------------------
     // -----------------------------------------------------------------------
     // -------- GSAP STUFF  (ADDING LISTENERS TO BUTTONS) --------------------
     // -----------------------------------------------------------------------
     uiElements.up.addEventListener("click", (e) => {
         TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
+            value: 0.8,
+            ease: Elastic.easeOut,
+        });
+        TweenMax.to(seaPlaneShaderMaterialWireframed.uniforms.circleSize, 3, {
             value: 0.8,
             ease: Elastic.easeOut,
         });
@@ -282,6 +305,10 @@ const sketch = ({ context }) => {
     });
     uiElements.down.addEventListener("click", (e) => {
         TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
+            value: 0,
+            ease: Elastic.easeOut,
+        });
+        TweenMax.to(seaPlaneShaderMaterialWireframed.uniforms.circleSize, 3, {
             value: 0,
             ease: Elastic.easeOut,
         });
@@ -315,6 +342,7 @@ const sketch = ({ context }) => {
             // time RELATED UNIFORMS
             plane0Material.uniforms.playhead.value = playhead;
             seaPlaneShaderMaterial.uniforms.time.value = seaWireframeShaderMaterial.uniforms.time.value = playhead;
+            seaPlaneShaderMaterialWireframed.uniforms.time.value = playhead;
             planeMiddleShaderMaterial.uniforms.time.value = playhead;
             starsShaderMaterial.uniforms.time.value = playhead;
             skyMesh.rotation.x = Math.sin(Math.PI * playhead * 0.6);

@@ -80,8 +80,23 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     },
   });
 
-  const seaPlaneShaderMaterial = new global.THREE.ShaderMaterial({
+  const seaPlaneShaderMaterialWireframed = new global.THREE.ShaderMaterial({
     wireframe: true,
+    vertexShader: seaPlaneVertex,
+    vertexColors: true,
+    fragmentShader: seaPlaneFragmant,
+    uniforms: {
+      time: { value: 0 },
+      color: { value: new global.THREE.Color("#971245") },
+      circleSize: { value: 0 },
+    },
+    flatShading: false,
+    extensions: {
+      derivatives: true,
+    },
+  });
+  const seaPlaneShaderMaterial = new global.THREE.ShaderMaterial({
+    wireframe: false,
     vertexShader: seaPlaneVertex,
     vertexColors: true,
     fragmentShader: seaPlaneFragmant,
@@ -167,7 +182,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   const plane0Mesh = new global.THREE.Mesh(plane0Geo, plane0Material);
   const seaPlaneMesh = new global.THREE.Mesh(
     seaPlaneGeo,
-    seaPlaneShaderMaterial
+    seaPlaneShaderMaterialWireframed
   );
 
   const middlePlaneMesh = new global.THREE.Mesh(
@@ -326,12 +341,22 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   controls.target = spaceshipMesh.position;
 
   // -----------------------------------------------------------------------
+  // ------------------- TEST UPDATING MATERIAL ----------------------------
+  // seaPlaneMesh.material.needsUpdate;
+
+  // -----------------------------------------------------------------------
+  // -----------------------------------------------------------------------
+
   // -----------------------------------------------------------------------
   // -------- GSAP STUFF  (ADDING LISTENERS TO BUTTONS) --------------------
   // -----------------------------------------------------------------------
 
   uiElements.up.addEventListener("click", (e) => {
     TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
+      value: 0.8,
+      ease: Elastic.easeOut,
+    });
+    TweenMax.to(seaPlaneShaderMaterialWireframed.uniforms.circleSize, 3, {
       value: 0.8,
       ease: Elastic.easeOut,
     });
@@ -357,6 +382,10 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   uiElements.down.addEventListener("click", (e) => {
     TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
+      value: 0,
+      ease: Elastic.easeOut,
+    });
+    TweenMax.to(seaPlaneShaderMaterialWireframed.uniforms.circleSize, 3, {
       value: 0,
       ease: Elastic.easeOut,
     });
@@ -396,6 +425,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       plane0Material.uniforms.playhead.value = playhead;
 
       seaPlaneShaderMaterial.uniforms.time.value = seaWireframeShaderMaterial.uniforms.time.value = playhead;
+      seaPlaneShaderMaterialWireframed.uniforms.time.value = playhead;
 
       planeMiddleShaderMaterial.uniforms.time.value = playhead;
 
