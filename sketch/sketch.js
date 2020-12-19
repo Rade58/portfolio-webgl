@@ -365,8 +365,18 @@ const sketch = ({ context }) => {
         seaPlaneMesh.material.needsUpdate = true;
         seaPlaneMesh.add(seaWireframe);
         scene.remove(middlePlaneMesh);
-        TweenMax.to(controls.object.rotation, 12, {
-            y: 2 * Math.PI,
+        const newTargetVector = new global.THREE.Vector3(...spaceshipMesh.position.toArray());
+        const newValuesTarget = sunMesh.position.toArray();
+        controls.target = newTargetVector;
+        controls.update();
+        TweenMax.to(controls.target, 9, {
+            x: newValuesTarget[0],
+            y: newValuesTarget[1],
+            z: newValuesTarget[2],
+            ease: Quad.easeIn,
+        });
+        TweenMax.to(controls.object.position, 12, {
+            y: 2,
             ease: Quad.easeInOut,
         });
         TweenMax.to(cageMesh.position, 4, {
@@ -376,17 +386,6 @@ const sketch = ({ context }) => {
         TweenMax.to(spaceshipMesh.position, 4, {
             y: -24,
             ease: Elastic.easeInOut,
-        });
-        TweenMax.to(controls.object, 8, {
-            y: 2,
-            ease: Elastic.easeIn,
-        });
-        const newValuesTarget = sunMesh.position.toArray();
-        TweenMax.to(controls.target, 9, {
-            x: newValuesTarget[0],
-            y: newValuesTarget[1],
-            z: newValuesTarget[2],
-            ease: Quad.easeIn,
         });
     });
     // preventing snapshots
