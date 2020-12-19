@@ -339,7 +339,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       ease: Quad.easeIn,
     });
 
-    controls.object.position.set(0, 96, 0);
+    controls.object.position.set(-1, 96, 0);
   });
 
   uiElements.down.addEventListener("click", (e) => {
