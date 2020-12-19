@@ -226,7 +226,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // -----------------------------------------------------------------------
   // ------INITIAL POSITIONING AND ROTATING FOR MESHES --------------------
   plane0Mesh.rotation.x = -Math.PI / 2;
-  plane0Mesh.position.y = -3.7;
+  plane0Mesh.position.y = -3.8;
   plane0Mesh.scale.setScalar(0.8);
 
   seaPlaneMesh.rotation.x = (3 * Math.PI) / 2;
@@ -235,7 +235,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   middlePlaneMesh.rotation.copy(seaPlaneMesh.rotation);
   middlePlaneMesh.scale.copy(seaPlaneMesh.scale);
-  middlePlaneMesh.position.y = -3.5;
+  middlePlaneMesh.position.y = -3.6;
 
   skyMesh.scale.setScalar(484);
   // skyMesh.position.y = 1;
@@ -384,7 +384,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
       seaPlaneShaderMaterial.uniforms.time.value = seaWireframeShaderMaterial.uniforms.time.value = playhead;
 
-      // planeMiddleShaderMaterial.uniforms.time.value = playhead;
+      planeMiddleShaderMaterial.uniforms.time.value = playhead;
 
       starsShaderMaterial.uniforms.time.value = playhead;
 

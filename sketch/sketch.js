@@ -96,20 +96,20 @@ const sketch = ({ context }) => {
             circleSize: { value: 0 },
         },
     });
-    const icosaShaderMaterial = new global.THREE.ShaderMaterial({
+    const starsShaderMaterial = new global.THREE.ShaderMaterial({
         vertexShader: starsIcosaVertes,
         fragmentShader: starsIcosaFragmant,
         side: global.THREE.BackSide,
         uniforms: {
             time: { value: 0 },
         },
-        flatShading: true,
+        flatShading: false,
     });
     const sunShaderMaterial = new global.THREE.ShaderMaterial({
         vertexShader: icosaItemVertex,
         fragmentShader: icosaItemFragment,
         // side: global.THREE.DoubleSide,
-        flatShading: true,
+        flatShading: false,
         uniforms: {
             time: {
                 value: 0,
@@ -150,14 +150,15 @@ const sketch = ({ context }) => {
     const plane0Mesh = new global.THREE.Mesh(plane0Geo, plane0Material);
     const seaPlaneMesh = new global.THREE.Mesh(seaPlaneGeo, seaPlaneShaderMaterial);
     const middlePlaneMesh = new global.THREE.Mesh(plane0Geo, planeMiddleShaderMaterial);
-    const skyMesh = new global.THREE.Mesh(icosaGeo, icosaShaderMaterial);
+    const skyMesh = new global.THREE.Mesh(icosaGeo, starsShaderMaterial);
     const sunMesh = new global.THREE.Mesh(icosaGeo, sunShaderMaterial);
     const spaceshipMesh = new global.THREE.Mesh(spaceshipGeo, spacehipShaderMaterial);
     const cageMesh = new global.THREE.Mesh(spaceshipGeo, cageShaderMaterial);
     const spaceshipGroup = new global.THREE.Group();
     spaceshipGroup.add(spaceshipMesh, cageMesh);
     // -----------------------------------------------------------------
-    // -------- CREATING AND ADDING WIREFRAME ACROSS OVER THE COLORS ----------------
+    // --- CREATING AND ADDING WIREFRAME ACROSS OVER THE COLORS --------
+    // -----------------------------------------------------------------
     const seaEdgesGeometry = new global.THREE.WireframeGeometry(seaPlaneMesh.geometry);
     const seaWireframeShaderMaterial = new global.THREE.ShaderMaterial({
         // wireframe: true,
@@ -173,26 +174,24 @@ const sketch = ({ context }) => {
             color: { value: new global.THREE.Color("#971245") },
             circleSize: { value: 0 },
         },
-        // flatShading: false,
+        flatShading: false,
         extensions: {
             derivatives: true,
         },
     });
     const seaWireframe = new global.THREE.LineSegments(seaEdgesGeometry, seaWireframeShaderMaterial);
-    // seaPlaneMesh.add(seaWireframe);
-    // seaWireframe.position.y = seaWireframe.position.y + 2.2;
     // -----------------------------------------------------------------------
     // -----------------------------------------------------------------------
     // ------INITIAL POSITIONING AND ROTATING FOR MESHES --------------------
     plane0Mesh.rotation.x = -Math.PI / 2;
-    plane0Mesh.position.y = -3.7;
+    plane0Mesh.position.y = -3.8;
     plane0Mesh.scale.setScalar(0.8);
     seaPlaneMesh.rotation.x = (3 * Math.PI) / 2;
     // seaPlaneMesh.position.y = -4.2;
     seaPlaneMesh.scale.setScalar(6.2);
     middlePlaneMesh.rotation.copy(seaPlaneMesh.rotation);
     middlePlaneMesh.scale.copy(seaPlaneMesh.scale);
-    middlePlaneMesh.position.y = -3.5;
+    middlePlaneMesh.position.y = -3.6;
     skyMesh.scale.setScalar(484);
     // skyMesh.position.y = 1;
     sunMesh.scale.setScalar(64);
@@ -216,6 +215,7 @@ const sketch = ({ context }) => {
     scene.add(sunMesh);
     scene.add(spaceshipMesh);
     scene.add(cageMesh);
+    // seaPlaneMesh.add(seaWireframe);
     // ---------------------------------------------------------------------------------
     // ---------------------------------------------------------------------------------
     // -------  ADDING MESHES TO STATE MACHINE CONTEXT  --------------------------------
@@ -311,8 +311,8 @@ const sketch = ({ context }) => {
             // time RELATED UNIFORMS
             plane0Material.uniforms.playhead.value = playhead;
             seaPlaneShaderMaterial.uniforms.time.value = seaWireframeShaderMaterial.uniforms.time.value = playhead;
-            // planeMiddleShaderMaterial.uniforms.time.value = playhead;
-            icosaShaderMaterial.uniforms.time.value = playhead;
+            planeMiddleShaderMaterial.uniforms.time.value = playhead;
+            starsShaderMaterial.uniforms.time.value = playhead;
             skyMesh.rotation.x = Math.sin(Math.PI * playhead * 0.6);
             skyMesh.rotation.z = Math.sin(Math.PI * playhead * 0.5);
             // sunShaderMaterial.uniforms.time.value = playhead * 0.1;

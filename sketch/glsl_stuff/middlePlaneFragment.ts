@@ -50,7 +50,7 @@ export default glsl(/* glsl */ `
     if(mask < 0.5) discard;
 
     // vec3 col = mix(vec3(0.6), color,mask);
-    vec3 col = mix(vec3(0.6), vec3(0.46, 0.2, vUv.x),mask);
+    vec3 col = mix(vec3(0.4, sin(vUv.x * 0.4), 0.6), vec3(0.28, 0.28, sin(vUv.x * 0.8)),mask);
 
     col += rim * 0.068;
 
