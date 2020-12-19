@@ -320,7 +320,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   controls.object.position.copy(camera.position);
 
-  // controls.target = spaceshipMesh.position;
+  controls.target = spaceshipMesh.position;
 
   // -----------------------------------------------------------------------
   // -----------------------------------------------------------------------

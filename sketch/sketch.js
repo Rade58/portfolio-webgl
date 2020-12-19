@@ -252,7 +252,7 @@ const sketch = ({ context }) => {
     // ------------ STARTING CAMERA POSITION ---------------------------------
     // -----------------------------------------------------------------------
     controls.object.position.copy(camera.position);
-    // controls.target = spaceshipMesh.position;
+    controls.target = spaceshipMesh.position;
     // -----------------------------------------------------------------------
     // -----------------------------------------------------------------------
     // -------- GSAP STUFF  (ADDING LISTENERS TO BUTTONS) --------------------
