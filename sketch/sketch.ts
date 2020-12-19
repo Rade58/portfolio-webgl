@@ -221,10 +221,6 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     seaWireframeShaderMaterial
   );
 
-  // seaPlaneMesh.add(seaWireframe);
-
-  // seaWireframe.position.y = seaWireframe.position.y + 2.2;
-
   // -----------------------------------------------------------------------
   // -----------------------------------------------------------------------
   // ------INITIAL POSITIONING AND ROTATING FOR MESHES --------------------
@@ -268,6 +264,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   scene.add(sunMesh);
   scene.add(spaceshipMesh);
   scene.add(cageMesh);
+
+  // seaPlaneMesh.add(seaWireframe);
 
   // ---------------------------------------------------------------------------------
   // ---------------------------------------------------------------------------------
