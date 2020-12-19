@@ -208,6 +208,7 @@ const sketch = ({ context }) => {
     middlePlaneMesh.scale.copy(seaPlaneMesh.scale);
     middlePlaneMesh.position.y = -3.6;
     skyMesh.scale.setScalar(484);
+    skyMesh.rotation.z = Math.PI / 2 - Math.PI / 8;
     // skyMesh.position.y = 1;
     sunMesh.scale.setScalar(64);
     sunMesh.position.set(392, 34, 78);
@@ -322,6 +323,9 @@ const sketch = ({ context }) => {
     // removing middleplane
     context.canvas.addEventListener("click", () => {
         seaPlaneMesh.material = seaPlaneShaderMaterial;
+        // ovo ide posle
+        seaPlaneMesh.material.needsUpdate = true;
+        seaPlaneMesh.add(seaWireframe);
     });
     // -----------------------------------------------------------------------
     // -----------------------------------------------------------------------
@@ -349,8 +353,8 @@ const sketch = ({ context }) => {
             seaPlaneShaderMaterialWireframed.uniforms.time.value = playhead;
             planeMiddleShaderMaterial.uniforms.time.value = playhead;
             starsShaderMaterial.uniforms.time.value = playhead;
-            skyMesh.rotation.x = Math.sin(Math.PI * playhead * 0.6);
-            skyMesh.rotation.z = Math.sin(Math.PI * playhead * 0.5);
+            // skyMesh.rotation.x = Math.sin(Math.PI * playhead * 0.6);
+            // skyMesh.rotation.z = Math.sin(Math.PI * playhead * 0.5);
             // sunShaderMaterial.uniforms.time.value = playhead * 0.1;
             // sunMesh.rotation.y = time * 100;
             spacehipShaderMaterial.uniforms.time.value = -playhead;
