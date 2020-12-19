@@ -267,13 +267,16 @@ const sketch = ({ context }) => {
     // -----------------------------------------------------------------------
     // ------------ STARTING CAMERA POSITION ---------------------------------
     // -----------------------------------------------------------------------
+    // -----------------------------------------------------------------------
     controls.object.position.copy(camera.position);
     controls.object.position.x = -1;
     controls.object.position.y = 140;
     controls.object.position.z = 0;
     controls.target = spaceshipMesh.position;
     // -----------------------------------------------------------------------
-    // -------- GSAP STUFF  (ADDING LISTENERS TO BUTTONS) --------------------
+    // -----------------------------------------------------------------------
+    // -------- GSAP STUFF  (ADDING LISTENERS TO BUTTONS) (TRYOUT) --------------------
+    // -----------------------------------------------------------------------
     // -----------------------------------------------------------------------
     uiElements.up.addEventListener("click", (e) => {
         TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {

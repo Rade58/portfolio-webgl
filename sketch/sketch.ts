@@ -333,6 +333,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // -----------------------------------------------------------------------
   // ------------ STARTING CAMERA POSITION ---------------------------------
   // -----------------------------------------------------------------------
+  // -----------------------------------------------------------------------
 
   controls.object.position.copy(camera.position);
   controls.object.position.x = -1;
@@ -342,7 +343,9 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   controls.target = spaceshipMesh.position;
 
   // -----------------------------------------------------------------------
-  // -------- GSAP STUFF  (ADDING LISTENERS TO BUTTONS) --------------------
+  // -----------------------------------------------------------------------
+  // -------- GSAP STUFF  (ADDING LISTENERS TO BUTTONS) (TRYOUT) --------------------
+  // -----------------------------------------------------------------------
   // -----------------------------------------------------------------------
 
   uiElements.up.addEventListener("click", (e) => {
