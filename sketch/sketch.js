@@ -5,7 +5,7 @@ import uiElements from "./ui/user_interface";
 import settings, { settingsFunc } from "./sketch-settings";
 //
 // ANIMATION LIBRATRIES
-import { TweenMax, Elastic, Quad } from "gsap";
+import { TweenMax, Elastic, Power2, Quad } from "gsap";
 //
 // ----- MOZDA CU KORISTITI ALI VEROVATNO NE -------
 /*
@@ -300,9 +300,12 @@ const sketch = ({ context }) => {
             // x: 22,
             ease: Quad.easeIn,
         });
-        controls.object.position.x = 20;
-        controls.object.position.z = 0;
-        controls.object.position.y = 168;
+        TweenMax.to(controls.object.position, 1, {
+            x: 40,
+            z: 0,
+            y: 168,
+            ease: Power2.easeOut,
+        });
     });
     uiElements.down.addEventListener("click", (e) => {
         TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
@@ -330,14 +333,16 @@ const sketch = ({ context }) => {
         const newValuesScal = scaleArr.map((num) => {
             return num * 0.4;
         });
-        TweenMax.to(controls.object.position, 1, {
-            x: 2,
-            ease: Elastic.easeIn,
+        /* TweenMax.to(controls.object.position, 1, {
+          x: 2,
+          ease: Elastic.easeIn,
         });
-        TweenMax.to(controls.object.position, 2, {
-            y: 184,
-            ease: Elastic.easeIn,
+     */
+        /* TweenMax.to(controls.object.position, 2, {
+          y: 184,
+          ease: Elastic.easeIn,
         });
+     */
         TweenMax.to(cageMesh.scale, 9, {
             x: newValuesScal[0],
             y: newValuesScal[1],

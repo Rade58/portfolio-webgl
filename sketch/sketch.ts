@@ -374,9 +374,12 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       ease: Quad.easeIn,
     });
 
-    controls.object.position.x = 20;
-    controls.object.position.z = 0;
-    controls.object.position.y = 168;
+    TweenMax.to(controls.object.position, 1, {
+      x: 40,
+      z: 0,
+      y: 168,
+      ease: Power2.easeOut,
+    });
   });
 
   uiElements.down.addEventListener("click", (e) => {
@@ -411,16 +414,16 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       return num * 0.4;
     });
 
-    TweenMax.to(controls.object.position, 1, {
+    /* TweenMax.to(controls.object.position, 1, {
       x: 2,
       ease: Elastic.easeIn,
     });
-
-    TweenMax.to(controls.object.position, 2, {
+ */
+    /* TweenMax.to(controls.object.position, 2, {
       y: 184,
       ease: Elastic.easeIn,
     });
-
+ */
     TweenMax.to(cageMesh.scale, 9, {
       x: newValuesScal[0],
       y: newValuesScal[1],
