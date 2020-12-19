@@ -264,7 +264,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   /* spaceshipMesh.scale.y = 8;
   spaceshipMesh.scale.x = 2;
   spaceshipMesh.scale.z = 3; */
-  spaceshipMesh.position.y = 8;
+  spaceshipMesh.position.y = -18;
   spaceshipMesh.scale.setScalar(1.8);
 
   cageMesh.position.copy(spaceshipMesh.position);
