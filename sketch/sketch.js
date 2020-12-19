@@ -375,9 +375,10 @@ const sketch = ({ context }) => {
         });
         TweenMax.to(spaceshipMesh.position, 4, {
             y: -24,
+            ease: Elastic.easeInOut,
         });
-        TweenMax.to(controls.object, 4, {
-            y: -24,
+        TweenMax.to(controls.object, 8, {
+            y: 2,
             ease: Elastic.easeIn,
         });
         const newValuesTarget = sunMesh.position.toArray();
