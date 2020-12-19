@@ -49,7 +49,7 @@ const sketch = ({ context }) => {
     //   ----------------------------------------------------------------------------------
     //   ----------- GEMETRIES ------------
     const plane0Geo = new global.THREE.PlaneGeometry(108, 108, 8, 8);
-    const seaPlaneGeo = new global.THREE.PlaneGeometry(108, 108, 58, 58);
+    const seaPlaneGeo = new global.THREE.PlaneGeometry(108, 108, 78, 78);
     // let seaPlaneGeo = new global.THREE.RingGeometry(0.01, 98, 24, 16);
     const icosaGeo = new global.THREE.SphereGeometry(1, 16, 28);
     const spaceshipGeo = new global.THREE.IcosahedronGeometry(1, 6);
@@ -102,7 +102,7 @@ const sketch = ({ context }) => {
         uniforms: {
             time: { value: 0 },
         },
-        flatShading: false,
+        flatShading: true,
     });
     const icosaItemShaderMaterial = new global.THREE.ShaderMaterial({
         vertexShader: icosaItemVertex,
@@ -181,7 +181,7 @@ const sketch = ({ context }) => {
     plane0Mesh.scale.setScalar(0.8);
     seaPlaneMesh.rotation.x = (3 * Math.PI) / 2;
     // seaPlaneMesh.position.y = -4.2;
-    seaPlaneMesh.scale.setScalar(3.4);
+    seaPlaneMesh.scale.setScalar(2.2);
     middlePlaneMesh.rotation.copy(seaPlaneMesh.rotation);
     middlePlaneMesh.scale.copy(seaPlaneMesh.scale);
     middlePlaneMesh.position.y = -3.3;
@@ -195,9 +195,9 @@ const sketch = ({ context }) => {
     spaceshipMesh.scale.x = 2;
     spaceshipMesh.scale.z = 3; */
     spaceshipMesh.position.y = 8;
-    spaceshipMesh.scale.setScalar(5.8);
+    spaceshipMesh.scale.setScalar(1.8);
     cageMesh.position.copy(spaceshipMesh.position);
-    cageMesh.scale.setScalar(9.4);
+    cageMesh.scale.setScalar(3.4);
     // ----------------------------------------------------
     // ------------- ADDING MESHES ------------------------
     // ----------------------------------------------------
