@@ -369,7 +369,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     });
 
     TweenMax.to(cageMesh.position, 2, {
-      y: 168,
+      y: 158,
       // x: 22,
       ease: Quad.easeIn,
     });
@@ -377,7 +377,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     TweenMax.to(controls.object.position, 1, {
       x: 40,
       z: 0,
-      y: 168,
+      y: 157,
       ease: Power2.easeOut,
     });
   });
@@ -403,7 +403,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     });
 
     TweenMax.to(spaceshipMesh.position, 2, {
-      y: 168,
+      y: 158,
       // x: 22,
       ease: Quad.easeIn,
     });
