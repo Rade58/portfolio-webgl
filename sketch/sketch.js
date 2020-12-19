@@ -331,6 +331,7 @@ const sketch = ({ context }) => {
         TweenMax.to(controls.object.position, 2, {
             x: 0.4,
             z: 0.4,
+            y: 0.6,
             ease: Elastic.easeIn,
         });
         TweenMax.to(cageMesh.scale, 9, {
