@@ -81,7 +81,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   });
 
   const seaPlaneShaderMaterial = new global.THREE.ShaderMaterial({
-    // wireframe: true,
+    wireframe: true,
     vertexShader: seaPlaneVertex,
     vertexColors: true,
     fragmentShader: seaPlaneFragmant,
@@ -221,7 +221,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     seaWireframeShaderMaterial
   );
 
-  seaPlaneMesh.add(seaWireframe);
+  // seaPlaneMesh.add(seaWireframe);
 
   // seaWireframe.position.y = seaWireframe.position.y + 2.2;
 
@@ -229,7 +229,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // -----------------------------------------------------------------------
   // ------INITIAL POSITIONING AND ROTATING FOR MESHES --------------------
   plane0Mesh.rotation.x = -Math.PI / 2;
-  plane0Mesh.position.y = -3.4;
+  plane0Mesh.position.y = -3.6;
   plane0Mesh.scale.setScalar(0.8);
 
   seaPlaneMesh.rotation.x = (3 * Math.PI) / 2;
@@ -238,7 +238,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   middlePlaneMesh.rotation.copy(seaPlaneMesh.rotation);
   middlePlaneMesh.scale.copy(seaPlaneMesh.scale);
-  middlePlaneMesh.position.y = -3.3;
+  middlePlaneMesh.position.y = -3.4;
 
   skyMesh.scale.setScalar(484);
   // skyMesh.position.y = 1;
@@ -263,7 +263,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   scene.add(plane0Mesh);
   scene.add(seaPlaneMesh);
-  // scene.add(middlePlaneMesh);
+  scene.add(middlePlaneMesh);
   scene.add(skyMesh);
   scene.add(sunMesh);
   scene.add(spaceshipMesh);
@@ -336,11 +336,12 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     controls.target = spaceshipMesh.position;
 
     TweenMax.to(cageMesh.position, 2, {
-      y: 28,
+      y: 198,
+      // x: 22,
       ease: Quad.easeIn,
-    }).then(() => {});
+    });
 
-    controls.object.position.set(0, 40, 0);
+    controls.object.position.set(0, 96, 0);
   });
 
   uiElements.down.addEventListener("click", (e) => {

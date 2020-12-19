@@ -42,7 +42,7 @@ export default glsl(/* glsl */ `
 
     float d = distance(pos, center);
 
-    float mask = aastep(circleSize * 0.11, d);   // ANIMIRANO SA time
+    float mask = aastep(circleSize * 0.05, d);   // ANIMIRANO SA time
     // float mask = aastep(circleSize * 0.41, d);   // ANIMIRANO SA time
 
     // float mask = aastep(0.08, d);  // NIJE ANIMIRANO
