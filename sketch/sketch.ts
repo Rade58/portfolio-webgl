@@ -285,9 +285,15 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   camera.lookAt(cameraLookAtVector);
 
-  // eslint-disable-next-line
-  // @ts-ignore
-  const controls = new global.THREE.OrbitControls(camera, context.canvas);
+  const controls: {
+    target: globalThis.THREE.Vector3;
+    object: globalThis.THREE.Object3D;
+    update: () => void;
+    dispose: () => void;
+
+    // eslint-disable-next-line
+    // @ts-ignore
+  } = new global.THREE.OrbitControls(camera, context.canvas);
   // const controls = new global.THREE.TrackballControls(camera, context.canvas);
   //
   // ----------------------------------------------------------------
@@ -312,6 +318,10 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // ------------ STARTING CAMERA POSITION ---------------------------------
   // -----------------------------------------------------------------------
 
+  controls.object.position.copy(camera.position);
+
+  // controls.target = spaceshipMesh.position;
+
   // -----------------------------------------------------------------------
   // -----------------------------------------------------------------------
   // -------- GSAP STUFF  (ADDING LISTENERS TO BUTTONS) --------------------
@@ -332,11 +342,6 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       value: 0.8,
       ease: Elastic.easeOut,
     });
-
-    // camera movement
-    controls.object.position.copy(camera.position);
-
-    controls.target = spaceshipMesh.position;
 
     TweenMax.to(cageMesh.position, 2, {
       y: 198,

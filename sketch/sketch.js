@@ -230,8 +230,6 @@ const sketch = ({ context }) => {
     camera.position.set(-114, 12.08, 38);
     const cameraLookAtVector = new global.THREE.Vector3();
     camera.lookAt(cameraLookAtVector);
-    // eslint-disable-next-line
-    // @ts-ignore
     const controls = new global.THREE.OrbitControls(camera, context.canvas);
     // const controls = new global.THREE.TrackballControls(camera, context.canvas);
     //
@@ -253,6 +251,8 @@ const sketch = ({ context }) => {
     // -----------------------------------------------------------------------
     // ------------ STARTING CAMERA POSITION ---------------------------------
     // -----------------------------------------------------------------------
+    controls.object.position.copy(camera.position);
+    // controls.target = spaceshipMesh.position;
     // -----------------------------------------------------------------------
     // -----------------------------------------------------------------------
     // -------- GSAP STUFF  (ADDING LISTENERS TO BUTTONS) --------------------
@@ -270,9 +270,6 @@ const sketch = ({ context }) => {
             value: 0.8,
             ease: Elastic.easeOut,
         });
-        // camera movement
-        controls.object.position.copy(camera.position);
-        controls.target = spaceshipMesh.position;
         TweenMax.to(cageMesh.position, 2, {
             y: 198,
             // x: 22,
