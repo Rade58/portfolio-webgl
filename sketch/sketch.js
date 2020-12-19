@@ -325,15 +325,19 @@ const sketch = ({ context }) => {
             ease: Quad.easeIn,
         });
         const scaleArr = cageMesh.scale.toArray();
-        const blah = scaleArr.map((num) => {
-            console.log(num);
-            return 2;
+        const newValuesScal = scaleArr.map((num) => {
+            return num * 0.4;
         });
-        /* TweenMax.to(cageMesh.scale, 6, {
-    
-          // x: 22,
-          ease: Quad.easeIn,
-        }); */
+        TweenMax.to(controls.object.position, 2, {
+            x: 0.4,
+            ease: Elastic.easeIn,
+        });
+        TweenMax.to(cageMesh.scale, 9, {
+            x: newValuesScal[0],
+            y: newValuesScal[1],
+            z: newValuesScal[2],
+            ease: Quad.easeIn,
+        });
     });
     // -----------------------------------------------------------------------
     // ------------------- TEST UPDATING MATERIAL ----------------------------
