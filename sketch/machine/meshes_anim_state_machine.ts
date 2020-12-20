@@ -159,6 +159,7 @@ const animMachine = createMachine<
               spaceshipMesh,
             })
           ),
+          target: fse.init,
         },
       },
     },
