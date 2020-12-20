@@ -7,6 +7,8 @@ import settings, { settingsFunc } from "./sketch-settings";
 // ANIMATION LIBRATRIES
 import { TweenMax, Elastic, Power2, Quad } from "gsap";
 //
+// STATE MACHINE
+import { EE, animMachineService as service, } from "./machine/meshes_anim_state_machine";
 // ----- MOZDA CU KORISTITI ALI VEROVATNO NE -------
 /*
 const glsl = require("glslify");
@@ -273,6 +275,24 @@ const sketch = ({ context }) => {
     controls.object.position.y = 118;
     controls.object.position.z = 0;
     controls.target = spaceshipMesh.position;
+    // -------------------------------------------------------------------
+    // -------------- STATE MACHINE INITIAL SETUP ------------------------
+    // -------------------------------------------------------------------
+    service.send({
+        type: EE.SETUP,
+        payload: {
+            cageMesh,
+            controls,
+            middlePlaneMesh,
+            planeMiddleShaderMaterial,
+            seaPlaneMesh,
+            seaPlaneShaderMaterial,
+            seaPlaneShaderMaterialWireframed,
+            seaWireframeShaderMaterial,
+            spaceshipMesh,
+        },
+    });
+    // -------------------------------------------------------------------
     // -----------------------------------------------------------------------
     // -----------------------------------------------------------------------
     // -------- GSAP STUFF  (ADDING LISTENERS TO BUTTONS) (TRYOUT) --------------------
