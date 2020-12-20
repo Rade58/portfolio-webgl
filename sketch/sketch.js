@@ -346,45 +346,52 @@ const sketch = ({ context }) => {
         }); */
     });
     uiElements.down.addEventListener("click", (e) => {
-        TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
-            value: 0,
-            ease: Elastic.easeOut,
+        service.send({
+            type: EE.HELLO,
+        });
+        service.send({
+            type: EE.MOVE_DOWN,
+        });
+        service.send({
+            type: EE.SWITCH,
+        });
+        /* TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
+          value: 0,
+          ease: Elastic.easeOut,
         });
         TweenMax.to(seaPlaneShaderMaterialWireframed.uniforms.circleSize, 3, {
-            value: 0,
-            ease: Elastic.easeOut,
+          value: 0,
+          ease: Elastic.easeOut,
         });
+    
         TweenMax.to(planeMiddleShaderMaterial.uniforms.circleSize, 3, {
-            value: 0,
-            ease: Elastic.easeOut,
+          value: 0,
+          ease: Elastic.easeOut,
         });
+    
         TweenMax.to(seaWireframeShaderMaterial.uniforms.circleSize, 3, {
-            value: 0,
-            ease: Elastic.easeOut,
+          value: 0,
+          ease: Elastic.easeOut,
         });
+    
         TweenMax.to(spaceshipMesh.position, 2, {
-            y: 128,
-            // x: 22,
-            ease: Quad.easeIn,
+          y: 128,
+          // x: 22,
+          ease: Quad.easeIn,
         });
+    
         const scaleArr = cageMesh.scale.toArray();
+    
         const newValuesScal = scaleArr.map((num) => {
-            return num * 0.4;
+          return num * 0.4;
         });
+    
         TweenMax.to(cageMesh.scale, 9, {
-            x: newValuesScal[0],
-            y: newValuesScal[1],
-            z: newValuesScal[2],
-            ease: Quad.easeIn,
-        });
-        /* TweenMax.to(controls.object.position, 1, {
-          x: 2,
-          ease: Elastic.easeIn,
-        });
-     */
-        /* TweenMax.to(controls.object.position, 2, {
-          y: 184,
-          ease: Elastic.easeIn,
+          x: newValuesScal[0],
+          y: newValuesScal[1],
+          z: newValuesScal[2],
+    
+          ease: Quad.easeIn,
         });
      */
     });

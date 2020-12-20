@@ -160,11 +160,11 @@ const animMachine = createMachine<
 >(
   {
     id: "sketch_anim_machine",
-    initial: fse.aboutme,
+    initial: fse.hello_world,
     context: {
       majorFiniteStatesArr: MAJOR_FINITE_STATES_ARRAY,
       majorFiniteStatesArrLength: MAJOR_FS_ARR_LENGTH,
-      currentMajorStateNum: 0,
+      currentMajorStateNum: 2,
       up: false,
       canMoveToIdle: true,
       tl: new TimelineLite(),

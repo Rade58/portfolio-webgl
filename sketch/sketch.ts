@@ -424,7 +424,19 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   });
 
   uiElements.down.addEventListener("click", (e) => {
-    TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
+    service.send({
+      type: EE.HELLO,
+    });
+
+    service.send({
+      type: EE.MOVE_DOWN,
+    });
+
+    service.send({
+      type: EE.SWITCH,
+    });
+
+    /* TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
       value: 0,
       ease: Elastic.easeOut,
     });
@@ -461,16 +473,6 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       z: newValuesScal[2],
 
       ease: Quad.easeIn,
-    });
-
-    /* TweenMax.to(controls.object.position, 1, {
-      x: 2,
-      ease: Elastic.easeIn,
-    });
- */
-    /* TweenMax.to(controls.object.position, 2, {
-      y: 184,
-      ease: Elastic.easeIn,
     });
  */
   });
