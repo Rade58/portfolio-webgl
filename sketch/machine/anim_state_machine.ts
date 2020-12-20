@@ -12,13 +12,16 @@ export enum fse {
 
 export enum EE {
   SETUP = "SETUP",
-  CHANGE_TO_ABOUT_ME = "CHANGE_TO_ABOUT_ME",
+  /* CHANGE_TO_ABOUT_ME = "CHANGE_TO_ABOUT_ME",
   CHANGE_TO_BLOG = "CHANGE_TO_BLOG",
-  CHANGE_TO_PROJECTS = "CHANGE_TO_PROJECTS",
+  CHANGE_TO_PROJECTS = "CHANGE_TO_PROJECTS", */
   SWITCH = "SWITCH",
   MOVE_UP = "MOVE_UP",
   MOVE_DOWN = "MOVE_DOWN",
 }
+
+const MAJOR_FINITE_STATES_ARRAY = [fse.aboutme, fse.projects, fse.blog];
+const MAJOR_FS_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
 
 // context HELPER TYPE ---------------------
 interface ContextFullI {
@@ -87,15 +90,6 @@ type machineEventGenericType =
           dispose: () => void;
         };
       };
-    }
-  | {
-      type: EE.CHANGE_TO_ABOUT_ME;
-    }
-  | {
-      type: EE.CHANGE_TO_PROJECTS;
-    }
-  | {
-      type: EE.CHANGE_TO_BLOG;
     }
   | {
       type: EE.SWITCH;
@@ -202,48 +196,8 @@ const animMachine = createMachine<
         },
       },
       [fse.idle]: {
-        //
         on: {
-          [EE.CHANGE_TO_ABOUT_ME]: {
-            //
-            actions: [],
-            target: fse.aboutme,
-          },
-          [EE.CHANGE_TO_PROJECTS]: {
-            //
-            target: fse.projects,
-          },
-          [EE.CHANGE_TO_BLOG]: {
-            //
-            target: fse.blog,
-          },
-        },
-      },
-      [fse.aboutme]: {
-        //
-        on: {
-          "*": {
-            cond: "moveToIdle",
-            target: fse.idle,
-          },
-        },
-      },
-      [fse.projects]: {
-        //
-        on: {
-          "*": {
-            cond: "moveToIdle",
-            target: fse.idle,
-          },
-        },
-      },
-      [fse.blog]: {
-        //
-        on: {
-          "*": {
-            cond: "moveToIdle",
-            target: fse.idle,
-          },
+          [EE.SWITCH]: {},
         },
       },
     },
