@@ -10,8 +10,8 @@ export enum fse {
   hello_world = "hello_world",
   //---- major -states (all of them shoud have transitions to idle)
   aboutme = "aboutme",
-  blog = "blog",
   projects = "projects",
+  blog = "blog",
   //
   up_or_down = "up_or_down",
 }
@@ -307,7 +307,7 @@ const animMachine = createMachine<
           // ---------------------------------------------
         },
       },
-      [MAJOR_FINITE_STATES_ARRAY[0]]: {
+      [MAJOR_FINITE_STATES_ARRAY[0] /* aboutme */]: {
         on: {
           "*": {
             cond: "allowIdle",
@@ -315,7 +315,7 @@ const animMachine = createMachine<
           },
         },
       },
-      [MAJOR_FINITE_STATES_ARRAY[1]]: {
+      [MAJOR_FINITE_STATES_ARRAY[1] /* projects */]: {
         on: {
           "*": {
             cond: "allowIdle",
@@ -323,7 +323,7 @@ const animMachine = createMachine<
           },
         },
       },
-      [MAJOR_FINITE_STATES_ARRAY[2]]: {
+      [MAJOR_FINITE_STATES_ARRAY[2] /* blog */]: {
         on: {
           "*": {
             cond: "allowIdle",
