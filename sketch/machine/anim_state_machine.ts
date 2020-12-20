@@ -291,11 +291,11 @@ const animMachine = createMachine<
 
           // ---------------------------------------------
         },
-      },
-      [MAJOR_FINITE_STATES_ARRAY[0] /* aboutme */]: {
-        entry: assign((_, __) => {
+        exit: assign((_, __) => {
           return { canMoveToIdle: false };
         }),
+      },
+      [MAJOR_FINITE_STATES_ARRAY[0] /* aboutme */]: {
         on: {
           "*": {
             actions: [
@@ -311,9 +311,6 @@ const animMachine = createMachine<
         },
       },
       [MAJOR_FINITE_STATES_ARRAY[1] /* projects */]: {
-        entry: assign((_, __) => {
-          return { canMoveToIdle: false };
-        }),
         on: {
           "*": {
             actions: [
@@ -328,9 +325,6 @@ const animMachine = createMachine<
         },
       },
       [MAJOR_FINITE_STATES_ARRAY[2] /* blog */]: {
-        entry: assign((_, __) => {
-          return { canMoveToIdle: false };
-        }),
         on: {
           "*": {
             actions: [
