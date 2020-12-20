@@ -150,7 +150,7 @@ const animMachine = createMachine<
       majorFiniteStatesArrLength: MAJOR_FS_ARR_LENGTH,
       currentMajorStateNum: 0,
       up: false,
-      canMoveToIdle: false,
+      canMoveToIdle: true,
       tl: new TimelineLite(),
       cageMesh: null,
       controls: null,
