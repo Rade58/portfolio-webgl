@@ -252,6 +252,7 @@ const animMachine = createMachine<
         on: {
           "*": {
             cond: "moveToIdle",
+            target: fse.idle,
           },
         },
       },
@@ -259,6 +260,7 @@ const animMachine = createMachine<
         on: {
           "*": {
             cond: "moveToIdle",
+            target: fse.idle,
           },
         },
       },
@@ -266,6 +268,7 @@ const animMachine = createMachine<
         on: {
           "*": {
             cond: "moveToIdle",
+            target: fse.idle,
           },
         },
       },
