@@ -15,8 +15,13 @@ export enum EE {
   CHANGE = "CHANGE",
 }
 
+// ------------------ STATE HELPERS -----------------------
+const MAJOR_STATES_ARR = [fse.aboutme, fse.projects, fse.blog];
+const MAJOR_STATES_LENGTH = MAJOR_STATES_ARR.length;
 // context HELPER TYPE ---------------------
 interface ContextFullI {
+  currentStateNumber: number | null;
+  canMoveFromIdle: boolean;
   seaPlaneShaderMaterial: ShaderMaterial;
   seaPlaneShaderMaterialWireframed: ShaderMaterial;
   seaWireframeShaderMaterial: ShaderMaterial;
@@ -37,6 +42,8 @@ interface ContextFullI {
 // ------------ GENERIC TYPES FOR MACHINE
 
 interface MachineContextGenericI {
+  currentStateNumber: number | null;
+  canMoveFromIdle: boolean;
   // materials
   seaPlaneShaderMaterial: ShaderMaterial | null;
   seaPlaneShaderMaterialWireframed: ShaderMaterial | null;
@@ -117,6 +124,8 @@ const animMachine = createMachine<
   id: "sketch_anim_machine",
   initial: fse.init,
   context: {
+    currentStateNumber: null,
+    canMoveFromIdle: false,
     cageMesh: null,
     controls: null,
     middlePlaneMesh: null,
@@ -159,9 +168,20 @@ const animMachine = createMachine<
               spaceshipMesh,
             })
           ),
-          target: fse.init,
+          target: fse.idle,
         },
       },
+    },
+    [fse.idle]: {
+      entry: [
+        assign(({ currentStateNumber }) => {
+          if (currentStateNumber === MAJOR_STATES_LENGTH - 1) {
+            return { currentStateNumber: 0 };
+          }
+
+          return { currentStateNumber: currentStateNumber + 1 };
+        }),
+      ],
     },
   },
 });
