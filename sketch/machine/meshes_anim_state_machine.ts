@@ -1,5 +1,5 @@
 import { Vector3, Object3D, ShaderMaterial, Mesh } from "three";
-import { TweenMax } from "gsap";
+import { TweenMax, TimelineLite } from "gsap";
 import { createMachine, assign, interpret } from "xstate";
 
 export enum fse {
