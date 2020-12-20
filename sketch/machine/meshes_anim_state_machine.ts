@@ -182,6 +182,11 @@ const animMachine = createMachine<
           return { currentStateNumber: currentStateNumber + 1 };
         }),
       ],
+      on: {
+        [EE.CHANGE]: {
+          // target: []
+        },
+      },
     },
   },
 });
