@@ -261,7 +261,7 @@ const animMachine = createMachine<
       [MAJOR_FINITE_STATES_ARRAY[0]]: {
         on: {
           "*": {
-            cond: "moveToIdle",
+            cond: "allowIdle",
             target: fse.idle,
           },
         },
@@ -269,7 +269,7 @@ const animMachine = createMachine<
       [MAJOR_FINITE_STATES_ARRAY[1]]: {
         on: {
           "*": {
-            cond: "moveToIdle",
+            cond: "allowIdle",
             target: fse.idle,
           },
         },
@@ -277,7 +277,7 @@ const animMachine = createMachine<
       [MAJOR_FINITE_STATES_ARRAY[2]]: {
         on: {
           "*": {
-            cond: "moveToIdle",
+            cond: "allowIdle",
             target: fse.idle,
           },
         },
@@ -286,7 +286,7 @@ const animMachine = createMachine<
   },
   {
     guards: {
-      moveToIdle: (context, event) => {
+      allowIdle: (context, event) => {
         const { canMoveToIdle } = context;
         return canMoveToIdle;
       },
