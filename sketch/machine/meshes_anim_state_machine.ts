@@ -15,6 +15,7 @@ export enum EE {
   CHANGE_TO_ABOUT_ME = "CHANGE_TO_ABOUT_ME",
   CHANGE_TO_BLOG = "CHANGE_TO_BLOG",
   CHANGE_TO_PROJECTS = "CHANGE_TO_PROJECTS",
+  SWITCH = "SWITCH",
 }
 
 // context HELPER TYPE ---------------------
@@ -91,6 +92,9 @@ type machineEventGenericType =
     }
   | {
       type: EE.CHANGE_TO_BLOG;
+    }
+  | {
+      type: EE.SWITCH;
     };
 
 type machineFiniteStateGenericType =
@@ -197,12 +201,27 @@ const animMachine = createMachine<
     },
     [fse.aboutme]: {
       //
+      on: {
+        [EE.SWITCH]: {
+          target: fse.idle,
+        },
+      },
     },
     [fse.projects]: {
       //
+      on: {
+        [EE.SWITCH]: {
+          target: fse.idle,
+        },
+      },
     },
     [fse.blog]: {
       //
+      on: {
+        [EE.SWITCH]: {
+          target: fse.idle,
+        },
+      },
     },
   },
 });
