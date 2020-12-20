@@ -27,6 +27,7 @@ const MAJOR_FS_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
 interface ContextFullI {
   majorFiniteStatesArr: string[];
   majorFiniteStatesArrLength: number;
+  currentMajorStateNum: number;
   tl: TimelineLite;
   up: boolean;
   canMoveToIdle: boolean;
@@ -52,6 +53,7 @@ interface ContextFullI {
 interface MachineContextGenericI {
   majorFiniteStatesArr: string[];
   majorFiniteStatesArrLength: number;
+  currentMajorStateNum: number;
   tl: TimelineLite;
   up: boolean;
   canMoveToIdle: boolean;
@@ -144,9 +146,10 @@ const animMachine = createMachine<
     context: {
       majorFiniteStatesArr: MAJOR_FINITE_STATES_ARRAY,
       majorFiniteStatesArrLength: MAJOR_FS_ARR_LENGTH,
-      tl: new TimelineLite(),
+      currentMajorStateNum: 0,
       up: false,
       canMoveToIdle: false,
+      tl: new TimelineLite(),
       cageMesh: null,
       controls: null,
       middlePlaneMesh: null,
@@ -159,10 +162,27 @@ const animMachine = createMachine<
     },
     on: {
       [EE.MOVE_UP]: {
-        actions: [assign((_, __) => ({ up: true }))],
+        actions: [
+          assign((_, __) => ({ up: true })),
+          assign(({ currentMajorStateNum, majorFiniteStatesArrLength }, _) => {
+            if (currentMajorStateNum + 1 === majorFiniteStatesArrLength) {
+              return { currentMajorStateNum: 0 };
+            }
+            return { currentMajorStateNum: currentMajorStateNum + 1 };
+          }),
+        ],
       },
       [EE.MOVE_DOWN]: {
-        actions: [assign((_, __) => ({ up: false }))],
+        actions: [
+          assign((_, __) => ({ up: false })),
+          assign(({ currentMajorStateNum, majorFiniteStatesArrLength }, _) => {
+            if (currentMajorStateNum - 1 < 0) {
+              return { currentMajorStateNum: majorFiniteStatesArrLength - 1 };
+            }
+
+            return { currentMajorStateNum: currentMajorStateNum - 1 };
+          }),
+        ],
       },
     },
     states: {
