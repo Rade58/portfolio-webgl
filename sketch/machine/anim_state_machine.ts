@@ -37,7 +37,7 @@ interface ContextFullI {
   currentMajorStateNum: number;
   tl: TimelineLite;
   up: boolean;
-  canMoveToIdle: boolean;
+  canMoveToIdleAgain: boolean;
   seaPlaneShaderMaterial: ShaderMaterial;
   seaPlaneShaderMaterialWireframed: ShaderMaterial;
   seaWireframeShaderMaterial: ShaderMaterial;
@@ -63,7 +63,7 @@ interface MachineContextGenericI {
   currentMajorStateNum: number;
   tl: TimelineLite;
   up: boolean;
-  canMoveToIdle: boolean;
+  canMoveToIdleAgain: boolean;
   // materials
   seaPlaneShaderMaterial: ShaderMaterial | null;
   seaPlaneShaderMaterialWireframed: ShaderMaterial | null;
@@ -166,7 +166,7 @@ const animMachine = createMachine<
       majorFiniteStatesArrLength: MAJOR_FS_ARR_LENGTH,
       currentMajorStateNum: 2,
       up: false,
-      canMoveToIdle: true,
+      canMoveToIdleAgain: true,
       tl: new TimelineLite(),
       cageMesh: null,
       controls: null,
@@ -270,16 +270,20 @@ const animMachine = createMachine<
               actions: [
                 // ANIMACIJE CU RADITI U OVINM ACTIONIMA
 
+                //
+
                 assign(({ tl }, __) => {
-                  // ZAVISICE OD    TIMELINE-A
-                  // DAKLE TEK U ODNOSU KADA OVO BUDE TRUE
+                  // canMoveToIdleAgain ZAVISICE OD    TIMELINE-A
+                  // DAKLE, A U ODNOSU KADA OVO BUDE true
                   // U SLEDECEM TRANSITIONED STATE CE SE MOCI IZVRSITI
                   // TRANSITION TO idle AGAIN
                   //
+                  // ------  DAKLE OVO CE BITI BITN OSAM OZA SLEDECE STATE-OVE
+                  // ------  JER TAMO IMAM COND U ODNOSU NA   canMoveToIdleAgain
                   //
                   // DAKLE OA LOGIKA JE BITNA ZA ONE MAJOR STATE-OVE
                   // JER DA JE FALSE TAM OSE NECE DESITI TRANSITION
-                  return { canMoveToIdle: true };
+                  return { canMoveToIdleAgain: true };
                 }),
               ],
               //
@@ -292,7 +296,7 @@ const animMachine = createMachine<
               actions: [
                 assign(({ tl }, __) => {
                   // ZAVISICE OD    TIMELINE-A
-                  return { canMoveToIdle: true };
+                  return { canMoveToIdleAgain: true };
                 }),
               ],
               //
@@ -305,7 +309,7 @@ const animMachine = createMachine<
               actions: [
                 assign(({ tl }, __) => {
                   // ZAVISICE OD    TIMELINE-A
-                  return { canMoveToIdle: true };
+                  return { canMoveToIdleAgain: true };
                 }),
               ],
               //
@@ -345,8 +349,8 @@ const animMachine = createMachine<
   {
     guards: {
       allowIdle: (context, event) => {
-        const { canMoveToIdle } = context;
-        return canMoveToIdle;
+        const { canMoveToIdleAgain } = context;
+        return canMoveToIdleAgain;
       },
     },
   }
