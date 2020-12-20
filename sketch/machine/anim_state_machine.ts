@@ -16,11 +16,14 @@ export enum EE {
   CHANGE_TO_BLOG = "CHANGE_TO_BLOG",
   CHANGE_TO_PROJECTS = "CHANGE_TO_PROJECTS",
   SWITCH = "SWITCH",
+  MOVE_UP = "MOVE_UP",
+  MOVE_DOWN = "MOVE_DOWN",
 }
 
 // context HELPER TYPE ---------------------
 interface ContextFullI {
   tl: TimelineLite;
+  up: boolean;
   canMoveToIdle: boolean;
   seaPlaneShaderMaterial: ShaderMaterial;
   seaPlaneShaderMaterialWireframed: ShaderMaterial;
@@ -43,6 +46,7 @@ interface ContextFullI {
 
 interface MachineContextGenericI {
   tl: TimelineLite;
+  up: boolean;
   canMoveToIdle: boolean;
   // materials
   seaPlaneShaderMaterial: ShaderMaterial | null;
@@ -95,6 +99,12 @@ type machineEventGenericType =
     }
   | {
       type: EE.SWITCH;
+    }
+  | {
+      type: EE.MOVE_UP;
+    }
+  | {
+      type: EE.MOVE_DOWN;
     };
 
 type machineFiniteStateGenericType =
@@ -135,6 +145,7 @@ const animMachine = createMachine<
     initial: fse.init,
     context: {
       tl: new TimelineLite(),
+      up: false,
       canMoveToIdle: false,
       cageMesh: null,
       controls: null,
@@ -145,6 +156,14 @@ const animMachine = createMachine<
       seaPlaneShaderMaterialWireframed: null,
       seaWireframeShaderMaterial: null,
       spaceshipMesh: null,
+    },
+    on: {
+      [EE.MOVE_UP]: {
+        actions: assign((_, __) => ({ up: true })),
+      },
+      [EE.MOVE_DOWN]: {
+        actions: assign((_, __) => ({ up: false })),
+      },
     },
     states: {
       [fse.init]: {
@@ -187,7 +206,7 @@ const animMachine = createMachine<
         on: {
           [EE.CHANGE_TO_ABOUT_ME]: {
             //
-
+            actions: [],
             target: fse.aboutme,
           },
           [EE.CHANGE_TO_PROJECTS]: {
