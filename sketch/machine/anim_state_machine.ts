@@ -160,31 +160,7 @@ const animMachine = createMachine<
       seaWireframeShaderMaterial: null,
       spaceshipMesh: null,
     },
-    on: {
-      [EE.MOVE_UP]: {
-        actions: [
-          assign((_, __) => ({ up: true })),
-          assign(({ currentMajorStateNum, majorFiniteStatesArrLength }, _) => {
-            if (currentMajorStateNum + 1 === majorFiniteStatesArrLength) {
-              return { currentMajorStateNum: 0 };
-            }
-            return { currentMajorStateNum: currentMajorStateNum + 1 };
-          }),
-        ],
-      },
-      [EE.MOVE_DOWN]: {
-        actions: [
-          assign((_, __) => ({ up: false })),
-          assign(({ currentMajorStateNum, majorFiniteStatesArrLength }, _) => {
-            if (currentMajorStateNum - 1 < 0) {
-              return { currentMajorStateNum: majorFiniteStatesArrLength - 1 };
-            }
-
-            return { currentMajorStateNum: currentMajorStateNum - 1 };
-          }),
-        ],
-      },
-    },
+    on: {},
     states: {
       [fse.init]: {
         on: {
@@ -223,6 +199,38 @@ const animMachine = createMachine<
       },
       [fse.idle]: {
         on: {
+          /// -----------------  non transitions ----
+          [EE.MOVE_UP]: {
+            actions: [
+              assign((_, __) => ({ up: true })),
+              assign(
+                ({ currentMajorStateNum, majorFiniteStatesArrLength }, _) => {
+                  if (currentMajorStateNum + 1 === majorFiniteStatesArrLength) {
+                    return { currentMajorStateNum: 0 };
+                  }
+                  return { currentMajorStateNum: currentMajorStateNum + 1 };
+                }
+              ),
+            ],
+          },
+          [EE.MOVE_DOWN]: {
+            actions: [
+              assign((_, __) => ({ up: false })),
+              assign(
+                ({ currentMajorStateNum, majorFiniteStatesArrLength }, _) => {
+                  if (currentMajorStateNum - 1 < 0) {
+                    return {
+                      currentMajorStateNum: majorFiniteStatesArrLength - 1,
+                    };
+                  }
+
+                  return { currentMajorStateNum: currentMajorStateNum - 1 };
+                }
+              ),
+            ],
+          },
+          // ---------------------------------------------
+          // -------------     TRANSITIONS:  -------------
           [EE.SWITCH]: [
             {
               cond: ({ currentMajorStateNum }) => {
@@ -246,6 +254,8 @@ const animMachine = createMachine<
               target: MAJOR_FINITE_STATES_ARRAY[2],
             },
           ],
+
+          // ---------------------------------------------
         },
       },
       [MAJOR_FINITE_STATES_ARRAY[0]]: {
