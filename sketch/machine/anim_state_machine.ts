@@ -21,7 +21,7 @@ export enum EE {
 // context HELPER TYPE ---------------------
 interface ContextFullI {
   tl: TimelineLite;
-  canMoveFromIdle: boolean;
+  canMoveToIdle: boolean;
   seaPlaneShaderMaterial: ShaderMaterial;
   seaPlaneShaderMaterialWireframed: ShaderMaterial;
   seaWireframeShaderMaterial: ShaderMaterial;
@@ -43,7 +43,7 @@ interface ContextFullI {
 
 interface MachineContextGenericI {
   tl: TimelineLite;
-  canMoveFromIdle: boolean;
+  canMoveToIdle: boolean;
   // materials
   seaPlaneShaderMaterial: ShaderMaterial | null;
   seaPlaneShaderMaterialWireframed: ShaderMaterial | null;
@@ -135,7 +135,7 @@ const animMachine = createMachine<
     initial: fse.init,
     context: {
       tl: new TimelineLite(),
-      canMoveFromIdle: false,
+      canMoveToIdle: false,
       cageMesh: null,
       controls: null,
       middlePlaneMesh: null,
@@ -204,6 +204,7 @@ const animMachine = createMachine<
         //
         on: {
           "*": {
+            cond: "moveToIdle",
             target: fse.idle,
           },
         },
@@ -212,6 +213,7 @@ const animMachine = createMachine<
         //
         on: {
           "*": {
+            cond: "moveToIdle",
             target: fse.idle,
           },
         },
@@ -220,6 +222,7 @@ const animMachine = createMachine<
         //
         on: {
           "*": {
+            cond: "moveToIdle",
             target: fse.idle,
           },
         },
@@ -228,9 +231,9 @@ const animMachine = createMachine<
   },
   {
     guards: {
-      moveFromIdle: (context, event) => {
-        const { canMoveFromIdle } = context;
-        return canMoveFromIdle;
+      moveToIdle: (context, event) => {
+        const { canMoveToIdle } = context;
+        return canMoveToIdle;
       },
     },
   }
