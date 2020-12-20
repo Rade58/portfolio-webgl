@@ -143,7 +143,7 @@ const animMachine = createMachine<
 >(
   {
     id: "sketch_anim_machine",
-    initial: fse.init,
+    initial: fse.aboutme,
     context: {
       majorFiniteStatesArr: MAJOR_FINITE_STATES_ARRAY,
       majorFiniteStatesArrLength: MAJOR_FS_ARR_LENGTH,
@@ -237,6 +237,7 @@ const animMachine = createMachine<
               cond: ({ currentMajorStateNum }) => {
                 return currentMajorStateNum === 0;
               },
+              actions: [assign((_, __) => ({ canMoveToIdle: true }))],
               //
               target: MAJOR_FINITE_STATES_ARRAY[0],
             },
@@ -244,6 +245,7 @@ const animMachine = createMachine<
               cond: ({ currentMajorStateNum }) => {
                 return currentMajorStateNum === 1;
               },
+              actions: [assign((_, __) => ({ canMoveToIdle: true }))],
               //
               target: MAJOR_FINITE_STATES_ARRAY[1],
             },
@@ -251,6 +253,7 @@ const animMachine = createMachine<
               cond: ({ currentMajorStateNum }) => {
                 return currentMajorStateNum === 2;
               },
+              actions: [assign((_, __) => ({ canMoveToIdle: true }))],
               //
               target: MAJOR_FINITE_STATES_ARRAY[2],
             },

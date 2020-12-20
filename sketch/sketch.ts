@@ -374,10 +374,10 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   uiElements.up.addEventListener("click", (e) => {
     service.send({
-      type: EE.MOVE_UP,
+      type: EE.SWITCH,
     });
     service.send({
-      type: EE.SWITCH,
+      type: EE.MOVE_UP,
     });
 
     /* TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
