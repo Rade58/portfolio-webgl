@@ -12,12 +12,11 @@ export enum fse {
 
 export enum EE {
   SETUP = "SETUP",
-  CHANGE = "CHANGE",
+  CHANGE_TO_ABOUT_ME = "CHANGE_TO_ABOUT_ME",
+  CHANGE_TO_BLOG = "CHANGE_TO_BLOG",
+  CHANGE_TO_PROJECTS = "CHANGE_TO_PROJECTS",
 }
 
-// ------------------ STATE HELPERS -----------------------
-const MAJOR_STATES_ARR = [fse.aboutme, fse.projects, fse.blog];
-const MAJOR_STATES_LENGTH = MAJOR_STATES_ARR.length;
 // context HELPER TYPE ---------------------
 interface ContextFullI {
   currentStateNumber: number | null;
@@ -85,7 +84,13 @@ type machineEventGenericType =
       };
     }
   | {
-      type: EE.CHANGE;
+      type: EE.CHANGE_TO_ABOUT_ME;
+    }
+  | {
+      type: EE.CHANGE_TO_PROJECTS;
+    }
+  | {
+      type: EE.CHANGE_TO_BLOG;
     };
 
 type machineFiniteStateGenericType =
@@ -172,21 +177,6 @@ const animMachine = createMachine<
         },
       },
     },
-    [fse.idle]: {
-      entry: [
-        assign(({ currentStateNumber }) => {
-          if (currentStateNumber === MAJOR_STATES_LENGTH - 1) {
-            return { currentStateNumber: 0 };
-          }
-
-          return { currentStateNumber: currentStateNumber + 1 };
-        }),
-      ],
-      on: {
-        [EE.CHANGE]: {
-          // target: []
-        },
-      },
-    },
+    [fse.idle]: {},
   },
 });
