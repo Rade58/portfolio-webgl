@@ -223,7 +223,29 @@ const animMachine = createMachine<
       },
       [fse.idle]: {
         on: {
-          [EE.SWITCH]: {},
+          [EE.SWITCH]: [
+            {
+              cond: ({ currentMajorStateNum }) => {
+                return currentMajorStateNum === 0;
+              },
+              //
+              target: MAJOR_FINITE_STATES_ARRAY[0],
+            },
+            {
+              cond: ({ currentMajorStateNum }) => {
+                return currentMajorStateNum === 1;
+              },
+              //
+              target: MAJOR_FINITE_STATES_ARRAY[1],
+            },
+            {
+              cond: ({ currentMajorStateNum }) => {
+                return currentMajorStateNum === 2;
+              },
+              //
+              target: MAJOR_FINITE_STATES_ARRAY[2],
+            },
+          ],
         },
       },
     },
