@@ -24,6 +24,7 @@ export enum EE {
   SWITCH = "SWITCH",
   MOVE_UP = "MOVE_UP",
   MOVE_DOWN = "MOVE_DOWN",
+  HELLO = "HELLO",
 }
 
 const MAJOR_FINITE_STATES_ARRAY = [fse.aboutme, fse.projects, fse.blog];
@@ -111,6 +112,9 @@ type machineEventGenericType =
     }
   | {
       type: EE.MOVE_DOWN;
+    }
+  | {
+      type: EE.HELLO;
     };
 
 type machineFiniteStateGenericType =
@@ -207,7 +211,14 @@ const animMachine = createMachine<
                 spaceshipMesh,
               })
             ),
-            target: fse.idle,
+            target: fse.hello_world,
+          },
+        },
+      },
+      [fse.hello_world]: {
+        on: {
+          [EE.HELLO]: {
+            target: fse.up_or_down,
           },
         },
       },
@@ -218,7 +229,10 @@ const animMachine = createMachine<
               assign((_, __) => ({ up: true })),
               assign(
                 ({ currentMajorStateNum, majorFiniteStatesArrLength }, _) => {
-                  if (currentMajorStateNum + 1 === majorFiniteStatesArrLength) {
+                  if (
+                    currentMajorStateNum + 1 >
+                    majorFiniteStatesArrLength - 1
+                  ) {
                     return { currentMajorStateNum: 0 };
                   }
                   return { currentMajorStateNum: currentMajorStateNum + 1 };
