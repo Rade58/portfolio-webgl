@@ -6,9 +6,13 @@ import { textDisplay } from "../ui/user_interface";
 export enum fse {
   init = "init",
   idle = "idle",
+  // hello world
+  hello_world = "hello_world",
+  //---- major -states (all of them shoud have transitions to idle)
   aboutme = "aboutme",
   blog = "blog",
   projects = "projects",
+  //
   up_or_down = "up_or_down",
 }
 
@@ -128,6 +132,14 @@ type machineFiniteStateGenericType =
     }
   | {
       value: fse.blog;
+      context: ContextFullI;
+    }
+  | {
+      value: fse.up_or_down;
+      context: ContextFullI;
+    }
+  | {
+      value: fse.hello_world;
       context: ContextFullI;
     };
 

@@ -300,6 +300,9 @@ const sketch = ({ context }) => {
     // -----------------------------------------------------------------------
     uiElements.up.addEventListener("click", (e) => {
         service.send({
+            type: EE.HELLO,
+        });
+        service.send({
             type: EE.MOVE_UP,
         });
         service.send({
