@@ -267,7 +267,12 @@ const animMachine = createMachine<
               cond: ({ currentMajorStateNum }) => {
                 return currentMajorStateNum === 0;
               },
-              actions: [assign((_, __) => ({ canMoveToIdle: true }))],
+              actions: [
+                assign(({ tl }, __) => {
+                  // ZAVISICE OD    TIMELINE-A
+                  return { canMoveToIdle: true };
+                }),
+              ],
               //
               target: MAJOR_FINITE_STATES_ARRAY[0],
             },
@@ -275,7 +280,12 @@ const animMachine = createMachine<
               cond: ({ currentMajorStateNum }) => {
                 return currentMajorStateNum === 1;
               },
-              actions: [assign((_, __) => ({ canMoveToIdle: true }))],
+              actions: [
+                assign(({ tl }, __) => {
+                  // ZAVISICE OD    TIMELINE-A
+                  return { canMoveToIdle: true };
+                }),
+              ],
               //
               target: MAJOR_FINITE_STATES_ARRAY[1],
             },
@@ -283,7 +293,12 @@ const animMachine = createMachine<
               cond: ({ currentMajorStateNum }) => {
                 return currentMajorStateNum === 2;
               },
-              actions: [assign((_, __) => ({ canMoveToIdle: true }))],
+              actions: [
+                assign(({ tl }, __) => {
+                  // ZAVISICE OD    TIMELINE-A
+                  return { canMoveToIdle: true };
+                }),
+              ],
               //
               target: MAJOR_FINITE_STATES_ARRAY[2],
             },
