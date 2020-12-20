@@ -267,7 +267,21 @@ const animMachine = createMachine<
               cond: ({ currentMajorStateNum }) => {
                 return currentMajorStateNum === 0;
               },
+              actions: [
+                // ANIMACIJE CU RADITI U OVINM ACTIONIMA
 
+                assign(({ tl }, __) => {
+                  // ZAVISICE OD    TIMELINE-A
+                  // DAKLE TEK U ODNOSU KADA OVO BUDE TRUE
+                  // U SLEDECEM TRANSITIONED STATE CE SE MOCI IZVRSITI
+                  // TRANSITION TO idle AGAIN
+                  //
+                  //
+                  // DAKLE OA LOGIKA JE BITNA ZA ONE MAJOR STATE-OVE
+                  // JER DA JE FALSE TAM OSE NECE DESITI TRANSITION
+                  return { canMoveToIdle: true };
+                }),
+              ],
               //
               target: MAJOR_FINITE_STATES_ARRAY[0],
             },
@@ -275,7 +289,12 @@ const animMachine = createMachine<
               cond: ({ currentMajorStateNum }) => {
                 return currentMajorStateNum === 1;
               },
-
+              actions: [
+                assign(({ tl }, __) => {
+                  // ZAVISICE OD    TIMELINE-A
+                  return { canMoveToIdle: true };
+                }),
+              ],
               //
               target: MAJOR_FINITE_STATES_ARRAY[1],
             },
@@ -283,7 +302,12 @@ const animMachine = createMachine<
               cond: ({ currentMajorStateNum }) => {
                 return currentMajorStateNum === 2;
               },
-
+              actions: [
+                assign(({ tl }, __) => {
+                  // ZAVISICE OD    TIMELINE-A
+                  return { canMoveToIdle: true };
+                }),
+              ],
               //
               target: MAJOR_FINITE_STATES_ARRAY[2],
             },
@@ -291,20 +315,10 @@ const animMachine = createMachine<
 
           // ---------------------------------------------
         },
-        exit: assign((_, __) => {
-          return { canMoveToIdle: false };
-        }),
       },
       [MAJOR_FINITE_STATES_ARRAY[0] /* aboutme */]: {
         on: {
           "*": {
-            actions: [
-              assign(({ tl }, __) => {
-                // ZAVISICE OD    TIMELINE-A
-                // OVAJ PROPERTI CE DAKLE ZAVISITI
-                return { canMoveToIdle: true };
-              }),
-            ],
             cond: "allowIdle",
             target: fse.up_or_down,
           },
@@ -313,12 +327,6 @@ const animMachine = createMachine<
       [MAJOR_FINITE_STATES_ARRAY[1] /* projects */]: {
         on: {
           "*": {
-            actions: [
-              assign(({ tl }, __) => {
-                // ZAVISICE OD    TIMELINE-A
-                return { canMoveToIdle: true };
-              }),
-            ],
             cond: "allowIdle",
             target: fse.up_or_down,
           },
@@ -327,12 +335,6 @@ const animMachine = createMachine<
       [MAJOR_FINITE_STATES_ARRAY[2] /* blog */]: {
         on: {
           "*": {
-            actions: [
-              assign(({ tl }, __) => {
-                // ZAVISICE OD    TIMELINE-A
-                return { canMoveToIdle: true };
-              }),
-            ],
             cond: "allowIdle",
             target: fse.up_or_down,
           },
