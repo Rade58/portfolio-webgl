@@ -20,7 +20,7 @@ export enum EE {
 
 // context HELPER TYPE ---------------------
 interface ContextFullI {
-  currentStateNumber: number | null;
+  tl: TimelineLite;
   canMoveFromIdle: boolean;
   seaPlaneShaderMaterial: ShaderMaterial;
   seaPlaneShaderMaterialWireframed: ShaderMaterial;
@@ -42,7 +42,7 @@ interface ContextFullI {
 // ------------ GENERIC TYPES FOR MACHINE
 
 interface MachineContextGenericI {
-  currentStateNumber: number | null;
+  tl: TimelineLite;
   canMoveFromIdle: boolean;
   // materials
   seaPlaneShaderMaterial: ShaderMaterial | null;
@@ -129,102 +129,112 @@ const animMachine = createMachine<
   MachineContextGenericI,
   machineEventGenericType,
   machineFiniteStateGenericType
->({
-  id: "sketch_anim_machine",
-  initial: fse.init,
-  context: {
-    currentStateNumber: null,
-    canMoveFromIdle: false,
-    cageMesh: null,
-    controls: null,
-    middlePlaneMesh: null,
-    planeMiddleShaderMaterial: null,
-    seaPlaneMesh: null,
-    seaPlaneShaderMaterial: null,
-    seaPlaneShaderMaterialWireframed: null,
-    seaWireframeShaderMaterial: null,
-    spaceshipMesh: null,
-  },
-  states: {
-    [fse.init]: {
-      on: {
-        [EE.SETUP]: {
-          actions: assign(
-            (
-              _,
-              {
-                payload: {
-                  cageMesh,
-                  controls,
-                  middlePlaneMesh,
-                  planeMiddleShaderMaterial,
-                  seaPlaneMesh,
-                  seaPlaneShaderMaterial,
-                  seaPlaneShaderMaterialWireframed,
-                  seaWireframeShaderMaterial,
-                  spaceshipMesh,
-                },
-              }
-            ) => ({
-              cageMesh,
-              controls,
-              middlePlaneMesh,
-              planeMiddleShaderMaterial,
-              seaPlaneMesh,
-              seaPlaneShaderMaterial,
-              seaPlaneShaderMaterialWireframed,
-              seaWireframeShaderMaterial,
-              spaceshipMesh,
-            })
-          ),
-          target: fse.idle,
+>(
+  {
+    id: "sketch_anim_machine",
+    initial: fse.init,
+    context: {
+      tl: new TimelineLite(),
+      canMoveFromIdle: false,
+      cageMesh: null,
+      controls: null,
+      middlePlaneMesh: null,
+      planeMiddleShaderMaterial: null,
+      seaPlaneMesh: null,
+      seaPlaneShaderMaterial: null,
+      seaPlaneShaderMaterialWireframed: null,
+      seaWireframeShaderMaterial: null,
+      spaceshipMesh: null,
+    },
+    states: {
+      [fse.init]: {
+        on: {
+          [EE.SETUP]: {
+            actions: assign(
+              (
+                _,
+                {
+                  payload: {
+                    cageMesh,
+                    controls,
+                    middlePlaneMesh,
+                    planeMiddleShaderMaterial,
+                    seaPlaneMesh,
+                    seaPlaneShaderMaterial,
+                    seaPlaneShaderMaterialWireframed,
+                    seaWireframeShaderMaterial,
+                    spaceshipMesh,
+                  },
+                }
+              ) => ({
+                cageMesh,
+                controls,
+                middlePlaneMesh,
+                planeMiddleShaderMaterial,
+                seaPlaneMesh,
+                seaPlaneShaderMaterial,
+                seaPlaneShaderMaterialWireframed,
+                seaWireframeShaderMaterial,
+                spaceshipMesh,
+              })
+            ),
+            target: fse.idle,
+          },
         },
       },
-    },
-    [fse.idle]: {
-      //
-      on: {
-        [EE.CHANGE_TO_ABOUT_ME]: {
-          //
+      [fse.idle]: {
+        //
+        on: {
+          [EE.CHANGE_TO_ABOUT_ME]: {
+            //
 
-          target: fse.aboutme,
-        },
-        [EE.CHANGE_TO_PROJECTS]: {
-          //
-          target: fse.projects,
-        },
-        [EE.CHANGE_TO_BLOG]: {
-          //
-          target: fse.blog,
-        },
-      },
-    },
-    [fse.aboutme]: {
-      //
-      on: {
-        [EE.SWITCH]: {
-          target: fse.idle,
+            target: fse.aboutme,
+          },
+          [EE.CHANGE_TO_PROJECTS]: {
+            //
+            target: fse.projects,
+          },
+          [EE.CHANGE_TO_BLOG]: {
+            //
+            target: fse.blog,
+          },
         },
       },
-    },
-    [fse.projects]: {
-      //
-      on: {
-        [EE.SWITCH]: {
-          target: fse.idle,
+      [fse.aboutme]: {
+        //
+        on: {
+          [EE.SWITCH]: {
+            target: fse.idle,
+          },
         },
       },
-    },
-    [fse.blog]: {
-      //
-      on: {
-        [EE.SWITCH]: {
-          target: fse.idle,
+      [fse.projects]: {
+        //
+        on: {
+          [EE.SWITCH]: {
+            target: fse.idle,
+          },
+        },
+      },
+      [fse.blog]: {
+        //
+        on: {
+          [EE.SWITCH]: {
+            target: fse.idle,
+          },
         },
       },
     },
   },
-});
+  {
+    guards: {
+      moveFromIdle: (context, event) => {
+        const { canMoveFromIdle } = context;
+        return canMoveFromIdle;
+      },
+    },
+  }
+);
 
 export const animMachineService = interpret(animMachine);
 
