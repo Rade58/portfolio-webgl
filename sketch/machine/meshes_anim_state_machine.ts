@@ -182,12 +182,16 @@ const animMachine = createMachine<
       on: {
         [EE.CHANGE_TO_ABOUT_ME]: {
           //
+
+          target: fse.aboutme,
         },
         [EE.CHANGE_TO_PROJECTS]: {
           //
+          target: fse.projects,
         },
         [EE.CHANGE_TO_BLOG]: {
           //
+          target: fse.blog,
         },
       },
     },
