@@ -177,6 +177,17 @@ const animMachine = createMachine<
         },
       },
     },
-    [fse.idle]: {},
+    [fse.idle]: {
+      //
+    },
+    [fse.aboutme]: {
+      //
+    },
+    [fse.projects]: {
+      //
+    },
+    [fse.blog]: {
+      //
+    },
   },
 });
