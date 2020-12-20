@@ -25,6 +25,8 @@ const MAJOR_FS_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
 
 // context HELPER TYPE ---------------------
 interface ContextFullI {
+  majorFiniteStatesArr: string[];
+  majorFiniteStatesArrLength: number;
   tl: TimelineLite;
   up: boolean;
   canMoveToIdle: boolean;
@@ -48,6 +50,8 @@ interface ContextFullI {
 // ------------ GENERIC TYPES FOR MACHINE
 
 interface MachineContextGenericI {
+  majorFiniteStatesArr: string[];
+  majorFiniteStatesArrLength: number;
   tl: TimelineLite;
   up: boolean;
   canMoveToIdle: boolean;
@@ -138,6 +142,8 @@ const animMachine = createMachine<
     id: "sketch_anim_machine",
     initial: fse.init,
     context: {
+      majorFiniteStatesArr: MAJOR_FINITE_STATES_ARRAY,
+      majorFiniteStatesArrLength: MAJOR_FS_ARR_LENGTH,
       tl: new TimelineLite(),
       up: false,
       canMoveToIdle: false,
@@ -153,10 +159,10 @@ const animMachine = createMachine<
     },
     on: {
       [EE.MOVE_UP]: {
-        actions: assign((_, __) => ({ up: true })),
+        actions: [assign((_, __) => ({ up: true }))],
       },
       [EE.MOVE_DOWN]: {
-        actions: assign((_, __) => ({ up: false })),
+        actions: [assign((_, __) => ({ up: false }))],
       },
     },
     states: {
