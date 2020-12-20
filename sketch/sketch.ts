@@ -14,7 +14,7 @@ import {
   EE,
   fse,
   animMachineService as service,
-} from "./machine/meshes_anim_state_machine";
+} from "./machine/anim_state_machine";
 // ----- MOZDA CU KORISTITI ALI VEROVATNO NE -------
 /*
 const glsl = require("glslify");

@@ -203,7 +203,7 @@ const animMachine = createMachine<
       [fse.aboutme]: {
         //
         on: {
-          [EE.SWITCH]: {
+          "*": {
             target: fse.idle,
           },
         },
@@ -211,7 +211,7 @@ const animMachine = createMachine<
       [fse.projects]: {
         //
         on: {
-          [EE.SWITCH]: {
+          "*": {
             target: fse.idle,
           },
         },
@@ -219,7 +219,7 @@ const animMachine = createMachine<
       [fse.blog]: {
         //
         on: {
-          [EE.SWITCH]: {
+          "*": {
             target: fse.idle,
           },
         },
