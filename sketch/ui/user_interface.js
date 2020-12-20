@@ -18,6 +18,9 @@ const controlsContainerCss = /* css */ `
 /* ------------- ADDING STYLES ----------- */
 controlsContainer.style.cssText = controlsContainerCss;
 /* ---------------------------------------- */
+/* APPENDING ELEMENTS */
+controlsContainer.append(upButton, textDisplay, downButton);
+/* ------------------- */
 const elements = {
     up: upButton,
     down: downButton,

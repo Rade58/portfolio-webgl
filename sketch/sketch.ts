@@ -587,9 +587,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
 // ------------ UI ELEMENTS APPENDING ------------------------
 
-document.body.append(uiElements.up);
-document.body.append(uiElements.textDisplay);
-document.body.append(uiElements.down);
+document.body.append(uiElements.controlsContainer);
 
 // --------------- SKETCH INITIALIZATION  --------------------
 
