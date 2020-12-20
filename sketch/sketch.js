@@ -300,10 +300,10 @@ const sketch = ({ context }) => {
     // -----------------------------------------------------------------------
     uiElements.up.addEventListener("click", (e) => {
         service.send({
-            type: EE.SWITCH,
+            type: EE.MOVE_UP,
         });
         service.send({
-            type: EE.MOVE_UP,
+            type: EE.SWITCH,
         });
         /* TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
           value: 0.8,

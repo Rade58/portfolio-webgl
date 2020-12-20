@@ -9,6 +9,7 @@ export enum fse {
   aboutme = "aboutme",
   blog = "blog",
   projects = "projects",
+  up_or_down = "up_or_down",
 }
 
 export enum EE {
@@ -198,9 +199,8 @@ const animMachine = createMachine<
           },
         },
       },
-      [fse.idle]: {
+      [fse.up_or_down]: {
         on: {
-          /// -----------------  non transitions ----
           [EE.MOVE_UP]: {
             actions: [
               assign((_, __) => ({ up: true })),
@@ -213,6 +213,7 @@ const animMachine = createMachine<
                 }
               ),
             ],
+            target: fse.idle,
           },
           [EE.MOVE_DOWN]: {
             actions: [
@@ -229,9 +230,12 @@ const animMachine = createMachine<
                 }
               ),
             ],
+            target: fse.idle,
           },
-          // ---------------------------------------------
-          // -------------     TRANSITIONS:  -------------
+        },
+      },
+      [fse.idle]: {
+        on: {
           [EE.SWITCH]: [
             {
               cond: ({ currentMajorStateNum }) => {
@@ -266,7 +270,7 @@ const animMachine = createMachine<
         on: {
           "*": {
             cond: "allowIdle",
-            target: fse.idle,
+            target: fse.up_or_down,
           },
         },
       },
@@ -274,7 +278,7 @@ const animMachine = createMachine<
         on: {
           "*": {
             cond: "allowIdle",
-            target: fse.idle,
+            target: fse.up_or_down,
           },
         },
       },
@@ -282,7 +286,7 @@ const animMachine = createMachine<
         on: {
           "*": {
             cond: "allowIdle",
-            target: fse.idle,
+            target: fse.up_or_down,
           },
         },
       },
