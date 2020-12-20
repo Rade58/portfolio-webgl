@@ -1,6 +1,7 @@
 import { Vector3, Object3D, ShaderMaterial, Mesh } from "three";
 import { TweenMax, TimelineLite } from "gsap";
 import { createMachine, assign, interpret } from "xstate";
+import { textDisplay } from "../ui/user_interface";
 
 export enum fse {
   init = "init",
@@ -303,6 +304,8 @@ animMachineService.onTransition((state, event) => {
   console.log("CONTEXT:");
   console.log(state.context);
   console.log("-------------------------------------");
+
+  textDisplay.textContent = state.value as string;
 });
 
 animMachineService.start();

@@ -373,7 +373,14 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // -----------------------------------------------------------------------
 
   uiElements.up.addEventListener("click", (e) => {
-    TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
+    service.send({
+      type: EE.MOVE_UP,
+    });
+    service.send({
+      type: EE.SWITCH,
+    });
+
+    /* TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
       value: 0.8,
       ease: Elastic.easeOut,
     });
@@ -408,7 +415,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       z: 0,
       y: 123,
       ease: Power2.easeOut,
-    });
+    }); */
   });
 
   uiElements.down.addEventListener("click", (e) => {
@@ -581,6 +588,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 // ------------ UI ELEMENTS APPENDING ------------------------
 
 document.body.append(uiElements.up);
+document.body.append(uiElements.textDisplay);
 document.body.append(uiElements.down);
 
 // --------------- SKETCH INITIALIZATION  --------------------

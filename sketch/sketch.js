@@ -5,7 +5,7 @@ import uiElements from "./ui/user_interface";
 import settings, { settingsFunc } from "./sketch-settings";
 //
 // ANIMATION LIBRATRIES
-import { TweenMax, Elastic, Power2, Quad } from "gsap";
+import { TweenMax, Elastic, Quad } from "gsap";
 //
 // STATE MACHINE
 import { EE, animMachineService as service, } from "./machine/anim_state_machine";
@@ -299,38 +299,48 @@ const sketch = ({ context }) => {
     // -----------------------------------------------------------------------
     // -----------------------------------------------------------------------
     uiElements.up.addEventListener("click", (e) => {
-        TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
-            value: 0.8,
-            ease: Elastic.easeOut,
+        service.send({
+            type: EE.MOVE_UP,
+        });
+        service.send({
+            type: EE.SWITCH,
+        });
+        /* TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
+          value: 0.8,
+          ease: Elastic.easeOut,
         });
         TweenMax.to(seaPlaneShaderMaterialWireframed.uniforms.circleSize, 3, {
-            value: 0.8,
-            ease: Elastic.easeOut,
+          value: 0.8,
+          ease: Elastic.easeOut,
         });
+    
         TweenMax.to(planeMiddleShaderMaterial.uniforms.circleSize, 3, {
-            value: 0.8,
-            ease: Elastic.easeOut,
+          value: 0.8,
+          ease: Elastic.easeOut,
         });
+    
         TweenMax.to(seaWireframeShaderMaterial.uniforms.circleSize, 3, {
-            value: 0.8,
-            ease: Elastic.easeOut,
+          value: 0.8,
+          ease: Elastic.easeOut,
         });
+    
         TweenMax.to(cageMesh.position, 2, {
-            y: 128,
-            // x: 22,
-            ease: Quad.easeIn,
+          y: 128,
+          // x: 22,
+          ease: Quad.easeIn,
         });
         TweenMax.to(spaceshipMesh.position, 2, {
-            y: 20,
-            // x: 22,
-            ease: Quad.easeIn,
+          y: 20,
+          // x: 22,
+          ease: Quad.easeIn,
         });
+    
         TweenMax.to(controls.object.position, 4, {
-            x: 40,
-            z: 0,
-            y: 123,
-            ease: Power2.easeOut,
-        });
+          x: 40,
+          z: 0,
+          y: 123,
+          ease: Power2.easeOut,
+        }); */
     });
     uiElements.down.addEventListener("click", (e) => {
         TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
@@ -466,6 +476,7 @@ const sketch = ({ context }) => {
 };
 // ------------ UI ELEMENTS APPENDING ------------------------
 document.body.append(uiElements.up);
+document.body.append(uiElements.textDisplay);
 document.body.append(uiElements.down);
 // --------------- SKETCH INITIALIZATION  --------------------
 canvasSketch(sketch, settingsFunc(settings, document.querySelector("canvas.canvas")));
