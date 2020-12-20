@@ -342,6 +342,10 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   controls.target = spaceshipMesh.position;
 
+  // STATE MACHINE INITIAL SETUP
+
+  //
+
   // -----------------------------------------------------------------------
   // -----------------------------------------------------------------------
   // -------- GSAP STUFF  (ADDING LISTENERS TO BUTTONS) (TRYOUT) --------------------
