@@ -267,12 +267,7 @@ const animMachine = createMachine<
               cond: ({ currentMajorStateNum }) => {
                 return currentMajorStateNum === 0;
               },
-              actions: [
-                assign(({ tl }, __) => {
-                  // ZAVISICE OD    TIMELINE-A
-                  return { canMoveToIdle: true };
-                }),
-              ],
+
               //
               target: MAJOR_FINITE_STATES_ARRAY[0],
             },
@@ -280,12 +275,7 @@ const animMachine = createMachine<
               cond: ({ currentMajorStateNum }) => {
                 return currentMajorStateNum === 1;
               },
-              actions: [
-                assign(({ tl }, __) => {
-                  // ZAVISICE OD    TIMELINE-A
-                  return { canMoveToIdle: true };
-                }),
-              ],
+
               //
               target: MAJOR_FINITE_STATES_ARRAY[1],
             },
@@ -293,12 +283,7 @@ const animMachine = createMachine<
               cond: ({ currentMajorStateNum }) => {
                 return currentMajorStateNum === 2;
               },
-              actions: [
-                assign(({ tl }, __) => {
-                  // ZAVISICE OD    TIMELINE-A
-                  return { canMoveToIdle: true };
-                }),
-              ],
+
               //
               target: MAJOR_FINITE_STATES_ARRAY[2],
             },
@@ -308,24 +293,52 @@ const animMachine = createMachine<
         },
       },
       [MAJOR_FINITE_STATES_ARRAY[0] /* aboutme */]: {
+        entry: assign((_, __) => {
+          return { canMoveToIdle: false };
+        }),
         on: {
           "*": {
+            actions: [
+              assign(({ tl }, __) => {
+                // ZAVISICE OD    TIMELINE-A
+                // OVAJ PROPERTI CE DAKLE ZAVISITI
+                return { canMoveToIdle: true };
+              }),
+            ],
             cond: "allowIdle",
             target: fse.up_or_down,
           },
         },
       },
       [MAJOR_FINITE_STATES_ARRAY[1] /* projects */]: {
+        entry: assign((_, __) => {
+          return { canMoveToIdle: false };
+        }),
         on: {
           "*": {
+            actions: [
+              assign(({ tl }, __) => {
+                // ZAVISICE OD    TIMELINE-A
+                return { canMoveToIdle: true };
+              }),
+            ],
             cond: "allowIdle",
             target: fse.up_or_down,
           },
         },
       },
       [MAJOR_FINITE_STATES_ARRAY[2] /* blog */]: {
+        entry: assign((_, __) => {
+          return { canMoveToIdle: false };
+        }),
         on: {
           "*": {
+            actions: [
+              assign(({ tl }, __) => {
+                // ZAVISICE OD    TIMELINE-A
+                return { canMoveToIdle: true };
+              }),
+            ],
             cond: "allowIdle",
             target: fse.up_or_down,
           },
