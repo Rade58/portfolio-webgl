@@ -160,7 +160,7 @@ const animMachine = createMachine<
       seaWireframeShaderMaterial: null,
       spaceshipMesh: null,
     },
-    on: {},
+    // on: {},
     states: {
       [fse.init]: {
         on: {
