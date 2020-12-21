@@ -314,23 +314,29 @@ const animMachine = createMachine<
       [ANIMATION_SERVICES_STATE_ARRAY[0] /* animation0 */]: {
         invoke: {
           id: "__0__",
-          src: ({ tl, seaPlaneShaderMaterial }, __) => {
+          src: (
+            { tl, seaPlaneShaderMaterial, seaPlaneShaderMaterialWireframed },
+            __
+          ) => {
             // DAKLE INVOKUJEM PROMISE-E
             // USTVARI INVOKE-UJEM ANIMATION SERVICE
 
-            /* return Promise.resolve().then(() => { */
-            return Promise.resolve().then(() => {
-              return tl
-                .to(seaPlaneShaderMaterial.uniforms.circleSize, {
-                  value: 0.8,
-                  ease: Elastic.easeOut,
-                  duration: 3,
-                })
-                .add("blah")
-                .then(() => {
-                  console.log("animation 0");
-                });
-            });
+            return tl
+              .add("emrging")
+              .to(seaPlaneShaderMaterial.uniforms.circleSize, {
+                value: 0.8,
+                ease: Elastic.easeOut,
+                duration: 3,
+              })
+              .seek("emrging")
+              .to(seaPlaneShaderMaterialWireframed.uniforms.circleSize, {
+                value: 0.8,
+                ease: Elastic.easeOut,
+                duration: 3,
+              })
+              .then(() => {
+                console.log("animation 0");
+              });
           },
           onDone: {
             target: MAJOR_FINITE_STATES_ARRAY[0],
