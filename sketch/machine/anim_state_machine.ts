@@ -351,17 +351,17 @@ const animMachine = createMachine<
                 "-=3"
               )
               .to(cageMesh.scale, {
-                x: 10.4,
-                y: 10.4,
-                z: 10.4,
-                duration: 0.5,
+                x: 8.4,
+                y: 8.4,
+                z: 8.4,
+                duration: 0.1,
               })
               .to(
                 cageMesh.position,
                 {
                   y: 128,
                 },
-                "-=0.5"
+                "-=0.1"
               );
 
             return tl.play().then(() => {
