@@ -380,7 +380,7 @@ const animMachine = createMachine<
               .to(
                 controls.object.position,
                 {
-                  y: 26,
+                  y: 21.4,
                   ease: Quad.easeIn,
                   duration: 2,
                 },
