@@ -326,25 +326,22 @@ const animMachine = createMachine<
             // DAKLE INVOKUJEM PROMISE-E
             // USTVARI INVOKE-UJEM ANIMATION SERVICE
 
-            tl.pause();
+            // tl.pause();
 
-            tl.add("emrging")
-              .to(seaPlaneShaderMaterial.uniforms.circleSize, {
-                value: 0.8,
-                ease: Elastic.easeOut,
-                duration: 3,
-              })
-              .seek("emrging")
+            tl.to(seaPlaneShaderMaterial.uniforms.circleSize, {
+              value: 0.8,
+              ease: Elastic.easeOut,
+              duration: 3,
+            })
               .to(seaPlaneShaderMaterialWireframed.uniforms.circleSize, {
                 value: 0.8,
                 ease: Elastic.easeOut,
-                duration: 3,
+                duration: "-3",
               })
-              .seek("emrging")
               .to(planeMiddleShaderMaterial.uniforms.circleSize, {
                 value: 0.8,
                 ease: Elastic.easeOut,
-                duration: 3,
+                duration: "-3",
               });
 
             return tl.play().then(() => {
