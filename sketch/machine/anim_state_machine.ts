@@ -318,11 +318,13 @@ const animMachine = createMachine<
 
             /* return Promise.resolve().then(() => { */
             return Promise.resolve().then(() => {
-              return tl.to(seaPlaneShaderMaterial.uniforms.circleSize, {
-                value: 0.8,
-                ease: Elastic.easeOut,
-                duration: 3,
-              });
+              return tl
+                .to(seaPlaneShaderMaterial.uniforms.circleSize, {
+                  value: 0.8,
+                  ease: Elastic.easeOut,
+                  duration: 3,
+                })
+                .play();
             });
           },
           onDone: {
