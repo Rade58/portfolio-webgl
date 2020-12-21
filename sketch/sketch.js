@@ -217,7 +217,7 @@ const sketch = ({ context }) => {
     spaceshipMesh.scale.x = 2;
     spaceshipMesh.scale.z = 3; */
     spaceshipMesh.position.y = -22;
-    spaceshipMesh.scale.setScalar(1.8);
+    spaceshipMesh.scale.setScalar(0.2);
     cageMesh.position.copy(spaceshipMesh.position);
     cageMesh.scale.setScalar(14.4);
     // ----------------------------------------------------

@@ -324,6 +324,8 @@ const animMachine = createMachine<
               seaPlaneShaderMaterialWireframed,
               planeMiddleShaderMaterial,
               cageMesh,
+              spaceshipMesh,
+              controls,
             },
             __
           ) => {
@@ -365,6 +367,24 @@ const animMachine = createMachine<
                   y: 128,
                 },
                 "-=0.1"
+              )
+              .to(
+                spaceshipMesh.position,
+                {
+                  y: 20,
+                  ease: Quad.easeOut,
+                  duration: 2,
+                },
+                `-=${0.1 + 0.1 + 2}`
+              )
+              .to(
+                controls.object.position,
+                {
+                  y: 24,
+                  ease: Elastic.easeOut,
+                  duration: 2,
+                },
+                `-=${0.6 + 0.1 + 2}`
               );
 
             return tl.play().then(() => {
