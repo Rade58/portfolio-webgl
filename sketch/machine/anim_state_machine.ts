@@ -343,7 +343,7 @@ const animMachine = createMachine<
             ).to(
               cageMesh.position,
               {
-                x: 22,
+                y: 128,
                 ease: Quad.easeIn,
                 duration: 2,
               },
