@@ -326,7 +326,7 @@ const animMachine = createMachine<
             /* }); */
           },
           onDone: {
-            target: [MAJOR_FINITE_STATES_ARRAY[3]],
+            target: fse.up_or_down,
           },
           onError: {
             target: fse.anim_error,
@@ -343,7 +343,7 @@ const animMachine = createMachine<
             }) as unknown) as Promise<any>;
           },
           onDone: {
-            target: [MAJOR_FINITE_STATES_ARRAY[4]],
+            target: fse.up_or_down,
           },
           onError: {
             target: fse.anim_error,
@@ -362,7 +362,7 @@ const animMachine = createMachine<
             });
           },
           onDone: {
-            target: [MAJOR_FINITE_STATES_ARRAY[5]],
+            target: fse.up_or_down,
           },
           onError: {
             target: fse.anim_error,
