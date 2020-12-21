@@ -380,11 +380,11 @@ const animMachine = createMachine<
               .to(
                 controls.object.position,
                 {
-                  y: 24,
-                  ease: Elastic.easeOut,
+                  y: 26,
+                  ease: Quad.easeIn,
                   duration: 2,
                 },
-                `-=${0.6 + 0.1 + 2}`
+                `-=${0.7 + 0.1 + 2}`
               );
 
             return tl.play().then(() => {

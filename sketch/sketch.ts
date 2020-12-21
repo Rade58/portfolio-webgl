@@ -345,7 +345,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   controls.object.position.y = 118;
   controls.object.position.z = 0;
 
-  controls.target = spaceshipMesh.position;
+  // controls.target = spaceshipMesh.position;
 
   // -------------------------------------------------------------------
   // -------------- STATE MACHINE INITIAL SETUP ------------------------
