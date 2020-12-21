@@ -482,7 +482,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // adding removing wireframe material
   // removing middleplane
   context.canvas.addEventListener("click", () => {
-    seaPlaneMesh.material = seaPlaneShaderMaterial;
+    /*  seaPlaneMesh.material = seaPlaneShaderMaterial;
     // ovo ide posle
     seaPlaneMesh.material.needsUpdate = true;
 
@@ -516,7 +516,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     TweenMax.to(spaceshipMesh.position, 4, {
       y: -24,
       ease: Elastic.easeInOut,
-    });
+    }); */
   });
 
   // preventing snapshots

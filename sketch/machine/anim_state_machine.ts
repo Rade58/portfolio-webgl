@@ -267,6 +267,12 @@ const animMachine = createMachine<
               cond: ({ currentMajorStateNum }) => {
                 return currentMajorStateNum === 0;
               },
+              // ANIMACIJE CU RADITI KAO DEO invoke-A
+              // TO RADIM JER MI TREBAJU PROMISE-I
+              // ODNOSNO ODGOVARA MI OVO
+              // JER MOGU JEDINO TAKO DA TAKORECI AWAIT-UJEM
+              // canMoveToIdleAgain   ASSIGNMENT
+              // JER OBICNO NE MOGU
               actions: [
                 // ANIMACIJE CU RADITI U OVINM ACTIONIMA
 
