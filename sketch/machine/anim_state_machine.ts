@@ -39,7 +39,7 @@ const MAJOR_FINITE_STATES_ARRAY = [
   fse.projects,
   fse.blog,
 ];
-const MAJOR_FS_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
+const MAJOR_FS_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length / 2;
 
 // context HELPER TYPE ---------------------
 interface ContextFullI {
