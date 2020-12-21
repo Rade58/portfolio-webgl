@@ -31,15 +31,14 @@ export enum EE {
   HELLO = "HELLO",
 }
 
-const MAJOR_FINITE_STATES_ARRAY = [
+const MAJOR_FINITE_STATES_ARRAY = [fse.aboutme, fse.projects, fse.blog];
+const ANIMATION_SERVICES_STATE_ARRAY = [
   fse.animation0,
   fse.animation1,
   fse.animation2,
-  fse.aboutme,
-  fse.projects,
-  fse.blog,
 ];
-const MAJOR_FS_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length / 2;
+
+const MAJOR_FS_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
 
 // context HELPER TYPE ---------------------
 interface ContextFullI {
@@ -310,9 +309,9 @@ const animMachine = createMachine<
       // ------------------------------------------------------
       // ------------------------------------------------------
 
-      [MAJOR_FINITE_STATES_ARRAY[0] /* animation0 */]: {
+      [ANIMATION_SERVICES_STATE_ARRAY[0] /* animation0 */]: {
         invoke: {
-          id: "__3__",
+          id: "__0__",
           src: ({ tl, seaPlaneShaderMaterial }, __) => {
             // DAKLE INVOKUJEM PROMISE-E
             // USTVARI INVOKE-UJEM ANIMATION SERVICE
@@ -326,16 +325,16 @@ const animMachine = createMachine<
             /* }); */
           },
           onDone: {
-            target: fse.up_or_down,
+            target: MAJOR_FINITE_STATES_ARRAY[0],
           },
           onError: {
             target: fse.anim_error,
           },
         },
       },
-      [MAJOR_FINITE_STATES_ARRAY[1] /* animation0 */]: {
+      [ANIMATION_SERVICES_STATE_ARRAY[1] /* animation0 */]: {
         invoke: {
-          id: "__4__",
+          id: "__1__",
           src: ({ tl, seaPlaneShaderMaterial }, __) => {
             return (tl.to(seaPlaneShaderMaterial.uniforms.circleSize, {
               value: 0,
@@ -343,16 +342,16 @@ const animMachine = createMachine<
             }) as unknown) as Promise<any>;
           },
           onDone: {
-            target: fse.up_or_down,
+            target: MAJOR_FINITE_STATES_ARRAY[1],
           },
           onError: {
             target: fse.anim_error,
           },
         },
       },
-      [MAJOR_FINITE_STATES_ARRAY[2] /* animation0 */]: {
+      [ANIMATION_SERVICES_STATE_ARRAY[2] /* animation0 */]: {
         invoke: {
-          id: "__5__",
+          id: "__2__",
           src: ({ tl, seaPlaneMesh, seaPlaneShaderMaterial }, __) => {
             return Promise.resolve().then(() => {
               seaPlaneMesh.material = seaPlaneShaderMaterial;
@@ -362,7 +361,7 @@ const animMachine = createMachine<
             });
           },
           onDone: {
-            target: fse.up_or_down,
+            target: MAJOR_FINITE_STATES_ARRAY[2],
           },
           onError: {
             target: fse.anim_error,
