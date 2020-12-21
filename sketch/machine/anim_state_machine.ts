@@ -32,12 +32,12 @@ export enum EE {
 }
 
 const MAJOR_FINITE_STATES_ARRAY = [
-  fse.aboutme,
-  fse.projects,
-  fse.blog,
   fse.animation0,
   fse.animation1,
   fse.animation2,
+  fse.aboutme,
+  fse.projects,
+  fse.blog,
 ];
 const MAJOR_FS_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
 
@@ -283,24 +283,24 @@ const animMachine = createMachine<
             // context.currentMajorStateNum
             {
               cond: ({ currentMajorStateNum }) => {
-                return currentMajorStateNum === 3;
+                return currentMajorStateNum === 0;
               },
               //
-              target: MAJOR_FINITE_STATES_ARRAY[3],
+              target: MAJOR_FINITE_STATES_ARRAY[0],
             },
             {
               cond: ({ currentMajorStateNum }) => {
-                return currentMajorStateNum === 4;
+                return currentMajorStateNum === 1;
               },
               //
-              target: MAJOR_FINITE_STATES_ARRAY[4],
+              target: MAJOR_FINITE_STATES_ARRAY[1],
             },
             {
               cond: ({ currentMajorStateNum }) => {
-                return currentMajorStateNum === 5;
+                return currentMajorStateNum === 2;
               },
               //
-              target: MAJOR_FINITE_STATES_ARRAY[5],
+              target: MAJOR_FINITE_STATES_ARRAY[2],
             },
           ],
         },
@@ -310,7 +310,7 @@ const animMachine = createMachine<
       // ------------------------------------------------------
       // ------------------------------------------------------
 
-      [MAJOR_FINITE_STATES_ARRAY[3] /* animation0 */]: {
+      [MAJOR_FINITE_STATES_ARRAY[0] /* animation0 */]: {
         invoke: {
           id: "__3__",
           src: ({ tl, seaPlaneShaderMaterial }, __) => {
@@ -326,14 +326,14 @@ const animMachine = createMachine<
             /* }); */
           },
           onDone: {
-            target: [MAJOR_FINITE_STATES_ARRAY[0]],
+            target: [MAJOR_FINITE_STATES_ARRAY[3]],
           },
           onError: {
             target: fse.anim_error,
           },
         },
       },
-      [MAJOR_FINITE_STATES_ARRAY[4] /* animation0 */]: {
+      [MAJOR_FINITE_STATES_ARRAY[1] /* animation0 */]: {
         invoke: {
           id: "__4__",
           src: ({ tl, seaPlaneShaderMaterial }, __) => {
@@ -343,14 +343,14 @@ const animMachine = createMachine<
             }) as unknown) as Promise<any>;
           },
           onDone: {
-            target: [MAJOR_FINITE_STATES_ARRAY[1]],
+            target: [MAJOR_FINITE_STATES_ARRAY[4]],
           },
           onError: {
             target: fse.anim_error,
           },
         },
       },
-      [MAJOR_FINITE_STATES_ARRAY[5] /* animation0 */]: {
+      [MAJOR_FINITE_STATES_ARRAY[2] /* animation0 */]: {
         invoke: {
           id: "__5__",
           src: ({ tl, seaPlaneMesh, seaPlaneShaderMaterial }, __) => {
@@ -362,7 +362,7 @@ const animMachine = createMachine<
             });
           },
           onDone: {
-            target: [MAJOR_FINITE_STATES_ARRAY[2]],
+            target: [MAJOR_FINITE_STATES_ARRAY[5]],
           },
           onError: {
             target: fse.anim_error,
