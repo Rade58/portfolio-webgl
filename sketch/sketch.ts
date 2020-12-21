@@ -373,9 +373,9 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // -----------------------------------------------------------------------
 
   uiElements.up.addEventListener("click", (e) => {
-    service.send({
+    /* service.send({
       type: EE.HELLO,
-    });
+    }); */
 
     service.send({
       type: EE.MOVE_UP,
@@ -432,9 +432,9 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   });
 
   uiElements.down.addEventListener("click", (e) => {
-    service.send({
+    /* service.send({
       type: EE.HELLO,
-    });
+    }); */
 
     service.send({
       type: EE.MOVE_DOWN,
