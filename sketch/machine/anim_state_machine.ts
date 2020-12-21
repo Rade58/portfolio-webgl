@@ -336,12 +336,12 @@ const animMachine = createMachine<
               .to(seaPlaneShaderMaterialWireframed.uniforms.circleSize, {
                 value: 0.8,
                 ease: Elastic.easeOut,
-                duration: "-3",
+                duration: "-=3",
               })
               .to(planeMiddleShaderMaterial.uniforms.circleSize, {
                 value: 0.8,
                 ease: Elastic.easeOut,
-                duration: "-3",
+                duration: "-=3",
               });
 
             return tl.play().then(() => {
