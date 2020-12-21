@@ -243,11 +243,7 @@ const animMachine = createMachine<
         on: {
           [EE.MOVE_UP]: {
             actions: [
-              assign((_, __) => ({ up: true })), // TREBACE DA PRATI TOK ANIMACIJE
-              //                                  DAKLE SLUZICE KASNIJE
-              //                                      ZA TRANSITION NA PRAVI ANIMATION, BEZ OBZIRA
-              // DA LI SE IDE GORE ILI DOLE, DAKL TOK ANIMACIJE MORA DA BUDE ISTI UVEK
-              // ODNOSNO, POMENUTO CE BITI BITNO ZA U idle STATE-U
+              assign((_, __) => ({ up: true })), // VEROVATNO NOOP
               assign(
                 ({ currentMajorStateNum, majorFiniteStatesArrLength }, _) => {
                   if (
@@ -262,6 +258,9 @@ const animMachine = createMachine<
             ],
             target: fse.idle,
           },
+          // NA KRAJU JE ISPALO DA CU IMATI POTPUNO ISTE currentMajorStateNum ASSIGNMENTE
+          // OVO JE ZBOG TOGA JER MI JE BITNO DA ANIMACIJA IDE SVOJIM TOKOM BEZ OBZIRA
+          // KOJE SE DUGME PRITISKA, GORNJE ILI DONJE
           [EE.MOVE_DOWN]: {
             actions: [
               assign((_, __) => ({ up: false })), // MOZDE BESPOTREBNO
