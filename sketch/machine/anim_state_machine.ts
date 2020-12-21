@@ -328,21 +328,18 @@ const animMachine = createMachine<
 
             // tl.pause();
 
-            tl.to(seaPlaneShaderMaterial.uniforms.circleSize, {
-              value: 0.8,
-              ease: Elastic.easeOut,
-              duration: 3,
-            })
-              .to(seaPlaneShaderMaterialWireframed.uniforms.circleSize, {
+            tl.to(
+              [
+                seaPlaneShaderMaterial.uniforms.circleSize,
+                seaPlaneShaderMaterialWireframed.uniforms.circleSize,
+                planeMiddleShaderMaterial.uniforms.circleSize,
+              ],
+              {
                 value: 0.8,
                 ease: Elastic.easeOut,
-                duration: "-=3",
-              })
-              .to(planeMiddleShaderMaterial.uniforms.circleSize, {
-                value: 0.8,
-                ease: Elastic.easeOut,
-                duration: "-=3",
-              });
+                duration: 3,
+              }
+            );
 
             return tl.play().then(() => {
               console.log("animation0");
