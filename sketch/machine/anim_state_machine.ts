@@ -8,6 +8,7 @@ export enum fse {
   idle = "idle",
   // hello world
   hello_world = "hello_world",
+  anim_error = "anim_error",
   //---- major -states (all of them shoud have transitions to idle)
   aboutme = "aboutme",
   projects = "projects",
@@ -155,7 +156,11 @@ type machineFiniteStateGenericType =
   | {
       value: fse.hello_world;
       context: ContextFullI;
-    };
+    }
+  | { value: fse.animation0; context: ContextFullI }
+  | { value: fse.animation1; context: ContextFullI }
+  | { value: fse.animation2; context: ContextFullI }
+  | { value: fse.anim_error; context: ContextFullI };
 
 //---------------------------------------
 
@@ -236,7 +241,7 @@ const animMachine = createMachine<
         on: {
           [EE.MOVE_UP]: {
             actions: [
-              assign((_, __) => ({ up: true })),
+              assign((_, __) => ({ up: true })), // MOZDE BESPOTREBNO
               assign(
                 ({ currentMajorStateNum, majorFiniteStatesArrLength }, _) => {
                   if (
@@ -253,7 +258,7 @@ const animMachine = createMachine<
           },
           [EE.MOVE_DOWN]: {
             actions: [
-              assign((_, __) => ({ up: false })),
+              assign((_, __) => ({ up: false })), // MOZDE BESPOTREBNO
               assign(
                 ({ currentMajorStateNum, majorFiniteStatesArrLength }, _) => {
                   if (currentMajorStateNum - 1 < 0) {
@@ -279,12 +284,6 @@ const animMachine = createMachine<
               cond: ({ currentMajorStateNum }) => {
                 return currentMajorStateNum === 3;
               },
-              actions: [
-                assign(({ tl }, __) => {
-                  // ZAVISICE OD    TIMELINE-A
-                  return { canMoveToIdleAgain: true };
-                }),
-              ],
               //
               target: MAJOR_FINITE_STATES_ARRAY[3],
             },
@@ -292,12 +291,6 @@ const animMachine = createMachine<
               cond: ({ currentMajorStateNum }) => {
                 return currentMajorStateNum === 4;
               },
-              actions: [
-                assign(({ tl }, __) => {
-                  // ZAVISICE OD    TIMELINE-A
-                  return { canMoveToIdleAgain: true };
-                }),
-              ],
               //
               target: MAJOR_FINITE_STATES_ARRAY[4],
             },
@@ -305,12 +298,6 @@ const animMachine = createMachine<
               cond: ({ currentMajorStateNum }) => {
                 return currentMajorStateNum === 5;
               },
-              actions: [
-                assign(({ tl }, __) => {
-                  // ZAVISICE OD    TIMELINE-A
-                  return { canMoveToIdleAgain: true };
-                }),
-              ],
               //
               target: MAJOR_FINITE_STATES_ARRAY[5],
             },
@@ -321,7 +308,24 @@ const animMachine = createMachine<
       // UPRAVO ZBOG ANIMACIJE
       // ------------------------------------------------------
       // ------------------------------------------------------
-      [MAJOR_FINITE_STATES_ARRAY[3] /* animation0 */]: {},
+
+      [MAJOR_FINITE_STATES_ARRAY[3] /* animation0 */]: {
+        invoke: {
+          id: "__3__",
+          src: (_, __) => {
+            // DAKLE INVOKUJEM PROMISE-E
+            // USTVARI INVOKE-UJEM ANIMATION SERVICE
+
+            return fetch("");
+          },
+          onDone: {
+            target: [MAJOR_FINITE_STATES_ARRAY[0]],
+          },
+          onError: {
+            target: fse.anim_error,
+          },
+        },
+      },
       [MAJOR_FINITE_STATES_ARRAY[4] /* animation0 */]: {},
       [MAJOR_FINITE_STATES_ARRAY[5] /* animation0 */]: {},
       //-------------------------------------------------------

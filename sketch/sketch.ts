@@ -386,20 +386,10 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     });
 
     // -----------------------------
-    /*{
-      cond: ({ currentMajorStateNum }) => {
-        return currentMajorStateNum === 1;
-      },
-      actions: [
-        assign(({ tl }, __) => {
-          // ZAVISICE OD    TIMELINE-A
-          return { canMoveToIdleAgain: true };
-        }),
-      ],
-      //
-      target: MAJOR_FINITE_STATES_ARRAY[1],
-    },*/
-
+    /* assign(({ tl }, __) => {
+      // ZAVISICE OD    TIMELINE-A
+      return { canMoveToIdleAgain: true };
+    }), */
     // -------------------------------
 
     /* TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
