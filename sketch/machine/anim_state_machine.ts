@@ -247,6 +247,7 @@ const animMachine = createMachine<
               //                                  DAKLE SLUZICE KASNIJE
               //                                      ZA TRANSITION NA PRAVI ANIMATION, BEZ OBZIRA
               // DA LI SE IDE GORE ILI DOLE, DAKL TOK ANIMACIJE MORA DA BUDE ISTI UVEK
+              // ODNOSNO, POMENUTO CE BITI BITNO ZA U idle STATE-U
               assign(
                 ({ currentMajorStateNum, majorFiniteStatesArrLength }, _) => {
                   if (
@@ -266,13 +267,13 @@ const animMachine = createMachine<
               assign((_, __) => ({ up: false })), // MOZDE BESPOTREBNO
               assign(
                 ({ currentMajorStateNum, majorFiniteStatesArrLength }, _) => {
-                  if (currentMajorStateNum - 1 < 0) {
+                  if (currentMajorStateNum + 1 > 0) {
                     return {
-                      currentMajorStateNum: majorFiniteStatesArrLength - 1,
+                      currentMajorStateNum: 0,
                     };
                   }
 
-                  return { currentMajorStateNum: currentMajorStateNum - 1 };
+                  return { currentMajorStateNum: currentMajorStateNum + 1 };
                 }
               ),
             ],
@@ -380,7 +381,7 @@ const animMachine = createMachine<
               .to(
                 controls.object.position,
                 {
-                  y: 21.4,
+                  y: 21.2,
                   ease: Quad.easeIn,
                   duration: 2,
                 },
