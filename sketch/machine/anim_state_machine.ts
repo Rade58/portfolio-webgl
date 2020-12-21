@@ -327,7 +327,9 @@ const animMachine = createMachine<
                   duration: 3,
                 })
                 .add("blah")
-                .play();
+                .then(() => {
+                  console.log("animation 0");
+                });
             });
           },
           onDone: {
