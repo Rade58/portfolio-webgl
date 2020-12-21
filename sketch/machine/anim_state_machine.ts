@@ -243,7 +243,10 @@ const animMachine = createMachine<
         on: {
           [EE.MOVE_UP]: {
             actions: [
-              assign((_, __) => ({ up: true })), // MOZDE BESPOTREBNO
+              assign((_, __) => ({ up: true })), // TREBACE DA PRATI TOK ANIMACIJE
+              //                                  DAKLE SLUZICE KASNIJE
+              //                                      ZA TRANSITION NA PRAVI ANIMATION, BEZ OBZIRA
+              // DA LI SE IDE GORE ILI DOLE, DAKL TOK ANIMACIJE MORA DA BUDE ISTI UVEK
               assign(
                 ({ currentMajorStateNum, majorFiniteStatesArrLength }, _) => {
                   if (
