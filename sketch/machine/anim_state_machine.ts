@@ -1,5 +1,5 @@
 import { Vector3, Object3D, ShaderMaterial, Mesh } from "three";
-import { TweenMax, TimelineLite, Elastic } from "gsap";
+import { TweenMax, TimelineMax, Elastic } from "gsap";
 import { createMachine, assign, interpret } from "xstate";
 import { textDisplay } from "../ui/user_interface";
 
@@ -47,7 +47,7 @@ interface ContextFullI {
   majorFiniteStatesArr: string[];
   majorFiniteStatesArrLength: number;
   currentMajorStateNum: number;
-  tl: TimelineLite;
+  tl: TimelineMax;
   up: boolean;
   canMoveToIdleAgain: boolean;
   seaPlaneShaderMaterial: ShaderMaterial;
@@ -73,7 +73,7 @@ interface MachineContextGenericI {
   majorFiniteStatesArr: string[];
   majorFiniteStatesArrLength: number;
   currentMajorStateNum: number;
-  tl: TimelineLite;
+  tl: TimelineMax;
   up: boolean;
   canMoveToIdleAgain: boolean;
   // materials
@@ -183,7 +183,7 @@ const animMachine = createMachine<
       currentMajorStateNum: 2,
       up: false,
       canMoveToIdleAgain: true,
-      tl: new TimelineLite(),
+      tl: new TimelineMax(),
       cageMesh: null,
       controls: null,
       middlePlaneMesh: null,
