@@ -175,7 +175,7 @@ const animMachine = createMachine<
 >(
   {
     id: "sketch_anim_machine",
-    initial: fse.hello_world,
+    initial: fse.init,
     context: {
       majorFiniteStatesArr: MAJOR_FINITE_STATES_ARRAY,
       majorFiniteStatesArrLength: MAJOR_FS_ARR_LENGTH,
@@ -226,16 +226,17 @@ const animMachine = createMachine<
                 spaceshipMesh,
               })
             ),
-            target: fse.hello_world,
+            target: fse.up_or_down,
           },
         },
       },
       [fse.hello_world]: {
-        on: {
+        /* on: {
           [EE.HELLO]: {
             target: fse.up_or_down,
           },
-        },
+        }, */
+        type: "final",
       },
       [fse.up_or_down]: {
         on: {

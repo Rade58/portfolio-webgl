@@ -305,6 +305,13 @@ const sketch = ({ context }) => {
         service.send({
             type: EE.SWITCH,
         });
+        // -----------------------------
+        // MOZDA NECE TREBATI
+        /* assign(({ tl }, __) => {
+          // ZAVISICE OD    TIMELINE-A
+          return { canMoveToIdleAgain: true };
+        }), */
+        // -------------------------------
         /* TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
           value: 0.8,
           ease: Elastic.easeOut,
