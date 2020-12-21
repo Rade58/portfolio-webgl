@@ -1,5 +1,5 @@
 import { Vector3, Object3D, ShaderMaterial, Mesh } from "three";
-import { TweenMax, Elastic } from "gsap";
+import { TweenMax, TimelineLite, Elastic } from "gsap";
 import { createMachine, assign, interpret } from "xstate";
 import { textDisplay } from "../ui/user_interface";
 
@@ -47,6 +47,7 @@ interface ContextFullI {
   majorFiniteStatesArr: string[];
   majorFiniteStatesArrLength: number;
   currentMajorStateNum: number;
+  tl: TimelineLite;
   up: boolean;
   canMoveToIdleAgain: boolean;
   seaPlaneShaderMaterial: ShaderMaterial;
@@ -72,6 +73,7 @@ interface MachineContextGenericI {
   majorFiniteStatesArr: string[];
   majorFiniteStatesArrLength: number;
   currentMajorStateNum: number;
+  tl: TimelineLite;
   up: boolean;
   canMoveToIdleAgain: boolean;
   // materials
@@ -181,6 +183,7 @@ const animMachine = createMachine<
       currentMajorStateNum: 2,
       up: false,
       canMoveToIdleAgain: true,
+      tl: new TimelineLite(),
       cageMesh: null,
       controls: null,
       middlePlaneMesh: null,
@@ -311,15 +314,20 @@ const animMachine = createMachine<
       [ANIMATION_SERVICES_STATE_ARRAY[0] /* animation0 */]: {
         invoke: {
           id: "__0__",
-          src: ({ seaPlaneShaderMaterial }, __) => {
+          src: ({ tl, seaPlaneShaderMaterial }, __) => {
             // DAKLE INVOKUJEM PROMISE-E
             // USTVARI INVOKE-UJEM ANIMATION SERVICE
 
-            return TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
-              value: 0.8,
-              ease: Elastic.easeOut,
-            }).then(() => {
-              console.log("animation 0");
+            /* return Promise.resolve().then(() => { */
+            return Promise.resolve().then(() => {
+              return tl
+                .to(seaPlaneShaderMaterial.uniforms.circleSize, {
+                  value: 0.8,
+                  ease: Elastic.easeOut,
+                  duration: 3,
+                })
+                .add("blah")
+                .play();
             });
           },
           onDone: {
@@ -333,12 +341,12 @@ const animMachine = createMachine<
       [ANIMATION_SERVICES_STATE_ARRAY[1] /* animation0 */]: {
         invoke: {
           id: "__1__",
-          src: ({ seaPlaneShaderMaterial }, __) => {
-            return TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
-              value: 0,
-              ease: Elastic.easeOut,
-            }).then(() => {
-              console.log("animation 2");
+          src: ({ tl, seaPlaneShaderMaterial }, __) => {
+            return Promise.resolve().then(() => {
+              return tl.to(seaPlaneShaderMaterial.uniforms.circleSize, {
+                value: 0,
+                ease: Elastic.easeOut,
+              });
             });
           },
           onDone: {
@@ -352,7 +360,7 @@ const animMachine = createMachine<
       [ANIMATION_SERVICES_STATE_ARRAY[2] /* animation0 */]: {
         invoke: {
           id: "__2__",
-          src: ({ seaPlaneMesh, seaPlaneShaderMaterial }, __) => {
+          src: ({ tl, seaPlaneMesh, seaPlaneShaderMaterial }, __) => {
             return Promise.resolve().then(() => {
               seaPlaneMesh.material = seaPlaneShaderMaterial;
               seaPlaneMesh.material.needsUpdate = true;
