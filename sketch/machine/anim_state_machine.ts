@@ -340,15 +340,29 @@ const animMachine = createMachine<
                 ease: Elastic.easeOut,
                 duration: 3,
               }
-            ).to(
-              cageMesh.position,
-              {
-                y: 128,
-                ease: Quad.easeIn,
-                duration: 2,
-              },
-              "-=3"
-            );
+            )
+              .to(
+                cageMesh.position,
+                {
+                  y: 148,
+                  ease: Quad.easeOut,
+                  duration: 2,
+                },
+                "-=3"
+              )
+              .to(cageMesh.scale, {
+                x: 10.4,
+                y: 10.4,
+                z: 10.4,
+                duration: 0.5,
+              })
+              .to(
+                cageMesh.position,
+                {
+                  y: 128,
+                },
+                "-=0.5"
+              );
 
             return tl.play().then(() => {
               console.log("animation0");
