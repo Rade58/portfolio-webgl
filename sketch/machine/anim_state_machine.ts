@@ -324,6 +324,7 @@ const animMachine = createMachine<
                   ease: Elastic.easeOut,
                   duration: 3,
                 })
+                .add("blah")
                 .play();
             });
           },
