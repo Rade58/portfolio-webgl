@@ -353,6 +353,12 @@ const animMachine = createMachine<
           },
         },
       },
+      [fse.anim_error]: {
+        entry: () => {
+          console.log("Something wrong with Animation");
+        },
+        type: "final",
+      },
     },
   },
   {
