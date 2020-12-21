@@ -4,9 +4,6 @@ import uiElements from "./ui/user_interface";
 // SETTINGS OBJECT STUFF  -----------------
 import settings, { settingsFunc } from "./sketch-settings";
 //
-// ANIMATION LIBRATRIES
-import { TweenMax, Elastic, Quad } from "gsap";
-//
 // STATE MACHINE
 import { EE, animMachineService as service, } from "./machine/anim_state_machine";
 // ----- MOZDA CU KORISTITI ALI VEROVATNO NE -------
@@ -400,33 +397,41 @@ const sketch = ({ context }) => {
     // adding removing wireframe material
     // removing middleplane
     context.canvas.addEventListener("click", () => {
-        seaPlaneMesh.material = seaPlaneShaderMaterial;
+        /*  seaPlaneMesh.material = seaPlaneShaderMaterial;
         // ovo ide posle
         seaPlaneMesh.material.needsUpdate = true;
+    
         seaPlaneMesh.add(seaWireframe);
         scene.remove(middlePlaneMesh);
-        const newTargetVector = new global.THREE.Vector3(...spaceshipMesh.position.toArray());
+        const newTargetVector = new global.THREE.Vector3(
+          ...spaceshipMesh.position.toArray()
+        );
         const newValuesTarget = sunMesh.position.toArray();
+    
         controls.target = newTargetVector;
         controls.update();
+    
         TweenMax.to(controls.target, 9, {
-            x: newValuesTarget[0],
-            y: newValuesTarget[1],
-            z: newValuesTarget[2],
-            ease: Quad.easeIn,
+          x: newValuesTarget[0],
+          y: newValuesTarget[1],
+          z: newValuesTarget[2],
+    
+          ease: Quad.easeIn,
         });
+    
         TweenMax.to(controls.object.position, 6, {
-            y: 8,
-            ease: Quad.easeInOut,
+          y: 8,
+          ease: Quad.easeInOut,
         });
+    
         TweenMax.to(cageMesh.position, 4, {
-            y: -24,
-            ease: Elastic.easeInOut,
+          y: -24,
+          ease: Elastic.easeInOut,
         });
         TweenMax.to(spaceshipMesh.position, 4, {
-            y: -24,
-            ease: Elastic.easeInOut,
-        });
+          y: -24,
+          ease: Elastic.easeInOut,
+        }); */
     });
     // preventing snapshots
     window.addEventListener("keydown", (e) => {

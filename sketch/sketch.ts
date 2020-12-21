@@ -385,6 +385,23 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       type: EE.SWITCH,
     });
 
+    // -----------------------------
+    /*{
+      cond: ({ currentMajorStateNum }) => {
+        return currentMajorStateNum === 1;
+      },
+      actions: [
+        assign(({ tl }, __) => {
+          // ZAVISICE OD    TIMELINE-A
+          return { canMoveToIdleAgain: true };
+        }),
+      ],
+      //
+      target: MAJOR_FINITE_STATES_ARRAY[1],
+    },*/
+
+    // -------------------------------
+
     /* TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
       value: 0.8,
       ease: Elastic.easeOut,

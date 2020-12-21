@@ -12,6 +12,9 @@ export enum fse {
   aboutme = "aboutme",
   projects = "projects",
   blog = "blog",
+  animation0 = "animation0",
+  animation1 = "animation1",
+  animation2 = "animation2",
   //
   up_or_down = "up_or_down",
 }
@@ -27,7 +30,14 @@ export enum EE {
   HELLO = "HELLO",
 }
 
-const MAJOR_FINITE_STATES_ARRAY = [fse.aboutme, fse.projects, fse.blog];
+const MAJOR_FINITE_STATES_ARRAY = [
+  fse.aboutme,
+  fse.projects,
+  fse.blog,
+  fse.animation0,
+  fse.animation1,
+  fse.animation2,
+];
 const MAJOR_FS_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
 
 // context HELPER TYPE ---------------------
@@ -263,41 +273,11 @@ const animMachine = createMachine<
       [fse.idle]: {
         on: {
           [EE.SWITCH]: [
+            // E OVI TRANSITIONI CE SE DESITI U ODNOSU NA
+            // context.currentMajorStateNum
             {
               cond: ({ currentMajorStateNum }) => {
-                return currentMajorStateNum === 0;
-              },
-              // ANIMACIJE CU RADITI KAO DEO invoke-A
-              // TO RADIM JER MI TREBAJU PROMISE-I
-              // ODNOSNO ODGOVARA MI OVO
-              // JER MOGU JEDINO TAKO DA TAKORECI AWAIT-UJEM
-              // canMoveToIdleAgain   ASSIGNMENT
-              // JER OBICNO NE MOGU
-              actions: [
-                // ANIMACIJE CU RADITI U OVINM ACTIONIMA
-
-                //
-
-                assign(({ tl }, __) => {
-                  // canMoveToIdleAgain ZAVISICE OD    TIMELINE-A
-                  // DAKLE, A U ODNOSU KADA OVO BUDE true
-                  // U SLEDECEM TRANSITIONED STATE CE SE MOCI IZVRSITI
-                  // TRANSITION TO idle AGAIN
-                  //
-                  // ------  DAKLE OVO CE BITI BITN OSAM OZA SLEDECE STATE-OVE
-                  // ------  JER TAMO IMAM COND U ODNOSU NA   canMoveToIdleAgain
-                  //
-                  // DAKLE OA LOGIKA JE BITNA ZA ONE MAJOR STATE-OVE
-                  // JER DA JE FALSE TAM OSE NECE DESITI TRANSITION
-                  return { canMoveToIdleAgain: true };
-                }),
-              ],
-              //
-              target: MAJOR_FINITE_STATES_ARRAY[0],
-            },
-            {
-              cond: ({ currentMajorStateNum }) => {
-                return currentMajorStateNum === 1;
+                return currentMajorStateNum === 3;
               },
               actions: [
                 assign(({ tl }, __) => {
@@ -306,11 +286,11 @@ const animMachine = createMachine<
                 }),
               ],
               //
-              target: MAJOR_FINITE_STATES_ARRAY[1],
+              target: MAJOR_FINITE_STATES_ARRAY[3],
             },
             {
               cond: ({ currentMajorStateNum }) => {
-                return currentMajorStateNum === 2;
+                return currentMajorStateNum === 4;
               },
               actions: [
                 assign(({ tl }, __) => {
@@ -319,13 +299,32 @@ const animMachine = createMachine<
                 }),
               ],
               //
-              target: MAJOR_FINITE_STATES_ARRAY[2],
+              target: MAJOR_FINITE_STATES_ARRAY[4],
+            },
+            {
+              cond: ({ currentMajorStateNum }) => {
+                return currentMajorStateNum === 5;
+              },
+              actions: [
+                assign(({ tl }, __) => {
+                  // ZAVISICE OD    TIMELINE-A
+                  return { canMoveToIdleAgain: true };
+                }),
+              ],
+              //
+              target: MAJOR_FINITE_STATES_ARRAY[5],
             },
           ],
-
-          // ---------------------------------------------
         },
       },
+      // OVI SU STATE-OVI U KOJIMA CU KORISTITI invoke
+      // UPRAVO ZBOG ANIMACIJE
+      // ------------------------------------------------------
+      // ------------------------------------------------------
+      [MAJOR_FINITE_STATES_ARRAY[3] /* animation0 */]: {},
+      [MAJOR_FINITE_STATES_ARRAY[4] /* animation0 */]: {},
+      [MAJOR_FINITE_STATES_ARRAY[5] /* animation0 */]: {},
+      //-------------------------------------------------------
       [MAJOR_FINITE_STATES_ARRAY[0] /* aboutme */]: {
         on: {
           "*": {
