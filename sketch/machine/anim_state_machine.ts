@@ -285,21 +285,21 @@ const animMachine = createMachine<
                 return currentMajorStateNum === 0;
               },
               //
-              target: MAJOR_FINITE_STATES_ARRAY[0],
+              target: ANIMATION_SERVICES_STATE_ARRAY[0],
             },
             {
               cond: ({ currentMajorStateNum }) => {
                 return currentMajorStateNum === 1;
               },
               //
-              target: MAJOR_FINITE_STATES_ARRAY[1],
+              target: ANIMATION_SERVICES_STATE_ARRAY[1],
             },
             {
               cond: ({ currentMajorStateNum }) => {
                 return currentMajorStateNum === 2;
               },
               //
-              target: MAJOR_FINITE_STATES_ARRAY[2],
+              target: ANIMATION_SERVICES_STATE_ARRAY[2],
             },
           ],
         },
@@ -317,12 +317,13 @@ const animMachine = createMachine<
             // USTVARI INVOKE-UJEM ANIMATION SERVICE
 
             /* return Promise.resolve().then(() => { */
-            return (tl.to(seaPlaneShaderMaterial.uniforms.circleSize, {
-              value: 0.8,
-              ease: Elastic.easeOut,
-              duration: 3,
-            }) as unknown) as Promise<any>;
-            /* }); */
+            return Promise.resolve().then(() => {
+              return tl.to(seaPlaneShaderMaterial.uniforms.circleSize, {
+                value: 0.8,
+                ease: Elastic.easeOut,
+                duration: 3,
+              });
+            });
           },
           onDone: {
             target: MAJOR_FINITE_STATES_ARRAY[0],
@@ -336,10 +337,12 @@ const animMachine = createMachine<
         invoke: {
           id: "__1__",
           src: ({ tl, seaPlaneShaderMaterial }, __) => {
-            return (tl.to(seaPlaneShaderMaterial.uniforms.circleSize, {
-              value: 0,
-              ease: Elastic.easeOut,
-            }) as unknown) as Promise<any>;
+            return Promise.resolve().then(() => {
+              return tl.to(seaPlaneShaderMaterial.uniforms.circleSize, {
+                value: 0,
+                ease: Elastic.easeOut,
+              });
+            });
           },
           onDone: {
             target: MAJOR_FINITE_STATES_ARRAY[1],
