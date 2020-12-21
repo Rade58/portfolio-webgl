@@ -1,5 +1,5 @@
 import { Vector3, Object3D, ShaderMaterial, Mesh } from "three";
-import { TweenMax, TimelineMax, Elastic } from "gsap";
+import { TweenMax, TimelineMax, Elastic, Quad } from "gsap";
 import { createMachine, assign, interpret } from "xstate";
 import { textDisplay } from "../ui/user_interface";
 
@@ -320,6 +320,7 @@ const animMachine = createMachine<
               seaPlaneShaderMaterial,
               seaPlaneShaderMaterialWireframed,
               planeMiddleShaderMaterial,
+              cageMesh,
             },
             __
           ) => {
@@ -339,6 +340,14 @@ const animMachine = createMachine<
                 ease: Elastic.easeOut,
                 duration: 3,
               }
+            ).to(
+              cageMesh.position,
+              {
+                x: 22,
+                ease: Quad.easeIn,
+                duration: 2,
+              },
+              "-=3"
             );
 
             return tl.play().then(() => {
