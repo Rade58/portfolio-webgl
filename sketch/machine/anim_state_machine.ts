@@ -1,5 +1,5 @@
 import { Vector3, Object3D, ShaderMaterial, Mesh } from "three";
-import { TweenMax, TimelineLite } from "gsap";
+import { TweenMax, TimelineLite, Elastic } from "gsap";
 import { createMachine, assign, interpret } from "xstate";
 import { textDisplay } from "../ui/user_interface";
 
@@ -312,11 +312,17 @@ const animMachine = createMachine<
       [MAJOR_FINITE_STATES_ARRAY[3] /* animation0 */]: {
         invoke: {
           id: "__3__",
-          src: (_, __) => {
+          src: ({ tl, seaPlaneShaderMaterial }, __) => {
             // DAKLE INVOKUJEM PROMISE-E
             // USTVARI INVOKE-UJEM ANIMATION SERVICE
 
-            return fetch("");
+            /* return Promise.resolve().then(() => { */
+            return (tl.to(seaPlaneShaderMaterial.uniforms.circleSize, {
+              value: 0.8,
+              ease: Elastic.easeOut,
+              duration: 3,
+            }) as unknown) as Promise<any>;
+            /* }); */
           },
           onDone: {
             target: [MAJOR_FINITE_STATES_ARRAY[0]],
@@ -326,8 +332,42 @@ const animMachine = createMachine<
           },
         },
       },
-      [MAJOR_FINITE_STATES_ARRAY[4] /* animation0 */]: {},
-      [MAJOR_FINITE_STATES_ARRAY[5] /* animation0 */]: {},
+      [MAJOR_FINITE_STATES_ARRAY[4] /* animation0 */]: {
+        invoke: {
+          id: "__4__",
+          src: ({ tl, seaPlaneShaderMaterial }, __) => {
+            return (tl.to(seaPlaneShaderMaterial.uniforms.circleSize, {
+              value: 0,
+              ease: Elastic.easeOut,
+            }) as unknown) as Promise<any>;
+          },
+          onDone: {
+            target: [MAJOR_FINITE_STATES_ARRAY[1]],
+          },
+          onError: {
+            target: fse.anim_error,
+          },
+        },
+      },
+      [MAJOR_FINITE_STATES_ARRAY[5] /* animation0 */]: {
+        invoke: {
+          id: "__5__",
+          src: ({ tl, seaPlaneMesh, seaPlaneShaderMaterial }, __) => {
+            return Promise.resolve().then(() => {
+              seaPlaneMesh.material = seaPlaneShaderMaterial;
+              seaPlaneMesh.material.needsUpdate = true;
+
+              return "anything";
+            });
+          },
+          onDone: {
+            target: [MAJOR_FINITE_STATES_ARRAY[2]],
+          },
+          onError: {
+            target: fse.anim_error,
+          },
+        },
+      },
       //-------------------------------------------------------
       [MAJOR_FINITE_STATES_ARRAY[0] /* aboutme */]: {
         on: {
