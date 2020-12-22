@@ -28,10 +28,10 @@ export enum EE {
   CHANGE_TO_BLOG = "CHANGE_TO_BLOG",
   CHANGE_TO_PROJECTS = "CHANGE_TO_PROJECTS", */
   SWITCH = "SWITCH",
-  MOVE_UP = "MOVE_UP",
-  MOVE_DOWN = "MOVE_DOWN",
+  /* MOVE_UP = "MOVE_UP",  // DEPRECATED
+  MOVE_DOWN = "MOVE_DOWN", */
   MOVE = "MOVE",
-  HELLO = "HELLO",
+  // HELLO = "HELLO", // DEPRECATED
 }
 
 const MAJOR_FINITE_STATES_ARRAY = [fse.aboutme, fse.projects, fse.blog];
@@ -243,7 +243,7 @@ const animMachine = createMachine<
         }, */
         type: "final",
       },
-      /*  [fse.up_or_down]: {
+      /*  [fse.up_or_down]: {   // DEPRECATED
         on: {
           [EE.MOVE_UP]: {
             actions: [
