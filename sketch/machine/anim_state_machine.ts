@@ -451,7 +451,7 @@ const animMachine = createMachine<
                 "-=1.2"
               );
 
-            const oldLookAtCoords = spaceshipMesh.position.toArray();
+            /* const oldLookAtCoords = spaceshipMesh.position.toArray();
             const newLookAtVector = new global.THREE.Vector3(
               ...oldLookAtCoords
             );
@@ -471,7 +471,7 @@ const animMachine = createMachine<
               z: 0,
               duration: 1,
               ease: Power2.easeIn,
-            });
+            }); */
 
             return tl.then(() => {
               tl.pause();
