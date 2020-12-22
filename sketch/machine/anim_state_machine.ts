@@ -522,6 +522,25 @@ const animMachine = createMachine<
           return { currentMajorStateNum: currentMajorStateNum + 1 };
         }
       ),
+      incrementAnimationServiceNum: assign(
+        (
+          { currentAnimationServiceNumber, animationsServiceArrayLength },
+          _
+        ) => {
+          if (
+            currentAnimationServiceNumber + 1 >
+            animationsServiceArrayLength - 1
+          ) {
+            return {
+              currentMajorStateNum: 0,
+            };
+          }
+
+          return {
+            currentAnimationServiceNumber: currentAnimationServiceNumber + 1,
+          };
+        }
+      ),
     },
   }
 );
