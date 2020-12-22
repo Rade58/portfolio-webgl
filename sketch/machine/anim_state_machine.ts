@@ -316,7 +316,7 @@ const animMachine = createMachine<
       // UPRAVO ZBOG ANIMACIJE
       // ------------------------------------------------------
       // ------------------------------------------------------
-      // TREBAO BI OVDE    onDone   PROMENITI DA canMoveToIdleAgain BUDE true
+
       [ANIMATION_SERVICES_STATE_ARRAY[0] /* animation0 */]: {
         entry: ["disableMovingToIdle"],
         invoke: {
@@ -478,24 +478,30 @@ const animMachine = createMachine<
       [MAJOR_FINITE_STATES_ARRAY[0] /* aboutme */]: {
         on: {
           "*": {
-            cond: "idleIsAllowed",
             target: fse.up_or_down,
+            cond: ({ canMoveToIdleAgain, currentMajorStateNum }, __) => {
+              return canMoveToIdleAgain && currentMajorStateNum === 0;
+            },
           },
         },
       },
       [MAJOR_FINITE_STATES_ARRAY[1] /* projects */]: {
         on: {
           "*": {
-            cond: "idleIsAllowed",
             target: fse.up_or_down,
+            cond: ({ canMoveToIdleAgain, currentMajorStateNum }, __) => {
+              return canMoveToIdleAgain && currentMajorStateNum === 1;
+            },
           },
         },
       },
       [MAJOR_FINITE_STATES_ARRAY[2] /* blog */]: {
         on: {
           "*": {
-            cond: "idleIsAllowed",
             target: fse.up_or_down,
+            cond: ({ canMoveToIdleAgain, currentMajorStateNum }, __) => {
+              return canMoveToIdleAgain && currentMajorStateNum === 2;
+            },
           },
         },
       },
@@ -508,12 +514,12 @@ const animMachine = createMachine<
     },
   },
   {
-    guards: {
-      idleIsAllowed: (context, event) => {
+    // guards: {
+    /* idleIsAllowed: (context, event) => {
         const { canMoveToIdleAgain } = context;
         return canMoveToIdleAgain;
-      },
-    },
+      }, */
+    // },
     actions: {
       enableMovingToIdle: assign((_, __) => ({ canMoveToIdleAgain: true })),
       disableMovingToIdle: assign((_, __) => ({ canMoveToIdleAgain: false })),
