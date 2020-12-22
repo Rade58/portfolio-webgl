@@ -448,7 +448,7 @@ const animMachine = createMachine<
                   duration: 2,
                   ease: Power2.easeIn,
                 },
-                "-=1.2"
+                `-=${2 * 0.6}`
               )
               .call(() => {
                 const oldLookAtCoords = spaceshipMesh.position.toArray();
@@ -456,23 +456,26 @@ const animMachine = createMachine<
                   ...oldLookAtCoords
                 );
 
-                seaPlaneMesh.material = seaPlaneShaderMaterial;
-                seaPlaneMesh.material.needsUpdate = true;
-
                 controls.target = newLookAtVector;
-
                 controls.update();
 
+                seaPlaneMesh.material = seaPlaneShaderMaterial;
+                seaPlaneMesh.material.needsUpdate = true;
                 scene.remove(middlePlaneMesh);
               })
 
               .to(controls.object.position, {
-                x: 6,
-                y: 6,
-                z: 6,
+                x: 16,
+                y: 8,
+                z: 16,
                 duration: 1,
                 ease: Power2.easeIn,
               });
+            /* .to(spaceshipMesh.position, {
+                y: 200,
+              })
+ */
+
             //
             return tl.then(() => {
               tl.pause();
