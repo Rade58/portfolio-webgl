@@ -464,6 +464,7 @@ const animMachine = createMachine<
           },
           onDone: {
             target: MAJOR_FINITE_STATES_ARRAY[2],
+            actions: ["enableMovingToIdle"],
           },
           onError: {
             target: fse.anim_error,
