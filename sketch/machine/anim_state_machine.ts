@@ -322,6 +322,7 @@ const animMachine = createMachine<
               tl,
               seaPlaneShaderMaterial,
               seaPlaneShaderMaterialWireframed,
+              seaWireframeShaderMaterial,
               planeMiddleShaderMaterial,
               cageMesh,
               spaceshipMesh,
@@ -330,7 +331,8 @@ const animMachine = createMachine<
             __
           ) => {
             // DAKLE INVOKUJEM PROMISE-E
-            // USTVARI INVOKE-UJEM ANIMATION SERVICE
+            // USTVARI INVOKE-UJEM
+            // ANIMATION SERVICE
 
             tl.pause();
 
@@ -339,6 +341,7 @@ const animMachine = createMachine<
                 seaPlaneShaderMaterial.uniforms.circleSize,
                 seaPlaneShaderMaterialWireframed.uniforms.circleSize,
                 planeMiddleShaderMaterial.uniforms.circleSize,
+                seaWireframeShaderMaterial.uniforms.circleSize,
               ],
               {
                 value: 0.8,
@@ -404,12 +407,35 @@ const animMachine = createMachine<
       [ANIMATION_SERVICES_STATE_ARRAY[1] /* animation0 */]: {
         invoke: {
           id: "__1__",
-          src: ({ tl, seaPlaneShaderMaterial }, __) => {
-            return Promise.resolve().then(() => {
-              return tl.to(seaPlaneShaderMaterial.uniforms.circleSize, {
+          src: (
+            {
+              tl,
+              seaPlaneShaderMaterial,
+              planeMiddleShaderMaterial,
+              seaPlaneShaderMaterialWireframed,
+              seaWireframeShaderMaterial,
+              spaceshipMesh,
+              cageMesh,
+              controls,
+            },
+            __
+          ) => {
+            tl.to(
+              [
+                seaPlaneShaderMaterial.uniforms.circleSize,
+                seaPlaneShaderMaterialWireframed.uniforms.circleSize,
+                planeMiddleShaderMaterial.uniforms.circleSize,
+                seaWireframeShaderMaterial.uniforms.circleSize,
+              ],
+              {
                 value: 0,
                 ease: Elastic.easeOut,
-              });
+                duration: 3,
+              }
+            );
+
+            return tl.play().then(() => {
+              tl.pause();
             });
           },
           onDone: {
