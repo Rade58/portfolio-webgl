@@ -30,6 +30,7 @@ export enum EE {
   SWITCH = "SWITCH",
   MOVE_UP = "MOVE_UP",
   MOVE_DOWN = "MOVE_DOWN",
+  MOVE = "MOVE",
   HELLO = "HELLO",
 }
 
@@ -127,6 +128,9 @@ type machineEventGenericType =
     }
   | {
       type: EE.HELLO;
+    }
+  | {
+      type: EE.MOVE;
     };
 
 type machineFiniteStateGenericType =
@@ -478,10 +482,10 @@ const animMachine = createMachine<
       [MAJOR_FINITE_STATES_ARRAY[0] /* aboutme */]: {
         entry: "incrementAnimNum",
         on: {
-          [EE.SWITCH]: {
+          [EE.MOVE]: {
             target: fse.idle,
             cond: ({ canMoveToIdleAgain, currentMajorStateNum }, __) => {
-              return canMoveToIdleAgain && currentMajorStateNum === 0;
+              return canMoveToIdleAgain && currentMajorStateNum !== 0;
             },
           },
         },
@@ -489,10 +493,10 @@ const animMachine = createMachine<
       [MAJOR_FINITE_STATES_ARRAY[1] /* projects */]: {
         entry: "incrementAnimNum",
         on: {
-          [EE.SWITCH]: {
+          [EE.MOVE]: {
             target: fse.idle,
             cond: ({ canMoveToIdleAgain, currentMajorStateNum }, __) => {
-              return canMoveToIdleAgain && currentMajorStateNum === 1;
+              return canMoveToIdleAgain && currentMajorStateNum !== 1;
             },
           },
         },
@@ -500,10 +504,10 @@ const animMachine = createMachine<
       [MAJOR_FINITE_STATES_ARRAY[2] /* blog */]: {
         entry: "incrementAnimNum",
         on: {
-          [EE.SWITCH]: {
+          [EE.MOVE]: {
             target: fse.idle,
             cond: ({ canMoveToIdleAgain, currentMajorStateNum }, __) => {
-              return canMoveToIdleAgain && currentMajorStateNum === 2;
+              return canMoveToIdleAgain && currentMajorStateNum !== 2;
             },
           },
         },
