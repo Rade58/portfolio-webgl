@@ -419,21 +419,21 @@ const animMachine = createMachine<
               .to(
                 spaceshipMesh.position,
                 {
-                  y: 2.4,
+                  y: 3.4,
                   ease: Power1.easeIn,
                   duration: 1.2,
                 },
-                "-1.2"
-              )
-              .to(
-                controls.object.position,
+                "-0.6"
+              );
+            /*  .to(
+                controls.,
                 {
-                  y: 1.2,
-                  z: 0.8,
+                  y: 4.1,
+
                   ease: Power1.easeIn,
                 },
-                `-${1.2 * 2}`
-              );
+                `-${0.6 * 2 + 0.1}`
+              ); */
 
             return tl.then(() => {
               tl.pause();
