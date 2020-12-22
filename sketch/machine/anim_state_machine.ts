@@ -440,8 +440,8 @@ const animMachine = createMachine<
                   ease: Power0.easeInOut,
                 },
                 `-=${1.8 * 2}`
-              )
-              .to(
+              );
+            /* .to(
                 controls.object.position,
                 {
                   y: 3,
@@ -470,7 +470,7 @@ const animMachine = createMachine<
                 z: 16,
                 duration: 1,
                 ease: Power2.easeIn,
-              });
+              }); */
             /* .to(spaceshipMesh.position, {
                 y: 200,
               })
