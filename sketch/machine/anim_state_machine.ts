@@ -385,6 +385,7 @@ const animMachine = createMachine<
               spaceshipMesh,
               cageMesh,
               controls,
+              seaPlaneMesh,
             },
             __
           ) => {
@@ -442,7 +443,22 @@ const animMachine = createMachine<
                   ease: Power2.easeIn,
                 },
                 "-=1.2"
-              );
+              )
+              .pause();
+
+            const newLookAtVector = new global.THREE.Vector3(0, 0, 0);
+            const newLookAtCoords = newLookAtVector.toArray();
+
+            seaPlaneMesh.material = seaPlaneShaderMaterial;
+            seaPlaneMesh.material.needsUpdate = true;
+
+            tl.play().to(controls.target, {
+              x: newLookAtCoords[0],
+              y: newLookAtCoords[1],
+              z: newLookAtCoords[2],
+              duration: 1,
+              ease: Power2.easeIn,
+            });
 
             return tl.then(() => {
               tl.pause();
