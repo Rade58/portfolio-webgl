@@ -466,7 +466,7 @@ const animMachine = createMachine<
                 scene.remove(middlePlaneMesh);
               })
 
-              .to(controls.object, {
+              .to(controls.object.position, {
                 x: 6,
                 y: 6,
                 z: 6,
