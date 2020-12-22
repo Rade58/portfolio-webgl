@@ -449,21 +449,26 @@ const animMachine = createMachine<
                   ease: Power2.easeIn,
                 },
                 "-=1.2"
-              )
-              .pause();
+              );
 
-            const newLookAtVector = new global.THREE.Vector3(0, 0, 0);
-            const newLookAtCoords = newLookAtVector.toArray();
+            const oldLookAtCoords = spaceshipMesh.position.toArray();
+            const newLookAtVector = new global.THREE.Vector3(
+              ...oldLookAtCoords
+            );
 
             seaPlaneMesh.material = seaPlaneShaderMaterial;
             seaPlaneMesh.material.needsUpdate = true;
 
+            controls.target = newLookAtVector;
+
+            controls.update();
+
             scene.remove(middlePlaneMesh);
 
-            tl.play().to(controls.target, {
-              x: newLookAtCoords[0],
-              y: newLookAtCoords[1],
-              z: newLookAtCoords[2],
+            tl.to(controls.object, {
+              x: 0,
+              y: 0,
+              z: 0,
               duration: 1,
               ease: Power2.easeIn,
             });
