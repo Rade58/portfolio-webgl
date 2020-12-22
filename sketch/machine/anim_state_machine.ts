@@ -120,7 +120,7 @@ type machineEventGenericType =
   | {
       type: EE.SWITCH;
     }
-  | {
+  /* | { // DEPRECATED
       type: EE.MOVE_UP;
     }
   | {
@@ -128,7 +128,7 @@ type machineEventGenericType =
     }
   | {
       type: EE.HELLO;
-    }
+    } */
   | {
       type: EE.MOVE;
     };
@@ -154,10 +154,10 @@ type machineFiniteStateGenericType =
       value: fse.blog;
       context: ContextFullI;
     }
-  | {
+  /* | {  // DEPRECATED
       value: fse.up_or_down;
       context: ContextFullI;
-    }
+    } */
   | {
       value: fse.hello_world;
       context: ContextFullI;
