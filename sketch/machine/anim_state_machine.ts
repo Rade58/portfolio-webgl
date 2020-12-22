@@ -449,22 +449,24 @@ const animMachine = createMachine<
                   ease: Power2.easeIn,
                 },
                 "-=1.2"
-              );
+              )
+              .call(() => {
+                const oldLookAtCoords = spaceshipMesh.position.toArray();
+                const newLookAtVector = new global.THREE.Vector3(
+                  ...oldLookAtCoords
+                );
 
-            /* const oldLookAtCoords = spaceshipMesh.position.toArray();
-            const newLookAtVector = new global.THREE.Vector3(
-              ...oldLookAtCoords
-            );
+                seaPlaneMesh.material = seaPlaneShaderMaterial;
+                seaPlaneMesh.material.needsUpdate = true;
 
-            seaPlaneMesh.material = seaPlaneShaderMaterial;
-            seaPlaneMesh.material.needsUpdate = true;
+                controls.target = newLookAtVector;
 
-            controls.target = newLookAtVector;
+                controls.update();
 
-            controls.update();
+                scene.remove(middlePlaneMesh);
+              });
 
-            scene.remove(middlePlaneMesh);
-
+            /*
             tl.to(controls.object, {
               x: 0,
               y: 0,
@@ -472,7 +474,7 @@ const animMachine = createMachine<
               duration: 1,
               ease: Power2.easeIn,
             }); */
-
+            //
             return tl.then(() => {
               tl.pause();
             });
