@@ -45,6 +45,11 @@ const MAJOR_FS_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
 
 // context HELPER TYPE ---------------------
 interface ContextFullI {
+  // OVO JE HELPER KOJI CE BELEZITI POSLEDNI MAJOR STATE
+  // PRE PRELEASKA TO IDLE (TO CE MI IZUZETNO SLUZITI
+  // JER CU TEKST DISPLAY-OVATI U ODNOSU NA TAJ MAJOR STATE)
+  majorStateAfterIdle: typeof MAJOR_FINITE_STATES_ARRAY[number];
+  //
   majorFiniteStatesArr: string[];
   majorFiniteStatesArrLength: number;
   currentMajorStateNum: number;
@@ -71,6 +76,7 @@ interface ContextFullI {
 // ------------ GENERIC TYPES FOR MACHINE
 
 interface MachineContextGenericI {
+  majorStateAfterIdle: typeof MAJOR_FINITE_STATES_ARRAY[number];
   majorFiniteStatesArr: string[];
   majorFiniteStatesArrLength: number;
   currentMajorStateNum: number;
@@ -182,6 +188,7 @@ const animMachine = createMachine<
     id: "sketch_anim_machine",
     initial: fse.init,
     context: {
+      majorStateAfterIdle: MAJOR_FINITE_STATES_ARRAY[0],
       majorFiniteStatesArr: MAJOR_FINITE_STATES_ARRAY,
       majorFiniteStatesArrLength: MAJOR_FS_ARR_LENGTH,
       currentMajorStateNum: 0,
@@ -488,6 +495,7 @@ const animMachine = createMachine<
             return canMoveToIdleAgain && currentMajorStateNum !== 0;
           },
         },
+        exit: ["setLastMajorState"],
       },
       [MAJOR_FINITE_STATES_ARRAY[1] /* projects */]: {
         entry: "incrementAnimNum",
@@ -498,6 +506,7 @@ const animMachine = createMachine<
             return canMoveToIdleAgain && currentMajorStateNum !== 1;
           },
         },
+        exit: ["setLastMajorState"],
       },
       [MAJOR_FINITE_STATES_ARRAY[2] /* blog */]: {
         entry: "incrementAnimNum",
@@ -508,6 +517,7 @@ const animMachine = createMachine<
             return canMoveToIdleAgain && currentMajorStateNum !== 2;
           },
         },
+        exit: ["setLastMajorState"],
       },
       [fse.anim_error]: {
         entry: () => {
@@ -525,6 +535,11 @@ const animMachine = createMachine<
       }, */
     // },
     actions: {
+      setLastMajorState: assign(({ currentMajorStateNum }, __) => {
+        return {
+          majorStateAfterIdle: MAJOR_FINITE_STATES_ARRAY[currentMajorStateNum],
+        };
+      }),
       enableMovingToIdle: assign((_, __) => ({ canMoveToIdleAgain: true })),
       disableMovingToIdle: assign((_, __) => ({ canMoveToIdleAgain: false })),
       incrementAnimNum: assign(
