@@ -439,7 +439,7 @@ const animMachine = createMachine<
                   duration: 2,
                   ease: Power0.easeInOut,
                 },
-                "-=0.6"
+                `-=${1.8 * 2}`
               )
               .to(
                 controls.object.position,
