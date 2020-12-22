@@ -464,16 +464,15 @@ const animMachine = createMachine<
                 controls.update();
 
                 scene.remove(middlePlaneMesh);
-              });
+              })
 
-            /*
-            tl.to(controls.object, {
-              x: 0,
-              y: 0,
-              z: 0,
-              duration: 1,
-              ease: Power2.easeIn,
-            }); */
+              .to(controls.object, {
+                x: 6,
+                y: 6,
+                z: 6,
+                duration: 1,
+                ease: Power2.easeIn,
+              });
             //
             return tl.then(() => {
               tl.pause();
