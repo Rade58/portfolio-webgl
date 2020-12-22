@@ -311,17 +311,6 @@ const animMachine = createMachine<
             },
           ],
         },
-        exit: assign(
-          ({ currentMajorStateNum, majorFiniteStatesArrLength }, _) => {
-            if (currentMajorStateNum + 1 > majorFiniteStatesArrLength - 1) {
-              return {
-                currentMajorStateNum: 0,
-              };
-            }
-
-            return { currentMajorStateNum: currentMajorStateNum + 1 };
-          }
-        ),
       },
       // OVI SU STATE-OVI U KOJIMA CU KORISTITI invoke
       // UPRAVO ZBOG ANIMACIJE
@@ -487,8 +476,9 @@ const animMachine = createMachine<
       },
       //-------------------------------------------------------
       [MAJOR_FINITE_STATES_ARRAY[0] /* aboutme */]: {
+        entry: "incrementAnimNum",
         on: {
-          "*": {
+          [EE.SWITCH]: {
             target: fse.idle,
             cond: ({ canMoveToIdleAgain, currentMajorStateNum }, __) => {
               return canMoveToIdleAgain && currentMajorStateNum === 0;
@@ -497,8 +487,9 @@ const animMachine = createMachine<
         },
       },
       [MAJOR_FINITE_STATES_ARRAY[1] /* projects */]: {
+        entry: "incrementAnimNum",
         on: {
-          "*": {
+          [EE.SWITCH]: {
             target: fse.idle,
             cond: ({ canMoveToIdleAgain, currentMajorStateNum }, __) => {
               return canMoveToIdleAgain && currentMajorStateNum === 1;
@@ -507,8 +498,9 @@ const animMachine = createMachine<
         },
       },
       [MAJOR_FINITE_STATES_ARRAY[2] /* blog */]: {
+        entry: "incrementAnimNum",
         on: {
-          "*": {
+          [EE.SWITCH]: {
             target: fse.idle,
             cond: ({ canMoveToIdleAgain, currentMajorStateNum }, __) => {
               return canMoveToIdleAgain && currentMajorStateNum === 2;
@@ -534,6 +526,17 @@ const animMachine = createMachine<
     actions: {
       enableMovingToIdle: assign((_, __) => ({ canMoveToIdleAgain: true })),
       disableMovingToIdle: assign((_, __) => ({ canMoveToIdleAgain: false })),
+      incrementAnimNum: assign(
+        ({ currentMajorStateNum, majorFiniteStatesArrLength }, _) => {
+          if (currentMajorStateNum + 1 > majorFiniteStatesArrLength - 1) {
+            return {
+              currentMajorStateNum: 0,
+            };
+          }
+
+          return { currentMajorStateNum: currentMajorStateNum + 1 };
+        }
+      ),
     },
   }
 );
