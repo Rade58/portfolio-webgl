@@ -487,7 +487,7 @@ const animMachine = createMachine<
       },
       //-------------------------------------------------------
       [MAJOR_FINITE_STATES_ARRAY[0] /* aboutme */]: {
-        entry: "incrementAnimNum",
+        entry: ["setLastMajorState", "incrementAnimNum"],
 
         always: {
           target: fse.idle,
@@ -495,10 +495,9 @@ const animMachine = createMachine<
             return canMoveToIdleAgain && currentMajorStateNum !== 0;
           },
         },
-        exit: ["setLastMajorState"],
       },
       [MAJOR_FINITE_STATES_ARRAY[1] /* projects */]: {
-        entry: "incrementAnimNum",
+        entry: ["setLastMajorState", "incrementAnimNum"],
 
         always: {
           target: fse.idle,
@@ -506,10 +505,9 @@ const animMachine = createMachine<
             return canMoveToIdleAgain && currentMajorStateNum !== 1;
           },
         },
-        exit: ["setLastMajorState"],
       },
       [MAJOR_FINITE_STATES_ARRAY[2] /* blog */]: {
-        entry: "incrementAnimNum",
+        entry: ["setLastMajorState", "incrementAnimNum"],
 
         always: {
           target: fse.idle,
@@ -517,7 +515,6 @@ const animMachine = createMachine<
             return canMoveToIdleAgain && currentMajorStateNum !== 2;
           },
         },
-        exit: ["setLastMajorState"],
       },
       [fse.anim_error]: {
         entry: () => {
