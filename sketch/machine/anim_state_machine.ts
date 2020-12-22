@@ -1,5 +1,14 @@
 import { Vector3, Object3D, ShaderMaterial, Mesh } from "three";
-import { TweenMax, TimelineMax, Elastic, Quad, Power1, Power4 } from "gsap";
+import {
+  TweenMax,
+  TimelineMax,
+  Elastic,
+  Quad,
+  Power1,
+  Power4,
+  Power2,
+  Power0,
+} from "gsap";
 import { createMachine, assign, interpret } from "xstate";
 import { textDisplay } from "../ui/user_interface";
 
@@ -415,6 +424,24 @@ const animMachine = createMachine<
                   ease: Power4.easeInOut,
                 },
                 "-=1.8"
+              )
+              .to(
+                spaceshipMesh.position,
+                {
+                  y: 2,
+                  duration: 2,
+                  ease: Power0.easeInOut,
+                },
+                "-=0.6"
+              )
+              .to(
+                controls.object.position,
+                {
+                  y: 3,
+                  duration: 2,
+                  ease: Power2.easeIn,
+                },
+                "-=1.2"
               );
 
             return tl.then(() => {
