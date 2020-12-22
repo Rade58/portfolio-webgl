@@ -6,8 +6,7 @@ import { textDisplay } from "../ui/user_interface";
 export enum fse {
   init = "init",
   idle = "idle",
-  // hello world   // MOGUCE DA JE NOOP
-  hello_world = "hello_world",
+
   //
   anim_error = "anim_error",
   //---- major -states (all of them shoud have transitions to idle)
@@ -19,7 +18,6 @@ export enum fse {
   animation1 = "animation1",
   animation2 = "animation2",
   //
-  up_or_down = "up_or_down",
 }
 
 export enum EE {
@@ -50,9 +48,15 @@ interface ContextFullI {
   // JER CU TEKST DISPLAY-OVATI U ODNOSU NA TAJ MAJOR STATE)
   majorStateAfterIdle: typeof MAJOR_FINITE_STATES_ARRAY[number];
   //
-  majorFiniteStatesArr: string[];
+  majorFiniteStatesArr: typeof MAJOR_FINITE_STATES_ARRAY;
   majorFiniteStatesArrLength: number;
   currentMajorStateNum: number;
+  // TREBALO BI DA PRATIM I BROJ ANIMACIJE, JER MOGUCE JE DA CES IMATI
+  // VISE ANIAMCIJA NEGO STO BUDES IMAO MAJOR STATE-OVA
+  currentAnimationServiceNumber: number;
+  animationServicesArray: typeof ANIMATION_SERVICES_STATE_ARRAY;
+  animationsServiceArrayLength: number;
+  //
   tl: TimelineMax;
   up: boolean;
   canMoveToIdleAgain: boolean;
@@ -80,6 +84,9 @@ interface MachineContextGenericI {
   majorFiniteStatesArr: string[];
   majorFiniteStatesArrLength: number;
   currentMajorStateNum: number;
+  currentAnimationServiceNumber: number;
+  animationServicesArray: typeof ANIMATION_SERVICES_STATE_ARRAY;
+  animationsServiceArrayLength: number;
   tl: TimelineMax;
   up: boolean;
   canMoveToIdleAgain: boolean;
@@ -160,14 +167,6 @@ type machineFiniteStateGenericType =
       value: fse.blog;
       context: ContextFullI;
     }
-  /* | {  // DEPRECATED
-      value: fse.up_or_down;
-      context: ContextFullI;
-    } */
-  | {
-      value: fse.hello_world;
-      context: ContextFullI;
-    }
   | { value: fse.animation0; context: ContextFullI }
   | { value: fse.animation1; context: ContextFullI }
   | { value: fse.animation2; context: ContextFullI }
@@ -191,7 +190,10 @@ const animMachine = createMachine<
       majorStateAfterIdle: MAJOR_FINITE_STATES_ARRAY[0],
       majorFiniteStatesArr: MAJOR_FINITE_STATES_ARRAY,
       majorFiniteStatesArrLength: MAJOR_FS_ARR_LENGTH,
+      animationServicesArray: ANIMATION_SERVICES_STATE_ARRAY,
+      animationsServiceArrayLength: ANIMATION_SERVICES_STATE_ARRAY.length,
       currentMajorStateNum: 0,
+      currentAnimationServiceNumber: 0,
       up: false,
       canMoveToIdleAgain: true,
       tl: new TimelineMax(),
@@ -242,58 +244,6 @@ const animMachine = createMachine<
           },
         },
       },
-      [fse.hello_world]: {
-        /* on: {
-          [EE.HELLO]: {
-            target: fse.up_or_down,
-          },
-        }, */
-        type: "final",
-      },
-      /*  [fse.up_or_down]: {   // DEPRECATED
-        on: {
-          [EE.MOVE_UP]: {
-            actions: [
-              assign((_, __) => ({ up: true })), // VEROVATNO NOOP
-              assign(
-                ({ currentMajorStateNum, majorFiniteStatesArrLength }, _) => {
-                  if (
-                    currentMajorStateNum + 1 >
-                    majorFiniteStatesArrLength - 1
-                  ) {
-                    return { currentMajorStateNum: 0 };
-                  }
-                  return { currentMajorStateNum: currentMajorStateNum + 1 };
-                }
-              ),
-            ],
-            target: fse.idle,
-          },
-          // NA KRAJU JE ISPALO DA CU IMATI POTPUNO ISTE currentMajorStateNum ASSIGNMENTE
-          // OVO JE ZBOG TOGA JER MI JE BITNO DA ANIMACIJA IDE SVOJIM TOKOM BEZ OBZIRA
-          // KOJE SE DUGME PRITISKA, GORNJE ILI DONJE
-          [EE.MOVE_DOWN]: {
-            actions: [
-              assign((_, __) => ({ up: false })), // MOZDE BESPOTREBNO
-              assign(
-                ({ currentMajorStateNum, majorFiniteStatesArrLength }, _) => {
-                  if (
-                    currentMajorStateNum + 1 >
-                    majorFiniteStatesArrLength - 1
-                  ) {
-                    return {
-                      currentMajorStateNum: 0,
-                    };
-                  }
-
-                  return { currentMajorStateNum: currentMajorStateNum + 1 };
-                }
-              ),
-            ],
-            target: fse.idle,
-          },
-        },
-      }, */
       [fse.idle]: {
         on: {
           [EE.SWITCH]: [
@@ -509,7 +459,7 @@ const animMachine = createMachine<
       },
       //-------------------------------------------------------
       [MAJOR_FINITE_STATES_ARRAY[0] /* aboutme */]: {
-        entry: ["setLastMajorState", "incrementAnimNum"],
+        entry: ["setLastMajorState", "incrementMajorStateNum"],
 
         always: {
           target: fse.idle,
@@ -519,7 +469,7 @@ const animMachine = createMachine<
         },
       },
       [MAJOR_FINITE_STATES_ARRAY[1] /* projects */]: {
-        entry: ["setLastMajorState", "incrementAnimNum"],
+        entry: ["setLastMajorState", "incrementMajorStateNum"],
 
         always: {
           target: fse.idle,
@@ -529,7 +479,7 @@ const animMachine = createMachine<
         },
       },
       [MAJOR_FINITE_STATES_ARRAY[2] /* blog */]: {
-        entry: ["setLastMajorState", "incrementAnimNum"],
+        entry: ["setLastMajorState", "incrementMajorStateNum"],
 
         always: {
           target: fse.idle,
@@ -561,7 +511,7 @@ const animMachine = createMachine<
       }),
       enableMovingToIdle: assign((_, __) => ({ canMoveToIdleAgain: true })),
       disableMovingToIdle: assign((_, __) => ({ canMoveToIdleAgain: false })),
-      incrementAnimNum: assign(
+      incrementMajorStateNum: assign(
         ({ currentMajorStateNum, majorFiniteStatesArrLength }, _) => {
           if (currentMajorStateNum + 1 > majorFiniteStatesArrLength - 1) {
             return {
