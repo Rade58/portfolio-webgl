@@ -241,22 +241,22 @@ const animMachine = createMachine<
             // E OVI TRANSITIONI CE SE DESITI U ODNOSU NA
             // context.currentMajorStateNum
             {
-              cond: ({ currentMajorStateNum }) => {
-                return currentMajorStateNum === 0;
+              cond: ({ currentAnimationServiceNumber }) => {
+                return currentAnimationServiceNumber === 0;
               },
               //
               target: ANIMATION_SERVICES_STATE_ARRAY[0],
             },
             {
-              cond: ({ currentMajorStateNum }) => {
-                return currentMajorStateNum === 1;
+              cond: ({ currentAnimationServiceNumber }) => {
+                return currentAnimationServiceNumber === 1;
               },
               //
               target: ANIMATION_SERVICES_STATE_ARRAY[1],
             },
             {
-              cond: ({ currentMajorStateNum }) => {
-                return currentMajorStateNum === 2;
+              cond: ({ currentAnimationServiceNumber }) => {
+                return currentAnimationServiceNumber === 2;
               },
               //
               target: ANIMATION_SERVICES_STATE_ARRAY[2],
