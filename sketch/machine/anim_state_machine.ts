@@ -445,12 +445,11 @@ const animMachine = createMachine<
                 controls.object.position,
                 {
                   y: 3,
-                  duration: 2,
+                  duration: 1,
                   ease: Power2.easeIn,
                 },
                 `-=${2 * 0.6}`
-              );
-            /*
+              )
               .call(() => {
                 const oldLookAtCoords = spaceshipMesh.position.toArray();
                 const newLookAtVector = new global.THREE.Vector3(
@@ -471,7 +470,8 @@ const animMachine = createMachine<
                 z: 16,
                 duration: 1,
                 ease: Power2.easeIn,
-              }); */
+              });
+
             /* .to(spaceshipMesh.position, {
                 y: 200,
               })
