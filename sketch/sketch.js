@@ -299,9 +299,9 @@ const sketch = ({ context }) => {
         /* service.send({
           type: EE.HELLO,
         }); */
-        service.send({
-            type: EE.MOVE_UP,
-        });
+        /* service.send({
+          type: EE.MOVE_UP,
+        }); */
         service.send({
             type: EE.SWITCH,
         });
@@ -353,9 +353,9 @@ const sketch = ({ context }) => {
         /* service.send({
           type: EE.HELLO,
         }); */
-        service.send({
-            type: EE.MOVE_DOWN,
-        });
+        /* service.send({
+          type: EE.MOVE_DOWN,
+        }); */
         service.send({
             type: EE.SWITCH,
         });

@@ -180,7 +180,7 @@ const animMachine = createMachine<
     context: {
       majorFiniteStatesArr: MAJOR_FINITE_STATES_ARRAY,
       majorFiniteStatesArrLength: MAJOR_FS_ARR_LENGTH,
-      currentMajorStateNum: 2,
+      currentMajorStateNum: 0,
       up: false,
       canMoveToIdleAgain: true,
       tl: new TimelineMax(),
@@ -227,7 +227,7 @@ const animMachine = createMachine<
                 spaceshipMesh,
               })
             ),
-            target: fse.up_or_down,
+            target: fse.idle,
           },
         },
       },
@@ -239,7 +239,7 @@ const animMachine = createMachine<
         }, */
         type: "final",
       },
-      [fse.up_or_down]: {
+      /*  [fse.up_or_down]: {
         on: {
           [EE.MOVE_UP]: {
             actions: [
@@ -282,7 +282,7 @@ const animMachine = createMachine<
             target: fse.idle,
           },
         },
-      },
+      }, */
       [fse.idle]: {
         on: {
           [EE.SWITCH]: [
@@ -311,6 +311,17 @@ const animMachine = createMachine<
             },
           ],
         },
+        exit: assign(
+          ({ currentMajorStateNum, majorFiniteStatesArrLength }, _) => {
+            if (currentMajorStateNum + 1 > majorFiniteStatesArrLength - 1) {
+              return {
+                currentMajorStateNum: 0,
+              };
+            }
+
+            return { currentMajorStateNum: currentMajorStateNum + 1 };
+          }
+        ),
       },
       // OVI SU STATE-OVI U KOJIMA CU KORISTITI invoke
       // UPRAVO ZBOG ANIMACIJE
@@ -478,7 +489,7 @@ const animMachine = createMachine<
       [MAJOR_FINITE_STATES_ARRAY[0] /* aboutme */]: {
         on: {
           "*": {
-            target: fse.up_or_down,
+            target: fse.idle,
             cond: ({ canMoveToIdleAgain, currentMajorStateNum }, __) => {
               return canMoveToIdleAgain && currentMajorStateNum === 0;
             },
@@ -488,7 +499,7 @@ const animMachine = createMachine<
       [MAJOR_FINITE_STATES_ARRAY[1] /* projects */]: {
         on: {
           "*": {
-            target: fse.up_or_down,
+            target: fse.idle,
             cond: ({ canMoveToIdleAgain, currentMajorStateNum }, __) => {
               return canMoveToIdleAgain && currentMajorStateNum === 1;
             },
@@ -498,7 +509,7 @@ const animMachine = createMachine<
       [MAJOR_FINITE_STATES_ARRAY[2] /* blog */]: {
         on: {
           "*": {
-            target: fse.up_or_down,
+            target: fse.idle,
             cond: ({ canMoveToIdleAgain, currentMajorStateNum }, __) => {
               return canMoveToIdleAgain && currentMajorStateNum === 2;
             },
