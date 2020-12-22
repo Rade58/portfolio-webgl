@@ -1,5 +1,5 @@
 import { Vector3, Object3D, ShaderMaterial, Mesh } from "three";
-import { TweenMax, TimelineMax, Elastic, Quad } from "gsap";
+import { TweenMax, TimelineMax, Elastic, Quad, Power1, Power4 } from "gsap";
 import { createMachine, assign, interpret } from "xstate";
 import { textDisplay } from "../ui/user_interface";
 
@@ -437,6 +437,8 @@ const animMachine = createMachine<
             },
             __
           ) => {
+            controls.target = spaceshipMesh.position;
+
             tl.play().to(
               [
                 seaPlaneShaderMaterial.uniforms.circleSize,
@@ -449,6 +451,26 @@ const animMachine = createMachine<
                 ease: Elastic.easeOut,
                 duration: 3,
               }
+            );
+            tl.to(
+              controls.object.position,
+              {
+                y: 25.2,
+                z: 9,
+                duration: 2,
+                ease: Power1.easeOut,
+              },
+              "-=2.6"
+            ).to(
+              spaceshipMesh.scale,
+              {
+                x: 1.2,
+                y: 1.2,
+                z: 1.2,
+                duration: 2,
+                ease: Power4.easeInOut,
+              },
+              "-=1.8"
             );
 
             return tl.then(() => {
