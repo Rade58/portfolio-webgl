@@ -470,12 +470,14 @@ const animMachine = createMachine<
                 z: 16,
                 duration: 1,
                 ease: Power2.easeIn,
-              });
-
-            /* .to(spaceshipMesh.position, {
-                y: 200,
               })
- */
+              //
+              //
+              .to(spaceshipMesh.position, {
+                y: 200,
+                duration: 1,
+                ease: Elastic.easeIn,
+              });
 
             //
             return tl.then(() => {
