@@ -133,15 +133,6 @@ type machineEventGenericType =
   | {
       type: EE.SWITCH;
     }
-  /* | { // DEPRECATED
-      type: EE.MOVE_UP;
-    }
-  | {
-      type: EE.MOVE_DOWN;
-    }
-  | {
-      type: EE.HELLO;
-    } */
   | {
       type: EE.MOVE;
     };
@@ -369,6 +360,7 @@ const animMachine = createMachine<
             target: fse.anim_error,
           },
         },
+        exit: ["incrementAnimationServiceNum"],
       },
       [ANIMATION_SERVICES_STATE_ARRAY[1] /* animation1 */]: {
         entry: ["disableMovingToIdle"],
@@ -435,6 +427,7 @@ const animMachine = createMachine<
             target: fse.anim_error,
           },
         },
+        exit: ["incrementAnimationServiceNum"],
       },
       [ANIMATION_SERVICES_STATE_ARRAY[2] /* animation2 */]: {
         entry: ["disableMovingToIdle"],
@@ -456,6 +449,7 @@ const animMachine = createMachine<
             target: fse.anim_error,
           },
         },
+        exit: ["incrementAnimationServiceNum"],
       },
       //-------------------------------------------------------
       [MAJOR_FINITE_STATES_ARRAY[0] /* aboutme */]: {
