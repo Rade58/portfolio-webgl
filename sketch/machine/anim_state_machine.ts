@@ -476,7 +476,7 @@ const animMachine = createMachine<
               .to(spaceshipMesh.position, {
                 y: 200,
                 duration: 1,
-                ease: Elastic.easeIn,
+                ease: Quad.easeIn,
               });
 
             //
