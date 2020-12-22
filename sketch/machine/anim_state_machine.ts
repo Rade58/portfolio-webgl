@@ -381,39 +381,58 @@ const animMachine = createMachine<
           ) => {
             controls.target = spaceshipMesh.position;
 
-            tl.play().to(
-              [
-                seaPlaneShaderMaterial.uniforms.circleSize,
-                seaPlaneShaderMaterialWireframed.uniforms.circleSize,
-                planeMiddleShaderMaterial.uniforms.circleSize,
-                seaWireframeShaderMaterial.uniforms.circleSize,
-              ],
-              {
-                value: 0,
-                ease: Elastic.easeOut,
-                duration: 3,
-              }
-            );
-            tl.to(
-              controls.object.position,
-              {
-                y: 25.2,
-                z: 9,
-                duration: 2,
-                ease: Power1.easeOut,
-              },
-              "-=2.6"
-            ).to(
-              spaceshipMesh.scale,
-              {
-                x: 1.2,
-                y: 1.2,
-                z: 1.2,
-                duration: 2,
-                ease: Power4.easeInOut,
-              },
-              "-=1.8"
-            );
+            tl.play()
+              .to(
+                [
+                  seaPlaneShaderMaterial.uniforms.circleSize,
+                  seaPlaneShaderMaterialWireframed.uniforms.circleSize,
+                  planeMiddleShaderMaterial.uniforms.circleSize,
+                  seaWireframeShaderMaterial.uniforms.circleSize,
+                ],
+                {
+                  value: 0,
+                  ease: Elastic.easeOut,
+                  duration: 3,
+                }
+              )
+              .to(
+                controls.object.position,
+                {
+                  y: 21.1,
+                  z: 1.2,
+                  duration: 2,
+                  ease: Power1.easeOut,
+                },
+                "-=2.6"
+              )
+              .to(
+                spaceshipMesh.scale,
+                {
+                  x: 1.2,
+                  y: 1.2,
+                  z: 1.2,
+                  duration: 2,
+                  ease: Power4.easeInOut,
+                },
+                "-=1.8"
+              )
+              .to(
+                spaceshipMesh.position,
+                {
+                  y: 2.4,
+                  ease: Power1.easeIn,
+                  duration: 1.2,
+                },
+                "-1.2"
+              )
+              .to(
+                controls.object.position,
+                {
+                  y: 1.2,
+                  ease: Power1.easeIn,
+                },
+                `-${1.2 * 2}`
+              );
 
             return tl.then(() => {
               tl.pause();
