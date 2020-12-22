@@ -482,7 +482,7 @@ const animMachine = createMachine<
       [MAJOR_FINITE_STATES_ARRAY[0] /* aboutme */]: {
         entry: "incrementAnimNum",
         on: {
-          [EE.MOVE]: {
+          "*": {
             target: fse.idle,
             cond: ({ canMoveToIdleAgain, currentMajorStateNum }, __) => {
               return canMoveToIdleAgain && currentMajorStateNum !== 0;
@@ -493,7 +493,7 @@ const animMachine = createMachine<
       [MAJOR_FINITE_STATES_ARRAY[1] /* projects */]: {
         entry: "incrementAnimNum",
         on: {
-          [EE.MOVE]: {
+          "*": {
             target: fse.idle,
             cond: ({ canMoveToIdleAgain, currentMajorStateNum }, __) => {
               return canMoveToIdleAgain && currentMajorStateNum !== 1;
@@ -504,7 +504,7 @@ const animMachine = createMachine<
       [MAJOR_FINITE_STATES_ARRAY[2] /* blog */]: {
         entry: "incrementAnimNum",
         on: {
-          [EE.MOVE]: {
+          "*": {
             target: fse.idle,
             cond: ({ canMoveToIdleAgain, currentMajorStateNum }, __) => {
               return canMoveToIdleAgain && currentMajorStateNum !== 2;

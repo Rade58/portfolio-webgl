@@ -436,9 +436,9 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       type: EE.HELLO,
     }); */
 
-    service.send({
+    /* service.send({
       type: EE.MOVE,
-    });
+    }); */
 
     service.send({
       type: EE.SWITCH,
