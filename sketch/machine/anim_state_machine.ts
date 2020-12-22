@@ -429,6 +429,7 @@ const animMachine = createMachine<
                 controls.object.position,
                 {
                   y: 1.2,
+                  z: 0.8,
                   ease: Power1.easeIn,
                 },
                 `-${1.2 * 2}`
