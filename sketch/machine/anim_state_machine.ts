@@ -318,6 +318,7 @@ const animMachine = createMachine<
       // ------------------------------------------------------
       // TREBAO BI OVDE    onDone   PROMENITI DA canMoveToIdleAgain BUDE true
       [ANIMATION_SERVICES_STATE_ARRAY[0] /* animation0 */]: {
+        entry: ["disableMovingToIdle"],
         invoke: {
           id: "__0__",
           src: (
@@ -409,6 +410,7 @@ const animMachine = createMachine<
         },
       },
       [ANIMATION_SERVICES_STATE_ARRAY[1] /* animation1 */]: {
+        entry: ["disableMovingToIdle"],
         invoke: {
           id: "__1__",
           src: (
@@ -452,6 +454,7 @@ const animMachine = createMachine<
         },
       },
       [ANIMATION_SERVICES_STATE_ARRAY[2] /* animation2 */]: {
+        entry: ["disableMovingToIdle"],
         invoke: {
           id: "__2__",
           src: ({ tl, seaPlaneMesh, seaPlaneShaderMaterial }, __) => {
