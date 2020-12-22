@@ -1,4 +1,4 @@
-import { Vector3, Object3D, ShaderMaterial, Mesh } from "three";
+import { Vector3, Object3D, ShaderMaterial, Mesh, Scene } from "three";
 import {
   TweenMax,
   TimelineMax,
@@ -77,6 +77,7 @@ interface ContextFullI {
   cageMesh: Mesh;
   spaceshipMesh: Mesh;
   middlePlaneMesh: Mesh;
+  scene: Scene;
 
   controls: {
     target: Vector3;
@@ -109,6 +110,7 @@ interface MachineContextGenericI {
   cageMesh: Mesh | null;
   spaceshipMesh: Mesh | null;
   middlePlaneMesh: Mesh | null;
+  scene: Scene | null;
 
   // controls
   controls: {
@@ -123,6 +125,7 @@ type machineEventGenericType =
   | {
       type: EE.SETUP;
       payload: {
+        scene: Scene;
         seaPlaneShaderMaterial: ShaderMaterial;
         seaPlaneShaderMaterialWireframed: ShaderMaterial;
         seaWireframeShaderMaterial: ShaderMaterial;
@@ -206,6 +209,7 @@ const animMachine = createMachine<
       seaPlaneShaderMaterialWireframed: null,
       seaWireframeShaderMaterial: null,
       spaceshipMesh: null,
+      scene: null,
     },
     // on: {},
     states: {

@@ -278,6 +278,7 @@ const sketch = ({ context }) => {
     service.send({
         type: EE.SETUP,
         payload: {
+            scene,
             cageMesh,
             controls,
             middlePlaneMesh,
