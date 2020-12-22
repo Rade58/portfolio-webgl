@@ -332,7 +332,7 @@ const animMachine = createMachine<
             // DAKLE INVOKUJEM PROMISE-E
             // USTVARI INVOKE-UJEM ANIMATION SERVICE
 
-            // tl.pause();
+            tl.pause();
 
             tl.to(
               [
