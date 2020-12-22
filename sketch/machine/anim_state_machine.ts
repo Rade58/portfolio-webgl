@@ -390,6 +390,8 @@ const animMachine = createMachine<
               cageMesh,
               controls,
               seaPlaneMesh,
+              scene,
+              middlePlaneMesh,
             },
             __
           ) => {
@@ -455,6 +457,8 @@ const animMachine = createMachine<
 
             seaPlaneMesh.material = seaPlaneShaderMaterial;
             seaPlaneMesh.material.needsUpdate = true;
+
+            scene.remove(middlePlaneMesh);
 
             tl.play().to(controls.target, {
               x: newLookAtCoords[0],
