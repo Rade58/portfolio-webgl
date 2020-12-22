@@ -266,7 +266,10 @@ const animMachine = createMachine<
               assign((_, __) => ({ up: false })), // MOZDE BESPOTREBNO
               assign(
                 ({ currentMajorStateNum, majorFiniteStatesArrLength }, _) => {
-                  if (currentMajorStateNum + 1 > 0) {
+                  if (
+                    currentMajorStateNum + 1 >
+                    majorFiniteStatesArrLength - 1
+                  ) {
                     return {
                       currentMajorStateNum: 0,
                     };
@@ -313,7 +316,7 @@ const animMachine = createMachine<
       // UPRAVO ZBOG ANIMACIJE
       // ------------------------------------------------------
       // ------------------------------------------------------
-
+      // TREBAO BI OVDE    onDone   PROMENITI DA canMoveToIdleAgain BUDE true
       [ANIMATION_SERVICES_STATE_ARRAY[0] /* animation0 */]: {
         invoke: {
           id: "__0__",
@@ -398,13 +401,14 @@ const animMachine = createMachine<
           },
           onDone: {
             target: MAJOR_FINITE_STATES_ARRAY[0],
+            actions: ["enableMovingToIdle"],
           },
           onError: {
             target: fse.anim_error,
           },
         },
       },
-      [ANIMATION_SERVICES_STATE_ARRAY[1] /* animation0 */]: {
+      [ANIMATION_SERVICES_STATE_ARRAY[1] /* animation1 */]: {
         invoke: {
           id: "__1__",
           src: (
@@ -420,7 +424,7 @@ const animMachine = createMachine<
             },
             __
           ) => {
-            tl.to(
+            tl.play().to(
               [
                 seaPlaneShaderMaterial.uniforms.circleSize,
                 seaPlaneShaderMaterialWireframed.uniforms.circleSize,
@@ -434,19 +438,20 @@ const animMachine = createMachine<
               }
             );
 
-            return tl.play().then(() => {
+            return tl.then(() => {
               tl.pause();
             });
           },
           onDone: {
             target: MAJOR_FINITE_STATES_ARRAY[1],
+            actions: ["enableMovingToIdle"],
           },
           onError: {
             target: fse.anim_error,
           },
         },
       },
-      [ANIMATION_SERVICES_STATE_ARRAY[2] /* animation0 */]: {
+      [ANIMATION_SERVICES_STATE_ARRAY[2] /* animation2 */]: {
         invoke: {
           id: "__2__",
           src: ({ tl, seaPlaneMesh, seaPlaneShaderMaterial }, __) => {
@@ -469,7 +474,7 @@ const animMachine = createMachine<
       [MAJOR_FINITE_STATES_ARRAY[0] /* aboutme */]: {
         on: {
           "*": {
-            cond: "allowIdle",
+            cond: "idleIsAllowed",
             target: fse.up_or_down,
           },
         },
@@ -477,7 +482,7 @@ const animMachine = createMachine<
       [MAJOR_FINITE_STATES_ARRAY[1] /* projects */]: {
         on: {
           "*": {
-            cond: "allowIdle",
+            cond: "idleIsAllowed",
             target: fse.up_or_down,
           },
         },
@@ -485,7 +490,7 @@ const animMachine = createMachine<
       [MAJOR_FINITE_STATES_ARRAY[2] /* blog */]: {
         on: {
           "*": {
-            cond: "allowIdle",
+            cond: "idleIsAllowed",
             target: fse.up_or_down,
           },
         },
@@ -500,10 +505,14 @@ const animMachine = createMachine<
   },
   {
     guards: {
-      allowIdle: (context, event) => {
+      idleIsAllowed: (context, event) => {
         const { canMoveToIdleAgain } = context;
         return canMoveToIdleAgain;
       },
+    },
+    actions: {
+      enableMovingToIdle: assign((_, __) => ({ canMoveToIdleAgain: true })),
+      disableMovingToIdle: assign((_, __) => ({ canMoveToIdleAgain: false })),
     },
   }
 );
