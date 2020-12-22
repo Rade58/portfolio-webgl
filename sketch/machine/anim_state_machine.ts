@@ -481,34 +481,31 @@ const animMachine = createMachine<
       //-------------------------------------------------------
       [MAJOR_FINITE_STATES_ARRAY[0] /* aboutme */]: {
         entry: "incrementAnimNum",
-        on: {
-          "*": {
-            target: fse.idle,
-            cond: ({ canMoveToIdleAgain, currentMajorStateNum }, __) => {
-              return canMoveToIdleAgain && currentMajorStateNum !== 0;
-            },
+
+        always: {
+          target: fse.idle,
+          cond: ({ canMoveToIdleAgain, currentMajorStateNum }, __) => {
+            return canMoveToIdleAgain && currentMajorStateNum !== 0;
           },
         },
       },
       [MAJOR_FINITE_STATES_ARRAY[1] /* projects */]: {
         entry: "incrementAnimNum",
-        on: {
-          "*": {
-            target: fse.idle,
-            cond: ({ canMoveToIdleAgain, currentMajorStateNum }, __) => {
-              return canMoveToIdleAgain && currentMajorStateNum !== 1;
-            },
+
+        always: {
+          target: fse.idle,
+          cond: ({ canMoveToIdleAgain, currentMajorStateNum }, __) => {
+            return canMoveToIdleAgain && currentMajorStateNum !== 1;
           },
         },
       },
       [MAJOR_FINITE_STATES_ARRAY[2] /* blog */]: {
         entry: "incrementAnimNum",
-        on: {
-          "*": {
-            target: fse.idle,
-            cond: ({ canMoveToIdleAgain, currentMajorStateNum }, __) => {
-              return canMoveToIdleAgain && currentMajorStateNum !== 2;
-            },
+
+        always: {
+          target: fse.idle,
+          cond: ({ canMoveToIdleAgain, currentMajorStateNum }, __) => {
+            return canMoveToIdleAgain && currentMajorStateNum !== 2;
           },
         },
       },
