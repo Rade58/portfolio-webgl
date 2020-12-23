@@ -230,6 +230,7 @@ const animMachine = createMachine<
                     seaPlaneShaderMaterialWireframed,
                     seaWireframeShaderMaterial,
                     spaceshipMesh,
+                    scene,
                   },
                 }
               ) => ({
@@ -242,6 +243,7 @@ const animMachine = createMachine<
                 seaPlaneShaderMaterialWireframed,
                 seaWireframeShaderMaterial,
                 spaceshipMesh,
+                scene,
               })
             ),
             target: fse.idle,
@@ -448,7 +450,7 @@ const animMachine = createMachine<
                   duration: 1,
                   ease: Power2.easeIn,
                 },
-                `-=${2 * 0.6}`
+                `-=${2 * 0.8}`
               )
               .call(() => {
                 const oldLookAtCoords = spaceshipMesh.position.toArray();
@@ -461,7 +463,7 @@ const animMachine = createMachine<
 
                 seaPlaneMesh.material = seaPlaneShaderMaterial;
                 seaPlaneMesh.material.needsUpdate = true;
-                scene.remove(middlePlaneMesh);
+                // scene.remove(middlePlaneMesh);
               })
               .to(controls.object.position, {
                 x: 16,

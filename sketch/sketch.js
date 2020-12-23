@@ -471,6 +471,7 @@ const sketch = ({ context }) => {
             // ----------------------------------------------------
             // ----------------------------------------------------
             // time RELATED UNIFORMS
+            // console.log({ playhead });
             plane0Material.uniforms.playhead.value = playhead;
             seaPlaneShaderMaterial.uniforms.time.value = seaWireframeShaderMaterial.uniforms.time.value = playhead;
             seaPlaneShaderMaterialWireframed.uniforms.time.value = playhead;

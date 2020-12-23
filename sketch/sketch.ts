@@ -564,6 +564,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       // ----------------------------------------------------
       // time RELATED UNIFORMS
 
+      // console.log({ playhead });
+
       plane0Material.uniforms.playhead.value = playhead;
 
       seaPlaneShaderMaterial.uniforms.time.value = seaWireframeShaderMaterial.uniforms.time.value = playhead;
