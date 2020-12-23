@@ -424,9 +424,9 @@ const animMachine = createMachine<
               .to(
                 spaceshipMesh.scale,
                 {
-                  x: 2.2,
-                  y: 2.2,
-                  z: 2.2,
+                  x: 1.2,
+                  y: 1.2,
+                  z: 1.2,
                   duration: 2,
                   ease: Power4.easeInOut,
                 },
