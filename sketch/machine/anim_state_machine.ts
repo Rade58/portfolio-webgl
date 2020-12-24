@@ -530,6 +530,7 @@ const animMachine = createMachine<
               seaPlaneMesh,
               seaPlaneShaderMaterial,
               scene,
+              seaWireframe,
             },
             __
           ) => {
@@ -545,8 +546,8 @@ const animMachine = createMachine<
               .to(
                 camera.position,
                 {
-                  x: cagePosArr[0] + 22,
-                  y: cagePosArr[1] - 1,
+                  x: cagePosArr[0] + 28,
+                  y: cagePosArr[1] - 3,
                   z: cagePosArr[2],
                   duration: 4,
                 },
