@@ -27,6 +27,7 @@ export enum fse {
   idle = "idle",
 
   //
+  //
   anim_error = "anim_error",
   //---- major -states (all of them shoud have transitions to idle)
   aboutme = "aboutme",
