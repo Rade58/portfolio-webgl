@@ -9,8 +9,13 @@ import settings, { settingsFunc } from "./sketch-settings";
 // ANIMATION LIBRATRIES
 import { TweenMax, Elastic, Power2, Quad } from "gsap";
 //
+// STATE MACHINE
+import {
+  EE,
+  fse,
+  animMachineService as service,
+} from "./machine/anim_state_machine";
 // ----- MOZDA CU KORISTITI ALI VEROVATNO NE -------
-
 /*
 const glsl = require("glslify");
 const Random = require("canvas-sketch-util/random");
@@ -264,11 +269,11 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   /* spaceshipMesh.scale.y = 8;
   spaceshipMesh.scale.x = 2;
   spaceshipMesh.scale.z = 3; */
-  spaceshipMesh.position.y = 8;
-  spaceshipMesh.scale.setScalar(1.8);
+  spaceshipMesh.position.y = -22;
+  spaceshipMesh.scale.setScalar(0.1);
 
   cageMesh.position.copy(spaceshipMesh.position);
-  cageMesh.scale.setScalar(9.4);
+  cageMesh.scale.setScalar(14.4);
 
   // ----------------------------------------------------
   // ------------- ADDING MESHES ------------------------
@@ -336,12 +341,34 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // -----------------------------------------------------------------------
 
   controls.object.position.copy(camera.position);
-  controls.object.position.x = -1;
-  controls.object.position.y = 140;
+  controls.object.position.x = 0;
+  controls.object.position.y = 118;
   controls.object.position.z = 0;
 
-  controls.target = spaceshipMesh.position;
+  // controls.target = spaceshipMesh.position;
 
+  // -------------------------------------------------------------------
+  // -------------- STATE MACHINE INITIAL SETUP ------------------------
+  // -------------------------------------------------------------------
+  service.send({
+    type: EE.SETUP,
+    payload: {
+      camera,
+      scene,
+      cageMesh,
+      controls,
+      middlePlaneMesh,
+      planeMiddleShaderMaterial,
+      seaPlaneMesh,
+      seaPlaneShaderMaterial,
+      seaPlaneShaderMaterialWireframed,
+      seaWireframeShaderMaterial,
+      spaceshipMesh,
+      seaWireframe,
+    },
+  });
+
+  // -------------------------------------------------------------------
   // -----------------------------------------------------------------------
   // -----------------------------------------------------------------------
   // -------- GSAP STUFF  (ADDING LISTENERS TO BUTTONS) (TRYOUT) --------------------
@@ -349,7 +376,27 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // -----------------------------------------------------------------------
 
   uiElements.up.addEventListener("click", (e) => {
-    TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
+    /* service.send({
+      type: EE.HELLO,
+    }); */
+
+    /* service.send({
+      type: EE.MOVE_UP,
+    }); */
+
+    service.send({
+      type: EE.SWITCH,
+    });
+
+    // -----------------------------
+    // MOZDA NECE TREBATI
+    /* assign(({ tl }, __) => {
+      // ZAVISICE OD    TIMELINE-A
+      return { canMoveToIdleAgain: true };
+    }), */
+    // -------------------------------
+
+    /* TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
       value: 0.8,
       ease: Elastic.easeOut,
     });
@@ -369,16 +416,38 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     });
 
     TweenMax.to(cageMesh.position, 2, {
-      y: 198,
+      y: 128,
+      // x: 22,
+      ease: Quad.easeIn,
+    });
+    TweenMax.to(spaceshipMesh.position, 2, {
+      y: 20,
       // x: 22,
       ease: Quad.easeIn,
     });
 
-    // controls.object.position.set(-1, 96, 0);
+    TweenMax.to(controls.object.position, 4, {
+      x: 40,
+      z: 0,
+      y: 123,
+      ease: Power2.easeOut,
+    }); */
   });
 
   uiElements.down.addEventListener("click", (e) => {
-    TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
+    /* service.send({
+      type: EE.HELLO,
+    }); */
+
+    /* service.send({
+      type: EE.MOVE,
+    }); */
+
+    service.send({
+      type: EE.SWITCH,
+    });
+
+    /* TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
       value: 0,
       ease: Elastic.easeOut,
     });
@@ -396,6 +465,27 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       value: 0,
       ease: Elastic.easeOut,
     });
+
+    TweenMax.to(spaceshipMesh.position, 2, {
+      y: 128,
+      // x: 22,
+      ease: Quad.easeIn,
+    });
+
+    const scaleArr = cageMesh.scale.toArray();
+
+    const newValuesScal = scaleArr.map((num) => {
+      return num * 0.4;
+    });
+
+    TweenMax.to(cageMesh.scale, 9, {
+      x: newValuesScal[0],
+      y: newValuesScal[1],
+      z: newValuesScal[2],
+
+      ease: Quad.easeIn,
+    });
+ */
   });
 
   // -----------------------------------------------------------------------
@@ -403,12 +493,53 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // adding removing wireframe material
   // removing middleplane
   context.canvas.addEventListener("click", () => {
-    seaPlaneMesh.material = seaPlaneShaderMaterial;
+    /*  seaPlaneMesh.material = seaPlaneShaderMaterial;
     // ovo ide posle
     seaPlaneMesh.material.needsUpdate = true;
 
     seaPlaneMesh.add(seaWireframe);
     scene.remove(middlePlaneMesh);
+    const newTargetVector = new global.THREE.Vector3(
+      ...spaceshipMesh.position.toArray()
+    );
+    const newValuesTarget = sunMesh.position.toArray();
+
+    controls.target = newTargetVector;
+    controls.update();
+
+    TweenMax.to(controls.target, 9, {
+      x: newValuesTarget[0],
+      y: newValuesTarget[1],
+      z: newValuesTarget[2],
+
+      ease: Quad.easeIn,
+    });
+
+    TweenMax.to(controls.object.position, 6, {
+      y: 8,
+      ease: Quad.easeInOut,
+    });
+
+    TweenMax.to(cageMesh.position, 4, {
+      y: -24,
+      ease: Elastic.easeInOut,
+    });
+    TweenMax.to(spaceshipMesh.position, 4, {
+      y: -24,
+      ease: Elastic.easeInOut,
+    }); */
+  });
+
+  // preventing snapshots
+  window.addEventListener("keydown", (e) => {
+    if (
+      (e.ctrlKey && (e.key === "S" || e.key === "s")) ||
+      (e.shiftKey && e.ctrlKey && (e.key === "S" || e.key === "s"))
+    ) {
+      e.stopImmediatePropagation();
+      e.preventDefault();
+      console.log("snaphot prevented");
+    }
   });
 
   // -----------------------------------------------------------------------
@@ -434,6 +565,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       // ----------------------------------------------------
       // ----------------------------------------------------
       // time RELATED UNIFORMS
+
+      // console.log({ playhead });
 
       plane0Material.uniforms.playhead.value = playhead;
 
@@ -474,8 +607,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
 // ------------ UI ELEMENTS APPENDING ------------------------
 
-document.body.append(uiElements.up);
-document.body.append(uiElements.down);
+document.body.append(uiElements.controlsContainer);
 
 // --------------- SKETCH INITIALIZATION  --------------------
 

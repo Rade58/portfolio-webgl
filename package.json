@@ -17,7 +17,7 @@
     "sketch-dev": "concurrently 'npm run ts-dev' 'npm run sketch'",
     "sketch-build": "npm run ts-sketch-build && canvas-sketch sketch/sketch.js --name 👽RadeDev🦉 --build --inline && npm run dev",
     "ts-sketch-build": "tsc sketch/sketch.ts --allowUmdGlobalAccess true --esModuleInterop true --isolatedModules true --moduleResolution 'node' --target ES6",
-    "sketch": "canvas-sketch sketch/sketch.js --hot --open",
+    "sketch": "canvas-sketch sketch/sketch.js",
     "ts-dev": "tsc sketch/sketch.ts --allowUmdGlobalAccess true --esModuleInterop true --isolatedModules true --moduleResolution 'node' --target ES6 --w",
     "sketch-dev2": "concurrently 'npm run ts-dev2' 'npm run sketch2'",
     "sketch2": "canvas-sketch dev_sketches/sketch2/sketch.js --hot --open",
