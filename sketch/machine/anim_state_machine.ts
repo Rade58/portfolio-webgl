@@ -574,7 +574,7 @@ const animMachine = createMachine<
                   x: 5.8,
                   y: 5.8,
                   z: 5.8,
-                  duration: 6,
+                  duration: 2.2,
                   ease: Elastic.easeOut,
                 },
                 "-=0.8"
