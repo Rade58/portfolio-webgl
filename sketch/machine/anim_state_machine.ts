@@ -8,6 +8,7 @@ import {
   Power4,
   Power2,
   Power0,
+  Power3,
 } from "gsap";
 import { createMachine, assign, interpret } from "xstate";
 import { textDisplay } from "../ui/user_interface";
@@ -409,7 +410,7 @@ const animMachine = createMachine<
                 ],
                 {
                   value: 0,
-                  ease: Elastic.easeOut,
+                  ease: Power3.easeOut,
                   duration: 3,
                 }
               )
