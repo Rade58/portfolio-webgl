@@ -1,4 +1,11 @@
-import { Vector3, Object3D, ShaderMaterial, Mesh, Scene } from "three";
+import {
+  Vector3,
+  Object3D,
+  ShaderMaterial,
+  Mesh,
+  Scene,
+  PerspectiveCamera,
+} from "three";
 import {
   TweenMax,
   TimelineMax,
@@ -79,6 +86,7 @@ interface ContextFullI {
   spaceshipMesh: Mesh;
   middlePlaneMesh: Mesh;
   scene: Scene;
+  camera: PerspectiveCamera;
 
   controls: {
     target: Vector3;
@@ -112,6 +120,7 @@ interface MachineContextGenericI {
   spaceshipMesh: Mesh | null;
   middlePlaneMesh: Mesh | null;
   scene: Scene | null;
+  camera: PerspectiveCamera | null;
 
   // controls
   controls: {
@@ -127,6 +136,7 @@ type machineEventGenericType =
       type: EE.SETUP;
       payload: {
         scene: Scene;
+        camera: PerspectiveCamera;
         seaPlaneShaderMaterial: ShaderMaterial;
         seaPlaneShaderMaterialWireframed: ShaderMaterial;
         seaWireframeShaderMaterial: ShaderMaterial;
@@ -211,6 +221,7 @@ const animMachine = createMachine<
       seaWireframeShaderMaterial: null,
       spaceshipMesh: null,
       scene: null,
+      camera: null,
     },
     // on: {},
     states: {
@@ -232,6 +243,7 @@ const animMachine = createMachine<
                     seaWireframeShaderMaterial,
                     spaceshipMesh,
                     scene,
+                    camera,
                   },
                 }
               ) => ({
@@ -245,6 +257,7 @@ const animMachine = createMachine<
                 seaWireframeShaderMaterial,
                 spaceshipMesh,
                 scene,
+                camera,
               })
             ),
             target: fse.idle,
@@ -500,12 +513,29 @@ const animMachine = createMachine<
         entry: ["disableMovingToIdle"],
         invoke: {
           id: "__2__",
-          src: ({ tl, seaPlaneMesh, seaPlaneShaderMaterial }, __) => {
-            return Promise.resolve().then(() => {
-              seaPlaneMesh.material = seaPlaneShaderMaterial;
-              seaPlaneMesh.material.needsUpdate = true;
+          src: ({ tl, cageMesh, controls, camera }, __) => {
+            const cagePosArr = cageMesh.position.toArray();
 
-              return "anything";
+            tl.play()
+              .to(controls.object.position, {
+                x: cagePosArr[0],
+                y: cagePosArr[1],
+                z: cagePosArr[2],
+                duration: 2,
+              })
+              .to(
+                camera.position,
+                {
+                  x: cagePosArr[0] + 4,
+                  y: cagePosArr[1],
+                  z: cagePosArr[2],
+                  duration: 4,
+                },
+                "-=2"
+              );
+
+            return tl.then(() => {
+              tl.pause();
             });
           },
           onDone: {

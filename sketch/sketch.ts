@@ -353,6 +353,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   service.send({
     type: EE.SETUP,
     payload: {
+      camera,
       scene,
       cageMesh,
       controls,
