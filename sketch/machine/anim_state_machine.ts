@@ -497,8 +497,8 @@ const animMachine = createMachine<
               //
               //
               .to(spaceshipMesh.position, {
-                y: 200,
-                duration: 1,
+                y: 400,
+                duration: 2,
                 ease: Quad.easeIn,
               });
 
@@ -531,6 +531,7 @@ const animMachine = createMachine<
               seaPlaneShaderMaterial,
               scene,
               seaWireframe,
+              spaceshipMesh,
             },
             __
           ) => {
@@ -555,6 +556,28 @@ const animMachine = createMachine<
                   duration: 4,
                 },
                 "-=2"
+              )
+              .to(
+                spaceshipMesh.position,
+                {
+                  x: cagePosArr[0],
+                  y: cagePosArr[1],
+                  z: cagePosArr[2],
+                  duration: 1.4,
+                  ease: Elastic.easeOut,
+                },
+                "-=1"
+              )
+              .to(
+                spaceshipMesh.scale,
+                {
+                  x: 4.8,
+                  y: 4.8,
+                  z: 4.8,
+                  duration: 6,
+                  ease: Elastic.easeOut,
+                },
+                "-=1"
               );
 
             return tl.then(() => {
