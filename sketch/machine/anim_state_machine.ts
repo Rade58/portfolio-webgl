@@ -485,7 +485,7 @@ const animMachine = createMachine<
 
                 seaPlaneMesh.material = seaPlaneShaderMaterial;
                 seaPlaneMesh.material.needsUpdate = true;
-                // scene.remove(middlePlaneMesh);
+                scene.remove(middlePlaneMesh);
               })
               .to(controls.object.position, {
                 x: 16,
@@ -542,6 +542,9 @@ const animMachine = createMachine<
                 y: cagePosArr[1],
                 z: cagePosArr[2],
                 duration: 2,
+              })
+              .call(() => {
+                seaPlaneMesh.add(seaWireframe);
               })
               .to(
                 camera.position,
