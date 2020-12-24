@@ -20,6 +20,10 @@ const controlsContainerCss = /* css */ `
 
 `;
 
+const textDisplayStyles = /* css */ `
+  color: crimson;
+`;
+
 /* ------------- ADDING STYLES ----------- */
 controlsContainer.style.cssText = controlsContainerCss;
 
