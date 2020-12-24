@@ -302,6 +302,13 @@ const animMachine = createMachine<
               //
               target: ANIMATION_SERVICES_STATE_ARRAY[2],
             },
+            {
+              cond: ({ currentAnimationServiceNumber }) => {
+                return currentAnimationServiceNumber === 3;
+              },
+              //
+              target: ANIMATION_SERVICES_STATE_ARRAY[3],
+            },
           ],
         },
       },
