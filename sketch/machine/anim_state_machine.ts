@@ -5,6 +5,8 @@ import {
   Mesh,
   Scene,
   PerspectiveCamera,
+  LineSegments,
+  WireframeGeometry,
 } from "three";
 import {
   TweenMax,
@@ -87,6 +89,7 @@ interface ContextFullI {
   middlePlaneMesh: Mesh;
   scene: Scene;
   camera: PerspectiveCamera;
+  seaWireframe: LineSegments<WireframeGeometry, ShaderMaterial>;
 
   controls: {
     target: Vector3;
@@ -121,6 +124,7 @@ interface MachineContextGenericI {
   middlePlaneMesh: Mesh | null;
   scene: Scene | null;
   camera: PerspectiveCamera | null;
+  seaWireframe: LineSegments<WireframeGeometry, ShaderMaterial> | null;
 
   // controls
   controls: {
@@ -145,6 +149,7 @@ type machineEventGenericType =
         cageMesh: Mesh;
         spaceshipMesh: Mesh;
         middlePlaneMesh: Mesh;
+        seaWireframe: LineSegments<WireframeGeometry, ShaderMaterial>;
         controls: {
           target: Vector3;
           object: Object3D;
@@ -222,6 +227,7 @@ const animMachine = createMachine<
       spaceshipMesh: null,
       scene: null,
       camera: null,
+      seaWireframe: null,
     },
     // on: {},
     states: {
@@ -244,6 +250,7 @@ const animMachine = createMachine<
                     spaceshipMesh,
                     scene,
                     camera,
+                    seaWireframe,
                   },
                 }
               ) => ({
@@ -258,6 +265,7 @@ const animMachine = createMachine<
                 spaceshipMesh,
                 scene,
                 camera,
+                seaWireframe,
               })
             ),
             target: fse.idle,
@@ -513,7 +521,18 @@ const animMachine = createMachine<
         entry: ["disableMovingToIdle"],
         invoke: {
           id: "__2__",
-          src: ({ tl, cageMesh, controls, camera }, __) => {
+          src: (
+            {
+              tl,
+              cageMesh,
+              controls,
+              camera,
+              seaPlaneMesh,
+              seaPlaneShaderMaterial,
+              scene,
+            },
+            __
+          ) => {
             const cagePosArr = cageMesh.position.toArray();
 
             tl.play()
@@ -526,8 +545,8 @@ const animMachine = createMachine<
               .to(
                 camera.position,
                 {
-                  x: cagePosArr[0] + 24,
-                  y: cagePosArr[1],
+                  x: cagePosArr[0] + 22,
+                  y: cagePosArr[1] - 1,
                   z: cagePosArr[2],
                   duration: 4,
                 },

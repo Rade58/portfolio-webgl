@@ -289,6 +289,7 @@ const sketch = ({ context }) => {
             seaPlaneShaderMaterialWireframed,
             seaWireframeShaderMaterial,
             spaceshipMesh,
+            seaWireframe,
         },
     });
     // -------------------------------------------------------------------
