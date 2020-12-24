@@ -517,7 +517,7 @@ const animMachine = createMachine<
             const cagePosArr = cageMesh.position.toArray();
 
             tl.play()
-              .to(controls.object.position, {
+              .to(controls.target, {
                 x: cagePosArr[0],
                 y: cagePosArr[1],
                 z: cagePosArr[2],
@@ -526,7 +526,7 @@ const animMachine = createMachine<
               .to(
                 camera.position,
                 {
-                  x: cagePosArr[0] + 4,
+                  x: cagePosArr[0] + 24,
                   y: cagePosArr[1],
                   z: cagePosArr[2],
                   duration: 4,
