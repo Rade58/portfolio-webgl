@@ -416,6 +416,7 @@ const animMachine = createMachine<
               seaPlaneMesh,
               scene,
               middlePlaneMesh,
+              camera,
             },
             __
           ) => {
@@ -432,7 +433,7 @@ const animMachine = createMachine<
                 {
                   value: 0,
                   ease: Power3.easeOut,
-                  duration: 3,
+                  duration: 2,
                 }
               )
               .to(
@@ -500,7 +501,16 @@ const animMachine = createMachine<
                 y: 400,
                 duration: 1.2,
                 ease: Quad.easeIn,
-              });
+              })
+              .to(
+                camera.position,
+                {
+                  z: 0,
+                  duration: 3,
+                  ease: Quad.easeOut,
+                },
+                "-=1"
+              );
 
             //
             return tl.then(() => {
