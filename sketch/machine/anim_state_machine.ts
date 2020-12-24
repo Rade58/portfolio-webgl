@@ -37,6 +37,7 @@ export enum fse {
   animation0 = "animation0",
   animation1 = "animation1",
   animation2 = "animation2",
+  animation3 = "animation3",
   //
 }
 
@@ -57,6 +58,7 @@ const ANIMATION_SERVICES_STATE_ARRAY = [
   fse.animation0,
   fse.animation1,
   fse.animation2,
+  fse.animation3,
 ];
 
 const MAJOR_FS_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
@@ -190,6 +192,7 @@ type machineFiniteStateGenericType =
   | { value: fse.animation0; context: ContextFullI }
   | { value: fse.animation1; context: ContextFullI }
   | { value: fse.animation2; context: ContextFullI }
+  | { value: fse.animation3; context: ContextFullI }
   | { value: fse.anim_error; context: ContextFullI };
 
 //---------------------------------------
@@ -597,6 +600,33 @@ const animMachine = createMachine<
           },
           onDone: {
             target: MAJOR_FINITE_STATES_ARRAY[2],
+            actions: ["enableMovingToIdle"],
+          },
+          onError: {
+            target: fse.anim_error,
+          },
+        },
+        exit: ["incrementAnimationServiceNum"],
+      },
+      [ANIMATION_SERVICES_STATE_ARRAY[3]]: {
+        entry: ["disableMovingToIdle"],
+        invoke: {
+          id: "__3__",
+          src: ({ tl, camera }, __) => {
+            tl.play().to(camera.position, {
+              z: 0,
+              x: -20,
+              duration: 2,
+              ease: Quad.easeIn,
+            });
+
+            return tl.then(() => {
+              tl.pause();
+            });
+          },
+          onDone: {
+            // POSTO IMAM SAMO TRI "MAJOR STATE-A", OVDE GA VRACAM NA NULTI STATE, A ATO BI TREBA ODA BUDE aboutme
+            target: MAJOR_FINITE_STATES_ARRAY[0],
             actions: ["enableMovingToIdle"],
           },
           onError: {
