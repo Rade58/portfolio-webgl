@@ -757,7 +757,15 @@ const animMachine = createMachine<
 
         invoke: {
           id: "__back_to_init__",
-          src: ({ tl }) => {
+          src: ({
+            tl,
+            seaPlaneMesh,
+            middlePlaneMesh,
+            sunMesh,
+            spaceshipMesh,
+            cageMesh,
+            controls,
+          }) => {
             return tl.then(() => {
               tl.pause();
             });
