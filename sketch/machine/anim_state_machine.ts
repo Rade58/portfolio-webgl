@@ -508,7 +508,7 @@ const animMachine = createMachine<
               .to(
                 controls.object.position,
                 {
-                  y: 3,
+                  y: 1,
                   duration: 1,
                   ease: Power2.easeIn,
                 },
@@ -770,7 +770,7 @@ const animMachine = createMachine<
           }) => {
             tl.play()
               .to(controls.target, {
-                y: 100,
+                y: 300,
                 duration: 1,
                 ease: Power0.easeOut,
               })
@@ -801,7 +801,39 @@ const animMachine = createMachine<
                 scene.add(middlePlaneMesh);
                 seaPlaneMesh.material = seaPlaneShaderMaterialWireframed;
                 seaPlaneMesh.material.needsUpdate = true;
-              });
+              })
+              .to(
+                controls.object.position,
+                {
+                  y: 1,
+                  x: 1,
+                  duration: 0.4,
+                  ease: Linear.easeIn,
+                },
+                "-=0.2"
+              )
+              .to(
+                controls.target,
+                {
+                  y: 0,
+                  z: 0,
+                  x: 0,
+                  duration: 1,
+                  ease: Power0.easeOut,
+                },
+                "-=0.1"
+              )
+              .to(
+                controls.object.position,
+                {
+                  y: 86,
+                  x: 0,
+                  z: 0,
+                  duration: 0.4,
+                  ease: Linear.easeIn,
+                },
+                "-=0.2"
+              );
 
             return tl.then(() => {
               tl.pause();
