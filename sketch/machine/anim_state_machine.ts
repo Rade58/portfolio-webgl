@@ -38,6 +38,7 @@ export enum fse {
   animation1 = "animation1",
   animation2 = "animation2",
   animation3 = "animation3",
+  anim_to_init = "anim_to_init",
   //
 }
 
@@ -59,6 +60,8 @@ const ANIMATION_SERVICES_STATE_ARRAY = [
   fse.animation1,
   fse.animation2,
   fse.animation3,
+  //
+  fse.anim_to_init,
 ];
 
 const MAJOR_FS_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
