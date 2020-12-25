@@ -366,6 +366,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       spaceshipMesh,
       seaWireframe,
       sunMesh,
+      spacehipShaderMaterial,
     },
   });
 

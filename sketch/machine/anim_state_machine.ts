@@ -94,6 +94,7 @@ interface ContextFullI {
   camera: PerspectiveCamera;
   seaWireframe: LineSegments<WireframeGeometry, ShaderMaterial>;
   sunMesh: Mesh;
+  spacehipShaderMaterial: ShaderMaterial;
 
   controls: {
     target: Vector3;
@@ -130,6 +131,7 @@ interface MachineContextGenericI {
   camera: PerspectiveCamera | null;
   seaWireframe: LineSegments<WireframeGeometry, ShaderMaterial> | null;
   sunMesh: Mesh | null;
+  spacehipShaderMaterial: ShaderMaterial | null;
   // controls
   controls: {
     target: Vector3;
@@ -155,6 +157,7 @@ type machineEventGenericType =
         spaceshipMesh: Mesh;
         middlePlaneMesh: Mesh;
         seaWireframe: LineSegments<WireframeGeometry, ShaderMaterial>;
+        spacehipShaderMaterial: ShaderMaterial;
         controls: {
           target: Vector3;
           object: Object3D;
@@ -235,6 +238,7 @@ const animMachine = createMachine<
       camera: null,
       seaWireframe: null,
       sunMesh: null,
+      spacehipShaderMaterial: null,
     },
     // on: {},
     states: {
@@ -259,6 +263,7 @@ const animMachine = createMachine<
                     camera,
                     seaWireframe,
                     sunMesh,
+                    spacehipShaderMaterial,
                   },
                 }
               ) => ({
@@ -275,6 +280,7 @@ const animMachine = createMachine<
                 camera,
                 seaWireframe,
                 sunMesh,
+                spacehipShaderMaterial,
               })
             ),
             target: fse.idle,
@@ -625,10 +631,21 @@ const animMachine = createMachine<
         invoke: {
           id: "__3__",
           src: (
-            { tl, camera, controls, spaceshipMesh, cageMesh, sunMesh },
+            {
+              tl,
+              camera,
+              controls,
+              spaceshipMesh,
+              cageMesh,
+              sunMesh,
+              spacehipShaderMaterial,
+            },
             __
           ) => {
             const sunMeshCoords = sunMesh.position.toArray();
+            const sunMeshScaleCoords = sunMesh.scale.toArray();
+
+            sunMesh.scale.setScalar(0.1);
 
             tl.play()
               .to([cageMesh.position], {
@@ -657,15 +674,48 @@ const animMachine = createMachine<
                   x: sunMeshCoords[0],
                   y: sunMeshCoords[1],
                   z: sunMeshCoords[2],
-                  duration: 1,
+                  duration: 2,
                   ease: Linear.easeInOut,
                 },
                 "-=0.6"
               )
               .to(
+                spaceshipMesh.scale,
+                {
+                  x: sunMesh.scale.x - 30,
+                  y: sunMesh.scale.y - 30,
+                  z: sunMesh.scale.z - 30,
+                  ease: Elastic.easeOut,
+                  duration: 2,
+                },
+                "-=1.1"
+              )
+              .to(
                 camera.position,
                 { x: -20, z: 0, duration: 3, ease: Linear.easeInOut },
-                "-=1.6"
+                "-=1"
+              )
+              .to(
+                spaceshipMesh.scale,
+                {
+                  x: 0,
+                  y: 0,
+                  z: 0,
+                  ease: Power4.easeOut,
+                  duration: 1,
+                },
+                "-=1.1"
+              )
+              .to(
+                sunMesh.scale,
+                {
+                  x: sunMeshScaleCoords[0],
+                  y: sunMeshScaleCoords[1],
+                  z: sunMeshScaleCoords[2],
+                  ease: Power4.easeOut,
+                  duration: 1,
+                },
+                "-=0.6"
               );
 
             return tl.then(() => {
