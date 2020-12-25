@@ -770,13 +770,19 @@ const animMachine = createMachine<
           }) => {
             tl.play()
               .to(controls.target, {
-                y: 400,
-              })
-              .to([spaceshipMesh.position, cageMesh.position], {
-                y: -22,
+                y: 100,
                 duration: 1,
-                ease: Power4.easeInOut,
+                ease: Power0.easeOut,
               })
+              .to(
+                [spaceshipMesh.position, cageMesh.position],
+                {
+                  y: -22,
+                  duration: 1,
+                  ease: Power4.easeInOut,
+                },
+                "-=0.5"
+              )
               .to(
                 spaceshipMesh.scale,
                 { x: 0.1, y: 0.1, z: 0.1, duration: 1 },
@@ -790,7 +796,12 @@ const animMachine = createMachine<
                   z: 14.4,
                 },
                 "-=0.68"
-              );
+              )
+              .call(() => {
+                scene.add(middlePlaneMesh);
+                seaPlaneMesh.material = seaPlaneShaderMaterialWireframed;
+                seaPlaneMesh.material.needsUpdate = true;
+              });
 
             return tl.then(() => {
               tl.pause();
