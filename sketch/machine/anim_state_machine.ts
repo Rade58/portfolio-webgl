@@ -620,13 +620,14 @@ const animMachine = createMachine<
         invoke: {
           id: "__3__",
           src: ({ tl, camera, controls }, __) => {
-            tl.play().to(controls.object.rotation, {
-              /* z: 0,
-              x: -20, */
-              y: 120,
-              duration: 2,
-              ease: Quad.easeIn,
-            });
+            tl.play()
+              .to(camera.position, {
+                z: 4,
+                x: 4,
+                duration: 1,
+                ease: Quad.easeIn,
+              })
+              .to(camera.position, { x: -4, duration: 1 });
 
             return tl.then(() => {
               tl.pause();
