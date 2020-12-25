@@ -621,7 +621,22 @@ const animMachine = createMachine<
           id: "__3__",
           src: ({ tl, camera, controls, spaceshipMesh, cageMesh }, __) => {
             tl.play()
+              .to(controls.object.position, {
+                x: 68,
+                duration: 1.2,
+                ease: Power0.easeIn,
+              })
               .to(camera.position, {
+                x: 68,
+                duration: 1.2,
+                ease: Power0.easeIn,
+              })
+              .to(controls.object.rotation, {
+                y: 90 * (Math.PI / 180),
+                duration: 4,
+                ease: Power0.easeIn,
+              });
+            /* .to(camera.position, {
                 // x: -24,
                 z: 21,
                 duration: 0.8,
@@ -648,7 +663,7 @@ const animMachine = createMachine<
                 [camera.position],
                 { y: 12, duration: 1.8, ease: Power4.easeOut },
                 "-=0.6"
-              );
+              ); */
 
             return tl.then(() => {
               tl.pause();
