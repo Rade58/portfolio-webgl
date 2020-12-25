@@ -481,10 +481,10 @@ const animMachine = createMachine<
                 controls.object.position,
                 {
                   y: 3,
-                  duration: 0.8,
+                  duration: 1,
                   ease: Power2.easeIn,
                 },
-                `-=${2 * 0.9}`
+                `-=${2 * 0.8}`
               )
               .call(() => {
                 const oldLookAtCoords = spaceshipMesh.position.toArray();
@@ -517,7 +517,7 @@ const animMachine = createMachine<
                 camera.position,
                 {
                   z: 0,
-                  duration: 3,
+                  duration: 1.8,
                   ease: Quad.easeOut,
                 },
                 "-=1"
@@ -619,20 +619,31 @@ const animMachine = createMachine<
         entry: ["disableMovingToIdle"],
         invoke: {
           id: "__3__",
-          src: ({ tl, camera, controls }, __) => {
+          src: ({ tl, camera, controls, spaceshipMesh, cageMesh }, __) => {
             tl.play()
               .to(camera.position, {
                 // x: -24,
-                z: 24,
+                z: 21,
                 duration: 0.8,
                 ease: Elastic.easeIn,
               })
               .to(camera.position, {
-                x: -24,
+                x: -21,
                 z: 0,
                 duration: 0.8,
                 ease: Elastic.easeOut,
-              });
+              })
+              .to(
+                [spaceshipMesh.position, cageMesh.position],
+                { y: 282, duration: 1.2, ease: Power1.easeInOut },
+                "-=0.6"
+              )
+
+              .to(
+                [controls.target, camera.position],
+                { y: 6, duration: 1.8, ease: Power3.easeOut },
+                "-=0.2"
+              );
 
             return tl.then(() => {
               tl.pause();
