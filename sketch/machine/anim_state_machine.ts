@@ -769,6 +769,9 @@ const animMachine = createMachine<
             scene,
           }) => {
             tl.play()
+              .to(controls.target, {
+                y: 400,
+              })
               .to([spaceshipMesh.position, cageMesh.position], {
                 y: -22,
                 duration: 1,
@@ -778,6 +781,15 @@ const animMachine = createMachine<
                 spaceshipMesh.scale,
                 { x: 0.1, y: 0.1, z: 0.1, duration: 1 },
                 "-=0.8"
+              )
+              .to(
+                cageMesh.scale,
+                {
+                  x: 14.4,
+                  y: 14.4,
+                  z: 14.4,
+                },
+                "-=0.68"
               );
 
             return tl.then(() => {
