@@ -765,7 +765,21 @@ const animMachine = createMachine<
             spaceshipMesh,
             cageMesh,
             controls,
+            seaPlaneShaderMaterialWireframed,
+            scene,
           }) => {
+            tl.play()
+              .to([spaceshipMesh.position, cageMesh.position], {
+                y: -22,
+                duration: 1,
+                ease: Power4.easeInOut,
+              })
+              .to(
+                spaceshipMesh.scale,
+                { x: 0.1, y: 0.1, z: 0.1, duration: 1 },
+                "-=0.8"
+              );
+
             return tl.then(() => {
               tl.pause();
             });
