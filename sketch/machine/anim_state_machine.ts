@@ -637,20 +637,9 @@ const animMachine = createMachine<
                 ease: Power1.easeIn,
               })
               .to(
-                camera.position,
-                { y: 18, duration: 3, ease: Power1.easeIn },
+                [camera.position, controls.object.position],
+                { y: 18, duration: 2, ease: Power1.easeIn },
                 "-=0.8"
-              )
-              .to(
-                controls.target,
-                {
-                  x: sunMeshCoords[0],
-                  y: sunMeshCoords[1],
-                  z: sunMeshCoords[2],
-                  duration: 0.4,
-                  ease: Power2.easeOut,
-                },
-                "-=0.4"
               )
               .to(
                 controls.object.position,
@@ -659,6 +648,17 @@ const animMachine = createMachine<
                   x: 168,
                   duration: 2,
                   ease: Linear.easeIn,
+                },
+                "-=0.6"
+              )
+              .to(
+                controls.target,
+                {
+                  x: sunMeshCoords[0],
+                  y: sunMeshCoords[1],
+                  z: sunMeshCoords[2],
+                  duration: 1,
+                  ease: Power2.easeOut,
                 },
                 "-=0.6"
               )
