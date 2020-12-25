@@ -622,12 +622,23 @@ const animMachine = createMachine<
           src: ({ tl, camera, controls }, __) => {
             tl.play()
               .to(camera.position, {
-                z: 24,
-                x: 24,
-                duration: 1,
+                z: 28,
+                x: 28,
+                duration: 0.6,
                 ease: Quad.easeIn,
               })
-              .to(camera.position, { x: -24, z: 0, duration: 1 });
+              .to(camera.position, {
+                x: -24,
+                z: 18,
+                duration: 0.6,
+                ease: Power0.easeIn,
+              })
+              .to(camera.position, {
+                x: -24,
+                z: 0,
+                duration: 0.6,
+                ease: Power0.easeIn,
+              });
 
             return tl.then(() => {
               tl.pause();
