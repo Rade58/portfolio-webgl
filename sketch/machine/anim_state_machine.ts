@@ -770,7 +770,7 @@ const animMachine = createMachine<
           }) => {
             tl.play()
               .to(controls.target, {
-                y: 300,
+                y: 100,
                 duration: 1,
                 ease: Power0.easeOut,
               })
@@ -807,6 +807,7 @@ const animMachine = createMachine<
                 {
                   y: 1,
                   x: 1,
+                  z: -10,
                   duration: 0.4,
                   ease: Linear.easeIn,
                 },
@@ -826,7 +827,7 @@ const animMachine = createMachine<
               .to(
                 controls.object.position,
                 {
-                  y: 86,
+                  y: 96,
                   x: 0,
                   z: 0,
                   duration: 0.4,
