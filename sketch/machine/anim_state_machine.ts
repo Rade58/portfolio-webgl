@@ -848,7 +848,7 @@ const animMachine = createMachine<
           onDone: {
             // MORAO SAM SA PREDHODNOG ANIMATION STATE DA VIDIM REDNI BROJA
             // PA DA GA OVDE POECAM ZA 1
-            target: MAJOR_FINITE_STATES_ARRAY[1],
+            target: MAJOR_FINITE_STATES_ARRAY[0],
             actions: ["enableMovingToIdle"],
           },
           onError: {
@@ -913,7 +913,7 @@ const animMachine = createMachine<
       disableMovingToIdle: assign((_, __) => ({ canMoveToIdleAgain: false })),
       incrementMajorStateNum: assign(
         ({ currentMajorStateNum, majorFiniteStatesArrLength }, _) => {
-          if (currentMajorStateNum + 1 > majorFiniteStatesArrLength - 1) {
+          if (currentMajorStateNum + 1 >= majorFiniteStatesArrLength) {
             return {
               currentMajorStateNum: 0,
             };
@@ -928,11 +928,11 @@ const animMachine = createMachine<
           _
         ) => {
           if (
-            currentAnimationServiceNumber + 1 >
-            animationsServiceArrayLength - 1
+            currentAnimationServiceNumber + 1 >=
+            animationsServiceArrayLength
           ) {
             return {
-              currentMajorStateNum: 0,
+              currentAnimationServiceNumber: 0,
             };
           }
 
