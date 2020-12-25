@@ -290,6 +290,7 @@ const sketch = ({ context }) => {
             seaWireframeShaderMaterial,
             spaceshipMesh,
             seaWireframe,
+            sunMesh,
         },
     });
     // -------------------------------------------------------------------

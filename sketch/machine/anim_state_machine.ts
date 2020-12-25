@@ -9,7 +9,6 @@ import {
   WireframeGeometry,
 } from "three";
 import {
-  TweenMax,
   TimelineMax,
   Elastic,
   Quad,
@@ -18,6 +17,7 @@ import {
   Power2,
   Power0,
   Power3,
+  Linear,
 } from "gsap";
 import { createMachine, assign, interpret } from "xstate";
 import { textDisplay } from "../ui/user_interface";
@@ -93,6 +93,7 @@ interface ContextFullI {
   scene: Scene;
   camera: PerspectiveCamera;
   seaWireframe: LineSegments<WireframeGeometry, ShaderMaterial>;
+  sunMesh: Mesh;
 
   controls: {
     target: Vector3;
@@ -128,7 +129,7 @@ interface MachineContextGenericI {
   scene: Scene | null;
   camera: PerspectiveCamera | null;
   seaWireframe: LineSegments<WireframeGeometry, ShaderMaterial> | null;
-
+  sunMesh: Mesh | null;
   // controls
   controls: {
     target: Vector3;
@@ -142,6 +143,7 @@ type machineEventGenericType =
   | {
       type: EE.SETUP;
       payload: {
+        sunMesh: Mesh;
         scene: Scene;
         camera: PerspectiveCamera;
         seaPlaneShaderMaterial: ShaderMaterial;
@@ -232,6 +234,7 @@ const animMachine = createMachine<
       scene: null,
       camera: null,
       seaWireframe: null,
+      sunMesh: null,
     },
     // on: {},
     states: {
@@ -255,6 +258,7 @@ const animMachine = createMachine<
                     scene,
                     camera,
                     seaWireframe,
+                    sunMesh,
                   },
                 }
               ) => ({
@@ -270,6 +274,7 @@ const animMachine = createMachine<
                 scene,
                 camera,
                 seaWireframe,
+                sunMesh,
               })
             ),
             target: fse.idle,
@@ -619,51 +624,49 @@ const animMachine = createMachine<
         entry: ["disableMovingToIdle"],
         invoke: {
           id: "__3__",
-          src: ({ tl, camera, controls, spaceshipMesh, cageMesh }, __) => {
-            tl.play()
-              .to(controls.object.position, {
-                x: 68,
-                duration: 1.2,
-                ease: Power0.easeIn,
-              })
-              .to(camera.position, {
-                x: 68,
-                duration: 1.2,
-                ease: Power0.easeIn,
-              })
-              .to(controls.object.rotation, {
-                y: 90 * (Math.PI / 180),
-                duration: 4,
-                ease: Power0.easeIn,
-              });
-            /* .to(camera.position, {
-                // x: -24,
-                z: 21,
-                duration: 0.8,
-                ease: Power0.easeIn,
-              })
-              .to(camera.position, {
-                x: -21,
-                z: 0,
-                duration: 0.8,
-                ease: Power0.easeOut,
-              })
-              .to(
-                [spaceshipMesh.position, cageMesh.position],
-                { y: 282, duration: 0.4, ease: Power1.easeInOut },
-                "-=1.6"
-              )
+          src: (
+            { tl, camera, controls, spaceshipMesh, cageMesh, sunMesh },
+            __
+          ) => {
+            const sunMeshCoords = sunMesh.position.toArray();
 
+            tl.play()
+              .to([spaceshipMesh.position, cageMesh.position], {
+                y: 282,
+                duration: 2,
+                ease: Power1.easeIn,
+              })
               .to(
-                [controls.target],
-                { y: 8, duration: 1.8, ease: Power3.easeOut },
-                "-=0.3"
+                camera.position,
+                { y: 18, duration: 3, ease: Power1.easeIn },
+                "-=0.8"
               )
               .to(
-                [camera.position],
-                { y: 12, duration: 1.8, ease: Power4.easeOut },
+                controls.target,
+                {
+                  x: sunMeshCoords[0],
+                  y: sunMeshCoords[1],
+                  z: sunMeshCoords[2],
+                  duration: 0.4,
+                  ease: Power2.easeOut,
+                },
+                "-=0.4"
+              )
+              .to(
+                controls.object.position,
+                {
+                  z: 168,
+                  x: 168,
+                  duration: 2,
+                  ease: Linear.easeIn,
+                },
                 "-=0.6"
-              ); */
+              )
+              .to(
+                camera.position,
+                { x: -20, z: 0, duration: 2, ease: Quad.easeIn },
+                "-=0.6"
+              );
 
             return tl.then(() => {
               tl.pause();
