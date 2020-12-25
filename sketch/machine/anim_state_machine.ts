@@ -767,6 +767,7 @@ const animMachine = createMachine<
             controls,
             seaPlaneShaderMaterialWireframed,
             scene,
+            seaWireframe,
           }) => {
             tl.play()
               .to(controls.target, {
@@ -801,6 +802,7 @@ const animMachine = createMachine<
                 scene.add(middlePlaneMesh);
                 seaPlaneMesh.material = seaPlaneShaderMaterialWireframed;
                 seaPlaneMesh.material.needsUpdate = true;
+                seaPlaneMesh.remove(seaWireframe);
               })
               .to(
                 controls.object.position,
