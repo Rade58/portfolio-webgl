@@ -250,26 +250,21 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   plane0Mesh.position.y = -3.8;
   plane0Mesh.scale.setScalar(0.8);
 
+  skyMesh.scale.setScalar(484);
+  skyMesh.rotation.z = Math.PI / 2 - Math.PI / 8;
+
   seaPlaneMesh.rotation.x = (3 * Math.PI) / 2;
-  // seaPlaneMesh.position.y = -4.2;
   seaPlaneMesh.scale.setScalar(6.2);
 
   middlePlaneMesh.rotation.copy(seaPlaneMesh.rotation);
   middlePlaneMesh.scale.copy(seaPlaneMesh.scale);
   middlePlaneMesh.position.y = -3.6;
 
-  skyMesh.scale.setScalar(484);
-  skyMesh.rotation.z = Math.PI / 2 - Math.PI / 8;
-  // skyMesh.position.y = 1;
-
   sunMesh.scale.setScalar(64);
   sunMesh.position.set(392, 34, 78);
   sunMesh.rotation.y = Math.PI / 2;
   sunMesh.rotation.z = -Math.PI / 12;
 
-  /* spaceshipMesh.scale.y = 8;
-  spaceshipMesh.scale.x = 2;
-  spaceshipMesh.scale.z = 3; */
   spaceshipMesh.position.y = -22;
   spaceshipMesh.scale.setScalar(0.1);
 

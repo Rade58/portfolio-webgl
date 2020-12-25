@@ -752,7 +752,28 @@ const animMachine = createMachine<
       },
       [ANIMATION_SERVICES_STATE_ARRAY[
         ANIMATION_SERVICES_STATE_ARRAY.length - 1
-      ]]: {},
+      ]]: {
+        entry: ["disableMovingToIdle"],
+
+        invoke: {
+          id: "__back_to_init__",
+          src: ({ tl }) => {
+            return tl.then(() => {
+              tl.pause();
+            });
+          },
+          onDone: {
+            // MORAO SAM SA PREDHODNOG ANIMATION STATE DA VIDIM REDNI BROJA
+            // PA DA GA OVDE POECAM ZA 1
+            target: MAJOR_FINITE_STATES_ARRAY[1],
+            actions: ["enableMovingToIdle"],
+          },
+          onError: {
+            target: fse.anim_error,
+          },
+        },
+        exit: ["incrementAnimationServiceNum"],
+      },
       //-------------------------------------------------------
       [MAJOR_FINITE_STATES_ARRAY[0] /* aboutme */]: {
         entry: ["setLastMajorState", "incrementMajorStateNum"],
