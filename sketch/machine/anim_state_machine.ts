@@ -769,74 +769,77 @@ const animMachine = createMachine<
             scene,
             seaWireframe,
           }) => {
-            tl.play()
-              .to(controls.target, {
-                y: 100,
-                duration: 1,
-                ease: Power0.easeOut,
-              })
-              .to(
-                [spaceshipMesh.position, cageMesh.position],
-                {
-                  y: -22,
-                  duration: 1,
-                  ease: Power4.easeInOut,
-                },
-                "-=0.5"
-              )
-              .to(
-                spaceshipMesh.scale,
-                { x: 0.1, y: 0.1, z: 0.1, duration: 1 },
-                "-=0.8"
-              )
-              .to(
-                cageMesh.scale,
-                {
-                  x: 14.4,
-                  y: 14.4,
-                  z: 14.4,
-                },
-                "-=0.68"
-              )
-              .call(() => {
-                scene.add(middlePlaneMesh);
-                seaPlaneMesh.material = seaPlaneShaderMaterialWireframed;
-                seaPlaneMesh.material.needsUpdate = true;
-                seaPlaneMesh.remove(seaWireframe);
-              })
-              .to(
-                controls.object.position,
-                {
-                  y: 1,
-                  x: 1,
-                  z: -10,
-                  duration: 0.4,
-                  ease: Linear.easeIn,
-                },
-                "-=0.2"
-              )
-              .to(
-                controls.target,
-                {
-                  y: 0,
-                  z: 0,
-                  x: 0,
+            (cageMesh.position.z = 200),
+              tl
+                .play()
+                .to(controls.target, {
+                  y: 100,
                   duration: 1,
                   ease: Power0.easeOut,
-                },
-                "-=0.1"
-              )
-              .to(
-                controls.object.position,
-                {
-                  y: 96,
-                  x: 0,
-                  z: 0,
-                  duration: 0.4,
-                  ease: Linear.easeIn,
-                },
-                "-=0.2"
-              );
+                })
+                .to(
+                  [spaceshipMesh.position, cageMesh.position],
+                  {
+                    y: -22,
+                    duration: 1,
+                    ease: Power4.easeInOut,
+                  },
+                  "-=0.5"
+                )
+                .to(
+                  spaceshipMesh.scale,
+                  { x: 0.1, y: 0.1, z: 0.1, duration: 1 },
+                  "-=0.8"
+                )
+                .to(
+                  cageMesh.scale,
+                  {
+                    x: 14.4,
+                    y: 14.4,
+                    z: 14.4,
+                  },
+                  "-=0.68"
+                )
+                .call(() => {
+                  scene.add(middlePlaneMesh);
+                  seaPlaneMesh.material = seaPlaneShaderMaterialWireframed;
+                  seaPlaneMesh.material.needsUpdate = true;
+                  seaPlaneMesh.remove(seaWireframe);
+                  cageMesh.position.z = 0;
+                })
+                .to(
+                  controls.object.position,
+                  {
+                    y: 1,
+                    x: 1,
+                    z: -10,
+                    duration: 0.4,
+                    ease: Linear.easeIn,
+                  },
+                  "-=0.2"
+                )
+                .to(
+                  controls.target,
+                  {
+                    y: 0,
+                    z: 0,
+                    x: 0,
+                    duration: 1,
+                    ease: Power0.easeOut,
+                  },
+                  "-=0.1"
+                )
+                .to(
+                  controls.object.position,
+                  {
+                    y: 96,
+                    x: 0,
+                    z: 0,
+                    duration: 0.4,
+                    ease: Linear.easeIn,
+                  },
+                  "-=0.2"
+                );
 
             return tl.then(() => {
               tl.pause();
