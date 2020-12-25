@@ -631,7 +631,7 @@ const animMachine = createMachine<
             const sunMeshCoords = sunMesh.position.toArray();
 
             tl.play()
-              .to([spaceshipMesh.position, cageMesh.position], {
+              .to([cageMesh.position], {
                 y: 282,
                 duration: 2,
                 ease: Linear.easeIn,
@@ -652,7 +652,7 @@ const animMachine = createMachine<
                 "-=0.8"
               )
               .to(
-                controls.target,
+                [controls.target, spaceshipMesh.position],
                 {
                   x: sunMeshCoords[0],
                   y: sunMeshCoords[1],
