@@ -621,8 +621,7 @@ const animMachine = createMachine<
           id: "__3__",
           src: ({ tl, camera, controls }, __) => {
             tl.play().to(camera.position, {
-              z: 22 * Math.sin(Math.PI),
-              x: -22 * Math.sin(Math.PI),
+              x: -24,
               duration: 0.8,
               ease: Quad.easeIn,
             });
