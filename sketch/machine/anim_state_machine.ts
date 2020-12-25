@@ -640,14 +640,14 @@ const animMachine = createMachine<
               )
 
               .to(
-                [controls.target, camera.position],
-                { y: 12, duration: 1.8, ease: Power3.easeOut },
-                "-=0.2"
+                [controls.target],
+                { y: 8, duration: 1.8, ease: Power3.easeOut },
+                "-=0.3"
               )
               .to(
                 [controls.target],
-                { y: 8, duration: 0.8, ease: Power4.easeOut },
-                "-=0.6"
+                { y: 16, duration: 0.8, ease: Power4.easeOut },
+                "-=0.5"
               );
 
             return tl.then(() => {
