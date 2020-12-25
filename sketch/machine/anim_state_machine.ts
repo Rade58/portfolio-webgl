@@ -38,7 +38,7 @@ export enum fse {
   animation1 = "animation1",
   animation2 = "animation2",
   animation3 = "animation3",
-  anim_to_init = "anim_to_init",
+  anim_back_to_init = "anim_back_to_init",
   //
 }
 
@@ -61,7 +61,7 @@ const ANIMATION_SERVICES_STATE_ARRAY = [
   fse.animation2,
   fse.animation3,
   //
-  fse.anim_to_init,
+  fse.anim_back_to_init,
 ];
 
 const MAJOR_FS_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
@@ -201,6 +201,7 @@ type machineFiniteStateGenericType =
   | { value: fse.animation1; context: ContextFullI }
   | { value: fse.animation2; context: ContextFullI }
   | { value: fse.animation3; context: ContextFullI }
+  | { value: fse.anim_back_to_init; context: ContextFullI }
   | { value: fse.anim_error; context: ContextFullI };
 
 //---------------------------------------
@@ -322,6 +323,19 @@ const animMachine = createMachine<
               },
               //
               target: ANIMATION_SERVICES_STATE_ARRAY[3],
+            },
+            {
+              cond: ({ currentAnimationServiceNumber }) => {
+                return (
+                  currentAnimationServiceNumber ===
+                  ANIMATION_SERVICES_STATE_ARRAY.length - 1
+                );
+              },
+              //
+              target:
+                ANIMATION_SERVICES_STATE_ARRAY[
+                  ANIMATION_SERVICES_STATE_ARRAY.length - 1
+                ],
             },
           ],
         },
@@ -736,6 +750,9 @@ const animMachine = createMachine<
         },
         exit: ["incrementAnimationServiceNum"],
       },
+      [ANIMATION_SERVICES_STATE_ARRAY[
+        ANIMATION_SERVICES_STATE_ARRAY.length - 1
+      ]]: {},
       //-------------------------------------------------------
       [MAJOR_FINITE_STATES_ARRAY[0] /* aboutme */]: {
         entry: ["setLastMajorState", "incrementMajorStateNum"],
