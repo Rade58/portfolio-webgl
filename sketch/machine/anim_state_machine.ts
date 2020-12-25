@@ -595,10 +595,10 @@ const animMachine = createMachine<
                   x: 5.8,
                   y: 5.8,
                   z: 5.8,
-                  duration: 6.2,
+                  duration: 2.1,
                   ease: Elastic.easeOut,
                 },
-                "-=0.6"
+                "-=1.2"
               );
 
             return tl.then(() => {
@@ -619,10 +619,11 @@ const animMachine = createMachine<
         entry: ["disableMovingToIdle"],
         invoke: {
           id: "__3__",
-          src: ({ tl, camera }, __) => {
-            tl.play().to(camera.position, {
-              z: 0,
-              x: -20,
+          src: ({ tl, camera, controls }, __) => {
+            tl.play().to(controls.object.rotation, {
+              /* z: 0,
+              x: -20, */
+              y: 120,
               duration: 2,
               ease: Quad.easeIn,
             });

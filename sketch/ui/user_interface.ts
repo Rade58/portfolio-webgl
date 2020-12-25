@@ -22,11 +22,13 @@ const controlsContainerCss = /* css */ `
 
 const textDisplayStyles = /* css */ `
   color: crimson;
+  font-size: 2rem;
+  margin: 1.6em;
 `;
 
 /* ------------- ADDING STYLES ----------- */
 controlsContainer.style.cssText = controlsContainerCss;
-
+textDisplay.style.cssText = textDisplayStyles;
 /* ---------------------------------------- */
 
 /* APPENDING ELEMENTS */
