@@ -634,22 +634,22 @@ const animMachine = createMachine<
               .to([spaceshipMesh.position, cageMesh.position], {
                 y: 282,
                 duration: 2,
-                ease: Power1.easeIn,
+                ease: Linear.easeIn,
               })
               .to(
-                [camera.position, controls.object.position],
-                { y: 18, duration: 2, ease: Power1.easeIn },
-                "-=0.8"
-              )
-              .to(
-                controls.object.position,
+                controls.target,
                 {
                   z: 168,
                   x: 168,
-                  duration: 2,
-                  ease: Linear.easeIn,
+                  duration: 0.4,
+                  ease: Linear.easeInOut,
                 },
-                "-=0.6"
+                "-=0.3"
+              )
+              .to(
+                [camera.position, controls.object.position],
+                { y: 18, duration: 1, ease: Power1.easeIn },
+                "-=0.8"
               )
               .to(
                 controls.target,
@@ -658,14 +658,14 @@ const animMachine = createMachine<
                   y: sunMeshCoords[1],
                   z: sunMeshCoords[2],
                   duration: 1,
-                  ease: Power2.easeOut,
+                  ease: Linear.easeInOut,
                 },
                 "-=0.6"
               )
               .to(
                 camera.position,
-                { x: -20, z: 0, duration: 2, ease: Quad.easeIn },
-                "-=0.6"
+                { x: -20, z: 0, duration: 3, ease: Linear.easeInOut },
+                "-=1.6"
               );
 
             return tl.then(() => {
