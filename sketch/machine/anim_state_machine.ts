@@ -481,10 +481,10 @@ const animMachine = createMachine<
                 controls.object.position,
                 {
                   y: 3,
-                  duration: 1,
+                  duration: 0.8,
                   ease: Power2.easeIn,
                 },
-                `-=${2 * 0.8}`
+                `-=${2 * 0.9}`
               )
               .call(() => {
                 const oldLookAtCoords = spaceshipMesh.position.toArray();
@@ -620,11 +620,19 @@ const animMachine = createMachine<
         invoke: {
           id: "__3__",
           src: ({ tl, camera, controls }, __) => {
-            tl.play().to(camera.position, {
-              x: -24,
-              duration: 0.8,
-              ease: Quad.easeIn,
-            });
+            tl.play()
+              .to(camera.position, {
+                // x: -24,
+                z: 24,
+                duration: 0.8,
+                ease: Elastic.easeIn,
+              })
+              .to(camera.position, {
+                x: -24,
+                z: 0,
+                duration: 0.8,
+                ease: Elastic.easeOut,
+              });
 
             return tl.then(() => {
               tl.pause();
