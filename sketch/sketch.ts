@@ -385,6 +385,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
       type: EE.MOVE_UP,
     }); */
 
+    service.send({ type: EE.SETUP, payload: {} });
     service.send({
       type: EE.SWITCH,
     });
@@ -443,7 +444,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     /* service.send({
       type: EE.MOVE,
     }); */
-
+    service.send({ type: EE.SETUP, payload: {} });
     service.send({
       type: EE.SWITCH,
     });

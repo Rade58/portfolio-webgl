@@ -50,8 +50,8 @@ export enum EE {
   SWITCH = "SWITCH",
   /* MOVE_UP = "MOVE_UP",  // DEPRECATED
   MOVE_DOWN = "MOVE_DOWN", */
-  MOVE = "MOVE",
-  // HELLO = "HELLO", // DEPRECATED
+  // MOVE = "MOVE", // DEPRECATED
+  // HELLO = "HELLO", // DEPRECATE
 }
 
 const MAJOR_FINITE_STATES_ARRAY = [fse.aboutme, fse.projects, fse.blog];
@@ -148,6 +148,30 @@ type machineEventGenericType =
   | {
       type: EE.SETUP;
       payload: {
+        sunMesh?: Mesh;
+        scene?: Scene;
+        camera?: PerspectiveCamera;
+        seaPlaneShaderMaterial?: ShaderMaterial;
+        seaPlaneShaderMaterialWireframed?: ShaderMaterial;
+        seaWireframeShaderMaterial?: ShaderMaterial;
+        planeMiddleShaderMaterial?: ShaderMaterial;
+        seaPlaneMesh?: Mesh;
+        cageMesh?: Mesh;
+        spaceshipMesh?: Mesh;
+        middlePlaneMesh?: Mesh;
+        seaWireframe?: LineSegments<WireframeGeometry, ShaderMaterial>;
+        spacehipShaderMaterial?: ShaderMaterial;
+        controls?: {
+          target: Vector3;
+          object: Object3D;
+          update: () => void;
+          dispose: () => void;
+        };
+      };
+    }
+  /* | {
+      type: "*";
+      payload: {
         sunMesh: Mesh;
         scene: Scene;
         camera: PerspectiveCamera;
@@ -168,13 +192,13 @@ type machineEventGenericType =
           dispose: () => void;
         };
       };
-    }
+    } */
   | {
       type: EE.SWITCH;
-    }
-  | {
-      type: EE.MOVE;
     };
+/*| {
+      type: EE.MOVE;
+    } */
 
 type machineFiniteStateGenericType =
   | {
@@ -247,12 +271,39 @@ const animMachine = createMachine<
     // on: {},
     states: {
       [fse.init]: {
+        entry: [
+          assign((_, __) => {
+            return {
+              currentAnimationServiceNumber: 0,
+              currentMajorStateNum: 0,
+            };
+          }),
+        ],
+        // eslint-disable-next-line
+        // @ts-ignore
         on: {
-          [EE.SETUP]: {
+          /* [EE.SETUP] */ "*": {
             actions: assign(
               (
-                _,
                 {
+                  cageMesh: cageMeshOld,
+                  controls: controlsOld,
+                  middlePlaneMesh: middlePlaneMeshOld,
+                  planeMiddleShaderMaterial: planeMiddleShaderMaterialOld,
+                  seaPlaneMesh: seaPlaneMeshOld,
+                  seaPlaneShaderMaterial: seaPlaneShaderMaterialOld,
+                  seaPlaneShaderMaterialWireframed: seaPlaneShaderMaterialWireframedOld,
+                  seaWireframeShaderMaterial: seaWireframeShaderMaterialOld,
+                  spaceshipMesh: spaceshipMeshOld,
+                  scene: sceneOld,
+                  camera: cameraOld,
+                  seaWireframe: seaWireframeOld,
+                  sunMesh: sunMeshOld,
+                  spacehipShaderMaterial: spacehipShaderMaterialOld,
+                },
+                {
+                  // eslint-disable-next-line
+                  // @ts-ignore
                   payload: {
                     cageMesh,
                     controls,
@@ -270,22 +321,43 @@ const animMachine = createMachine<
                     spacehipShaderMaterial,
                   },
                 }
-              ) => ({
-                cageMesh,
-                controls,
-                middlePlaneMesh,
-                planeMiddleShaderMaterial,
-                seaPlaneMesh,
-                seaPlaneShaderMaterial,
-                seaPlaneShaderMaterialWireframed,
-                seaWireframeShaderMaterial,
-                spaceshipMesh,
-                scene,
-                camera,
-                seaWireframe,
-                sunMesh,
-                spacehipShaderMaterial,
-              })
+              ) => {
+                if (!cageMesh) {
+                  return {
+                    cageMesh: cageMeshOld,
+                    controls: controlsOld,
+                    middlePlaneMesh: middlePlaneMeshOld,
+                    planeMiddleShaderMaterial: planeMiddleShaderMaterialOld,
+                    seaPlaneMesh: seaPlaneMeshOld,
+                    seaPlaneShaderMaterial: seaPlaneShaderMaterialOld,
+                    seaPlaneShaderMaterialWireframed: seaPlaneShaderMaterialWireframedOld,
+                    seaWireframeShaderMaterial: seaWireframeShaderMaterialOld,
+                    spaceshipMesh: spaceshipMeshOld,
+                    scene: sceneOld,
+                    camera: cameraOld,
+                    seaWireframe: seaWireframeOld,
+                    sunMesh: sunMeshOld,
+                    spacehipShaderMaterial: spacehipShaderMaterialOld,
+                  };
+                }
+
+                return {
+                  cageMesh,
+                  controls,
+                  middlePlaneMesh,
+                  planeMiddleShaderMaterial,
+                  seaPlaneMesh,
+                  seaPlaneShaderMaterial,
+                  seaPlaneShaderMaterialWireframed,
+                  seaWireframeShaderMaterial,
+                  spaceshipMesh,
+                  scene,
+                  camera,
+                  seaWireframe,
+                  sunMesh,
+                  spacehipShaderMaterial,
+                };
+              }
             ),
             target: fse.idle,
           },
@@ -848,16 +920,19 @@ const animMachine = createMachine<
             });
           },
           onDone: {
-            // MORAO SAM SA PREDHODNOG ANIMATION STATE DA VIDIM REDNI BROJA
-            // PA DA GA OVDE POECAM ZA 1
-            target: MAJOR_FINITE_STATES_ARRAY[0],
+            target: fse.init,
             actions: ["enableMovingToIdle"],
           },
           onError: {
             target: fse.anim_error,
           },
         },
-        exit: ["incrementAnimationServiceNum"],
+        exit: [
+          "incrementAnimationServiceNum",
+          /* assign((_, __) => {
+            return { currentMajorStateNum: 1 };
+          }), */
+        ],
       },
       //-------------------------------------------------------
       [MAJOR_FINITE_STATES_ARRAY[0] /* aboutme */]: {

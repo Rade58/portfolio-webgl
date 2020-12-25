@@ -307,6 +307,7 @@ const sketch = ({ context }) => {
         /* service.send({
           type: EE.MOVE_UP,
         }); */
+        service.send({ type: EE.SETUP, payload: {} });
         service.send({
             type: EE.SWITCH,
         });
@@ -361,6 +362,7 @@ const sketch = ({ context }) => {
         /* service.send({
           type: EE.MOVE,
         }); */
+        service.send({ type: EE.SETUP, payload: {} });
         service.send({
             type: EE.SWITCH,
         });
