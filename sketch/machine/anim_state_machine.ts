@@ -620,25 +620,12 @@ const animMachine = createMachine<
         invoke: {
           id: "__3__",
           src: ({ tl, camera, controls }, __) => {
-            tl.play()
-              .to(camera.position, {
-                z: 28,
-                x: 28,
-                duration: 0.6,
-                ease: Quad.easeIn,
-              })
-              .to(camera.position, {
-                x: -24,
-                z: 18,
-                duration: 0.6,
-                ease: Power0.easeIn,
-              })
-              .to(camera.position, {
-                x: -24,
-                z: 0,
-                duration: 0.6,
-                ease: Power0.easeIn,
-              });
+            tl.play().to(camera.position, {
+              z: 22 * Math.sin(Math.PI),
+              x: -22 * Math.sin(Math.PI),
+              duration: 0.8,
+              ease: Quad.easeIn,
+            });
 
             return tl.then(() => {
               tl.pause();
