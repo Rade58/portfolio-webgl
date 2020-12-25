@@ -645,7 +645,7 @@ const animMachine = createMachine<
                 "-=0.3"
               )
               .to(
-                [controls.target],
+                [camera.position],
                 { y: 16, duration: 0.8, ease: Power4.easeOut },
                 "-=0.5"
               );
