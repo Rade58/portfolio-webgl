@@ -253,6 +253,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   skyMesh.scale.setScalar(484);
   skyMesh.rotation.z = Math.PI / 2 - Math.PI / 8;
 
+  //
   seaPlaneMesh.rotation.x = (3 * Math.PI) / 2;
   seaPlaneMesh.scale.setScalar(6.2);
 
@@ -337,9 +338,12 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // -----------------------------------------------------------------------
 
   controls.object.position.copy(camera.position);
+  //
   controls.object.position.x = 0;
   controls.object.position.y = 118;
   controls.object.position.z = 0;
+  // i ovo
+  // controls.target u 0 0 0
 
   // controls.target = spaceshipMesh.position;
 
