@@ -806,6 +806,8 @@ const animMachine = createMachine<
                   seaPlaneMesh.material.needsUpdate = true;
                   seaPlaneMesh.remove(seaWireframe);
                   cageMesh.position.z = 0;
+                  spaceshipMesh.position.z = 0;
+                  spaceshipMesh.position.x = 0;
                 })
                 .to(
                   controls.object.position,
