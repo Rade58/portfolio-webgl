@@ -873,22 +873,26 @@ const animMachine = createMachine<
             (cageMesh.position.z = 200),
               tl
                 .play()
-                .to(controls.target, {
+                .to(controls.object.position, {
                   // y: 300,
                   x: -34,
                   y: 12,
                   duration: 1,
                   ease: Power0.easeOut,
                 })
-                .to(controls.target, { x: 12, y: 0, z: 0, duration: 1 }, "-=2")
+                .to(
+                  controls.target,
+                  { x: 12, y: 0, z: 0, duration: 2 },
+                  "-=0.4"
+                )
                 .to(
                   [spaceshipMesh.position, cageMesh.position],
                   {
                     y: -22,
-                    duration: 1,
+                    duration: 2,
                     ease: Power4.easeInOut,
                   },
-                  "-=0.5"
+                  "-=0.1"
                 )
                 .to(
                   spaceshipMesh.scale,
