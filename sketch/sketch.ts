@@ -7,7 +7,7 @@ import uiElements from "./ui/user_interface";
 import settings, { settingsFunc } from "./sketch-settings";
 //
 // ANIMATION LIBRATRIES
-import { TweenMax, Elastic, Power2, Quad } from "gsap";
+// import { TweenMax, Elastic, Power2, Quad } from "gsap";
 //
 // STATE MACHINE
 import {
@@ -417,160 +417,28 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // -----------------------------------------------------------------------
 
   uiElements.up.addEventListener("click", (e) => {
-    /* service.send({
-      type: EE.HELLO,
-    }); */
-
-    /* service.send({
-      type: EE.MOVE_UP,
-    }); */
+    // MORAS POSLATI BILO KOJI EVENT SA EMPTY PAYLOAD-OM, PRE SLANJA
+    // SWITCH EVENTA; TO JE ZBOG JEDNOG EDGE CASE-A
 
     service.send({ type: EE.SETUP, payload: {} });
     service.send({
       type: EE.SWITCH,
     });
-
-    // -----------------------------
-    // MOZDA NECE TREBATI
-    /* assign(({ tl }, __) => {
-      // ZAVISICE OD    TIMELINE-A
-      return { canMoveToIdleAgain: true };
-    }), */
-    // -------------------------------
-
-    /* TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
-      value: 0.8,
-      ease: Elastic.easeOut,
-    });
-    TweenMax.to(seaPlaneShaderMaterialWireframed.uniforms.circleSize, 3, {
-      value: 0.8,
-      ease: Elastic.easeOut,
-    });
-
-    TweenMax.to(planeMiddleShaderMaterial.uniforms.circleSize, 3, {
-      value: 0.8,
-      ease: Elastic.easeOut,
-    });
-
-    TweenMax.to(seaWireframeShaderMaterial.uniforms.circleSize, 3, {
-      value: 0.8,
-      ease: Elastic.easeOut,
-    });
-
-    TweenMax.to(cageMesh.position, 2, {
-      y: 128,
-      // x: 22,
-      ease: Quad.easeIn,
-    });
-    TweenMax.to(spaceshipMesh.position, 2, {
-      y: 20,
-      // x: 22,
-      ease: Quad.easeIn,
-    });
-
-    TweenMax.to(controls.object.position, 4, {
-      x: 40,
-      z: 0,
-      y: 123,
-      ease: Power2.easeOut,
-    }); */
   });
 
   uiElements.down.addEventListener("click", (e) => {
-    /* service.send({
-      type: EE.HELLO,
-    }); */
-
-    /* service.send({
-      type: EE.MOVE,
-    }); */
+    // MORAS POSLATI BILO KOJI EVENT SA EMPTY PAYLOAD-OM, PRE SLANJA
+    // SWITCH EVENTA; TO JE ZBOG JEDNOG EDGE CASE-A
     service.send({ type: EE.SETUP, payload: {} });
     service.send({
       type: EE.SWITCH,
     });
-
-    /* TweenMax.to(seaPlaneShaderMaterial.uniforms.circleSize, 3, {
-      value: 0,
-      ease: Elastic.easeOut,
-    });
-    TweenMax.to(seaPlaneShaderMaterialWireframed.uniforms.circleSize, 3, {
-      value: 0,
-      ease: Elastic.easeOut,
-    });
-
-    TweenMax.to(planeMiddleShaderMaterial.uniforms.circleSize, 3, {
-      value: 0,
-      ease: Elastic.easeOut,
-    });
-
-    TweenMax.to(seaWireframeShaderMaterial.uniforms.circleSize, 3, {
-      value: 0,
-      ease: Elastic.easeOut,
-    });
-
-    TweenMax.to(spaceshipMesh.position, 2, {
-      y: 128,
-      // x: 22,
-      ease: Quad.easeIn,
-    });
-
-    const scaleArr = cageMesh.scale.toArray();
-
-    const newValuesScal = scaleArr.map((num) => {
-      return num * 0.4;
-    });
-
-    TweenMax.to(cageMesh.scale, 9, {
-      x: newValuesScal[0],
-      y: newValuesScal[1],
-      z: newValuesScal[2],
-
-      ease: Quad.easeIn,
-    });
- */
   });
 
   // -----------------------------------------------------------------------
   // ------------------- TEST UPDATING MATERIAL ----------------------------
   // adding removing wireframe material
   // removing middleplane
-  context.canvas.addEventListener("click", () => {
-    /*  seaPlaneMesh.material = seaPlaneShaderMaterial;
-    // ovo ide posle
-    seaPlaneMesh.material.needsUpdate = true;
-
-    seaPlaneMesh.add(seaWireframe);
-    scene.remove(middlePlaneMesh);
-    const newTargetVector = new global.THREE.Vector3(
-      ...spaceshipMesh.position.toArray()
-    );
-    const newValuesTarget = sunMesh.position.toArray();
-
-    controls.target = newTargetVector;
-    controls.update();
-
-    TweenMax.to(controls.target, 9, {
-      x: newValuesTarget[0],
-      y: newValuesTarget[1],
-      z: newValuesTarget[2],
-
-      ease: Quad.easeIn,
-    });
-
-    TweenMax.to(controls.object.position, 6, {
-      y: 8,
-      ease: Quad.easeInOut,
-    });
-
-    TweenMax.to(cageMesh.position, 4, {
-      y: -24,
-      ease: Elastic.easeInOut,
-    });
-    TweenMax.to(spaceshipMesh.position, 4, {
-      y: -24,
-      ease: Elastic.easeInOut,
-    }); */
-  });
 
   // preventing snapshots
   window.addEventListener("keydown", (e) => {
