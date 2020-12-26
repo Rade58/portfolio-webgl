@@ -32,8 +32,8 @@ export enum fse {
   //---- major -states (all of them shoud have transitions to idle)
   aboutme = "aboutme",
   projects = "projects",
-  blog = "blog",
   contact = "contact",
+  blog = "blog",
   // ANIMATION STATES
   animation0 = "animation0",
   animation1 = "animation1",
@@ -932,6 +932,7 @@ const animMachine = createMachine<
           onDone: {
             // back to            init
             target: fse.init,
+            // target: MAJOR_FINITE_STATES_ARRAY[4],
             actions: ["enableMovingToIdle"],
           },
           onError: {
