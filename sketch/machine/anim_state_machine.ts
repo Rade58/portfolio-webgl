@@ -641,9 +641,9 @@ const animMachine = createMachine<
               .to(
                 camera.position,
                 {
-                  z: -58,
-                  x: 58,
-                  y: 24,
+                  z: -78,
+                  x: 78,
+                  y: 34,
                   duration: 1.2,
                   ease: Quad.easeIn,
                 },
@@ -695,7 +695,7 @@ const animMachine = createMachine<
             const cagePosArr = cageMesh.position.toArray();
 
             tl.play()
-              .to(camera.position, { z: 0, duration: 0.4 })
+              .to(controls.object.position, { z: 0, x: 8, duration: 0.4 })
               .to(
                 controls.target,
                 {
@@ -1026,7 +1026,7 @@ const animMachine = createMachine<
                 },
                 "-=1"
               )
-              .to(controls.target, { x: 0, y: 0, z: 0, duration: 0.8 });
+              .to(controls.target, { x: 0, y: 0, z: 0, duration: 2 }, "-=1");
 
             return tl.then(() => {
               tl.pause();
