@@ -302,7 +302,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   camera.lookAt(cameraLookAtVector);
 
-  const controls: {
+  /*  const controls: {
     target: globalThis.THREE.Vector3;
     object: globalThis.THREE.Object3D;
     update: () => void;
@@ -310,8 +310,17 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
     // eslint-disable-next-line
     // @ts-ignore
-  } = new global.THREE.OrbitControls(camera, context.canvas);
-  // const controls = new global.THREE.TrackballControls(camera, context.canvas);
+  } = new global.THREE.OrbitControls(camera, context.canvas); */
+  const controls: {
+    target: globalThis.THREE.Vector3;
+    object: globalThis.THREE.Object3D;
+    update: () => void;
+    dispose: () => void;
+  } =
+    // eslint-disable-next-line
+    // @ts-ignore
+    new global.THREE.TrackballControls(camera, context.canvas);
+
   //
   // ----------------------------------------------------------------
   // ---------------------- LIGHT, HELPERS --------------------------
@@ -327,8 +336,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   //          helpers
   // scene.add(new global.THREE.GridHelper(8, 58, "purple", "olive"));
-  scene.add(new global.THREE.PointLightHelper(light));
-  scene.add(new global.THREE.AxesHelper(4));
+  // scene.add(new global.THREE.PointLightHelper(light));
+  // scene.add(new global.THREE.AxesHelper(4));
 
   // -----------------------------------------------------------------------
   // -----------------------------------------------------------------------

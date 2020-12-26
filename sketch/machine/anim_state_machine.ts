@@ -325,7 +325,7 @@ const animMachine = createMachine<
                 if (!cageMesh) {
                   return {
                     cageMesh: cageMeshOld,
-                    controls: controlsOld,
+                    /* controls: controlsOld,
                     middlePlaneMesh: middlePlaneMeshOld,
                     planeMiddleShaderMaterial: planeMiddleShaderMaterialOld,
                     seaPlaneMesh: seaPlaneMeshOld,
@@ -337,7 +337,7 @@ const animMachine = createMachine<
                     camera: cameraOld,
                     seaWireframe: seaWireframeOld,
                     sunMesh: sunMeshOld,
-                    spacehipShaderMaterial: spacehipShaderMaterialOld,
+                    spacehipShaderMaterial: spacehipShaderMaterialOld, */
                   };
                 }
 
@@ -609,7 +609,7 @@ const animMachine = createMachine<
               //
               //
               .to(spaceshipMesh.position, {
-                y: 400,
+                y: 169,
                 duration: 1.2,
                 ease: Quad.easeIn,
               })
@@ -671,8 +671,8 @@ const animMachine = createMachine<
               .to(
                 camera.position,
                 {
-                  x: cagePosArr[0] + 34,
-                  y: cagePosArr[1] - 4,
+                  x: cagePosArr[0] + 50,
+                  y: cagePosArr[1] - 7.4,
                   z: cagePosArr[2],
                   duration: 2,
                 },
@@ -695,10 +695,10 @@ const animMachine = createMachine<
                   x: 5.8,
                   y: 5.8,
                   z: 5.8,
-                  duration: 2.1,
+                  duration: 3.1,
                   ease: Elastic.easeOut,
                 },
-                "-=1.2"
+                "-=0.2"
               );
 
             return tl.then(() => {

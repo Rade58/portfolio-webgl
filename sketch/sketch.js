@@ -242,8 +242,19 @@ const sketch = ({ context }) => {
     camera.position.set(-114, 12.08, 38);
     const cameraLookAtVector = new global.THREE.Vector3();
     camera.lookAt(cameraLookAtVector);
-    const controls = new global.THREE.OrbitControls(camera, context.canvas);
-    // const controls = new global.THREE.TrackballControls(camera, context.canvas);
+    /*  const controls: {
+      target: globalThis.THREE.Vector3;
+      object: globalThis.THREE.Object3D;
+      update: () => void;
+      dispose: () => void;
+  
+      // eslint-disable-next-line
+      // @ts-ignore
+    } = new global.THREE.OrbitControls(camera, context.canvas); */
+    const controls = 
+    // eslint-disable-next-line
+    // @ts-ignore
+    new global.THREE.TrackballControls(camera, context.canvas);
     //
     // ----------------------------------------------------------------
     // ---------------------- LIGHT, HELPERS --------------------------
@@ -257,8 +268,8 @@ const sketch = ({ context }) => {
     scene.add(directionalLight);
     //          helpers
     // scene.add(new global.THREE.GridHelper(8, 58, "purple", "olive"));
-    scene.add(new global.THREE.PointLightHelper(light));
-    scene.add(new global.THREE.AxesHelper(4));
+    // scene.add(new global.THREE.PointLightHelper(light));
+    // scene.add(new global.THREE.AxesHelper(4));
     // -----------------------------------------------------------------------
     // -----------------------------------------------------------------------
     // ------------ STARTING CAMERA POSITION ---------------------------------
