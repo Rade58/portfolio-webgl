@@ -975,7 +975,7 @@ const animMachine = createMachine<
                 {
                   y: 20,
                   x: 8,
-                  z: -10,
+                  z: 10,
                   duration: 1,
                   ease: Linear.easeIn,
                 },
