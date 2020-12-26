@@ -882,7 +882,7 @@ const animMachine = createMachine<
                   {
                     // y: 300,
                     x: -134,
-                    y: 26,
+                    y: 36,
                     duration: 1.8,
                     ease: Power0.easeOut,
                   },
@@ -899,7 +899,17 @@ const animMachine = createMachine<
                     duration: 1.4,
                     ease: Power4.easeInOut,
                   },
-                  "-=1"
+                  "-=0.4"
+                )
+                .to(
+                  [spaceshipMesh.position, cageMesh.position],
+                  {
+                    y: -22,
+                    // y: -22,
+                    duration: 0.4,
+                    ease: Power4.easeInOut,
+                  },
+                  "-=0.4"
                 )
                 .to(
                   [
@@ -914,18 +924,8 @@ const animMachine = createMachine<
                     duration: 2,
                   },
                   "-=0.1"
-                )
-                .to(
-                  [spaceshipMesh.position, cageMesh.position],
-                  {
-                    y: -22,
-                    // y: -22,
-                    duration: 0.4,
-                    ease: Power4.easeInOut,
-                  },
-                  "-=0.4"
-                )
-                .to(
+                );
+            /* .to(
                   spaceshipMesh.scale,
                   { x: 0.1, y: 0.1, z: 0.1, duration: 1 },
                   "-=0.8"
@@ -980,7 +980,7 @@ const animMachine = createMachine<
                     ease: Elastic.easeOut,
                   },
                   "-=0.4"
-                );
+                ); */
 
             return tl.then(() => {
               tl.pause();
