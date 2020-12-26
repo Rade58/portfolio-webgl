@@ -930,6 +930,11 @@ const animMachine = createMachine<
                     duration: 2,
                   },
                   "-=0.1"
+                )
+                .to(
+                  controls.object.position,
+                  { y: 28, z: -38, duration: 1.4, ease: Quad.easeOut },
+                  "-=0.4"
                 );
 
             return tl.then(() => {
