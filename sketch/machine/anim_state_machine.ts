@@ -561,13 +561,13 @@ const animMachine = createMachine<
               .to(
                 spaceshipMesh.scale,
                 {
-                  x: 1.2,
-                  y: 1.2,
-                  z: 1.2,
+                  x: 1.4,
+                  y: 1.4,
+                  z: 1.4,
                   duration: 2,
                   ease: Power4.easeInOut,
                 },
-                "-=1.8"
+                "-=0.4"
               )
               .to(
                 spaceshipMesh.position,
