@@ -703,8 +703,8 @@ const animMachine = createMachine<
                   y: cagePosArr[1],
                   z: cagePosArr[2],
                   duration: 2,
-                },
-                "-=0.2"
+                }
+                // "-=0.2"
               )
               .call(() => {
                 seaPlaneMesh.add(seaWireframe);
@@ -887,8 +887,8 @@ const animMachine = createMachine<
                   controls.object.position,
                   {
                     // y: 300,
-                    x: -114,
-                    y: 56,
+                    x: -100,
+                    y: 49,
                     duration: 1.8,
                     ease: Power0.easeOut,
                   },
