@@ -224,6 +224,10 @@ type machineFiniteStateGenericType =
       context: ContextFullI;
     }
   | {
+      value: fse.contact;
+      context: ContextFullI;
+    }
+  | {
       value: fse.blog;
       context: ContextFullI;
     }
@@ -962,13 +966,23 @@ const animMachine = createMachine<
           },
         },
       },
-      [MAJOR_FINITE_STATES_ARRAY[2] /* blog */]: {
+      [MAJOR_FINITE_STATES_ARRAY[2] /* contact */]: {
         entry: ["setLastMajorState", "incrementMajorStateNum"],
 
         always: {
           target: fse.idle,
           cond: ({ canMoveToIdleAgain, currentMajorStateNum }, __) => {
             return canMoveToIdleAgain && currentMajorStateNum !== 2;
+          },
+        },
+      },
+      [MAJOR_FINITE_STATES_ARRAY[3] /* contact */]: {
+        entry: ["setLastMajorState", "incrementMajorStateNum"],
+
+        always: {
+          target: fse.idle,
+          cond: ({ canMoveToIdleAgain, currentMajorStateNum }, __) => {
+            return canMoveToIdleAgain && currentMajorStateNum !== 3;
           },
         },
       },
