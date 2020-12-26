@@ -459,6 +459,7 @@ const animMachine = createMachine<
             // ANIMATION SERVICE
 
             tl.pause();
+
             tl.to(controls.object.position, { x: 0, duration: 0.5 });
             tl.to(
               [
@@ -886,7 +887,7 @@ const animMachine = createMachine<
                   controls.object.position,
                   {
                     // y: 300,
-                    x: -134,
+                    x: -114,
                     y: 56,
                     duration: 1.8,
                     ease: Power0.easeOut,
@@ -973,7 +974,7 @@ const animMachine = createMachine<
                 controls.object.position,
                 {
                   y: 20,
-                  x: 2,
+                  x: 8,
                   z: -10,
                   duration: 1,
                   ease: Linear.easeIn,
@@ -1005,9 +1006,20 @@ const animMachine = createMachine<
               .to(
                 controls.object.position,
                 {
-                  y: 118,
+                  y: 94,
                   /* x: 0,
                   z: 0, */
+                  duration: 3.4,
+                  ease: Power0.easeOut,
+                },
+                "-=0.4"
+              )
+
+              .to(
+                controls.object.position,
+                {
+                  x: 0,
+                  z: 0,
                   duration: 3.4,
                   ease: Elastic.easeOut,
                 },
