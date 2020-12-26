@@ -56,7 +56,7 @@ export enum EE {
   // HELLO = "HELLO", // DEPRECATE
 }
 
-const MAJOR_FINITE_STATES_ARRAY = [
+export const MAJOR_FINITE_STATES_ARRAY = [
   fse.aboutme,
   fse.projects,
   fse.contact,
@@ -1155,14 +1155,16 @@ const animMachine = createMachine<
 export const animMachineService = interpret(animMachine);
 
 animMachineService.onTransition((state, event) => {
-  console.log("ANIM MACHINE STATE MACHINE");
+  /* console.log("ANIM MACHINE STATE MACHINE");
   console.log(`TRANSITIONING TO - ${state.value} - FINITE STATE`);
   console.log(`COSEQUENCE OF - ${event.type} - EVENT`);
   console.log("CONTEXT:");
   console.log(state.context);
   console.log("-------------------------------------");
-
+ */
   textDisplay.textContent = state.value as string;
+
+  textDisplay.dataset.finiteState = state.context.majorStateAfterIdle;
 });
 
 animMachineService.start();

@@ -1,9 +1,14 @@
 /* eslint react/react-in-jsx-scope: 0 */
 /* eslint jsx-a11y/anchor-is-valid: 1 */
-import { FunctionComponent, Fragment } from "react";
+import { FunctionComponent, Fragment, useEffect, useRef } from "react";
 import Other from "../components/Other";
 import OtherSec from "../components/OtherSec";
 import Sketch from "../components/sketch/Sketch";
+
+import {
+  MAJOR_FINITE_STATES_ARRAY,
+  fse,
+} from "../sketch/machine/anim_state_machine";
 
 import fs from "fs";
 import path from "path";
@@ -14,6 +19,14 @@ const Index: FunctionComponent<{
   htmlContentString: string;
 }> = ({ htmlContentString }) => {
   // console.log({ htmlContentString });
+
+  const textDisplayRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!textDisplayRef.current) {
+      textDisplayRef.current = document.querySelector("div.text_display");
+    }
+  }, []);
 
   return (
     <Fragment>
@@ -28,6 +41,11 @@ const Index: FunctionComponent<{
         }}
       >
         Some Text
+        <section>
+          {textDisplayRef.current
+            ? textDisplayRef.current.dataset.finiteState
+            : 8}
+        </section>
         <div>Lorem ipsum</div>
         <div>Lorem ipsum</div>
         <div>Lorem ipsum</div>
