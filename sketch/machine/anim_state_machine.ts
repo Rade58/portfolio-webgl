@@ -33,6 +33,7 @@ export enum fse {
   aboutme = "aboutme",
   projects = "projects",
   blog = "blog",
+  contact = "contact",
   // ANIMATION STATES
   animation0 = "animation0",
   animation1 = "animation1",
@@ -54,7 +55,12 @@ export enum EE {
   // HELLO = "HELLO", // DEPRECATE
 }
 
-const MAJOR_FINITE_STATES_ARRAY = [fse.aboutme, fse.projects, fse.blog];
+const MAJOR_FINITE_STATES_ARRAY = [
+  fse.aboutme,
+  fse.projects,
+  fse.contact,
+  fse.blog,
+];
 const ANIMATION_SERVICES_STATE_ARRAY = [
   fse.animation0,
   fse.animation1,
@@ -813,8 +819,7 @@ const animMachine = createMachine<
             });
           },
           onDone: {
-            // POSTO IMAM SAMO TRI "MAJOR STATE-A", OVDE GA VRACAM NA NULTI STATE, A ATO BI TREBA ODA BUDE aboutme
-            target: MAJOR_FINITE_STATES_ARRAY[0],
+            target: MAJOR_FINITE_STATES_ARRAY[3],
             actions: ["enableMovingToIdle"],
           },
           onError: {
@@ -921,6 +926,7 @@ const animMachine = createMachine<
             });
           },
           onDone: {
+            // back to            init
             target: fse.init,
             actions: ["enableMovingToIdle"],
           },
