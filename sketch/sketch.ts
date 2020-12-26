@@ -302,7 +302,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   camera.lookAt(cameraLookAtVector);
 
-  /*  const controls: {
+  const controls: {
     target: globalThis.THREE.Vector3;
     object: globalThis.THREE.Object3D;
     update: () => void;
@@ -310,8 +310,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
     // eslint-disable-next-line
     // @ts-ignore
-  } = new global.THREE.OrbitControls(camera, context.canvas); */
-  const controls: {
+  } = new global.THREE.OrbitControls(camera, context.canvas);
+  /* const controls: {
     target: globalThis.THREE.Vector3;
     object: globalThis.THREE.Object3D;
     update: () => void;
@@ -330,7 +330,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   } =
     // eslint-disable-next-line
     // @ts-ignore
-    new global.THREE.TrackballControls(camera, context.canvas);
+    new global.THREE.TrackballControls(camera, context.canvas); */
   // POKAZUJE STA SVE MOGU RADITI NA TRACKBALL CONTROLS
   // CONTROLS.addEventListener('change', () => console.log("Controls Change"))
   // controls.addEventListener('start', () => console.log("Controls Start Event"))
@@ -347,10 +347,10 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // controls.maxDistance = 4;
   // controls.minDistance = 2;
 
-  controls.noZoom = true;
+  /* controls.noZoom = true;
   controls.noPan = true;
   controls.noRotate = true;
-  controls.update();
+  controls.update(); */
 
   //
   // ----------------------------------------------------------------
@@ -367,8 +367,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   //          helpers
   // scene.add(new global.THREE.GridHelper(8, 58, "purple", "olive"));
-  // scene.add(new global.THREE.PointLightHelper(light));
-  // scene.add(new global.THREE.AxesHelper(4));
+  scene.add(new global.THREE.PointLightHelper(light));
+  scene.add(new global.THREE.AxesHelper(4));
 
   // -----------------------------------------------------------------------
   // -----------------------------------------------------------------------
@@ -380,7 +380,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   //
   controls.object.position.x = 0;
   controls.object.position.y = 118;
-  controls.object.position.z = 0;
+  controls.object.position.z = -0.1;
   // i ovo
   // controls.target u 0 0 0
 

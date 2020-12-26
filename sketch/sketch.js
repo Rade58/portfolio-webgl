@@ -245,19 +245,27 @@ const sketch = ({ context }) => {
     camera.position.set(-114, 12.08, 38);
     const cameraLookAtVector = new global.THREE.Vector3();
     camera.lookAt(cameraLookAtVector);
-    /*  const controls: {
+    const controls = new global.THREE.OrbitControls(camera, context.canvas);
+    /* const controls: {
       target: globalThis.THREE.Vector3;
       object: globalThis.THREE.Object3D;
       update: () => void;
       dispose: () => void;
-  
+      enabled: boolean;
+      rotateSpeed: number;
+      zoomSpeed: number;
+      panSpeed: number;
+      keys: number[];
+      noPan: boolean;
+      noRotate: boolean;
+      noZoom: boolean;
+      staticMoving: boolean;
+      maxDistance: number;
+      minDistance: number;
+    } =
       // eslint-disable-next-line
       // @ts-ignore
-    } = new global.THREE.OrbitControls(camera, context.canvas); */
-    const controls = 
-    // eslint-disable-next-line
-    // @ts-ignore
-    new global.THREE.TrackballControls(camera, context.canvas);
+      new global.THREE.TrackballControls(camera, context.canvas); */
     // POKAZUJE STA SVE MOGU RADITI NA TRACKBALL CONTROLS
     // CONTROLS.addEventListener('change', () => console.log("Controls Change"))
     // controls.addEventListener('start', () => console.log("Controls Start Event"))
@@ -273,10 +281,10 @@ const sketch = ({ context }) => {
     // controls.staticMoving = true //default false
     // controls.maxDistance = 4;
     // controls.minDistance = 2;
-    controls.noZoom = true;
+    /* controls.noZoom = true;
     controls.noPan = true;
     controls.noRotate = true;
-    controls.update();
+    controls.update(); */
     //
     // ----------------------------------------------------------------
     // ---------------------- LIGHT, HELPERS --------------------------
@@ -290,8 +298,8 @@ const sketch = ({ context }) => {
     scene.add(directionalLight);
     //          helpers
     // scene.add(new global.THREE.GridHelper(8, 58, "purple", "olive"));
-    // scene.add(new global.THREE.PointLightHelper(light));
-    // scene.add(new global.THREE.AxesHelper(4));
+    scene.add(new global.THREE.PointLightHelper(light));
+    scene.add(new global.THREE.AxesHelper(4));
     // -----------------------------------------------------------------------
     // -----------------------------------------------------------------------
     // ------------ STARTING CAMERA POSITION ---------------------------------
@@ -301,7 +309,7 @@ const sketch = ({ context }) => {
     //
     controls.object.position.x = 0;
     controls.object.position.y = 118;
-    controls.object.position.z = 0;
+    controls.object.position.z = -0.1;
     // i ovo
     // controls.target u 0 0 0
     // controls.target = spaceshipMesh.position;

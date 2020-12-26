@@ -471,7 +471,7 @@ const animMachine = createMachine<
                   ease: Quad.easeOut,
                   duration: 2.4,
                 },
-                "-=2.2"
+                "-=1.9"
               )
               .to(cageMesh.scale, {
                 x: 8.4,
@@ -542,10 +542,16 @@ const animMachine = createMachine<
             },
             __
           ) => {
-            controls.target = spaceshipMesh.position;
+            controls.target = new global.THREE.Vector3(
+              ...spaceshipMesh.position.toArray()
+            );
+            controls.update();
+            seaPlaneMesh.material = seaPlaneShaderMaterial;
+            seaPlaneMesh.material.needsUpdate = true;
+            scene.remove(middlePlaneMesh);
 
             tl.play()
-              .to(
+              /* .to(
                 [
                   seaPlaneShaderMaterial.uniforms.circleSize,
                   seaPlaneShaderMaterialWireframed.uniforms.circleSize,
@@ -557,8 +563,8 @@ const animMachine = createMachine<
                   ease: Power3.easeOut,
                   duration: 2,
                 }
-              )
-              .to(
+              ) */
+              /* .to(
                 controls.object.position,
                 {
                   y: 20.1,
@@ -567,71 +573,79 @@ const animMachine = createMachine<
                   ease: Power1.easeOut,
                 },
                 "-=2.6"
-              )
+              ) */
+              .to(camera.position, {
+                x: 1,
+                z: -1,
+                duration: 0.2,
+                ease: Quad.easeOut,
+              })
               .to(
                 spaceshipMesh.scale,
                 {
-                  x: 1.4,
-                  y: 1.4,
-                  z: 1.4,
-                  duration: 2,
+                  x: 1.6,
+                  y: 1.6,
+                  z: 1.6,
+                  duration: 1.2,
                   ease: Power4.easeInOut,
+                },
+                "-=0.4"
+              )
+              /* .call(() => {
+
+                // controls.target = newLookAtVector;
+                // controls.update();
+
+                seaPlaneMesh.material = seaPlaneShaderMaterial;
+                seaPlaneMesh.material.needsUpdate = true;
+                scene.remove(middlePlaneMesh);
+              }) */
+              .to(
+                spaceshipMesh.position,
+                {
+                  y: 1.2,
+                  duration: 2,
+                  ease: Power0.easeInOut,
+                },
+                `-=${0.2}`
+              )
+              /* .to(
+                controls.object.position,
+                {
+                  y: 46,
+                  duration: 1,
+                  ease: Power2.easeIn,
+                },
+                `-=${0.8}`
+              ) */
+              /* .to(controls.object.position, {
+                x: 16,
+                y: 8,
+                z: 16,
+                duration: 1,
+                ease: Power2.easeIn,
+              }) */
+              //
+              //
+              .to(
+                camera.position,
+                {
+                  z: -78,
+                  x: 78,
+                  y: 34,
+                  duration: 1.6,
+                  ease: Quad.easeIn,
                 },
                 "-=0.4"
               )
               .to(
                 spaceshipMesh.position,
                 {
-                  y: 2,
-                  duration: 2,
-                  ease: Power0.easeInOut,
-                },
-                `-=${1.8 * 2}`
-              )
-              .to(
-                controls.object.position,
-                {
-                  y: 1,
-                  duration: 1,
-                  ease: Power2.easeIn,
-                },
-                `-=${2 * 0.8}`
-              )
-              .call(() => {
-                const oldLookAtCoords = spaceshipMesh.position.toArray();
-                const newLookAtVector = new global.THREE.Vector3(
-                  ...oldLookAtCoords
-                );
-
-                controls.target = newLookAtVector;
-                controls.update();
-
-                seaPlaneMesh.material = seaPlaneShaderMaterial;
-                seaPlaneMesh.material.needsUpdate = true;
-                scene.remove(middlePlaneMesh);
-              })
-              .to(controls.object.position, {
-                x: 16,
-                y: 8,
-                z: 16,
-                duration: 1,
-                ease: Power2.easeIn,
-              })
-              //
-              //
-              .to(spaceshipMesh.position, {
-                y: 169,
-                duration: 1.2,
-                ease: Quad.easeIn,
-              })
-              .to(
-                camera.position,
-                {
-                  z: 0,
-                  duration: 1.8,
+                  y: 169,
+                  duration: 1.2,
                   ease: Quad.easeOut,
                 },
-                "-=1"
+                "-=0.2"
               );
 
             //
@@ -670,12 +684,17 @@ const animMachine = createMachine<
             const cagePosArr = cageMesh.position.toArray();
 
             tl.play()
-              .to(controls.target, {
-                x: cagePosArr[0],
-                y: cagePosArr[1],
-                z: cagePosArr[2],
-                duration: 2,
-              })
+              .to(camera.position, { z: 0, duration: 0.4 })
+              .to(
+                controls.target,
+                {
+                  x: cagePosArr[0],
+                  y: cagePosArr[1],
+                  z: cagePosArr[2],
+                  duration: 2,
+                },
+                "-=0.2"
+              )
               .call(() => {
                 seaPlaneMesh.add(seaWireframe);
               })
