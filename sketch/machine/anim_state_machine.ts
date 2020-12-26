@@ -887,7 +887,7 @@ const animMachine = createMachine<
                   {
                     // y: 300,
                     x: -134,
-                    y: 36,
+                    y: 56,
                     duration: 1.8,
                     ease: Power0.easeOut,
                   },
@@ -897,7 +897,7 @@ const animMachine = createMachine<
                 .to(
                   [spaceshipMesh.position, cageMesh.position],
                   {
-                    y: 4,
+                    y: 12,
                     x: 0,
                     z: 0,
                     // y: -22,
@@ -936,7 +936,7 @@ const animMachine = createMachine<
             });
           },
           onDone: {
-            target: MAJOR_FINITE_STATES_ARRAY[4],
+            target: MAJOR_FINITE_STATES_ARRAY[0],
             actions: ["enableMovingToIdle"],
           },
           onError: {
@@ -967,20 +967,18 @@ const animMachine = createMachine<
             planeMiddleShaderMaterial,
             seaWireframeShaderMaterial,
           }) => {
-            tl.play()
+            tl.play();
+            tl.to(controls.target, { y: 100, duration: 2 })
               .to(
-                spaceshipMesh.scale,
-                { x: 0.1, y: 0.1, z: 0.1, duration: 1 },
-                "-=0.8"
-              )
-              .to(
-                cageMesh.scale,
+                controls.object.position,
                 {
-                  x: 14.4,
-                  y: 14.4,
-                  z: 14.4,
+                  y: 20,
+                  x: 2,
+                  z: -10,
+                  duration: 1,
+                  ease: Linear.easeIn,
                 },
-                "-=0.68"
+                "-=0.2"
               )
               .call(() => {
                 scene.add(middlePlaneMesh);
@@ -990,25 +988,16 @@ const animMachine = createMachine<
                 cageMesh.position.z = 0;
                 spaceshipMesh.position.z = 0;
                 spaceshipMesh.position.x = 0;
+                cageMesh.scale.setScalar(14.4);
+                spaceshipMesh.scale.setScalar(0.1);
               })
-              .to(
-                controls.object.position,
-                {
-                  y: 0,
-                  x: 2,
-                  z: -10,
-                  duration: 0.4,
-                  ease: Linear.easeIn,
-                },
-                "-=0.2"
-              )
               .to(
                 controls.target,
                 {
                   y: 0,
                   z: 0,
                   x: 0,
-                  duration: 1,
+                  duration: 2,
                   ease: Power0.easeOut,
                 },
                 "-=0.1"
@@ -1017,8 +1006,8 @@ const animMachine = createMachine<
                 controls.object.position,
                 {
                   y: 118,
-                  x: 0,
-                  z: 1,
+                  /* x: 0,
+                  z: 0, */
                   duration: 3.4,
                   ease: Elastic.easeOut,
                 },
