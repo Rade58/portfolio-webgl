@@ -974,9 +974,9 @@ const animMachine = createMachine<
                 controls.object.position,
                 {
                   y: 20,
-                  x: 8,
-                  z: 10,
-                  duration: 1,
+                  x: 80,
+                  z: 80,
+                  duration: 0.5,
                   ease: Linear.easeIn,
                 },
                 "-=0.2"
@@ -996,35 +996,37 @@ const animMachine = createMachine<
                 controls.target,
                 {
                   y: 0,
-                  z: 0,
-                  x: 0,
+                  z: 20,
+                  x: 20,
                   duration: 2,
                   ease: Power0.easeOut,
-                },
-                "-=0.1"
+                }
+                // "-=1.2"
               )
-              .to(
+              /* .to(
                 controls.object.position,
                 {
                   y: 94,
-                  /* x: 0,
-                  z: 0, */
-                  duration: 3.4,
+                  x: 0,
+                  z: 0,
+                  duration: 2.4,
                   ease: Power0.easeOut,
                 },
-                "-=0.4"
-              )
+                "-=1"
+              ) */
 
               .to(
                 controls.object.position,
                 {
                   x: 0,
                   z: 0,
+                  y: 94,
                   duration: 1.2,
                   ease: Power0.easeOut,
                 },
-                "-=0.4"
-              );
+                "-=1"
+              )
+              .to(controls.target, { x: 0, y: 0, z: 0, duration: 0.8 });
 
             return tl.then(() => {
               tl.pause();
