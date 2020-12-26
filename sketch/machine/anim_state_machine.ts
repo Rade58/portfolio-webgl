@@ -287,7 +287,7 @@ const animMachine = createMachine<
               (
                 {
                   cageMesh: cageMeshOld,
-                  controls: controlsOld,
+                  /* controls: controlsOld,
                   middlePlaneMesh: middlePlaneMeshOld,
                   planeMiddleShaderMaterial: planeMiddleShaderMaterialOld,
                   seaPlaneMesh: seaPlaneMeshOld,
@@ -299,7 +299,7 @@ const animMachine = createMachine<
                   camera: cameraOld,
                   seaWireframe: seaWireframeOld,
                   sunMesh: sunMeshOld,
-                  spacehipShaderMaterial: spacehipShaderMaterialOld,
+                  spacehipShaderMaterial: spacehipShaderMaterialOld, */
                 },
                 {
                   // eslint-disable-next-line
