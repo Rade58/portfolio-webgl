@@ -39,6 +39,7 @@ export enum fse {
   animation1 = "animation1",
   animation2 = "animation2",
   animation3 = "animation3",
+  animation4 = "animation4",
   anim_back_to_init = "anim_back_to_init",
   //
 }
@@ -66,6 +67,7 @@ const ANIMATION_SERVICES_STATE_ARRAY = [
   fse.animation1,
   fse.animation2,
   fse.animation3,
+  fse.animation4,
   //
   fse.anim_back_to_init,
 ];
@@ -235,6 +237,7 @@ type machineFiniteStateGenericType =
   | { value: fse.animation1; context: ContextFullI }
   | { value: fse.animation2; context: ContextFullI }
   | { value: fse.animation3; context: ContextFullI }
+  | { value: fse.animation4; context: ContextFullI }
   | { value: fse.anim_back_to_init; context: ContextFullI }
   | { value: fse.anim_error; context: ContextFullI };
 
@@ -405,6 +408,13 @@ const animMachine = createMachine<
               },
               //
               target: ANIMATION_SERVICES_STATE_ARRAY[3],
+            },
+            {
+              cond: ({ currentAnimationServiceNumber }) => {
+                return currentAnimationServiceNumber === 4;
+              },
+              //
+              target: ANIMATION_SERVICES_STATE_ARRAY[4],
             },
             {
               cond: ({ currentAnimationServiceNumber }) => {
@@ -851,28 +861,23 @@ const animMachine = createMachine<
         },
         exit: ["incrementAnimationServiceNum"],
       },
-      [ANIMATION_SERVICES_STATE_ARRAY[
-        ANIMATION_SERVICES_STATE_ARRAY.length - 1
-      ]]: {
+      [ANIMATION_SERVICES_STATE_ARRAY[4]]: {
         entry: ["disableMovingToIdle"],
-
         invoke: {
-          id: "__back_to_init__",
-          src: ({
-            tl,
-            seaPlaneMesh,
-            middlePlaneMesh,
-            sunMesh,
-            spaceshipMesh,
-            cageMesh,
-            controls,
-            seaPlaneShaderMaterialWireframed,
-            seaPlaneShaderMaterial,
-            scene,
-            seaWireframe,
-            planeMiddleShaderMaterial,
-            seaWireframeShaderMaterial,
-          }) => {
+          id: "__4__",
+          src: (
+            {
+              tl,
+              cageMesh,
+              controls,
+              spaceshipMesh,
+              seaPlaneShaderMaterial,
+              seaPlaneShaderMaterialWireframed,
+              planeMiddleShaderMaterial,
+              seaWireframeShaderMaterial,
+            },
+            __
+          ) => {
             (cageMesh.position.z = 200),
               tl
                 .play()
@@ -925,62 +930,100 @@ const animMachine = createMachine<
                   },
                   "-=0.1"
                 );
-            /* .to(
-                  spaceshipMesh.scale,
-                  { x: 0.1, y: 0.1, z: 0.1, duration: 1 },
-                  "-=0.8"
-                )
-                .to(
-                  cageMesh.scale,
-                  {
-                    x: 14.4,
-                    y: 14.4,
-                    z: 14.4,
-                  },
-                  "-=0.68"
-                )
-                .call(() => {
-                  scene.add(middlePlaneMesh);
-                  seaPlaneMesh.material = seaPlaneShaderMaterialWireframed;
-                  seaPlaneMesh.material.needsUpdate = true;
-                  seaPlaneMesh.remove(seaWireframe);
-                  cageMesh.position.z = 0;
-                  spaceshipMesh.position.z = 0;
-                  spaceshipMesh.position.x = 0;
-                })
-                .to(
-                  controls.object.position,
-                  {
-                    y: 0,
-                    x: 2,
-                    z: -10,
-                    duration: 0.4,
-                    ease: Linear.easeIn,
-                  },
-                  "-=0.2"
-                )
-                .to(
-                  controls.target,
-                  {
-                    y: 0,
-                    z: 0,
-                    x: 0,
-                    duration: 1,
-                    ease: Power0.easeOut,
-                  },
-                  "-=0.1"
-                )
-                .to(
-                  controls.object.position,
-                  {
-                    y: 118,
-                    x: 0,
-                    z: 1,
-                    duration: 3.4,
-                    ease: Elastic.easeOut,
-                  },
-                  "-=0.4"
-                ); */
+
+            return tl.then(() => {
+              tl.pause();
+            });
+          },
+          onDone: {
+            target: MAJOR_FINITE_STATES_ARRAY[4],
+            actions: ["enableMovingToIdle"],
+          },
+          onError: {
+            target: fse.anim_error,
+          },
+        },
+        exit: ["incrementAnimationServiceNum"],
+      },
+      [ANIMATION_SERVICES_STATE_ARRAY[
+        ANIMATION_SERVICES_STATE_ARRAY.length - 1
+      ]]: {
+        entry: ["disableMovingToIdle"],
+
+        invoke: {
+          id: "__back_to_init__",
+          src: ({
+            tl,
+            seaPlaneMesh,
+            middlePlaneMesh,
+            sunMesh,
+            spaceshipMesh,
+            cageMesh,
+            controls,
+            seaPlaneShaderMaterialWireframed,
+            seaPlaneShaderMaterial,
+            scene,
+            seaWireframe,
+            planeMiddleShaderMaterial,
+            seaWireframeShaderMaterial,
+          }) => {
+            tl.play()
+              .to(
+                spaceshipMesh.scale,
+                { x: 0.1, y: 0.1, z: 0.1, duration: 1 },
+                "-=0.8"
+              )
+              .to(
+                cageMesh.scale,
+                {
+                  x: 14.4,
+                  y: 14.4,
+                  z: 14.4,
+                },
+                "-=0.68"
+              )
+              .call(() => {
+                scene.add(middlePlaneMesh);
+                seaPlaneMesh.material = seaPlaneShaderMaterialWireframed;
+                seaPlaneMesh.material.needsUpdate = true;
+                seaPlaneMesh.remove(seaWireframe);
+                cageMesh.position.z = 0;
+                spaceshipMesh.position.z = 0;
+                spaceshipMesh.position.x = 0;
+              })
+              .to(
+                controls.object.position,
+                {
+                  y: 0,
+                  x: 2,
+                  z: -10,
+                  duration: 0.4,
+                  ease: Linear.easeIn,
+                },
+                "-=0.2"
+              )
+              .to(
+                controls.target,
+                {
+                  y: 0,
+                  z: 0,
+                  x: 0,
+                  duration: 1,
+                  ease: Power0.easeOut,
+                },
+                "-=0.1"
+              )
+              .to(
+                controls.object.position,
+                {
+                  y: 118,
+                  x: 0,
+                  z: 1,
+                  duration: 3.4,
+                  ease: Elastic.easeOut,
+                },
+                "-=0.4"
+              );
 
             return tl.then(() => {
               tl.pause();
