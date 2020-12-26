@@ -994,7 +994,7 @@ const animMachine = createMachine<
                 cageMesh.position.z = 0;
                 spaceshipMesh.position.z = 0;
                 spaceshipMesh.position.x = 0;
-                cageMesh.scale.setScalar(14.4);
+                cageMesh.scale.setScalar(16.4);
                 spaceshipMesh.scale.setScalar(0.1);
               })
               .to(
