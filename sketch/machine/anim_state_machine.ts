@@ -1020,8 +1020,8 @@ const animMachine = createMachine<
                 {
                   x: 0,
                   z: 0,
-                  duration: 3.4,
-                  ease: Elastic.easeOut,
+                  duration: 1.2,
+                  ease: Power0.easeOut,
                 },
                 "-=0.4"
               );
