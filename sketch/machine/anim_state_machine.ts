@@ -998,7 +998,7 @@ const animMachine = createMachine<
                   y: 0,
                   z: 20,
                   x: 20,
-                  duration: 2,
+                  duration: 1,
                   ease: Power0.easeOut,
                 }
                 // "-=1.2"
