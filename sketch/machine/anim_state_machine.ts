@@ -439,7 +439,7 @@ const animMachine = createMachine<
             // ANIMATION SERVICE
 
             tl.pause();
-
+            tl.to(controls.object.position, { x: 0, duration: 0.5 });
             tl.to(
               [
                 seaPlaneShaderMaterial.uniforms.circleSize,
@@ -451,7 +451,8 @@ const animMachine = createMachine<
                 value: 0.8,
                 ease: Elastic.easeOut,
                 duration: 3,
-              }
+              },
+              "-=0.2"
             )
               .to(
                 cageMesh.position,
@@ -884,8 +885,8 @@ const animMachine = createMachine<
                 .to(
                   controls.object.position,
                   {
-                    y: 3,
-                    x: 1,
+                    y: 4,
+                    x: 2,
                     z: -10,
                     duration: 0.4,
                     ease: Linear.easeIn,
@@ -907,12 +908,12 @@ const animMachine = createMachine<
                   controls.object.position,
                   {
                     y: 118,
-                    x: 0,
+                    x: 1,
                     z: 0,
-                    duration: 0.4,
+                    duration: 2.4,
                     ease: Linear.easeIn,
                   },
-                  "-=0.2"
+                  "-=0.4"
                 );
 
             return tl.then(() => {

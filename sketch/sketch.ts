@@ -316,10 +316,41 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     object: globalThis.THREE.Object3D;
     update: () => void;
     dispose: () => void;
+    enabled: boolean;
+    rotateSpeed: number;
+    zoomSpeed: number;
+    panSpeed: number;
+    keys: number[];
+    noPan: boolean;
+    noRotate: boolean;
+    noZoom: boolean;
+    staticMoving: boolean;
+    maxDistance: number;
+    minDistance: number;
   } =
     // eslint-disable-next-line
     // @ts-ignore
     new global.THREE.TrackballControls(camera, context.canvas);
+  // POKAZUJE STA SVE MOGU RADITI NA TRACKBALL CONTROLS
+  // CONTROLS.addEventListener('change', () => console.log("Controls Change"))
+  // controls.addEventListener('start', () => console.log("Controls Start Event"))
+  // controls.addEventListener('end', () => console.log("Controls End Event"))
+  // controls.enabled = false
+  // controls.rotateSpeed = 1.0;
+  // controls.zoomSpeed = 1.2;
+  // controls.panSpeed = 0.8;
+  // controls.keys = [65, 83, 68]
+  // controls.noPan = true //default false
+  // controls.noRotate = true //default false
+  // controls.noZoom = true //default false
+  // controls.staticMoving = true //default false
+  // controls.maxDistance = 4;
+  // controls.minDistance = 2;
+
+  controls.noZoom = true;
+  controls.noPan = true;
+  controls.noRotate = true;
+  controls.update();
 
   //
   // ----------------------------------------------------------------
