@@ -969,7 +969,7 @@ const animMachine = createMachine<
             seaWireframeShaderMaterial,
           }) => {
             tl.play();
-            tl.to(controls.target, { y: 100, duration: 2 })
+            tl.to(controls.target, { y: 100, x: 64, duration: 2 })
               .to(
                 controls.object.position,
                 {
@@ -1026,7 +1026,7 @@ const animMachine = createMachine<
                 },
                 "-=1"
               )
-              .to(controls.target, { x: 0, y: 0, z: 0, duration: 2 }, "-=1");
+              .to(controls.target, { x: 1, y: 1, z: 0, duration: 2 }, "-=1");
 
             return tl.then(() => {
               tl.pause();
