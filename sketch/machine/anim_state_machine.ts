@@ -887,7 +887,7 @@ const animMachine = createMachine<
                   controls.object.position,
                   {
                     // y: 300,
-                    x: -88,
+                    x: -98,
                     y: 42,
                     duration: 1.8,
                     ease: Power0.easeOut,
@@ -1020,7 +1020,7 @@ const animMachine = createMachine<
                 {
                   x: 0,
                   z: 0,
-                  y: 94,
+                  y: 104,
                   duration: 1.2,
                   ease: Power0.easeOut,
                 },
