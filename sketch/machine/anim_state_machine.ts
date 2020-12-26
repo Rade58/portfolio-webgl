@@ -458,9 +458,9 @@ const animMachine = createMachine<
                 {
                   y: 148,
                   ease: Quad.easeOut,
-                  duration: 2,
+                  duration: 2.4,
                 },
-                "-=3"
+                "-=2.2"
               )
               .to(cageMesh.scale, {
                 x: 8.4,
@@ -478,7 +478,7 @@ const animMachine = createMachine<
               .to(
                 spaceshipMesh.position,
                 {
-                  y: 20,
+                  y: 18,
                   ease: Quad.easeOut,
                   duration: 2,
                 },
@@ -487,7 +487,7 @@ const animMachine = createMachine<
               .to(
                 controls.object.position,
                 {
-                  y: 21.2,
+                  y: 20.2,
                   ease: Quad.easeIn,
                   duration: 2,
                 },
@@ -550,7 +550,7 @@ const animMachine = createMachine<
               .to(
                 controls.object.position,
                 {
-                  y: 21.1,
+                  y: 20.1,
                   z: 1.2,
                   duration: 2,
                   ease: Power1.easeOut,
@@ -845,7 +845,7 @@ const animMachine = createMachine<
               tl
                 .play()
                 .to(controls.target, {
-                  y: 100,
+                  y: 300,
                   duration: 1,
                   ease: Power0.easeOut,
                 })
@@ -884,7 +884,7 @@ const animMachine = createMachine<
                 .to(
                   controls.object.position,
                   {
-                    y: 1,
+                    y: 3,
                     x: 1,
                     z: -10,
                     duration: 0.4,
@@ -906,7 +906,7 @@ const animMachine = createMachine<
                 .to(
                   controls.object.position,
                   {
-                    y: 96,
+                    y: 118,
                     x: 0,
                     z: 0,
                     duration: 0.4,
