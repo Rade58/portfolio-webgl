@@ -867,32 +867,63 @@ const animMachine = createMachine<
             cageMesh,
             controls,
             seaPlaneShaderMaterialWireframed,
+            seaPlaneShaderMaterial,
             scene,
             seaWireframe,
+            planeMiddleShaderMaterial,
+            seaWireframeShaderMaterial,
           }) => {
             (cageMesh.position.z = 200),
               tl
                 .play()
-                .to(controls.object.position, {
-                  // y: 300,
-                  x: -34,
-                  y: 12,
-                  duration: 1,
-                  ease: Power0.easeOut,
-                })
+                .to(controls.target, { x: 12, y: 0, z: 0, duration: 2 })
                 .to(
-                  controls.target,
-                  { x: 12, y: 0, z: 0, duration: 2 },
+                  controls.object.position,
+                  {
+                    // y: 300,
+                    x: -134,
+                    y: 26,
+                    duration: 1.8,
+                    ease: Power0.easeOut,
+                  },
                   "-=0.4"
+                )
+
+                .to(
+                  [spaceshipMesh.position, cageMesh.position],
+                  {
+                    y: 4,
+                    x: 0,
+                    z: 0,
+                    // y: -22,
+                    duration: 1.4,
+                    ease: Power4.easeInOut,
+                  },
+                  "-=1"
+                )
+                .to(
+                  [
+                    seaPlaneShaderMaterial.uniforms.circleSize,
+                    seaPlaneShaderMaterialWireframed.uniforms.circleSize,
+                    planeMiddleShaderMaterial.uniforms.circleSize,
+                    seaWireframeShaderMaterial.uniforms.circleSize,
+                  ],
+                  {
+                    value: 0,
+                    ease: Power3.easeOut,
+                    duration: 2,
+                  },
+                  "-=0.1"
                 )
                 .to(
                   [spaceshipMesh.position, cageMesh.position],
                   {
                     y: -22,
-                    duration: 2,
+                    // y: -22,
+                    duration: 0.4,
                     ease: Power4.easeInOut,
                   },
-                  "-=0.1"
+                  "-=0.4"
                 )
                 .to(
                   spaceshipMesh.scale,
