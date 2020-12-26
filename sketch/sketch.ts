@@ -170,7 +170,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     },
     // side: global.THREE.DoubleSide,
     flatShading: false,
-    side: global.THREE.DoubleSide,
+    // side: global.THREE.DoubleSide,
   });
 
   const cageShaderMaterial = new global.THREE.ShaderMaterial({

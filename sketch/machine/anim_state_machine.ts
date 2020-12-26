@@ -641,9 +641,9 @@ const animMachine = createMachine<
               .to(
                 camera.position,
                 {
-                  z: -78,
-                  x: 78,
-                  y: 34,
+                  z: -58,
+                  x: 58,
+                  y: 24,
                   duration: 1.2,
                   ease: Quad.easeIn,
                 },
@@ -887,8 +887,8 @@ const animMachine = createMachine<
                   controls.object.position,
                   {
                     // y: 300,
-                    x: -100,
-                    y: 49,
+                    x: -88,
+                    y: 42,
                     duration: 1.8,
                     ease: Power0.easeOut,
                   },
