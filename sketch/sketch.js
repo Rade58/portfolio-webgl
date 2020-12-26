@@ -309,7 +309,7 @@ const sketch = ({ context }) => {
     //
     controls.object.position.x = 0;
     controls.object.position.y = 118;
-    controls.object.position.z = -0.1;
+    controls.object.position.z = 0;
     // i ovo
     // controls.target u 0 0 0
     // controls.target = spaceshipMesh.position;

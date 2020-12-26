@@ -604,7 +604,7 @@ const animMachine = createMachine<
                 spaceshipMesh.position,
                 {
                   y: 1.2,
-                  duration: 2,
+                  duration: 1.1,
                   ease: Power0.easeInOut,
                 },
                 `-=${0.2}`
@@ -633,7 +633,7 @@ const animMachine = createMachine<
                   z: -78,
                   x: 78,
                   y: 34,
-                  duration: 1.6,
+                  duration: 1.2,
                   ease: Quad.easeIn,
                 },
                 "-=0.4"
@@ -645,7 +645,7 @@ const animMachine = createMachine<
                   duration: 1.2,
                   ease: Quad.easeOut,
                 },
-                "-=0.2"
+                "-=0.4"
               );
 
             //
@@ -874,10 +874,13 @@ const animMachine = createMachine<
               tl
                 .play()
                 .to(controls.target, {
-                  y: 300,
+                  // y: 300,
+                  x: -34,
+                  y: 12,
                   duration: 1,
                   ease: Power0.easeOut,
                 })
+                .to(controls.target, { x: 12, y: 0, z: 0, duration: 1 }, "-=2")
                 .to(
                   [spaceshipMesh.position, cageMesh.position],
                   {
@@ -913,7 +916,7 @@ const animMachine = createMachine<
                 .to(
                   controls.object.position,
                   {
-                    y: 4,
+                    y: 0,
                     x: 2,
                     z: -10,
                     duration: 0.4,
@@ -936,10 +939,10 @@ const animMachine = createMachine<
                   controls.object.position,
                   {
                     y: 118,
-                    x: 1,
-                    z: 0,
-                    duration: 2.4,
-                    ease: Linear.easeIn,
+                    x: 0,
+                    z: 1,
+                    duration: 3.4,
+                    ease: Elastic.easeOut,
                   },
                   "-=0.4"
                 );
