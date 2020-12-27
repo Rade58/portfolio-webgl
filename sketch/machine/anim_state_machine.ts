@@ -289,6 +289,9 @@ const animMachine = createMachine<
       [fse.init]: {
         entry: [
           assign((_, __) => {
+            return { wasInInit: true };
+          }),
+          assign((_, __) => {
             return {
               currentAnimationServiceNumber: 0,
             };
@@ -425,7 +428,15 @@ const animMachine = createMachine<
         ], */
       },
       [fse.idle]: {
-        // exit: assign()
+        exit: assign(
+          ({ wasInInit, majorStateAfterIdle, currentMajorStateNum }, __) => {
+            if (wasInInit && majorStateAfterIdle) {
+              return {
+                currentMajorStateNum: currentMajorStateNum + 1,
+              };
+            }
+          }
+        ),
         on: {
           [EE.SWITCH]: [
             // E OVI TRANSITIONI CE SE DESITI U ODNOSU NA
