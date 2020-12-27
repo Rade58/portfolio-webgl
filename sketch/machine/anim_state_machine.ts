@@ -1165,7 +1165,10 @@ animMachineService.onTransition((state, event) => {
   console.log(state.context);
   console.log("-------------------------------------");
   textDisplay.textContent = state.value as string;
-  if (state.context.majorStateAfterIdle) {
+  if (
+    state.context.majorStateAfterIdle &&
+    textDisplay.dataset.finiteState !== state.context.majorStateAfterIdle
+  ) {
     textDisplay.dataset.finiteState = state.context.majorStateAfterIdle;
   }
 });
