@@ -296,7 +296,7 @@ const animMachine = createMachine<
               currentAnimationServiceNumber: 0,
             };
           }),
-          assign(({ currentMajorStateNum, majorFiniteStatesArrLength }) => {
+          /*  assign(({ currentMajorStateNum, majorFiniteStatesArrLength }) => {
             if (currentMajorStateNum === undefined) {
               return { currentMajorStateNum: 0 };
             }
@@ -308,7 +308,7 @@ const animMachine = createMachine<
             }
 
             return { currentMajorStateNum: currentMajorStateNum + 1 };
-          }),
+          }), */
           assign(
             (
               {
@@ -416,7 +416,7 @@ const animMachine = createMachine<
             target: fse.idle,
           },
         },
-        /* exit: [
+        exit: [
           assign(({ currentMajorStateNum }, __) => {
             if (currentMajorStateNum === undefined) {
               return { currentMajorStateNum: 0 };
@@ -425,7 +425,7 @@ const animMachine = createMachine<
               currentMajorStateNum,
             };
           }),
-        ], */
+        ],
       },
       [fse.idle]: {
         /* exit: [
