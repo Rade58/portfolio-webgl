@@ -76,6 +76,7 @@ const MAJOR_FS_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
 
 // context HELPER TYPE ---------------------
 interface ContextFullI {
+  wasInInit: boolean;
   // OVO JE HELPER KOJI CE BELEZITI POSLEDNI MAJOR STATE
   // PRE PRELEASKA TO IDLE (TO CE MI IZUZETNO SLUZITI
   // JER CU TEKST DISPLAY-OVATI U ODNOSU NA TAJ MAJOR STATE)
@@ -118,10 +119,11 @@ interface ContextFullI {
 // ------------ GENERIC TYPES FOR MACHINE
 
 interface MachineContextGenericI {
+  wasInInit: boolean;
   majorStateAfterIdle: typeof MAJOR_FINITE_STATES_ARRAY[number] | undefined;
   majorFiniteStatesArr: string[];
   majorFiniteStatesArrLength: number;
-  currentMajorStateNum: number;
+  currentMajorStateNum: number | undefined;
   currentAnimationServiceNumber: number;
   animationServicesArray: typeof ANIMATION_SERVICES_STATE_ARRAY;
   animationsServiceArrayLength: number;
@@ -256,12 +258,13 @@ const animMachine = createMachine<
     id: "sketch_anim_machine",
     initial: fse.init,
     context: {
+      wasInInit: false,
       majorStateAfterIdle: undefined /* MAJOR_FINITE_STATES_ARRAY[0] */,
       majorFiniteStatesArr: MAJOR_FINITE_STATES_ARRAY,
       majorFiniteStatesArrLength: MAJOR_FS_ARR_LENGTH,
       animationServicesArray: ANIMATION_SERVICES_STATE_ARRAY,
       animationsServiceArrayLength: ANIMATION_SERVICES_STATE_ARRAY.length,
-      currentMajorStateNum: 0,
+      currentMajorStateNum: undefined,
       currentAnimationServiceNumber: 0,
       up: false,
       canMoveToIdleAgain: true,
@@ -288,9 +291,42 @@ const animMachine = createMachine<
           assign((_, __) => {
             return {
               currentAnimationServiceNumber: 0,
-              currentMajorStateNum: 0,
             };
           }),
+          assign(({ currentMajorStateNum, majorFiniteStatesArrLength }) => {
+            if (currentMajorStateNum === undefined) {
+              return { currentMajorStateNum: 0 };
+            }
+
+            if (currentMajorStateNum + 1 >= majorFiniteStatesArrLength) {
+              return {
+                currentMajorStateNum: 0,
+              };
+            }
+
+            return { currentMajorStateNum: currentMajorStateNum + 1 };
+          }),
+          assign(
+            (
+              {
+                majorStateAfterIdle,
+                currentMajorStateNum,
+                majorFiniteStatesArr,
+              },
+              __
+            ) => {
+              if (!majorStateAfterIdle) {
+                return { majorStateAfterIdle };
+              }
+
+              return {
+                majorStateAfterIdle: (majorFiniteStatesArr as fse[])[
+                  currentMajorStateNum
+                ],
+              };
+            }
+          ),
+          // "setLastMajorState"
         ],
         // eslint-disable-next-line
         // @ts-ignore
@@ -377,8 +413,19 @@ const animMachine = createMachine<
             target: fse.idle,
           },
         },
+        /* exit: [
+          assign(({ currentMajorStateNum }, __) => {
+            if (currentMajorStateNum === undefined) {
+              return { currentMajorStateNum: 0 };
+            }
+            return {
+              currentMajorStateNum,
+            };
+          }),
+        ], */
       },
       [fse.idle]: {
+        // exit: assign()
         on: {
           [EE.SWITCH]: [
             // E OVI TRANSITIONI CE SE DESITI U ODNOSU NA
@@ -1053,7 +1100,7 @@ const animMachine = createMachine<
           "incrementAnimationServiceNum",
 
           //  MORA SE INCREMENT-OVATI ZA 2, JER U INIT STATE-U SE NECE DESITI PROMENA
-          "incrementMajorStateNum",
+          // "incrementMajorStateNum",
           /* assign((_, __) => {
             return { currentMajorStateNum: 1 };
           }), */
@@ -1116,15 +1163,28 @@ const animMachine = createMachine<
       }, */
     // },
     actions: {
-      setLastMajorState: assign(({ currentMajorStateNum }, __) => {
-        return {
-          majorStateAfterIdle: MAJOR_FINITE_STATES_ARRAY[currentMajorStateNum],
-        };
-      }),
+      setLastMajorState: assign(
+        ({ currentMajorStateNum, majorStateAfterIdle }, __) => {
+          /* if (!currentMajorStateNum) {
+            return {
+              majorStateAfterIdle,
+            };
+          } */
+
+          return {
+            majorStateAfterIdle:
+              MAJOR_FINITE_STATES_ARRAY[currentMajorStateNum],
+          };
+        }
+      ),
       enableMovingToIdle: assign((_, __) => ({ canMoveToIdleAgain: true })),
       disableMovingToIdle: assign((_, __) => ({ canMoveToIdleAgain: false })),
       incrementMajorStateNum: assign(
         ({ currentMajorStateNum, majorFiniteStatesArrLength }, _) => {
+          /* if (!currentMajorStateNum) {
+            return { currentMajorStateNum: 0 };
+          } */
+
           if (currentMajorStateNum + 1 >= majorFiniteStatesArrLength) {
             return {
               currentMajorStateNum: 0,
