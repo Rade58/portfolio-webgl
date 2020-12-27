@@ -428,15 +428,20 @@ const animMachine = createMachine<
         ], */
       },
       [fse.idle]: {
-        exit: assign(
-          ({ wasInInit, majorStateAfterIdle, currentMajorStateNum }, __) => {
-            if (wasInInit && majorStateAfterIdle) {
-              return {
-                currentMajorStateNum: currentMajorStateNum + 1,
-              };
+        exit: [
+          assign(
+            ({ wasInInit, majorStateAfterIdle, currentMajorStateNum }, __) => {
+              if (wasInInit && majorStateAfterIdle) {
+                return {
+                  currentMajorStateNum: currentMajorStateNum + 1,
+                };
+              }
             }
-          }
-        ),
+          ),
+          assign((_, __) => {
+            return { wasInInit: false };
+          }),
+        ],
         on: {
           [EE.SWITCH]: [
             // E OVI TRANSITIONI CE SE DESITI U ODNOSU NA
