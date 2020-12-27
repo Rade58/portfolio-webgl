@@ -1051,6 +1051,9 @@ const animMachine = createMachine<
         },
         exit: [
           "incrementAnimationServiceNum",
+
+          //  MORA SE INCREMENT-OVATI ZA 2, JER U INIT STATE-U SE NECE DESITI PROMENA
+          "incrementMajorStateNum",
           /* assign((_, __) => {
             return { currentMajorStateNum: 1 };
           }), */
