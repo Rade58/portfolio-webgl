@@ -21,12 +21,27 @@ const Index: FunctionComponent<{
   // console.log({ htmlContentString });
 
   const textDisplayRef = useRef<HTMLDivElement>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!textDisplayRef.current) {
       textDisplayRef.current = document.querySelector("div.text_display");
+
+      const config = { attributes: true };
+
+      const observer = new MutationObserver((mutationList, observer) => {
+        for (const mutation of mutationList) {
+          if (mutation.type === "attributes") {
+            console.log(textDisplayRef.current.dataset.finiteState);
+            sectionRef.current.innerHTML =
+              textDisplayRef.current.dataset.finiteState;
+          }
+        }
+      });
+
+      observer.observe(textDisplayRef.current, config);
     }
-  }, []);
+  }, [textDisplayRef]);
 
   return (
     <Fragment>
@@ -41,11 +56,7 @@ const Index: FunctionComponent<{
         }}
       >
         Some Text
-        <section>
-          {textDisplayRef.current
-            ? textDisplayRef.current.dataset.finiteState
-            : 8}
-        </section>
+        <section ref={sectionRef}>8</section>
         <div>Lorem ipsum</div>
         <div>Lorem ipsum</div>
         <div>Lorem ipsum</div>

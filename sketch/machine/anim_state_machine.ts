@@ -300,6 +300,7 @@ const animMachine = createMachine<
               (
                 {
                   cageMesh: cageMeshOld,
+                  currentMajorStateNum,
                   /* controls: controlsOld,
                   middlePlaneMesh: middlePlaneMeshOld,
                   planeMiddleShaderMaterial: planeMiddleShaderMaterialOld,
@@ -338,6 +339,7 @@ const animMachine = createMachine<
                 if (!cageMesh) {
                   return {
                     cageMesh: cageMeshOld,
+                    currentMajorStateNum: currentMajorStateNum + 1,
                     /* controls: controlsOld,
                     middlePlaneMesh: middlePlaneMeshOld,
                     planeMiddleShaderMaterial: planeMiddleShaderMaterialOld,
@@ -1158,10 +1160,10 @@ animMachineService.onTransition((state, event) => {
   /* console.log("ANIM MACHINE STATE MACHINE");
   console.log(`TRANSITIONING TO - ${state.value} - FINITE STATE`);
   console.log(`COSEQUENCE OF - ${event.type} - EVENT`);
+  */
   console.log("CONTEXT:");
   console.log(state.context);
   console.log("-------------------------------------");
- */
   textDisplay.textContent = state.value as string;
 
   textDisplay.dataset.finiteState = state.context.majorStateAfterIdle;
