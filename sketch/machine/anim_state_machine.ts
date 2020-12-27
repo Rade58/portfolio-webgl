@@ -118,7 +118,7 @@ interface ContextFullI {
 // ------------ GENERIC TYPES FOR MACHINE
 
 interface MachineContextGenericI {
-  majorStateAfterIdle: typeof MAJOR_FINITE_STATES_ARRAY[number];
+  majorStateAfterIdle: typeof MAJOR_FINITE_STATES_ARRAY[number] | undefined;
   majorFiniteStatesArr: string[];
   majorFiniteStatesArrLength: number;
   currentMajorStateNum: number;
@@ -256,7 +256,7 @@ const animMachine = createMachine<
     id: "sketch_anim_machine",
     initial: fse.init,
     context: {
-      majorStateAfterIdle: MAJOR_FINITE_STATES_ARRAY[0],
+      majorStateAfterIdle: undefined /* MAJOR_FINITE_STATES_ARRAY[0] */,
       majorFiniteStatesArr: MAJOR_FINITE_STATES_ARRAY,
       majorFiniteStatesArrLength: MAJOR_FS_ARR_LENGTH,
       animationServicesArray: ANIMATION_SERVICES_STATE_ARRAY,
