@@ -436,6 +436,7 @@ const animMachine = createMachine<
                 majorStateAfterIdle,
                 currentMajorStateNum,
                 majorFiniteStatesArrLength,
+                majorFiniteStatesArr,
               },
               __
             ) => {
@@ -443,10 +444,16 @@ const animMachine = createMachine<
                 if (currentMajorStateNum + 1 >= majorFiniteStatesArrLength) {
                   return {
                     currentMajorStateNum: 0,
+                    majorStateAfterIdle: (majorFiniteStatesArr as fse[])[0],
                   };
                 }
 
-                return { currentMajorStateNum: currentMajorStateNum + 1 };
+                return {
+                  currentMajorStateNum: currentMajorStateNum + 1,
+                  majorStateAfterIdle: (majorFiniteStatesArr as fse[])[
+                    currentMajorStateNum + 1
+                  ],
+                };
               }
 
               return { majorStateAfterIdle, currentMajorStateNum };
