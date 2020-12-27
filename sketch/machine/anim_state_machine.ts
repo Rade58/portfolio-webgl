@@ -1161,9 +1161,9 @@ export const animMachineService = interpret(animMachine);
 
 animMachineService.onTransition((state, event) => {
   /* console.log("ANIM MACHINE STATE MACHINE");
-  console.log(`TRANSITIONING TO - ${state.value} - FINITE STATE`);
   console.log(`COSEQUENCE OF - ${event.type} - EVENT`);
   */
+  console.log(`TRANSITIONED TO - ${state.value} - FINITE STATE`);
   console.log("CONTEXT:");
   console.log(state.context);
   console.log("-------------------------------------");
