@@ -300,7 +300,7 @@ const animMachine = createMachine<
               (
                 {
                   cageMesh: cageMeshOld,
-                  currentMajorStateNum,
+                  // currentMajorStateNum,
                   /* controls: controlsOld,
                   middlePlaneMesh: middlePlaneMeshOld,
                   planeMiddleShaderMaterial: planeMiddleShaderMaterialOld,
@@ -339,7 +339,7 @@ const animMachine = createMachine<
                 if (!cageMesh) {
                   return {
                     cageMesh: cageMeshOld,
-                    currentMajorStateNum: currentMajorStateNum + 1,
+                    // currentMajorStateNum: currentMajorStateNum + 1,
                     /* controls: controlsOld,
                     middlePlaneMesh: middlePlaneMeshOld,
                     planeMiddleShaderMaterial: planeMiddleShaderMaterialOld,
