@@ -1253,18 +1253,50 @@ const animMachine = createMachine<
       enableMovingToIdle: assign((_, __) => ({ canMoveToIdleAgain: true })),
       disableMovingToIdle: assign((_, __) => ({ canMoveToIdleAgain: false })),
       incrementMajorStateNum: assign(
-        ({ currentMajorStateNum, majorFiniteStatesArrLength }, _) => {
+        (
+          {
+            currentMajorStateNum,
+            majorFiniteStatesArrLength,
+            majorFiniteStatesArr,
+            up,
+          },
+          _
+        ) => {
           /* if (!currentMajorStateNum) {
             return { currentMajorStateNum: 0 };
           } */
 
-          if (currentMajorStateNum + 1 >= majorFiniteStatesArrLength) {
+          if (up) {
+            if (currentMajorStateNum + 1 >= majorFiniteStatesArrLength) {
+              return {
+                currentMajorStateNum: 0,
+                majorStateAfterIdle: (majorFiniteStatesArr as fse[])[0],
+              };
+            }
+
             return {
-              currentMajorStateNum: 0,
+              currentMajorStateNum: currentMajorStateNum + 1,
+              majorStateAfterIdle: (majorFiniteStatesArr as fse[])[
+                currentMajorStateNum + 1
+              ],
             };
           }
 
-          return { currentMajorStateNum: currentMajorStateNum + 1 };
+          if (currentMajorStateNum - 1 < 0) {
+            return {
+              currentMajorStateNum: majorFiniteStatesArrLength - 1,
+              majorStateAfterIdle: (majorFiniteStatesArr as fse[])[
+                majorFiniteStatesArrLength - 1
+              ],
+            };
+          }
+
+          return {
+            currentMajorStateNum: currentMajorStateNum - 1,
+            majorStateAfterIdle: (majorFiniteStatesArr as fse[])[
+              currentMajorStateNum - 1
+            ],
+          };
         }
       ),
       incrementAnimationServiceNum: assign(
