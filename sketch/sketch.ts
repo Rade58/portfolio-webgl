@@ -420,7 +420,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     // MORAS POSLATI BILO KOJI EVENT SA EMPTY PAYLOAD-OM, PRE SLANJA
     // SWITCH EVENTA; TO JE ZBOG JEDNOG EDGE CASE-A
 
-    service.send({ type: EE.SETUP, payload: {} });
+    service.send({ type: EE.MOVE_UP });
+    // service.send({ type: EE.SETUP, payload: {} });
     service.send({
       type: EE.SWITCH,
     });
@@ -429,7 +430,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     // MORAS POSLATI BILO KOJI EVENT SA EMPTY PAYLOAD-OM, PRE SLANJA
     // SWITCH EVENTA; TO JE ZBOG JEDNOG EDGE CASE-A
 
-    service.send({ type: EE.SETUP, payload: {} });
+    service.send({ type: EE.MOVE_DOWN });
+    // service.send({ type: EE.SETUP, payload: {} });
     service.send({
       type: EE.SWITCH,
     });

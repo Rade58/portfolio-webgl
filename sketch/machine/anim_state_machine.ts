@@ -49,8 +49,8 @@ export enum EE {
   CHANGE_TO_BLOG = "CHANGE_TO_BLOG",
   CHANGE_TO_PROJECTS = "CHANGE_TO_PROJECTS", */
   SWITCH = "SWITCH",
-  /* MOVE_UP = "MOVE_UP",  // DEPRECATED
-  MOVE_DOWN = "MOVE_DOWN", */
+  MOVE_UP = "MOVE_UP",
+  MOVE_DOWN = "MOVE_DOWN",
   // MOVE = "MOVE", // DEPRECATED
   // HELLO = "HELLO", // DEPRECATE
 }
@@ -204,10 +204,13 @@ type machineEventGenericType =
     } */
   | {
       type: EE.SWITCH;
+    }
+  | {
+      type: EE.MOVE_DOWN;
+    }
+  | {
+      type: EE.MOVE_UP;
     };
-/*| {
-      type: EE.MOVE;
-    } */
 
 type machineFiniteStateGenericType =
   | {
@@ -283,7 +286,22 @@ const animMachine = createMachine<
       sunMesh: null,
       spacehipShaderMaterial: null,
     },
-    // on: {},
+    on: {
+      [EE.MOVE_DOWN]: {
+        actions: [
+          assign((_, __) => {
+            return { up: false };
+          }),
+        ],
+      },
+      [EE.MOVE_UP]: {
+        actions: [
+          assign((_, __) => {
+            return { up: true };
+          }),
+        ],
+      },
+    },
     states: {
       [fse.init]: {
         entry: [
@@ -436,21 +454,40 @@ const animMachine = createMachine<
                 currentMajorStateNum,
                 majorFiniteStatesArrLength,
                 majorFiniteStatesArr,
+                up,
               },
               __
             ) => {
               if (wasInInit && majorStateAfterIdle) {
-                if (currentMajorStateNum + 1 >= majorFiniteStatesArrLength) {
+                if (up) {
+                  if (currentMajorStateNum + 1 >= majorFiniteStatesArrLength) {
+                    return {
+                      currentMajorStateNum: 0,
+                      majorStateAfterIdle: (majorFiniteStatesArr as fse[])[0],
+                    };
+                  }
+
                   return {
-                    currentMajorStateNum: 0,
-                    majorStateAfterIdle: (majorFiniteStatesArr as fse[])[0],
+                    currentMajorStateNum: currentMajorStateNum + 1,
+                    majorStateAfterIdle: (majorFiniteStatesArr as fse[])[
+                      currentMajorStateNum + 1
+                    ],
+                  };
+                }
+
+                if (currentMajorStateNum - 1 < 0) {
+                  return {
+                    currentMajorStateNum: majorFiniteStatesArrLength - 1,
+                    majorStateAfterIdle: (majorFiniteStatesArr as fse[])[
+                      majorFiniteStatesArrLength - 1
+                    ],
                   };
                 }
 
                 return {
-                  currentMajorStateNum: currentMajorStateNum + 1,
+                  currentMajorStateNum: currentMajorStateNum - 1,
                   majorStateAfterIdle: (majorFiniteStatesArr as fse[])[
-                    currentMajorStateNum + 1
+                    currentMajorStateNum - 1
                   ],
                 };
               }
