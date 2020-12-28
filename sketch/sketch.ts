@@ -367,8 +367,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   //          helpers
   // scene.add(new global.THREE.GridHelper(8, 58, "purple", "olive"));
-  scene.add(new global.THREE.PointLightHelper(light));
-  scene.add(new global.THREE.AxesHelper(4));
+  // scene.add(new global.THREE.PointLightHelper(light));
+  // scene.add(new global.THREE.AxesHelper(4));
 
   // -----------------------------------------------------------------------
   // -----------------------------------------------------------------------
@@ -416,7 +416,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // -----------------------------------------------------------------------
   // -----------------------------------------------------------------------
 
-  uiElements.move_button.addEventListener("click", (e) => {
+  const handleMachine = (e) => {
     // MORAS POSLATI BILO KOJI EVENT SA EMPTY PAYLOAD-OM, PRE SLANJA
     // SWITCH EVENTA; TO JE ZBOG JEDNOG EDGE CASE-A
 
@@ -424,6 +424,12 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     service.send({
       type: EE.SWITCH,
     });
+  };
+
+  uiElements.move_button.addEventListener("click", handleMachine);
+
+  global.addEventListener("beforeunload", () => {
+    uiElements.move_button.removeEventListener("click", handleMachine);
   });
 
   /* uiElements.down.addEventListener("click", (e) => {

@@ -297,8 +297,8 @@ const sketch = ({ context }) => {
     scene.add(directionalLight);
     //          helpers
     // scene.add(new global.THREE.GridHelper(8, 58, "purple", "olive"));
-    scene.add(new global.THREE.PointLightHelper(light));
-    scene.add(new global.THREE.AxesHelper(4));
+    // scene.add(new global.THREE.PointLightHelper(light));
+    // scene.add(new global.THREE.AxesHelper(4));
     // -----------------------------------------------------------------------
     // -----------------------------------------------------------------------
     // ------------ STARTING CAMERA POSITION ---------------------------------
@@ -340,13 +340,17 @@ const sketch = ({ context }) => {
     // -------- GSAP STUFF  (ADDING LISTENERS TO BUTTONS) (TRYOUT) --------------------
     // -----------------------------------------------------------------------
     // -----------------------------------------------------------------------
-    uiElements.move_button.addEventListener("click", (e) => {
+    const handleMachine = (e) => {
         // MORAS POSLATI BILO KOJI EVENT SA EMPTY PAYLOAD-OM, PRE SLANJA
         // SWITCH EVENTA; TO JE ZBOG JEDNOG EDGE CASE-A
         service.send({ type: EE.SETUP, payload: {} });
         service.send({
             type: EE.SWITCH,
         });
+    };
+    uiElements.move_button.addEventListener("click", handleMachine);
+    global.addEventListener("beforeunload", () => {
+        uiElements.move_button.removeEventListener("click", handleMachine);
     });
     /* uiElements.down.addEventListener("click", (e) => {
       // MORAS POSLATI BILO KOJI EVENT SA EMPTY PAYLOAD-OM, PRE SLANJA
