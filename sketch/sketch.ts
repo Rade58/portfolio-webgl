@@ -416,7 +416,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // -----------------------------------------------------------------------
   // -----------------------------------------------------------------------
 
-  uiElements.up.addEventListener("click", (e) => {
+  uiElements.move_button.addEventListener("click", (e) => {
     // MORAS POSLATI BILO KOJI EVENT SA EMPTY PAYLOAD-OM, PRE SLANJA
     // SWITCH EVENTA; TO JE ZBOG JEDNOG EDGE CASE-A
 
@@ -426,14 +426,14 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     });
   });
 
-  uiElements.down.addEventListener("click", (e) => {
+  /* uiElements.down.addEventListener("click", (e) => {
     // MORAS POSLATI BILO KOJI EVENT SA EMPTY PAYLOAD-OM, PRE SLANJA
     // SWITCH EVENTA; TO JE ZBOG JEDNOG EDGE CASE-A
     service.send({ type: EE.SETUP, payload: {} });
     service.send({
       type: EE.SWITCH,
     });
-  });
+  }); */
 
   // -----------------------------------------------------------------------
   // ------------------- TEST UPDATING MATERIAL ----------------------------
@@ -517,7 +517,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
 // ------------ UI ELEMENTS APPENDING ------------------------
 
-document.body.append(uiElements.controlsContainer);
+document.body.prepend(uiElements.controlsContainer);
 
 // --------------- SKETCH INITIALIZATION  --------------------
 

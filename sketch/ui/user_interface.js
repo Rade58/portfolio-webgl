@@ -1,13 +1,10 @@
-const upButton = document.createElement("button");
-export const textDisplay = document.createElement("div");
-const downButton = document.createElement("button");
+const moveButton = document.createElement("button");
+export const majorStateHolder = document.createElement("div");
 const controlsContainer = document.createElement("section");
-upButton.className = "up";
-textDisplay.className = "text_display";
-downButton.className = "down";
+moveButton.className = "move_button";
+majorStateHolder.className = "major_state_holder";
 controlsContainer.className = "controls-container";
-upButton.textContent = "up";
-downButton.textContent = "down";
+moveButton.textContent = "&";
 // ---------------- STYLES -----------------------------------------
 const controlsContainerCss = /* css */ `
   position: fixed;
@@ -15,22 +12,15 @@ const controlsContainerCss = /* css */ `
   left: 2vw;
 
 `;
-const textDisplayStyles = /* css */ `
-  color: crimson;
-  font-size: 2rem;
-  margin: 1.6em;
-`;
 /* ------------- ADDING STYLES ----------- */
 controlsContainer.style.cssText = controlsContainerCss;
-textDisplay.style.cssText = textDisplayStyles;
 /* ---------------------------------------- */
 /* APPENDING ELEMENTS */
-controlsContainer.append(upButton, textDisplay, downButton);
+controlsContainer.append(moveButton, majorStateHolder);
 /* ------------------- */
 const elements = {
-    up: upButton,
-    down: downButton,
+    move_button: moveButton,
     controlsContainer,
-    textDisplay,
+    majorStateHolder,
 };
 export default elements;

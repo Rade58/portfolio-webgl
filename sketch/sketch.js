@@ -340,7 +340,7 @@ const sketch = ({ context }) => {
     // -------- GSAP STUFF  (ADDING LISTENERS TO BUTTONS) (TRYOUT) --------------------
     // -----------------------------------------------------------------------
     // -----------------------------------------------------------------------
-    uiElements.up.addEventListener("click", (e) => {
+    uiElements.move_button.addEventListener("click", (e) => {
         // MORAS POSLATI BILO KOJI EVENT SA EMPTY PAYLOAD-OM, PRE SLANJA
         // SWITCH EVENTA; TO JE ZBOG JEDNOG EDGE CASE-A
         service.send({ type: EE.SETUP, payload: {} });
@@ -348,14 +348,14 @@ const sketch = ({ context }) => {
             type: EE.SWITCH,
         });
     });
-    uiElements.down.addEventListener("click", (e) => {
-        // MORAS POSLATI BILO KOJI EVENT SA EMPTY PAYLOAD-OM, PRE SLANJA
-        // SWITCH EVENTA; TO JE ZBOG JEDNOG EDGE CASE-A
-        service.send({ type: EE.SETUP, payload: {} });
-        service.send({
-            type: EE.SWITCH,
-        });
-    });
+    /* uiElements.down.addEventListener("click", (e) => {
+      // MORAS POSLATI BILO KOJI EVENT SA EMPTY PAYLOAD-OM, PRE SLANJA
+      // SWITCH EVENTA; TO JE ZBOG JEDNOG EDGE CASE-A
+      service.send({ type: EE.SETUP, payload: {} });
+      service.send({
+        type: EE.SWITCH,
+      });
+    }); */
     // -----------------------------------------------------------------------
     // ------------------- TEST UPDATING MATERIAL ----------------------------
     // adding removing wireframe material
@@ -418,6 +418,6 @@ const sketch = ({ context }) => {
     };
 };
 // ------------ UI ELEMENTS APPENDING ------------------------
-document.body.append(uiElements.controlsContainer);
+document.body.prepend(uiElements.controlsContainer);
 // --------------- SKETCH INITIALIZATION  --------------------
 canvasSketch(sketch, settingsFunc(settings, document.querySelector("canvas.canvas")));

@@ -14,7 +14,6 @@ import {
   Quad,
   Power1,
   Power4,
-  Power2,
   Power0,
   Power3,
   Linear,
@@ -1260,11 +1259,11 @@ animMachineService.onTransition((state, event) => {
   /* console.log("ANIM MACHINE STATE MACHINE");
   console.log(`COSEQUENCE OF - ${event.type} - EVENT`);
   */
-  console.log(`TRANSITIONED TO - ${state.value} - FINITE STATE`);
+  /* console.log(`TRANSITIONED TO - ${state.value} - FINITE STATE`);
   console.log("CONTEXT:");
   console.log(state.context);
-  console.log("-------------------------------------");
-  majorStateHolder.textContent = state.value as string;
+  console.log("-------------------------------------"); */
+  // majorStateHolder.textContent = state.value as string;
   if (
     state.context.majorStateAfterIdle &&
     majorStateHolder.dataset.finiteState !== state.context.majorStateAfterIdle
