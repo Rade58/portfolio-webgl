@@ -244,27 +244,19 @@ const sketch = ({ context }) => {
     camera.position.set(-114, 12.08, 38);
     const cameraLookAtVector = new global.THREE.Vector3();
     camera.lookAt(cameraLookAtVector);
-    const controls = new global.THREE.OrbitControls(camera, context.canvas);
     /* const controls: {
       target: globalThis.THREE.Vector3;
       object: globalThis.THREE.Object3D;
       update: () => void;
       dispose: () => void;
-      enabled: boolean;
-      rotateSpeed: number;
-      zoomSpeed: number;
-      panSpeed: number;
-      keys: number[];
-      noPan: boolean;
-      noRotate: boolean;
-      noZoom: boolean;
-      staticMoving: boolean;
-      maxDistance: number;
-      minDistance: number;
-    } =
+  
       // eslint-disable-next-line
       // @ts-ignore
-      new global.THREE.TrackballControls(camera, context.canvas); */
+    } = new global.THREE.OrbitControls(camera, context.canvas); */
+    const controls = 
+    // eslint-disable-next-line
+    // @ts-ignore
+    new global.THREE.TrackballControls(camera, context.canvas);
     // POKAZUJE STA SVE MOGU RADITI NA TRACKBALL CONTROLS
     // CONTROLS.addEventListener('change', () => console.log("Controls Change"))
     // controls.addEventListener('start', () => console.log("Controls Start Event"))
@@ -280,10 +272,10 @@ const sketch = ({ context }) => {
     // controls.staticMoving = true //default false
     // controls.maxDistance = 4;
     // controls.minDistance = 2;
-    /* controls.noZoom = true;
+    controls.noZoom = true;
     controls.noPan = true;
     controls.noRotate = true;
-    controls.update(); */
+    controls.update();
     //
     // ----------------------------------------------------------------
     // ---------------------- LIGHT, HELPERS --------------------------
@@ -340,7 +332,7 @@ const sketch = ({ context }) => {
     // -------- GSAP STUFF  (ADDING LISTENERS TO BUTTONS) (TRYOUT) --------------------
     // -----------------------------------------------------------------------
     // -----------------------------------------------------------------------
-    const handleMachine = (e) => {
+    const handleServiceEventUp = (e) => {
         // MORAS POSLATI BILO KOJI EVENT SA EMPTY PAYLOAD-OM, PRE SLANJA
         // SWITCH EVENTA; TO JE ZBOG JEDNOG EDGE CASE-A
         service.send({ type: EE.SETUP, payload: {} });
@@ -348,9 +340,19 @@ const sketch = ({ context }) => {
             type: EE.SWITCH,
         });
     };
-    uiElements.move_button.addEventListener("click", handleMachine);
+    const handleServiceEventDown = (e) => {
+        // MORAS POSLATI BILO KOJI EVENT SA EMPTY PAYLOAD-OM, PRE SLANJA
+        // SWITCH EVENTA; TO JE ZBOG JEDNOG EDGE CASE-A
+        service.send({ type: EE.SETUP, payload: {} });
+        service.send({
+            type: EE.SWITCH,
+        });
+    };
+    uiElements.moveButtonUp.addEventListener("click", handleServiceEventUp);
+    uiElements.moveButtonDown.addEventListener("click", handleServiceEventDown);
     global.addEventListener("beforeunload", () => {
-        uiElements.move_button.removeEventListener("click", handleMachine);
+        uiElements.moveButtonUp.removeEventListener("click", handleServiceEventUp);
+        uiElements.moveButtonDown.removeEventListener("click", handleServiceEventDown);
     });
     /* uiElements.down.addEventListener("click", (e) => {
       // MORAS POSLATI BILO KOJI EVENT SA EMPTY PAYLOAD-OM, PRE SLANJA

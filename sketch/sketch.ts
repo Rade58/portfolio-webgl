@@ -302,7 +302,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   camera.lookAt(cameraLookAtVector);
 
-  const controls: {
+  /* const controls: {
     target: globalThis.THREE.Vector3;
     object: globalThis.THREE.Object3D;
     update: () => void;
@@ -310,8 +310,8 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
     // eslint-disable-next-line
     // @ts-ignore
-  } = new global.THREE.OrbitControls(camera, context.canvas);
-  /* const controls: {
+  } = new global.THREE.OrbitControls(camera, context.canvas); */
+  const controls: {
     target: globalThis.THREE.Vector3;
     object: globalThis.THREE.Object3D;
     update: () => void;
@@ -330,7 +330,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   } =
     // eslint-disable-next-line
     // @ts-ignore
-    new global.THREE.TrackballControls(camera, context.canvas); */
+    new global.THREE.TrackballControls(camera, context.canvas);
   // POKAZUJE STA SVE MOGU RADITI NA TRACKBALL CONTROLS
   // CONTROLS.addEventListener('change', () => console.log("Controls Change"))
   // controls.addEventListener('start', () => console.log("Controls Start Event"))
@@ -347,10 +347,10 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // controls.maxDistance = 4;
   // controls.minDistance = 2;
 
-  /* controls.noZoom = true;
+  controls.noZoom = true;
   controls.noPan = true;
   controls.noRotate = true;
-  controls.update(); */
+  controls.update();
 
   //
   // ----------------------------------------------------------------
@@ -416,7 +416,16 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // -----------------------------------------------------------------------
   // -----------------------------------------------------------------------
 
-  const handleMachine = (e) => {
+  const handleServiceEventUp = (e) => {
+    // MORAS POSLATI BILO KOJI EVENT SA EMPTY PAYLOAD-OM, PRE SLANJA
+    // SWITCH EVENTA; TO JE ZBOG JEDNOG EDGE CASE-A
+
+    service.send({ type: EE.SETUP, payload: {} });
+    service.send({
+      type: EE.SWITCH,
+    });
+  };
+  const handleServiceEventDown = (e) => {
     // MORAS POSLATI BILO KOJI EVENT SA EMPTY PAYLOAD-OM, PRE SLANJA
     // SWITCH EVENTA; TO JE ZBOG JEDNOG EDGE CASE-A
 
@@ -426,10 +435,15 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     });
   };
 
-  uiElements.move_button.addEventListener("click", handleMachine);
+  uiElements.moveButtonUp.addEventListener("click", handleServiceEventUp);
+  uiElements.moveButtonDown.addEventListener("click", handleServiceEventDown);
 
   global.addEventListener("beforeunload", () => {
-    uiElements.move_button.removeEventListener("click", handleMachine);
+    uiElements.moveButtonUp.removeEventListener("click", handleServiceEventUp);
+    uiElements.moveButtonDown.removeEventListener(
+      "click",
+      handleServiceEventDown
+    );
   });
 
   /* uiElements.down.addEventListener("click", (e) => {
