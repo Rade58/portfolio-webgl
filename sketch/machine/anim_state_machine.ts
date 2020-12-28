@@ -20,7 +20,7 @@ import {
   Linear,
 } from "gsap";
 import { createMachine, assign, interpret } from "xstate";
-import { textDisplay } from "../ui/user_interface";
+import { majorStateHolder } from "../ui/user_interface";
 
 export enum fse {
   init = "init",
@@ -1264,12 +1264,12 @@ animMachineService.onTransition((state, event) => {
   console.log("CONTEXT:");
   console.log(state.context);
   console.log("-------------------------------------");
-  textDisplay.textContent = state.value as string;
+  majorStateHolder.textContent = state.value as string;
   if (
     state.context.majorStateAfterIdle &&
-    textDisplay.dataset.finiteState !== state.context.majorStateAfterIdle
+    majorStateHolder.dataset.finiteState !== state.context.majorStateAfterIdle
   ) {
-    textDisplay.dataset.finiteState = state.context.majorStateAfterIdle;
+    majorStateHolder.dataset.finiteState = state.context.majorStateAfterIdle;
   }
 });
 

@@ -1,10 +1,10 @@
 const upButton = document.createElement("button");
-export const textDisplay = document.createElement("div");
+export const majorStateHolder = document.createElement("div");
 const downButton = document.createElement("button");
 const controlsContainer = document.createElement("section");
 
 upButton.className = "up";
-textDisplay.className = "text_display";
+majorStateHolder.className = "text_display";
 downButton.className = "down";
 controlsContainer.className = "controls-container";
 
@@ -28,18 +28,18 @@ const textDisplayStyles = /* css */ `
 
 /* ------------- ADDING STYLES ----------- */
 controlsContainer.style.cssText = controlsContainerCss;
-textDisplay.style.cssText = textDisplayStyles;
+majorStateHolder.style.cssText = textDisplayStyles;
 /* ---------------------------------------- */
 
 /* APPENDING ELEMENTS */
-controlsContainer.append(upButton, textDisplay, downButton);
+controlsContainer.append(upButton, majorStateHolder, downButton);
 /* ------------------- */
 
 const elements = {
   up: upButton,
   down: downButton,
   controlsContainer,
-  textDisplay,
+  majorStateHolder,
 };
 
 export default elements;
