@@ -1178,14 +1178,15 @@ animMachineService.onTransition((state, event) => {
   console.log(state.context);
   console.log("-------------------------------------");
   // majorStateHolder.textContent = state.value as string;
-  if (
-    majorStateHolder.dataset.finiteState !== state.context.majorStateAfterIdle
-  ) {
-    if (state.context.majorStateAfterIdle === undefined) {
+  if (majorStateHolder.dataset.finiteState !== state.value) {
+    /* if (state.context.majorStateAfterIdle === undefined) {
       majorStateHolder.dataset.finiteState = fse.init;
     } else {
       majorStateHolder.dataset.finiteState = state.context.majorStateAfterIdle;
-    }
+    } */
+
+    majorStateHolder.dataset.finiteState = state.value as string;
+    majorStateHolder.dataset.majorState = state.context.majorStateAfterIdle;
   }
 });
 

@@ -21,7 +21,8 @@ const Index: FunctionComponent<{
   // console.log({ htmlContentString });
 
   const majorStateHolderRef = useRef<HTMLDivElement>(null);
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const finiteStatElem = useRef<HTMLDivElement>(null);
+  const majorStateElem = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!majorStateHolderRef.current) {
@@ -35,8 +36,10 @@ const Index: FunctionComponent<{
         for (const mutation of mutationList) {
           if (mutation.type === "attributes") {
             console.log(majorStateHolderRef.current.dataset.finiteState);
-            sectionRef.current.innerHTML =
+            finiteStatElem.current.innerHTML =
               majorStateHolderRef.current.dataset.finiteState;
+            majorStateElem.current.textContent =
+              majorStateHolderRef.current.dataset.majorState;
           }
         }
       });
@@ -57,8 +60,8 @@ const Index: FunctionComponent<{
           overflowY: "scroll",
         }}
       >
-        Some Text
-        <section ref={sectionRef}>8</section>
+        <section ref={finiteStatElem}>8</section>
+        <section ref={majorStateElem}>8</section>
         <div>Lorem ipsum</div>
         <div>Lorem ipsum</div>
         <div>Lorem ipsum</div>
