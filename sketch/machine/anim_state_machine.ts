@@ -1179,10 +1179,13 @@ animMachineService.onTransition((state, event) => {
   console.log("-------------------------------------");
   // majorStateHolder.textContent = state.value as string;
   if (
-    state.context.majorStateAfterIdle &&
     majorStateHolder.dataset.finiteState !== state.context.majorStateAfterIdle
   ) {
-    majorStateHolder.dataset.finiteState = state.context.majorStateAfterIdle;
+    if (state.context.majorStateAfterIdle === undefined) {
+      majorStateHolder.dataset.finiteState = fse.init;
+    } else {
+      majorStateHolder.dataset.finiteState = state.context.majorStateAfterIdle;
+    }
   }
 });
 
