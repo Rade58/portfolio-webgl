@@ -56,10 +56,10 @@ export enum EE {
 }
 
 export const MAJOR_FINITE_STATES_ARRAY = [
+  fse.blog,
   fse.aboutme,
   fse.projects,
   fse.contact,
-  fse.blog,
 ];
 const ANIMATION_SERVICES_STATE_ARRAY = [
   fse.animation0,
@@ -309,79 +309,6 @@ const animMachine = createMachine<
     states: {
       [fse.init]: {
         entry: [
-          assign(
-            (
-              {
-                wasInInit,
-                majorStateAfterIdle,
-                currentMajorStateNum,
-                majorFiniteStatesArrLength,
-                majorFiniteStatesArr,
-                up,
-              },
-              event
-            ) => {
-              if (majorStateAfterIdle && event.type !== EE.SETUP) {
-                if (up) {
-                  if (currentMajorStateNum + 1 >= majorFiniteStatesArrLength) {
-                    return {
-                      currentMajorStateNum: 0,
-                      majorStateAfterIdle: (majorFiniteStatesArr as fse[])[0],
-                    };
-                  }
-
-                  return {
-                    currentMajorStateNum: currentMajorStateNum + 1,
-                    majorStateAfterIdle: (majorFiniteStatesArr as fse[])[
-                      currentMajorStateNum + 1
-                    ],
-                  };
-                }
-
-                if (currentMajorStateNum - 1 < 0) {
-                  return {
-                    currentMajorStateNum: majorFiniteStatesArrLength - 1,
-                    majorStateAfterIdle: (majorFiniteStatesArr as fse[])[
-                      majorFiniteStatesArrLength - 1
-                    ],
-                  };
-                }
-
-                return {
-                  currentMajorStateNum: currentMajorStateNum - 1,
-                  majorStateAfterIdle: (majorFiniteStatesArr as fse[])[
-                    currentMajorStateNum - 1
-                  ],
-                };
-              }
-
-              return {
-                // majorStateAfterIdle: (majorFiniteStatesArr as fse[])[0],
-                currentMajorStateNum: majorFiniteStatesArrLength - 1,
-              };
-            }
-          ),
-          /* assign(
-            (
-              {
-                majorStateAfterIdle,
-                currentMajorStateNum,
-                majorFiniteStatesArr,
-                up,
-              },
-              __
-            ) => {
-              if (majorStateAfterIdle) {
-                return {
-                  majorStateAfterIdle: (majorFiniteStatesArr as fse[])[
-                    currentMajorStateNum + (up ? 1 : -1)
-                  ],
-                  currentMajorStateNum: currentMajorStateNum + (up ? 1 : -1),
-                };
-              }
-            }
-          ),
- */
           assign((_, __) => {
             return { wasInInit: true };
           }),
@@ -390,51 +317,7 @@ const animMachine = createMachine<
               currentAnimationServiceNumber: 0,
             };
           }),
-          /* assign(({ currentMajorStateNum, up, majorFiniteStatesArrLength }) => {
-            if (currentMajorStateNum === undefined) {
-              return { currentMajorStateNum: 0 };
-            }
-            if (up) {
-              if (currentMajorStateNum + 1 >= majorFiniteStatesArrLength) {
-                return {
-                  currentMajorStateNum: 0,
-                };
-              }
-
-              return { currentMajorStateNum: currentMajorStateNum + 1 };
-            }
-
-            if (currentMajorStateNum - 1 < 0) {
-              return {
-                currentMajorStateNum: majorFiniteStatesArrLength - 1,
-              };
-            }
-
-            return { currentMajorStateNum: currentMajorStateNum - 1 };
-          }), */
-          /*  assign(
-            (
-              {
-                majorStateAfterIdle,
-                currentMajorStateNum,
-                majorFiniteStatesArr,
-              },
-              __
-            ) => {
-              if (!majorStateAfterIdle) {
-                return { majorStateAfterIdle };
-              }
-
-              return {
-                majorStateAfterIdle: (majorFiniteStatesArr as fse[])[
-                  currentMajorStateNum
-                ],
-              };
-            }
-          ), */
-          // "setLastMajorState"
-        ],
-        // eslint-disable-next-line
+        ], // eslint-disable-next-line
         // @ts-ignore
 
         on: {
@@ -520,69 +403,10 @@ const animMachine = createMachine<
             target: fse.idle,
           },
         },
-        exit: [
-          /* assign(({ currentMajorStateNum }, __) => {
-            if (currentMajorStateNum === undefined) {
-              return { currentMajorStateNum: 0 };
-            }
-
-            return {
-              currentMajorStateNum,
-            };
-          }), */
-        ],
+        exit: [],
       },
       [fse.idle]: {
         exit: [
-          /* assign(
-            (
-              {
-                wasInInit,
-                majorStateAfterIdle,
-                currentMajorStateNum,
-                majorFiniteStatesArrLength,
-                majorFiniteStatesArr,
-                up,
-              },
-              __
-            ) => {
-              if (wasInInit && majorStateAfterIdle) {
-                if (up) {
-                  if (currentMajorStateNum + 1 >= majorFiniteStatesArrLength) {
-                    return {
-                      currentMajorStateNum: 0,
-                      majorStateAfterIdle: (majorFiniteStatesArr as fse[])[0],
-                    };
-                  }
-
-                  return {
-                    currentMajorStateNum: currentMajorStateNum + 1,
-                    majorStateAfterIdle: (majorFiniteStatesArr as fse[])[
-                      currentMajorStateNum + 1
-                    ],
-                  };
-                }
-
-                if (currentMajorStateNum - 1 < 0) {
-                  return {
-                    currentMajorStateNum: majorFiniteStatesArrLength - 1,
-                    majorStateAfterIdle: (majorFiniteStatesArr as fse[])[
-                      majorFiniteStatesArrLength - 1
-                    ],
-                  };
-                }
-
-                return {
-                  currentMajorStateNum: currentMajorStateNum - 1,
-                  majorStateAfterIdle: (majorFiniteStatesArr as fse[])[
-                    currentMajorStateNum - 1
-                  ],
-                };
-              }
-
-              return { majorStateAfterIdle, currentMajorStateNum };
-            }
-          ), */
           assign((_, __) => {
             return { wasInInit: false };
           }),
@@ -772,29 +596,7 @@ const animMachine = createMachine<
             scene.remove(middlePlaneMesh);
 
             tl.play()
-              /* .to(
-                [
-                  seaPlaneShaderMaterial.uniforms.circleSize,
-                  seaPlaneShaderMaterialWireframed.uniforms.circleSize,
-                  planeMiddleShaderMaterial.uniforms.circleSize,
-                  seaWireframeShaderMaterial.uniforms.circleSize,
-                ],
-                {
-                  value: 0,
-                  ease: Power3.easeOut,
-                  duration: 2,
-                }
-              ) */
-              /* .to(
-                controls.object.position,
-                {
-                  y: 20.1,
-                  z: 1.2,
-                  duration: 2,
-                  ease: Power1.easeOut,
-                },
-                "-=2.6"
-              ) */
+
               .to(camera.position, {
                 x: 1,
                 z: -1,
@@ -812,15 +614,7 @@ const animMachine = createMachine<
                 },
                 "-=0.4"
               )
-              /* .call(() => {
 
-                // controls.target = newLookAtVector;
-                // controls.update();
-
-                seaPlaneMesh.material = seaPlaneShaderMaterial;
-                seaPlaneMesh.material.needsUpdate = true;
-                scene.remove(middlePlaneMesh);
-              }) */
               .to(
                 spaceshipMesh.position,
                 {
@@ -830,24 +624,7 @@ const animMachine = createMachine<
                 },
                 `-=${0.2}`
               )
-              /* .to(
-                controls.object.position,
-                {
-                  y: 46,
-                  duration: 1,
-                  ease: Power2.easeIn,
-                },
-                `-=${0.8}`
-              ) */
-              /* .to(controls.object.position, {
-                x: 16,
-                y: 8,
-                z: 16,
-                duration: 1,
-                ease: Power2.easeIn,
-              }) */
-              //
-              //
+
               .to(
                 camera.position,
                 {
@@ -1218,17 +995,6 @@ const animMachine = createMachine<
                 }
                 // "-=1.2"
               )
-              /* .to(
-                controls.object.position,
-                {
-                  y: 94,
-                  x: 0,
-                  z: 0,
-                  duration: 2.4,
-                  ease: Power0.easeOut,
-                },
-                "-=1"
-              ) */
 
               .to(
                 controls.object.position,
@@ -1257,16 +1023,7 @@ const animMachine = createMachine<
             target: fse.anim_error,
           },
         },
-        exit: [
-          "incrementAnimationServiceNum",
-          // "incrementMajorStateNum",
-
-          //  MORA SE INCREMENT-OVATI ZA 2, JER U INIT STATE-U SE NECE DESITI PROMENA
-          // "incrementMajorStateNum",
-          /* assign((_, __) => {
-            return { currentMajorStateNum: 1 };
-          }), */
-        ],
+        exit: ["incrementAnimationServiceNum"],
       },
       //-------------------------------------------------------
       [MAJOR_FINITE_STATES_ARRAY[0] /* aboutme */]: {
@@ -1305,7 +1062,10 @@ const animMachine = createMachine<
         always: {
           target: fse.idle,
           cond: ({ canMoveToIdleAgain, currentMajorStateNum }, __) => {
-            return canMoveToIdleAgain && currentMajorStateNum !== 3;
+            return (
+              canMoveToIdleAgain &&
+              currentMajorStateNum !== MAJOR_FS_ARR_LENGTH - 1
+            );
           },
         },
       },
@@ -1351,10 +1111,6 @@ const animMachine = createMachine<
           },
           _
         ) => {
-          /* if (!currentMajorStateNum) {
-            return { currentMajorStateNum: 0 };
-          } */
-
           if (up) {
             if (currentMajorStateNum + 1 >= majorFiniteStatesArrLength) {
               return {
