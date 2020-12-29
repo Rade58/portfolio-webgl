@@ -332,27 +332,29 @@ const sketch = ({ context }) => {
     // -------- GSAP STUFF  (ADDING LISTENERS TO BUTTONS) (TRYOUT) --------------------
     // -----------------------------------------------------------------------
     // -----------------------------------------------------------------------
-    const handleServiceEventUp = (e) => {
-        // MORAS POSLATI BILO KOJI EVENT SA EMPTY PAYLOAD-OM, PRE SLANJA
-        // SWITCH EVENTA; TO JE ZBOG JEDNOG EDGE CASE-A
-        service.send({ type: EE.SETUP, payload: {} });
-        service.send({
-            type: EE.SWITCH,
-        });
-    };
     const handleServiceEventDown = (e) => {
         // MORAS POSLATI BILO KOJI EVENT SA EMPTY PAYLOAD-OM, PRE SLANJA
         // SWITCH EVENTA; TO JE ZBOG JEDNOG EDGE CASE-A
-        service.send({ type: EE.SETUP, payload: {} });
+        // service.send({ type: EE.SETUP, payload: {} }); // VAZNO JE DA ZADAS PRAZAN OBJEKAT ZA PAYLOAD, JER SE U ASINI BAVIM RETRUKTURIRANJEM PAYLOAD-A
+        service.send({ type: EE.MOVE_DOWN, payload: {} });
         service.send({
             type: EE.SWITCH,
         });
     };
-    uiElements.moveButtonUp.addEventListener("click", handleServiceEventUp);
-    uiElements.moveButtonDown.addEventListener("click", handleServiceEventDown);
+    const handleServiceEventUp = (e) => {
+        // MORAS POSLATI BILO KOJI EVENT SA EMPTY PAYLOAD-OM, PRE SLANJA
+        // SWITCH EVENTA; TO JE ZBOG JEDNOG EDGE CASE-A
+        // service.send({ type: EE.SETUP, payload: {} });
+        service.send({ type: EE.MOVE_UP, payload: {} });
+        service.send({
+            type: EE.SWITCH,
+        });
+    };
+    uiElements.moveButtonUp.addEventListener("click", handleServiceEventDown);
+    uiElements.moveButtonDown.addEventListener("click", handleServiceEventUp);
     global.addEventListener("beforeunload", () => {
-        uiElements.moveButtonUp.removeEventListener("click", handleServiceEventUp);
-        uiElements.moveButtonDown.removeEventListener("click", handleServiceEventDown);
+        uiElements.moveButtonUp.removeEventListener("click", handleServiceEventDown);
+        uiElements.moveButtonDown.removeEventListener("click", handleServiceEventUp);
     });
     /* uiElements.down.addEventListener("click", (e) => {
       // MORAS POSLATI BILO KOJI EVENT SA EMPTY PAYLOAD-OM, PRE SLANJA
