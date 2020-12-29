@@ -270,7 +270,7 @@ const animMachine = createMachine<
       majorFiniteStatesArrLength: MAJOR_FS_ARR_LENGTH,
       animationServicesArray: ANIMATION_SERVICES_STATE_ARRAY,
       animationsServiceArrayLength: ANIMATION_SERVICES_STATE_ARRAY.length,
-      currentMajorStateNum: undefined,
+      currentMajorStateNum: 0,
       currentAnimationServiceNumber: 0,
       up: false,
       canMoveToIdleAgain: true,
@@ -321,7 +321,7 @@ const animMachine = createMachine<
         // @ts-ignore
 
         on: {
-          /* [EE.SETUP] */ "*": {
+          [EE.SETUP /* "*" */]: {
             actions: assign(
               (
                 {
@@ -1015,7 +1015,7 @@ const animMachine = createMachine<
           },
           onDone: {
             // back to            init
-            target: fse.init,
+            target: MAJOR_FINITE_STATES_ARRAY[1],
             // target: MAJOR_FINITE_STATES_ARRAY[4],
             actions: ["enableMovingToIdle"],
           },
