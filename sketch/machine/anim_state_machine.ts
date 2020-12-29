@@ -357,7 +357,7 @@ const animMachine = createMachine<
 
               return {
                 // majorStateAfterIdle: (majorFiniteStatesArr as fse[])[0],
-                currentMajorStateNum: 0,
+                currentMajorStateNum: majorFiniteStatesArrLength - 1,
               };
             }
           ),
