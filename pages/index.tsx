@@ -62,6 +62,24 @@ const Index: FunctionComponent<{
       >
         <section ref={finiteStatElem}>8</section>
         <section ref={majorStateElem}>8</section>
+        <svg
+          /* NO NEED FOR px ON width AND height */
+          width=""
+          height=""
+          aria-labelledby="your title id goes here"
+          id="svg"
+          role="presentation" /* or role="imge"*/
+          lang="en"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlnsXlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 380 210"
+        >
+          <title id="reference this id by aria-labelledby">
+            Your Title Goes here
+          </title>
+          <rect width="200" height="180" x="8" y="8" />
+        </svg>
+
         <div>Lorem ipsum</div>
         <div>Lorem ipsum</div>
         <div>Lorem ipsum</div>
