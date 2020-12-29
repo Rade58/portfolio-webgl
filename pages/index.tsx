@@ -20,28 +20,30 @@ const Index: FunctionComponent<{
 }> = ({ htmlContentString }) => {
   // console.log({ htmlContentString });
 
-  const textDisplayRef = useRef<HTMLDivElement>(null);
+  const majorStateHolderRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!textDisplayRef.current) {
-      textDisplayRef.current = document.querySelector("div.text_display");
+    if (!majorStateHolderRef.current) {
+      majorStateHolderRef.current = document.querySelector(
+        "div.major_state_holder"
+      );
 
       const config = { attributes: true };
 
       const observer = new MutationObserver((mutationList, observer) => {
         for (const mutation of mutationList) {
           if (mutation.type === "attributes") {
-            console.log(textDisplayRef.current.dataset.finiteState);
+            console.log(majorStateHolderRef.current.dataset.finiteState);
             sectionRef.current.innerHTML =
-              textDisplayRef.current.dataset.finiteState;
+              majorStateHolderRef.current.dataset.finiteState;
           }
         }
       });
 
-      observer.observe(textDisplayRef.current, config);
+      observer.observe(majorStateHolderRef.current, config);
     }
-  }, [textDisplayRef]);
+  }, [majorStateHolderRef]);
 
   return (
     <Fragment>
