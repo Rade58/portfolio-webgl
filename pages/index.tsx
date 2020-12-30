@@ -1,6 +1,12 @@
 /* eslint react/react-in-jsx-scope: 0 */
 /* eslint jsx-a11y/anchor-is-valid: 1 */
-import { FunctionComponent, Fragment, useEffect, useRef } from "react";
+import {
+  FunctionComponent,
+  Fragment,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import Other from "../components/Other";
 import OtherSec from "../components/OtherSec";
 import Sketch from "../components/sketch/Sketch";
@@ -26,8 +32,11 @@ const Index: FunctionComponent<{
   const backButton = useRef<HTMLButtonElement>(null);
   const forwardButton = useRef<HTMLButtonElement>(null);
 
+  const [ihaveBackButton, setIhaveBackbutton] = useState<boolean>(false);
+  const [ihaveForwardButton, setIhaveForwardbutton] = useState<boolean>(false);
+
   useEffect(() => {
-    if (!majorStateHolderRef.current && !finiteStateElem.current) {
+    if (!majorStateHolderRef.current || !finiteStateElem.current) {
       majorStateHolderRef.current = document.querySelector(
         "div.major_state_holder"
       );
@@ -58,6 +67,9 @@ const Index: FunctionComponent<{
         "section.controls-container button:nth-of-type(2)"
       );
 
+      if (backButton.current) setIhaveBackbutton(true);
+      if (forwardButton.current) setIhaveForwardbutton(true);
+
       console.log({ backButton, forwardButton });
       // }
     }
@@ -77,26 +89,52 @@ const Index: FunctionComponent<{
       >
         <section ref={finiteStateElem}>8</section>
         <section ref={majorStateElem}>8</section>
-        <svg
-          onClick={() => {
-            console.log("click");
-          }}
-          /* NO NEED FOR px ON width AND height */
-          width="200"
-          height="120"
-          aria-labelledby="your title id goes here"
-          id="svg"
-          role="presentation" /* or role="imge"*/
-          lang="en"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlnsXlink="http://www.w3.org/1999/xlink"
-          viewBox="0 0 380 210"
-        >
-          <title id="reference this id by aria-labelledby">
-            Your Title Goes here
-          </title>
-          <rect width="200" height="180" x="8" y="8" fill="crimson" />
-        </svg>
+        {ihaveBackButton && (
+          <svg
+            onClick={() => {
+              console.log("click back");
+              backButton.current.dispatchEvent(new Event("click"));
+            }}
+            /* NO NEED FOR px ON width AND height */
+            width="200"
+            height="120"
+            aria-labelledby="your title id goes here"
+            id="svg"
+            role="button" /*"presentation"*/ /* or role="imge"*/
+            lang="en"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+            viewBox="0 0 380 210"
+          >
+            <title id="reference this id by aria-labelledby">
+              Your Title Goes here
+            </title>
+            <rect width="200" height="180" x="8" y="8" fill="crimson" />
+          </svg>
+        )}
+        {ihaveForwardButton && (
+          <svg
+            onClick={() => {
+              console.log("click forward");
+              forwardButton.current.dispatchEvent(new Event("click"));
+            }}
+            /* NO NEED FOR px ON width AND height */
+            width="200"
+            height="120"
+            aria-labelledby="your title id goes here"
+            id="svg"
+            role="button" /*"presentation"*/ /* or role="imge"*/
+            lang="en"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+            viewBox="0 0 380 210"
+          >
+            <title id="reference this id by aria-labelledby">
+              Your Title Goes here
+            </title>
+            <rect width="200" height="180" x="8" y="8" fill="crimson" />
+          </svg>
+        )}
 
         <div>Lorem ipsum</div>
         <div>Lorem ipsum</div>
