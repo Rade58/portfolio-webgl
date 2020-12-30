@@ -31,4 +31,11 @@ const elements = {
     controlsContainer,
     majorStateHolder,
 };
+export var CssClassesEnum;
+(function (CssClassesEnum) {
+    CssClassesEnum["controlscontainer"] = "controls-container";
+    CssClassesEnum["major_state_holder"] = "controls-container";
+    CssClassesEnum["move_button_up"] = "move_button_up";
+    CssClassesEnum["move_button_down"] = "move_button_down";
+})(CssClassesEnum || (CssClassesEnum = {}));
 export default elements;

@@ -131,30 +131,38 @@ const appMachine = createMachine<
     },
     [fse.mutation_observer_setup]: {
       entry: [
-        ({ animationMachineObserver, majorStateHolder }, __) => {
-          if (!animationMachineObserver && majorStateHolder) {
-            const config = { attributes: true };
+        ({ majorStateHolder: holder }, __) => {
+          // if (!animationMachineObserver && majorStateHolder) {
+          const config = { attributes: true };
+          let majorStateHolder;
+          if (!holder) {
+            majorStateHolder = document.querySelector(
+              "div.major_state_holder"
+            ) as HTMLDivElement;
+          } else {
+            majorStateHolder = holder;
+          }
 
-            const animationMachineObserver = new MutationObserver(
-              (mutationList, observer) => {
-                for (const mutation of mutationList) {
-                  if (mutation.type === "attributes") {
-                    send({
-                      type: EE.OBSERVER,
-                      payload: {
-                        currentAnimeMachineFinitestate: (mutation.target as HTMLDivElement)
-                          .dataset.finiteState,
-                        currentAnimeMachineMajorState: (mutation.target as HTMLDivElement)
-                          .dataset.majorState,
-                      },
-                    });
-                  }
+          const animationMachineObserver = new MutationObserver(
+            (mutationList, observer) => {
+              for (const mutation of mutationList) {
+                if (mutation.type === "attributes") {
+                  send({
+                    type: EE.OBSERVER,
+                    payload: {
+                      currentAnimeMachineFinitestate: (mutation.target as HTMLDivElement)
+                        .dataset.finiteState,
+                      currentAnimeMachineMajorState: (mutation.target as HTMLDivElement)
+                        .dataset.majorState,
+                    },
+                  });
                 }
               }
-            );
+            }
+          );
 
-            animationMachineObserver.observe(majorStateHolder, config);
-          }
+          animationMachineObserver.observe(majorStateHolder, config);
+          // }
         },
       ],
       always: {
