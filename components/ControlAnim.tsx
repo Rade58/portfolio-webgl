@@ -6,9 +6,26 @@ import { FunctionComponent, useEffect, useState, useRef } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-import { appService, EE } from "../state_machines/app_machine";
+import { Interpreter } from "xstate";
+
+import { fse as animeFse } from "../sketch/machine/anim_state_machine";
+import {
+  EE,
+  MachineContextGenericI,
+  machineEventGenericType,
+  machineFiniteStateGenericType,
+} from "../state_machines/app_machine";
 
 const ControlAnim: FunctionComponent = () => {
+  const [appService, setAppService] = useState<
+    Interpreter<
+      MachineContextGenericI,
+      any,
+      machineEventGenericType,
+      machineFiniteStateGenericType
+    >
+  >(null);
+
   /* const majorStateHolderRef = useRef<HTMLDivElement>(null);
   const finiteStateElem = useRef<HTMLDivElement>(null);
   const majorStateElem = useRef<HTMLDivElement>(null);
@@ -60,12 +77,34 @@ const ControlAnim: FunctionComponent = () => {
  */
 
   useEffect(() => {
-    appService.start();
+    import("../state_machines/app_machine").then((appServiceModule) => {
+      const { EE, appService } = appServiceModule;
+      // appService.start();
 
-    if (appService.initialized) {
-      appService.send({ type: EE.INIT });
-    }
-  }, [appService]);
+      const majorStateHolder = document.querySelector(
+        "div.major_state_holder"
+      ) as HTMLDivElement;
+      const currentFiniteStateAnimeMachine = (document.querySelector(
+        "div.major_state_holder"
+      ) as HTMLDivElement).dataset.finiteState as animeFse;
+      const currentMajorState = (document.querySelector(
+        "div.major_state_holder"
+      ) as HTMLDivElement).dataset.majorState as animeFse;
+
+      const backButton = document.querySelector(
+        "section.controls-container button:nth-of-type(1)"
+      );
+      const forwardButton = document.querySelector(
+        "section.controls-container button:nth-of-type(2)"
+      );
+
+      if (appService.initialized) {
+        appService.send({ type: EE.INIT });
+      }
+
+      setAppService(appService);
+    });
+  }, []);
 
   return (
     <section
@@ -88,12 +127,16 @@ const ControlAnim: FunctionComponent = () => {
       <svg
         tabIndex={0}
         onClick={() => {
-          console.log("click back");
-          appService.send({ type: EE.CLICK_BACK });
+          if (appService) {
+            console.log("click back");
+            appService.send({ type: EE.CLICK_BACK });
+          }
         }}
         onKeyDown={(e) => {
           if (e.key === "Enter") {
-            appService.send({ type: EE.CLICK_BACK });
+            if (appService) {
+              appService.send({ type: EE.CLICK_BACK });
+            }
           }
         }}
         /* NO NEED FOR px ON width AND height */
@@ -114,12 +157,16 @@ const ControlAnim: FunctionComponent = () => {
       <svg
         tabIndex={0}
         onClick={() => {
-          console.log("click forward");
-          appService.send({ type: EE.CLICK_FORTH });
+          if (appService) {
+            console.log("click forward");
+            appService.send({ type: EE.CLICK_FORTH });
+          }
         }}
         onKeyDown={(e) => {
           if (e.key === "Enter") {
-            appService.send({ type: EE.CLICK_FORTH });
+            if (appService) {
+              appService.send({ type: EE.CLICK_FORTH });
+            }
           }
         }}
         /* NO NEED FOR px ON width AND height */

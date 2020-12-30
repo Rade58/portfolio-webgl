@@ -22,16 +22,16 @@ export enum EE {
 
 // -------------------------------------------------------------
 
-interface MachineContextGenericI {
+export interface MachineContextGenericI {
   currentFiniteStateAnimeMachine: animeFse | undefined;
   currentMajorState: typeof MAJOR_FINITE_STATES_ARRAY[number] | undefined;
-  majorStateHolder: HTMLDivElement;
+  majorStateHolder: HTMLDivElement | null;
   animationMachineObserver: MutationObserver | null;
-  backButton: HTMLButtonElement;
-  forwardButton: HTMLButtonElement;
+  backButton: HTMLButtonElement | null;
+  forwardButton: HTMLButtonElement | null;
 }
 
-type machineEventGenericType =
+export type machineEventGenericType =
   | {
       type: EE.CLICK_BACK;
     }
@@ -45,7 +45,7 @@ type machineEventGenericType =
       };
     };
 
-type machineFiniteStateGenericType =
+export type machineFiniteStateGenericType =
   | {
       value: fse.idling;
       context: MachineContextGenericI;
@@ -75,22 +75,12 @@ const appMachine = createMachine<
   id: "app_machine",
   initial: fse.init,
   context: {
-    majorStateHolder: document.querySelector(
-      "div.major_state_holder"
-    ) as HTMLDivElement,
-    currentFiniteStateAnimeMachine: (document.querySelector(
-      "div.major_state_holder"
-    ) as HTMLDivElement).dataset.finiteState as animeFse,
-    currentMajorState: (document.querySelector(
-      "div.major_state_holder"
-    ) as HTMLDivElement).dataset.majorState as animeFse,
+    majorStateHolder: null,
+    currentFiniteStateAnimeMachine: null,
+    currentMajorState: null,
     animationMachineObserver: null,
-    backButton: document.querySelector(
-      "section.controls-container button:nth-of-type(1)"
-    ),
-    forwardButton: document.querySelector(
-      "section.controls-container button:nth-of-type(2)"
-    ),
+    backButton: null,
+    forwardButton: null,
   },
 
   on: {

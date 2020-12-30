@@ -29,6 +29,13 @@ const Index: FunctionComponent<{
 }> = ({ htmlContentString }) => {
   // console.log({ htmlContentString });
 
+  useEffect(() => {
+    import("../state_machines/app_machine").then((appServiceModule) => {
+      const { EE, appService } = appServiceModule;
+      appService.start();
+    });
+  }, []);
+
   return (
     <Fragment>
       <div dangerouslySetInnerHTML={{ __html: htmlContentString }}></div>
