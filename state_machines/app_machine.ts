@@ -25,6 +25,8 @@ interface MachineContextGenericI {
   currentMajorState: typeof MAJOR_FINITE_STATES_ARRAY[number] | undefined;
   majorStateHolder: HTMLDivElement;
   animationMachineObserver: MutationObserver | null;
+  backButton: HTMLButtonElement;
+  forwardButton: HTMLButtonElement;
 }
 
 type machineEventGenericType =
@@ -72,6 +74,12 @@ const appMachine = createMachine<
       "div.major_state_holder"
     ) as HTMLDivElement).dataset.majorState as animeFse,
     animationMachineObserver: null,
+    backButton: document.querySelector(
+      "section.controls-container button:nth-of-type(1)"
+    ),
+    forwardButton: document.querySelector(
+      "section.controls-container button:nth-of-type(2)"
+    ),
   },
 
   on: {
@@ -117,6 +125,23 @@ const appMachine = createMachine<
           }
         },
       ],
+      always: {
+        target: fse.idling,
+      },
+    },
+    [fse.idling]: {
+      on: {
+        [EE.CLICK_BACK]: {},
+        [EE.CLICK_FORTH]: {},
+      },
     },
   },
+});
+
+export const appService = interpret(appMachine);
+
+appService.onTransition((state, event) => {
+  console.log(" ------------------------------------- ");
+  console.log(state.value);
+  console.log(state.context);
 });
