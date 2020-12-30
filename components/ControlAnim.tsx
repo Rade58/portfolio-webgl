@@ -17,7 +17,7 @@ const ControlAnim: FunctionComponent = () => {
   const [ihaveForwardButton, setIhaveForwardbutton] = useState<boolean>(false);
 
   useEffect(() => {
-    if (!majorStateHolderRef.current || !finiteStateElem.current) {
+    if (!majorStateHolderRef.current) {
       majorStateHolderRef.current = document.querySelector(
         "div.major_state_holder"
       );
