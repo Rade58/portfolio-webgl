@@ -22,8 +22,13 @@ const controlsContainerCss = /* css */ `
 
 `;
 
+const buttonsCss = /* css */ `
+  visibility: hidden;
+`;
+
 /* ------------- ADDING STYLES ----------- */
 controlsContainer.style.cssText = controlsContainerCss;
+moveButtonDown.style.cssText = moveButtonUp.style.cssText = buttonsCss;
 /* ---------------------------------------- */
 
 /* APPENDING ELEMENTS */

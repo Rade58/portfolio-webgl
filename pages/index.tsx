@@ -91,14 +91,20 @@ const Index: FunctionComponent<{
         <section ref={majorStateElem}>8</section>
         {ihaveBackButton && (
           <svg
+            tabIndex={0}
             onClick={() => {
               console.log("click back");
               backButton.current.dispatchEvent(new Event("click"));
             }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                backButton.current.dispatchEvent(new Event("click"));
+              }
+            }}
             /* NO NEED FOR px ON width AND height */
             width="200"
             height="120"
-            aria-labelledby="your title id goes here"
+            aria-labelledby="go_back"
             id="svg"
             role="button" /*"presentation"*/ /* or role="imge"*/
             lang="en"
@@ -106,22 +112,26 @@ const Index: FunctionComponent<{
             xmlnsXlink="http://www.w3.org/1999/xlink"
             viewBox="0 0 380 210"
           >
-            <title id="reference this id by aria-labelledby">
-              Your Title Goes here
-            </title>
+            <title id="go_back">Your Title Goes here</title>
             <rect width="200" height="180" x="8" y="8" fill="crimson" />
           </svg>
         )}
         {ihaveForwardButton && (
           <svg
+            tabIndex={0}
             onClick={() => {
               console.log("click forward");
               forwardButton.current.dispatchEvent(new Event("click"));
             }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                forwardButton.current.dispatchEvent(new Event("click"));
+              }
+            }}
             /* NO NEED FOR px ON width AND height */
             width="200"
             height="120"
-            aria-labelledby="your title id goes here"
+            aria-labelledby="go_forward"
             id="svg"
             role="button" /*"presentation"*/ /* or role="imge"*/
             lang="en"
@@ -129,9 +139,7 @@ const Index: FunctionComponent<{
             xmlnsXlink="http://www.w3.org/1999/xlink"
             viewBox="0 0 380 210"
           >
-            <title id="reference this id by aria-labelledby">
-              Your Title Goes here
-            </title>
+            <title id="go_forward">Your Title Goes here</title>
             <rect width="200" height="180" x="8" y="8" fill="crimson" />
           </svg>
         )}

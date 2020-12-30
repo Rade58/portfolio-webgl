@@ -15,8 +15,12 @@ const controlsContainerCss = /* css */ `
   left: 2vw;
 
 `;
+const buttonsCss = /* css */ `
+  visibility: hidden;
+`;
 /* ------------- ADDING STYLES ----------- */
 controlsContainer.style.cssText = controlsContainerCss;
+moveButtonDown.style.cssText = moveButtonUp.style.cssText = buttonsCss;
 /* ---------------------------------------- */
 /* APPENDING ELEMENTS */
 controlsContainer.append(moveButtonUp, moveButtonDown, majorStateHolder);
