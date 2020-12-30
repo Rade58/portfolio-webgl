@@ -82,8 +82,9 @@ const Index: FunctionComponent<{
         style={{
           border: "crimson solid 2px",
           position: "fixed",
-          top: "20vh",
-          bottom: "0vh",
+          top: "0",
+          bottom: "0",
+          width: "100vw",
           overflowY: "scroll",
         }}
       >
