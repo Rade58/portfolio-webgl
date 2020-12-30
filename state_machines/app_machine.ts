@@ -146,6 +146,7 @@ const appMachine = createMachine<
           const animationMachineObserver = new MutationObserver(
             (mutationList, observer) => {
               for (const mutation of mutationList) {
+                debugger;
                 if (mutation.type === "attributes") {
                   send({
                     type: EE.OBSERVER,
