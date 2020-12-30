@@ -10,12 +10,14 @@ enum fse {
   animation_active = "animation_active",
   idling = "idling",
   mutation_observer_setup = "mutation_observer_setup",
+  init = "init",
 }
 
 export enum EE {
   CLICK_BACK = "CLICK_BACK",
   CLICK_FORTH = "CLICK_FORTH",
   OBSERVER = "OBSERVER",
+  INIT = "INIT",
 }
 
 // -------------------------------------------------------------
@@ -34,6 +36,7 @@ type machineEventGenericType =
       type: EE.CLICK_BACK;
     }
   | { type: EE.CLICK_FORTH }
+  | { type: EE.INIT }
   | {
       type: EE.OBSERVER;
       payload: {
@@ -50,6 +53,14 @@ type machineFiniteStateGenericType =
   | {
       value: fse.animation_active;
       context: MachineContextGenericI;
+    }
+  | {
+      value: fse.init;
+      context: MachineContextGenericI;
+    }
+  | {
+      value: fse.mutation_observer_setup;
+      context: MachineContextGenericI;
     };
 
 // -------------------------------------------------------------
@@ -62,7 +73,7 @@ const appMachine = createMachine<
   machineFiniteStateGenericType
 >({
   id: "app_machine",
-  initial: fse.mutation_observer_setup,
+  initial: fse.init,
   context: {
     majorStateHolder: document.querySelector(
       "div.major_state_holder"
@@ -97,6 +108,13 @@ const appMachine = createMachine<
   },
 
   states: {
+    [fse.init]: {
+      on: {
+        [EE.INIT]: {
+          target: fse.mutation_observer_setup,
+        },
+      },
+    },
     [fse.mutation_observer_setup]: {
       entry: [
         ({ animationMachineObserver, majorStateHolder }, __) => {
@@ -131,8 +149,20 @@ const appMachine = createMachine<
     },
     [fse.idling]: {
       on: {
-        [EE.CLICK_BACK]: {},
-        [EE.CLICK_FORTH]: {},
+        [EE.CLICK_BACK]: {
+          actions: [
+            ({ backButton }, __) => {
+              backButton.dispatchEvent(new Event("click"));
+            },
+          ],
+        },
+        [EE.CLICK_FORTH]: {
+          actions: [
+            ({ forwardButton }, __) => {
+              forwardButton.dispatchEvent(new Event("click"));
+            },
+          ],
+        },
       },
     },
   },

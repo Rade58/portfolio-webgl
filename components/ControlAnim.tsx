@@ -6,6 +6,8 @@ import { FunctionComponent, useEffect, useState, useRef } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
+import { appService, EE } from "../state_machines/app_machine";
+
 const ControlAnim: FunctionComponent = () => {
   /* const majorStateHolderRef = useRef<HTMLDivElement>(null);
   const finiteStateElem = useRef<HTMLDivElement>(null);
@@ -56,6 +58,13 @@ const ControlAnim: FunctionComponent = () => {
     }
   }, [majorStateHolderRef, finiteStateElem, backButton, forwardButton]);
  */
+
+  useEffect(() => {
+    if (appService.initialized) {
+      appService.send({ type: EE.INIT });
+    }
+  }, [appService]);
+
   return (
     <section
       className="anim_control"
@@ -78,11 +87,11 @@ const ControlAnim: FunctionComponent = () => {
         tabIndex={0}
         onClick={() => {
           console.log("click back");
-          backButton.current.dispatchEvent(new Event("click"));
+          appService.send({ type: EE.CLICK_BACK });
         }}
         onKeyDown={(e) => {
           if (e.key === "Enter") {
-            backButton.current.dispatchEvent(new Event("click"));
+            appService.send({ type: EE.CLICK_BACK });
           }
         }}
         /* NO NEED FOR px ON width AND height */
@@ -104,11 +113,11 @@ const ControlAnim: FunctionComponent = () => {
         tabIndex={0}
         onClick={() => {
           console.log("click forward");
-          forwardButton.current.dispatchEvent(new Event("click"));
+          appService.send({ type: EE.CLICK_FORTH });
         }}
         onKeyDown={(e) => {
           if (e.key === "Enter") {
-            forwardButton.current.dispatchEvent(new Event("click"));
+            appService.send({ type: EE.CLICK_FORTH });
           }
         }}
         /* NO NEED FOR px ON width AND height */
