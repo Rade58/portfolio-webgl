@@ -42,4 +42,11 @@ const elements = {
   majorStateHolder,
 };
 
+export enum CssClassesEnum {
+  controlscontainer = "controls-container",
+  major_state_holder = "controls-container",
+  move_button_up = "move_button_up",
+  move_button_down = "move_button_down",
+}
+
 export default elements;
