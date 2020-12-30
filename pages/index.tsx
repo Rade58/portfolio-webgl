@@ -22,7 +22,7 @@ import ControlAnim from "../components/ControlAnim";
 
 // import DOMPurify from "dompurify";
 
-import { appService } from "../state_machines/app_machine";
+// import { appService } from "../state_machines/app_machine";
 
 const Index: FunctionComponent<{
   htmlContentString: string;
@@ -31,12 +31,7 @@ const Index: FunctionComponent<{
 
   return (
     <Fragment>
-      <div
-        dangerouslySetInnerHTML={{ __html: htmlContentString }}
-        onLoad={() => {
-          appService.start();
-        }}
-      ></div>
+      <div dangerouslySetInnerHTML={{ __html: htmlContentString }}></div>
 
       <ControlAnim />
       {/* Welcome */}

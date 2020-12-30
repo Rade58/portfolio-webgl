@@ -60,6 +60,8 @@ const ControlAnim: FunctionComponent = () => {
  */
 
   useEffect(() => {
+    appService.start();
+
     if (appService.initialized) {
       appService.send({ type: EE.INIT });
     }
