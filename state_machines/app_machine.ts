@@ -120,7 +120,9 @@ const appMachine = createMachine<
         [EE.INIT]: {
           actions: [
             assign((_, event) => {
-              return {};
+              const { payload } = event;
+
+              return payload;
             }),
           ],
           target: fse.mutation_observer_setup,
