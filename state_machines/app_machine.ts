@@ -23,8 +23,10 @@ export enum EE {
 // -------------------------------------------------------------
 
 export interface MachineContextGenericI {
-  currentFiniteStateAnimeMachine: animeFse | undefined;
-  currentMajorState: typeof MAJOR_FINITE_STATES_ARRAY[number] | undefined;
+  currentAnimeMachineFinitestate: animeFse | undefined;
+  currentAnimeMachineMajorState:
+    | typeof MAJOR_FINITE_STATES_ARRAY[number]
+    | undefined;
   majorStateHolder: HTMLDivElement | null;
   animationMachineObserver: MutationObserver | null;
   backButton: HTMLButtonElement | null;
@@ -36,12 +38,21 @@ export type machineEventGenericType =
       type: EE.CLICK_BACK;
     }
   | { type: EE.CLICK_FORTH }
-  | { type: EE.INIT }
+  | {
+      type: EE.INIT;
+      payload: {
+        currentAnimeMachineFinitestate: animeFse;
+        currentAnimeMachineMajorState: typeof MAJOR_FINITE_STATES_ARRAY[number];
+        majorStateHolder: HTMLDivElement;
+        backButton: HTMLButtonElement;
+        forwardButton: HTMLButtonElement;
+      };
+    }
   | {
       type: EE.OBSERVER;
       payload: {
-        currentMajorState: typeof MAJOR_FINITE_STATES_ARRAY[number];
-        currentFiniteStateAnimeMachine: animeFse;
+        currentAnimeMachineMajorState: typeof MAJOR_FINITE_STATES_ARRAY[number];
+        currentAnimeMachineFinitestate: animeFse;
       };
     };
 
@@ -76,8 +87,8 @@ const appMachine = createMachine<
   initial: fse.init,
   context: {
     majorStateHolder: null,
-    currentFiniteStateAnimeMachine: null,
-    currentMajorState: null,
+    currentAnimeMachineFinitestate: null,
+    currentAnimeMachineMajorState: null,
     animationMachineObserver: null,
     backButton: null,
     forwardButton: null,
@@ -88,10 +99,16 @@ const appMachine = createMachine<
       actions: [
         assign((_, event) => {
           const {
-            payload: { currentFiniteStateAnimeMachine, currentMajorState },
+            payload: {
+              currentAnimeMachineFinitestate,
+              currentAnimeMachineMajorState,
+            },
           } = event;
 
-          return { currentFiniteStateAnimeMachine, currentMajorState };
+          return {
+            currentAnimeMachineFinitestate,
+            currentAnimeMachineMajorState,
+          };
         }),
       ],
     },
@@ -118,9 +135,9 @@ const appMachine = createMachine<
                     send({
                       type: EE.OBSERVER,
                       payload: {
-                        currentFiniteStateAnimeMachine: (mutation.target as HTMLDivElement)
+                        currentAnimeMachineFinitestate: (mutation.target as HTMLDivElement)
                           .dataset.finiteState,
-                        currentMajorState: (mutation.target as HTMLDivElement)
+                        currentAnimeMachineMajorState: (mutation.target as HTMLDivElement)
                           .dataset.majorState,
                       },
                     });

@@ -84,22 +84,31 @@ const ControlAnim: FunctionComponent = () => {
       const majorStateHolder = document.querySelector(
         "div.major_state_holder"
       ) as HTMLDivElement;
-      const currentFiniteStateAnimeMachine = (document.querySelector(
+      const currentAnimeMachineFinitestate = (document.querySelector(
         "div.major_state_holder"
       ) as HTMLDivElement).dataset.finiteState as animeFse;
-      const currentMajorState = (document.querySelector(
+      const currentAnimeMachineMajorState = (document.querySelector(
         "div.major_state_holder"
       ) as HTMLDivElement).dataset.majorState as animeFse;
 
       const backButton = document.querySelector(
         "section.controls-container button:nth-of-type(1)"
-      );
+      ) as HTMLButtonElement;
       const forwardButton = document.querySelector(
         "section.controls-container button:nth-of-type(2)"
-      );
+      ) as HTMLButtonElement;
 
       if (appService.initialized) {
-        appService.send({ type: EE.INIT });
+        appService.send({
+          type: EE.INIT,
+          payload: {
+            backButton,
+            currentAnimeMachineFinitestate,
+            currentAnimeMachineMajorState,
+            forwardButton,
+            majorStateHolder,
+          },
+        });
       }
 
       setAppService(appService);
