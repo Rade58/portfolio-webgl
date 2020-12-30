@@ -5,7 +5,7 @@ export const majorStateHolder = document.createElement("div");
 const controlsContainer = document.createElement("section");
 
 moveButtonUp.className = "move_button_up";
-moveButtonUp.className = "move_button_down";
+moveButtonDown.className = "move_button_down";
 majorStateHolder.className = "major_state_holder";
 
 controlsContainer.className = "controls-container";

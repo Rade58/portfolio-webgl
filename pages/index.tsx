@@ -21,11 +21,13 @@ const Index: FunctionComponent<{
   // console.log({ htmlContentString });
 
   const majorStateHolderRef = useRef<HTMLDivElement>(null);
-  const finiteStatElem = useRef<HTMLDivElement>(null);
+  const finiteStateElem = useRef<HTMLDivElement>(null);
   const majorStateElem = useRef<HTMLDivElement>(null);
+  const backButton = useRef<HTMLButtonElement>(null);
+  const forwardButton = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    if (!majorStateHolderRef.current) {
+    if (!majorStateHolderRef.current && !finiteStateElem.current) {
       majorStateHolderRef.current = document.querySelector(
         "div.major_state_holder"
       );
@@ -36,7 +38,7 @@ const Index: FunctionComponent<{
         for (const mutation of mutationList) {
           if (mutation.type === "attributes") {
             console.log(majorStateHolderRef.current.dataset.finiteState);
-            finiteStatElem.current.innerHTML =
+            finiteStateElem.current.innerHTML =
               majorStateHolderRef.current.dataset.finiteState;
             majorStateElem.current.textContent =
               majorStateHolderRef.current.dataset.majorState;
@@ -46,7 +48,20 @@ const Index: FunctionComponent<{
 
       observer.observe(majorStateHolderRef.current, config);
     }
-  }, [majorStateHolderRef]);
+
+    if (!backButton.current || !forwardButton.current) {
+      // if (majorStateHolderRef.current) {
+      backButton.current = document.querySelector(
+        "section.controls-container button:nth-of-type(1)"
+      );
+      forwardButton.current = document.querySelector(
+        "section.controls-container button:nth-of-type(2)"
+      );
+
+      console.log({ backButton, forwardButton });
+      // }
+    }
+  }, [majorStateHolderRef, finiteStateElem, backButton, forwardButton]);
 
   return (
     <Fragment>
@@ -60,12 +75,15 @@ const Index: FunctionComponent<{
           overflowY: "scroll",
         }}
       >
-        <section ref={finiteStatElem}>8</section>
+        <section ref={finiteStateElem}>8</section>
         <section ref={majorStateElem}>8</section>
         <svg
+          onClick={() => {
+            console.log("click");
+          }}
           /* NO NEED FOR px ON width AND height */
-          width=""
-          height=""
+          width="200"
+          height="120"
           aria-labelledby="your title id goes here"
           id="svg"
           role="presentation" /* or role="imge"*/
@@ -77,7 +95,7 @@ const Index: FunctionComponent<{
           <title id="reference this id by aria-labelledby">
             Your Title Goes here
           </title>
-          <rect width="200" height="180" x="8" y="8" />
+          <rect width="200" height="180" x="8" y="8" fill="crimson" />
         </svg>
 
         <div>Lorem ipsum</div>
