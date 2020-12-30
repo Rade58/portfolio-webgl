@@ -19,4 +19,5 @@ export enum EE {
 interface ContextI {
   currentFiniteStateAnimeMachine: animeFse | undefined;
   currentMajorState: typeof MAJOR_FINITE_STATES_ARRAY[number] | undefined;
+  majorStateHolder: HTMLDivElement | null;
 }
