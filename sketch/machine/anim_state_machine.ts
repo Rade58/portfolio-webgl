@@ -1170,13 +1170,13 @@ const animMachine = createMachine<
 export const animMachineService = interpret(animMachine);
 
 animMachineService.onTransition((state, event) => {
-  console.log("ANIM MACHINE STATE MACHINE");
+  /* console.log("ANIM MACHINE STATE MACHINE");
   console.log(`COSEQUENCE OF - ${event.type} - EVENT`);
 
   console.log(`TRANSITIONED TO - ${state.value} - FINITE STATE`);
   console.log("CONTEXT:");
   console.log(state.context);
-  console.log("-------------------------------------");
+  console.log("-------------------------------------"); */
   // majorStateHolder.textContent = state.value as string;
   if (majorStateHolder.dataset.finiteState !== state.value) {
     /* if (state.context.majorStateAfterIdle === undefined) {

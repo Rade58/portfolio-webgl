@@ -79,7 +79,7 @@ const ControlAnim: FunctionComponent = () => {
   useEffect(() => {
     import("../state_machines/app_machine").then((appServiceModule) => {
       const { EE, appService } = appServiceModule;
-      // appService.start();
+      appService.start();
 
       const majorStateHolder = document.querySelector(
         "div.major_state_holder"
