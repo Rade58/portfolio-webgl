@@ -19,6 +19,7 @@ import {
 import fs from "fs";
 import path from "path";
 import ControlAnim from "../components/ControlAnim";
+import LoadedAnimation from "../components/LoadedAnimations";
 
 // import DOMPurify from "dompurify";
 
@@ -35,28 +36,11 @@ const Index: FunctionComponent<{
 
   return (
     <Fragment>
-      <div
-        dangerouslySetInnerHTML={{ __html: htmlContentString }}
-        onLoad={() => {
-          import("../mutation_observer/").then(async (module) => {
-            const {
-              config,
-              majorStateHolder,
-              default: animationMachineMutationObserver,
-            } = module;
-
-            const { appService } = await import(
-              "../state_machines/app_machine"
-            );
-
-            animationMachineMutationObserver.observe(majorStateHolder, config);
-
-            appService.start();
-          });
-        }}
-      ></div>
+      <div dangerouslySetInnerHTML={{ __html: htmlContentString }}></div>
 
       <ControlAnim />
+      <LoadedAnimation />
+
       {/* Welcome */}
       {/* <Sketch /> */}
       {/* <Other /> */}
