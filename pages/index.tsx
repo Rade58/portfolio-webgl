@@ -22,23 +22,39 @@ import ControlAnim from "../components/ControlAnim";
 
 // import DOMPurify from "dompurify";
 
-// import { appService } from "../state_machines/app_machine";
+import { appService } from "../state_machines/app_machine";
+import animationMachineObserver, {
+  config,
+  majorStateHolder,
+} from "../mutation_observer";
 
 const Index: FunctionComponent<{
   htmlContentString: string;
 }> = ({ htmlContentString }) => {
   // console.log({ htmlContentString });
 
-  useEffect(() => {
-    import("../state_machines/app_machine").then((appServiceModule) => {
-      const { EE, appService } = appServiceModule;
-      // appService.start();
-    });
-  }, []);
-
   return (
     <Fragment>
-      <div dangerouslySetInnerHTML={{ __html: htmlContentString }}></div>
+      <div
+        dangerouslySetInnerHTML={{ __html: htmlContentString }}
+        onLoad={() => {
+          import("../mutation_observer/").then(async (module) => {
+            const {
+              config,
+              majorStateHolder,
+              default: animationMachineMutationObserver,
+            } = module;
+
+            const { appService } = await import(
+              "../state_machines/app_machine"
+            );
+
+            animationMachineMutationObserver.observe(majorStateHolder, config);
+
+            appService.start();
+          });
+        }}
+      ></div>
 
       <ControlAnim />
       {/* Welcome */}

@@ -1,4 +1,4 @@
-import { createMachine, assign, interpret, send } from "xstate";
+import { createMachine, assign, interpret, send, actions } from "xstate";
 
 import { CssClassesEnum } from "../sketch/ui/user_interface";
 import {
@@ -76,6 +76,8 @@ export type machineFiniteStateGenericType =
 
 // -------------------------------------------------------------
 
+const { raise } = actions;
+
 // --------------------  MACHINE -------------------------------
 
 const appMachine = createMachine<
@@ -104,7 +106,7 @@ const appMachine = createMachine<
               currentAnimeMachineMajorState,
             },
           } = event;
-
+          debugger;
           return {
             currentAnimeMachineFinitestate,
             currentAnimeMachineMajorState,
@@ -134,7 +136,7 @@ const appMachine = createMachine<
         ({ majorStateHolder: holder }, __) => {
           // if (!animationMachineObserver && majorStateHolder) {
           const config = { attributes: true };
-          let majorStateHolder;
+          let majorStateHolder: HTMLDivElement;
           if (!holder) {
             majorStateHolder = document.querySelector(
               "div.major_state_holder"
@@ -146,15 +148,19 @@ const appMachine = createMachine<
           const animationMachineObserver = new MutationObserver(
             (mutationList, observer) => {
               for (const mutation of mutationList) {
-                debugger;
+                // debugger;
                 if (mutation.type === "attributes") {
-                  send({
+                  raise({
                     type: EE.OBSERVER,
                     payload: {
-                      currentAnimeMachineFinitestate: (mutation.target as HTMLDivElement)
-                        .dataset.finiteState,
-                      currentAnimeMachineMajorState: (mutation.target as HTMLDivElement)
-                        .dataset.majorState,
+                      currentAnimeMachineFinitestate:
+                        /* (mutation.target as HTMLDivElement)
+                        .dataset.finiteState */ majorStateHolder
+                          .dataset.finiteState,
+                      currentAnimeMachineMajorState:
+                        /* (mutation.target as HTMLDivElement)
+                        .dataset.majorState */ majorStateHolder
+                          .dataset.majorState,
                     },
                   });
                 }

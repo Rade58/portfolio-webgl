@@ -128,11 +128,9 @@ const ControlAnim: FunctionComponent = () => {
         overflow-y: scroll;
       `}
     >
-      {/* <section ref={finiteStateElem}>8</section>
-      <section ref={majorStateElem}>8</section> */}
       <section>8</section>
       <section>8</section>
-
+      {/*  */}
       <svg
         tabIndex={0}
         onClick={() => {
