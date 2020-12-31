@@ -3,8 +3,8 @@ import {
   // types   ==>
   Reducer,
   Context,
-  Dispatch,
-  SetStateAction,
+  // Dispatch,
+  // SetStateAction,
 } from "react";
 
 //  -----------------------------------------
