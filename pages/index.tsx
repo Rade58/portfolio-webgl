@@ -38,8 +38,8 @@ const Index: FunctionComponent<{
     <Fragment>
       <div dangerouslySetInnerHTML={{ __html: htmlContentString }}></div>
 
-      <ControlAnim />
       <LoadedAnimation />
+      <ControlAnim />
 
       {/* Welcome */}
       {/* <Sketch /> */}

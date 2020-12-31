@@ -8,7 +8,7 @@ import styled from "@emotion/styled";
 
 import { Interpreter } from "xstate";
 
-import { fse as animeFse } from "../sketch/machine/anim_state_machine";
+import { animfse } from "../state_machines/app_machine";
 import {
   EE,
   MachineContextGenericI,
@@ -26,95 +26,24 @@ const ControlAnim: FunctionComponent = () => {
     >
   >(null);
 
-  /* const majorStateHolderRef = useRef<HTMLDivElement>(null);
-  const finiteStateElem = useRef<HTMLDivElement>(null);
-  const majorStateElem = useRef<HTMLDivElement>(null);
-  const backButton = useRef<HTMLButtonElement>(null);
-  const forwardButton = useRef<HTMLButtonElement>(null);
+  const [changer, setChanger] = useState<boolean>(true);
 
-  const [ihaveBackButton, setIhaveBackbutton] = useState<boolean>(false);
-  const [ihaveForwardButton, setIhaveForwardbutton] = useState<boolean>(false);
- */
-  /* useEffect(() => {
-    if (!majorStateHolderRef.current) {
-      majorStateHolderRef.current = document.querySelector(
-        "div.major_state_holder"
-      );
-
-      const config = { attributes: true };
-
-      const observer = new MutationObserver((mutationList, observer) => {
-        for (const mutation of mutationList) {
-          if (mutation.type === "attributes") {
-            console.log(majorStateHolderRef.current.dataset.finiteState);
-            finiteStateElem.current.innerHTML =
-              majorStateHolderRef.current.dataset.finiteState;
-            majorStateElem.current.textContent =
-              majorStateHolderRef.current.dataset.majorState;
-          }
-        }
-      });
-
-      observer.observe(majorStateHolderRef.current, config);
-    }
-
-    if (!backButton.current || !forwardButton.current) {
-      // if (majorStateHolderRef.current) {
-      backButton.current = document.querySelector(
-        "section.controls-container button:nth-of-type(1)"
-      );
-      forwardButton.current = document.querySelector(
-        "section.controls-container button:nth-of-type(2)"
-      );
-
-      if (backButton.current) setIhaveBackbutton(true);
-      if (forwardButton.current) setIhaveForwardbutton(true);
-
-      console.log({ backButton, forwardButton });
-      // }
-    }
-  }, [majorStateHolderRef, finiteStateElem, backButton, forwardButton]);
- */
+  const [appServiceObtained, setAppServiceobtained] = useState<boolean>(false);
 
   useEffect(() => {
-    if (!appService) {
-      import("../state_machines/app_machine").then((appServiceModule) => {
-        const { EE, appService } = appServiceModule;
+    if (!appServiceObtained) {
+      import("../state_machines/app_machine").then((module) => {
+        const { EE, appService: service } = module;
 
-        const majorStateHolder = document.querySelector(
-          "div.major_state_holder"
-        ) as HTMLDivElement;
-        const currentAnimeMachineFinitestate = (document.querySelector(
-          "div.major_state_holder"
-        ) as HTMLDivElement).dataset.finiteState as animeFse;
-        const currentAnimeMachineMajorState = (document.querySelector(
-          "div.major_state_holder"
-        ) as HTMLDivElement).dataset.majorState as animeFse;
-
-        const backButton = document.querySelector(
-          "section.controls-container button:nth-of-type(1)"
-        ) as HTMLButtonElement;
-        const forwardButton = document.querySelector(
-          "section.controls-container button:nth-of-type(2)"
-        ) as HTMLButtonElement;
-
-        if (appService.initialized) {
-          appService.send({
-            type: EE.INIT,
-            payload: {
-              backButton,
-              currentAnimeMachineFinitestate,
-              currentAnimeMachineMajorState,
-              forwardButton,
-              majorStateHolder,
-            },
-          });
+        if (service.initialized) {
+          setAppServiceobtained(true);
+          setAppService(service);
+        } else {
+          setChanger((bef) => !bef);
         }
-
-        setAppService(appService);
       });
     }
-  }, [appService]);
+  }, [changer]);
 
   return (
     <section
