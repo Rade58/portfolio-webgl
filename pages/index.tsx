@@ -6,6 +6,7 @@ import {
   useEffect,
   useRef,
   useState,
+  useReducer,
 } from "react";
 import Other from "../components/Other";
 import OtherSec from "../components/OtherSec";
@@ -15,6 +16,8 @@ import {
   MAJOR_FINITE_STATES_ARRAY,
   fse,
 } from "../sketch/machine/anim_state_machine";
+
+import { createContextualState_$ } from "../context_n_reducers/app_context";
 
 import fs from "fs";
 import path from "path";
@@ -34,18 +37,36 @@ const Index: FunctionComponent<{
 }> = ({ htmlContentString }) => {
   // console.log({ htmlContentString });
 
+  const {
+    Provider: AppContextProvider,
+    appReducer,
+    defaultState,
+  } = createContextualState_$;
+
+  const [reducedState, dispatchToReducer] = useReducer(
+    appReducer,
+    defaultState.reducedState
+  );
+
   return (
-    <Fragment>
-      <div dangerouslySetInnerHTML={{ __html: htmlContentString }}></div>
+    <AppContextProvider
+      value={{
+        reducedState,
+        dispatchToReducer,
+      }}
+    >
+      <Fragment>
+        <div dangerouslySetInnerHTML={{ __html: htmlContentString }}></div>
 
-      <LoadedAnimation />
-      <ControlAnim />
+        <LoadedAnimation />
+        <ControlAnim />
 
-      {/* Welcome */}
-      {/* <Sketch /> */}
-      {/* <Other /> */}
-      {/* <OtherSec /> */}
-    </Fragment>
+        {/* Welcome */}
+        {/* <Sketch /> */}
+        {/* <Other /> */}
+        {/* <OtherSec /> */}
+      </Fragment>
+    </AppContextProvider>
   );
 };
 

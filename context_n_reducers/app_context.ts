@@ -3,7 +3,7 @@ import {
   // types   ==>
   Reducer,
   Context,
-  // Dispatch,
+  Dispatch,
   // SetStateAction,
 } from "react";
 
@@ -14,6 +14,14 @@ export enum REDUCER_ACTION_TYPES {
 
 export interface ReducedStateI {
   app_machine_loaded: boolean;
+}
+
+interface AppStateI {
+  reducedState: ReducedStateI;
+  dispatchToReducer: Dispatch<{
+    type: REDUCER_ACTION_TYPES;
+    payload: any;
+  }>;
 }
 
 // ------------------------------------------
@@ -31,19 +39,16 @@ export const appReducer: Reducer<
 
 //  -------
 
-export const defaultState = {
+export const defaultState: AppStateI = {
   reducedState: {
     app_machine_loaded: false,
   },
+  dispatchToReducer: () => {},
 };
-
-export interface ContextStateI {
-  reducedState: ReducedStateI;
-}
 
 // -----------------
 
-export const appContext: Context<ContextStateI> = createContext(defaultState);
+export const appContext: Context<AppStateI> = createContext(defaultState);
 
 const { Provider } = appContext;
 
