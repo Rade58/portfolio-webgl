@@ -1,24 +1,11 @@
 /* eslint jsx-a11y/anchor-is-valid: 1 */
-/** @jsxRuntime classic */
-/** @jsx jsx */
-import { jsx } from "theme-ui";
-import {
-  FunctionComponent,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import { css } from "@emotion/core";
-import styled from "@emotion/styled";
+import { FunctionComponent, useContext, useEffect, useRef } from "react";
 
 import { animfse } from "../state_machines/app_machine";
 
 import { useContextualState_$ } from "../context_n_reducers/app_context";
 
 const LoadedAnimations: FunctionComponent = () => {
-  const animStateHolderRef = useRef<HTMLDivElement>(null);
-
   const { REDUCER_ACTION_TYPES, appContext } = useContextualState_$;
 
   const { dispatchToReducer } = useContext(appContext);

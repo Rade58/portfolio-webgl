@@ -2,31 +2,22 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import {
-  FunctionComponent,
-  useEffect,
-  useState,
-  useRef,
-  useContext,
-} from "react";
+import { FunctionComponent, useContext } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-import { Interpreter } from "xstate";
-
-import { animfse } from "../state_machines/app_machine";
-import {
-  EE,
-  MachineContextGenericI,
-  machineEventGenericType,
-  machineFiniteStateGenericType,
-} from "../state_machines/app_machine";
+// import { animfse } from "../state_machines/app_machine";
+import { EE } from "../state_machines/app_machine";
 
 import { appContext } from "../context_n_reducers/app_context";
 
 const ControlAnim: FunctionComponent = () => {
   const { reducedState } = useContext(appContext);
   const { appService } = reducedState;
+
+  if (!appService) {
+    return null;
+  }
 
   return (
     <section
