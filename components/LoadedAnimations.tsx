@@ -21,9 +21,7 @@ const LoadedAnimations: FunctionComponent = () => {
 
   const { REDUCER_ACTION_TYPES, appContext } = useContextualState_$;
 
-  const { dispatchToReducer, reducedState } = useContext(appContext);
-
-  const { appService } = reducedState;
+  const { dispatchToReducer } = useContext(appContext);
 
   useEffect(() => {
     import("../mutation_observer").then(async (module) => {
@@ -62,6 +60,13 @@ const LoadedAnimations: FunctionComponent = () => {
           currentAnimeMachineMajorState,
           forwardButton,
           majorStateHolder,
+        },
+      });
+
+      dispatchToReducer({
+        type: REDUCER_ACTION_TYPES.APP_MACINE_LOADED,
+        payload: {
+          appService,
         },
       });
     });
