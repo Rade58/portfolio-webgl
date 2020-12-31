@@ -22,11 +22,11 @@ import ControlAnim from "../components/ControlAnim";
 
 // import DOMPurify from "dompurify";
 
-import { appService } from "../state_machines/app_machine";
+/* import { appService } from "../state_machines/app_machine";
 import animationMachineObserver, {
   config,
   majorStateHolder,
-} from "../mutation_observer";
+} from "../mutation_observer"; */
 
 const Index: FunctionComponent<{
   htmlContentString: string;
