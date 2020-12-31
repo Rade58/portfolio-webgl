@@ -22,6 +22,10 @@ export const appReducer: Reducer<
   ReducedStateI,
   { type: REDUCER_ACTION_TYPES; payload: any }
 > = (state, action) => {
+  if (action.type === REDUCER_ACTION_TYPES.APP_MACINE_LOADED) {
+    return { ...state, app_machine_loaded: true };
+  }
+
   return state;
 };
 
@@ -41,7 +45,7 @@ export interface ContextStateI {
 
 export const appContext: Context<ContextStateI> = createContext(defaultState);
 
-const { Consumer, Provider } = appContext;
+const { Provider } = appContext;
 
 export const useContextualState_$ = { appContext, REDUCER_ACTION_TYPES };
 export const createContextualState_$ = { Provider, appReducer, defaultState };
