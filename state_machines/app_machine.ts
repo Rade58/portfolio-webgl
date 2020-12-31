@@ -100,7 +100,7 @@ const appMachine = createMachine<
               currentAnimeMachineMajorState,
             },
           } = event;
-          debugger;
+          // debugger;
           return {
             currentAnimeMachineFinitestate,
             currentAnimeMachineMajorState,
