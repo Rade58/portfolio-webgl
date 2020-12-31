@@ -9,7 +9,7 @@ import {
 enum fse {
   animation_active = "animation_active",
   idling = "idling",
-  mutation_observer_setup = "mutation_observer_setup",
+
   init = "init",
 }
 
@@ -68,15 +68,9 @@ export type machineFiniteStateGenericType =
   | {
       value: fse.init;
       context: MachineContextGenericI;
-    }
-  | {
-      value: fse.mutation_observer_setup;
-      context: MachineContextGenericI;
     };
 
 // -------------------------------------------------------------
-
-const { raise } = actions;
 
 // --------------------  MACHINE -------------------------------
 
@@ -127,53 +121,8 @@ const appMachine = createMachine<
               return payload;
             }),
           ],
-          target: fse.mutation_observer_setup,
+          target: fse.idling,
         },
-      },
-    },
-    [fse.mutation_observer_setup]: {
-      entry: [
-        ({ majorStateHolder: holder }, __) => {
-          // if (!animationMachineObserver && majorStateHolder) {
-          const config = { attributes: true };
-          let majorStateHolder: HTMLDivElement;
-          if (!holder) {
-            majorStateHolder = document.querySelector(
-              "div.major_state_holder"
-            ) as HTMLDivElement;
-          } else {
-            majorStateHolder = holder;
-          }
-
-          const animationMachineObserver = new MutationObserver(
-            (mutationList, observer) => {
-              for (const mutation of mutationList) {
-                // debugger;
-                if (mutation.type === "attributes") {
-                  raise({
-                    type: EE.OBSERVER,
-                    payload: {
-                      currentAnimeMachineFinitestate:
-                        /* (mutation.target as HTMLDivElement)
-                        .dataset.finiteState */ majorStateHolder
-                          .dataset.finiteState,
-                      currentAnimeMachineMajorState:
-                        /* (mutation.target as HTMLDivElement)
-                        .dataset.majorState */ majorStateHolder
-                          .dataset.majorState,
-                    },
-                  });
-                }
-              }
-            }
-          );
-
-          animationMachineObserver.observe(majorStateHolder, config);
-          // }
-        },
-      ],
-      always: {
-        target: fse.idling,
       },
     },
     [fse.idling]: {
