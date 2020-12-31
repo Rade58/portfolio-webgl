@@ -12,7 +12,6 @@ const LoadedAnimations: FunctionComponent = () => {
   const animStateHolderRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    console.log("loaded");
     import("../mutation_observer").then(async (module) => {
       const {
         config,
@@ -25,6 +24,7 @@ const LoadedAnimations: FunctionComponent = () => {
       animationMachineMutationObserver.observe(majorStateHolder, config);
 
       appService.start();
+      console.log("loaded");
 
       const currentAnimeMachineFinitestate = (document.querySelector(
         "div.major_state_holder"
