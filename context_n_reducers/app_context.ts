@@ -6,6 +6,12 @@ import {
   Dispatch,
   // SetStateAction,
 } from "react";
+import { Interpreter } from "xstate";
+import {
+  MachineContextGenericI,
+  machineEventGenericType,
+  machineFiniteStateGenericType,
+} from "../state_machines/app_machine";
 
 //  -----------------------------------------
 export enum REDUCER_ACTION_TYPES {
@@ -14,6 +20,12 @@ export enum REDUCER_ACTION_TYPES {
 
 export interface ReducedStateI {
   app_machine_loaded: boolean;
+  appService: Interpreter<
+    MachineContextGenericI,
+    any,
+    machineEventGenericType,
+    machineFiniteStateGenericType
+  > | null;
 }
 
 interface AppStateI {
@@ -42,6 +54,7 @@ export const appReducer: Reducer<
 export const defaultState: AppStateI = {
   reducedState: {
     app_machine_loaded: false,
+    appService: null,
   },
   dispatchToReducer: () => {},
 };
