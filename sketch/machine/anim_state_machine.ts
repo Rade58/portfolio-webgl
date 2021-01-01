@@ -400,6 +400,18 @@ const animMachine = createMachine<
                 };
               }
             ),
+            // target: fse.idle,
+          },
+          [EE.SWITCH]: {
+            actions: [
+              assign(({ up }, __) => {
+                if (up) {
+                  return { currentMajorStateNum: MAJOR_FS_ARR_LENGTH - 1 };
+                }
+                return { currentMajorStateNum: 0 };
+              }),
+            ],
+
             target: fse.idle,
           },
         },
@@ -410,6 +422,14 @@ const animMachine = createMachine<
           assign((_, __) => {
             return { wasInInit: false };
           }),
+        ],
+        always: [
+          {
+            cond: ({ wasInInit }, __) => {
+              return wasInInit;
+            },
+            target: ANIMATION_SERVICES_STATE_ARRAY[0],
+          },
         ],
         on: {
           [EE.SWITCH]: [
@@ -1170,13 +1190,13 @@ const animMachine = createMachine<
 export const animMachineService = interpret(animMachine);
 
 animMachineService.onTransition((state, event) => {
-  /* console.log("ANIM MACHINE STATE MACHINE");
+  console.log("ANIM MACHINE STATE MACHINE");
   console.log(`COSEQUENCE OF - ${event.type} - EVENT`);
 
   console.log(`TRANSITIONED TO - ${state.value} - FINITE STATE`);
   console.log("CONTEXT:");
   console.log(state.context);
-  console.log("-------------------------------------"); */
+  console.log("-------------------------------------");
   // majorStateHolder.textContent = state.value as string;
   // if (majorStateHolder.dataset.finiteState !== state.value) {
   /* if (state.context.majorStateAfterIdle === undefined) {
