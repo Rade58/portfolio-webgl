@@ -56,10 +56,10 @@ export enum EE {
 }
 
 export const MAJOR_FINITE_STATES_ARRAY = [
-  fse.blog,
   fse.aboutme,
   fse.projects,
   fse.contact,
+  fse.blog,
 ];
 const ANIMATION_SERVICES_STATE_ARRAY = [
   fse.animation0,
@@ -1190,13 +1190,13 @@ const animMachine = createMachine<
 export const animMachineService = interpret(animMachine);
 
 animMachineService.onTransition((state, event) => {
-  console.log("ANIM MACHINE STATE MACHINE");
+  /* console.log("ANIM MACHINE STATE MACHINE");
   console.log(`COSEQUENCE OF - ${event.type} - EVENT`);
 
   console.log(`TRANSITIONED TO - ${state.value} - FINITE STATE`);
   console.log("CONTEXT:");
   console.log(state.context);
-  console.log("-------------------------------------");
+  console.log("-------------------------------------"); */
   // majorStateHolder.textContent = state.value as string;
   // if (majorStateHolder.dataset.finiteState !== state.value) {
   /* if (state.context.majorStateAfterIdle === undefined) {
@@ -1205,7 +1205,7 @@ animMachineService.onTransition((state, event) => {
       majorStateHolder.dataset.finiteState = state.context.majorStateAfterIdle;
     } */
 
-  majorStateHolder.dataset.finiteState = state.value as string;
+  majorStateHolder.dataset.finiteState = state.value as fse;
   majorStateHolder.dataset.majorState = state.context.majorStateAfterIdle;
   // }
 });
