@@ -479,15 +479,22 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   // -----------------------------------------------------------------------
   // -----------------------------------------------------------------------
-  //   ------------------   LOADING MANAGER --------
+  // ------------------   ANTICEPATE FIRST RENDER   -----------
 
-  /* global.THREE.DefaultLoadingManager.onLoad = () => {
+  global.THREE.DefaultLoadingManager.onLoad = () => {
     console.log("loading completed");
   };
 
+  let firstRender;
+
   scene.onAfterRender = (renderer, scene, camera) => {
-    // console.log("render happened now");
-  }; */
+    // console.log("render");
+    if (firstRender !== 1) {
+      console.log("first render");
+    }
+
+    firstRender = 1;
+  };
 
   // ---------------------------------------------------------------
   // ---------------------------------------------------------------
