@@ -481,9 +481,13 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // -----------------------------------------------------------------------
   //   ------------------   LOADING MANAGER --------
 
-  global.THREE.DefaultLoadingManager.onLoad = () => {
+  /* global.THREE.DefaultLoadingManager.onLoad = () => {
     console.log("loading completed");
   };
+
+  scene.onAfterRender = (renderer, scene, camera) => {
+    // console.log("render happened now");
+  }; */
 
   // ---------------------------------------------------------------
   // ---------------------------------------------------------------

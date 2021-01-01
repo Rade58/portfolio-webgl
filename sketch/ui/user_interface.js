@@ -16,7 +16,9 @@ const controlsContainerCss = /* css */ `
 
 `;
 const buttonsCss = /* css */ `
-  visibility: hidden;
+  /* visibility: hidden; */
+
+  ${process.env.NEXT_PUBLIC_VAR1 ? "visibility: hidden;" : ""}
 `;
 /* ------------- ADDING STYLES ----------- */
 controlsContainer.style.cssText = controlsContainerCss;
