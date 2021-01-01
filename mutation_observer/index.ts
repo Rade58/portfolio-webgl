@@ -20,6 +20,11 @@ const animationMachineObserver = new MutationObserver(
             currentAnimeMachineMajorState: /* (mutation.target as HTMLDivElement)
                         .dataset.majorState */ majorStateHolder
               .dataset.majorState as fseanim,
+            canLoadControls:
+              (mutation.target as HTMLDivElement).dataset.majorState ===
+              "happened"
+                ? true
+                : false,
           },
         });
       }

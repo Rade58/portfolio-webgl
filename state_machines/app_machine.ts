@@ -31,6 +31,7 @@ export interface MachineContextGenericI {
   animationMachineObserver: MutationObserver | null;
   backButton: HTMLButtonElement | null;
   forwardButton: HTMLButtonElement | null;
+  canLoadControls: boolean;
 }
 
 export type machineEventGenericType =
@@ -53,6 +54,7 @@ export type machineEventGenericType =
       payload: {
         currentAnimeMachineMajorState: typeof MAJOR_FINITE_STATES_ARRAY[number];
         currentAnimeMachineFinitestate: animeFse;
+        canLoadControls: boolean;
       };
     };
 
@@ -88,6 +90,7 @@ const appMachine = createMachine<
     animationMachineObserver: null,
     backButton: null,
     forwardButton: null,
+    canLoadControls: false,
   },
 
   on: {
@@ -98,12 +101,14 @@ const appMachine = createMachine<
             payload: {
               currentAnimeMachineFinitestate,
               currentAnimeMachineMajorState,
+              canLoadControls,
             },
           } = event;
           // debugger;
           return {
             currentAnimeMachineFinitestate,
             currentAnimeMachineMajorState,
+            canLoadControls,
           };
         }),
       ],
