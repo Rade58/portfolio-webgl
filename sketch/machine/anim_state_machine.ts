@@ -1052,7 +1052,9 @@ const animMachine = createMachine<
         always: {
           target: fse.idle,
           cond: ({ canMoveToIdleAgain, currentMajorStateNum }, __) => {
-            return canMoveToIdleAgain && currentMajorStateNum !== 0;
+            // debugger;
+
+            return canMoveToIdleAgain /* && currentMajorStateNum !== 0 */;
           },
         },
       },
@@ -1062,7 +1064,7 @@ const animMachine = createMachine<
         always: {
           target: fse.idle,
           cond: ({ canMoveToIdleAgain, currentMajorStateNum }, __) => {
-            return canMoveToIdleAgain && currentMajorStateNum !== 1;
+            return canMoveToIdleAgain /* && currentMajorStateNum !== 1 */;
           },
         },
       },
@@ -1072,7 +1074,7 @@ const animMachine = createMachine<
         always: {
           target: fse.idle,
           cond: ({ canMoveToIdleAgain, currentMajorStateNum }, __) => {
-            return canMoveToIdleAgain && currentMajorStateNum !== 2;
+            return canMoveToIdleAgain /* && currentMajorStateNum !== 2 */;
           },
         },
       },
@@ -1082,10 +1084,8 @@ const animMachine = createMachine<
         always: {
           target: fse.idle,
           cond: ({ canMoveToIdleAgain, currentMajorStateNum }, __) => {
-            return (
-              canMoveToIdleAgain &&
-              currentMajorStateNum !== MAJOR_FS_ARR_LENGTH - 1
-            );
+            return canMoveToIdleAgain /* &&
+              currentMajorStateNum !== MAJOR_FS_ARR_LENGTH - 1 */;
           },
         },
       },

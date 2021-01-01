@@ -16,7 +16,7 @@ const controlsContainerCss = /* css */ `
 
 `;
 const buttonsCss = /* css */ `
-  /* visibility: hidden; */
+  visibility: hidden;
 `;
 /* ------------- ADDING STYLES ----------- */
 controlsContainer.style.cssText = controlsContainerCss;
