@@ -21,8 +21,7 @@ const animationMachineObserver = new MutationObserver(
                         .dataset.majorState */ majorStateHolder
               .dataset.majorState as fseanim,
             canLoadControls:
-              (mutation.target as HTMLDivElement).dataset
-                .firstRenderHappened === "happened"
+              majorStateHolder.dataset.firstRenderHappened === "happened"
                 ? true
                 : false,
           },

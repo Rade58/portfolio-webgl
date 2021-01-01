@@ -125,6 +125,14 @@ const appMachine = createMachine<
 
               return payload;
             }),
+            assign(({ majorStateHolder }, __) => {
+              return {
+                canLoadControls:
+                  majorStateHolder.dataset.firstRenderHappened === "happened"
+                    ? true
+                    : false,
+              };
+            }),
           ],
           target: fse.idling,
         },

@@ -23,7 +23,7 @@ const LoadedAnimations: FunctionComponent = () => {
       animationMachineMutationObserver.observe(majorStateHolder, config);
 
       appService.start();
-      console.log("loaded");
+      console.log("app service started");
 
       const currentAnimeMachineFinitestate = (document.querySelector(
         "div.major_state_holder"
