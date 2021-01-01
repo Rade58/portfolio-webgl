@@ -1221,8 +1221,10 @@ animMachineService.onTransition((state, event) => {
 
   majorStateHolder.dataset.finiteState = state.value as fse;
   majorStateHolder.dataset.majorState = state.context.majorStateAfterIdle;
-  majorStateHolder.dataset.firstRenderHappened =
-    state.context.firstRenderHappened;
+  majorStateHolder.dataset.firstRenderHappened = state.context
+    .firstRenderHappened
+    ? "happened"
+    : "not_happened";
   // }
 });
 
