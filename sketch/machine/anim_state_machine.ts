@@ -53,6 +53,7 @@ export enum EE {
   MOVE_DOWN = "MOVE_DOWN",
   // MOVE = "MOVE", // DEPRECATED
   // HELLO = "HELLO", // DEPRECATE
+  FIRST_RENDER = "FIRST_RENDER",
 }
 
 export const MAJOR_FINITE_STATES_ARRAY = [
@@ -75,6 +76,7 @@ const MAJOR_FS_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
 
 // context HELPER TYPE ---------------------
 interface ContextFullI {
+  firstRenderHappened: boolean;
   wasInInit: boolean;
   // OVO JE HELPER KOJI CE BELEZITI POSLEDNI MAJOR STATE
   // PRE PRELEASKA TO IDLE (TO CE MI IZUZETNO SLUZITI
@@ -118,6 +120,7 @@ interface ContextFullI {
 // ------------ GENERIC TYPES FOR MACHINE
 
 interface MachineContextGenericI {
+  firstRenderHappened: boolean;
   wasInInit: boolean;
   majorStateAfterIdle: typeof MAJOR_FINITE_STATES_ARRAY[number] | undefined;
   majorFiniteStatesArr: string[];
@@ -206,6 +209,9 @@ type machineEventGenericType =
       type: EE.SWITCH;
     }
   | {
+      type: EE.FIRST_RENDER;
+    }
+  | {
       type: EE.MOVE_DOWN;
       // eslint-disable-next-line
       payload: {};
@@ -264,6 +270,7 @@ const animMachine = createMachine<
     id: "sketch_anim_machine",
     initial: fse.init,
     context: {
+      firstRenderHappened: false,
       wasInInit: false,
       majorStateAfterIdle: undefined /* MAJOR_FINITE_STATES_ARRAY[0] */,
       majorFiniteStatesArr: MAJOR_FINITE_STATES_ARRAY,
@@ -302,6 +309,13 @@ const animMachine = createMachine<
         actions: [
           assign((_, __) => {
             return { up: true };
+          }),
+        ],
+      },
+      [EE.FIRST_RENDER]: {
+        actions: [
+          assign((_, __) => {
+            return { firstRenderHappened: true };
           }),
         ],
       },
