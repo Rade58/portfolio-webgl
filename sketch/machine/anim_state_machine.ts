@@ -312,6 +312,13 @@ const animMachine = createMachine<
           }),
         ],
       },
+      [EE.FIRST_RENDER]: {
+        actions: [
+          assign((_, __) => {
+            return { firstRenderHappened: true };
+          }),
+        ],
+      },
     },
     states: {
       [fse.init]: {
@@ -328,13 +335,6 @@ const animMachine = createMachine<
         // @ts-ignore
 
         on: {
-          [EE.FIRST_RENDER]: {
-            actions: [
-              assign((_, __) => {
-                return { firstRenderHappened: true };
-              }),
-            ],
-          },
           [EE.SETUP /* "*" */]: {
             actions: assign(
               (
