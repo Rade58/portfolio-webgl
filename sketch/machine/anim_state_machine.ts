@@ -315,6 +315,8 @@ const animMachine = createMachine<
       [EE.FIRST_RENDER]: {
         actions: [
           assign((_, __) => {
+            majorStateHolder.dataset.firstRenderHappened = "happened";
+
             return { firstRenderHappened: true };
           }),
         ],
