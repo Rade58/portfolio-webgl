@@ -6,7 +6,7 @@ import { FunctionComponent, useContext } from "react";
 import { css } from "@emotion/core";
 
 // import { animfse } from "../state_machines/app_machine";
-import { EE } from "../state_machines/app_machine";
+// import { EE } from "../state_machines/app_machine";
 
 import BackNForth from "./svgs/BackNForth";
 
@@ -21,11 +21,11 @@ const ControlAnim: FunctionComponent = () => {
         left: 0;
         bottom: 0;
         width: 100vw;
-        overflow-y: scroll;
+        /* overflow-y: scroll; */
       `}
     >
-      <section>8</section>
-      <section>8</section>
+      {/* <section>8</section> */}
+      {/* <section>8</section> */}
       {/*  */}
       <BackNForth />
       {/*  */}
