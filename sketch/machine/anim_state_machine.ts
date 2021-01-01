@@ -1224,7 +1224,7 @@ animMachineService.onTransition((state, event) => {
     .firstRenderHappened
     ? "happened"
     : "not_happened";
-  console.log(majorStateHolder.dataset.firstRenderHappened);
+  // console.log(majorStateHolder.dataset.firstRenderHappened);
   // }
 });
 
