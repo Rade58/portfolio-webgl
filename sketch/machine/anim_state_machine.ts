@@ -312,13 +312,6 @@ const animMachine = createMachine<
           }),
         ],
       },
-      [EE.FIRST_RENDER]: {
-        actions: [
-          assign((_, __) => {
-            return { firstRenderHappened: true };
-          }),
-        ],
-      },
     },
     states: {
       [fse.init]: {
@@ -335,6 +328,13 @@ const animMachine = createMachine<
         // @ts-ignore
 
         on: {
+          [EE.FIRST_RENDER]: {
+            actions: [
+              assign((_, __) => {
+                return { firstRenderHappened: true };
+              }),
+            ],
+          },
           [EE.SETUP /* "*" */]: {
             actions: assign(
               (
@@ -1218,13 +1218,13 @@ animMachineService.onTransition((state, event) => {
     } else {
       majorStateHolder.dataset.finiteState = state.context.majorStateAfterIdle;
     } */
-
   majorStateHolder.dataset.finiteState = state.value as fse;
   majorStateHolder.dataset.majorState = state.context.majorStateAfterIdle;
   majorStateHolder.dataset.firstRenderHappened = state.context
     .firstRenderHappened
     ? "happened"
     : "not_happened";
+  console.log(majorStateHolder.dataset.firstRenderHappened);
   // }
 });
 
