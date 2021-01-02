@@ -18,6 +18,7 @@ import { EE, appService } from "../state_machines/app_machine";
 
 import Back from "./svgs/Back";
 import Forth from "./svgs/Forth";
+import MiddleText from "./svgs/MiddleText";
 
 const ControlAnim: FunctionComponent = () => {
   const [state, send] = useService(appService);
@@ -52,6 +53,7 @@ const ControlAnim: FunctionComponent = () => {
       `}
     >
       <Back />
+      <MiddleText />
       <Forth />
     </section>
   );
