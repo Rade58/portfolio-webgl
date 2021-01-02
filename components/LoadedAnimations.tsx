@@ -9,12 +9,8 @@ import {
 
 import { animfse } from "../state_machines/app_machine";
 
-import { useContextualState_$ } from "../context_n_reducers/app_context";
-
 const LoadedAnimations: FunctionComponent = () => {
-  const { REDUCER_ACTION_TYPES, appContext } = useContextualState_$;
-
-  const { dispatchToReducer } = useContext(appContext);
+  const [animeMachineReady, setAnimeMachineReady] = useState(0);
 
   useEffect(() => {
     import("../mutation_observer").then(async (module) => {
@@ -27,9 +23,6 @@ const LoadedAnimations: FunctionComponent = () => {
       const { appService, EE } = await import("../state_machines/app_machine");
 
       animationMachineMutationObserver.observe(majorStateHolder, config);
-
-      appService.start();
-      console.log("app service started");
 
       const currentAnimeMachineFinitestate = (document.querySelector(
         "div.major_state_holder"
@@ -45,16 +38,25 @@ const LoadedAnimations: FunctionComponent = () => {
         "section.controls-container button:nth-of-type(2)"
       ) as HTMLButtonElement;
 
-      appService.send({
-        type: EE.INIT,
-        payload: {
-          backButton,
-          currentAnimeMachineFinitestate,
-          currentAnimeMachineMajorState,
-          forwardButton,
-          majorStateHolder,
-        },
-      });
+      if (majorStateHolder.dataset.firstRenderHappened === "happened") {
+        appService.start();
+        console.log("app service started");
+
+        appService.send({
+          type: EE.INIT,
+          payload: {
+            backButton,
+            currentAnimeMachineFinitestate,
+            currentAnimeMachineMajorState,
+            forwardButton,
+            majorStateHolder,
+          },
+        });
+
+        return;
+      }
+
+      setAnimeMachineReady((old) => old + 1);
 
       /* dispatchToReducer({
         type: REDUCER_ACTION_TYPES.APP_MACINE_LOADED,
@@ -63,7 +65,7 @@ const LoadedAnimations: FunctionComponent = () => {
         },
       }); */
     });
-  }, []);
+  }, [animeMachineReady]);
 
   return null;
 };

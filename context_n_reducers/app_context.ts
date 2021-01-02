@@ -19,12 +19,13 @@ export enum REDUCER_ACTION_TYPES {
 }
 
 export interface ReducedStateI {
-  appService: Interpreter<
+  placeholder: any;
+  /* appService: Interpreter<
     MachineContextGenericI,
     any,
     machineEventGenericType,
     machineFiniteStateGenericType
-  > | null;
+  > | null; */
 }
 
 interface AppStateI {
@@ -41,7 +42,8 @@ export const appReducer: Reducer<
   ReducedStateI,
   { type: REDUCER_ACTION_TYPES; payload: any }
 > = (state, action) => {
-  if (action.type === REDUCER_ACTION_TYPES.APP_MACINE_LOADED) {
+  //  wrong usage
+  /*  if (action.type === REDUCER_ACTION_TYPES.APP_MACINE_LOADED) {
     const { appService } = action.payload as {
       appService: Interpreter<
         MachineContextGenericI,
@@ -53,7 +55,7 @@ export const appReducer: Reducer<
 
     return { ...state, appService };
   }
-
+ */
   return state;
 };
 
@@ -61,7 +63,8 @@ export const appReducer: Reducer<
 
 export const defaultState: AppStateI = {
   reducedState: {
-    appService: null,
+    // appService: null,
+    placeholder: 0,
   },
   dispatchToReducer: () => {},
 };
