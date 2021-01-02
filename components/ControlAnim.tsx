@@ -25,15 +25,15 @@ import {
 } from "../state_machines/app_machine";
 
 const ControlAnim: FunctionComponent = () => {
-  const [service, send] = useService(appService);
+  const [state, send] = useService(appService);
 
-  const { context } = service;
+  const { context } = state;
 
-  if (!service) {
+  if (!state) {
     return null;
   }
 
-  if (!service.value) {
+  if (!state.value) {
     return null;
   }
 

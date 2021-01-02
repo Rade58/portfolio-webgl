@@ -1,14 +1,16 @@
 /* eslint jsx-a11y/anchor-is-valid: 1 */
 import { FunctionComponent, useContext, useEffect, useRef } from "react";
+import { useService } from "@xstate/react";
+import { animfse, appService, EE } from "../state_machines/app_machine";
 
-import { animfse } from "../state_machines/app_machine";
-
-import { useContextualState_$ } from "../context_n_reducers/app_context";
+// import { useContextualState_$ } from "../context_n_reducers/app_context";
 
 const LoadedAnimations: FunctionComponent = () => {
-  const { REDUCER_ACTION_TYPES, appContext } = useContextualState_$;
+  // const { REDUCER_ACTION_TYPES, appContext } = useContextualState_$;
 
-  const { dispatchToReducer } = useContext(appContext);
+  // const { dispatchToReducer } = useContext(appContext);
+
+  const [state, send] = useService(appService);
 
   useEffect(() => {
     import("../mutation_observer").then(async (module) => {
@@ -20,7 +22,7 @@ const LoadedAnimations: FunctionComponent = () => {
 
       console.log(majorStateHolder);
 
-      const { appService, EE } = await import("../state_machines/app_machine");
+      // const { appService, EE } = await import("../state_machines/app_machine");
 
       animationMachineMutationObserver.observe(majorStateHolder, config);
 
@@ -44,7 +46,7 @@ const LoadedAnimations: FunctionComponent = () => {
         "section.controls-container button:nth-of-type(2)"
       ) as HTMLButtonElement;
 
-      appService.send({
+      send({
         type: EE.INIT,
         payload: {
           backButton,
