@@ -36,12 +36,12 @@ interface AppStateI {
 }
 
 // ------------------------------------------
-
+// no-op
 export const appReducer: Reducer<
   ReducedStateI,
   { type: REDUCER_ACTION_TYPES; payload: any }
 > = (state, action) => {
-  if (action.type === REDUCER_ACTION_TYPES.APP_MACINE_LOADED) {
+  /* if (action.type === REDUCER_ACTION_TYPES.APP_MACINE_LOADED) {
     const { appService } = action.payload as {
       appService: Interpreter<
         MachineContextGenericI,
@@ -52,7 +52,7 @@ export const appReducer: Reducer<
     };
 
     return { ...state, appService };
-  }
+  } */
 
   return state;
 };

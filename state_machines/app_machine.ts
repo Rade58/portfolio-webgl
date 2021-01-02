@@ -167,4 +167,6 @@ appService.onTransition((state, event) => {
   console.log(state.context);
 });
 
+appService.start();
+
 export type animfse = animeFse;

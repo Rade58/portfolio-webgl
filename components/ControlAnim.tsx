@@ -11,13 +11,17 @@ import { EE } from "../state_machines/app_machine";
 
 import { appContext } from "../context_n_reducers/app_context";
 
-const ControlAnim: FunctionComponent = () => {
-  const { reducedState } = useContext(appContext);
-  const { appService } = reducedState;
+import { appService } from "../state_machines/app_machine";
 
-  if (!appService) {
+const ControlAnim: FunctionComponent = () => {
+  /* const { reducedState } = useContext(appContext);
+  const { appService } = reducedState; */
+
+  /* if (!appService) {
     return null;
-  }
+  } */
+
+  console.log(appService.state);
 
   return (
     <section
@@ -66,7 +70,7 @@ const ControlAnim: FunctionComponent = () => {
           <rect width="200" height="180" x="8" y="8" fill="crimson" />
         </svg>
       )}
-
+      {appService && appService.state && appService.state.value}
       {appService && (
         <svg
           tabIndex={0}
