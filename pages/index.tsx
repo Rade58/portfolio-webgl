@@ -8,9 +8,6 @@ import {
   useState,
   useReducer,
 } from "react";
-import Other from "../components/Other";
-import OtherSec from "../components/OtherSec";
-import Sketch from "../components/sketch/Sketch";
 
 import {
   MAJOR_FINITE_STATES_ARRAY,
@@ -57,14 +54,8 @@ const Index: FunctionComponent<{
     >
       <Fragment>
         <div dangerouslySetInnerHTML={{ __html: htmlContentString }}></div>
-
         <LoadedAnimation />
         <ControlAnim />
-
-        {/* Welcome */}
-        {/* <Sketch /> */}
-        {/* <Other /> */}
-        {/* <OtherSec /> */}
       </Fragment>
     </AppContextProvider>
   );
