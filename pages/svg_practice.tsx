@@ -2,7 +2,7 @@
 /* eslint jsx-a11y/anchor-is-valid: 1 */
 import { FunctionComponent } from "react";
 
-const AccesibleSvg: FunctionComponent = () => {
+const Practice: FunctionComponent = () => {
   return (
     <div style={{ border: "crimson solid 1px" }}>
       <svg
@@ -26,4 +26,4 @@ const AccesibleSvg: FunctionComponent = () => {
   );
 };
 
-export default AccesibleSvg;
+export default Practice;
