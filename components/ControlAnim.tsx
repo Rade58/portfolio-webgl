@@ -16,14 +16,6 @@ import { useService } from "@xstate/react";
 // import { animfse } from "../state_machines/app_machine";
 import { EE, appService } from "../state_machines/app_machine";
 
-// import { appContext } from "../context_n_reducers/app_context";
-
-import {
-  MachineContextGenericI,
-  machineEventGenericType,
-  machineFiniteStateGenericType,
-} from "../state_machines/app_machine";
-
 const ControlAnim: FunctionComponent = () => {
   const [state, send] = useService(appService);
 
