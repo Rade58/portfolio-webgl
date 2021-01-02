@@ -22,6 +22,8 @@ const ControlAnim: FunctionComponent = () => {
         bottom: 0;
         width: 100vw;
         /* overflow-y: scroll; */
+        display: flex;
+        justify-content: space-space-evenly;
       `}
     >
       {/* <section>8</section> */}

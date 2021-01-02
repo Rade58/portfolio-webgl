@@ -1,5 +1,11 @@
 /* eslint jsx-a11y/anchor-is-valid: 1 */
-import { FunctionComponent, useContext, useEffect, useRef } from "react";
+import {
+  FunctionComponent,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 import { animfse } from "../state_machines/app_machine";
 
@@ -50,12 +56,12 @@ const LoadedAnimations: FunctionComponent = () => {
         },
       });
 
-      dispatchToReducer({
+      /* dispatchToReducer({
         type: REDUCER_ACTION_TYPES.APP_MACINE_LOADED,
         payload: {
           appService,
         },
-      });
+      }); */
     });
   }, []);
 

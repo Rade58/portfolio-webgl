@@ -1,20 +1,19 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { FunctionComponent, Fragment, useContext } from "react";
+import {
+  FunctionComponent,
+  Fragment,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
-import { appContext } from "../../context_n_reducers/app_context";
-import { EE } from "../../state_machines/app_machine";
+
+import { appService, EE } from "../../state_machines/app_machine";
 
 const BackNForth: FunctionComponent = () => {
-  const { reducedState } = useContext(appContext);
-  const { appService } = reducedState;
-
-  if (!appService) {
-    return null;
-  }
-
   return (
     <Fragment>
       <svg
@@ -46,7 +45,9 @@ const BackNForth: FunctionComponent = () => {
         <title id="go_back">Left</title>
         <rect width="200" height="180" x="8" y="8" fill="crimson" />
       </svg>
-
+      {/*  */}
+      {appService.state.value}
+      {/*  */}
       <svg
         tabIndex={0}
         onClick={() => {
