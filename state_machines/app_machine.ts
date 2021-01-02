@@ -47,6 +47,7 @@ export type machineEventGenericType =
         majorStateHolder: HTMLDivElement;
         backButton: HTMLButtonElement;
         forwardButton: HTMLButtonElement;
+        canLoadControls: boolean;
       };
     }
   | {
@@ -134,6 +135,11 @@ const appMachine = createMachine<
               };
             }),
           ],
+          /* cond: ({ canLoadControls }, __) => {
+            console.log({ canLoadControls });
+
+            return canLoadControls;
+          }, */
           target: fse.idling,
         },
       },

@@ -18,12 +18,11 @@ const LoadedAnimations: FunctionComponent = () => {
         default: animationMachineMutationObserver,
       } = module;
 
+      console.log(majorStateHolder);
+
       const { appService, EE } = await import("../state_machines/app_machine");
 
       animationMachineMutationObserver.observe(majorStateHolder, config);
-
-      appService.start();
-      console.log("app service started");
 
       const currentAnimeMachineFinitestate = (document.querySelector(
         "div.major_state_holder"
@@ -31,6 +30,12 @@ const LoadedAnimations: FunctionComponent = () => {
       const currentAnimeMachineMajorState = (document.querySelector(
         "div.major_state_holder"
       ) as HTMLDivElement).dataset.majorState as animfse;
+      const canLoadControls: boolean =
+        ((document.querySelector("div.major_state_holder") as HTMLDivElement)
+          .dataset.firstRenderHappened as "happened" | "not_happened") ===
+        "happened"
+          ? true
+          : false;
 
       const backButton = document.querySelector(
         "section.controls-container button:nth-of-type(1)"
@@ -47,15 +52,16 @@ const LoadedAnimations: FunctionComponent = () => {
           currentAnimeMachineMajorState,
           forwardButton,
           majorStateHolder,
+          canLoadControls,
         },
       });
 
-      dispatchToReducer({
+      /*  dispatchToReducer({
         type: REDUCER_ACTION_TYPES.APP_MACINE_LOADED,
         payload: {
           appService,
         },
-      });
+      }); */
     });
   }, []);
 

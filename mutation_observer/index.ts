@@ -8,6 +8,8 @@ export const majorStateHolder = document.querySelector(
 
 const animationMachineObserver = new MutationObserver(
   (mutationList, observer) => {
+    console.log("mutations");
+
     for (const mutation of mutationList) {
       // debugger;
       if (mutation.type === "attributes") {

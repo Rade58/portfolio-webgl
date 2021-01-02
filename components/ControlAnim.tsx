@@ -2,26 +2,44 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { FunctionComponent, useContext } from "react";
+import {
+  FunctionComponent,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+} from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
+import { useService } from "@xstate/react";
 
 // import { animfse } from "../state_machines/app_machine";
-import { EE } from "../state_machines/app_machine";
+import { EE, appService } from "../state_machines/app_machine";
 
-import { appContext } from "../context_n_reducers/app_context";
+// import { appContext } from "../context_n_reducers/app_context";
 
-import { appService } from "../state_machines/app_machine";
+import {
+  MachineContextGenericI,
+  machineEventGenericType,
+  machineFiniteStateGenericType,
+} from "../state_machines/app_machine";
 
 const ControlAnim: FunctionComponent = () => {
-  /* const { reducedState } = useContext(appContext);
-  const { appService } = reducedState; */
+  const [service, send] = useService(appService);
 
-  /* if (!appService) {
+  const { context } = service;
+
+  if (!service) {
     return null;
-  } */
+  }
 
-  console.log(appService.state);
+  if (!service.value) {
+    return null;
+  }
+
+  if (!context && !context.canLoadControls) {
+    return null;
+  }
 
   return (
     <section
@@ -45,13 +63,13 @@ const ControlAnim: FunctionComponent = () => {
           onClick={() => {
             if (appService) {
               console.log("click back");
-              appService.send({ type: EE.CLICK_BACK });
+              send({ type: EE.CLICK_BACK });
             }
           }}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               if (appService) {
-                appService.send({ type: EE.CLICK_BACK });
+                send({ type: EE.CLICK_BACK });
               }
             }
           }}
@@ -70,20 +88,20 @@ const ControlAnim: FunctionComponent = () => {
           <rect width="200" height="180" x="8" y="8" fill="crimson" />
         </svg>
       )}
-      {appService && appService.state && appService.state.value}
+      {context.currentAnimeMachineMajorState}
       {appService && (
         <svg
           tabIndex={0}
           onClick={() => {
             if (appService) {
               console.log("click forward");
-              appService.send({ type: EE.CLICK_FORTH });
+              send({ type: EE.CLICK_FORTH });
             }
           }}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               if (appService) {
-                appService.send({ type: EE.CLICK_FORTH });
+                send({ type: EE.CLICK_FORTH });
               }
             }
           }}
