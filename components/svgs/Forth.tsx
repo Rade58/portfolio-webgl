@@ -35,7 +35,7 @@ const Forth: FunctionComponent = () => {
       xmlnsXlink="http://www.w3.org/1999/xlink"
       viewBox="0 0 380 210"
     >
-      <title id="go_forward">Your Title Goes here</title>
+      <title id="go_forward">Next</title>
       <rect width="200" height="180" x="8" y="8" fill="crimson" />
     </svg>
   );
