@@ -26,7 +26,8 @@ export interface MachineContextGenericI {
   currentAnimeMachineFinitestate: animeFse | undefined;
   currentAnimeMachineMajorState:
     | typeof MAJOR_FINITE_STATES_ARRAY[number]
-    | undefined;
+    | undefined
+    | "undefined";
   majorStateHolder: HTMLDivElement | null;
   animationMachineObserver: MutationObserver | null;
   backButton: HTMLButtonElement | null;
