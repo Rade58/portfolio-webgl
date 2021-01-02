@@ -14,6 +14,10 @@ import styled from "@emotion/styled";
 import { appService, EE } from "../../state_machines/app_machine";
 
 const BackNForth: FunctionComponent = () => {
+  /*  if (!appService.initialized) {
+    return null;
+  } */
+
   return (
     <Fragment>
       <svg
@@ -46,7 +50,7 @@ const BackNForth: FunctionComponent = () => {
         <rect width="200" height="180" x="8" y="8" fill="crimson" />
       </svg>
       {/*  */}
-      {appService.state.value}
+      {appService.state && appService.state.value}
       {/*  */}
       <svg
         tabIndex={0}

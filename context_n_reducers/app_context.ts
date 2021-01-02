@@ -37,7 +37,8 @@ interface AppStateI {
 }
 
 // ------------------------------------------
-
+//  remove this reducer at some point
+//  it's a noop
 export const appReducer: Reducer<
   ReducedStateI,
   { type: REDUCER_ACTION_TYPES; payload: any }
