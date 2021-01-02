@@ -1,19 +1,12 @@
 /* eslint react/react-in-jsx-scope: 0 */
 /* eslint jsx-a11y/anchor-is-valid: 1 */
-import {
-  FunctionComponent,
-  Fragment,
-  useEffect,
-  useRef,
-  useState,
-  useReducer,
-} from "react";
+import { FunctionComponent, Fragment, useReducer } from "react";
 
-import {
+/* import {
   MAJOR_FINITE_STATES_ARRAY,
   fse,
 } from "../sketch/machine/anim_state_machine";
-
+ */
 import { createContextualState_$ } from "../context_n_reducers/app_context";
 
 import fs from "fs";
