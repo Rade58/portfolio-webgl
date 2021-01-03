@@ -20,8 +20,8 @@ const StartingModal: FunctionComponent = () => {
   useEffect(() => {
     if (canLoadControls) {
       if (modalRef.current) {
-        TweenMax.to(modalRef.current, 0.38, {
-          translateY: "-118%",
+        TweenMax.to(modalRef.current, 0.58, {
+          translateY: "218%",
           ease: Power4.easeIn,
         });
       }

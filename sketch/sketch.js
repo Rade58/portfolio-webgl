@@ -388,7 +388,9 @@ const sketch = ({ context }) => {
         // console.log("render");
         if (firstRender !== 1) {
             console.log("first render");
-            service.send({ type: EE.FIRST_RENDER });
+            global.setTimeout(() => {
+                service.send({ type: EE.FIRST_RENDER });
+            }, 600);
         }
         firstRender = 1;
     };
