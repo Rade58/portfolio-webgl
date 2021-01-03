@@ -2,16 +2,39 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect, useRef } from "react";
 import { css } from "@emotion/core";
+import {} from "gsap";
 
 const ComponentName: FunctionComponent = () => {
+  const pathNodeListRef = useRef<NodeListOf<SVGPathElement>>(null);
+
+  useEffect(() => {
+    if (!pathNodeListRef.current) {
+      pathNodeListRef.current = document.querySelectorAll(
+        ".svg_text_holder path"
+      );
+
+      console.log(pathNodeListRef.current);
+    }
+  }, [pathNodeListRef]);
+
+  // SVGPathElement
   return (
     <div
+      className="svg_text_holder"
       css={css`
         box-sizing: border-box;
         border: crimson 1px solid;
         margin: 0px 0px;
+
+        & svg {
+          & g {
+            & path {
+              transform: translateY(20px);
+            }
+          }
+        }
       `}
     >
       <svg
