@@ -10,7 +10,7 @@ import { useService } from "@xstate/react";
 
 import { appService } from "../state_machines/app_machine";
 
-const ComponentName: FunctionComponent = () => {
+const StartingModal: FunctionComponent = () => {
   const [state, send] = useService(appService);
 
   return (
@@ -29,4 +29,4 @@ const ComponentName: FunctionComponent = () => {
   );
 };
 
-export default ComponentName;
+export default StartingModal;
