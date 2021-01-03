@@ -20,6 +20,8 @@ import Back from "./svgs/Back";
 import Forth from "./svgs/Forth";
 import MiddleText from "./svgs/MiddleText";
 
+import SvgTextPractice from "./practice/svg_text_practice";
+
 const ControlAnim: FunctionComponent = () => {
   const [state, send] = useService(appService);
 
@@ -50,8 +52,11 @@ const ControlAnim: FunctionComponent = () => {
         /* overflow-y: scroll; */
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
       `}
     >
+      <SvgTextPractice />
+      <br />
       <Back />
       <MiddleText />
       <Forth />

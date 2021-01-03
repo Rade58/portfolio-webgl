@@ -28,7 +28,7 @@ const ComponentName: FunctionComponent = () => {
       tl.to(pathNodeListRef.current, {
         duration: 0.1,
         stagger: 0.04,
-        translateY: gsap.utils.wrapYoyo([8]),
+        translateY: gsap.utils.wrapYoyo([20, 8]),
         ease: Sine.easeIn,
         // repeat: 2,
         reversed: false,
@@ -61,6 +61,7 @@ const ComponentName: FunctionComponent = () => {
         box-sizing: border-box;
         border: crimson 1px solid;
         margin: 0px 0px;
+        width: 100%;
 
         & svg {
           /* transform-box: fill-box; */
