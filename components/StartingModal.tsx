@@ -11,7 +11,9 @@ import { useService } from "@xstate/react";
 
 import { appService } from "../state_machines/app_machine";
 
-const StartingModal: FunctionComponent = () => {
+const StartingModal: FunctionComponent<{ imageData: string }> = ({
+  imageData,
+}) => {
   const [state, send] = useService(appService);
   const { canLoadControls } = state.context;
 
@@ -42,6 +44,7 @@ const StartingModal: FunctionComponent = () => {
       `}
     >
       spinner
+      <img alt="modal_image" src={`data:${imageData}`} />
     </aside>
   );
 };

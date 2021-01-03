@@ -25,7 +25,8 @@ import animationMachineObserver, {
 
 const Index: FunctionComponent<{
   htmlContentString: string;
-}> = ({ htmlContentString }) => {
+  imageString: string;
+}> = ({ htmlContentString, imageString }) => {
   // console.log({ htmlContentString });
 
   const {
@@ -47,7 +48,7 @@ const Index: FunctionComponent<{
       }}
     >
       <Fragment>
-        <StartingModal />
+        <StartingModal imageData={imageString} />
         <div dangerouslySetInnerHTML={{ __html: htmlContentString }}></div>
         <LoadedAnimation />
         <ControlAnim />
@@ -59,15 +60,21 @@ const Index: FunctionComponent<{
 export function getStaticProps() {
   const htmlPath = path.resolve(process.cwd(), "./👽RadeDev🦉.html");
 
-  console.log({ htmlPath });
+  // console.log({ htmlPath });
 
   const htmlContent = fs.readFileSync(htmlPath);
   const htmlContentString = htmlContent.toString("utf-8");
+
+  // IMAGE
+  const imagePath = path.resolve(process.cwd(), "./images/grid_image.png");
+  const imageContent = fs.readFileSync(imagePath);
+  const imageString = imageContent.toString("base64");
 
   return {
     props: {
       // blah: 1,
       htmlContentString /*: htmlCleanContentString*/,
+      imageString,
     },
   };
 }
