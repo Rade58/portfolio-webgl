@@ -467,14 +467,14 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   // preventing snapshots
   window.addEventListener("keydown", (e) => {
-    /* if (
+    if (
       (e.ctrlKey && (e.key === "S" || e.key === "s")) ||
       (e.shiftKey && e.ctrlKey && (e.key === "S" || e.key === "s"))
     ) {
       e.stopImmediatePropagation();
       e.preventDefault();
-      console.log("snaphot prevented")
-    } */
+      console.log("snaphot prevented");
+    }
   });
 
   // -----------------------------------------------------------------------

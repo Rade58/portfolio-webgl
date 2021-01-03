@@ -11,6 +11,8 @@ import { useService } from "@xstate/react";
 
 import { appService } from "../state_machines/app_machine";
 
+import PracticeSvgText from "./practice/svg_text_practice";
+
 const StartingModal: FunctionComponent<{ imageData: string }> = ({
   imageData,
 }) => {
@@ -44,6 +46,7 @@ const StartingModal: FunctionComponent<{ imageData: string }> = ({
       `}
     >
       {/* spinner */}
+      <PracticeSvgText />
       <img alt="modal_image" src={`data:image/png;base64,${imageData}`} />
     </aside>
   );
