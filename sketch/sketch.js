@@ -370,12 +370,14 @@ const sketch = ({ context }) => {
     // removing middleplane
     // preventing snapshots
     window.addEventListener("keydown", (e) => {
-        if ((e.ctrlKey && (e.key === "S" || e.key === "s")) ||
-            (e.shiftKey && e.ctrlKey && (e.key === "S" || e.key === "s"))) {
-            e.stopImmediatePropagation();
-            e.preventDefault();
-            console.log("snaphot prevented");
-        }
+        /* if (
+          (e.ctrlKey && (e.key === "S" || e.key === "s")) ||
+          (e.shiftKey && e.ctrlKey && (e.key === "S" || e.key === "s"))
+        ) {
+          e.stopImmediatePropagation();
+          e.preventDefault();
+          console.log("snaphot prevented")
+        } */
     });
     // -----------------------------------------------------------------------
     // -----------------------------------------------------------------------

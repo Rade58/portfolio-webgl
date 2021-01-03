@@ -17,13 +17,14 @@ moveButtonDown.textContent = "$";
 
 const controlsContainerCss = /* css */ `
   position: fixed;
-  top: 10vh;
-  left: 2vw;
+  right: 0vh;
+  bottom: 0vw;
+  width: 8px;
 
 `;
 
 const buttonsCss = /* css */ `
-  /* visibility: hidden; */
+  visibility: hidden;
 
 
 `;

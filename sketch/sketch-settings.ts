@@ -12,10 +12,11 @@ export const settingsFunc = (
 };
 
 const settings: SettingsI = {
-  name: "synth",
+  // name: "synth",
   animate: true,
   context: "webgl",
   duration: 28,
+  // pixelsPerInch: 4,
   // fps: 24,
   // attributes: { antialis: true },
 };
