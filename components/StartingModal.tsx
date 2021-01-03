@@ -43,8 +43,8 @@ const StartingModal: FunctionComponent<{ imageData: string }> = ({
         right: 0;
       `}
     >
-      spinner
-      <img alt="modal_image" src={`data:${imageData}`} />
+      {/* spinner */}
+      <img alt="modal_image" src={`data:image/png;base64,${imageData}`} />
     </aside>
   );
 };

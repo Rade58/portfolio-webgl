@@ -69,6 +69,7 @@ export function getStaticProps() {
   const imagePath = path.resolve(process.cwd(), "./images/grid_image.png");
   const imageContent = fs.readFileSync(imagePath);
   const imageString = imageContent.toString("base64");
+  console.log({ imageString });
 
   return {
     props: {
