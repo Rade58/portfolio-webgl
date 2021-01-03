@@ -5,6 +5,8 @@ import { jsx } from "theme-ui";
 import { FunctionComponent, useRef, useEffect } from "react";
 import { css } from "@emotion/core";
 
+import Image from "next/image";
+
 import { TweenMax, Power4 } from "gsap";
 
 import { useService } from "@xstate/react";
@@ -47,7 +49,13 @@ const StartingModal: FunctionComponent<{ imageData: string }> = ({
     >
       {/* spinner */}
       <PracticeSvgText />
-      <img alt="modal_image" src={`data:image/png;base64,${imageData}`} />
+      {/* <img alt="modal_image" src={`data:image/png;base64,${imageData}`} /> */}
+      <Image
+        alt="modal_image"
+        src={`data:image/png;base64,${imageData}`}
+        width="100%"
+        height="auto"
+      />
     </aside>
   );
 };
