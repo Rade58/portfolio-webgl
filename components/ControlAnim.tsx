@@ -45,9 +45,10 @@ const ControlAnim: FunctionComponent = () => {
       css={css`
         border: crimson solid 2px;
         position: fixed;
-        /* top: 0; */
+        top: 0;
         left: 0;
         bottom: 0;
+        right: 0;
         width: 100vw;
         /* overflow-y: scroll; */
         display: flex;
