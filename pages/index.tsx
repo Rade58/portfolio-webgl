@@ -13,6 +13,7 @@ import fs from "fs";
 import path from "path";
 import ControlAnim from "../components/ControlAnim";
 import LoadedAnimation from "../components/LoadedAnimations";
+import StartingModal from "../components/StartingModal";
 
 // import DOMPurify from "dompurify";
 
@@ -46,6 +47,7 @@ const Index: FunctionComponent<{
       }}
     >
       <Fragment>
+        <StartingModal />
         <div dangerouslySetInnerHTML={{ __html: htmlContentString }}></div>
         <LoadedAnimation />
         <ControlAnim />

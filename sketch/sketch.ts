@@ -494,7 +494,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
       global.setTimeout(() => {
         service.send({ type: EE.FIRST_RENDER });
-      }, 100);
+      }, 600);
     }
 
     firstRender = 1;

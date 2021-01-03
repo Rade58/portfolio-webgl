@@ -12,20 +12,23 @@ import { appService } from "../state_machines/app_machine";
 
 const StartingModal: FunctionComponent = () => {
   const [state, send] = useService(appService);
-
+  const { canLoadControls } = state.context;
   return (
-    <aside
-      css={css`
-        background-color: #207c88;
-        position: fixed;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-      `}
-    >
-      spinner
-    </aside>
+    !canLoadControls && (
+      <aside
+        css={css`
+          background-color: #207c88;
+          position: fixed;
+          z-index: 8;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+        `}
+      >
+        spinner
+      </aside>
+    )
   );
 };
 
