@@ -4,7 +4,7 @@
 import { jsx } from "theme-ui";
 import { FunctionComponent, useEffect, useRef } from "react";
 import { css } from "@emotion/core";
-import {} from "gsap";
+import gsap, { TweenMax, TimelineMax, TimelineLite, Sine, Circ } from "gsap";
 
 const ComponentName: FunctionComponent = () => {
   const pathNodeListRef = useRef<NodeListOf<SVGPathElement>>(null);
@@ -14,6 +14,32 @@ const ComponentName: FunctionComponent = () => {
       pathNodeListRef.current = document.querySelectorAll(
         ".svg_text_holder path"
       );
+
+      const tl = new TimelineMax();
+
+      tl.to(pathNodeListRef.current, {
+        duration: 0.1,
+        stagger: 0.04,
+        translateY: gsap.utils.wrapYoyo([8, 20]),
+        ease: Sine.easeIn,
+        // repeat: 2,
+        reversed: true,
+      });
+      tl.to(pathNodeListRef.current, {
+        duration: 0.1,
+        stagger: 0.04,
+        translateY: gsap.utils.wrapYoyo([8]),
+        ease: Sine.easeIn,
+        // repeat: 2,
+        reversed: false,
+      });
+      tl.to(pathNodeListRef.current, {
+        duration: 0.1,
+        stagger: 0.04,
+        translateY: gsap.utils.wrapYoyo([20]),
+        ease: Sine.easeIn,
+        reversed: true,
+      });
 
       console.log(pathNodeListRef.current);
     }
@@ -29,8 +55,11 @@ const ComponentName: FunctionComponent = () => {
         margin: 0px 0px;
 
         & svg {
+          /* transform-box: fill-box; */
           & g {
             & path {
+              transform-origin: left bottom;
+              /* transform-origin: 25px 25px; */
               transform: translateY(20px);
             }
           }
