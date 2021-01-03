@@ -62,6 +62,9 @@ const ComponentName: FunctionComponent = () => {
         border: crimson 1px solid;
         margin: 0px 0px;
         width: 100%;
+        position: fixed;
+        top: 8vh;
+        z-index: 18;
 
         & svg {
           /* transform-box: fill-box; */

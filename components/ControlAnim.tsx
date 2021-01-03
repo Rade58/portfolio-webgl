@@ -40,28 +40,30 @@ const ControlAnim: FunctionComponent = () => {
   }
 
   return (
-    <section
-      className="anim_control"
-      css={css`
-        border: crimson solid 2px;
-        position: fixed;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        right: 0;
-        width: 100vw;
-        /* overflow-y: scroll; */
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-      `}
-    >
+    <div>
       <SvgTextPractice />
-      <br />
-      <Back />
-      <MiddleText />
-      <Forth />
-    </section>
+      <section
+        className="anim_control"
+        css={css`
+          border: crimson solid 2px;
+          position: fixed;
+          /* top: 0; */
+          left: 0;
+          bottom: 0;
+          right: 0;
+          width: 100vw;
+          height: 20vh;
+          /* overflow-y: scroll; */
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+        `}
+      >
+        <Back />
+        <MiddleText />
+        <Forth />
+      </section>
+    </div>
   );
 };
 
