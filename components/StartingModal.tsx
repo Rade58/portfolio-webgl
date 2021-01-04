@@ -15,6 +15,8 @@ import { appService } from "../state_machines/app_machine";
 
 import PracticeSvgText from "./practice/svg_text_practice";
 
+import StartSpiner from "./svgs/StartSpiner";
+
 const StartingModal: FunctionComponent<{ imageData: string }> = ({
   imageData,
 }) => {
@@ -47,6 +49,7 @@ const StartingModal: FunctionComponent<{ imageData: string }> = ({
         right: 0;
       `}
     >
+      <StartSpiner />
       {/* spinner */}
       <PracticeSvgText />
       {/* <img alt="modal_image" src={`data:image/png;base64,${imageData}`} /> */}
