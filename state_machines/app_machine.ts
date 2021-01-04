@@ -165,7 +165,14 @@ const appMachine = createMachine<
         },
       },
     },
-    [fse.animation_active]: {},
+    [fse.animation_active]: {
+      always: {
+        target: fse.idling,
+        cond: ({ currentAnimeMachineFinitestate }, __) => {
+          return currentAnimeMachineFinitestate.startsWith("anim");
+        },
+      },
+    },
   },
 });
 
