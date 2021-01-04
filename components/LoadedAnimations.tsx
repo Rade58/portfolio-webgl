@@ -72,7 +72,7 @@ const LoadedAnimations: FunctionComponent = () => {
   useEffect(() => {
     console.log(window);
 
-    if (!window.document && !window.document.body) {
+    if (!window && !window.document && !window.document.body) {
       effectFlowRef.current = effectFlowRef.current + 1;
       return;
     }
