@@ -588,8 +588,8 @@ canvasSketch(
   settingsFunc(settings, document.querySelector("canvas.canvas"))
 ).then(() => {
   console.log("can load these thingz");
-  // service.send({ type: EE.FIRST_RENDER });
-  global.setTimeout(() => {
+  service.send({ type: EE.FIRST_RENDER });
+  /* global.setTimeout(() => {
     service.send({ type: EE.FIRST_RENDER });
-  }, 200);
+  }, 8); */
 });

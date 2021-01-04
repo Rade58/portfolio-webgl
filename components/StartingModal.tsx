@@ -38,7 +38,7 @@ const StartingModal: FunctionComponent<{ imageData: string }> = ({
     <aside
       ref={modalRef}
       css={css`
-        background-color: #207c88;
+        background-color: #627aa7;
         position: fixed;
         z-index: 8;
         top: 0;
@@ -53,8 +53,8 @@ const StartingModal: FunctionComponent<{ imageData: string }> = ({
       <Image
         alt="modal_image"
         src={`data:image/png;base64,${imageData}`}
-        // width="100vw"
-        // height="auto"
+        // width={100}
+        // height={200}
         layout="fill"
       />
     </aside>
