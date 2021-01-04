@@ -124,6 +124,10 @@ const LoadedAnimations: FunctionComponent = () => {
         // setEventSendingAllowed(false);
       }
     });
+
+    document.body.addEventListener("touchmove", (e) => {
+      // if((e.touches[0].){}
+    });
   }, [effectFlowRef, wheelAllowedRef]);
 
   return null;
