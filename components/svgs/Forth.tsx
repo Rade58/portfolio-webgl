@@ -17,8 +17,9 @@ const Forth: FunctionComponent = () => {
       className="forth"
       css={css`
         border: pink solid 1px;
-        flex-basis: 200px;
+        flex-basis: 160px;
         height: fit-content;
+        flex-shrink: 2;
       `}
     >
       <svg
