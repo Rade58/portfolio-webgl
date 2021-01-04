@@ -46,7 +46,10 @@ global.THREE = require("three") as threeType;
 require("three/examples/js/controls/OrbitControls");
 require("three/examples/js/controls/TrackballControls.js");
 //
-const canvasSketch = require("canvas-sketch");
+const canvasSketch: (
+  _: any,
+  __: any
+) => Promise<any> = require("canvas-sketch");
 
 // -------------------------------------------------------------------------------------------
 //------------------------------------- SKETCH -----------------------------------------------
@@ -487,7 +490,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
   let firstRender;
 
-  scene.onAfterRender = (renderer, scene, camera) => {
+  /* scene.onAfterRender = (renderer, scene, camera) => {
     // console.log("render");
     if (firstRender !== 1) {
       console.log("first render");
@@ -499,7 +502,7 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
 
     firstRender = 1;
   };
-
+ */
   // ---------------------------------------------------------------
   // ---------------------------------------------------------------
   // ---------------------------------------------------------------
@@ -569,4 +572,7 @@ document.body.prepend(uiElements.controlsContainer);
 canvasSketch(
   sketch,
   settingsFunc(settings, document.querySelector("canvas.canvas"))
-);
+).then(() => {
+  console.log("can load these thingz");
+  service.send({ type: EE.FIRST_RENDER });
+});

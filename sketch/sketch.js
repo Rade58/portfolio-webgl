@@ -384,16 +384,19 @@ const sketch = ({ context }) => {
         console.log("loading completed");
     };
     let firstRender;
-    scene.onAfterRender = (renderer, scene, camera) => {
-        // console.log("render");
-        if (firstRender !== 1) {
-            console.log("first render");
-            global.setTimeout(() => {
-                service.send({ type: EE.FIRST_RENDER });
-            }, 600);
-        }
-        firstRender = 1;
+    /* scene.onAfterRender = (renderer, scene, camera) => {
+      // console.log("render");
+      if (firstRender !== 1) {
+        console.log("first render");
+  
+        global.setTimeout(() => {
+          service.send({ type: EE.FIRST_RENDER });
+        }, 600);
+      }
+  
+      firstRender = 1;
     };
+   */
     // ---------------------------------------------------------------
     // ---------------------------------------------------------------
     // ---------------------------------------------------------------
@@ -443,4 +446,7 @@ const sketch = ({ context }) => {
 // ------------ UI ELEMENTS APPENDING ------------------------
 document.body.prepend(uiElements.controlsContainer);
 // --------------- SKETCH INITIALIZATION  --------------------
-canvasSketch(sketch, settingsFunc(settings, document.querySelector("canvas.canvas")));
+canvasSketch(sketch, settingsFunc(settings, document.querySelector("canvas.canvas"))).then(() => {
+    console.log("can load these thingz");
+    service.send({ type: EE.FIRST_RENDER });
+});
