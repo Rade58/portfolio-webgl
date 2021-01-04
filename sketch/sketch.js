@@ -380,9 +380,9 @@ const sketch = ({ context }) => {
     // -----------------------------------------------------------------------
     // -----------------------------------------------------------------------
     // ------------------   ANTICEPATE FIRST RENDER   -----------
-    global.THREE.DefaultLoadingManager.onLoad = () => {
-        console.log("loading completed");
-    };
+    /*  global.THREE.DefaultLoadingManager.onLoad = () => {
+      console.log("loading completed");
+    }; */
     let firstRender;
     /* scene.onAfterRender = (renderer, scene, camera) => {
       // console.log("render");
@@ -397,6 +397,17 @@ const sketch = ({ context }) => {
       firstRender = 1;
     };
    */
+    // LOADING MANAGER
+    const manager = new global.THREE.LoadingManager(() => {
+        console.log("loaded");
+    });
+    console.log({ manager });
+    manager.onProgress = (url, loaded, total) => {
+        console.log({ url, loaded, total });
+    };
+    manager.onLoad = () => {
+        console.log("everything loade");
+    };
     // ---------------------------------------------------------------
     // ---------------------------------------------------------------
     // ---------------------------------------------------------------

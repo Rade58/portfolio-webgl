@@ -484,9 +484,9 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
   // -----------------------------------------------------------------------
   // ------------------   ANTICEPATE FIRST RENDER   -----------
 
-  global.THREE.DefaultLoadingManager.onLoad = () => {
+  /*  global.THREE.DefaultLoadingManager.onLoad = () => {
     console.log("loading completed");
-  };
+  }; */
 
   let firstRender;
 
@@ -503,6 +503,20 @@ const sketch = ({ context }: SketchPropsI): SketchReturnType => {
     firstRender = 1;
   };
  */
+
+  // LOADING MANAGER
+
+  const manager = new global.THREE.LoadingManager(() => {
+    console.log("loaded");
+  });
+  console.log({ manager });
+  manager.onProgress = (url, loaded, total) => {
+    console.log({ url, loaded, total });
+  };
+  manager.onLoad = () => {
+    console.log("everything loade");
+  };
+
   // ---------------------------------------------------------------
   // ---------------------------------------------------------------
   // ---------------------------------------------------------------
@@ -574,5 +588,8 @@ canvasSketch(
   settingsFunc(settings, document.querySelector("canvas.canvas"))
 ).then(() => {
   console.log("can load these thingz");
-  service.send({ type: EE.FIRST_RENDER });
+  // service.send({ type: EE.FIRST_RENDER });
+  global.setTimeout(() => {
+    service.send({ type: EE.FIRST_RENDER });
+  }, 200);
 });
