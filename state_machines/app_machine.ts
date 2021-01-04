@@ -173,6 +173,7 @@ const appMachine = createMachine<
         },
       },
       [fse.animation_active]: {
+        entry: ["wheelNotAllowed"],
         always: {
           target: fse.idling,
           cond: ({ currentAnimeMachineFinitestate }, __) => {
@@ -198,8 +199,8 @@ export const appService = interpret(appMachine);
 
 appService.onTransition((state, event) => {
   console.log(" ------------------------------------- ");
-  console.log(state.value);
-  console.log(state.context);
+  /* console.log(state.value);
+  console.log(state.context); */
 });
 
 appService.start();

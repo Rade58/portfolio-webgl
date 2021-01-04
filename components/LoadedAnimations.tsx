@@ -75,6 +75,12 @@ const LoadedAnimations: FunctionComponent = () => {
 
   const effectFlowRef = useRef<number>(0);
 
+  const wheelAllowedRef = useRef<boolean>(false);
+
+  useEffect(() => {
+    wheelAllowedRef.current = state.context.wheelAllowed;
+  }, [state.context]);
+
   useEffect(() => {
     console.log(window);
 
@@ -85,6 +91,15 @@ const LoadedAnimations: FunctionComponent = () => {
 
     document.body.addEventListener("wheel", (e) => {
       // console.log(state.value);
+
+      console.log({ wheelAllowed: wheelAllowedRef.current });
+      console.log(e.deltaY, e.detail, e.movementY);
+      console.log("wheel");
+
+      if (state.context && !wheelAllowedRef.current) {
+        e.preventDefault();
+        return;
+      }
 
       if (
         state.value &&
@@ -99,18 +114,17 @@ const LoadedAnimations: FunctionComponent = () => {
         e.preventDefault();
         return;
       }
-      console.log(e.deltaY);
-      console.log("wheel");
-      if (state.context && state.context.wheelAllowed) {
-        if (e.deltaY > 0) {
+
+      if (wheelAllowedRef.current) {
+        if (e.deltaY > 60) {
           send({ type: EE.CLICK_BACK });
-        } else {
+        } else if (e.deltaY < -60) {
           send({ type: EE.CLICK_FORTH });
         }
         // setEventSendingAllowed(false);
       }
     });
-  }, [effectFlowRef]);
+  }, [effectFlowRef, wheelAllowedRef]);
 
   return null;
 };
