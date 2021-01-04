@@ -1,7 +1,7 @@
 /* eslint jsx-a11y/anchor-is-valid: 1 */
 import { FunctionComponent, useContext, useEffect, useRef } from "react";
 import { useService } from "@xstate/react";
-import { animfse, appService, EE } from "../state_machines/app_machine";
+import { animfse, appService, EE, fse } from "../state_machines/app_machine";
 
 // import { useContextualState_$ } from "../context_n_reducers/app_context";
 
@@ -66,6 +66,43 @@ const LoadedAnimations: FunctionComponent = () => {
       }); */
     });
   }, []);
+
+  const effectFlowRef = useRef<number>(0);
+
+  useEffect(() => {
+    console.log(window);
+
+    if (!window.document && !window.document.body) {
+      effectFlowRef.current = effectFlowRef.current + 1;
+      return;
+    }
+
+    document.body.addEventListener("wheel", (e) => {
+      // console.log(state.value);
+
+      if (
+        state.value &&
+        state.value !== fse.idling &&
+        state.value !== fse.init
+      ) {
+        e.preventDefault();
+
+        return;
+      }
+      if (state.value === fse.animation_active) {
+        e.preventDefault();
+        return;
+      }
+      console.log(e.deltaY);
+      console.log("wheel");
+
+      if (e.deltaY > 0) {
+        send({ type: EE.CLICK_BACK });
+      } else {
+        send({ type: EE.CLICK_FORTH });
+      }
+    });
+  }, [effectFlowRef]);
 
   return null;
 };

@@ -12,33 +12,6 @@ import { appService, EE, fse } from "../../state_machines/app_machine";
 const ComponentName: FunctionComponent = () => {
   const [state, send] = useService(appService);
 
-  const effectFlowRef = useRef<number>(0);
-
-  useEffect(() => {
-    console.log(window);
-
-    document.body.addEventListener("wheel", (e) => {
-      // console.log(state.value);
-      if (
-        state.value &&
-        state.value !== fse.idling &&
-        state.value !== fse.init
-      ) {
-        e.preventDefault();
-
-        return;
-      }
-      console.log(e.deltaY);
-      console.log("wheel");
-
-      if (e.deltaY > 0) {
-        send({ type: EE.CLICK_BACK });
-      } else {
-        send({ type: EE.CLICK_FORTH });
-      }
-    });
-  }, [effectFlowRef]);
-
   const {
     currentAnimeMachineFinitestate,
     currentAnimeMachineMajorState,

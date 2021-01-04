@@ -153,6 +153,7 @@ const appMachine = createMachine<
               backButton.dispatchEvent(new Event("click"));
             },
           ],
+          target: fse.animation_active,
         },
         [EE.CLICK_FORTH]: {
           actions: [
@@ -160,9 +161,11 @@ const appMachine = createMachine<
               forwardButton.dispatchEvent(new Event("click"));
             },
           ],
+          target: fse.animation_active,
         },
       },
     },
+    [fse.animation_active]: {},
   },
 });
 
