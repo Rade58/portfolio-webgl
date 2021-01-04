@@ -6,7 +6,7 @@ import {
   MAJOR_FINITE_STATES_ARRAY,
 } from "../sketch/machine/anim_state_machine";
 
-enum fse {
+export enum fse {
   animation_active = "animation_active",
   idling = "idling",
 

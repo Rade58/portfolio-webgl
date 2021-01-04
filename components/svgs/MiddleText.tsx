@@ -7,16 +7,27 @@ import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
 import { useService } from "@xstate/react";
-import { appService, EE } from "../../state_machines/app_machine";
+import { appService, EE, fse } from "../../state_machines/app_machine";
 
 const ComponentName: FunctionComponent = () => {
   const [state, send] = useService(appService);
 
-  /* const effectFlowRef = useRef<number>(0);
+  const effectFlowRef = useRef<number>(0);
 
   useEffect(() => {
     console.log(window);
+
     document.body.addEventListener("wheel", (e) => {
+      // console.log(state.value);
+      if (
+        state.value &&
+        state.value !== fse.idling &&
+        state.value !== fse.init
+      ) {
+        e.preventDefault();
+
+        return;
+      }
       console.log(e.deltaY);
       console.log("wheel");
 
@@ -26,7 +37,7 @@ const ComponentName: FunctionComponent = () => {
         send({ type: EE.CLICK_FORTH });
       }
     });
-  }, [effectFlowRef]); */
+  }, [effectFlowRef]);
 
   const {
     currentAnimeMachineFinitestate,
