@@ -80,17 +80,24 @@ const LoadedAnimations: FunctionComponent = () => {
     if (
       state &&
       state.context &&
+      state.context.currentAnimeMachineFinitestate &&
       !state.context.currentAnimeMachineFinitestate.startsWith("anim")
     ) {
       setEventSendingAllowed(true);
     }
   }, [state.context]);
 
+  const [allowWheel, setUseWheel] = useState<boolean>(true);
+
   useEffect(() => {
     console.log(window);
 
     if (!window && !window.document && !window.document.body) {
       effectFlowRef.current = effectFlowRef.current + 1;
+      return;
+    }
+
+    if (!allowWheel) {
       return;
     }
 
@@ -114,13 +121,17 @@ const LoadedAnimations: FunctionComponent = () => {
       console.log("wheel");
       if (eventSendingAllowed) {
         if (e.deltaY > 0) {
+          setEventSendingAllowed(false);
           send({ type: EE.CLICK_BACK });
         } else {
+          setEventSendingAllowed(false);
           send({ type: EE.CLICK_FORTH });
         }
-        setEventSendingAllowed(false);
+        // setEventSendingAllowed(false);
       }
     });
+
+    setUseWheel(false);
   }, [effectFlowRef]);
 
   return null;
