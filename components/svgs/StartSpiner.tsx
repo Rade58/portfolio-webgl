@@ -10,8 +10,12 @@ const AccesibleSvg: FunctionComponent = () => {
     <div
       className="water"
       css={css`
-        width: 400px;
-        height: 400px;
+        z-index: 28;
+        position: fixed;
+        top: 50vh;
+        left: 46vw;
+        width: 20vh;
+        height: 20vh;
         background-color: skyblue;
         border-radius: 50%;
         position: relative;
@@ -23,9 +27,9 @@ const AccesibleSvg: FunctionComponent = () => {
         &:after {
           content: "";
           position: absolute;
-          width: 400px;
-          height: 400px;
-          top: -150px;
+          width: 20vh;
+          height: 20vh;
+          top: -4vh;
           background-color: #fff;
         }
         &:before {
