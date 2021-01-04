@@ -5,7 +5,7 @@ import { FunctionComponent } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-const AccesibleSvg: FunctionComponent = () => {
+const StartSpiner: FunctionComponent = () => {
   return (
     <div
       className="water"
@@ -72,4 +72,4 @@ const AccesibleSvg: FunctionComponent = () => {
   );
 };
 
-export default AccesibleSvg;
+export default StartSpiner;
