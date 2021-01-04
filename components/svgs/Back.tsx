@@ -46,7 +46,11 @@ const Back: FunctionComponent = () => {
         <title id="go_back">Previous</title>
         <g id="Frame 1">
           {/* <rect width="72" height="35" fill="white" /> */}
-          <g id="20942180181556280998 1" clipPath="url(#clip0)">
+          <g
+            id="20942180181556280998 1"
+            clipPath="url(#clip0)"
+            filter="url(#filter0_d)"
+          >
             <g id="Icons">
               <g id="Rounded">
                 <g id="Navigation">
@@ -57,7 +61,7 @@ const Back: FunctionComponent = () => {
                         fillRule="evenodd"
                         clipRule="evenodd"
                         d="M21.2957 27.8167C22.2429 27.1667 22.2429 26.1167 21.2957 25.4667L11.8729 19L21.2957 12.5333C22.2429 11.8833 22.2429 10.8333 21.2957 10.1833C20.3486 9.53333 18.8186 9.53333 17.8714 10.1833L6.72429 17.8333C5.77714 18.4833 5.77714 19.5333 6.72429 20.1833L17.8714 27.8333C18.7943 28.4667 20.3486 28.4667 21.2957 27.8167Z"
-                        fill="#9E5656"
+                        fill="#E94E4E"
                       />
                     </g>
                   </g>
@@ -65,7 +69,11 @@ const Back: FunctionComponent = () => {
               </g>
             </g>
           </g>
-          <g id="20942180181556280998 12" clipPath="url(#clip1)">
+          <g
+            id="20942180181556280998 12"
+            clipPath="url(#clip1)"
+            filter="url(#filter1_d)"
+          >
             <g id="Icons_2">
               <g id="Rounded_2">
                 <g id="Navigation_2">
@@ -76,7 +84,7 @@ const Back: FunctionComponent = () => {
                         fillRule="evenodd"
                         clipRule="evenodd"
                         d="M64.2957 27.8167C65.2429 27.1667 65.2429 26.1167 64.2957 25.4667L54.8729 19L64.2957 12.5333C65.2429 11.8833 65.2429 10.8333 64.2957 10.1833C63.3486 9.53333 61.8186 9.53333 60.8714 10.1833L49.7243 17.8333C48.7771 18.4833 48.7771 19.5333 49.7243 20.1833L60.8714 27.8333C61.7943 28.4667 63.3486 28.4667 64.2957 27.8167Z"
-                        fill="#966060"
+                        fill="#438985"
                       />
                     </g>
                   </g>
@@ -84,7 +92,11 @@ const Back: FunctionComponent = () => {
               </g>
             </g>
           </g>
-          <g id="20942180181556280998 3" clipPath="url(#clip2)">
+          <g
+            id="20942180181556280998 3"
+            clipPath="url(#clip2)"
+            filter="url(#filter2_d)"
+          >
             <g id="Icons_3">
               <g id="Rounded_3">
                 <g id="Navigation_3">
@@ -95,7 +107,7 @@ const Back: FunctionComponent = () => {
                         fillRule="evenodd"
                         clipRule="evenodd"
                         d="M31.5857 25.2308C32.1429 24.8083 32.1429 24.1258 31.5857 23.7033L26.0429 19.5L31.5857 15.2967C32.1429 14.8742 32.1429 14.1917 31.5857 13.7692C31.0286 13.3467 30.1286 13.3467 29.5714 13.7692L23.0143 18.7417C22.4571 19.1642 22.4571 19.8467 23.0143 20.2692L29.5714 25.2417C30.1143 25.6533 31.0286 25.6533 31.5857 25.2308Z"
-                        fill="#1D1D1D"
+                        fill="#C4557D"
                       />
                     </g>
                   </g>
@@ -103,7 +115,11 @@ const Back: FunctionComponent = () => {
               </g>
             </g>
           </g>
-          <g id="20942180181556280998 4" clipPath="url(#clip3)">
+          <g
+            id="20942180181556280998 4"
+            clipPath="url(#clip3)"
+            filter="url(#filter3_d)"
+          >
             <g id="Icons_4">
               <g id="Rounded_4">
                 <g id="Navigation_4">
@@ -114,7 +130,7 @@ const Back: FunctionComponent = () => {
                         fillRule="evenodd"
                         clipRule="evenodd"
                         d="M38.71 23.4675C39.1 23.175 39.1 22.7025 38.71 22.41L34.83 19.5L38.71 16.59C39.1 16.2975 39.1 15.825 38.71 15.5325C38.32 15.24 37.69 15.24 37.3 15.5325L32.71 18.975C32.32 19.2675 32.32 19.74 32.71 20.0325L37.3 23.475C37.68 23.76 38.32 23.76 38.71 23.4675Z"
-                        fill="#1D1D1D"
+                        fill="#5F3E6A"
                       />
                     </g>
                   </g>
@@ -122,7 +138,11 @@ const Back: FunctionComponent = () => {
               </g>
             </g>
           </g>
-          <g id="20942180181556280998 5" clipPath="url(#clip4)">
+          <g
+            id="20942180181556280998 5"
+            clipPath="url(#clip4)"
+            filter="url(#filter4_d)"
+          >
             <g id="Icons_5">
               <g id="Rounded_5">
                 <g id="Navigation_5">
@@ -133,7 +153,7 @@ const Back: FunctionComponent = () => {
                         fillRule="evenodd"
                         clipRule="evenodd"
                         d="M43.7929 21.645C44.0714 21.45 44.0714 21.135 43.7929 20.94L41.0214 19L43.7929 17.06C44.0714 16.865 44.0714 16.55 43.7929 16.355C43.5143 16.16 43.0643 16.16 42.7857 16.355L39.5071 18.65C39.2286 18.845 39.2286 19.16 39.5071 19.355L42.7857 21.65C43.0571 21.84 43.5143 21.84 43.7929 21.645Z"
-                        fill="#1D1D1D"
+                        fill="#5F3E6A"
                       />
                     </g>
                   </g>
@@ -141,7 +161,11 @@ const Back: FunctionComponent = () => {
               </g>
             </g>
           </g>
-          <g id="20942180181556280998 6" clipPath="url(#clip5)">
+          <g
+            id="20942180181556280998 6"
+            clipPath="url(#clip5)"
+            filter="url(#filter5_d)"
+          >
             <g id="Icons_6">
               <g id="Rounded_6">
                 <g id="Navigation_6">
@@ -152,7 +176,7 @@ const Back: FunctionComponent = () => {
                         fillRule="evenodd"
                         clipRule="evenodd"
                         d="M47.8343 20.7633C48.0571 20.6333 48.0571 20.4233 47.8343 20.2933L45.6171 19L47.8343 17.7067C48.0571 17.5767 48.0571 17.3667 47.8343 17.2367C47.6114 17.1067 47.2514 17.1067 47.0286 17.2367L44.4057 18.7667C44.1828 18.8967 44.1828 19.1067 44.4057 19.2367L47.0286 20.7667C47.2457 20.8933 47.6114 20.8933 47.8343 20.7633Z"
-                        fill="#1D1D1D"
+                        fill="#C3557D"
                       />
                     </g>
                   </g>
@@ -162,6 +186,204 @@ const Back: FunctionComponent = () => {
           </g>
         </g>
         <defs>
+          <filter
+            id="filter0_d"
+            x="3"
+            y="7"
+            width="25"
+            height="28"
+            filterUnits="userSpaceOnUse"
+            colorInterpolationFilters="sRGB"
+          >
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
+            <feColorMatrix
+              in="SourceAlpha"
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            />
+            <feOffset dx="2" dy="2" />
+            <feGaussianBlur stdDeviation="2" />
+            <feColorMatrix
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.34 0"
+            />
+            <feBlend
+              mode="normal"
+              in2="BackgroundImageFix"
+              result="effect1_dropShadow"
+            />
+            <feBlend
+              mode="normal"
+              in="SourceGraphic"
+              in2="effect1_dropShadow"
+              result="shape"
+            />
+          </filter>
+          <filter
+            id="filter1_d"
+            x="46"
+            y="7"
+            width="25"
+            height="28"
+            filterUnits="userSpaceOnUse"
+            colorInterpolationFilters="sRGB"
+          >
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
+            <feColorMatrix
+              in="SourceAlpha"
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            />
+            <feOffset dx="2" dy="2" />
+            <feGaussianBlur stdDeviation="2" />
+            <feColorMatrix
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.34 0"
+            />
+            <feBlend
+              mode="normal"
+              in2="BackgroundImageFix"
+              result="effect1_dropShadow"
+            />
+            <feBlend
+              mode="normal"
+              in="SourceGraphic"
+              in2="effect1_dropShadow"
+              result="shape"
+            />
+          </filter>
+          <filter
+            id="filter2_d"
+            x="20"
+            y="11"
+            width="18"
+            height="21"
+            filterUnits="userSpaceOnUse"
+            colorInterpolationFilters="sRGB"
+          >
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
+            <feColorMatrix
+              in="SourceAlpha"
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            />
+            <feOffset dx="2" dy="2" />
+            <feGaussianBlur stdDeviation="2" />
+            <feColorMatrix
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.34 0"
+            />
+            <feBlend
+              mode="normal"
+              in2="BackgroundImageFix"
+              result="effect1_dropShadow"
+            />
+            <feBlend
+              mode="normal"
+              in="SourceGraphic"
+              in2="effect1_dropShadow"
+              result="shape"
+            />
+          </filter>
+          <filter
+            id="filter3_d"
+            x="30"
+            y="13"
+            width="15"
+            height="17"
+            filterUnits="userSpaceOnUse"
+            colorInterpolationFilters="sRGB"
+          >
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
+            <feColorMatrix
+              in="SourceAlpha"
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            />
+            <feOffset dx="2" dy="2" />
+            <feGaussianBlur stdDeviation="2" />
+            <feColorMatrix
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.34 0"
+            />
+            <feBlend
+              mode="normal"
+              in2="BackgroundImageFix"
+              result="effect1_dropShadow"
+            />
+            <feBlend
+              mode="normal"
+              in="SourceGraphic"
+              in2="effect1_dropShadow"
+              result="shape"
+            />
+          </filter>
+          <filter
+            id="filter4_d"
+            x="37"
+            y="14"
+            width="13"
+            height="14"
+            filterUnits="userSpaceOnUse"
+            colorInterpolationFilters="sRGB"
+          >
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
+            <feColorMatrix
+              in="SourceAlpha"
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            />
+            <feOffset dx="2" dy="2" />
+            <feGaussianBlur stdDeviation="2" />
+            <feColorMatrix
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.34 0"
+            />
+            <feBlend
+              mode="normal"
+              in2="BackgroundImageFix"
+              result="effect1_dropShadow"
+            />
+            <feBlend
+              mode="normal"
+              in="SourceGraphic"
+              in2="effect1_dropShadow"
+              result="shape"
+            />
+          </filter>
+          <filter
+            id="filter5_d"
+            x="42"
+            y="15"
+            width="12"
+            height="12"
+            filterUnits="userSpaceOnUse"
+            colorInterpolationFilters="sRGB"
+          >
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
+            <feColorMatrix
+              in="SourceAlpha"
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
+            />
+            <feOffset dx="2" dy="2" />
+            <feGaussianBlur stdDeviation="2" />
+            <feColorMatrix
+              type="matrix"
+              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.34 0"
+            />
+            <feBlend
+              mode="normal"
+              in2="BackgroundImageFix"
+              result="effect1_dropShadow"
+            />
+            <feBlend
+              mode="normal"
+              in="SourceGraphic"
+              in2="effect1_dropShadow"
+              result="shape"
+            />
+          </filter>
           <clipPath id="clip0">
             <rect
               width="17"

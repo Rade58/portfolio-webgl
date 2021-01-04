@@ -55,7 +55,7 @@ const ControlAnim: FunctionComponent = () => {
           height: 20vh;
           /* overflow-y: scroll; */
           display: flex;
-          justify-content: space-between;
+          justify-content: space-space-around;
           flex-wrap: wrap;
         `}
       >
