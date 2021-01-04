@@ -23,6 +23,7 @@ export enum EE {
 // -------------------------------------------------------------
 
 export interface MachineContextGenericI {
+  wheelAllowed: boolean;
   currentAnimeMachineFinitestate: animeFse | undefined;
   currentAnimeMachineMajorState:
     | typeof MAJOR_FINITE_STATES_ARRAY[number]
@@ -82,99 +83,116 @@ const appMachine = createMachine<
   MachineContextGenericI,
   machineEventGenericType,
   machineFiniteStateGenericType
->({
-  id: "app_machine",
-  initial: fse.init,
-  context: {
-    majorStateHolder: null,
-    currentAnimeMachineFinitestate: null,
-    currentAnimeMachineMajorState: null,
-    animationMachineObserver: null,
-    backButton: null,
-    forwardButton: null,
-    canLoadControls: false,
-  },
+>(
+  {
+    id: "app_machine",
+    initial: fse.init,
+    context: {
+      wheelAllowed: false,
+      majorStateHolder: null,
+      currentAnimeMachineFinitestate: null,
+      currentAnimeMachineMajorState: null,
+      animationMachineObserver: null,
+      backButton: null,
+      forwardButton: null,
+      canLoadControls: false,
+    },
 
-  on: {
-    [EE.OBSERVER]: {
-      actions: [
-        assign((_, event) => {
-          const {
-            payload: {
+    on: {
+      [EE.OBSERVER]: {
+        actions: [
+          assign((_, event) => {
+            const {
+              payload: {
+                currentAnimeMachineFinitestate,
+                currentAnimeMachineMajorState,
+                canLoadControls,
+              },
+            } = event;
+            // debugger;
+            return {
               currentAnimeMachineFinitestate,
               currentAnimeMachineMajorState,
               canLoadControls,
-            },
-          } = event;
-          // debugger;
-          return {
-            currentAnimeMachineFinitestate,
-            currentAnimeMachineMajorState,
-            canLoadControls,
-          };
-        }),
-      ],
+            };
+          }),
+        ],
+      },
     },
-  },
 
-  states: {
-    [fse.init]: {
-      on: {
-        [EE.INIT]: {
-          actions: [
-            assign((_, event) => {
-              const { payload } = event;
+    states: {
+      [fse.init]: {
+        entry: ["wheelAllowed"],
+        on: {
+          [EE.INIT]: {
+            actions: [
+              assign((_, event) => {
+                const { payload } = event;
 
-              return payload;
-            }),
-            assign(({ majorStateHolder }, __) => {
-              return {
-                canLoadControls:
-                  majorStateHolder.dataset.firstRenderHappened === "happened"
-                    ? true
-                    : false,
-              };
-            }),
-          ],
-          /* cond: ({ canLoadControls }, __) => {
+                return payload;
+              }),
+              assign(({ majorStateHolder }, __) => {
+                return {
+                  canLoadControls:
+                    majorStateHolder.dataset.firstRenderHappened === "happened"
+                      ? true
+                      : false,
+                };
+              }),
+            ],
+            /* cond: ({ canLoadControls }, __) => {
             console.log({ canLoadControls });
 
             return canLoadControls;
           }, */
+            target: fse.idling,
+          },
+        },
+      },
+      [fse.idling]: {
+        entry: ["wheelAllowed"],
+        on: {
+          [EE.CLICK_BACK]: {
+            actions: [
+              ({ backButton }, __) => {
+                backButton.dispatchEvent(new Event("click"));
+              },
+              "wheelNotAllowed",
+            ],
+            target: fse.animation_active,
+          },
+          [EE.CLICK_FORTH]: {
+            actions: [
+              ({ forwardButton }, __) => {
+                forwardButton.dispatchEvent(new Event("click"));
+              },
+              "wheelNotAllowed",
+            ],
+            target: fse.animation_active,
+          },
+        },
+      },
+      [fse.animation_active]: {
+        always: {
           target: fse.idling,
-        },
-      },
-    },
-    [fse.idling]: {
-      on: {
-        [EE.CLICK_BACK]: {
-          actions: [
-            ({ backButton }, __) => {
-              backButton.dispatchEvent(new Event("click"));
-            },
-          ],
-          target: fse.animation_active,
-        },
-        [EE.CLICK_FORTH]: {
-          actions: [
-            ({ forwardButton }, __) => {
-              forwardButton.dispatchEvent(new Event("click"));
-            },
-          ],
-          target: fse.animation_active,
-        },
-      },
-    },
-    [fse.animation_active]: {
-      always: {
-        target: fse.idling,
-        cond: ({ currentAnimeMachineFinitestate }, __) => {
-          return !currentAnimeMachineFinitestate.startsWith("anim");
+          cond: ({ currentAnimeMachineFinitestate }, __) => {
+            return !currentAnimeMachineFinitestate.startsWith("anim");
+          },
         },
       },
     },
   },
-});
+  {
+    actions: {
+      wheelAllowed: assign((_, __) => {
+        return { wheelAllowed: true };
+      }),
+      wheelNotAllowed: assign((_, __) => {
+        return { wheelAllowed: false };
+      }),
+    },
+  }
+);
 
 export const appService = interpret(appMachine);
 
