@@ -169,7 +169,7 @@ const appMachine = createMachine<
       always: {
         target: fse.idling,
         cond: ({ currentAnimeMachineFinitestate }, __) => {
-          return currentAnimeMachineFinitestate.startsWith("anim");
+          return !currentAnimeMachineFinitestate.startsWith("anim");
         },
       },
     },

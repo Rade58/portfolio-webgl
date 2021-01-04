@@ -1,5 +1,11 @@
 /* eslint jsx-a11y/anchor-is-valid: 1 */
-import { FunctionComponent, useContext, useEffect, useRef } from "react";
+import {
+  FunctionComponent,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import { useService } from "@xstate/react";
 import { animfse, appService, EE, fse } from "../state_machines/app_machine";
 
@@ -68,6 +74,17 @@ const LoadedAnimations: FunctionComponent = () => {
   }, []);
 
   const effectFlowRef = useRef<number>(0);
+  const [eventSendingAllowed, setEventSendingAllowed] = useState<boolean>(true);
+
+  useEffect(() => {
+    if (
+      state &&
+      state.context &&
+      !state.context.currentAnimeMachineFinitestate.startsWith("anim")
+    ) {
+      setEventSendingAllowed(true);
+    }
+  }, [state.context]);
 
   useEffect(() => {
     console.log(window);
@@ -95,11 +112,13 @@ const LoadedAnimations: FunctionComponent = () => {
       }
       console.log(e.deltaY);
       console.log("wheel");
-
-      if (e.deltaY > 0) {
-        send({ type: EE.CLICK_BACK });
-      } else {
-        send({ type: EE.CLICK_FORTH });
+      if (eventSendingAllowed) {
+        if (e.deltaY > 0) {
+          send({ type: EE.CLICK_BACK });
+        } else {
+          send({ type: EE.CLICK_FORTH });
+        }
+        setEventSendingAllowed(false);
       }
     });
   }, [effectFlowRef]);
