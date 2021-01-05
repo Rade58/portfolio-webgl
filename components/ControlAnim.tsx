@@ -41,6 +41,11 @@ const ControlAnim: FunctionComponent = () => {
     return null;
   }
 
+  const {
+    currentAnimeMachineFinitestate,
+    currentAnimeMachineMajorState,
+  } = state.context;
+
   return (
     <div>
       <SvgTextPractice />
@@ -61,11 +66,11 @@ const ControlAnim: FunctionComponent = () => {
           flex-wrap: wrap;
         `}
       >
-        {state && state.value && state.value === "init" ? <Left /> : <Back />}
+        {currentAnimeMachineMajorState === "undefined" ? <Left /> : <Back />}
 
         <MiddleText />
 
-        {state && state.value && state.value === "init" ? <Right /> : <Forth />}
+        {currentAnimeMachineMajorState === "undefined" ? <Right /> : <Forth />}
       </section>
     </div>
   );

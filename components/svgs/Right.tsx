@@ -49,21 +49,21 @@ const Right: FunctionComponent = () => {
         lang="en"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
-        viewBox="1 0 38 28"
+        viewBox="0 0 38 28"
       >
         <title id="go_forward">Next</title>
-        <g id="right">
-          <g id="circle" filter="url(#filter0_d)">
+        <g id="right2">
+          <g id="circle">
             <path
               id="Vector"
-              d="M22 25C27.5228 25 32 20.5228 32 15C32 9.47715 27.5228 5 22 5C16.4772 5 12 9.47715 12 15C12 20.5228 16.4772 25 22 25Z"
+              d="M20 5C14.4772 5 10 9.47715 10 15C10 20.5228 14.4772 25 20 25C25.5228 25 30 20.5228 30 15C30 9.47715 25.5228 5 20 5Z"
               stroke="black"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
           </g>
-          <g id="arr-right" clipPath="url(#clip0)">
+          <g id="arr-left" clipPath="url(#clip0)">
             <g id="Icons">
               <g id="Rounded">
                 <g id="Navigation">
@@ -73,8 +73,8 @@ const Right: FunctionComponent = () => {
                         id="&#240;&#159;&#148;&#185; Icon Color"
                         fillRule="evenodd"
                         clipRule="evenodd"
-                        d="M19.29 9.71C18.9 10.1 18.9 10.73 19.29 11.12L23.17 15L19.29 18.88C18.9 19.27 18.9 19.9 19.29 20.29C19.68 20.68 20.31 20.68 20.7 20.29L25.29 15.7C25.68 15.31 25.68 14.68 25.29 14.29L20.7 9.7C20.32 9.32 19.68 9.32 19.29 9.71Z"
-                        fill="#1D1D1D"
+                        d="M16.29 9.71C15.9 10.1 15.9 10.73 16.29 11.12L20.17 15L16.29 18.88C15.9 19.27 15.9 19.9 16.29 20.29C16.68 20.68 17.31 20.68 17.7 20.29L22.29 15.7C22.68 15.31 22.68 14.68 22.29 14.29L17.7 9.7C17.32 9.32 16.68 9.32 16.29 9.71Z"
+                        fill="#D74B5C"
                       />
                     </g>
                   </g>
@@ -84,45 +84,12 @@ const Right: FunctionComponent = () => {
           </g>
         </g>
         <defs>
-          <filter
-            id="filter0_d"
-            x="10"
-            y="3"
-            width="26"
-            height="26"
-            filterUnits="userSpaceOnUse"
-            colorInterpolationFilters="sRGB"
-          >
-            <feFlood floodOpacity="0" result="BackgroundImageFix" />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-            />
-            <feOffset dx="1" dy="1" />
-            <feGaussianBlur stdDeviation="0.5" />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.02 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="BackgroundImageFix"
-              result="effect1_dropShadow"
-            />
-            <feBlend
-              mode="normal"
-              in="SourceGraphic"
-              in2="effect1_dropShadow"
-              result="shape"
-            />
-          </filter>
           <clipPath id="clip0">
             <rect
               width="7"
               height="12"
               fill="white"
-              transform="translate(19 9)"
+              transform="translate(16 9)"
             />
           </clipPath>
         </defs>

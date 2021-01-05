@@ -51,6 +51,7 @@ const Left: FunctionComponent = () => {
         viewBox="1 0 38 28"
       >
         <title id="go_back">Previous</title>
+        {/* <rect width="40" height="30" fill="#E5E5E5" /> */}
         <g id="left">
           <g id="circle">
             <path
@@ -73,7 +74,7 @@ const Left: FunctionComponent = () => {
                         fillRule="evenodd"
                         clipRule="evenodd"
                         d="M22.71 20.29C23.1 19.9 23.1 19.27 22.71 18.88L18.83 15L22.71 11.12C23.1 10.73 23.1 10.1 22.71 9.71C22.32 9.32 21.69 9.32 21.3 9.71L16.71 14.3C16.32 14.69 16.32 15.32 16.71 15.71L21.3 20.3C21.68 20.68 22.32 20.68 22.71 20.29Z"
-                        fill="#1D1D1D"
+                        fill="#D74B5C"
                       />
                     </g>
                   </g>
