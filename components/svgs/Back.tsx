@@ -16,7 +16,7 @@ const Back: FunctionComponent = () => {
       className="back"
       css={css`
         border: pink solid 1px;
-        flex-basis: 120px;
+        flex-basis: 48%;
         height: fit-content;
         flex-shrink: 2;
 
@@ -48,12 +48,12 @@ const Back: FunctionComponent = () => {
         lang="en"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
-        viewBox="0 0 80 38"
+        viewBox="0 0 680 38"
       >
         <title id="go_back">Previous</title>
-        <rect width="250" height="35" fill="#E5E5E5" />
+        {/* <rect width="250" height="35" fill="#E5E5E5" /> */}
         <g id="fish_left____">
-          <rect width="250" height="35" fill="white" />
+          {/* <rect width="250" height="35" fill="white" /> */}
           <g id="bone6" clipPath="url(#clip0)">
             <g id="Icons">
               <g id="Rounded">

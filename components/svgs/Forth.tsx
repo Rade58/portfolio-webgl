@@ -17,7 +17,7 @@ const Forth: FunctionComponent = () => {
       className="forth"
       css={css`
         border: pink solid 1px;
-        flex-basis: 120px;
+        flex-basis: 48%;
         height: fit-content;
         flex-shrink: 2;
 
@@ -49,18 +49,18 @@ const Forth: FunctionComponent = () => {
         lang="en"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
-        viewBox="0 0 80 38"
+        viewBox="0 0 680 38"
       >
         <title id="go_forward">Next</title>
-        <rect width="250" height="35" fill="#E5E5E5" />
+        {/* <rect width="250" height="35" fill="#E5E5E5" /> */}
         <g id="fish_right____">
-          <rect
+          {/* <rect
             width="250"
             height="35"
             transform="translate(250 35) rotate(-180)"
             fill="white"
-          />
-          <g id="bone6" clipPath="url(#clip0)">
+          /> */}
+          <g id="bone66" clipPath="url(#clip0)">
             <g id="Icons">
               <g id="Rounded">
                 <g id="Navigation">
@@ -79,7 +79,7 @@ const Forth: FunctionComponent = () => {
               </g>
             </g>
           </g>
-          <g id="bone5" clipPath="url(#clip1)">
+          <g id="bone55" clipPath="url(#clip1)">
             <g id="Icons_2">
               <g id="Rounded_2">
                 <g id="Navigation_2">
@@ -98,7 +98,7 @@ const Forth: FunctionComponent = () => {
               </g>
             </g>
           </g>
-          <g id="bone3">
+          <g id="bone33">
             <g id="Icons_3">
               <g id="Rounded_3">
                 <g id="Navigation_3">
@@ -117,7 +117,7 @@ const Forth: FunctionComponent = () => {
               </g>
             </g>
           </g>
-          <g id="bone2" clipPath="url(#clip2)">
+          <g id="bone22" clipPath="url(#clip2)">
             <g id="Icons_4">
               <g id="Rounded_4">
                 <g id="Navigation_4">
@@ -136,7 +136,7 @@ const Forth: FunctionComponent = () => {
               </g>
             </g>
           </g>
-          <g id="bone1" clipPath="url(#clip3)">
+          <g id="bone11" clipPath="url(#clip3)">
             <g id="Icons_5">
               <g id="Rounded_5">
                 <g id="Navigation_5">
