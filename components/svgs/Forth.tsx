@@ -20,6 +20,10 @@ const Forth: FunctionComponent = () => {
         flex-basis: 120px;
         height: fit-content;
         flex-shrink: 2;
+
+        & svg:hover {
+          outline: none;
+        }
       `}
     >
       <svg
@@ -27,6 +31,9 @@ const Forth: FunctionComponent = () => {
         onClick={() => {
           console.log("click forward");
           send({ type: EE.CLICK_FORTH });
+        }}
+        onMouseLeave={(e) => {
+          (e.target as HTMLElement).blur();
         }}
         onKeyDown={(e) => {
           if (e.key === "Enter") {

@@ -19,13 +19,20 @@ const Back: FunctionComponent = () => {
         flex-basis: 120px;
         height: fit-content;
         flex-shrink: 2;
+
+        & svg:hover {
+          outline: none;
+        }
       `}
     >
       <svg
         tabIndex={0}
-        onClick={() => {
+        onClick={(e) => {
           console.log("click back");
           send({ type: EE.CLICK_BACK });
+        }}
+        onMouseLeave={(e) => {
+          (e.target as HTMLElement).blur();
         }}
         onKeyDown={(e) => {
           if (e.key === "Enter") {
