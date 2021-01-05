@@ -73,7 +73,7 @@ const LoadedAnimations: FunctionComponent = () => {
     });
   }, []);
 
-  const effectFlowRef = useRef<number>(0);
+  /*  const effectFlowRef = useRef<number>(0);
 
   const wheelAllowedRef = useRef<boolean>(false);
 
@@ -129,7 +129,7 @@ const LoadedAnimations: FunctionComponent = () => {
       // if((e.touches[0].){}
     });
   }, [effectFlowRef]);
-
+ */
   return null;
 };
 

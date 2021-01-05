@@ -52,10 +52,10 @@ const ControlAnim: FunctionComponent = () => {
           bottom: 0;
           right: 0;
           width: 100vw;
-          height: 20vh;
+          height: fit-content;
           /* overflow-y: scroll; */
           display: flex;
-          justify-content: space-space-around;
+          justify-content: space-evenly;
           flex-wrap: wrap;
         `}
       >

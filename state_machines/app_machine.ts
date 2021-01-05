@@ -9,7 +9,7 @@ import {
 export enum fse {
   animation_active = "animation_active",
   idling = "idling",
-
+  modal_active = "modal_active",
   init = "init",
 }
 
@@ -18,6 +18,7 @@ export enum EE {
   CLICK_FORTH = "CLICK_FORTH",
   OBSERVER = "OBSERVER",
   INIT = "INIT",
+  CLOSE_MODAL = "CLOOSE_MODAL",
 }
 
 // -------------------------------------------------------------
@@ -41,6 +42,7 @@ export type machineEventGenericType =
       type: EE.CLICK_BACK;
     }
   | { type: EE.CLICK_FORTH }
+  | { type: EE.CLOSE_MODAL }
   | {
       type: EE.INIT;
       payload: {
@@ -68,6 +70,10 @@ export type machineFiniteStateGenericType =
     }
   | {
       value: fse.animation_active;
+      context: MachineContextGenericI;
+    }
+  | {
+      value: fse.modal_active;
       context: MachineContextGenericI;
     }
   | {
@@ -122,7 +128,6 @@ const appMachine = createMachine<
 
     states: {
       [fse.init]: {
-        entry: ["wheelAllowed"],
         on: {
           [EE.INIT]: {
             actions: [
@@ -145,21 +150,22 @@ const appMachine = createMachine<
 
             return canLoadControls;
           }, */
+            // target: fse.idling,
+          },
+          [EE.CLOSE_MODAL]: {
             target: fse.idling,
           },
         },
       },
       [fse.idling]: {
-        entry: ["wheelAllowed"],
         on: {
           [EE.CLICK_BACK]: {
             actions: [
               ({ backButton }, __) => {
                 backButton.dispatchEvent(new Event("click"));
               },
-              "wheelNotAllowed",
             ],
-            cond: "ifWheelAllowed",
+
             target: fse.animation_active,
           },
           [EE.CLICK_FORTH]: {
@@ -167,9 +173,8 @@ const appMachine = createMachine<
               ({ forwardButton }, __) => {
                 forwardButton.dispatchEvent(new Event("click"));
               },
-              "wheelNotAllowed",
             ],
-            cond: "ifWheelAllowed",
+
             target: fse.animation_active,
           },
         },

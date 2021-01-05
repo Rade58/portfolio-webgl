@@ -11,7 +11,7 @@ import { TweenMax, Power4 } from "gsap";
 
 import { useService } from "@xstate/react";
 
-import { appService } from "../state_machines/app_machine";
+import { appService, EE } from "../state_machines/app_machine";
 
 import PracticeSvgText from "./practice/svg_text_practice";
 
@@ -31,6 +31,8 @@ const StartingModal: FunctionComponent<{ imageData: string }> = ({
         TweenMax.to(modalRef.current, 1.78, {
           translateY: "218%",
           ease: Power4.easeIn,
+        }).then(() => {
+          send({ type: EE.CLOSE_MODAL });
         });
       }
     }
