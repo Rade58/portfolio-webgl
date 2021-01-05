@@ -212,7 +212,7 @@ export const appService = interpret(appMachine);
 appService.onTransition((state, event) => {
   console.log(" ------------------------------------- ");
   console.log(state.value);
-  // console.log(state.context);
+  console.log(state.context);
 });
 
 appService.start();
