@@ -16,7 +16,12 @@ const Forth: FunctionComponent = () => {
     <div
       role="button"
       tabIndex={0}
-      onClick={() => {
+      onClick={(e) => {
+        console.log(e.clientX, e.clientY);
+        console.log(
+          (e.target as HTMLElement).offsetLeft,
+          (e.target as HTMLElement).offsetLeft
+        );
         console.log("click forward");
         send({ type: EE.CLICK_FORTH });
       }}
@@ -31,7 +36,8 @@ const Forth: FunctionComponent = () => {
       className="forth"
       css={css`
         border: pink solid 1px;
-        flex-basis: 48%;
+        flex-basis: 400px;
+        flex-grow: 1;
         height: fit-content;
         flex-shrink: 2;
         position: relative;
@@ -48,6 +54,11 @@ const Forth: FunctionComponent = () => {
 
         &:hover {
           outline: none;
+        }
+
+        & svg {
+          width: 100%;
+          height: 60px;
         }
       `}
     >

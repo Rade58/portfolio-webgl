@@ -30,7 +30,8 @@ const Back: FunctionComponent = () => {
       }}
       css={css`
         border: pink solid 1px;
-        flex-basis: 48%;
+        flex-basis: 400px;
+        flex-grow: 1;
         height: fit-content;
         flex-shrink: 2;
         position: relative;
@@ -48,11 +49,16 @@ const Back: FunctionComponent = () => {
         &:hover {
           outline: none;
         }
+
+        & svg {
+          width: 100%;
+          height: 60px;
+        }
       `}
     >
       <svg
         /* NO NEED FOR px ON width AND height */
-        width="100%"
+        // width="100%"
         // height="120"
         aria-labelledby="go_back"
         id="svg1"
@@ -60,7 +66,7 @@ const Back: FunctionComponent = () => {
         lang="en"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
-        viewBox="-254 0 520 28"
+        viewBox="-254 0 514 28"
       >
         <title id="go_back">Previous</title>
         {/* <rect width="250" height="35" fill="#E5E5E5" /> */}
