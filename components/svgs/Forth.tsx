@@ -52,8 +52,9 @@ const Forth: FunctionComponent = () => {
         viewBox="0 0 80 38"
       >
         <title id="go_forward">Next</title>
-        <g id="Frame 2">
-          <g id="20942180181556280998 7" clipPath="url(#clip0)">
+        <g id="fish_right">
+          <rect width="74" height="37" fill="white" />
+          <g id="bone6" clipPath="url(#clip0)">
             <g id="Icons">
               <g id="Rounded">
                 <g id="Navigation">
@@ -61,10 +62,10 @@ const Forth: FunctionComponent = () => {
                     <g id="Group">
                       <path
                         id="&#240;&#159;&#148;&#185; Icon Color"
-                        fillRule="evenodd"
+                        fillrule="evenodd"
                         clipRule="evenodd"
-                        d="M5.70428 10.1833C4.75714 10.8333 4.75714 11.8833 5.70428 12.5333L15.1271 19L5.70428 25.4667C4.75714 26.1167 4.75714 27.1667 5.70428 27.8167C6.65143 28.4667 8.18143 28.4667 9.12857 27.8167L20.2757 20.1667C21.2229 19.5167 21.2229 18.4667 20.2757 17.8167L9.12857 10.1667C8.20571 9.53334 6.65143 9.53334 5.70428 10.1833Z"
-                        fill="#7B6262"
+                        d="M6.70428 9.18334C5.75714 9.83334 5.75714 10.8833 6.70428 11.5333L16.1271 18L6.70428 24.4667C5.75714 25.1167 5.75714 26.1667 6.70428 26.8167C7.65143 27.4667 9.18143 27.4667 10.1286 26.8167L21.2757 19.1667C22.2229 18.5167 22.2229 17.4667 21.2757 16.8167L10.1286 9.16667C9.20571 8.53334 7.65143 8.53334 6.70428 9.18334Z"
+                        fill="#D74B5C"
                       />
                     </g>
                   </g>
@@ -72,7 +73,7 @@ const Forth: FunctionComponent = () => {
               </g>
             </g>
           </g>
-          <g id="20942180181556280998 13" clipPath="url(#clip1)">
+          <g id="bone5" clipPath="url(#clip1)">
             <g id="Icons_2">
               <g id="Rounded_2">
                 <g id="Navigation_2">
@@ -80,10 +81,10 @@ const Forth: FunctionComponent = () => {
                     <g id="Group_2">
                       <path
                         id="&#240;&#159;&#148;&#185; Icon Color_2"
-                        fillRule="evenodd"
+                        fillrule="evenodd"
                         clipRule="evenodd"
-                        d="M44.7043 10.1833C43.7571 10.8333 43.7571 11.8833 44.7043 12.5333L54.1271 19L44.7043 25.4667C43.7571 26.1167 43.7571 27.1667 44.7043 27.8167C45.6514 28.4667 47.1814 28.4667 48.1286 27.8167L59.2757 20.1667C60.2229 19.5167 60.2229 18.4667 59.2757 17.8167L48.1286 10.1667C47.2057 9.53334 45.6514 9.53334 44.7043 10.1833Z"
-                        fill="#B05B5B"
+                        d="M23.4143 12.7692C22.8571 13.1917 22.8571 13.8742 23.4143 14.2967L28.9571 18.5L23.4143 22.7033C22.8571 23.1258 22.8571 23.8083 23.4143 24.2308C23.9714 24.6533 24.8714 24.6533 25.4286 24.2308L31.9857 19.2583C32.5429 18.8358 32.5429 18.1533 31.9857 17.7308L25.4286 12.7583C24.8857 12.3467 23.9714 12.3467 23.4143 12.7692Z"
+                        fill="#1D1D1D"
                       />
                     </g>
                   </g>
@@ -91,7 +92,7 @@ const Forth: FunctionComponent = () => {
               </g>
             </g>
           </g>
-          <g id="20942180181556280998 8" clipPath="url(#clip2)">
+          <g id="bone4" clipPath="url(#clip2)">
             <g id="Icons_3">
               <g id="Rounded_3">
                 <g id="Navigation_3">
@@ -99,10 +100,10 @@ const Forth: FunctionComponent = () => {
                     <g id="Group_3">
                       <path
                         id="&#240;&#159;&#148;&#185; Icon Color_3"
-                        fillRule="evenodd"
+                        fillrule="evenodd"
                         clipRule="evenodd"
-                        d="M22.4143 13.7692C21.8571 14.1917 21.8571 14.8742 22.4143 15.2967L27.9571 19.5L22.4143 23.7033C21.8571 24.1258 21.8571 24.8083 22.4143 25.2308C22.9714 25.6533 23.8714 25.6533 24.4286 25.2308L30.9857 20.2583C31.5429 19.8358 31.5429 19.1533 30.9857 18.7308L24.4286 13.7583C23.8857 13.3467 22.9714 13.3467 22.4143 13.7692Z"
-                        fill="#1D1D1D"
+                        d="M33.29 14.5325C32.9 14.825 32.9 15.2975 33.29 15.59L37.17 18.5L33.29 21.41C32.9 21.7025 32.9 22.175 33.29 22.4675C33.68 22.76 34.31 22.76 34.7 22.4675L39.29 19.025C39.68 18.7325 39.68 18.26 39.29 17.9675L34.7 14.525C34.32 14.24 33.68 14.24 33.29 14.5325Z"
+                        fill="#D74B5C"
                       />
                     </g>
                   </g>
@@ -110,7 +111,7 @@ const Forth: FunctionComponent = () => {
               </g>
             </g>
           </g>
-          <g id="20942180181556280998 9" clipPath="url(#clip3)">
+          <g id="bone3" clipPath="url(#clip3)">
             <g id="Icons_4">
               <g id="Rounded_4">
                 <g id="Navigation_4">
@@ -118,9 +119,9 @@ const Forth: FunctionComponent = () => {
                     <g id="Group_4">
                       <path
                         id="&#240;&#159;&#148;&#185; Icon Color_4"
-                        fillRule="evenodd"
+                        fillrule="evenodd"
                         clipRule="evenodd"
-                        d="M32.29 15.5325C31.9 15.825 31.9 16.2975 32.29 16.59L36.17 19.5L32.29 22.41C31.9 22.7025 31.9 23.175 32.29 23.4675C32.68 23.76 33.31 23.76 33.7 23.4675L38.29 20.025C38.68 19.7325 38.68 19.26 38.29 18.9675L33.7 15.525C33.32 15.24 32.68 15.24 32.29 15.5325Z"
+                        d="M40.2071 15.355C39.9286 15.55 39.9286 15.865 40.2071 16.06L42.9786 18L40.2071 19.94C39.9286 20.135 39.9286 20.45 40.2071 20.645C40.4857 20.84 40.9357 20.84 41.2143 20.645L44.4929 18.35C44.7714 18.155 44.7714 17.84 44.4929 17.645L41.2143 15.35C40.9429 15.16 40.4857 15.16 40.2071 15.355Z"
                         fill="#1D1D1D"
                       />
                     </g>
@@ -129,7 +130,7 @@ const Forth: FunctionComponent = () => {
               </g>
             </g>
           </g>
-          <g id="20942180181556280998 10" clipPath="url(#clip4)">
+          <g id="bone2" clipPath="url(#clip4)">
             <g id="Icons_5">
               <g id="Rounded_5">
                 <g id="Navigation_5">
@@ -137,10 +138,10 @@ const Forth: FunctionComponent = () => {
                     <g id="Group_5">
                       <path
                         id="&#240;&#159;&#148;&#185; Icon Color_5"
-                        fillRule="evenodd"
+                        fillrule="evenodd"
                         clipRule="evenodd"
-                        d="M39.2071 16.355C38.9286 16.55 38.9286 16.865 39.2071 17.06L41.9786 19L39.2071 20.94C38.9286 21.135 38.9286 21.45 39.2071 21.645C39.4857 21.84 39.9357 21.84 40.2143 21.645L43.4929 19.35C43.7714 19.155 43.7714 18.84 43.4929 18.645L40.2143 16.35C39.9429 16.16 39.4857 16.16 39.2071 16.355Z"
-                        fill="#1D1D1D"
+                        d="M45.1657 16.2367C44.9429 16.3667 44.9429 16.5767 45.1657 16.7067L47.3829 18L45.1657 19.2933C44.9429 19.4233 44.9429 19.6333 45.1657 19.7633C45.3886 19.8933 45.7486 19.8933 45.9714 19.7633L48.5943 18.2333C48.8171 18.1033 48.8171 17.8933 48.5943 17.7633L45.9714 16.2333C45.7543 16.1067 45.3886 16.1067 45.1657 16.2367Z"
+                        fill="#D74B5C"
                       />
                     </g>
                   </g>
@@ -148,7 +149,7 @@ const Forth: FunctionComponent = () => {
               </g>
             </g>
           </g>
-          <g id="20942180181556280998 11" clipPath="url(#clip5)">
+          <g id="bone1" clipPath="url(#clip5)">
             <g id="Icons_6">
               <g id="Rounded_6">
                 <g id="Navigation_6">
@@ -156,9 +157,9 @@ const Forth: FunctionComponent = () => {
                     <g id="Group_6">
                       <path
                         id="&#240;&#159;&#148;&#185; Icon Color_6"
-                        fillRule="evenodd"
+                        fillrule="evenodd"
                         clipRule="evenodd"
-                        d="M44.1657 17.2367C43.9429 17.3667 43.9429 17.5767 44.1657 17.7067L46.3829 19L44.1657 20.2933C43.9429 20.4233 43.9429 20.6333 44.1657 20.7633C44.3886 20.8933 44.7486 20.8933 44.9714 20.7633L47.5943 19.2333C47.8171 19.1033 47.8171 18.8933 47.5943 18.7633L44.9714 17.2333C44.7543 17.1067 44.3886 17.1067 44.1657 17.2367Z"
+                        d="M45.9932 9.18334C44.6561 9.83334 44.6561 10.8833 45.9932 11.5333L59.2961 18L45.9932 24.4667C44.6561 25.1167 44.6561 26.1667 45.9932 26.8167C47.3304 27.4667 49.4904 27.4667 50.8275 26.8167L66.5646 19.1667C67.9018 18.5167 67.9018 17.4667 66.5646 16.8167L50.8275 9.16667C49.5246 8.53334 47.3304 8.53334 45.9932 9.18334Z"
                         fill="#1D1D1D"
                       />
                     </g>
@@ -174,47 +175,47 @@ const Forth: FunctionComponent = () => {
               width="17"
               height="20"
               fill="white"
-              transform="translate(5 9)"
+              transform="translate(6 8)"
             />
           </clipPath>
           <clipPath id="clip1">
             <rect
-              width="17"
-              height="20"
+              width="10"
+              height="13"
               fill="white"
-              transform="translate(44 9)"
+              transform="translate(23 12)"
             />
           </clipPath>
           <clipPath id="clip2">
             <rect
-              width="10"
-              height="13"
+              width="7"
+              height="9"
               fill="white"
-              transform="translate(22 13)"
+              transform="translate(33 14)"
             />
           </clipPath>
           <clipPath id="clip3">
             <rect
-              width="7"
-              height="9"
+              width="5"
+              height="6"
               fill="white"
-              transform="translate(32 15)"
+              transform="translate(40 15)"
             />
           </clipPath>
           <clipPath id="clip4">
             <rect
-              width="5"
-              height="6"
+              width="4"
+              height="4"
               fill="white"
-              transform="translate(39 16)"
+              transform="translate(45 16)"
             />
           </clipPath>
           <clipPath id="clip5">
             <rect
-              width="4"
-              height="4"
+              width="24"
+              height="20"
               fill="white"
-              transform="translate(44 17)"
+              transform="translate(45 8)"
             />
           </clipPath>
         </defs>
