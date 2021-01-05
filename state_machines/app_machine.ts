@@ -159,6 +159,7 @@ const appMachine = createMachine<
               },
               "wheelNotAllowed",
             ],
+            cond: "ifWheelAllowed",
             target: fse.animation_active,
           },
           [EE.CLICK_FORTH]: {
@@ -168,6 +169,7 @@ const appMachine = createMachine<
               },
               "wheelNotAllowed",
             ],
+            cond: "ifWheelAllowed",
             target: fse.animation_active,
           },
         },
@@ -191,6 +193,11 @@ const appMachine = createMachine<
       wheelNotAllowed: assign((_, __) => {
         return { wheelAllowed: false };
       }),
+    },
+    guards: {
+      ifWheelAllowed: ({ wheelAllowed }, __) => {
+        return wheelAllowed;
+      },
     },
   }
 );

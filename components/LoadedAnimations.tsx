@@ -116,11 +116,11 @@ const LoadedAnimations: FunctionComponent = () => {
       }
 
       if (wheelAllowedRef.current) {
-        if (e.deltaY > 60) {
-          send({ type: EE.CLICK_BACK });
-        } else if (e.deltaY < -60) {
-          send({ type: EE.CLICK_FORTH });
-        }
+        // if (e.deltaY > 60) {
+        send({ type: EE.CLICK_BACK });
+        // } else if (e.deltaY < -60) {
+        send({ type: EE.CLICK_FORTH });
+        // }
         // setEventSendingAllowed(false);
       }
     });
@@ -128,7 +128,7 @@ const LoadedAnimations: FunctionComponent = () => {
     document.body.addEventListener("touchmove", (e) => {
       // if((e.touches[0].){}
     });
-  }, [effectFlowRef, wheelAllowedRef]);
+  }, [effectFlowRef]);
 
   return null;
 };
