@@ -17,6 +17,7 @@ import { useService } from "@xstate/react";
 import { EE, appService } from "../state_machines/app_machine";
 
 import Left from "./svgs/Left";
+import Right from "./svgs/Right";
 import Back from "./svgs/Back";
 import Forth from "./svgs/Forth";
 import MiddleText from "./svgs/MiddleText";
@@ -60,10 +61,11 @@ const ControlAnim: FunctionComponent = () => {
           flex-wrap: wrap;
         `}
       >
-        <Left />
-        {/* <Back /> */}
+        {state && state.value && state.value === "init" ? <Left /> : <Back />}
+
         <MiddleText />
-        <Forth />
+
+        {state && state.value && state.value === "init" ? <Right /> : <Forth />}
       </section>
     </div>
   );
