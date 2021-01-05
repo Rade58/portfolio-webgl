@@ -14,31 +14,43 @@ const Back: FunctionComponent = () => {
   return (
     <div
       className="back"
+      role="button"
+      tabIndex={0}
+      onClick={(e) => {
+        console.log("click back");
+        send({ type: EE.CLICK_BACK });
+      }}
+      onMouseLeave={(e) => {
+        (e.target as HTMLElement).blur();
+      }}
+      onKeyDown={(e) => {
+        if (e.key === "Enter") {
+          send({ type: EE.CLICK_BACK });
+        }
+      }}
       css={css`
         border: pink solid 1px;
         flex-basis: 48%;
         height: fit-content;
         flex-shrink: 2;
+        position: relative;
+        &::after {
+          cursor: pointer;
+          position: absolute;
+          height: 100%;
+          width: 108px;
+          /* top: 0; */
+          right: 0;
+          content: "";
+          /* border: pink solid 1px; */
+        }
 
-        & svg:hover {
+        &:hover {
           outline: none;
         }
       `}
     >
       <svg
-        tabIndex={0}
-        onClick={(e) => {
-          console.log("click back");
-          send({ type: EE.CLICK_BACK });
-        }}
-        onMouseLeave={(e) => {
-          (e.target as HTMLElement).blur();
-        }}
-        onKeyDown={(e) => {
-          if (e.key === "Enter") {
-            send({ type: EE.CLICK_BACK });
-          }
-        }}
         /* NO NEED FOR px ON width AND height */
         width="100%"
         // height="120"
