@@ -48,12 +48,11 @@ const Left: FunctionComponent = () => {
         lang="en"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
-        viewBox="0 0 80 38"
+        viewBox="1 0 38 28"
       >
         <title id="go_back">Previous</title>
         <g id="left">
-          <rect width="40" height="30" fill="white" />
-          <g id="circle" filter="url(#filter0_d)">
+          <g id="circle">
             <path
               id="Vector"
               d="M20 5C14.4772 5 10 9.47715 10 15C10 20.5228 14.4772 25 20 25C25.5228 25 30 20.5228 30 15C30 9.47715 25.5228 5 20 5Z"
@@ -63,7 +62,7 @@ const Left: FunctionComponent = () => {
               strokeLinejoin="round"
             />
           </g>
-          <g id="arr-left" clipPath="url(#clip0)" filter="url(#filter1_d)">
+          <g id="arr-left" clipPath="url(#clip0)">
             <g id="Icons">
               <g id="Rounded">
                 <g id="Navigation">
@@ -84,72 +83,6 @@ const Left: FunctionComponent = () => {
           </g>
         </g>
         <defs>
-          <filter
-            id="filter0_d"
-            x="8"
-            y="3"
-            width="26"
-            height="26"
-            filterUnits="userSpaceOnUse"
-            colorInterpolationFilters="sRGB"
-          >
-            <feFlood floodOpacity="0" result="BackgroundImageFix" />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-            />
-            <feOffset dx="1" dy="1" />
-            <feGaussianBlur stdDeviation="0.5" />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.14 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="BackgroundImageFix"
-              result="effect1_dropShadow"
-            />
-            <feBlend
-              mode="normal"
-              in="SourceGraphic"
-              in2="effect1_dropShadow"
-              result="shape"
-            />
-          </filter>
-          <filter
-            id="filter1_d"
-            x="14"
-            y="9"
-            width="9"
-            height="14"
-            filterUnits="userSpaceOnUse"
-            colorInterpolationFilters="sRGB"
-          >
-            <feFlood floodOpacity="0" result="BackgroundImageFix" />
-            <feColorMatrix
-              in="SourceAlpha"
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"
-            />
-            <feOffset dx="-1" dy="1" />
-            <feGaussianBlur stdDeviation="0.5" />
-            <feColorMatrix
-              type="matrix"
-              values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.14 0"
-            />
-            <feBlend
-              mode="normal"
-              in2="BackgroundImageFix"
-              result="effect1_dropShadow"
-            />
-            <feBlend
-              mode="normal"
-              in="SourceGraphic"
-              in2="effect1_dropShadow"
-              result="shape"
-            />
-          </filter>
           <clipPath id="clip0">
             <rect
               width="7"
