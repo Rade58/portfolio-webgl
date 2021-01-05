@@ -52,7 +52,7 @@ const Back: FunctionComponent = () => {
       >
         <title id="go_back">Previous</title>
         <g id="fish_left">
-          <rect width="72" height="35" fill="white" />
+          {/* <rect width="72" height="35" fill="white" /> */}
           <g id="bone6" clipPath="url(#clip0)">
             <g id="Icons">
               <g id="Rounded">
