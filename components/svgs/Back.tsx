@@ -43,12 +43,12 @@ const Back: FunctionComponent = () => {
         width="100%"
         // height="120"
         aria-labelledby="go_back"
-        id="svg"
+        id="svg1"
         role="button" /*"presentation"*/ /* or role="imge"*/
         lang="en"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
-        viewBox="0 0 680 38"
+        viewBox="-254 0 520 28"
       >
         <title id="go_back">Previous</title>
         {/* <rect width="250" height="35" fill="#E5E5E5" /> */}

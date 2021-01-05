@@ -44,28 +44,28 @@ const Forth: FunctionComponent = () => {
         width="100%"
         // height="120"
         aria-labelledby="go_forward"
-        id="svg"
+        id="svg2"
         role="button" /*"presentation"*/ /* or role="imge"*/
         lang="en"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
-        viewBox="0 0 680 38"
+        viewBox="0 0 520 28"
       >
         <title id="go_forward">Next</title>
-        <rect width="250" height="35" fill="#E5E5E5" />
+        {/* <rect width="250" height="35" fill="#E5E5E5" /> */}
         <g id="fish_right">
-          <rect width="250" height="35" fill="white" />
-          <g id="b6" clipPath="url(#clip0)">
-            <g id="Icons">
-              <g id="Rounded">
-                <g id="Navigation">
-                  <g id="Round / Navigation / chevron right">
+          {/* <rect width="250" height="35" fill="white" /> */}
+          <g id="b6" clipPath="url(#cl0)">
+            <g id="i">
+              <g id="__Rounded">
+                <g id="_Navigation">
+                  <g id="ro / nav / chevron_1 ri">
                     <g id="Group">
                       <path
                         id="&#240;&#159;&#148;&#185; Icon Color"
                         fillRule="evenodd"
                         clipRule="evenodd"
-                        d="M16.87 7.36083C15.7 8.10834 15.7 9.31583 16.87 10.0633L28.51 17.5L16.87 24.9367C15.7 25.6842 15.7 26.8917 16.87 27.6392C18.04 28.3867 19.93 28.3867 21.1 27.6392L34.87 18.8417C36.04 18.0942 36.04 16.8867 34.87 16.1392L21.1 7.34167C19.96 6.61333 18.04 6.61333 16.87 7.36083Z"
+                        d="M16.87 7.36083C15.7 8.10833 15.7 9.31583 16.87 10.0633L28.51 17.5L16.87 24.9367C15.7 25.6842 15.7 26.8917 16.87 27.6392C18.04 28.3867 19.93 28.3867 21.1 27.6392L34.87 18.8417C36.04 18.0942 36.04 16.8867 34.87 16.1392L21.1 7.34166C19.96 6.61333 18.04 6.61333 16.87 7.36083Z"
                         fill="#F0153C"
                       />
                     </g>
@@ -74,11 +74,11 @@ const Forth: FunctionComponent = () => {
               </g>
             </g>
           </g>
-          <g id="b5" clipPath="url(#clip1)">
-            <g id="Icons_2">
-              <g id="Rounded_2">
-                <g id="Navigation_2">
-                  <g id="Round / Navigation / chevron right_2">
+          <g id="b5" clipPath="url(#cl1)">
+            <g id="i_2">
+              <g id="__Rounded_2">
+                <g id="_Navigation_2">
+                  <g id="ro / nav / chevron ri_2">
                     <g id="Group_2">
                       <path
                         id="&#240;&#159;&#148;&#185; Icon Color_2"
@@ -93,11 +93,11 @@ const Forth: FunctionComponent = () => {
               </g>
             </g>
           </g>
-          <g id="b4" clipPath="url(#clip2)">
-            <g id="Icons_3">
-              <g id="Rounded_3">
-                <g id="Navigation_3">
-                  <g id="Round / Navigation / chevron right_3">
+          <g id="b4" clipPath="url(#cl2)">
+            <g id="i_3">
+              <g id="__Rounded_3">
+                <g id="_Navigation_3">
+                  <g id="ro / nav / chevron ri_3">
                     <g id="Group_3">
                       <path
                         id="&#240;&#159;&#148;&#185; Icon Color_3"
@@ -112,11 +112,11 @@ const Forth: FunctionComponent = () => {
               </g>
             </g>
           </g>
-          <g id="b3" clipPath="url(#clip3)">
-            <g id="Icons_4">
-              <g id="Rounded_4">
-                <g id="Navigation_4">
-                  <g id="Round / Navigation / chevron right_4">
+          <g id="b3" clipPath="url(#cl3)">
+            <g id="i_4">
+              <g id="__Rounded_4">
+                <g id="_Navigation_4">
+                  <g id="ro / nav / chevron ri_4">
                     <g id="Group_4">
                       <path
                         id="&#240;&#159;&#148;&#185; Icon Color_4"
@@ -131,11 +131,11 @@ const Forth: FunctionComponent = () => {
               </g>
             </g>
           </g>
-          <g id="b2" clipPath="url(#clip4)">
-            <g id="Icons_5">
-              <g id="Rounded_5">
-                <g id="Navigation_5">
-                  <g id="Round / Navigation / chevron right_5">
+          <g id="b2" clipPath="url(#cl4)">
+            <g id="i_5">
+              <g id="__Rounded_5">
+                <g id="_Navigation_5">
+                  <g id="ro / nav / chevron ri_5">
                     <g id="Group_5">
                       <path
                         id="&#240;&#159;&#148;&#185; Icon Color_5"
@@ -150,17 +150,17 @@ const Forth: FunctionComponent = () => {
               </g>
             </g>
           </g>
-          <g id="b1" clipPath="url(#clip5)">
-            <g id="Icons_6">
-              <g id="Rounded_6">
-                <g id="Navigation_6">
-                  <g id="Round / Navigation / chevron right_6">
+          <g id="b1" clipPath="url(#cl5)">
+            <g id="i_6">
+              <g id="__Rounded_6">
+                <g id="_Navigation_6">
+                  <g id="ro / nav / chevron ri_6">
                     <g id="Group_6">
                       <path
                         id="&#240;&#159;&#148;&#185; Icon Color_6"
                         fillRule="evenodd"
                         clipRule="evenodd"
-                        d="M75.9114 8.30166C74.6857 9.01666 74.6857 10.1717 75.9114 10.8867L88.1057 18L75.9114 25.1133C74.6857 25.8283 74.6857 26.9833 75.9114 27.6983C77.1371 28.4133 79.1171 28.4133 80.3428 27.6983L94.7686 19.2833C95.9943 18.5683 95.9943 17.4133 94.7686 16.6983L80.3428 8.28332C79.1486 7.58666 77.1371 7.58666 75.9114 8.30166Z"
+                        d="M75.9114 8.30167C74.6857 9.01667 74.6857 10.1717 75.9114 10.8867L88.1057 18L75.9114 25.1133C74.6857 25.8283 74.6857 26.9833 75.9114 27.6983C77.1371 28.4133 79.1171 28.4133 80.3429 27.6983L94.7686 19.2833C95.9943 18.5683 95.9943 17.4133 94.7686 16.6983L80.3429 8.28334C79.1486 7.58667 77.1371 7.58667 75.9114 8.30167Z"
                         fill="black"
                       />
                     </g>
@@ -171,7 +171,7 @@ const Forth: FunctionComponent = () => {
           </g>
         </g>
         <defs>
-          <clipPath id="clip0">
+          <clipPath id="cl0">
             <rect
               width="21"
               height="23"
@@ -179,7 +179,7 @@ const Forth: FunctionComponent = () => {
               transform="translate(16 6)"
             />
           </clipPath>
-          <clipPath id="clip1">
+          <clipPath id="cl1">
             <rect
               width="13"
               height="14"
@@ -187,7 +187,7 @@ const Forth: FunctionComponent = () => {
               transform="translate(37 11)"
             />
           </clipPath>
-          <clipPath id="clip2">
+          <clipPath id="cl2">
             <rect
               width="10"
               height="11"
@@ -195,7 +195,7 @@ const Forth: FunctionComponent = () => {
               transform="translate(52 13)"
             />
           </clipPath>
-          <clipPath id="clip3">
+          <clipPath id="cl3">
             <rect
               width="7"
               height="8"
@@ -203,7 +203,7 @@ const Forth: FunctionComponent = () => {
               transform="translate(63 14)"
             />
           </clipPath>
-          <clipPath id="clip4">
+          <clipPath id="cl4">
             <rect
               width="5"
               height="6"
@@ -211,7 +211,7 @@ const Forth: FunctionComponent = () => {
               transform="translate(71 15)"
             />
           </clipPath>
-          <clipPath id="clip5">
+          <clipPath id="cl5">
             <rect
               width="22"
               height="22"

@@ -68,9 +68,8 @@ const ControlAnim: FunctionComponent = () => {
       >
         {currentAnimeMachineMajorState === "undefined" ? <Left /> : <Back />}
 
-        <MiddleText />
-
         {currentAnimeMachineMajorState === "undefined" ? <Right /> : <Forth />}
+        <MiddleText />
       </section>
     </div>
   );
