@@ -24,6 +24,10 @@ export enum EE {
 // -------------------------------------------------------------
 
 export interface MachineContextGenericI {
+  leftB: HTMLDivElement | null;
+  rightB: HTMLDivElement | null;
+  backwards: HTMLDivElement | null;
+  forwards: HTMLDivElement | null;
   wheelAllowed: boolean;
   currentAnimeMachineFinitestate: animeFse | undefined;
   currentAnimeMachineMajorState:
@@ -94,6 +98,10 @@ const appMachine = createMachine<
     id: "app_machine",
     initial: fse.init,
     context: {
+      backwards: null,
+      forwards: null,
+      leftB: null,
+      rightB: null,
       wheelAllowed: false,
       majorStateHolder: null,
       currentAnimeMachineFinitestate: null,
