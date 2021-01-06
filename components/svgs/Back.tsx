@@ -11,7 +11,7 @@ import { appService, EE } from "../../state_machines/app_machine";
 const Back: FunctionComponent = () => {
   const [state, send] = useService(appService);
 
-  const backSvgRef = useRef<HTMLElement>(null);
+  const backSvgRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (backSvgRef.current) {
@@ -70,11 +70,9 @@ const Back: FunctionComponent = () => {
           height: 60px;
         }
       `}
+      ref={backSvgRef}
     >
       <svg
-        // eslint-disable-next-line
-        // @ts-ignore
-        ref={backSvgRef}
         /* NO NEED FOR px ON width AND height */
         // width="100%"
         // height="120"

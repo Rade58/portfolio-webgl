@@ -177,8 +177,8 @@ const appMachine = createMachine<
                 return payload;
               }),
             ],
-            cond: "ifSvgsAreHere",
-            target: fse.idling,
+            // cond: "ifSvgsAreHere",
+            // target: fse.idling,
           },
 
           [EE.CLOSE_MODAL]: {

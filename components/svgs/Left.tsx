@@ -11,7 +11,7 @@ import { appService, EE } from "../../state_machines/app_machine";
 const Left: FunctionComponent = () => {
   const [state, send] = useService(appService);
 
-  const leftSvgRef = useRef<HTMLElement>(null);
+  const leftSvgRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (leftSvgRef.current) {
@@ -37,11 +37,9 @@ const Left: FunctionComponent = () => {
           outline: none;
         }
       `}
+      ref={leftSvgRef}
     >
       <svg
-        // eslint-disable-next-line
-        // @ts-ignore
-        ref={leftSvgRef}
         tabIndex={0}
         onClick={(e) => {
           console.log("click back");
