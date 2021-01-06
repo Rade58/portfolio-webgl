@@ -58,6 +58,7 @@ const Forth: FunctionComponent = () => {
 
         & svg {
           position: absolute;
+          left: 0;
           width: 598px;
           height: 60px;
         }
