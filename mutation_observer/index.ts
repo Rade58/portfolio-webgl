@@ -6,6 +6,9 @@ export const majorStateHolder = document.querySelector(
   "div.major_state_holder"
 ) as HTMLDivElement;
 
+let state1: fseanim;
+let state2: fseanim;
+
 const animationMachineObserver = new MutationObserver(
   (mutationList, observer) => {
     console.log("mutations");
@@ -15,21 +18,30 @@ const animationMachineObserver = new MutationObserver(
       if (mutation.type === "attributes") {
         // TREBALO BI DA HANDLE-UJEM D NEMA SLANJE EVENT-OVA AKO JE U PITNJU ISTI STATE
         // KAO I RANIJE
-        appService.send({
-          type: EE.OBSERVER,
-          payload: {
-            currentAnimeMachineFinitestate: /* (mutation.target as HTMLDivElement)
-                        .dataset.finiteState */ majorStateHolder
-              .dataset.finiteState as fseanim,
-            currentAnimeMachineMajorState: /* (mutation.target as HTMLDivElement)
-                        .dataset.majorState */ majorStateHolder
-              .dataset.majorState as fseanim,
-            canLoadControls:
-              majorStateHolder.dataset.firstRenderHappened === "happened"
-                ? true
-                : false,
-          },
-        });
+
+        if (
+          state1 !== (majorStateHolder.dataset.finiteState as fseanim) &&
+          state2 !== (majorStateHolder.dataset.majorState as fseanim)
+        ) {
+          appService.send({
+            type: EE.OBSERVER,
+            payload: {
+              currentAnimeMachineFinitestate: /* (mutation.target as HTMLDivElement)
+              .dataset.finiteState */ majorStateHolder
+                .dataset.finiteState as fseanim,
+              currentAnimeMachineMajorState: /* (mutation.target as HTMLDivElement)
+            .dataset.majorState */ majorStateHolder
+                .dataset.majorState as fseanim,
+              canLoadControls:
+                majorStateHolder.dataset.firstRenderHappened === "happened"
+                  ? true
+                  : false,
+            },
+          });
+
+          state1 = majorStateHolder.dataset.finiteState as fseanim;
+          state2 = majorStateHolder.dataset.majorState as fseanim;
+        }
       }
     }
   }
