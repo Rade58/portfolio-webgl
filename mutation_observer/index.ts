@@ -13,6 +13,8 @@ const animationMachineObserver = new MutationObserver(
     for (const mutation of mutationList) {
       // debugger;
       if (mutation.type === "attributes") {
+        // TREBALO BI DA HANDLE-UJEM D NEMA SLANJE EVENT-OVA AKO JE U PITNJU ISTI STATE
+        // KAO I RANIJE
         appService.send({
           type: EE.OBSERVER,
           payload: {
