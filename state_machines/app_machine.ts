@@ -220,9 +220,13 @@ const appMachine = createMachine<
 
             target: fse.animation_active,
           },
+          // TREBALLO BI DA DEFINISEM ANIMACIJE KOJE SE DOGADJAJU
+          // SAMO U ODNOSU NA STATE IZ ANIME MACHINE-A
         },
       },
       [fse.animation_active]: {
+        // POSMATRAJ STATE-OVE KOJE DOLAZE OD ANIME MACHINE
+        // JER NA OVO NE MOGU OBRACATI PAZNJU
         entry: ["wheelNotAllowed"],
         always: {
           target: fse.idling,
@@ -234,16 +238,8 @@ const appMachine = createMachine<
             console.log("-------------------------------------");
             console.log("-------------------------------------");
             console.log("-------------------------------------");
-
-
-
-
-
-              */
-            // return !currentAnimeMachineFinitestate.startsWith("anim");
-            // return false;
-
-            return currentAnimeMachineFinitestate === "idle";
+ */
+            return !currentAnimeMachineFinitestate.startsWith("anim");
           },
         },
       },
