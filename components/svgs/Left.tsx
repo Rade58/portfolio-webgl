@@ -45,14 +45,28 @@ const Left: FunctionComponent = () => {
         tabIndex={0}
         onClick={(e) => {
           console.log("click back");
-          send({ type: EE.CLICK_BACK });
+          if (
+            (state &&
+              state.context &&
+              state.context.currentAnimeMachineMajorState === "idle") ||
+            state.context.currentAnimeMachineMajorState === "init"
+          ) {
+            send({ type: EE.CLICK_BACK });
+          }
         }}
         onMouseLeave={(e) => {
           (e.target as HTMLElement).blur();
         }}
         onKeyDown={(e) => {
           if (e.key === "Enter") {
-            send({ type: EE.CLICK_BACK });
+            if (
+              (state &&
+                state.context &&
+                state.context.currentAnimeMachineMajorState === "idle") ||
+              state.context.currentAnimeMachineMajorState === "init"
+            ) {
+              send({ type: EE.CLICK_BACK });
+            }
           }
         }}
         /* NO NEED FOR px ON width AND height */

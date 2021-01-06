@@ -46,14 +46,28 @@ const Right: FunctionComponent = () => {
         tabIndex={0}
         onClick={() => {
           console.log("click forward");
-          send({ type: EE.CLICK_FORTH });
+          if (
+            (state &&
+              state.context &&
+              state.context.currentAnimeMachineMajorState === "idle") ||
+            state.context.currentAnimeMachineMajorState === "init"
+          ) {
+            send({ type: EE.CLICK_FORTH });
+          }
         }}
         onMouseLeave={(e) => {
           (e.target as HTMLElement).blur();
         }}
         onKeyDown={(e) => {
           if (e.key === "Enter") {
-            send({ type: EE.CLICK_FORTH });
+            if (
+              (state &&
+                state.context &&
+                state.context.currentAnimeMachineMajorState === "idle") ||
+              state.context.currentAnimeMachineMajorState === "init"
+            ) {
+              send({ type: EE.CLICK_FORTH });
+            }
           }
         }}
         /* NO NEED FOR px ON width AND height */

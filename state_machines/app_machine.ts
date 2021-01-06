@@ -135,31 +135,6 @@ const appMachine = createMachine<
             } = event;
             // debugger;
 
-            if (
-              context.currentAnimeMachineFinitestate !==
-              currentAnimeMachineFinitestate
-            ) {
-              return { currentAnimeMachineFinitestate };
-            }
-
-            if (
-              context.currentAnimeMachineMajorState !==
-              currentAnimeMachineMajorState
-            ) {
-              return {
-                currentAnimeMachineMajorState,
-              };
-            }
-
-            if (
-              context.currentAnimeMachineMajorState ===
-                currentAnimeMachineMajorState &&
-              context.currentAnimeMachineFinitestate ===
-                currentAnimeMachineFinitestate
-            ) {
-              return { canLoadControls };
-            }
-
             return {
               currentAnimeMachineFinitestate,
               currentAnimeMachineMajorState,
