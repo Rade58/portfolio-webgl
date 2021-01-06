@@ -73,13 +73,13 @@ const LoadedAnimations: FunctionComponent = () => {
     });
   }, []);
 
-  /*  const effectFlowRef = useRef<number>(0);
+  // const effectFlowRef = useRef<number>(0);
 
-  const wheelAllowedRef = useRef<boolean>(false);
+  /* const wheelAllowedRef = useRef<boolean>(false);
 
   useEffect(() => {
     wheelAllowedRef.current = state.context.wheelAllowed;
-  }, [state.context]);
+  }, [state.context]); */
 
   useEffect(() => {
     console.log(window);
@@ -92,16 +92,16 @@ const LoadedAnimations: FunctionComponent = () => {
     document.body.addEventListener("wheel", (e) => {
       // console.log(state.value);
 
-      console.log({ wheelAllowed: wheelAllowedRef.current });
+      /* console.log({ wheelAllowed: wheelAllowedRef.current });
       console.log(e.deltaY, e.detail, e.movementY);
-      console.log("wheel");
+      console.log("wheel"); */
 
-      if (state.context && !wheelAllowedRef.current) {
+      /* if (state.context && !wheelAllowedRef.current) {
         e.preventDefault();
         return;
-      }
+      } */
 
-      if (
+      /* if (
         state.value &&
         state.value !== fse.idling &&
         state.value !== fse.init
@@ -113,23 +113,30 @@ const LoadedAnimations: FunctionComponent = () => {
       if (state.value === fse.animation_active) {
         e.preventDefault();
         return;
-      }
+      } */
 
-      if (wheelAllowedRef.current) {
-        // if (e.deltaY > 60) {
-        send({ type: EE.CLICK_BACK });
-        // } else if (e.deltaY < -60) {
-        send({ type: EE.CLICK_FORTH });
-        // }
-        // setEventSendingAllowed(false);
-      }
+      if (
+        state &&
+        state.context &&
+        state.context.currentAnimeMachineFinitestate &&
+        (state.context.currentAnimeMachineFinitestate === "init" ||
+          state.context.currentAnimeMachineFinitestate === "idle")
+      )
+        if (wheelAllowedRef.current) {
+          if (e.deltaY > 50) {
+            send({ type: EE.CLICK_BACK });
+          } else if (e.deltaY < -50) {
+            send({ type: EE.CLICK_FORTH });
+          }
+          // setEventSendingAllowed(false);
+        }
     });
 
     document.body.addEventListener("touchmove", (e) => {
       // if((e.touches[0].){}
     });
   }, [effectFlowRef]);
- */
+
   return null;
 };
 
