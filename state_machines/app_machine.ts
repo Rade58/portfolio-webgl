@@ -18,7 +18,7 @@ export enum EE {
   CLICK_FORTH = "CLICK_FORTH",
   OBSERVER = "OBSERVER",
   INIT = "INIT",
-  CLOSE_MODAL = "CLOOSE_MODAL",
+  CLOSE_MODAL = "CLOSE_MODAL",
 }
 
 // -------------------------------------------------------------
