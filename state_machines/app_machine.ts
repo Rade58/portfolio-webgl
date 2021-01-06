@@ -147,6 +147,7 @@ const appMachine = createMachine<
 
     states: {
       [fse.init]: {
+        entry: ["wheelAllowed"],
         on: {
           [EE.INIT]: {
             actions: [
@@ -189,6 +190,7 @@ const appMachine = createMachine<
         },
       },
       [fse.idling]: {
+        entry: ["wheelAllowed"],
         on: {
           [EE.BRING_SVG]: {
             actions: [
