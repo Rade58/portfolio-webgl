@@ -234,11 +234,11 @@ const appMachine = createMachine<
             /* console.log("-------------------------------------");
             console.log("-------------------------------------");
             console.log("-------------------------------------");
-            console.log(!currentAnimeMachineFinitestate.startsWith("anim"));
             console.log("-------------------------------------");
             console.log("-------------------------------------");
             console.log("-------------------------------------");
- */
+            */
+            console.log(currentAnimeMachineFinitestate);
             return !currentAnimeMachineFinitestate.startsWith("anim");
           },
         },
