@@ -19,6 +19,7 @@ export enum EE {
   OBSERVER = "OBSERVER",
   INIT = "INIT",
   CLOSE_MODAL = "CLOSE_MODAL",
+  BRING_BUTTONS = "BRING_BUTTONS",
 }
 
 // -------------------------------------------------------------
@@ -64,6 +65,15 @@ export type machineEventGenericType =
         currentAnimeMachineMajorState: typeof MAJOR_FINITE_STATES_ARRAY[number];
         currentAnimeMachineFinitestate: animeFse;
         canLoadControls: boolean;
+      };
+    }
+  | {
+      type: EE.BRING_BUTTONS;
+      payload: {
+        leftB: HTMLDivElement;
+        rightB: HTMLDivElement;
+        backwards: HTMLDivElement;
+        forwards: HTMLDivElement;
       };
     };
 
