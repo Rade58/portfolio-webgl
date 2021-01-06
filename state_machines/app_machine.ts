@@ -147,7 +147,7 @@ const appMachine = createMachine<
 
     states: {
       [fse.init]: {
-        entry: ["wheelAllowed"],
+        // entry: ["wheelAllowed"],
         on: {
           [EE.INIT]: {
             actions: [
@@ -190,7 +190,17 @@ const appMachine = createMachine<
         },
       },
       [fse.idling]: {
-        entry: ["wheelAllowed"],
+        entry: [
+          // "wheelAllowed",
+          () => {
+            console.log("BACK TO IDLE, BACK TO IDLE");
+            console.log("BACK TO IDLE, BACK TO IDLE");
+            console.log("BACK TO IDLE, BACK TO IDLE");
+            console.log("BACK TO IDLE, BACK TO IDLE");
+            console.log("BACK TO IDLE, BACK TO IDLE");
+            console.log("BACK TO IDLE, BACK TO IDLE");
+          },
+        ],
         on: {
           [EE.BRING_SVG]: {
             actions: [
@@ -227,7 +237,7 @@ const appMachine = createMachine<
       [fse.animation_active]: {
         // POSMATRAJ STATE-OVE KOJE DOLAZE OD ANIME MACHINE
         // JER NA OVO NE MOGU OBRACATI PAZNJU
-        entry: ["wheelNotAllowed"],
+        // entry: ["wheelNotAllowed"],
         always: {
           target: fse.idling,
           cond: ({ currentAnimeMachineFinitestate }, __) => {
