@@ -125,7 +125,7 @@ const appMachine = createMachine<
     on: {
       [EE.OBSERVER]: {
         actions: [
-          assign((_, event) => {
+          assign((context, event) => {
             const {
               payload: {
                 currentAnimeMachineFinitestate,
@@ -134,6 +134,32 @@ const appMachine = createMachine<
               },
             } = event;
             // debugger;
+
+            if (
+              context.currentAnimeMachineFinitestate !==
+              currentAnimeMachineFinitestate
+            ) {
+              return { currentAnimeMachineFinitestate };
+            }
+
+            if (
+              context.currentAnimeMachineMajorState !==
+              currentAnimeMachineMajorState
+            ) {
+              return {
+                currentAnimeMachineMajorState,
+              };
+            }
+
+            if (
+              context.currentAnimeMachineMajorState ===
+                currentAnimeMachineMajorState &&
+              context.currentAnimeMachineFinitestate ===
+                currentAnimeMachineFinitestate
+            ) {
+              return { canLoadControls };
+            }
+
             return {
               currentAnimeMachineFinitestate,
               currentAnimeMachineMajorState,
