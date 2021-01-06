@@ -36,10 +36,10 @@ const Forth: FunctionComponent = () => {
       className="forth"
       css={css`
         border: pink solid 1px;
-        flex-basis: 400px;
-        flex-grow: 1;
-        height: fit-content;
-        flex-shrink: 2;
+        flex-basis: 46vw;
+        /* flex-grow: 1; */
+        height: 60px;
+        /* flex-shrink: 2; */
         position: relative;
         &::after {
           cursor: pointer;
@@ -57,7 +57,8 @@ const Forth: FunctionComponent = () => {
         }
 
         & svg {
-          width: 100%;
+          position: absolute;
+          width: 598px;
           height: 60px;
         }
       `}

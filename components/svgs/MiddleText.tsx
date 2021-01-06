@@ -18,7 +18,11 @@ const ComponentName: FunctionComponent = () => {
   } = state.context;
 
   return (
-    <div>
+    <div
+      css={css`
+        width: 100%;
+      `}
+    >
       {state.value} ------ {currentAnimeMachineMajorState} -----{" "}
       {currentAnimeMachineFinitestate}
     </div>
