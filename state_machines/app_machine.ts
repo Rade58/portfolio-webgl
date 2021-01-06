@@ -189,6 +189,16 @@ const appMachine = createMachine<
       },
       [fse.idling]: {
         on: {
+          [EE.BRING_SVG]: {
+            actions: [
+              assign((_, { payload }) => {
+                console.log({ payload });
+                return payload;
+              }),
+            ],
+            // cond: "ifSvgsAreHere",
+            // target: fse.idling,
+          },
           [EE.CLICK_BACK]: {
             actions: [
               ({ backButton }, __) => {

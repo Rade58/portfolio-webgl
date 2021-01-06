@@ -16,8 +16,6 @@ const Right: FunctionComponent = () => {
 
   useEffect(() => {
     if (rightSvgRef.current) {
-      console.log(rightSvgRef.current.querySelector("svg"));
-
       send({
         type: EE.BRING_SVG,
         payload: {
