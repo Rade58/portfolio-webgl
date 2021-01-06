@@ -76,11 +76,10 @@ const LoadedAnimations: FunctionComponent = () => {
   const effectFlowRef = useRef<number>(0);
 
   const wheelAllowedRef = useRef<boolean>(false);
-  /*
 
   useEffect(() => {
     wheelAllowedRef.current = state.context.wheelAllowed;
-  }, [state.context]); */
+  }, [state.context]);
 
   useEffect(() => {
     console.log(window);
@@ -123,19 +122,18 @@ const LoadedAnimations: FunctionComponent = () => {
         (state.context.currentAnimeMachineFinitestate === "init" ||
           state.context.currentAnimeMachineFinitestate === "idle")
       )
-        if (wheelAllowedRef.current) {
-          if (e.deltaY > 50) {
+        if (e.deltaY > 50) {
+          if (wheelAllowedRef.current) {
             send({ type: EE.CLICK_BACK });
           } else if (e.deltaY < -50) {
             send({ type: EE.CLICK_FORTH });
           }
-          // setEventSendingAllowed(false);
         }
     });
 
-    document.body.addEventListener("touchmove", (e) => {
+    /* document.body.addEventListener("touchmove", (e) => {
       // if((e.touches[0].){}
-    });
+    }); */
   }, [effectFlowRef]);
 
   return null;
