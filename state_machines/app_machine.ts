@@ -25,10 +25,10 @@ export enum EE {
 // -------------------------------------------------------------
 
 export interface MachineContextGenericI {
-  leftBSvg: HTMLDivElement | null;
-  rightBSvg: HTMLDivElement | null;
-  backwardsSvg: HTMLDivElement | null;
-  forwardsSvg: HTMLDivElement | null;
+  leftBSvg: SVGElement | null;
+  rightBSvg: SVGElement | null;
+  backwardsSvg: SVGElement | null;
+  forwardsSvg: SVGElement | null;
   wheelAllowed: boolean;
   currentAnimeMachineFinitestate: animeFse | undefined;
   currentAnimeMachineMajorState:
@@ -70,10 +70,10 @@ export type machineEventGenericType =
   | {
       type: EE.BRING_SVG;
       payload: {
-        leftBSvg?: HTMLDivElement;
-        rightBSvg?: HTMLDivElement;
-        backwardsSvg?: HTMLDivElement;
-        forwardsSvg?: HTMLDivElement;
+        leftBSvg?: SVGElement;
+        rightBSvg?: SVGElement;
+        backwardsSvg?: SVGElement;
+        forwardsSvg?: SVGElement;
       };
     };
 

@@ -1,7 +1,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useRef, useEffect } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
@@ -11,6 +11,19 @@ import { appService, EE } from "../../state_machines/app_machine";
 
 const Forth: FunctionComponent = () => {
   const [state, send] = useService(appService);
+
+  const forwrdSvgRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (forwrdSvgRef.current) {
+      send({
+        type: EE.BRING_SVG,
+        payload: {
+          forwardsSvg: (forwrdSvgRef.current as unknown) as SVGElement,
+        },
+      });
+    }
+  }, [forwrdSvgRef]);
 
   return (
     <div
@@ -65,6 +78,9 @@ const Forth: FunctionComponent = () => {
       `}
     >
       <svg
+        // eslint-disable-next-line
+        // @ts-ignore
+        ref={forwrdSvgRef}
         /* NO NEED FOR px ON width AND height */
         width="100%"
         // height="120"

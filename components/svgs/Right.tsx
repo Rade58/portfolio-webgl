@@ -1,7 +1,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useRef, useEffect } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
@@ -11,6 +11,19 @@ import { appService, EE } from "../../state_machines/app_machine";
 
 const Right: FunctionComponent = () => {
   const [state, send] = useService(appService);
+
+  const rightSvgRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (rightSvgRef.current) {
+      send({
+        type: EE.BRING_SVG,
+        payload: {
+          rightBSvg: (rightSvgRef.current as unknown) as SVGElement,
+        },
+      });
+    }
+  }, [rightSvgRef]);
 
   return (
     <div
@@ -27,6 +40,9 @@ const Right: FunctionComponent = () => {
       `}
     >
       <svg
+        // eslint-disable-next-line
+        // @ts-ignore
+        ref={rightSvgRef}
         tabIndex={0}
         onClick={() => {
           console.log("click forward");

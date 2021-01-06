@@ -1,7 +1,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useRef, useEffect } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
@@ -10,6 +10,19 @@ import { appService, EE } from "../../state_machines/app_machine";
 
 const Back: FunctionComponent = () => {
   const [state, send] = useService(appService);
+
+  const backSvgRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    if (backSvgRef.current) {
+      send({
+        type: EE.BRING_SVG,
+        payload: {
+          backwardsSvg: (backSvgRef.current as unknown) as SVGElement,
+        },
+      });
+    }
+  }, [backSvgRef]);
 
   return (
     <div
@@ -59,6 +72,9 @@ const Back: FunctionComponent = () => {
       `}
     >
       <svg
+        // eslint-disable-next-line
+        // @ts-ignore
+        ref={backSvgRef}
         /* NO NEED FOR px ON width AND height */
         // width="100%"
         // height="120"
