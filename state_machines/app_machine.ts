@@ -112,7 +112,7 @@ const appMachine = createMachine<
       forwardsSvg: null,
       leftBSvg: null,
       rightBSvg: null,
-      wheelAllowed: false,
+      wheelAllowed: false, // no op
       majorStateHolder: null,
       currentAnimeMachineFinitestate: null,
       currentAnimeMachineMajorState: null,
