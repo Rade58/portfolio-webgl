@@ -19,7 +19,9 @@ const Right: FunctionComponent = () => {
       send({
         type: EE.BRING_SVG,
         payload: {
-          rightBSvg: (rightSvgRef.current as unknown) as SVGElement,
+          rightBSvg: (rightSvgRef.current.querySelector(
+            "svg"
+          ) as unknown) as SVGElement,
         },
       });
     }

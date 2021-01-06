@@ -20,7 +20,9 @@ const Forth: FunctionComponent = () => {
       send({
         type: EE.BRING_SVG,
         payload: {
-          forwardsSvg: (forwrdSvgRef.current as unknown) as SVGElement,
+          forwardsSvg: (forwrdSvgRef.current.querySelector(
+            "svg"
+          ) as unknown) as SVGElement,
         },
       });
     }
