@@ -59,7 +59,7 @@ const Left: FunctionComponent = () => {
         width="100%"
         // height="120"
         aria-labelledby="go_back"
-        id="svg"
+        id="svg3"
         role="button" /*"presentation"*/ /* or role="imge"*/
         lang="en"
         xmlns="http://www.w3.org/2000/svg"

@@ -16,6 +16,8 @@ const Right: FunctionComponent = () => {
 
   useEffect(() => {
     if (rightSvgRef.current) {
+      console.log(rightSvgRef.current.querySelector("svg"));
+
       send({
         type: EE.BRING_SVG,
         payload: {
@@ -60,7 +62,7 @@ const Right: FunctionComponent = () => {
         width="100%"
         // height="120"
         aria-labelledby="go_forward"
-        id="svg"
+        id="svg4"
         role="button" /*"presentation"*/ /* or role="imge"*/
         lang="en"
         xmlns="http://www.w3.org/2000/svg"

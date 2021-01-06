@@ -248,9 +248,9 @@ const appMachine = createMachine<
 export const appService = interpret(appMachine);
 
 appService.onTransition((state, event) => {
-  /* console.log(" ------------------------------------- ");
+  console.log(" ------------------------------------- ");
   console.log(state.value);
-  */
+
   console.log(state.context);
 });
 
