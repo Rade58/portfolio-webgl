@@ -73,9 +73,10 @@ const LoadedAnimations: FunctionComponent = () => {
     });
   }, []);
 
-  // const effectFlowRef = useRef<number>(0);
+  const effectFlowRef = useRef<number>(0);
 
-  /* const wheelAllowedRef = useRef<boolean>(false);
+  const wheelAllowedRef = useRef<boolean>(false);
+  /*
 
   useEffect(() => {
     wheelAllowedRef.current = state.context.wheelAllowed;
