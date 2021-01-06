@@ -48,8 +48,8 @@ const Left: FunctionComponent = () => {
           if (
             (state &&
               state.context &&
-              state.context.currentAnimeMachineMajorState === "idle") ||
-            state.context.currentAnimeMachineMajorState === "init"
+              state.context.currentAnimeMachineFinitestate === "idle") ||
+            state.context.currentAnimeMachineFinitestate === "init"
           ) {
             send({ type: EE.CLICK_BACK });
           }
@@ -62,8 +62,8 @@ const Left: FunctionComponent = () => {
             if (
               (state &&
                 state.context &&
-                state.context.currentAnimeMachineMajorState === "idle") ||
-              state.context.currentAnimeMachineMajorState === "init"
+                state.context.currentAnimeMachineFinitestate === "idle") ||
+              state.context.currentAnimeMachineFinitestate === "init"
             ) {
               send({ type: EE.CLICK_BACK });
             }
