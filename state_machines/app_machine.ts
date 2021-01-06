@@ -170,6 +170,14 @@ const appMachine = createMachine<
           }, */
             // target: fse.idling,
           },
+          [EE.BRING_BUTTONS]: {
+            actions: [
+              assign((_, { payload }) => {
+                return payload;
+              }),
+            ],
+          },
+
           [EE.CLOSE_MODAL]: {
             target: fse.idling,
           },
