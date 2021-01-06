@@ -70,10 +70,10 @@ export type machineEventGenericType =
   | {
       type: EE.BRING_SVG;
       payload: {
-        leftBSvg: HTMLDivElement;
-        rightBSvg: HTMLDivElement;
-        backwardsSvg: HTMLDivElement;
-        forwardsSvg: HTMLDivElement;
+        leftBSvg?: HTMLDivElement;
+        rightBSvg?: HTMLDivElement;
+        backwardsSvg?: HTMLDivElement;
+        forwardsSvg?: HTMLDivElement;
       };
     };
 
