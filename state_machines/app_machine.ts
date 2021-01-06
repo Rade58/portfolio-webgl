@@ -19,16 +19,16 @@ export enum EE {
   OBSERVER = "OBSERVER",
   INIT = "INIT",
   CLOSE_MODAL = "CLOSE_MODAL",
-  BRING_BUTTONS = "BRING_BUTTONS",
+  BRING_SVG = "BRING_SVG",
 }
 
 // -------------------------------------------------------------
 
 export interface MachineContextGenericI {
-  leftB: HTMLDivElement | null;
-  rightB: HTMLDivElement | null;
-  backwards: HTMLDivElement | null;
-  forwards: HTMLDivElement | null;
+  leftBSvg: HTMLDivElement | null;
+  rightBSvg: HTMLDivElement | null;
+  backwardsSvg: HTMLDivElement | null;
+  forwardsSvg: HTMLDivElement | null;
   wheelAllowed: boolean;
   currentAnimeMachineFinitestate: animeFse | undefined;
   currentAnimeMachineMajorState:
@@ -68,12 +68,12 @@ export type machineEventGenericType =
       };
     }
   | {
-      type: EE.BRING_BUTTONS;
+      type: EE.BRING_SVG;
       payload: {
-        leftB: HTMLDivElement;
-        rightB: HTMLDivElement;
-        backwards: HTMLDivElement;
-        forwards: HTMLDivElement;
+        leftBSvg: HTMLDivElement;
+        rightBSvg: HTMLDivElement;
+        backwardsSvg: HTMLDivElement;
+        forwardsSvg: HTMLDivElement;
       };
     };
 
@@ -108,10 +108,10 @@ const appMachine = createMachine<
     id: "app_machine",
     initial: fse.init,
     context: {
-      backwards: null,
-      forwards: null,
-      leftB: null,
-      rightB: null,
+      backwardsSvg: null,
+      forwardsSvg: null,
+      leftBSvg: null,
+      rightBSvg: null,
       wheelAllowed: false,
       majorStateHolder: null,
       currentAnimeMachineFinitestate: null,
@@ -170,7 +170,7 @@ const appMachine = createMachine<
           }, */
             // target: fse.idling,
           },
-          [EE.BRING_BUTTONS]: {
+          [EE.BRING_SVG]: {
             actions: [
               assign((_, { payload }) => {
                 return payload;
