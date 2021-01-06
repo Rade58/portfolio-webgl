@@ -117,8 +117,8 @@ const appMachine = createMachine<
       currentAnimeMachineFinitestate: null,
       currentAnimeMachineMajorState: null,
       animationMachineObserver: null,
-      backButton: null,
-      forwardButton: null,
+      backButton: null, // uzeto iz druge masine (ustvari iz sketch-a)
+      forwardButton: null, // iz druge masine
       canLoadControls: false,
     },
 
@@ -173,12 +173,16 @@ const appMachine = createMachine<
           [EE.BRING_SVG]: {
             actions: [
               assign((_, { payload }) => {
+                console.log({ payload });
                 return payload;
               }),
             ],
+            cond: "ifSvgsAreHere",
+            target: fse.idling,
           },
 
           [EE.CLOSE_MODAL]: {
+            cond: "ifSvgsAreHere",
             target: fse.idling,
           },
         },
@@ -229,6 +233,14 @@ const appMachine = createMachine<
       ifWheelAllowed: ({ wheelAllowed }, __) => {
         return wheelAllowed;
       },
+      ifSvgsAreHere: (
+        { backwardsSvg, forwardsSvg, leftBSvg, rightBSvg },
+        __
+      ) => {
+        return backwardsSvg && forwardsSvg && leftBSvg && rightBSvg
+          ? true
+          : false;
+      },
     },
   }
 );
@@ -236,9 +248,9 @@ const appMachine = createMachine<
 export const appService = interpret(appMachine);
 
 appService.onTransition((state, event) => {
-  console.log(" ------------------------------------- ");
+  /* console.log(" ------------------------------------- ");
   console.log(state.value);
-  console.log(state.context);
+  console.log(state.context); */
 });
 
 appService.start();
