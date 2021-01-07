@@ -107,6 +107,14 @@ const storyMachine = createMachine<
           ],
         },
       },
+      always: {
+        cond: ({ leftFishSvg, leftSvg, rightFishSvg, rightSvg }, _) => {
+          return leftFishSvg && leftSvg && rightFishSvg && rightSvg
+            ? true
+            : false;
+        },
+        target: fse.idle,
+      },
     },
   },
 });
