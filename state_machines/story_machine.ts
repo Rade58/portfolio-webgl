@@ -4,7 +4,6 @@ import { fse as fseAnim } from "../sketch/machine/anim_state_machine";
 export enum fse {
   anim_active = "anim_active",
   idle = "idle",
-  aboutme = "aboutme",
 }
 
 export enum EE {
@@ -41,4 +40,30 @@ export type machineEventsGenericType =
       payload: {
         majorState: fseAnim;
       };
+    };
+
+export type machineFiniteStatesGenericType =
+  | {
+      value: fse.anim_active;
+      context: MachineContextGenericI;
+    }
+  | {
+      value: fse.idle;
+      context: MachineContextGenericI;
+    }
+  | {
+      value: fseAnim.aboutme;
+      context: MachineContextGenericI;
+    }
+  | {
+      value: fseAnim.projects;
+      context: MachineContextGenericI;
+    }
+  | {
+      value: fseAnim.contact;
+      context: MachineContextGenericI;
+    }
+  | {
+      value: fseAnim.blog;
+      context: MachineContextGenericI;
     };
