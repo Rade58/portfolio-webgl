@@ -4,6 +4,7 @@ import { fse as fseAnim } from "../sketch/machine/anim_state_machine";
 export enum fse {
   anim_active = "anim_active",
   idle = "idle",
+  init = "init",
 }
 
 export enum EE {
@@ -16,6 +17,12 @@ export enum EE {
 // --------
 
 export interface MachineContextGenericI {
+  leftSvg: SVGElement | null;
+  rightSvg: SVGElement | null;
+  leftFishSvg: SVGElement | null;
+  rightFishSvg: SVGElement | null;
+}
+export interface MachineContextGenericIFull {
   leftSvg: SVGElement | null;
   rightSvg: SVGElement | null;
   leftFishSvg: SVGElement | null;
@@ -45,25 +52,42 @@ export type machineEventsGenericType =
 export type machineFiniteStatesGenericType =
   | {
       value: fse.anim_active;
+      context: MachineContextGenericIFull;
+    }
+  | {
+      value: fse.init;
       context: MachineContextGenericI;
     }
   | {
       value: fse.idle;
-      context: MachineContextGenericI;
+      context: MachineContextGenericIFull;
     }
   | {
       value: fseAnim.aboutme;
-      context: MachineContextGenericI;
+      context: MachineContextGenericIFull;
     }
   | {
       value: fseAnim.projects;
-      context: MachineContextGenericI;
+      context: MachineContextGenericIFull;
     }
   | {
       value: fseAnim.contact;
-      context: MachineContextGenericI;
+      context: MachineContextGenericIFull;
     }
   | {
       value: fseAnim.blog;
-      context: MachineContextGenericI;
+      context: MachineContextGenericIFull;
     };
+
+// -------------------------------------------------------------
+
+// --------------------  MACHINE -------------------------------
+
+const storyMachine = createMachine<
+  MachineContextGenericI,
+  machineEventsGenericType,
+  machineFiniteStatesGenericType
+>({
+  id: "story_machine",
+  initial: fse.init,
+});
