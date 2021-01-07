@@ -90,4 +90,10 @@ const storyMachine = createMachine<
 >({
   id: "story_machine",
   initial: fse.init,
+  context: {
+    rightSvg: null,
+    leftSvg: null,
+    leftFishSvg: null,
+    rightFishSvg: null,
+  },
 });
