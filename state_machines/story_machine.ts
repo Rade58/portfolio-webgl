@@ -96,4 +96,17 @@ const storyMachine = createMachine<
     leftFishSvg: null,
     rightFishSvg: null,
   },
+  states: {
+    [fse.init]: {
+      on: {
+        [EE.INITIALIZE]: {
+          actions: [
+            assign((_, { payload }) => {
+              return payload;
+            }),
+          ],
+        },
+      },
+    },
+  },
 });
