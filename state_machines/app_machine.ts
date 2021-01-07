@@ -1,4 +1,4 @@
-import { createMachine, assign, interpret, send, actions } from "xstate";
+import { createMachine, assign, interpret } from "xstate";
 
 import { CssClassesEnum } from "../sketch/ui/user_interface";
 import {
@@ -134,6 +134,12 @@ const appMachine = createMachine<
               },
             } = event;
             // debugger;
+
+            console.log({
+              currentAnimeMachineFinitestate,
+              currentAnimeMachineMajorState,
+              canLoadControls,
+            });
 
             return {
               currentAnimeMachineFinitestate,
