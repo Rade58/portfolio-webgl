@@ -23,12 +23,22 @@ export interface MachineContextGenericI {
   rightFishSvg: SVGElement | null;
 }
 
-export type machineEventsGenericType = {
-  type: EE.INITIALIZE;
-  payload: {
-    leftSvg: SVGElement;
-    rightSvg: SVGElement;
-    leftFishSvg: SVGElement;
-    rightFishSvg: SVGElement;
-  };
-};
+export type machineEventsGenericType =
+  | {
+      type: EE.INITIALIZE;
+      payload: {
+        leftSvg: SVGElement;
+        rightSvg: SVGElement;
+        leftFishSvg: SVGElement;
+        rightFishSvg: SVGElement;
+      };
+    }
+  | {
+      type: EE.TO_ANIM;
+    }
+  | {
+      type: EE.TO_MAJOR;
+      payload: {
+        majorState: fseAnim;
+      };
+    };
