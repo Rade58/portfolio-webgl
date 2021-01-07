@@ -135,6 +135,8 @@ const appMachine = createMachine<
             } = event;
             // debugger;
 
+            // FROM HERE SENDING EVENT TO STORY MACHINE
+
             console.log({
               currentAnimeMachineFinitestate,
               currentAnimeMachineMajorState,
