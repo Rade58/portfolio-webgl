@@ -12,3 +12,23 @@ export enum EE {
   TO_ANIM = "TO_ANIM",
   TO_MAJOR = "TO_MAJOR",
 }
+
+// --------
+// --------
+
+export interface MachineContextGenericI {
+  leftSvg: SVGElement | null;
+  rightSvg: SVGElement | null;
+  leftFishSvg: SVGElement | null;
+  rightFishSvg: SVGElement | null;
+}
+
+export type machineEventsGenericType = {
+  type: EE.INITIALIZE;
+  payload: {
+    leftSvg: SVGElement;
+    rightSvg: SVGElement;
+    leftFishSvg: SVGElement;
+    rightFishSvg: SVGElement;
+  };
+};
