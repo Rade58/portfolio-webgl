@@ -41,14 +41,17 @@ export type machineEventsGenericType =
     }
   | {
       type: EE.TO_ANIMATING;
+      payload: {
+        major: fseAnim;
+      };
     }
   | {
       type: EE.TO_IDLING;
-      /* payload: {
+      payload: {
         major: fseAnim;
-      }; */
+      };
     }
-  | {
+  /* | {
       type: EE.GIVE_MAJOR; // DAKLE OVAJ EVENT BI SLAO ONDA
       //                     KADA IZZ APP MACHINE-A
       //                      SLUSAM OBSERVER EVENT
@@ -56,7 +59,7 @@ export type machineEventsGenericType =
       payload: {
         major: fseAnim;
       };
-    }
+    } */
   | {
       type: EE.GIVE_MAJOR_SHOWER;
       payload: {
@@ -128,20 +131,23 @@ const storyMachine = createMachine<
 
           target: fse.idle,
         },
-        [EE.GIVE_MAJOR_SHOWER]: {
+        /* [EE.GIVE_MAJOR_SHOWER]: {
           actions: [
             assign((_, { payload }) => {
               return payload;
             }),
           ],
           // target: fse.idle,
-        },
+        }, */
       },
     },
     [fse.idle]: {
       on: {
         [EE.TO_ANIMATING]: {
           target: fse.anim_active,
+          actions: assign((_, { payload }) => {
+            return payload;
+          }),
         },
       },
     },
@@ -149,6 +155,9 @@ const storyMachine = createMachine<
       on: {
         [EE.TO_IDLING]: {
           target: fse.idle,
+          actions: assign((_, { payload }) => {
+            return payload;
+          }),
         },
       },
     },

@@ -224,17 +224,6 @@ const appMachine = createMachine<
               assign((_, { payload }) => {
                 console.log({ payload });
 
-                storyService.send({
-                  type: SE.BRING_FROM_APP_MACHINE,
-                  payload: {
-                    leftFishSvg: payload.backwardsSvg,
-                    rightFishSvg: payload.forwardsSvg,
-                    leftSvg: payload.leftBSvg,
-                    rightSvg: payload.rightBSvg,
-                    major: _.currentAnimeMachineMajorState as animeFse,
-                  },
-                });
-
                 return payload;
               }),
             ],
@@ -264,17 +253,6 @@ const appMachine = createMachine<
           [EE.BRING_SVG]: {
             actions: [
               assign((_, { payload }) => {
-                storyService.send({
-                  type: SE.BRING_FROM_APP_MACHINE,
-                  payload: {
-                    leftFishSvg: payload.backwardsSvg,
-                    rightFishSvg: payload.forwardsSvg,
-                    leftSvg: payload.leftBSvg,
-                    rightSvg: payload.rightBSvg,
-                    major: _.currentAnimeMachineMajorState as animeFse,
-                  },
-                });
-
                 console.log({ payload });
                 return payload;
               }),
