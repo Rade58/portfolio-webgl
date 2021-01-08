@@ -124,6 +124,10 @@ const storyMachine = createMachine<
   context: {
     majorShower: null,
     major: "undefined",
+    fishLeft: null,
+    fishRight: null,
+    left: null,
+    right: null,
   },
   states: {
     // NA 'IDLE' TREBAS DA POKAZES (UZ ANIMACIJU) NOVI MODAL KOJI CE BITI ASSOCIATED
