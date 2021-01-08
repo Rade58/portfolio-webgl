@@ -141,39 +141,19 @@ const appMachine = createMachine<
             // OVO JE ASSIGN ACTION ZA EVENT KOJI NIJE VEZAN ZA
             // BILO KOJI STATE, STO NE ZELIM DA IMAM U STORY MACHINE-U
 
-            /*  if (
-              context.currentAnimeMachineMajorState !==
-              currentAnimeMachineMajorState
-            ) {
-              storyService.send({
-                type: SE.GIVE_MAJOR,
-                payload: {
-                  major: currentAnimeMachineMajorState,
-                },
-              });
-            }
-
-            if (currentAnimeMachineFinitestate.startsWith("anim")) {
-              if (
-                currentAnimeMachineFinitestate !==
-                context.currentAnimeMachineFinitestate
-              ) {
-                storyService.send({ type: SE.TO_IDLING });
-              }
-            } else {
-              if (
-                currentAnimeMachineFinitestate !==
-                context.currentAnimeMachineFinitestate
-              ) {
-                storyService.send({ type: SE.TO_ANIMATING });
-              }
-            } */
-
+            console.log("----------------------------------");
+            console.log("----------------------------------");
+            console.log("----------------------------------");
+            console.log("----------------------------------");
             console.log({
               currentAnimeMachineFinitestate,
               currentAnimeMachineMajorState,
               canLoadControls,
             });
+            console.log("----------------------------------");
+            console.log("----------------------------------");
+            console.log("----------------------------------");
+            console.log("----------------------------------");
 
             // ----------------------------------------------
 

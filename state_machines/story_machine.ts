@@ -129,7 +129,8 @@ const storyMachine = createMachine<
               : false;
           }, */
 
-          target: fse.idle,
+          target: fse.idle, // KASNIJE OVO NECU KORISTITI OVDE
+          //                      VEC ISPOD
         },
         /* [EE.GIVE_MAJOR_SHOWER]: {
           actions: [
