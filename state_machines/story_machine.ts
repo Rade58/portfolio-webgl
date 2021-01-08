@@ -7,14 +7,11 @@ import { fse as fseAnim } from "../sketch/machine/anim_state_machine";
 export enum fse {
   anim_active = "anim_active",
   idle = "idle",
-  init = "init",
 }
 
 export enum EE {
-  BRING_FROM_APP_MACHINE = "BRING_FROM_APP_MACHINE",
   TO_ANIMATING = "TO_ANIMATING",
   TO_IDLING = "TO_IDLING",
-  // GIVE_MAJOR = "GIVE_MAJOR",
   //
   GIVE_MAJOR_SHOWER = "GIVE_MAJOR_SHOWER",
 }
@@ -24,7 +21,7 @@ export enum EE {
 
 export interface MachineContextGenericI {
   majorShower: HTMLDivElement | null;
-  major: fseAnim | undefined; // MOZD SAM TREBAO OVO BOLJE DA
+  major: fseAnim | undefined | "undefined"; // MOZD SAM TREBAO OVO BOLJE DA
   //                TYPE-UJEM JER CU SAMO KORISITI MAJOR STATE-OVE
 }
 export interface MachineContextGenericIFull {
@@ -33,12 +30,6 @@ export interface MachineContextGenericIFull {
 }
 
 export type machineEventsGenericType =
-  | {
-      type: EE.BRING_FROM_APP_MACHINE;
-      payload: {
-        major: fseAnim;
-      };
-    }
   | {
       type: EE.TO_ANIMATING;
       payload: {
@@ -51,15 +42,6 @@ export type machineEventsGenericType =
         major: fseAnim;
       };
     }
-  /* | {
-      type: EE.GIVE_MAJOR; // DAKLE OVAJ EVENT BI SLAO ONDA
-      //                     KADA IZZ APP MACHINE-A
-      //                      SLUSAM OBSERVER EVENT
-      //  I VODICU RACUNA DA EVENT NE SALJEM AKO JE U PITANJU ISTI STATE KAO I PREDHODNI
-      payload: {
-        major: fseAnim;
-      };
-    } */
   | {
       type: EE.GIVE_MAJOR_SHOWER;
       payload: {
@@ -73,29 +55,9 @@ export type machineFiniteStatesGenericType =
       context: MachineContextGenericIFull;
     }
   | {
-      value: fse.init;
-      context: MachineContextGenericI;
-    }
-  | {
       value: fse.idle;
       context: MachineContextGenericIFull;
     };
-/*  | {
-      value: fseAnim.aboutme;
-      context: MachineContextGenericIFull;
-    }
-  | {
-      value: fseAnim.projects;
-      context: MachineContextGenericIFull;
-    }
-  | {
-      value: fseAnim.contact;
-      context: MachineContextGenericIFull;
-    }
-  | {
-      value: fseAnim.blog;
-      context: MachineContextGenericIFull;
-    }; */
 
 // -------------------------------------------------------------
 
@@ -107,41 +69,12 @@ const storyMachine = createMachine<
   machineFiniteStatesGenericType
 >({
   id: "story_machine",
-  initial: fse.init,
+  initial: fse.idle,
   context: {
     majorShower: null,
-    major: undefined,
+    major: "undefined",
   },
   states: {
-    [fse.init]: {
-      on: {
-        [EE.BRING_FROM_APP_MACHINE]: {
-          actions: [
-            assign((_, { payload }) => {
-              // POSTARACU SE DA PAYLOAD BUDE VALIDAN KADA
-              // BUDEM SLAO EVENT
-              return payload;
-            }),
-          ],
-          /* cond: ({ leftFishSvg, leftSvg, rightFishSvg, rightSvg }, _) => {
-            return leftFishSvg && leftSvg && rightFishSvg && rightSvg
-              ? true
-              : false;
-          }, */
-
-          target: fse.idle, // KASNIJE OVO NECU KORISTITI OVDE
-          //                      VEC ISPOD
-        },
-        /* [EE.GIVE_MAJOR_SHOWER]: {
-          actions: [
-            assign((_, { payload }) => {
-              return payload;
-            }),
-          ],
-          // target: fse.idle,
-        }, */
-      },
-    },
     [fse.idle]: {
       on: {
         [EE.TO_ANIMATING]: {
