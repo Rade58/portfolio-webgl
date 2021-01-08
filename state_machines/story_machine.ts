@@ -26,18 +26,10 @@ export interface MachineContextGenericI {
   majorShower: HTMLDivElement | null;
   major: fseAnim | undefined; // MOZD SAM TREBAO OVO BOLJE DA
   //                TYPE-UJEM JER CU SAMO KORISITI MAJOR STATE-OVE
-  leftSvg: SVGElement | null;
-  rightSvg: SVGElement | null;
-  leftFishSvg: SVGElement | null;
-  rightFishSvg: SVGElement | null;
 }
 export interface MachineContextGenericIFull {
   majorShower: HTMLDivElement;
   major: fseAnim;
-  leftSvg: SVGElement | null;
-  rightSvg: SVGElement | null;
-  leftFishSvg: SVGElement | null;
-  rightFishSvg: SVGElement | null;
 }
 
 export type machineEventsGenericType =
@@ -45,10 +37,6 @@ export type machineEventsGenericType =
       type: EE.BRING_FROM_APP_MACHINE;
       payload: {
         major: fseAnim;
-        leftSvg: SVGElement;
-        rightSvg: SVGElement;
-        leftFishSvg: SVGElement;
-        rightFishSvg: SVGElement;
       };
     }
   | {
@@ -120,10 +108,6 @@ const storyMachine = createMachine<
   context: {
     majorShower: null,
     major: undefined,
-    rightSvg: null,
-    leftSvg: null,
-    leftFishSvg: null,
-    rightFishSvg: null,
   },
   states: {
     [fse.init]: {
