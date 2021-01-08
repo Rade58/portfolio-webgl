@@ -14,8 +14,8 @@ export enum EE {
   GIVE_MAJOR = "GIVE_MAJOR",
 }
 
-// --------
-// --------
+// ------------------------------------------------------------
+// ------------------------------------------------------------
 
 export interface MachineContextGenericI {
   major: fseAnim | undefined; // MOZD SAM TREBAO OVO BOLJE DA
