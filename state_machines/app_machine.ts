@@ -141,7 +141,7 @@ const appMachine = createMachine<
             // OVO JE ASSIGN ACTION ZA EVENT KOJI NIJE VEZAN ZA
             // BILO KOJI STATE, STO NE ZELIM DA IMAM U STORY MACHINE-U
 
-            console.log("----------------------------------");
+            /* console.log("----------------------------------");
             console.log("----------------------------------");
             console.log("----------------------------------");
             console.log("----------------------------------");
@@ -149,27 +149,32 @@ const appMachine = createMachine<
               currentAnimeMachineFinitestate,
               currentAnimeMachineMajorState,
               canLoadControls,
-            });
+            }); */
 
-            if (currentAnimeMachineFinitestate.includes("anim")) {
-              storyService.send({
-                type: SE.TO_ANIMATING,
-                payload: {
-                  major: currentAnimeMachineMajorState,
-                },
-              });
-            } else {
-              storyService.send({
-                type: SE.TO_IDLING,
-                payload: {
-                  major: currentAnimeMachineMajorState,
-                },
-              });
+            if (
+              currentAnimeMachineFinitestate !==
+              context.currentAnimeMachineFinitestate
+            ) {
+              if (currentAnimeMachineFinitestate.includes("anim")) {
+                storyService.send({
+                  type: SE.TO_ANIMATING,
+                  payload: {
+                    major: currentAnimeMachineMajorState,
+                  },
+                });
+              } else {
+                storyService.send({
+                  type: SE.TO_IDLING,
+                  payload: {
+                    major: currentAnimeMachineMajorState,
+                  },
+                });
+              }
             }
+            /*  console.log("----------------------------------");
             console.log("----------------------------------");
             console.log("----------------------------------");
-            console.log("----------------------------------");
-            console.log("----------------------------------");
+            console.log("----------------------------------"); */
 
             // ----------------------------------------------
 

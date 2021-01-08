@@ -101,8 +101,8 @@ const storyMachine = createMachine<
 export const storyService = interpret(storyMachine);
 
 storyService.onTransition((state, event) => {
-  /* console.log({ stateVlue: state.value });
-  console.log({ context: state.context }); */
+  console.log({ stateVlue: state.value });
+  console.log({ context: state.context });
 });
 
 storyService.start();
