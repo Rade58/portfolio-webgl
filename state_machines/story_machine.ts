@@ -33,6 +33,8 @@ import { fse as fseAnim } from "../sketch/machine/anim_state_machine";
 //  ISTO TAKO TOKOM idlle-a, ONI FISH SVG-JEVI TREBAJU DA KONSTANTNO
 //  IMAJJU MOVEMENT
 
+// MORAM UPDATE-OVATI I CONTEXT
+
 export enum fse {
   anim_active = "anim_active",
   idle = "idle",
