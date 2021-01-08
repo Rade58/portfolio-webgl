@@ -105,11 +105,11 @@ const storyMachine = createMachine<
               return payload;
             }),
           ],
-          cond: ({ leftFishSvg, leftSvg, rightFishSvg, rightSvg }, _) => {
+          /* cond: ({ leftFishSvg, leftSvg, rightFishSvg, rightSvg }, _) => {
             return leftFishSvg && leftSvg && rightFishSvg && rightSvg
               ? true
               : false;
-          },
+          }, */
           target: fse.idle,
         },
       },
