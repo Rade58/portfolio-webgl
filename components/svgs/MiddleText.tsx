@@ -14,10 +14,14 @@ import { storyService } from "../../state_machines/story_machine";
 const ComponentName: FunctionComponent = () => {
   const [appState, sentToAppMachine] = useService(appService);
 
+  const [storyState, sendToStoeyMachine] = useService(storyService);
+
   const {
     currentAnimeMachineFinitestate,
     currentAnimeMachineMajorState,
   } = appState.context;
+
+  const { major } = storyState.context;
 
   return (
     <div
@@ -25,10 +29,21 @@ const ComponentName: FunctionComponent = () => {
         width: 100%;
       `}
     >
-      {appState.value} ------ {currentAnimeMachineMajorState} -----{" "}
-      {currentAnimeMachineFinitestate}
+      {storyState.value} ------ {major} -----{" "}
+      {/* {currentAnimeMachineFinitestate} */}
     </div>
   );
 };
 
 export default ComponentName;
+
+// {
+/* <div
+      css={css`
+        width: 100%;
+      `}
+    >
+      {appState.value} ------ {currentAnimeMachineMajorState} -----{" "}
+      {currentAnimeMachineFinitestate}
+    </div> */
+// }
