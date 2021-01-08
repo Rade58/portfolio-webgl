@@ -56,10 +56,19 @@ export interface MachineContextGenericI {
   majorShower: HTMLDivElement | null;
   major: fseAnim | undefined | "undefined"; // MOZD SAM TREBAO OVO BOLJE DA
   //                TYPE-UJEM JER CU SAMO KORISITI MAJOR STATE-OVE
+
+  left: SVGElement | null;
+  right: SVGElement | null;
+  fishLeft: SVGElement | null;
+  fishRight: SVGElement | null;
 }
 export interface MachineContextGenericIFull {
   majorShower: HTMLDivElement;
   major: fseAnim;
+  left: SVGElement;
+  right: SVGElement;
+  fishLeft: SVGElement;
+  fishRight: SVGElement;
 }
 
 export type machineEventsGenericType =
@@ -79,6 +88,15 @@ export type machineEventsGenericType =
       type: EE.GIVE_MAJOR_SHOWER;
       payload: {
         majorShower: HTMLDivElement;
+      };
+    }
+  | {
+      type: EE.GIVE_SVGS;
+      pyload: {
+        left: SVGElement;
+        right: SVGElement;
+        fishLeft: SVGElement;
+        fishRight: SVGElement;
       };
     };
 
