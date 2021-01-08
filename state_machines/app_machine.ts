@@ -150,7 +150,7 @@ const appMachine = createMachine<
               currentAnimeMachineMajorState,
               canLoadControls,
             }); */
-
+            //  DAKLE OVO SU OVDE EVENT-OVI KOJE SALJEM PREMA STORY MACHINE-U
             if (
               currentAnimeMachineFinitestate !==
               context.currentAnimeMachineFinitestate
