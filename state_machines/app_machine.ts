@@ -150,6 +150,22 @@ const appMachine = createMachine<
               currentAnimeMachineMajorState,
               canLoadControls,
             });
+
+            if (currentAnimeMachineFinitestate.includes("anim")) {
+              storyService.send({
+                type: SE.TO_ANIMATING,
+                payload: {
+                  major: currentAnimeMachineMajorState,
+                },
+              });
+            } else {
+              storyService.send({
+                type: SE.TO_IDLING,
+                payload: {
+                  major: currentAnimeMachineMajorState,
+                },
+              });
+            }
             console.log("----------------------------------");
             console.log("----------------------------------");
             console.log("----------------------------------");
