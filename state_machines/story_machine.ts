@@ -75,6 +75,8 @@ const storyMachine = createMachine<
     major: "undefined",
   },
   states: {
+    // NA 'IDLE' TREBAS DA POKAZES (UZ ANIMACIJU) NOVI MODAL KOJI CE BITI ASSOCIATED
+    // SA MAJOR STATOM
     [fse.idle]: {
       on: {
         [EE.TO_ANIMATING]: {
@@ -85,6 +87,8 @@ const storyMachine = createMachine<
         },
       },
     },
+    // KADA ANIMACIJA TRAJE MODAL ASSOCIATED SA MAJOR STATEOM BI TREBAO SAKRITI
+    // NARAVNO UZ ANIMACIJU
     [fse.anim_active]: {
       on: {
         [EE.TO_IDLING]: {
