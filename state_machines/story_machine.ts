@@ -69,7 +69,7 @@ export type machineEventsGenericType =
   | {
       type: EE.GIVE_MAJOR_SHOWER;
       payload: {
-        majorShower: HTMLElement;
+        majorShower: HTMLDivElement;
       };
     };
 
@@ -138,9 +138,15 @@ const storyMachine = createMachine<
               ? true
               : false;
           }, */
+        },
+        [EE.GIVE_MAJOR_SHOWER]: {
+          actions: [
+            assign((_, { payload }) => {
+              return payload;
+            }),
+          ],
           target: fse.idle,
         },
-        [EE.GIVE_MAJOR_SHOWER]: {},
       },
     },
     [fse.idle]: {
