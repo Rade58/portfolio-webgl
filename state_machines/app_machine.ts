@@ -141,7 +141,7 @@ const appMachine = createMachine<
             // OVO JE ASSIGN ACTION ZA EVENT KOJI NIJE VEZAN ZA
             // BILO KOJI STATE, STO NE ZELIM DA IMAM U STORY MACHINE-U
 
-            if (
+            /*  if (
               context.currentAnimeMachineMajorState !==
               currentAnimeMachineMajorState
             ) {
@@ -167,7 +167,7 @@ const appMachine = createMachine<
               ) {
                 storyService.send({ type: SE.TO_ANIMATING });
               }
-            }
+            } */
 
             console.log({
               currentAnimeMachineFinitestate,
