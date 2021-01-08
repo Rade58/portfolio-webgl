@@ -8,7 +8,7 @@ export enum fse {
 }
 
 export enum EE {
-  INITIALIZE = "INITIALIZE",
+  BRING_FROM_APP_MACHINE = "BRING_FROM_APP_MACHINE",
   TO_ANIMATING = "TO_ANIMATING",
   TO_IDLING = "TO_IDLING",
   GIVE_MAJOR = "GIVE_MAJOR",
@@ -39,7 +39,7 @@ export interface MachineContextGenericIFull {
 
 export type machineEventsGenericType =
   | {
-      type: EE.INITIALIZE;
+      type: EE.BRING_FROM_APP_MACHINE;
       payload: {
         major: fseAnim;
         leftSvg: SVGElement;
@@ -53,9 +53,9 @@ export type machineEventsGenericType =
     }
   | {
       type: EE.TO_IDLING;
-      payload: {
+      /* payload: {
         major: fseAnim;
-      };
+      }; */
     }
   | {
       type: EE.GIVE_MAJOR; // DAKLE OVAJ EVENT BI SLAO ONDA
@@ -125,7 +125,7 @@ const storyMachine = createMachine<
   states: {
     [fse.init]: {
       on: {
-        [EE.INITIALIZE]: {
+        [EE.BRING_FROM_APP_MACHINE]: {
           actions: [
             assign((_, { payload }) => {
               // POSTARACU SE DA PAYLOAD BUDE VALIDAN KADA

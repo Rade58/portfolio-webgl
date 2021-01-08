@@ -6,7 +6,7 @@ import {
   MAJOR_FINITE_STATES_ARRAY,
 } from "../sketch/machine/anim_state_machine";
 
-import { storyService } from "./story_machine";
+import { storyService, EE as SE } from "./story_machine";
 
 export enum fse {
   animation_active = "animation_active",
@@ -141,6 +141,34 @@ const appMachine = createMachine<
             // OVO JE ASSIGN ACTION ZA EVENT KOJI NIJE VEZAN ZA
             // BILO KOJI STATE, STO NE ZELIM DA IMAM U STORY MACHINE-U
 
+            if (
+              context.currentAnimeMachineMajorState !==
+              currentAnimeMachineMajorState
+            ) {
+              storyService.send({
+                type: SE.GIVE_MAJOR,
+                payload: {
+                  major: currentAnimeMachineMajorState,
+                },
+              });
+            }
+
+            if (currentAnimeMachineFinitestate.startsWith("anim")) {
+              if (
+                currentAnimeMachineFinitestate !==
+                context.currentAnimeMachineFinitestate
+              ) {
+                storyService.send({ type: SE.TO_IDLING });
+              }
+            } else {
+              if (
+                currentAnimeMachineFinitestate !==
+                context.currentAnimeMachineFinitestate
+              ) {
+                storyService.send({ type: SE.TO_ANIMATING });
+              }
+            }
+
             console.log({
               currentAnimeMachineFinitestate,
               currentAnimeMachineMajorState,
@@ -195,6 +223,18 @@ const appMachine = createMachine<
             actions: [
               assign((_, { payload }) => {
                 console.log({ payload });
+
+                storyService.send({
+                  type: SE.BRING_FROM_APP_MACHINE,
+                  payload: {
+                    leftFishSvg: payload.backwardsSvg,
+                    rightFishSvg: payload.forwardsSvg,
+                    leftSvg: payload.leftBSvg,
+                    rightSvg: payload.rightBSvg,
+                    major: _.currentAnimeMachineMajorState as animeFse,
+                  },
+                });
+
                 return payload;
               }),
             ],
@@ -224,6 +264,17 @@ const appMachine = createMachine<
           [EE.BRING_SVG]: {
             actions: [
               assign((_, { payload }) => {
+                storyService.send({
+                  type: SE.BRING_FROM_APP_MACHINE,
+                  payload: {
+                    leftFishSvg: payload.backwardsSvg,
+                    rightFishSvg: payload.forwardsSvg,
+                    leftSvg: payload.leftBSvg,
+                    rightSvg: payload.rightBSvg,
+                    major: _.currentAnimeMachineMajorState as animeFse,
+                  },
+                });
+
                 console.log({ payload });
                 return payload;
               }),
