@@ -12,12 +12,15 @@ export enum EE {
   TO_ANIMATING = "TO_ANIMATING",
   TO_IDLING = "TO_IDLING",
   GIVE_MAJOR = "GIVE_MAJOR",
+  //
+  GIVE_MAJOR_SHOWER = "GIVE_MAJOR_SHOWER",
 }
 
 // ------------------------------------------------------------
 // ------------------------------------------------------------
 
 export interface MachineContextGenericI {
+  majorShower: HTMLDivElement | null;
   major: fseAnim | undefined; // MOZD SAM TREBAO OVO BOLJE DA
   //                TYPE-UJEM JER CU SAMO KORISITI MAJOR STATE-OVE
   leftSvg: SVGElement | null;
@@ -26,6 +29,7 @@ export interface MachineContextGenericI {
   rightFishSvg: SVGElement | null;
 }
 export interface MachineContextGenericIFull {
+  majorShower: HTMLElement;
   major: fseAnim;
   leftSvg: SVGElement | null;
   rightSvg: SVGElement | null;
@@ -60,6 +64,12 @@ export type machineEventsGenericType =
       //  I VODICU RACUNA DA EVENT NE SALJEM AKO JE U PITANJU ISTI STATE KAO I PREDHODNI
       payload: {
         major: fseAnim;
+      };
+    }
+  | {
+      type: EE.GIVE_MAJOR_SHOWER;
+      payload: {
+        majorShower: HTMLElement;
       };
     };
 
@@ -129,8 +139,16 @@ const storyMachine = createMachine<
           }, */
           target: fse.idle,
         },
+        [EE.GIVE_MAJOR_SHOWER]: {},
       },
     },
-    [fse.idle]: {},
+    [fse.idle]: {
+      on: {
+        [EE.TO_ANIMATING]: {
+          target: fse.anim_active,
+        },
+      },
+    },
+    [fse.anim_active]: {},
   },
 });
