@@ -1,6 +1,9 @@
 import { createMachine, assign, interpret } from "xstate";
 import { fse as fseAnim } from "../sketch/machine/anim_state_machine";
 
+// U OVOJ MASINI TI NISU POTREBNE KOMANDE, TO SI DEFINISAO U DRUGIM
+// MACHINE-AMA
+
 export enum fse {
   anim_active = "anim_active",
   idle = "idle",
