@@ -156,6 +156,12 @@ const storyMachine = createMachine<
         },
       },
     },
-    [fse.anim_active]: {},
+    [fse.anim_active]: {
+      on: {
+        [EE.TO_IDLING]: {
+          target: fse.idle,
+        },
+      },
+    },
   },
 });
