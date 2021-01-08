@@ -7,6 +7,9 @@ import { fse as fseAnim } from "../sketch/machine/anim_state_machine";
 // ALI MOZDA MOGU TO DA URADIM I U APP MACHINE-U
 // ALI NE VIDIM KAKO BI  TO URADIO
 
+// ANTICAPATE-OVACU NEKI INITIALIZATION EVENT, KOJI BI
+// TREBAO DA MI OSIGURA REFERENCE SVIH SVG-JEVA
+
 export enum fse {
   anim_active = "anim_active",
   idle = "idle",
