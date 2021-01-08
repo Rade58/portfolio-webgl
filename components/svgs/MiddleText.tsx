@@ -9,13 +9,15 @@ import styled from "@emotion/styled";
 import { useService } from "@xstate/react";
 import { appService, EE, fse } from "../../state_machines/app_machine";
 
+import { storyService } from "../../state_machines/story_machine";
+
 const ComponentName: FunctionComponent = () => {
-  const [state, send] = useService(appService);
+  const [appState, sentToAppMachine] = useService(appService);
 
   const {
     currentAnimeMachineFinitestate,
     currentAnimeMachineMajorState,
-  } = state.context;
+  } = appState.context;
 
   return (
     <div
@@ -23,7 +25,7 @@ const ComponentName: FunctionComponent = () => {
         width: 100%;
       `}
     >
-      {state.value} ------ {currentAnimeMachineMajorState} -----{" "}
+      {appState.value} ------ {currentAnimeMachineMajorState} -----{" "}
       {currentAnimeMachineFinitestate}
     </div>
   );

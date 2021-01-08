@@ -6,6 +6,8 @@ import {
   MAJOR_FINITE_STATES_ARRAY,
 } from "../sketch/machine/anim_state_machine";
 
+import { storyService } from "./story_machine";
+
 export enum fse {
   animation_active = "animation_active",
   idling = "idling",

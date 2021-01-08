@@ -138,6 +138,8 @@ const storyMachine = createMachine<
               ? true
               : false;
           }, */
+
+          target: fse.idle,
         },
         [EE.GIVE_MAJOR_SHOWER]: {
           actions: [
@@ -145,7 +147,7 @@ const storyMachine = createMachine<
               return payload;
             }),
           ],
-          target: fse.idle,
+          // target: fse.idle,
         },
       },
     },
