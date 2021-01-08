@@ -92,7 +92,7 @@ export type machineEventsGenericType =
     }
   | {
       type: EE.GIVE_SVGS;
-      pyload: {
+      payload: {
         left: SVGElement;
         right: SVGElement;
         fishLeft: SVGElement;
@@ -128,6 +128,15 @@ const storyMachine = createMachine<
     fishRight: null,
     left: null,
     right: null,
+  },
+  on: {
+    [EE.GIVE_SVGS]: {
+      actions: [
+        assign((_, { payload }) => {
+          return payload;
+        }),
+      ],
+    },
   },
   states: {
     // NA 'IDLE' TREBAS DA POKAZES (UZ ANIMACIJU) NOVI MODAL KOJI CE BITI ASSOCIATED
