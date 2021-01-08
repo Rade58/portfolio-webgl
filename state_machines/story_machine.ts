@@ -37,6 +37,7 @@ export type machineEventsGenericType =
   | {
       type: EE.INITIALIZE;
       payload: {
+        major: fseAnim;
         leftSvg: SVGElement;
         rightSvg: SVGElement;
         leftFishSvg: SVGElement;
@@ -53,7 +54,10 @@ export type machineEventsGenericType =
       };
     }
   | {
-      type: EE.GIVE_MAJOR;
+      type: EE.GIVE_MAJOR; // DAKLE OVAJ EVENT BI SLAO ONDA
+      //                     KADA IZZ APP MACHINE-A
+      //                      SLUSAM OBSERVER EVENT
+      //  I VODICU RACUNA DA EVENT NE SALJEM AKO JE U PITANJU ISTI STATE KAO I PREDHODNI
       payload: {
         major: fseAnim;
       };
