@@ -21,7 +21,17 @@ import { fse as fseAnim } from "../sketch/machine/anim_state_machine";
 // TREBALO BI UPOREDO SA TIM DA I OVDE SALJEM TE REFERENCE,
 //  KAKO BI MOGAO ANIMIRATI POMENUTE SVG-JEVE
 
-// I PRVO STA BI TREBAO DA RADIM JE ANIMIRANJE NJIH
+// I PRVO STA BI TREBAO DA RADIM JE ANIMIRANJE TIH SVG-JEVA
+
+// ALI ANIMAIJE SVG-JEVA TREBAJU DA BUDU VEZANE UZ DVA
+// FINITE STATE-A KOJA IMAM
+
+// AKO JE idle SVG-TREBA DA SE POJAVI UZ ANIMACIJU
+
+// AKO JE U PITANJU anim-active; SVG-JEVI TREBA DA SE POJAVE UZ ANIMACIJU
+
+//  ISTO TAKO TOKOM idlle-a, ONI FISH SVG-JEVI TREBAJU DA KONSTANTNO
+//  IMAJJU MOVEMENT
 
 export enum fse {
   anim_active = "anim_active",
@@ -33,6 +43,8 @@ export enum EE {
   TO_IDLING = "TO_IDLING",
   //
   GIVE_MAJOR_SHOWER = "GIVE_MAJOR_SHOWER",
+  //
+  GIVE_SVGS = "GIVE_SVGS",
 }
 
 // ------------------------------------------------------------
