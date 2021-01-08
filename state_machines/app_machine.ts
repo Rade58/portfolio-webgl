@@ -223,7 +223,17 @@ const appMachine = createMachine<
           [EE.BRING_SVG]: {
             actions: [
               assign((_, { payload }) => {
-                console.log({ payload });
+                // console.log({ payload });
+
+                storyService.send({
+                  type: SE.GIVE_SVGS,
+                  payload: {
+                    fishLeft: payload.backwardsSvg,
+                    fishRight: payload.forwardsSvg,
+                    left: payload.leftBSvg,
+                    right: payload.rightBSvg,
+                  },
+                });
 
                 return payload;
               }),
@@ -254,7 +264,16 @@ const appMachine = createMachine<
           [EE.BRING_SVG]: {
             actions: [
               assign((_, { payload }) => {
-                console.log({ payload });
+                // console.log({ payload });
+                storyService.send({
+                  type: SE.GIVE_SVGS,
+                  payload: {
+                    fishLeft: payload.backwardsSvg,
+                    fishRight: payload.forwardsSvg,
+                    left: payload.leftBSvg,
+                    right: payload.rightBSvg,
+                  },
+                });
                 return payload;
               }),
             ],
