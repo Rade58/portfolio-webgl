@@ -85,8 +85,8 @@ export type machineFiniteStatesGenericType =
   | {
       value: fse.idle;
       context: MachineContextGenericIFull;
-    }
-  | {
+    };
+/*  | {
       value: fseAnim.aboutme;
       context: MachineContextGenericIFull;
     }
@@ -101,7 +101,7 @@ export type machineFiniteStatesGenericType =
   | {
       value: fseAnim.blog;
       context: MachineContextGenericIFull;
-    };
+    }; */
 
 // -------------------------------------------------------------
 
@@ -165,3 +165,12 @@ const storyMachine = createMachine<
     },
   },
 });
+
+export const storyService = interpret(storyMachine);
+
+storyService.onTransition((state, event) => {
+  console.log({ stateVlue: state.value });
+  console.log({ context: state.context });
+});
+
+storyService.start();
