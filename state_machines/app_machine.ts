@@ -136,12 +136,16 @@ const appMachine = createMachine<
             // debugger;
 
             // FROM HERE SENDING EVENT TO STORY MACHINE
+            // OVO JE ASSIGN ACTION ZA EVENT KOJI NIJE VEZAN ZA
+            // BILO KOJI STATE, STO NE ZELIM DA IMAM U STORY MACHINE-U
 
             console.log({
               currentAnimeMachineFinitestate,
               currentAnimeMachineMajorState,
               canLoadControls,
             });
+
+            // ----------------------------------------------
 
             return {
               currentAnimeMachineFinitestate,
@@ -161,6 +165,11 @@ const appMachine = createMachine<
             actions: [
               assign((_, event) => {
                 const { payload } = event;
+
+                // INICIJALIZACIJA STORY MACHINE
+
+                // INICIJALIZOVACU JE SAMO AKO OVDE POSTOJE
+                // SVG ELEMENTI
 
                 return payload;
               }),
@@ -201,12 +210,12 @@ const appMachine = createMachine<
         entry: [
           // "wheelAllowed",
           () => {
-            console.log("BACK TO IDLE, BACK TO IDLE");
-            console.log("BACK TO IDLE, BACK TO IDLE");
-            console.log("BACK TO IDLE, BACK TO IDLE");
-            console.log("BACK TO IDLE, BACK TO IDLE");
-            console.log("BACK TO IDLE, BACK TO IDLE");
-            console.log("BACK TO IDLE, BACK TO IDLE");
+            console.log("BACK TO IDLE, BACK TO IDLING");
+            console.log("BACK TO IDLE, BACK TO IDLING");
+            console.log("BACK TO IDLE, BACK TO IDLING");
+            console.log("BACK TO IDLE, BACK TO IDLING");
+            console.log("BACK TO IDLE, BACK TO IDLING");
+            console.log("BACK TO IDLE, BACK TO IDLING");
           },
         ],
         on: {

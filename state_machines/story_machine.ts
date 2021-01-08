@@ -9,20 +9,24 @@ export enum fse {
 
 export enum EE {
   INITIALIZE = "INITIALIZE",
-  TO_ANIM = "TO_ANIM",
-  TO_MAJOR = "TO_MAJOR",
+  TO_ANIMATING = "TO_ANIMATING",
+  TO_IDLING = "TO_IDLING",
+  GIVE_MAJOR = "GIVE_MAJOR",
 }
 
 // --------
 // --------
 
 export interface MachineContextGenericI {
+  major: fseAnim | undefined; // MOZD SAM TREBAO OVO BOLJE DA
+  //                TYPE-UJEM JER CU SAMO KORISITI MAJOR STATE-OVE
   leftSvg: SVGElement | null;
   rightSvg: SVGElement | null;
   leftFishSvg: SVGElement | null;
   rightFishSvg: SVGElement | null;
 }
 export interface MachineContextGenericIFull {
+  major: fseAnim;
   leftSvg: SVGElement | null;
   rightSvg: SVGElement | null;
   leftFishSvg: SVGElement | null;
@@ -40,12 +44,18 @@ export type machineEventsGenericType =
       };
     }
   | {
-      type: EE.TO_ANIM;
+      type: EE.TO_ANIMATING;
     }
   | {
-      type: EE.TO_MAJOR;
+      type: EE.TO_IDLING;
       payload: {
-        majorState: fseAnim;
+        major: fseAnim;
+      };
+    }
+  | {
+      type: EE.GIVE_MAJOR;
+      payload: {
+        major: fseAnim;
       };
     };
 
@@ -91,6 +101,7 @@ const storyMachine = createMachine<
   id: "story_machine",
   initial: fse.init,
   context: {
+    major: undefined,
     rightSvg: null,
     leftSvg: null,
     leftFishSvg: null,
@@ -102,6 +113,8 @@ const storyMachine = createMachine<
         [EE.INITIALIZE]: {
           actions: [
             assign((_, { payload }) => {
+              // POSTARACU SE DA PAYLOAD BUDE VALIDAN KADA
+              // BUDEM SLAO EVENT
               return payload;
             }),
           ],
@@ -114,5 +127,6 @@ const storyMachine = createMachine<
         },
       },
     },
+    [fse.idle]: {},
   },
 });
