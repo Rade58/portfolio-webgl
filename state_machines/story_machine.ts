@@ -29,7 +29,7 @@ export interface MachineContextGenericI {
   rightFishSvg: SVGElement | null;
 }
 export interface MachineContextGenericIFull {
-  majorShower: HTMLElement;
+  majorShower: HTMLDivElement;
   major: fseAnim;
   leftSvg: SVGElement | null;
   rightSvg: SVGElement | null;
@@ -115,6 +115,7 @@ const storyMachine = createMachine<
   id: "story_machine",
   initial: fse.init,
   context: {
+    majorShower: null,
     major: undefined,
     rightSvg: null,
     leftSvg: null,
