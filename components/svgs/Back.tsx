@@ -30,7 +30,7 @@ const Back: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
     <div
       style={{
         visibility: visible ? "visible" : "hidden",
-        height: visible ? "fit-content" : "0px",
+        height: visible ? "60px" : "0px",
       }}
       className="back"
       role="button"
