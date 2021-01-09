@@ -216,7 +216,7 @@ const storyMachine = createMachine<
 
                   TweenMax.set(gs, {
                     transformOrigin: "50%",
-                    translateX: 50,
+                    translateX: -200,
                   });
                 }
 
@@ -227,7 +227,7 @@ const storyMachine = createMachine<
 
                   TweenMax.set(gs, {
                     transformOrigin: "50%",
-                    translateX: -50,
+                    translateX: 200,
                   });
                 }
 
