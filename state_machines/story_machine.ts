@@ -93,10 +93,10 @@ export type machineEventsGenericType =
   | {
       type: EE.GIVE_SVGS;
       payload: {
-        left: SVGElement;
-        right: SVGElement;
-        fishLeft: SVGElement;
-        fishRight: SVGElement;
+        left?: SVGElement;
+        right?: SVGElement;
+        fishLeft?: SVGElement;
+        fishRight?: SVGElement;
       };
     };
 
@@ -133,7 +133,32 @@ const storyMachine = createMachine<
     [EE.GIVE_SVGS]: {
       actions: [
         assign((_, { payload }) => {
-          return payload;
+          const { fishLeft } = payload;
+
+          if (fishLeft) {
+            return { fishLeft };
+          }
+        }),
+        assign((_, { payload }) => {
+          const { fishRight } = payload;
+
+          if (fishRight) {
+            return { fishRight };
+          }
+        }),
+        assign((_, { payload }) => {
+          const { left } = payload;
+
+          if (left) {
+            return { left };
+          }
+        }),
+        assign((_, { payload }) => {
+          const { right } = payload;
+
+          if (right) {
+            return { right };
+          }
         }),
       ],
     },
