@@ -194,19 +194,22 @@ const storyMachine = createMachine<
     // NA 'IDLE' TREBAS DA POKAZES (UZ ANIMACIJU) NOVI MODAL KOJI CE BITI ASSOCIATED
     // SA MAJOR STATOM
     [fse.idle]: {
-      entry: [
-        // -------- left right BUTTONS ANIMATIONS --------
-        ({ bTl, left, right }, __) => {
-          console.log({ left, right });
-        },
-        // -----------------------------------------------
-      ],
+      /* entry: [
+
+      ], */
+      // DOING ACTIONS ON TRANSITIONS
       on: {
         [EE.TO_ANIMATING]: {
           target: fse.anim_active,
-          actions: assign((_, { payload }) => {
-            return payload;
-          }),
+          actions: [
+            assign((_, { payload }) => {
+              return payload;
+            }), // -------- left right BUTTONS ANIMATIONS --------
+            ({ bTl, left, right }, __) => {
+              console.log({ left, right });
+            },
+          ],
+          // -----------------------------------------------],
         },
       },
     },
