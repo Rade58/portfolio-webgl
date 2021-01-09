@@ -31,6 +31,8 @@ const Left: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
       style={{
         visibility: visible ? "visible" : "hidden",
         height: visible ? "fit-content" : "0px",
+        // width: visible ? "auto" : "0px",
+        position: visible ? "relative" : "fixed",
       }}
       className="left"
       css={css`
@@ -97,7 +99,7 @@ const Left: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
               strokeLinejoin="round"
             />
           </g>
-          <g id="arr-left" clipPath="url(#clip0)">
+          <g id="arr-left" clipPath="url(#clip00)">
             <g id="Icons">
               <g id="Rounded">
                 <g id="Navigation">
@@ -118,7 +120,7 @@ const Left: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
           </g>
         </g>
         <defs>
-          <clipPath id="clip0">
+          <clipPath id="clip00">
             <rect
               width="7"
               height="12"
