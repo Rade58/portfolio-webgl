@@ -63,7 +63,7 @@ const Back: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
         }
       }}
       css={css`
-        border: pink solid 1px;
+        border: pink solid 0px;
         flex-basis: 46vw;
         /* flex-grow: 1; */
         height: 60px;
