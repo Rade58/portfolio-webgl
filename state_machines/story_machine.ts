@@ -1,7 +1,7 @@
 import { createMachine, assign, interpret } from "xstate";
 import { fse as fseAnim } from "../sketch/machine/anim_state_machine";
 
-import { TimelineMax, TweenMax, Sine, Power2 } from "gsap";
+import { TimelineMax, TweenMax, Sine, Power2, Power4 } from "gsap";
 
 // ---- TREBA MI INIT STATE, A TREBACE MI I VISIBILITI SVEGA
 // A MANIPULISACU I HEIGHT-OM
@@ -216,7 +216,8 @@ const storyMachine = createMachine<
 
                   TweenMax.set(gs, {
                     transformOrigin: "50%",
-                    translateX: -200,
+                    rotateZ: 180,
+                    translateX: -388,
                   });
                 }
 
@@ -227,7 +228,8 @@ const storyMachine = createMachine<
 
                   TweenMax.set(gs, {
                     transformOrigin: "50%",
-                    translateX: 200,
+                    rotateZ: 180,
+                    translateX: 388,
                   });
                 }
 
@@ -299,6 +301,29 @@ const storyMachine = createMachine<
             return payload;
           }),
         },
+      },
+      exit: ({ fTl, fishLeft, fishRight }, __) => {
+        if (fishLeft) {
+          const gs = fishLeft.querySelectorAll("g#fish_left____ > g");
+
+          fTl.to(gs, {
+            translateX: 0,
+            duration: 1.2,
+            ease: Power2.easeIn,
+            stagger: 0.4,
+          });
+        }
+
+        if (fishRight) {
+          const gs = fishRight.querySelectorAll("g#fish_right____ > g");
+
+          fTl.to(gs, {
+            translateX: 0,
+            duration: 1.2,
+            ease: Power4.easeOut,
+            stagger: 0.4,
+          });
+        }
       },
     },
   },
