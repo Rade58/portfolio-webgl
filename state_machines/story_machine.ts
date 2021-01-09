@@ -6,6 +6,8 @@ import { TimelineMax } from "gsap";
 // ---- TREBA MI INIT STATE, A TREBACE MI I VISIBILITI SVEGA
 // A MANIPULISACU I HEIGHT-OM
 
+// --------
+
 // USTVARI KADA RAZMISLIM POTREBNO JE DA
 // IMAM SVG-JEVE JER ZELIM I NJIH DA ANIMATE-UJEM
 
@@ -43,7 +45,7 @@ import { TimelineMax } from "gsap";
 export enum fse {
   anim_active = "anim_active",
   idle = "idle",
-  // init = "init",
+  init = "init",
 }
 
 export enum EE {
@@ -118,11 +120,11 @@ export type machineFiniteStatesGenericType =
   | {
       value: fse.idle;
       context: MachineContextGenericIFull;
-    };
-/* | {
+    }
+  | {
       value: fse.init;
       context: MachineContextGenericIFull;
-    } */
+    };
 
 // -------------------------------------------------------------
 
