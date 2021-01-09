@@ -46,6 +46,8 @@ const ControlAnim: FunctionComponent = () => {
     currentAnimeMachineMajorState,
   } = state.context;
 
+  const majorIsNotUndef = currentAnimeMachineMajorState !== "undefined";
+
   return (
     <div>
       <SvgTextPractice />
@@ -66,9 +68,10 @@ const ControlAnim: FunctionComponent = () => {
           flex-wrap: wrap;
         `}
       >
-        {currentAnimeMachineMajorState === "undefined" ? <Left /> : <Back />}
-
-        {currentAnimeMachineMajorState === "undefined" ? <Right /> : <Forth />}
+        <Left visible={!majorIsNotUndef} />
+        <Back visible={majorIsNotUndef} />
+        <Right visible={!majorIsNotUndef} />
+        <Forth visible={majorIsNotUndef} />
         <MiddleText />
       </section>
     </div>
