@@ -9,7 +9,7 @@ import { useService } from "@xstate/react";
 
 import { appService, EE } from "../../state_machines/app_machine";
 
-const Forth: FunctionComponent<{ visible: boolean }> = ({ visible }) => {
+const Forth: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
   const [state, send] = useService(appService);
 
   const forwrdSvgRef = useRef<HTMLDivElement>(null);
@@ -30,7 +30,7 @@ const Forth: FunctionComponent<{ visible: boolean }> = ({ visible }) => {
 
   return (
     <div
-      style={{ visibility: visible ? "visible" : "hidden" }}
+      // style={{ visibility: visible ? "visible" : "hidden" }}
       role="button"
       tabIndex={0}
       onClick={(e) => {

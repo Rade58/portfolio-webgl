@@ -9,7 +9,7 @@ import { useService } from "@xstate/react";
 
 import { appService, EE } from "../../state_machines/app_machine";
 
-const Right: FunctionComponent<{ visible: boolean }> = ({ visible }) => {
+const Right: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
   const [state, send] = useService(appService);
 
   const rightSvgRef = useRef<HTMLDivElement>(null);
@@ -29,7 +29,7 @@ const Right: FunctionComponent<{ visible: boolean }> = ({ visible }) => {
 
   return (
     <div
-      style={{ visibility: visible ? "visible" : "hidden" }}
+      // style={{ visibility: visible ? "visible" : "hidden" }}
       className="right"
       css={css`
         border: pink solid 1px;

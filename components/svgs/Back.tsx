@@ -8,7 +8,7 @@ import styled from "@emotion/styled";
 import { useService } from "@xstate/react";
 import { appService, EE } from "../../state_machines/app_machine";
 
-const Back: FunctionComponent<{ visible: boolean }> = ({ visible }) => {
+const Back: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
   const [state, send] = useService(appService);
 
   const backSvgRef = useRef<HTMLDivElement>(null);
@@ -28,7 +28,7 @@ const Back: FunctionComponent<{ visible: boolean }> = ({ visible }) => {
 
   return (
     <div
-      style={{ visibility: visible ? "visible" : "hidden" }}
+      // style={{ visibility: visible ? "visible" : "hidden" }}
       className="back"
       role="button"
       tabIndex={0}

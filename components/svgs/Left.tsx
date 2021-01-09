@@ -8,7 +8,7 @@ import styled from "@emotion/styled";
 import { useService } from "@xstate/react";
 import { appService, EE } from "../../state_machines/app_machine";
 
-const Left: FunctionComponent<{ visible: boolean }> = ({ visible }) => {
+const Left: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
   const [state, send] = useService(appService);
 
   const leftSvgRef = useRef<HTMLDivElement>(null);
@@ -28,7 +28,7 @@ const Left: FunctionComponent<{ visible: boolean }> = ({ visible }) => {
 
   return (
     <div
-      style={{ visibility: visible ? "visible" : "hidden" }}
+      // style={{ visibility: visible ? "visible" : "hidden" }}
       className="left"
       css={css`
         border: pink solid 1px;

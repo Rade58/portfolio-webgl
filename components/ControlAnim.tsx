@@ -46,7 +46,7 @@ const ControlAnim: FunctionComponent = () => {
     currentAnimeMachineMajorState,
   } = state.context;
 
-  const majorIsNotUndef = currentAnimeMachineMajorState !== "undefined";
+  // const majorIsNotUndef = currentAnimeMachineMajorState !== "undefined";
 
   return (
     <div>
@@ -68,10 +68,9 @@ const ControlAnim: FunctionComponent = () => {
           flex-wrap: wrap;
         `}
       >
-        <Left visible={!majorIsNotUndef} />
-        <Back visible={majorIsNotUndef} />
-        <Right visible={!majorIsNotUndef} />
-        <Forth visible={majorIsNotUndef} />
+        {currentAnimeMachineMajorState === "undefined" ? <Left /> : <Back />}
+
+        {currentAnimeMachineMajorState === "undefined" ? <Right /> : <Forth />}
         <MiddleText />
       </section>
     </div>
