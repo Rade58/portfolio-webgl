@@ -1,7 +1,7 @@
 import { createMachine, assign, interpret } from "xstate";
 import { fse as fseAnim } from "../sketch/machine/anim_state_machine";
 
-import { TimelineMax, Sine, Power2 } from "gsap";
+import { TimelineMax, TweenMax, Sine, Power2 } from "gsap";
 
 // ---- TREBA MI INIT STATE, A TREBACE MI I VISIBILITI SVEGA
 // A MANIPULISACU I HEIGHT-OM
@@ -210,6 +210,9 @@ const storyMachine = createMachine<
 
               if (major === "undefined") {
                 if (fishLeft) {
+                  const gs = fishLeft.querySelectorAll("g#fish_left____ > g");
+
+                  console.log({ gs });
                 }
 
                 if (fishRight) {
