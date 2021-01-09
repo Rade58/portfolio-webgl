@@ -59,7 +59,7 @@ const ComponentName: FunctionComponent = () => {
       className="svg_text_holder"
       css={css`
         box-sizing: border-box;
-        border: crimson 1px solid;
+        border: crimson 0px solid;
         margin: 0px 0px;
         width: 100%;
         position: fixed;
