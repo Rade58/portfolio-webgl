@@ -37,7 +37,7 @@ const Left: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
       className="left"
       css={css`
         border: pink solid 1px;
-        flex-basis: 120px;
+        flex-basis: 90px;
         height: fit-content;
         flex-shrink: 2;
 
