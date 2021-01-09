@@ -221,6 +221,14 @@ const storyMachine = createMachine<
                 }
 
                 if (fishRight) {
+                  const gs = fishRight.querySelectorAll("g#fish_right____ > g");
+
+                  console.log({ gs });
+
+                  TweenMax.set(gs, {
+                    transformOrigin: "50%",
+                    translateX: -400,
+                  });
                 }
 
                 if (left) {
