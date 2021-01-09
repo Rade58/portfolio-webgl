@@ -205,11 +205,21 @@ const storyMachine = createMachine<
             assign((_, { payload }) => {
               return payload;
             }), // -------- left right BUTTONS ANIMATIONS --------
-            ({ bTl, left, right, major }, __) => {
+            ({ bTl, left, right, major, fishLeft, fishRight }, __) => {
               console.log({ left, right });
 
               if (major === "undefined") {
+                if (fishLeft) {
+                }
+
+                if (fishRight) {
+                }
+
                 if (left) {
+                  // -------- fish SETUP --------
+
+                  //  LEFT AND RIGHT -------
+
                   const circle = left.querySelector("g#left g#circle");
                   const arrow = left.querySelector("g#left g#arr-left");
 
