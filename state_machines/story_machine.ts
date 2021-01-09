@@ -1,6 +1,8 @@
 import { createMachine, assign, interpret } from "xstate";
 import { fse as fseAnim } from "../sketch/machine/anim_state_machine";
 
+import { TimelineMax } from "gsap";
+
 // USTVARI KADA RAZMISLIM POTREBNO JE DA
 // IMAM SVG-JEVE JER ZELIM I NJIH DA ANIMATE-UJEM
 
@@ -53,6 +55,8 @@ export enum EE {
 // ------------------------------------------------------------
 
 export interface MachineContextGenericI {
+  bTl: TimelineMax;
+  fTl: TimelineMax;
   majorShower: HTMLDivElement | null;
   major: fseAnim | undefined | "undefined"; // MOZD SAM TREBAO OVO BOLJE DA
   //                TYPE-UJEM JER CU SAMO KORISITI MAJOR STATE-OVE
@@ -63,6 +67,8 @@ export interface MachineContextGenericI {
   fishRight: SVGElement | null;
 }
 export interface MachineContextGenericIFull {
+  bTl: TimelineMax;
+  fTl: TimelineMax;
   majorShower: HTMLDivElement;
   major: fseAnim;
   left: SVGElement;
@@ -122,6 +128,8 @@ const storyMachine = createMachine<
   id: "story_machine",
   initial: fse.idle,
   context: {
+    bTl: new TimelineMax(),
+    fTl: new TimelineMax(),
     majorShower: null,
     major: "undefined",
     fishLeft: null,
