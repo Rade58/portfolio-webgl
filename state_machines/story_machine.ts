@@ -1,7 +1,7 @@
 import { createMachine, assign, interpret } from "xstate";
 import { fse as fseAnim } from "../sketch/machine/anim_state_machine";
 
-import { TimelineMax } from "gsap";
+import { TimelineMax, Sine } from "gsap";
 
 // ---- TREBA MI INIT STATE, A TREBACE MI I VISIBILITI SVEGA
 // A MANIPULISACU I HEIGHT-OM
@@ -207,6 +207,36 @@ const storyMachine = createMachine<
             }), // -------- left right BUTTONS ANIMATIONS --------
             ({ bTl, left, right }, __) => {
               console.log({ left, right });
+
+              if (left) {
+                const circle = left.querySelector("g#left g#circle");
+                const arrow = left.querySelector("g#left g#arr-left");
+
+                bTl.to(arrow, {
+                  transformOrigin: "50%",
+                  rotateZ: 180,
+                  duration: 0.4,
+                  ease: Sine.easeIn,
+                });
+
+                console.log({ circle, arrow });
+              }
+
+              if (right) {
+                const circle = right.querySelector("g#left g#circle");
+                const arrow = right.querySelector("g#left g#arr-left");
+
+                bTl.to(
+                  arrow,
+                  {
+                    transformOrigin: "50%",
+                    rotateZ: 180,
+                    duration: 0.4,
+                    ease: Sine.easeIn,
+                  },
+                  "-=0.4"
+                );
+              }
             },
           ],
           // -----------------------------------------------],
