@@ -1,7 +1,7 @@
 import { createMachine, assign, interpret } from "xstate";
 import { fse as fseAnim } from "../sketch/machine/anim_state_machine";
 
-import { TimelineMax, Sine } from "gsap";
+import { TimelineMax, Sine, Power2 } from "gsap";
 
 // ---- TREBA MI INIT STATE, A TREBACE MI I VISIBILITI SVEGA
 // A MANIPULISACU I HEIGHT-OM
@@ -212,30 +212,48 @@ const storyMachine = createMachine<
                 const circle = left.querySelector("g#left g#circle");
                 const arrow = left.querySelector("g#left g#arr-left");
 
-                bTl.to(arrow, {
-                  transformOrigin: "50%",
-                  rotateZ: 180,
-                  duration: 0.4,
-                  ease: Sine.easeIn,
-                });
+                bTl
+                  .to(arrow, {
+                    transformOrigin: "50%",
+                    rotateZ: 180,
+                    duration: 0.4,
+                    // scale: 0,
+                    ease: Sine.easeIn,
+                  })
+                  .to(circle, {
+                    transformOrigin: "50%",
+                    scale: 0,
+                    duration: 0.2,
+                    ease: Power2.easeOut,
+                  })
+                  .to(arrow, { duration: 0.2, x: 160, ease: Sine.easeIn });
 
                 console.log({ circle, arrow });
               }
 
               if (right) {
-                const circle = right.querySelector("g#left g#circle");
-                const arrow = right.querySelector("g#left g#arr-left");
+                const circle = right.querySelector("g#right2 g#circle");
+                const arrow = right.querySelector("g#right2 g#arr-right");
 
-                bTl.to(
-                  arrow,
-                  {
+                bTl
+                  .to(
+                    arrow,
+                    {
+                      transformOrigin: "50%",
+                      rotateZ: 180,
+                      duration: 0.4,
+                      scale: 0,
+                      ease: Sine.easeIn,
+                    },
+                    "-=0.6"
+                  )
+                  .to(circle, {
                     transformOrigin: "50%",
-                    rotateZ: 180,
-                    duration: 0.4,
-                    ease: Sine.easeIn,
-                  },
-                  "-=0.4"
-                );
+                    scale: 0,
+                    duration: 0.2,
+                    ease: Power2.easeOut,
+                  })
+                  .to(arrow, { duration: 0.2, x: -160, ease: Sine.easeIn });
               }
             },
           ],

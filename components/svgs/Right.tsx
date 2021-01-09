@@ -99,7 +99,7 @@ const Right: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
               strokeLinejoin="round"
             />
           </g>
-          <g id="arr-left" clipPath="url(#clip01)">
+          <g id="arr-right" clipPath="url(#clip01)">
             <g id="Icons">
               <g id="Rounded">
                 <g id="Navigation">
