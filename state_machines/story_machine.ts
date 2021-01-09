@@ -3,6 +3,9 @@ import { fse as fseAnim } from "../sketch/machine/anim_state_machine";
 
 import { TimelineMax } from "gsap";
 
+// ---- TREBA MI INIT STATE, A TREBACE MI I VISIBILITI SVEGA
+// A MANIPULISACU I HEIGHT-OM
+
 // USTVARI KADA RAZMISLIM POTREBNO JE DA
 // IMAM SVG-JEVE JER ZELIM I NJIH DA ANIMATE-UJEM
 
@@ -40,7 +43,7 @@ import { TimelineMax } from "gsap";
 export enum fse {
   anim_active = "anim_active",
   idle = "idle",
-  init = "init",
+  // init = "init",
 }
 
 export enum EE {
@@ -115,11 +118,11 @@ export type machineFiniteStatesGenericType =
   | {
       value: fse.idle;
       context: MachineContextGenericIFull;
-    }
-  | {
+    };
+/* | {
       value: fse.init;
       context: MachineContextGenericIFull;
-    };
+    } */
 
 // -------------------------------------------------------------
 
@@ -131,7 +134,7 @@ const storyMachine = createMachine<
   machineFiniteStatesGenericType
 >({
   id: "story_machine",
-  initial: fse.init,
+  initial: fse.idle,
   context: {
     bTl: new TimelineMax(),
     fTl: new TimelineMax(),
@@ -142,54 +145,58 @@ const storyMachine = createMachine<
     left: null,
     right: null,
   },
-  states: {
-    [fse.init]: {
-      on: {
-        [EE.GIVE_SVGS]: {
-          actions: [
-            assign((_, { payload }) => {
-              const { fishLeft } = payload;
+  on: {
+    [EE.GIVE_SVGS]: {
+      actions: [
+        assign((_, { payload }) => {
+          const { fishLeft } = payload;
 
-              if (fishLeft) {
-                return { fishLeft };
-              }
-            }),
-            assign((_, { payload }) => {
-              const { fishRight } = payload;
+          if (fishLeft) {
+            return { fishLeft };
+          }
+        }),
+        assign((_, { payload }) => {
+          const { fishRight } = payload;
 
-              if (fishRight) {
-                return { fishRight };
-              }
-            }),
-            assign((_, { payload }) => {
-              const { left } = payload;
+          if (fishRight) {
+            return { fishRight };
+          }
+        }),
+        assign((_, { payload }) => {
+          const { left } = payload;
 
-              if (left) {
-                return { left };
-              }
-            }),
-            assign((_, { payload }) => {
-              const { right } = payload;
+          if (left) {
+            return { left };
+          }
+        }),
+        assign((_, { payload }) => {
+          const { right } = payload;
 
-              if (right) {
-                return { right };
-              }
-            }),
-          ],
-          target: fse.idle,
-          cond: ({ fishLeft, fishRight, left, right }, __) => {
-            return fishLeft && fishRight && left && right ? true : false;
-          },
-        },
-      },
+          if (right) {
+            return { right };
+          }
+        }),
+      ],
+      /* target: fse.idle,
+      cond: ({ fishLeft, fishRight, left, right }) => {
+
+
+        return fishLeft && fishRight && left && right ? true : false;
+      }, */
     },
+  },
+  states: {
+    // [fse.init]: {
+    // },
 
     // NA 'IDLE' TREBAS DA POKAZES (UZ ANIMACIJU) NOVI MODAL KOJI CE BITI ASSOCIATED
     // SA MAJOR STATOM
     [fse.idle]: {
       entry: [
         // -------- left right BUTTONS ANIMATIONS --------
-        ({ bTl, left, right }, __) => {},
+        ({ bTl, left, right }, __) => {
+          console.log({ left, right });
+        },
         // -----------------------------------------------
       ],
       on: {
