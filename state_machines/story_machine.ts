@@ -308,21 +308,25 @@ const storyMachine = createMachine<
 
           fTl.to(gs, {
             translateX: 0,
-            duration: 1.2,
+            duration: 0.4,
             ease: Power2.easeIn,
-            stagger: 0.4,
+            stagger: 0.08,
           });
         }
 
         if (fishRight) {
           const gs = fishRight.querySelectorAll("g#fish_right____ > g");
 
-          fTl.to(gs, {
-            translateX: 0,
-            duration: 1.2,
-            ease: Power4.easeOut,
-            stagger: 0.4,
-          });
+          fTl.to(
+            gs,
+            {
+              translateX: 0,
+              duration: 0.4,
+              ease: Power4.easeOut,
+              stagger: 0.08,
+            },
+            "-=0.4"
+          );
         }
       },
     },
