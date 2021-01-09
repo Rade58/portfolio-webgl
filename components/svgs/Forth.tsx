@@ -30,7 +30,10 @@ const Forth: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
 
   return (
     <div
-      // style={{ visibility: visible ? "visible" : "hidden" }}
+      style={{
+        visibility: visible ? "visible" : "hidden",
+        height: visible ? "fit-content" : "0px",
+      }}
       role="button"
       tabIndex={0}
       onClick={(e) => {

@@ -28,7 +28,10 @@ const Left: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
 
   return (
     <div
-      // style={{ visibility: visible ? "visible" : "hidden" }}
+      style={{
+        visibility: visible ? "visible" : "hidden",
+        height: visible ? "fit-content" : "0px",
+      }}
       className="left"
       css={css`
         border: pink solid 1px;
