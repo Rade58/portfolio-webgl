@@ -205,55 +205,57 @@ const storyMachine = createMachine<
             assign((_, { payload }) => {
               return payload;
             }), // -------- left right BUTTONS ANIMATIONS --------
-            ({ bTl, left, right }, __) => {
+            ({ bTl, left, right, major }, __) => {
               console.log({ left, right });
 
-              if (left) {
-                const circle = left.querySelector("g#left g#circle");
-                const arrow = left.querySelector("g#left g#arr-left");
+              if (major === "undefined") {
+                if (left) {
+                  const circle = left.querySelector("g#left g#circle");
+                  const arrow = left.querySelector("g#left g#arr-left");
 
-                bTl
-                  .to(arrow, {
-                    transformOrigin: "50%",
-                    rotateZ: 180,
-                    duration: 0.4,
-                    // scale: 0,
-                    ease: Sine.easeIn,
-                  })
-                  .to(circle, {
-                    transformOrigin: "50%",
-                    scale: 0,
-                    duration: 0.2,
-                    ease: Power2.easeOut,
-                  })
-                  .to(arrow, { duration: 0.2, x: 160, ease: Sine.easeIn });
-
-                console.log({ circle, arrow });
-              }
-
-              if (right) {
-                const circle = right.querySelector("g#right2 g#circle");
-                const arrow = right.querySelector("g#right2 g#arr-right");
-
-                bTl
-                  .to(
-                    arrow,
-                    {
+                  bTl
+                    .to(arrow, {
                       transformOrigin: "50%",
                       rotateZ: 180,
-                      duration: 0.4,
-                      scale: 0,
+                      duration: 0.6,
+                      // scale: 0,
                       ease: Sine.easeIn,
-                    },
-                    "-=0.6"
-                  )
-                  .to(circle, {
-                    transformOrigin: "50%",
-                    scale: 0,
-                    duration: 0.2,
-                    ease: Power2.easeOut,
-                  })
-                  .to(arrow, { duration: 0.2, x: -160, ease: Sine.easeIn });
+                    })
+                    .to(circle, {
+                      transformOrigin: "50%",
+                      scale: 0,
+                      duration: 0.2,
+                      ease: Power2.easeOut,
+                    })
+                    .to(arrow, { duration: 0.2, x: 160, ease: Sine.easeIn });
+
+                  console.log({ circle, arrow });
+                }
+
+                if (right) {
+                  const circle = right.querySelector("g#right2 g#circle");
+                  const arrow = right.querySelector("g#right2 g#arr-right");
+
+                  bTl
+                    .to(
+                      arrow,
+                      {
+                        transformOrigin: "50%",
+                        rotateZ: 180,
+                        duration: 0.6,
+                        // scale: 0,
+                        ease: Sine.easeIn,
+                      },
+                      "-=0.6"
+                    )
+                    .to(circle, {
+                      transformOrigin: "50%",
+                      scale: 0,
+                      duration: 0.2,
+                      ease: Power2.easeOut,
+                    })
+                    .to(arrow, { duration: 0.2, x: -160, ease: Sine.easeIn });
+                }
               }
             },
           ],
