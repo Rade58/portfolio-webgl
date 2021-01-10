@@ -330,6 +330,7 @@ const storyMachine = createMachine<
           // -----------------------------------------------],
         },
       },
+      exit: [() => {}],
     },
     // KADA ANIMACIJA TRAJE MODAL ASSOCIATED SA MAJOR STATEOM BI TREBAO SAKRITI
     // NARAVNO UZ ANIMACIJU
