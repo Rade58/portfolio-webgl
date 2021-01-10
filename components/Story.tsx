@@ -13,6 +13,8 @@ import {
 import { useService } from "@xstate/react";
 import { storyService } from "../state_machines/story_machine";
 
+const MAJOR_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
+
 const Story: FunctionComponent = () => {
   // VODI RACUNA DA major MOZE BITI I STRING "undefined"
 
@@ -23,6 +25,13 @@ const Story: FunctionComponent = () => {
   if (!major || major === "undefined") {
     return null;
   }
+
+  const currIndex: number = MAJOR_FINITE_STATES_ARRAY.indexOf(major);
+
+  const nextIndex: number =
+    currIndex + 1 > MAJOR_ARR_LENGTH - 1 ? 0 : currIndex + 1;
+  const prevIndex: number =
+    currIndex - 1 < 0 ? MAJOR_ARR_LENGTH - 1 : currIndex - 1;
 
   return (
     <section
@@ -35,8 +44,9 @@ const Story: FunctionComponent = () => {
         height: 86vh;
       `}
     >
+      <h2>prev: {MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h2>
       <h1>major: {major}</h1>
-      <h2>{MAJOR_FINITE_STATES_ARRAY.indexOf(major)}</h2>
+      <h2>next: {MAJOR_FINITE_STATES_ARRAY[nextIndex]}</h2>
     </section>
   );
 };
