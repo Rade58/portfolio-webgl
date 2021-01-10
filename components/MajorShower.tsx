@@ -51,15 +51,23 @@ const MajorShowers: FunctionComponent = () => {
         flex-grow: 1;
         flex-shrink: 1;
         justify-content: space-between;
+        flex-wrap: wrap;
 
         overflow: hidden;
 
         & h1 {
           font-size: 2.8rem;
+          width: 100%;
+          text-align: center;
+          border: tomato inset 2px;
+          align-self: flex-start;
+          justify-self: center;
+          margin: 0px auto;
         }
 
         & h4 {
           align-self: flex-end;
+          border: pink solid 1px;
 
           &:hover {
             transform: translateY(10px) translateX(10px);
@@ -67,8 +75,8 @@ const MajorShowers: FunctionComponent = () => {
         }
       `}
     >
-      <h4 ref={prevRef}>{MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h4>
       <h1>{major}</h1>
+      <h4 ref={prevRef}>{MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h4>
       <h4 ref={nextRef}>{MAJOR_FINITE_STATES_ARRAY[nextIndex]}</h4>
     </section>
   );
