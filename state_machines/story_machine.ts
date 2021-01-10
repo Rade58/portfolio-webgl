@@ -1,5 +1,5 @@
 import { createMachine, assign, interpret } from "xstate";
-import { fse as fseAnim } from "../sketch/machine/anim_state_machine";
+import { fse as fseAnim } from "../sketch/middle_ground/major_states";
 
 import { TimelineMax, TweenMax, Sine, Power2, Power4, Elastic } from "gsap";
 

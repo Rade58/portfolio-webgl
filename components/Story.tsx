@@ -8,7 +8,7 @@ import styled from "@emotion/styled";
 import {
   fse as fsS,
   MAJOR_FINITE_STATES_ARRAY,
-} from "../sketch/machine/anim_state_machine";
+} from "../sketch/middle_ground/major_states";
 
 import { useService } from "@xstate/react";
 import { storyService } from "../state_machines/story_machine";

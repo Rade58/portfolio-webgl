@@ -4,7 +4,7 @@ import { CssClassesEnum } from "../sketch/ui/user_interface";
 import {
   fse as animeFse,
   MAJOR_FINITE_STATES_ARRAY,
-} from "../sketch/machine/anim_state_machine";
+} from "../sketch/middle_ground/major_states";
 
 import { storyService, EE as SE } from "./story_machine";
 
