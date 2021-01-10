@@ -212,7 +212,7 @@ const storyMachine = createMachine<
                 if (fishLeft) {
                   const gs = fishLeft.querySelectorAll("g#fish_left____ > g");
 
-                  console.log({ gs });
+                  // console.log({ gs });
 
                   TweenMax.set(gs, {
                     transformOrigin: "50%",
@@ -244,7 +244,7 @@ const storyMachine = createMachine<
                 if (fishRight) {
                   const gs = fishRight.querySelectorAll("g#fish_right____ > g");
 
-                  console.log({ gs });
+                  // console.log({ gs });
 
                   TweenMax.set(gs, {
                     transformOrigin: "50%",
@@ -330,7 +330,47 @@ const storyMachine = createMachine<
           // -----------------------------------------------],
         },
       },
-      exit: [() => {}],
+      exit: [
+        ({ fTl, fishLeft, fishRight }) => {
+          if (fishLeft) {
+            const gs = fishLeft.querySelectorAll("g#fish_left____ > g");
+
+            fTl
+              .to(
+                gs,
+                {
+                  translateX: 388,
+                  duration: 0.1,
+                  ease: Power2.easeIn,
+                  stagger: 0.08,
+                },
+                "-=0.01"
+              )
+              .to(gs, { rotateZ: 0, stagger: 0.06, ease: Sine.easeIn });
+          }
+
+          if (fishRight) {
+            const gs = fishRight.querySelectorAll("g#fish_right____ > g");
+
+            fTl
+              .to(
+                gs,
+                {
+                  translateX: -388,
+                  duration: 0.1,
+                  ease: Power4.easeOut,
+                  stagger: 0.08,
+                },
+                `-=${4 * 0.1 + 0.01 * 2}`
+              )
+              .to(
+                gs,
+                { rotateZ: 0, stagger: 0.06, ease: Sine.easeIn },
+                `-=${2 * 0.01}`
+              );
+          }
+        },
+      ],
     },
     // KADA ANIMACIJA TRAJE MODAL ASSOCIATED SA MAJOR STATEOM BI TREBAO SAKRITI
     // NARAVNO UZ ANIMACIJU
