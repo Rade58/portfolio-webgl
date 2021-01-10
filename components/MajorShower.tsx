@@ -38,14 +38,17 @@ const MajorShowers: FunctionComponent = () => {
       css={css`
         border: crimson solid 1px;
         position: fixed;
-        top: 0;
-        left: 0;
+        top: 60vh;
+        left: center;
         height: 86vh;
+        display: flex;
+        width: 348px;
+        justify-content: space-between;
       `}
     >
-      <h4>prev: {MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h4>
-      <h1>major: {major}</h1>
-      <h4>next: {MAJOR_FINITE_STATES_ARRAY[nextIndex]}</h4>
+      <h4>{MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h4>
+      <h1>{major}</h1>
+      <h4>{MAJOR_FINITE_STATES_ARRAY[nextIndex]}</h4>
     </section>
   );
 };
