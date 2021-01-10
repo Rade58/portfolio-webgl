@@ -2,7 +2,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useRef } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
@@ -20,6 +20,9 @@ const MajorShowers: FunctionComponent = () => {
   const [state, send] = useService(storyService);
 
   const { major } = state.context;
+
+  const prevRef = useRef<HTMLHeadingElement>(null);
+  const nextRef = useRef<HTMLHeadingElement>(null);
 
   if (!major || major === "undefined") {
     return null;
@@ -61,9 +64,9 @@ const MajorShowers: FunctionComponent = () => {
         }
       `}
     >
-      <h4>{MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h4>
+      <h4 ref={prevRef}>{MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h4>
       <h1>{major}</h1>
-      <h4>{MAJOR_FINITE_STATES_ARRAY[nextIndex]}</h4>
+      <h4 ref={nextRef}>{MAJOR_FINITE_STATES_ARRAY[nextIndex]}</h4>
     </section>
   );
 };
