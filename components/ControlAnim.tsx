@@ -22,6 +22,8 @@ import Back from "./svgs/Back";
 import Forth from "./svgs/Forth";
 import MiddleText from "./svgs/MiddleText";
 
+import MajorShower from "./MajorShower";
+
 import SvgTextPractice from "./practice/svg_text_practice";
 
 const ControlAnim: FunctionComponent = () => {
@@ -68,6 +70,7 @@ const ControlAnim: FunctionComponent = () => {
           flex-wrap: wrap;
         `}
       >
+        <MajorShower />
         <Left visible={!majorIsNotUndef} />
         <Back visible={majorIsNotUndef} />
         <Right visible={!majorIsNotUndef} />
