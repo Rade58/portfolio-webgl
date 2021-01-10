@@ -40,10 +40,25 @@ const MajorShowers: FunctionComponent = () => {
         position: fixed;
         top: 60vh;
         left: center;
-        height: 86vh;
+        bottom: 68px;
+
         display: flex;
         width: 348px;
         justify-content: space-between;
+
+        overflow: hidden;
+
+        & h1 {
+          font-size: 2.8rem;
+        }
+
+        & h4 {
+          align-self: flex-end;
+
+          &:hover {
+            transform: translateY(10px) translateX(10px);
+          }
+        }
       `}
     >
       <h4>{MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h4>
