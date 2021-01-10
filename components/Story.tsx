@@ -36,6 +36,7 @@ const Story: FunctionComponent = () => {
       `}
     >
       <h1>major: {major}</h1>
+      <h2>{MAJOR_FINITE_STATES_ARRAY.indexOf(major)}</h2>
     </section>
   );
 };
