@@ -8,7 +8,9 @@ import settings, { settingsFunc } from "./sketch-settings";
 // import { TweenMax, Elastic, Power2, Quad } from "gsap";
 //
 // STATE MACHINE
-import { EE, animMachineService as service, } from "./machine/anim_state_machine";
+import { EE, 
+// fse,
+animMachineService as service, } from "./machine/anim_state_machine";
 // ----- MOZDA CU KORISTITI ALI VEROVATNO NE -------
 /*
 const glsl = require("glslify");

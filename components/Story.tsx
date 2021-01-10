@@ -44,9 +44,9 @@ const Story: FunctionComponent = () => {
         height: 86vh;
       `}
     >
-      <h2>prev: {MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h2>
+      <h4>prev: {MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h4>
       <h1>major: {major}</h1>
-      <h2>next: {MAJOR_FINITE_STATES_ARRAY[nextIndex]}</h2>
+      <h4>next: {MAJOR_FINITE_STATES_ARRAY[nextIndex]}</h4>
     </section>
   );
 };
