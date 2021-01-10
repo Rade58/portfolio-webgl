@@ -11,14 +11,13 @@ import { storyService, fse } from "../../state_machines/story_machine";
 
 const ComponentName: FunctionComponent = () => {
   const pathNodeListRef = useRef<NodeListOf<SVGPathElement>>(null);
+  const tl = new TimelineMax();
 
   useEffect(() => {
     if (!pathNodeListRef.current) {
       pathNodeListRef.current = document.querySelectorAll(
         ".svg_text_holder path"
       );
-
-      const tl = new TimelineMax();
 
       tl.to(pathNodeListRef.current, {
         duration: 0.1,
