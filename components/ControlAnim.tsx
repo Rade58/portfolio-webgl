@@ -54,7 +54,7 @@ const ControlAnim: FunctionComponent = () => {
       <section
         className="anim_control"
         css={css`
-          border: crimson solid 2px;
+          border: crimson solid 0px;
           position: fixed;
           /* top: 0; */
           left: 0;
