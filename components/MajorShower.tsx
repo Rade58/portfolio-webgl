@@ -46,7 +46,10 @@ const MajorShowers: FunctionComponent = () => {
         bottom: 68px;
 
         display: flex;
-        width: 348px;
+        flex-basis: 348px;
+        max-width: 100vw;
+        flex-grow: 1;
+        flex-shrink: 1;
         justify-content: space-between;
 
         overflow: hidden;
