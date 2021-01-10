@@ -1,7 +1,7 @@
 import { createMachine, assign, interpret } from "xstate";
 import { fse as fseAnim } from "../sketch/machine/anim_state_machine";
 
-import { TimelineMax, TweenMax, Sine, Power2, Power4 } from "gsap";
+import { TimelineMax, TweenMax, Sine, Power2, Power4, Elastic } from "gsap";
 
 // ---- TREBA MI INIT STATE, A TREBACE MI I VISIBILITI SVEGA
 // A MANIPULISACU I HEIGHT-OM
@@ -219,6 +219,26 @@ const storyMachine = createMachine<
                     rotateZ: 180,
                     translateX: -388,
                   });
+
+                  TweenMax.to(gs, {
+                    translateY: -2.8,
+                    yoyo: true,
+                    yoyoEase: Power2.easeIn,
+                    repeat: -1,
+                    repeatDelay: 1,
+                    duration: 0.08,
+                    stagger: 0.08,
+                    // reversed: true,
+                  });
+                  TweenMax.to(gs, {
+                    translateY: 2.8,
+                    yoyo: true,
+                    yoyoEase: Power2.easeIn,
+                    repeat: -1,
+                    repeatDelay: 1,
+                    duration: 0.08,
+                    stagger: 0.08,
+                  });
                 }
 
                 if (fishRight) {
@@ -230,6 +250,26 @@ const storyMachine = createMachine<
                     transformOrigin: "50%",
                     rotateZ: 180,
                     translateX: 388,
+                  });
+
+                  TweenMax.to(gs, {
+                    translateY: 2.8,
+                    yoyo: true,
+                    yoyoEase: Power2.easeIn,
+                    repeat: -1,
+                    repeatDelay: 1,
+                    duration: 0.08,
+                    stagger: 0.08,
+                    // reversed: true,
+                  });
+                  TweenMax.to(gs, {
+                    translateY: -2.8,
+                    yoyo: true,
+                    yoyoEase: Power2.easeIn,
+                    repeat: -1,
+                    repeatDelay: 1,
+                    duration: 0.08,
+                    stagger: 0.08,
                   });
                 }
 
@@ -306,27 +346,39 @@ const storyMachine = createMachine<
         if (fishLeft) {
           const gs = fishLeft.querySelectorAll("g#fish_left____ > g");
 
-          fTl.to(gs, {
-            translateX: 0,
-            duration: 0.4,
-            ease: Power2.easeIn,
-            stagger: 0.08,
-          });
+          fTl
+            .to(
+              gs,
+              {
+                translateX: 0,
+                duration: 0.1,
+                ease: Power2.easeIn,
+                stagger: 0.08,
+              },
+              "-=0.01"
+            )
+            .to(gs, { rotateZ: 0, stagger: 0.06, ease: Sine.easeIn });
         }
 
         if (fishRight) {
           const gs = fishRight.querySelectorAll("g#fish_right____ > g");
 
-          fTl.to(
-            gs,
-            {
-              translateX: 0,
-              duration: 0.4,
-              ease: Power4.easeOut,
-              stagger: 0.08,
-            },
-            "-=0.4"
-          );
+          fTl
+            .to(
+              gs,
+              {
+                translateX: 0,
+                duration: 0.1,
+                ease: Power4.easeOut,
+                stagger: 0.08,
+              },
+              `-=${4 * 0.1 + 0.01 * 2}`
+            )
+            .to(
+              gs,
+              { rotateZ: 0, stagger: 0.06, ease: Sine.easeIn },
+              `-=${2 * 0.01}`
+            );
         }
       },
     },
