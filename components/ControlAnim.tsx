@@ -72,7 +72,7 @@ const ControlAnim: FunctionComponent = () => {
         <Back visible={majorIsNotUndef} />
         <Right visible={!majorIsNotUndef} />
         <Forth visible={majorIsNotUndef} />
-        <MiddleText />
+        {/* <MiddleText /> */}
       </section>
     </div>
   );

@@ -6,6 +6,9 @@ import { FunctionComponent, useEffect, useRef } from "react";
 import { css } from "@emotion/core";
 import gsap, { TweenMax, TimelineMax, TimelineLite, Sine, Circ } from "gsap";
 
+import { useService } from "@xstate/react";
+import { storyService, fse } from "../../state_machines/story_machine";
+
 const ComponentName: FunctionComponent = () => {
   const pathNodeListRef = useRef<NodeListOf<SVGPathElement>>(null);
 
@@ -41,17 +44,21 @@ const ComponentName: FunctionComponent = () => {
         reversed: true,
       });
 
-      /* tl.to(pathNodeListRef.current, {
-        duration: 0.1,
-        translateX: 800,
-        stagger: 0.06,
-        ease: Circ.easeIn,
-        reversed: true,
-      }); */
-
       console.log(pathNodeListRef.current);
     }
   }, [pathNodeListRef]);
+
+  const [state, send] = useService(storyService);
+
+  if (state && state.context && state.value && state.value !== fse.idle) {
+    tl.to(pathNodeListRef.current, {
+      duration: 0.1,
+      translateX: 800,
+      stagger: 0.06,
+      ease: Circ.easeIn,
+      reversed: true,
+    });
+  }
 
   // SVGPathElement
   return (
