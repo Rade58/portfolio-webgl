@@ -217,7 +217,7 @@ const storyMachine = createMachine<
                   TweenMax.set(gs, {
                     transformOrigin: "50%",
                     rotateZ: 180,
-                    translateX: -388,
+                    translateX: -688,
                   });
 
                   TweenMax.to(gs, {
@@ -249,7 +249,7 @@ const storyMachine = createMachine<
                   TweenMax.set(gs, {
                     transformOrigin: "50%",
                     rotateZ: 180,
-                    translateX: 388,
+                    translateX: 688,
                   });
 
                   TweenMax.to(gs, {
@@ -339,14 +339,14 @@ const storyMachine = createMachine<
               .to(
                 gs,
                 {
-                  translateX: 388,
+                  translateX: -688,
                   duration: 0.1,
                   ease: Power2.easeIn,
                   stagger: 0.08,
                 },
                 "-=0.01"
               )
-              .to(gs, { rotateZ: 0, stagger: 0.06, ease: Sine.easeIn });
+              .to(gs, { rotateZ: 180, stagger: 0.06, ease: Sine.easeIn });
           }
 
           if (fishRight) {
@@ -356,7 +356,7 @@ const storyMachine = createMachine<
               .to(
                 gs,
                 {
-                  translateX: -388,
+                  translateX: 688,
                   duration: 0.1,
                   ease: Power4.easeOut,
                   stagger: 0.08,
@@ -365,7 +365,7 @@ const storyMachine = createMachine<
               )
               .to(
                 gs,
-                { rotateZ: 0, stagger: 0.06, ease: Sine.easeIn },
+                { rotateZ: 180, stagger: 0.06, ease: Sine.easeIn },
                 `-=${2 * 0.01}`
               );
           }
