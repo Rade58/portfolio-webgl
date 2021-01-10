@@ -7,10 +7,31 @@ import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 import { fse as fsA } from "../sketch/machine/anim_state_machine";
 
-const Story: FunctionComponent<{ major: fsA | undefined | "undefined" }> = ({
-  major,
-}) => {
-  return <h1>{major === "undefined" ? "true" : "false"}</h1>;
+import { useService } from "@xstate/react";
+import { storyService } from "../state_machines/story_machine";
+
+const Story: FunctionComponent = () => {
+  // VODI RACUNA DA major MOZE BITI I STRING "undefined"
+
+  const [state, send] = useService(storyService);
+
+  const { major } = state.context;
+
+  return (
+    <section
+      className="story"
+      css={css`
+        border: crimson solid 1px;
+        position: fixed;
+        top: 0;
+        left: 0;
+      `}
+    >
+      <h1>
+        {major === "undefined" ? "true" : "false"} major: {major}
+      </h1>
+    </section>
+  );
 };
 
 export default Story;
