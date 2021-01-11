@@ -64,7 +64,7 @@ const MajorShowers: FunctionComponent = () => {
         TweenMax.to(nextRef.current, {
           translateY: -8.8,
           yoyo: true,
-          yoyoEase: Back.easeInOut,
+          yoyoEase: Sine.easeInOut,
           repeat: -1,
           repeatDelay: 1,
           duration: 4,
@@ -75,7 +75,7 @@ const MajorShowers: FunctionComponent = () => {
         TweenMax.to(prevRef.current, {
           translateY: 8.8,
           yoyo: true,
-          yoyoEase: Back.easeInOut,
+          yoyoEase: Sine.easeInOut,
           repeat: -1,
           repeatDelay: 1,
           duration: 4,
@@ -190,6 +190,13 @@ const MajorShowers: FunctionComponent = () => {
           /* &:hover {
             transform: translateY(10px) translateX(10px);
           } */
+
+          &:nth-of-type(1) {
+            margin-left: 18px;
+          }
+          &:nth-of-type(2) {
+            margin-right: 18px;
+          }
         }
       `}
     >
