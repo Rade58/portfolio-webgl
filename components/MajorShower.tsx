@@ -47,22 +47,25 @@ const MajorShowers: FunctionComponent = () => {
           scale: 0,
         });
 
-        // prev and next JUMPINGS
+        // prev and next
 
         TweenMax.set(prevRef.current, {
           translateX: "-150%",
           translateY: -8.8,
+          scale: 0,
         });
 
         TweenMax.set(nextRef.current, {
           translateX: "150%",
           translateY: 8.8,
+          scale: 0,
         });
 
         // bouncing
 
         TweenMax.to(nextRef.current, {
           translateY: -8.8,
+          scale: 1.2,
           yoyo: true,
           yoyoEase: Sine.easeInOut,
           repeat: -1,
@@ -74,6 +77,7 @@ const MajorShowers: FunctionComponent = () => {
 
         TweenMax.to(prevRef.current, {
           translateY: 8.8,
+          scal: 1.2,
           yoyo: true,
           yoyoEase: Sine.easeInOut,
           repeat: -1,
