@@ -2,7 +2,13 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { FunctionComponent, useEffect, useRef, useState } from "react";
+import {
+  FunctionComponent,
+  useEffect,
+  useRef,
+  useState,
+  useCallback,
+} from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
@@ -30,11 +36,16 @@ const MajorShowers: FunctionComponent = () => {
 
   const [setupHappened, setSetupHappened] = useState<boolean>(false);
 
+  const animationsetupCallback = useCallbak(() => {
+    //
+  }, [prevRef, nextRef, currRef]);
+
   useEffect(() => {
+    console.log("-----LOGZINGZINGZ-----");
     if (!setupHappened) {
       if (prevRef.current && nextRef.current && currRef.current) {
         // tween max setup
-
+        console.log("-----LOGZINGZINGZ-----");
         TweenMax.set(currRef.current, {
           scale: 0,
         });
@@ -46,7 +57,7 @@ const MajorShowers: FunctionComponent = () => {
         setSetupHappened(true);
       }
     }
-  }, [prevRef, nextRef, currRef]);
+  }, [prevRef.current, nextRef.current, currRef.current, setupHappened]);
 
   useEffect(() => {
     // console.log({ STATE_VALUE: state.value });
