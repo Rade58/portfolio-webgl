@@ -12,7 +12,7 @@ import {
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-import { TweenMax, Sine, Elastic, Power2, Back } from "gsap";
+import { TweenMax, Sine, Elastic, Power2, Back, Power0 } from "gsap";
 
 import {
   fse as fsS,
@@ -73,7 +73,7 @@ const MajorShowers: FunctionComponent = () => {
           translateY: -8.8,
           scale: 1.2,
           yoyo: true,
-          yoyoEase: Sine.easeInOut,
+          yoyoEase: Power0.easeInOut,
           repeat: -1,
           repeatDelay: 1,
           duration: 4,
@@ -85,7 +85,7 @@ const MajorShowers: FunctionComponent = () => {
           translateY: 8.8,
           scal: 1.2,
           yoyo: true,
-          yoyoEase: Sine.easeInOut,
+          yoyoEase: Power0.easeInOut,
           repeat: -1,
           repeatDelay: 1,
           duration: 4,
