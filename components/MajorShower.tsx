@@ -75,11 +75,37 @@ const MajorShowers: FunctionComponent = () => {
         if (state.value === fse.idle) {
           //
           // console.log("------ENTERED IDLE------");
+
+          TweenMax.to(currRef.current, {
+            translateY: "0%",
+            scale: 1,
+            duration: 0.4,
+            ease: Elastic.easeIn,
+          });
+
+          TweenMax.to([prevRef.current, nextRef.current], {
+            translateX: "0%",
+            duration: 0.6,
+            ease: Elastic.easeOut,
+          });
         }
 
         if (state.value === fse.anim_active) {
           //
           // console.log("------ENTERED ANIM_ACTIVE------");
+
+          TweenMax.to(currRef.current, {
+            translateY: "-200%",
+            scale: 0,
+            duration: 0.4,
+            ease: Power2.easeIn,
+          });
+
+          TweenMax.to([prevRef.current, nextRef.current], {
+            translateX: "0%",
+            duration: 0.6,
+            ease: Power2.easeOut,
+          });
         }
       }
     }
