@@ -6,6 +6,8 @@ import { FunctionComponent, useEffect, useRef } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
+import { TweenMax, Sine, Elastic, Power2 } from "gsap";
+
 import {
   fse as fsS,
   MAJOR_FINITE_STATES_ARRAY,
