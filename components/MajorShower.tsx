@@ -23,6 +23,7 @@ const MajorShowers: FunctionComponent = () => {
 
   const prevRef = useRef<HTMLHeadingElement>(null);
   const nextRef = useRef<HTMLHeadingElement>(null);
+  const currRef = useRef<HTMLHeadingElement>(null);
 
   if (!major || major === "undefined") {
     return null;
@@ -75,7 +76,7 @@ const MajorShowers: FunctionComponent = () => {
         }
       `}
     >
-      <h1>{major}</h1>
+      <h1 ref={currRef}>{major}</h1>
       <h4 ref={prevRef}>{MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h4>
       <h4 ref={nextRef}>{MAJOR_FINITE_STATES_ARRAY[nextIndex]}</h4>
     </section>
