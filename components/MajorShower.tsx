@@ -2,7 +2,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { FunctionComponent, useEffect, useRef } from "react";
+import { FunctionComponent, useEffect, useRef, useState } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
@@ -28,18 +28,30 @@ const MajorShowers: FunctionComponent = () => {
   const currRef = useRef<HTMLHeadingElement>(null);
   // const currFiniteStateRef = useRef<fse | "undefined">("undefined");
 
+  const [setupHappened, setSetupHappened] = useState<boolean>(false);
+
   useEffect(() => {
-    console.log({ STATE_VALUE: state.value });
+    if (!setupHappened) {
+      // tween max setup
+
+      // prev and next JUMPINGS
+
+      setSetupHappened(true);
+    }
+  }, [prevRef, nextRef, currRef]);
+
+  useEffect(() => {
+    // console.log({ STATE_VALUE: state.value });
     if (prevRef.current && nextRef.current && currRef.current) {
       if (state && state.value) {
         if (state.value === fse.idle) {
           //
-          console.log("------ENTERED IDLE------");
+          // console.log("------ENTERED IDLE------");
         }
 
         if (state.value === fse.anim_active) {
           //
-          console.log("------ENTERED ANIM_ACTIVE------");
+          // console.log("------ENTERED ANIM_ACTIVE------");
         }
       }
     }
