@@ -121,9 +121,9 @@ const MajorShowers: FunctionComponent = () => {
           align-self: flex-end;
           border: pink solid 1px;
 
-          &:hover {
+          /* &:hover {
             transform: translateY(10px) translateX(10px);
-          }
+          } */
         }
       `}
     >
