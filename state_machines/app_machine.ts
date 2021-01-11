@@ -252,12 +252,12 @@ const appMachine = createMachine<
         entry: [
           // "wheelAllowed",
           () => {
+            /*  console.log("BACK TO IDLE, BACK TO IDLING");
             console.log("BACK TO IDLE, BACK TO IDLING");
             console.log("BACK TO IDLE, BACK TO IDLING");
             console.log("BACK TO IDLE, BACK TO IDLING");
             console.log("BACK TO IDLE, BACK TO IDLING");
-            console.log("BACK TO IDLE, BACK TO IDLING");
-            console.log("BACK TO IDLE, BACK TO IDLING");
+            console.log("BACK TO IDLE, BACK TO IDLING"); */
           },
         ],
         on: {
