@@ -12,7 +12,7 @@ import {
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-import { TweenMax, Sine, Elastic, Power2 } from "gsap";
+import { TweenMax, Sine, Elastic, Power2, Back } from "gsap";
 
 import {
   fse as fsS,
@@ -62,10 +62,10 @@ const MajorShowers: FunctionComponent = () => {
         TweenMax.to(nextRef.current, {
           translateY: -8.8,
           yoyo: true,
-          yoyoEase: Power2.easeIn,
+          yoyoEase: Back.easeIn,
           repeat: -1,
           repeatDelay: 1,
-          duration: 6,
+          duration: 4,
           // stagger: 0.08,
           // reversed: true,
         });
@@ -73,10 +73,10 @@ const MajorShowers: FunctionComponent = () => {
         TweenMax.to(prevRef.current, {
           translateY: 8.8,
           yoyo: true,
-          yoyoEase: Power2.easeIn,
+          yoyoEase: Back.easeIn,
           repeat: -1,
           repeatDelay: 1,
-          duration: 6,
+          duration: 4,
           // stagger: 0.08,
           // reversed: true,
         });
@@ -183,7 +183,7 @@ const MajorShowers: FunctionComponent = () => {
 
         & h4 {
           align-self: flex-end;
-          border: pink solid 1px;
+          border: pink solid 0px;
 
           /* &:hover {
             transform: translateY(10px) translateX(10px);
