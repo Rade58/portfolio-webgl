@@ -30,6 +30,16 @@ const MajorShowers: FunctionComponent = () => {
 
   useEffect(() => {
     console.log({ STATE_VALUE: state.value });
+
+    if (state && state.value) {
+      if (state.value === fse.idle) {
+        //
+      }
+
+      if (state.value === fse.anim_active) {
+        //
+      }
+    }
   }, [state]);
 
   if (!major || major === "undefined") {
