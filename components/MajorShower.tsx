@@ -48,6 +48,14 @@ const MajorShowers: FunctionComponent = () => {
 
         // prev and next JUMPINGS
 
+        TweenMax.set(prevRef.current, {
+          translateX: "-150%",
+        });
+
+        TweenMax.set(nextRef.current, {
+          translateX: "150%",
+        });
+
         //
 
         setSetupHappened(true);
