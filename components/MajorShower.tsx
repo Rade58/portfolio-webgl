@@ -62,7 +62,7 @@ const MajorShowers: FunctionComponent = () => {
         TweenMax.to(nextRef.current, {
           translateY: -8.8,
           yoyo: true,
-          yoyoEase: Back.easeIn,
+          yoyoEase: Back.easeInOut,
           repeat: -1,
           repeatDelay: 1,
           duration: 4,
@@ -73,7 +73,7 @@ const MajorShowers: FunctionComponent = () => {
         TweenMax.to(prevRef.current, {
           translateY: 8.8,
           yoyo: true,
-          yoyoEase: Back.easeIn,
+          yoyoEase: Back.easeInOut,
           repeat: -1,
           repeatDelay: 1,
           duration: 4,
