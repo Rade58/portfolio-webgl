@@ -36,11 +36,7 @@ const MajorShowers: FunctionComponent = () => {
 
   const [setupHappened, setSetupHappened] = useState<boolean>(false);
 
-  const animationsetupCallback = useCallback(() => {
-    //
-  }, [prevRef, nextRef, currRef]);
-
-  useEffect(() => {
+  const animationSetupCallback = useCallback(() => {
     console.log("-----LOGZINGZINGZ-----");
     if (!setupHappened) {
       if (prevRef.current && nextRef.current && currRef.current) {
@@ -57,7 +53,11 @@ const MajorShowers: FunctionComponent = () => {
         setSetupHappened(true);
       }
     }
-  }, [prevRef.current, nextRef.current, currRef.current, setupHappened]);
+  }, [prevRef, nextRef, currRef, setupHappened]);
+
+  useEffect(() => {
+    animationSetupCallback();
+  }, [animationSetupCallback]);
 
   useEffect(() => {
     // console.log({ STATE_VALUE: state.value });
