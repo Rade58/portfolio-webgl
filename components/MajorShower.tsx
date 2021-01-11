@@ -157,7 +157,7 @@ const MajorShowers: FunctionComponent = () => {
     <section
       className="story"
       css={css`
-        border: crimson solid 1px;
+        border: crimson solid 0px;
         position: fixed;
         top: 60vh;
         left: center;
@@ -174,10 +174,10 @@ const MajorShowers: FunctionComponent = () => {
         overflow: hidden;
 
         & h1 {
+          border: tomato inset 0px;
           font-size: 2.8rem;
           width: 100%;
           text-align: center;
-          border: tomato inset 2px;
           align-self: flex-start;
           justify-self: center;
           margin: 0px auto;
