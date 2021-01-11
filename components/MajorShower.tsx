@@ -43,6 +43,7 @@ const MajorShowers: FunctionComponent = () => {
         // tween max setup
         // console.log("-----LOGZINGZINGZ-----");
         TweenMax.set(currRef.current, {
+          translateY: "-200%",
           scale: 0,
         });
 
