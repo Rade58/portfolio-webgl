@@ -37,11 +37,11 @@ const MajorShowers: FunctionComponent = () => {
   const [setupHappened, setSetupHappened] = useState<boolean>(false);
 
   const animationSetupCallback = useCallback(() => {
-    console.log("-----LOGZINGZINGZ-----");
+    // console.log("-----LOGZINGZINGZ-----");
     if (!setupHappened) {
       if (prevRef.current && nextRef.current && currRef.current) {
         // tween max setup
-        console.log("-----LOGZINGZINGZ-----");
+        // console.log("-----LOGZINGZINGZ-----");
         TweenMax.set(currRef.current, {
           scale: 0,
         });
@@ -53,7 +53,7 @@ const MajorShowers: FunctionComponent = () => {
         setSetupHappened(true);
       }
     }
-  }, [prevRef, nextRef, currRef, setupHappened]);
+  }, [prevRef.current, nextRef.current, currRef.current, setupHappened]);
 
   useEffect(() => {
     animationSetupCallback();
