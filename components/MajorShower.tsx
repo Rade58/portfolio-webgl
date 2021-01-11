@@ -34,12 +34,12 @@ const MajorShowers: FunctionComponent = () => {
       if (state && state.value) {
         if (state.value === fse.idle) {
           //
-          console.log("ENTERED IDLE");
+          console.log("------ENTERED IDLE------");
         }
 
         if (state.value === fse.anim_active) {
           //
-          console.log("ENTERED ANIM_ACTIVE");
+          console.log("------ENTERED ANIM_ACTIVE------");
         }
       }
     }
