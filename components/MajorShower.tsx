@@ -36,7 +36,7 @@ const MajorShowers: FunctionComponent = () => {
 
   const [setupHappened, setSetupHappened] = useState<boolean>(false);
 
-  const animationsetupCallback = useCallbak(() => {
+  const animationsetupCallback = useCallback(() => {
     //
   }, [prevRef, nextRef, currRef]);
 
