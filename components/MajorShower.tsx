@@ -2,7 +2,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { FunctionComponent, useRef } from "react";
+import { FunctionComponent, useEffect, useRef } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
@@ -25,6 +25,10 @@ const MajorShowers: FunctionComponent = () => {
   const nextRef = useRef<HTMLHeadingElement>(null);
   const currRef = useRef<HTMLHeadingElement>(null);
   const currFiniteStateRef = useRef<fse | "undefined">("undefined");
+
+  useEffect(() => {
+    console.log({ STATE_VALUE: state.value });
+  }, [state]);
 
   if (!major || major === "undefined") {
     return null;
