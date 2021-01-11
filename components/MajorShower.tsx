@@ -26,18 +26,19 @@ const MajorShowers: FunctionComponent = () => {
   const prevRef = useRef<HTMLHeadingElement>(null);
   const nextRef = useRef<HTMLHeadingElement>(null);
   const currRef = useRef<HTMLHeadingElement>(null);
-  const currFiniteStateRef = useRef<fse | "undefined">("undefined");
+  // const currFiniteStateRef = useRef<fse | "undefined">("undefined");
 
   useEffect(() => {
     console.log({ STATE_VALUE: state.value });
+    if (prevRef.current && nextRef.current && currRef.current) {
+      if (state && state.value) {
+        if (state.value === fse.idle) {
+          //
+        }
 
-    if (state && state.value) {
-      if (state.value === fse.idle) {
-        //
-      }
-
-      if (state.value === fse.anim_active) {
-        //
+        if (state.value === fse.anim_active) {
+          //
+        }
       }
     }
   }, [state]);
