@@ -51,10 +51,12 @@ const MajorShowers: FunctionComponent = () => {
 
         TweenMax.set(prevRef.current, {
           translateX: "-150%",
+          translateY: -8.8,
         });
 
         TweenMax.set(nextRef.current, {
           translateX: "150%",
+          translateY: 8.8,
         });
 
         // bouncing
