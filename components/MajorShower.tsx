@@ -12,7 +12,7 @@ import {
 } from "../sketch/middle_ground/major_states";
 
 import { useService } from "@xstate/react";
-import { storyService } from "../state_machines/story_machine";
+import { storyService, fse } from "../state_machines/story_machine";
 
 const MAJOR_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
 
@@ -24,6 +24,7 @@ const MajorShowers: FunctionComponent = () => {
   const prevRef = useRef<HTMLHeadingElement>(null);
   const nextRef = useRef<HTMLHeadingElement>(null);
   const currRef = useRef<HTMLHeadingElement>(null);
+  const currFiniteStateRef = useRef<fse | "undefined">("undefined");
 
   if (!major || major === "undefined") {
     return null;
