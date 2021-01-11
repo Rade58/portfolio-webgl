@@ -50,7 +50,7 @@ const MajorShowers: FunctionComponent = () => {
         // prev and next
 
         TweenMax.set(prevRef.current, {
-          translateX: "-150%",
+          translateX: "-200%",
           translateY: -8.8,
           perspective: "1px",
           transformStyle: "preserve-3d",
@@ -61,7 +61,7 @@ const MajorShowers: FunctionComponent = () => {
         });
 
         TweenMax.set(nextRef.current, {
-          translateX: "150%",
+          translateX: "200%",
           translateY: 8.8,
           perspective: "1px",
           transformStyle: "preserve-3d",
