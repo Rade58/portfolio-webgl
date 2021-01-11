@@ -57,7 +57,29 @@ const MajorShowers: FunctionComponent = () => {
           translateX: "150%",
         });
 
-        //
+        // bouncing
+
+        TweenMax.to(nextRef.current, {
+          translateY: -2.8,
+          yoyo: true,
+          yoyoEase: Power2.easeIn,
+          repeat: -1,
+          repeatDelay: 1,
+          duration: 0.08,
+          // stagger: 0.08,
+          // reversed: true,
+        });
+        /* TweenMax.to(gs, {
+          translateY: 2.8,
+          yoyo: true,
+          yoyoEase: Power2.easeIn,
+          repeat: -1,
+          repeatDelay: 1,
+          duration: 0.08,
+          // stagger: 0.08,
+        }); */
+
+        // -------------------
 
         setSetupHappened(true);
       }
