@@ -1,5 +1,5 @@
 import { EE, appService } from "../state_machines/app_machine";
-import { fse as fseanim } from "../sketch/machine/anim_state_machine";
+import { fse as fseAnim } from "../sketch/middle_ground/major_states";
 
 export const config = { attributes: true };
 export const majorStateHolder = document.querySelector(
@@ -18,10 +18,10 @@ const animationMachineObserver = new MutationObserver(
           payload: {
             currentAnimeMachineFinitestate: /* (mutation.target as HTMLDivElement)
                         .dataset.finiteState */ majorStateHolder
-              .dataset.finiteState as fseanim,
+              .dataset.finiteState as fseAnim,
             currentAnimeMachineMajorState: /* (mutation.target as HTMLDivElement)
                         .dataset.majorState */ majorStateHolder
-              .dataset.majorState as fseanim,
+              .dataset.majorState as fseAnim,
             canLoadControls:
               majorStateHolder.dataset.firstRenderHappened === "happened"
                 ? true
