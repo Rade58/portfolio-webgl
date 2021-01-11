@@ -14,6 +14,7 @@ import path from "path";
 import ControlAnim from "../components/ControlAnim";
 import LoadedAnimation from "../components/LoadedAnimations";
 import StartingModal from "../components/StartingModal";
+import Story from "../components/Story";
 
 // import DOMPurify from "dompurify";
 
@@ -52,6 +53,7 @@ const Index: FunctionComponent<{
         <StartingModal imageData={imageString} />
         <LoadedAnimation />
         <ControlAnim />
+        {/* <Story /> */}
       </Fragment>
     </AppContextProvider>
   );

@@ -22,6 +22,8 @@ import Back from "./svgs/Back";
 import Forth from "./svgs/Forth";
 import MiddleText from "./svgs/MiddleText";
 
+import MajorShower from "./MajorShower";
+
 import SvgTextPractice from "./practice/svg_text_practice";
 
 const ControlAnim: FunctionComponent = () => {
@@ -54,7 +56,7 @@ const ControlAnim: FunctionComponent = () => {
       <section
         className="anim_control"
         css={css`
-          border: crimson solid 2px;
+          border: crimson solid 0px;
           position: fixed;
           /* top: 0; */
           left: 0;
@@ -68,11 +70,12 @@ const ControlAnim: FunctionComponent = () => {
           flex-wrap: wrap;
         `}
       >
+        <MajorShower />
         <Left visible={!majorIsNotUndef} />
         <Back visible={majorIsNotUndef} />
         <Right visible={!majorIsNotUndef} />
         <Forth visible={majorIsNotUndef} />
-        <MiddleText />
+        {/* <MiddleText /> */}
       </section>
     </div>
   );

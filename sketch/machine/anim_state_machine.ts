@@ -21,7 +21,9 @@ import {
 import { createMachine, assign, interpret } from "xstate";
 import { majorStateHolder } from "../ui/user_interface";
 
-export enum fse {
+import { MAJOR_FINITE_STATES_ARRAY, fse } from "../middle_ground/major_states";
+
+/* export enum fse {
   init = "init",
   idle = "idle",
 
@@ -41,7 +43,7 @@ export enum fse {
   animation4 = "animation4",
   anim_back_to_init = "anim_back_to_init",
   //
-}
+} */
 
 export enum EE {
   SETUP = "SETUP",
@@ -56,12 +58,12 @@ export enum EE {
   FIRST_RENDER = "FIRST_RENDER",
 }
 
-export const MAJOR_FINITE_STATES_ARRAY = [
+/* export const MAJOR_FINITE_STATES_ARRAY = [
   fse.aboutme,
   fse.projects,
   fse.contact,
   fse.blog,
-];
+]; */
 const ANIMATION_SERVICES_STATE_ARRAY = [
   fse.animation0,
   fse.animation1,

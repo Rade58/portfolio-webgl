@@ -1,5 +1,5 @@
 import { createMachine, assign, interpret } from "xstate";
-import { fse as fseAnim } from "../sketch/machine/anim_state_machine";
+import { fse as fseAnim } from "../sketch/middle_ground/major_states";
 
 import { TimelineMax, TweenMax, Sine, Power2, Power4, Elastic } from "gsap";
 
@@ -223,7 +223,7 @@ const storyMachine = createMachine<
                   TweenMax.to(gs, {
                     translateY: -2.8,
                     yoyo: true,
-                    yoyoEase: Power2.easeIn,
+                    yoyoEase: Sine.easeInOut,
                     repeat: -1,
                     repeatDelay: 1,
                     duration: 0.08,
@@ -233,7 +233,7 @@ const storyMachine = createMachine<
                   TweenMax.to(gs, {
                     translateY: 2.8,
                     yoyo: true,
-                    yoyoEase: Power2.easeIn,
+                    yoyoEase: Sine.easeInOut,
                     repeat: -1,
                     repeatDelay: 1,
                     duration: 0.08,

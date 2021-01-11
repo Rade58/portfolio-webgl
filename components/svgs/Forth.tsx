@@ -1,7 +1,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { FunctionComponent, useRef, useEffect, DOMElement } from "react";
+import { FunctionComponent, useRef, useEffect } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 

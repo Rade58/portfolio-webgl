@@ -12,9 +12,11 @@ import settings, { settingsFunc } from "./sketch-settings";
 // STATE MACHINE
 import {
   EE,
-  fse,
+  // fse,
   animMachineService as service,
 } from "./machine/anim_state_machine";
+
+import { fse } from "./middle_ground/major_states";
 // ----- MOZDA CU KORISTITI ALI VEROVATNO NE -------
 /*
 const glsl = require("glslify");
