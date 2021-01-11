@@ -79,13 +79,13 @@ const MajorShowers: FunctionComponent = () => {
           TweenMax.to(currRef.current, {
             translateY: "0%",
             scale: 1,
-            duration: 1.4,
+            duration: 1,
             ease: Elastic.easeIn,
           });
 
           TweenMax.to([prevRef.current, nextRef.current], {
             translateX: "0%",
-            duration: 1.6,
+            duration: 1.2,
             ease: Elastic.easeOut,
           });
         }
@@ -97,18 +97,18 @@ const MajorShowers: FunctionComponent = () => {
           TweenMax.to(currRef.current, {
             translateY: "-150%",
             scale: 0,
-            duration: 1.4,
+            duration: 1,
             ease: Power2.easeIn,
           });
 
           TweenMax.to(nextRef.current, {
             translateX: "150%",
-            duration: 1.6,
+            duration: 1.2,
             ease: Power2.easeOut,
           });
           TweenMax.to(prevRef.current, {
             translateX: "-150%",
-            duration: 1.6,
+            duration: 1.2,
             ease: Power2.easeOut,
           });
         }
