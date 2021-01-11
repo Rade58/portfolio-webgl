@@ -32,11 +32,19 @@ const MajorShowers: FunctionComponent = () => {
 
   useEffect(() => {
     if (!setupHappened) {
-      // tween max setup
+      if (prevRef.current && nextRef.current && currRef.current) {
+        // tween max setup
 
-      // prev and next JUMPINGS
+        TweenMax.set(currRef.current, {
+          scale: 0,
+        });
 
-      setSetupHappened(true);
+        // prev and next JUMPINGS
+
+        //
+
+        setSetupHappened(true);
+      }
     }
   }, [prevRef, nextRef, currRef]);
 
