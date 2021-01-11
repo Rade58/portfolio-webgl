@@ -223,7 +223,7 @@ const storyMachine = createMachine<
                   TweenMax.to(gs, {
                     translateY: -2.8,
                     yoyo: true,
-                    yoyoEase: Power2.easeIn,
+                    yoyoEase: Sine.easeInOut,
                     repeat: -1,
                     repeatDelay: 1,
                     duration: 0.08,
@@ -233,7 +233,7 @@ const storyMachine = createMachine<
                   TweenMax.to(gs, {
                     translateY: 2.8,
                     yoyo: true,
-                    yoyoEase: Power2.easeIn,
+                    yoyoEase: Sine.easeInOut,
                     repeat: -1,
                     repeatDelay: 1,
                     duration: 0.08,

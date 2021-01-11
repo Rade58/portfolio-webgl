@@ -60,24 +60,26 @@ const MajorShowers: FunctionComponent = () => {
         // bouncing
 
         TweenMax.to(nextRef.current, {
-          translateY: -2.8,
+          translateY: -8.8,
           yoyo: true,
           yoyoEase: Power2.easeIn,
           repeat: -1,
           repeatDelay: 1,
-          duration: 0.08,
+          duration: 6,
           // stagger: 0.08,
           // reversed: true,
         });
-        /* TweenMax.to(gs, {
-          translateY: 2.8,
+
+        TweenMax.to(prevRef.current, {
+          translateY: 8.8,
           yoyo: true,
           yoyoEase: Power2.easeIn,
           repeat: -1,
           repeatDelay: 1,
-          duration: 0.08,
+          duration: 6,
           // stagger: 0.08,
-        }); */
+          // reversed: true,
+        });
 
         // -------------------
 
