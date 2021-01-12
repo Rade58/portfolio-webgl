@@ -10,9 +10,10 @@ export enum fse {
 }
 
 export enum fseS {
-  non_visible = "non_visible",
-  partial = "partial",
-  maximal = "maximal",
+  partial = "partial", // OVO JE INICIJELNO
+  maximal = "maximal", // KADA SE PROSIRI
+  non_visible = "non_visible", // KADA SE PREDJE U AIMATION STATE
+  //                            MORA DA POSTOJI NON VISIBLE
 }
 
 export enum EE {
@@ -23,6 +24,12 @@ export enum EE {
   //
   GIVE_SVGS = "GIVE_SVGS",
   GIVE_MEDIA = "GIVE_MEDIA",
+}
+
+export enum EEs {
+  ENLARGE = "ENLARGE",
+  FULL_OPEN = "FULL_OPEN",
+  CLOSE = "CLOSE",
 }
 
 // ------------------------------------------------------------
@@ -186,7 +193,7 @@ const storyMachine = createMachine<
       // NESTED STATES FOR MAJOR SHOWER
       // -----------------------------------------------------
       // -----------------------------------------------------
-      initial: fseS.non_visible,
+      initial: fseS.partial,
       states: {
         [fseS.non_visible]: {
           //
