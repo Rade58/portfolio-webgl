@@ -50,7 +50,7 @@ const Story: FunctionComponent = () => {
 
         if (e.matches) {
           send({ type: EE.GIVE_MEDIA, payload: { isBellow: true } });
-          setBellowAboveClass("above");
+          setBellowAboveClass("bellow");
           // setWidth("100%");
           // setHeight("24vh");
         } else {
