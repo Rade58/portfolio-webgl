@@ -195,10 +195,13 @@ const storyMachine = createMachine<
       // -----------------------------------------------------
       initial: fseS.partial,
       states: {
-        [fseS.non_visible]: {
-          //
-        },
         [fseS.partial]: {
+          //
+          entry: () => {
+            console.log("PARTIAL ENTRY");
+          },
+        },
+        [fseS.non_visible]: {
           //
         },
         [fseS.maximal]: {
