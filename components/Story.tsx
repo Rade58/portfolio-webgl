@@ -26,8 +26,6 @@ const Story: FunctionComponent = () => {
   const [bellowAboveClass, setBellowAboveClass] = useState<"bellow" | "above">(
     "bellow"
   );
-  const [width, setWidth] = useState<"36vw" | "100%">("100%");
-  const [height, setHeight] = useState<"24vh" | "100vh">("24vh");
 
   //
   useEffect(() => {
@@ -38,12 +36,8 @@ const Story: FunctionComponent = () => {
 
       if (mqList.matches) {
         setBellowAboveClass("bellow");
-        // setWidth("100%");
-        // setHeight("24vh");
       } else {
         setBellowAboveClass("above");
-        // setWidth("36vw");
-        // setHeight("100vh");
       }
 
       mqList.onchange = (e) => {
@@ -53,13 +47,9 @@ const Story: FunctionComponent = () => {
         if (e.matches) {
           send({ type: EE.GIVE_MEDIA, payload: { isBellow: true } });
           setBellowAboveClass("bellow");
-          // setWidth("100%");
-          // setHeight("24vh");
         } else {
           send({ type: EE.GIVE_MEDIA, payload: { isBellow: false } });
           setBellowAboveClass("above");
-          // setWidth("36vw");
-          // setHeight("100vh");
         }
       };
     }
