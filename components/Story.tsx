@@ -29,7 +29,7 @@ const Story: FunctionComponent = () => {
     if (!isSSR()) {
       const mqList = window.matchMedia("(maxx-width: 420px)");
 
-      console.log({matches: mqList.matches}
+      console.log({ matches: mqList.matches });
     }
   }, []);
 
