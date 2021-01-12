@@ -23,7 +23,9 @@ const Story: FunctionComponent = () => {
   const [state, send] = useService(storyService);
 
   const { major } = state.context;
-
+  const [bellowAboveClass, setBellowAboveClass] = useState<"bellow" | "above">(
+    "bellow"
+  );
   const [width, setWidth] = useState<"36vw" | "100%">("100%");
   const [height, setHeight] = useState<"24vh" | "100vh">("24vh");
 
@@ -48,12 +50,14 @@ const Story: FunctionComponent = () => {
 
         if (e.matches) {
           send({ type: EE.GIVE_MEDIA, payload: { isBellow: true } });
-          setWidth("100%");
-          setHeight("24vh");
+          setBellowAboveClass("above");
+          // setWidth("100%");
+          // setHeight("24vh");
         } else {
           send({ type: EE.GIVE_MEDIA, payload: { isBellow: false } });
-          setWidth("36vw");
-          setHeight("100vh");
+          setBellowAboveClass("above");
+          // setWidth("36vw");
+          // setHeight("100vh");
         }
       };
     }
@@ -72,8 +76,8 @@ const Story: FunctionComponent = () => {
 
   return (
     <section
-      className="story"
-      style={{ width, height }}
+      className={`story ${bellowAboveClass}`}
+      // style={{ width, height }}
       css={css`
         border: crimson solid 1px;
         position: fixed;
@@ -83,6 +87,16 @@ const Story: FunctionComponent = () => {
         /* height: 100vh; */
         /* width: 220px; */
         overflow: hidden;
+
+        &.bellow {
+          width: 100%;
+          height: 24vh;
+        }
+
+        &.above {
+          width: 36vw;
+          height: 100vh;
+        }
       `}
     >
       <h4>prev: {MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h4>
