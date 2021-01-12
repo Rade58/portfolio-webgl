@@ -120,9 +120,11 @@ const storyMachine = createMachine<
   },
   on: {
     [EE.GIVE_MEDIA]: {
-      actions: ({ mediaBellow }, { payload: { isBellow } }) => {
+      actions: assign(({ mediaBellow }, { payload: { isBellow } }) => {
         console.log({ isBellow });
-      },
+
+        return { mediaBellow: isBellow };
+      }),
     },
     [EE.GIVE_SVGS]: {
       actions: [
