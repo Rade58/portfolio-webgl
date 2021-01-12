@@ -11,7 +11,7 @@ import {
 } from "../sketch/middle_ground/major_states";
 
 import { useService } from "@xstate/react";
-import { storyService } from "../state_machines/story_machine";
+import { storyService, EE } from "../state_machines/story_machine";
 
 import { isSSR } from "../utils/isSSR";
 
@@ -47,9 +47,11 @@ const Story: FunctionComponent = () => {
         console.log(e.matches);
 
         if (e.matches) {
+          send({ type: EE.GIVE_MEDIA, payload: { isBellow: true } });
           setWidth("100%");
           setHeight("24vh");
         } else {
+          send({ type: EE.GIVE_MEDIA, payload: { isBellow: false } });
           setWidth("36vw");
           setHeight("100vh");
         }
