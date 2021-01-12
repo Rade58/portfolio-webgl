@@ -78,7 +78,7 @@ const MajorShowers: FunctionComponent = () => {
         TweenMax.to(nextRef.current, {
           force3D: true,
           translateY: -8.8,
-          rotateZ: -8.8,
+          rotateZ: 8.8,
           // translateX: "1%",
           // scaleX: 1.2,
           // scaleY: 1.2,
@@ -95,7 +95,7 @@ const MajorShowers: FunctionComponent = () => {
         TweenMax.to(prevRef.current, {
           force3D: true,
           translateY: 8.8,
-          rotateZ: 8.8,
+          rotateZ: -8.8,
           // translateX: "-1%",
           // scaleX: 1.2,
           // scaleY: 1.2,
