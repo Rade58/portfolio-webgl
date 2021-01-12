@@ -25,6 +25,7 @@ const Story: FunctionComponent = () => {
   const { major } = state.context;
 
   const [width, setwidth] = useState<"36vw" | "100%">("100%");
+  const [height, setHeight] = useState<"24vh" | "100vh">("24vh");
 
   //
   useEffect(() => {
@@ -54,13 +55,13 @@ const Story: FunctionComponent = () => {
   return (
     <section
       className="story"
-      style={{ width }}
+      style={{ width, height }}
       css={css`
         border: crimson solid 1px;
         position: fixed;
         top: 0;
         left: 0;
-        height: 22vh;
+        /* height: 22vh; */
         /* height: 100vh; */
         /* width: 220px; */
         overflow: hidden;
