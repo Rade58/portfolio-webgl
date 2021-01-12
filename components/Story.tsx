@@ -2,7 +2,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 import {
@@ -13,6 +13,8 @@ import {
 import { useService } from "@xstate/react";
 import { storyService } from "../state_machines/story_machine";
 
+import { isSSR } from "../utils/isSSR";
+
 const MAJOR_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
 
 const Story: FunctionComponent = () => {
@@ -21,6 +23,15 @@ const Story: FunctionComponent = () => {
   const [state, send] = useService(storyService);
 
   const { major } = state.context;
+
+  //
+  useEffect(() => {
+    if (!isSSR()) {
+      const mqList = window.matchMedia("(maxx-width: 420px)");
+
+      console.log({matches: mqList.matches}
+    }
+  }, []);
 
   if (!major || major === "undefined") {
     return null;
