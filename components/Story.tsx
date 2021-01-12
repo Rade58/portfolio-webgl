@@ -24,25 +24,33 @@ const Story: FunctionComponent = () => {
 
   const { major } = state.context;
 
-  const [width, setwidth] = useState<"36vw" | "100%">("100%");
+  const [width, setWidth] = useState<"36vw" | "100%">("100%");
   const [height, setHeight] = useState<"24vh" | "100vh">("24vh");
 
   //
   useEffect(() => {
     if (!isSSR()) {
-      const mqList = window.matchMedia("(max-width: 498px)");
+      const mqList = window.matchMedia("(max-width: 758px)");
 
       console.log({ matches: mqList.matches });
+
+      if (mqList.matches) {
+        setWidth("100%");
+        setHeight("24vh");
+      } else {
+        setWidth("36vw");
+        setHeight("100vh");
+      }
 
       mqList.onchange = (e) => {
         console.log(e.media);
         console.log(e.matches);
 
         if (e.matches) {
-          setwidth("100%");
+          setWidth("100%");
           setHeight("24vh");
         } else {
-          setwidth("36vw");
+          setWidth("36vw");
           setHeight("100vh");
         }
       };
