@@ -2,7 +2,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { FunctionComponent, useEffect } from "react";
+import { FunctionComponent, useEffect, useState } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 import {
@@ -24,12 +24,19 @@ const Story: FunctionComponent = () => {
 
   const { major } = state.context;
 
+  const [width, setwidth] = useState<"36vw" | "100%">("100%");
+
   //
   useEffect(() => {
     if (!isSSR()) {
-      const mqList = window.matchMedia("(maxx-width: 420px)");
+      const mqList = window.matchMedia("(max-width: 498px)");
 
       console.log({ matches: mqList.matches });
+
+      mqList.onchange = (e) => {
+        console.log(e.media);
+        console.log(e.matches);
+      };
     }
   }, []);
 
@@ -47,14 +54,15 @@ const Story: FunctionComponent = () => {
   return (
     <section
       className="story"
+      style={{ width }}
       css={css`
         border: crimson solid 1px;
         position: fixed;
         top: 0;
         left: 0;
-        /* height: 22vh; */
-        height: 100vh;
-        width: 220px;
+        height: 22vh;
+        /* height: 100vh; */
+        /* width: 220px; */
         overflow: hidden;
       `}
     >
