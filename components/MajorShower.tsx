@@ -52,6 +52,7 @@ const MajorShowers: FunctionComponent = () => {
         TweenMax.set(prevRef.current, {
           translateX: "-200%",
           translateY: -8.8,
+          rotateZ: 8.8,
           perspective: "1px",
           transformStyle: "preserve-3d",
           backfaceVisibility: "hidden",
@@ -63,6 +64,7 @@ const MajorShowers: FunctionComponent = () => {
         TweenMax.set(nextRef.current, {
           translateX: "200%",
           translateY: 8.8,
+          rotateZ: -8.8,
           perspective: "1px",
           transformStyle: "preserve-3d",
           backfaceVisibility: "hidden",
@@ -74,11 +76,15 @@ const MajorShowers: FunctionComponent = () => {
         // bouncing
 
         TweenMax.to(nextRef.current, {
+          force3D: true,
           translateY: -8.8,
-          scaleX: 1.2,
-          scaleY: 1.2,
+          rotateZ: 8.8,
+          // translateX: "1%",
+          // scaleX: 1.2,
+          // scaleY: 1.2,
+          // scaleZ: 0,
           yoyo: true,
-          yoyoEase: Power0.easeInOut,
+          yoyoEase: Power2.easeInOut,
           repeat: -1,
           repeatDelay: 1,
           duration: 4,
@@ -87,11 +93,15 @@ const MajorShowers: FunctionComponent = () => {
         });
 
         TweenMax.to(prevRef.current, {
+          force3D: true,
           translateY: 8.8,
-          scaleX: 1.2,
-          scaleY: 1.2,
+          rotateZ: -8.8,
+          // translateX: "-1%",
+          // scaleX: 1.2,
+          // scaleY: 1.2,
+          // scaleZ: 0,
           yoyo: true,
-          yoyoEase: Power0.easeInOut,
+          yoyoEase: Power2.easeInOut,
           repeat: -1,
           repeatDelay: 1,
           duration: 4,

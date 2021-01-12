@@ -178,6 +178,17 @@ const Forth: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
               </g>
             </g>
           </g>
+          <g id="Frame" clipPath="url(#cli4)">
+            <g id="Group_6">
+              <path
+                id="Vector"
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M33.29 14.5325C32.9 14.825 32.9 15.2975 33.29 15.59L37.17 18.5L33.29 21.41C32.9 21.7025 32.9 22.175 33.29 22.4675C33.68 22.76 34.31 22.76 34.7 22.4675L39.29 19.025C39.68 18.7325 39.68 18.26 39.29 17.9675L34.7 14.525C34.32 14.24 33.68 14.24 33.29 14.5325Z"
+                fill="#751431"
+              />
+            </g>
+          </g>
           <g id="bone22" clipPath="url(#cli2)">
             <g id="Icons_4">
               <g id="Rounded_4">
@@ -214,17 +225,6 @@ const Forth: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
                   </g>
                 </g>
               </g>
-            </g>
-          </g>
-          <g id="Frame" clipPath="url(#cli4)">
-            <g id="Group_6">
-              <path
-                id="Vector"
-                fillRule="evenodd"
-                clipRule="evenodd"
-                d="M33.29 14.5325C32.9 14.825 32.9 15.2975 33.29 15.59L37.17 18.5L33.29 21.41C32.9 21.7025 32.9 22.175 33.29 22.4675C33.68 22.76 34.31 22.76 34.7 22.4675L39.29 19.025C39.68 18.7325 39.68 18.26 39.29 17.9675L34.7 14.525C34.32 14.24 33.68 14.24 33.29 14.5325Z"
-                fill="#751431"
-              />
             </g>
           </g>
         </g>

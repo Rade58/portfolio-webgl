@@ -3,45 +3,6 @@ import { fse as fseAnim } from "../sketch/middle_ground/major_states";
 
 import { TimelineMax, TweenMax, Sine, Power2, Power4, Elastic } from "gsap";
 
-// ---- TREBA MI INIT STATE, A TREBACE MI I VISIBILITI SVEGA
-// A MANIPULISACU I HEIGHT-OM
-
-// --------
-
-// USTVARI KADA RAZMISLIM POTREBNO JE DA
-// IMAM SVG-JEVE JER ZELIM I NJIH DA ANIMATE-UJEM
-
-// ALI MOZDA MOGU TO DA URADIM I U APP MACHINE-U
-// ALI NE VIDIM KAKO BI  TO URADIO
-
-// ANTICAPATE-OVACU NEKI INITIALIZATION EVENT, KOJI BI
-// TREBAO DA MI OSIGURA REFERENCE SVIH SVG-JEVA
-
-// SAMO PITANJE GDE BI TREBALO DA ANTICAPATE-UJEM, TAJ EVENT
-// MOZDAABI BILO NAJBOLJE DA TO RADIM IZVAN FINITE STATE-A
-
-// POSTO CE MI SE DESITI DA SE ONI SVG-JEVI UNMOUNT-UJU KADA
-// GUBIM NJIHOVU REFERENC
-
-// ZATO SA DVA MESTA UZIMAM REFERENCE TIH SVG-JEVA
-
-// TREBALO BI UPOREDO SA TIM DA I OVDE SALJEM TE REFERENCE,
-//  KAKO BI MOGAO ANIMIRATI POMENUTE SVG-JEVE
-
-// I PRVO STA BI TREBAO DA RADIM JE ANIMIRANJE TIH SVG-JEVA
-
-// ALI ANIMAIJE SVG-JEVA TREBAJU DA BUDU VEZANE UZ DVA
-// FINITE STATE-A KOJA IMAM
-
-// AKO JE idle SVG-TREBA DA SE POJAVI UZ ANIMACIJU
-
-// AKO JE U PITANJU anim-active; SVG-JEVI TREBA DA SE POJAVE UZ ANIMACIJU
-
-//  ISTO TAKO TOKOM idlle-a, ONI FISH SVG-JEVI TREBAJU DA KONSTANTNO
-//  IMAJJU MOVEMENT
-
-// MORAM UPDATE-OVATI I CONTEXT
-
 export enum fse {
   anim_active = "anim_active",
   idle = "idle",
@@ -343,8 +304,8 @@ const storyMachine = createMachine<
                   duration: 0.1,
                   ease: Power2.easeIn,
                   stagger: 0.08,
-                },
-                "-=0.01"
+                }
+                // "-=0.01"
               )
               .to(gs, { rotateZ: 180, stagger: 0.06, ease: Sine.easeIn });
           }
@@ -361,12 +322,12 @@ const storyMachine = createMachine<
                   ease: Power4.easeOut,
                   stagger: 0.08,
                 },
-                `-=${4 * 0.1 + 0.01 * 2}`
+                `-=${6 * 0.1 + 0.01 * 2}`
               )
               .to(
                 gs,
                 { rotateZ: 180, stagger: 0.06, ease: Sine.easeIn },
-                `-=${2 * 0.01}`
+                `-=${6 * 0.01}`
               );
           }
         },
@@ -395,8 +356,8 @@ const storyMachine = createMachine<
                 duration: 0.1,
                 ease: Power2.easeIn,
                 stagger: 0.08,
-              },
-              "-=0.01"
+              }
+              // "-=0.01"
             )
             .to(gs, { rotateZ: 0, stagger: 0.06, ease: Sine.easeIn });
         }
@@ -413,12 +374,12 @@ const storyMachine = createMachine<
                 ease: Power4.easeOut,
                 stagger: 0.08,
               },
-              `-=${4 * 0.1 + 0.01 * 2}`
+              `-=${6 * 0.1 + 0.01 * 2}`
             )
             .to(
               gs,
               { rotateZ: 0, stagger: 0.06, ease: Sine.easeIn },
-              `-=${2 * 0.01}`
+              `-=${6 * 0.01}`
             );
         }
       },
