@@ -35,8 +35,10 @@ const Story: FunctionComponent = () => {
       console.log({ matches: mqList.matches });
 
       if (mqList.matches) {
+        send({ type: EE.GIVE_MEDIA, payload: { isBellow: true } });
         setBellowAboveClass("bellow");
       } else {
+        send({ type: EE.GIVE_MEDIA, payload: { isBellow: false } });
         setBellowAboveClass("above");
       }
 
