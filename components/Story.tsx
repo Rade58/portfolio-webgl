@@ -37,11 +37,13 @@ const Story: FunctionComponent = () => {
       console.log({ matches: mqList.matches });
 
       if (mqList.matches) {
-        setWidth("100%");
-        setHeight("24vh");
+        setBellowAboveClass("bellow");
+        // setWidth("100%");
+        // setHeight("24vh");
       } else {
-        setWidth("36vw");
-        setHeight("100vh");
+        setBellowAboveClass("above");
+        // setWidth("36vw");
+        // setHeight("100vh");
       }
 
       mqList.onchange = (e) => {
