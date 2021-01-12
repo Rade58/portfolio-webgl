@@ -343,8 +343,8 @@ const storyMachine = createMachine<
                   duration: 0.1,
                   ease: Power2.easeIn,
                   stagger: 0.08,
-                },
-                "-=0.01"
+                }
+                // "-=0.01"
               )
               .to(gs, { rotateZ: 180, stagger: 0.06, ease: Sine.easeIn });
           }
@@ -395,8 +395,8 @@ const storyMachine = createMachine<
                 duration: 0.1,
                 ease: Power2.easeIn,
                 stagger: 0.08,
-              },
-              "-=0.01"
+              }
+              // "-=0.01"
             )
             .to(gs, { rotateZ: 0, stagger: 0.06, ease: Sine.easeIn });
         }
