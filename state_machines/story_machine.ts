@@ -16,12 +16,14 @@ export enum EE {
   GIVE_MAJOR_SHOWER = "GIVE_MAJOR_SHOWER",
   //
   GIVE_SVGS = "GIVE_SVGS",
+  GIVE_MEDIA = "GIVE_MEDIA",
 }
 
 // ------------------------------------------------------------
 // ------------------------------------------------------------
 
 export interface MachineContextGenericI {
+  mediaBellow: boolean;
   bTl: TimelineMax;
   fTl: TimelineMax;
   majorShower: HTMLDivElement | null;
@@ -34,6 +36,7 @@ export interface MachineContextGenericI {
   fishRight: SVGElement | null;
 }
 export interface MachineContextGenericIFull {
+  mediaBellow: boolean;
   bTl: TimelineMax;
   fTl: TimelineMax;
   majorShower: HTMLDivElement;
@@ -71,6 +74,12 @@ export type machineEventsGenericType =
         fishLeft?: SVGElement;
         fishRight?: SVGElement;
       };
+    }
+  | {
+      type: EE.GIVE_MEDIA;
+      payload: {
+        isBellow: boolean;
+      };
     };
 
 export type machineFiniteStatesGenericType =
@@ -99,6 +108,7 @@ const storyMachine = createMachine<
   id: "story_machine",
   initial: fse.idle,
   context: {
+    mediaBellow: true,
     bTl: new TimelineMax(),
     fTl: new TimelineMax(),
     majorShower: null,
