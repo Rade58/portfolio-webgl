@@ -4,4 +4,7 @@ Work in progress
 
 ## reminder
 
-starting modal image can be a gif
+:one: starting modal image can be a gif
+
+:two: major partial modal; whole page modal after click
+
