@@ -9,6 +9,12 @@ export enum fse {
   init = "init",
 }
 
+export enum fseS {
+  non_visible = "non_visible",
+  partial = "partial",
+  maximal = "maximal",
+}
+
 export enum EE {
   TO_ANIMATING = "TO_ANIMATING",
   TO_IDLING = "TO_IDLING",
@@ -172,6 +178,14 @@ const storyMachine = createMachine<
     // NA 'IDLE' TREBAS DA POKAZES (UZ ANIMACIJU) NOVI MODAL KOJI CE BITI ASSOCIATED
     // SA MAJOR STATOM
     [fse.idle]: {
+      // NESTED STATES FOR MAJOR SHOWER
+      // -----------------------------------------------------
+      // -----------------------------------------------------
+      states: {},
+
+      // -----------------------------------------------------
+      // -----------------------------------------------------
+
       /* entry: [
 
       ], */
