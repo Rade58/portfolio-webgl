@@ -53,7 +53,7 @@ const Index: FunctionComponent<{
         <StartingModal imageData={imageString} />
         <LoadedAnimation />
         <ControlAnim />
-        {/* <Story /> */}
+        <Story />
       </Fragment>
     </AppContextProvider>
   );
