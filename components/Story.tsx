@@ -37,6 +37,14 @@ const Story: FunctionComponent = () => {
       mqList.onchange = (e) => {
         console.log(e.media);
         console.log(e.matches);
+
+        if (e.matches) {
+          setwidth("100%");
+          setHeight("24vh");
+        } else {
+          setwidth("36vw");
+          setHeight("100vh");
+        }
       };
     }
   }, []);
