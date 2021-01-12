@@ -220,6 +220,9 @@ const MajorShowers: FunctionComponent = () => {
             transform: translateY(10px) translateX(10px);
           } */
 
+          text-shadow: -1px 1px 0 #ac4982, 1px 1px 0 #ac4982, 1px -1px 0 #ac4982,
+            -1px -1px 0 #ac4982;
+
           &:nth-of-type(1) {
             margin-left: 18px;
           }
