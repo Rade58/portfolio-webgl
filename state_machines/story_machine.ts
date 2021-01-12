@@ -361,12 +361,12 @@ const storyMachine = createMachine<
                   ease: Power4.easeOut,
                   stagger: 0.08,
                 },
-                `-=${4 * 0.1 + 0.01 * 2}`
+                `-=${6 * 0.1 + 0.01 * 2}`
               )
               .to(
                 gs,
                 { rotateZ: 180, stagger: 0.06, ease: Sine.easeIn },
-                `-=${2 * 0.01}`
+                `-=${6 * 0.01}`
               );
           }
         },
@@ -413,12 +413,12 @@ const storyMachine = createMachine<
                 ease: Power4.easeOut,
                 stagger: 0.08,
               },
-              `-=${4 * 0.1 + 0.01 * 2}`
+              `-=${6 * 0.1 + 0.01 * 2}`
             )
             .to(
               gs,
               { rotateZ: 0, stagger: 0.06, ease: Sine.easeIn },
-              `-=${2 * 0.01}`
+              `-=${6 * 0.01}`
             );
         }
       },
