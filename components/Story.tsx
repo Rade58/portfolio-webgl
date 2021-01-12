@@ -43,8 +43,8 @@ const Story: FunctionComponent = () => {
       }
 
       mqList.onchange = (e) => {
-        console.log(e.media);
-        console.log(e.matches);
+        // console.log(e.media);
+        // console.log(e.matches);
 
         if (e.matches) {
           send({ type: EE.GIVE_MEDIA, payload: { isBellow: true } });
