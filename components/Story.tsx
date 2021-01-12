@@ -41,8 +41,10 @@ const Story: FunctionComponent = () => {
         position: fixed;
         top: 0;
         left: 0;
-        height: 22vh;
-        width: 100%;
+        /* height: 22vh; */
+        height: 100vh;
+        width: 220px;
+        overflow: hidden;
       `}
     >
       <h4>prev: {MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h4>
