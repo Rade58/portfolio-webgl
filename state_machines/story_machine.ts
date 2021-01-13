@@ -219,45 +219,45 @@ const storyMachine = createMachine<
             entry: () => {
               console.log("PARTIAL ENTRY");
             },
-            on: {
+            /*  on: {
               [EE.TO_ANIMATING]: {
                 actions: [
                   // -------- left right BUTTONS ANIMATIONS --------
-                  /*  assign((_, { payload }) => {
+                   assign((_, { payload }) => {
                     return payload;
                   }),
-                  "executeSetupsAndAnimations", */
+                  "executeSetupsAndAnimations",
                 ],
               },
-            },
+            }, */
           },
           [fseS.non_visible]: {
             //
-            on: {
+            /*  on: {
               [EE.TO_ANIMATING]: {
                 actions: [
                   // -------- left right BUTTONS ANIMATIONS --------
-                  /* assign((_, { payload }) => {
+                  assign((_, { payload }) => {
                     return payload;
                   }),
-                  "executeSetupsAndAnimations", */
+                  "executeSetupsAndAnimations",
                 ],
               },
-            },
+            }, */
           },
           [fseS.maximal]: {
             //
-            on: {
+            /* on: {
               [EE.TO_ANIMATING]: {
                 actions: [
                   // -------- left right BUTTONS ANIMATIONS --------
-                  /*  assign((_, { payload }) => {
+                   assign((_, { payload }) => {
                     return payload;
                   }),
-                  "executeSetupsAndAnimations", */
+                  "executeSetupsAndAnimations",
                 ],
               },
-            },
+            }, */
           },
         },
 
