@@ -27,7 +27,7 @@ export enum EE {
 }
 
 export enum EEs {
-  ENLARGE = "ENLARGE",
+  NARROW_IT = "NARROW_IT",
   FULL_OPEN = "FULL_OPEN",
   CLOSE = "CLOSE",
 }
@@ -93,7 +93,11 @@ export type machineEventsGenericType =
       payload: {
         isBellow: boolean;
       };
-    };
+    }
+  // EVENTS FOR IDLE SUBSTATES
+  | { type: EEs.NARROW_IT }
+  | { type: EEs.FULL_OPEN }
+  | { type: EEs.CLOSE };
 
 export type machineFiniteStatesGenericType =
   | {
@@ -216,48 +220,12 @@ const storyMachine = createMachine<
         states: {
           [fseS.partial]: {
             //
-            entry: () => {
-              console.log("PARTIAL ENTRY");
-            },
-            /*  on: {
-              [EE.TO_ANIMATING]: {
-                actions: [
-                  // -------- left right BUTTONS ANIMATIONS --------
-                   assign((_, { payload }) => {
-                    return payload;
-                  }),
-                  "executeSetupsAndAnimations",
-                ],
-              },
-            }, */
           },
           [fseS.non_visible]: {
             //
-            /*  on: {
-              [EE.TO_ANIMATING]: {
-                actions: [
-                  // -------- left right BUTTONS ANIMATIONS --------
-                  assign((_, { payload }) => {
-                    return payload;
-                  }),
-                  "executeSetupsAndAnimations",
-                ],
-              },
-            }, */
           },
           [fseS.maximal]: {
             //
-            /* on: {
-              [EE.TO_ANIMATING]: {
-                actions: [
-                  // -------- left right BUTTONS ANIMATIONS --------
-                   assign((_, { payload }) => {
-                    return payload;
-                  }),
-                  "executeSetupsAndAnimations",
-                ],
-              },
-            }, */
           },
         },
 
