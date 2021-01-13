@@ -191,85 +191,6 @@ const storyMachine = createMachine<
       // NA 'IDLE' TREBAS DA POKAZES (UZ ANIMACIJU) NOVI MODAL KOJI CE BITI ASSOCIATED
       // SA MAJOR STATOM
       [fse.idle]: {
-        // NESTED STATES FOR MAJOR SHOWER
-        // -----------------------------------------------------
-        // -----------------------------------------------------
-        /* id: "idle_submachine",
-        initial: fseS.partial, */
-        on: {
-          [EE.TO_ANIMATING]: {
-            target: fse.anim_active,
-            actions: [
-              () => {
-                console.log("from idle to animating");
-              },
-              // -------- left right BUTTONS ANIMATIONS --------
-              assign((_, { payload }) => {
-                return payload;
-              }),
-              "executeSetupsAndAnimations",
-            ],
-          },
-        },
-        /*  states: {
-          [fseS.partial]: {
-            //
-            entry: () => {
-              console.log("PARTIAL ENTRY");
-            },
-            on: {
-              [EE.TO_ANIMATING]: {
-                target: fse.anim_active,
-                actions: [
-                  // -------- left right BUTTONS ANIMATIONS --------
-                  assign((_, { payload }) => {
-                    return payload;
-                  }),
-                  "executeSetupsAndAnimations",
-                ],
-              },
-            },
-          },
-          [fseS.non_visible]: {
-            //
-            on: {
-               [EE.TO_ANIMATING]: {
-                target: fse.anim_active,
-                actions: [
-                  // -------- left right BUTTONS ANIMATIONS --------
-                  assign((_, { payload }) => {
-                    return payload;
-                  }),
-                  "executeSetupsAndAnimations",
-                ],
-              },
-            },
-          },
-          [fseS.maximal]: {
-            //
-            on: {
-              [EE.TO_ANIMATING]: {
-                target: fse.anim_active,
-                actions: [
-                  // -------- left right BUTTONS ANIMATIONS --------
-                  assign((_, { payload }) => {
-                    return payload;
-                  }),
-                  "executeSetupsAndAnimations",
-                ],
-              },
-            },
-          },
-        }, */
-
-        // -----------------------------------------------------
-        // -----------------------------------------------------
-
-        /* entry: [
-
-      ], */
-        // DOING ACTIONS ON TRANSITIONS
-
         exit: [
           ({ fTl, fishLeft, fishRight }) => {
             if (fishLeft) {
@@ -311,9 +232,88 @@ const storyMachine = createMachine<
             }
           },
         ],
+        // NESTED STATES FOR MAJOR SHOWER
+        // -----------------------------------------------------
+        // -----------------------------------------------------
+        id: "idle_submachine",
+        initial: fseS.partial,
+        on: {
+          [EE.TO_ANIMATING]: {
+            target: fse.anim_active,
+            actions: [
+              () => {
+                console.log("-------from idle to animating--------");
+                console.log("------- ---- ---- ---- --------");
+              },
+              // -------- left right BUTTONS ANIMATIONS --------
+              assign((_, { payload }) => {
+                return payload;
+              }),
+              "executeSetupsAndAnimations",
+            ],
+          },
+        },
+        states: {
+          [fseS.partial]: {
+            //
+            entry: () => {
+              console.log("PARTIAL ENTRY");
+            },
+            on: {
+              [EE.TO_ANIMATING]: {
+                target: fse.anim_active,
+                actions: [
+                  // -------- left right BUTTONS ANIMATIONS --------
+                  assign((_, { payload }) => {
+                    return payload;
+                  }),
+                  "executeSetupsAndAnimations",
+                ],
+              },
+            },
+          },
+          [fseS.non_visible]: {
+            //
+            /* on: {
+               [EE.TO_ANIMATING]: {
+                target: fse.anim_active,
+                actions: [
+                  // -------- left right BUTTONS ANIMATIONS --------
+                  assign((_, { payload }) => {
+                    return payload;
+                  }),
+                  "executeSetupsAndAnimations",
+                ],
+              },
+            }, */
+          },
+          [fseS.maximal]: {
+            //
+            /* on: {
+              [EE.TO_ANIMATING]: {
+                target: fse.anim_active,
+                actions: [
+                  // -------- left right BUTTONS ANIMATIONS --------
+                  assign((_, { payload }) => {
+                    return payload;
+                  }),
+                  "executeSetupsAndAnimations",
+                ],
+              },
+            }, */
+          },
+        },
+
+        // -----------------------------------------------------
+        // -----------------------------------------------------
+
+        /* entry: [
+
+        ], */
+        // DOING ACTIONS ON TRANSITIONS
       },
-      // KADA ANIMACIJA TRAJE MODAL ASSOCIATED SA MAJOR STATEOM BI TREBAO SAKRITI
-      // NARAVNO UZ ANIMACIJU
+      // -------- KADA ANIMACIJA TRAJE MODAL ASSOCIATED SA MAJOR STATEOM BI TREBAO SAKRITI
+      // NARAVNO UZ ANIMACIJU ---------
       [fse.anim_active]: {
         on: {
           [EE.TO_IDLING]: {
