@@ -32,4 +32,5 @@ STO ZNACI DA AKO SI KORISTIO DEGDE DA state.value === fse.idle
 
 SADA MORAS KORISTITI `idle.${fse.partial}`
 
-mozes ustvari refaktorisati NA   .contains(idle) ili ! .contains(idle)
+mozes ustvari refaktorisati NA   .includes(idle) ili ! .includes(idle)
+
