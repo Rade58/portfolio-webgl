@@ -200,6 +200,9 @@ const storyMachine = createMachine<
           [EE.TO_ANIMATING]: {
             target: fse.anim_active,
             actions: [
+              () => {
+                console.log("from idle to animating");
+              },
               // -------- left right BUTTONS ANIMATIONS --------
               assign((_, { payload }) => {
                 return payload;
