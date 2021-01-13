@@ -2,13 +2,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import {
-  FunctionComponent,
-  useEffect,
-  useState,
-  useRef,
-  createRef,
-} from "react";
+import { FunctionComponent, useEffect, useState, createRef } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 import {
@@ -36,10 +30,10 @@ const Story: FunctionComponent = () => {
     "bellow"
   );
 
+  // no op
   useEffect(() => {
-    console.log("FOR STORY REF");
     if (storyRef.current) {
-      console.log({ storyRef: storyRef.current });
+      // console.log({ storyRef: storyRef.current });
     }
   }, [storyRef]);
 
@@ -83,6 +77,13 @@ const Story: FunctionComponent = () => {
     currIndex + 1 > MAJOR_ARR_LENGTH - 1 ? 0 : currIndex + 1;
   const prevIndex: number =
     currIndex - 1 < 0 ? MAJOR_ARR_LENGTH - 1 : currIndex - 1;
+
+  // ANIMACIJE U ODNSU NA SUBSTATE-OVE idle-A
+  // AKO POSTOJI REF KOJI SAM KREIRAO SA createRef
+  if (storyRef.current) {
+  }
+
+  // ----------------------------------------
 
   return (
     <section
