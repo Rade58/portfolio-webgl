@@ -29,6 +29,12 @@ const Story: FunctionComponent = () => {
     "bellow"
   );
 
+  useEffect(() => {
+    if (storyRef.current) {
+      console.log({ story: storyRef.current });
+    }
+  }, [storyRef.current]);
+
   //
   useEffect(() => {
     if (!isSSR()) {
