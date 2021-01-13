@@ -220,17 +220,35 @@ const storyMachine = createMachine<
           },
         },
         states: {
+          // OVDE DEFINISI SAMO TRANZICIJE
+          // A U SAMOJ     `components/Story.tsx`
+          // DEFINISI ANIMACIJE U ODNOOSU NA OVA TRI STATE-A
+
           [fseS.partial]: {
             //
             on: {
-              [EEs.FULL_OPEN]: {},
+              [EEs.FULL_OPEN]: {
+                //
+              },
             },
-          },
-          [fseS.non_visible]: {
-            //
           },
           [fseS.maximal]: {
             //
+            on: {
+              [EEs.NARROW_IT]: {
+                //
+              },
+            },
+          },
+          // PRED ANIMACIJU TREBA DA PREDJE U OVAJ STATE
+          // MOZDA BI OVO TREBAL OA BUDE INICIJALNO
+          [fseS.non_visible]: {
+            //
+            on: {
+              [EEs.SLIDE_TO_INVISIBLE]: {
+                //
+              },
+            },
           },
         },
 
