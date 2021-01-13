@@ -146,7 +146,7 @@ const storyMachine = createMachine<
     on: {
       [EE.GIVE_MEDIA]: {
         actions: assign(({ mediaBellow }, { payload: { isBellow } }) => {
-          console.log({ isBellow });
+          // console.log({ isBellow });
 
           return { mediaBellow: isBellow };
         }),
@@ -208,8 +208,8 @@ const storyMachine = createMachine<
             target: fse.anim_active,
             actions: [
               () => {
-                console.log("-------from idle to animating--------");
-                console.log("------- ---- ---- ---- --------");
+                // console.log("-------from idle to animating--------");
+                // console.log("------- ---- ---- ---- --------");
               },
               // -------- left right BUTTONS ANIMATIONS --------
               assign((_, { payload }) => {
@@ -413,7 +413,7 @@ const storyMachine = createMachine<
               })
               .to(arrow, { duration: 0.2, x: 160, ease: Sine.easeIn });
 
-            console.log({ circle, arrow });
+            // console.log({ circle, arrow });
           }
 
           if (right) {
@@ -490,8 +490,8 @@ const storyMachine = createMachine<
 export const storyService = interpret(storyMachine);
 
 storyService.onTransition((state, event) => {
-  console.log({ stateVlue: state.value });
-  console.log({ context: state.context });
+  // console.log({ stateVlue: state.value });
+  // console.log({ context: state.context });
 });
 
 storyService.start();

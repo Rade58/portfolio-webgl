@@ -70,13 +70,13 @@ const Story: FunctionComponent = () => {
 
   const substatesCallback = useCallback(() => {
     if (storyRef.current) {
-      console.log({ storyRef: storyRef.current });
+      // console.log({ storyRef: storyRef.current });
       // debugger;
       if (state && state.value && state.value[fse.idle]) {
         const substate = state.value[fse.idle];
         const { mediaBellow } = state.context;
 
-        console.log({ substate, mediaBellow });
+        console.log({ substate, mediaBellow, storyrefCurr: storyRef.current });
       }
     }
   }, [storyRef, state]);

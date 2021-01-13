@@ -15,7 +15,7 @@ const Forth: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
   const forwrdSvgRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    console.log(forwrdSvgRef.current);
+    // console.log(forwrdSvgRef.current);
     if (forwrdSvgRef.current) {
       send({
         type: EE.BRING_SVG,
