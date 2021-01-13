@@ -191,52 +191,12 @@ const storyMachine = createMachine<
       // NA 'IDLE' TREBAS DA POKAZES (UZ ANIMACIJU) NOVI MODAL KOJI CE BITI ASSOCIATED
       // SA MAJOR STATOM
       [fse.idle]: {
-        exit: [
-          ({ fTl, fishLeft, fishRight }) => {
-            if (fishLeft) {
-              const gs = fishLeft.querySelectorAll("g#fish_left____ > g");
-
-              fTl
-                .to(
-                  gs,
-                  {
-                    translateX: -688,
-                    duration: 0.1,
-                    ease: Power2.easeIn,
-                    stagger: 0.08,
-                  }
-                  // "-=0.01"
-                )
-                .to(gs, { rotateZ: 180, stagger: 0.06, ease: Sine.easeIn });
-            }
-
-            if (fishRight) {
-              const gs = fishRight.querySelectorAll("g#fish_right____ > g");
-
-              fTl
-                .to(
-                  gs,
-                  {
-                    translateX: 688,
-                    duration: 0.1,
-                    ease: Power4.easeOut,
-                    stagger: 0.08,
-                  },
-                  `-=${6 * 0.1 + 0.01 * 2}`
-                )
-                .to(
-                  gs,
-                  { rotateZ: 180, stagger: 0.06, ease: Sine.easeIn },
-                  `-=${6 * 0.01}`
-                );
-            }
-          },
-        ],
         // NESTED STATES FOR MAJOR SHOWER
         // -----------------------------------------------------
         // -----------------------------------------------------
         id: "idle_submachine",
-        initial: fseS.partial,
+        // initial: fseS.partial,
+        exit: ["animateOnExitFromIdle"], // FISH DISPURSE
         on: {
           [EE.TO_ANIMATING]: {
             target: fse.anim_active,
@@ -253,13 +213,13 @@ const storyMachine = createMachine<
             ],
           },
         },
-        states: {
+        /* states: {
           [fseS.partial]: {
             //
             entry: () => {
               console.log("PARTIAL ENTRY");
             },
-            on: {
+             on: {
               [EE.TO_ANIMATING]: {
                 target: fse.anim_active,
                 actions: [
@@ -274,7 +234,7 @@ const storyMachine = createMachine<
           },
           [fseS.non_visible]: {
             //
-            /* on: {
+            on: {
                [EE.TO_ANIMATING]: {
                 target: fse.anim_active,
                 actions: [
@@ -285,11 +245,11 @@ const storyMachine = createMachine<
                   "executeSetupsAndAnimations",
                 ],
               },
-            }, */
+            },
           },
           [fseS.maximal]: {
             //
-            /* on: {
+            on: {
               [EE.TO_ANIMATING]: {
                 target: fse.anim_active,
                 actions: [
@@ -300,17 +260,12 @@ const storyMachine = createMachine<
                   "executeSetupsAndAnimations",
                 ],
               },
-            }, */
+            },
           },
         },
-
+ */
         // -----------------------------------------------------
         // -----------------------------------------------------
-
-        /* entry: [
-
-        ], */
-        // DOING ACTIONS ON TRANSITIONS
       },
       // -------- KADA ANIMACIJA TRAJE MODAL ASSOCIATED SA MAJOR STATEOM BI TREBAO SAKRITI
       // NARAVNO UZ ANIMACIJU ---------
@@ -494,7 +449,48 @@ const storyMachine = createMachine<
           }
         }
       },
+      //
+      animateOnExitFromIdle: ({ fTl, fishLeft, fishRight }) => {
+        if (fishLeft) {
+          const gs = fishLeft.querySelectorAll("g#fish_left____ > g");
+
+          fTl
+            .to(
+              gs,
+              {
+                translateX: -688,
+                duration: 0.1,
+                ease: Power2.easeIn,
+                stagger: 0.08,
+              }
+              // "-=0.01"
+            )
+            .to(gs, { rotateZ: 180, stagger: 0.06, ease: Sine.easeIn });
+        }
+
+        if (fishRight) {
+          const gs = fishRight.querySelectorAll("g#fish_right____ > g");
+
+          fTl
+            .to(
+              gs,
+              {
+                translateX: 688,
+                duration: 0.1,
+                ease: Power4.easeOut,
+                stagger: 0.08,
+              },
+              `-=${6 * 0.1 + 0.01 * 2}`
+            )
+            .to(
+              gs,
+              { rotateZ: 180, stagger: 0.06, ease: Sine.easeIn },
+              `-=${6 * 0.01}`
+            );
+        }
+      },
     },
+    //
   }
 );
 
