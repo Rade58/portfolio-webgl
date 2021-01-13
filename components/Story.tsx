@@ -127,6 +127,10 @@ const Story: FunctionComponent = () => {
   const prevIndex: number =
     currIndex - 1 < 0 ? MAJOR_ARR_LENGTH - 1 : currIndex - 1;
 
+  // DODATI DUGMAD ZA UVECANJE/SMANJENJE
+  // ONA STRELICA KOJA BI SE ROTIRALA (NAPRAVICU NOVI SVG DAKLE)
+  // AKO JE ZA UVECANJE DOLE ONDA CE UPIRATI DOLE, A U SUPROTNOM CE SE ZAROTIRAVATI
+
   return (
     <section
       ref={storyRef}
