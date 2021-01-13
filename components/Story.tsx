@@ -2,7 +2,13 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { FunctionComponent, useEffect, useState, useRef } from "react";
+import {
+  FunctionComponent,
+  useEffect,
+  useState,
+  useRef,
+  createRef,
+} from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 import {
@@ -18,7 +24,8 @@ import { isSSR } from "../utils/isSSR";
 const MAJOR_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
 
 const Story: FunctionComponent = () => {
-  const storyRef = useRef<HTMLDivElement>(null);
+  //
+  const storyRef = createRef<HTMLElement>();
 
   // VODI RACUNA DA major MOZE BITI I STRING "undefined"
 
@@ -30,10 +37,11 @@ const Story: FunctionComponent = () => {
   );
 
   useEffect(() => {
+    console.log("FOR STORY REF");
     if (storyRef.current) {
-      console.log({ story: storyRef.current });
+      console.log({ storyRef: storyRef.current });
     }
-  }, [storyRef.current]);
+  }, [storyRef]);
 
   //
   useEffect(() => {

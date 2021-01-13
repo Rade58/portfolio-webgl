@@ -32,3 +32,6 @@ AKO idle IMA SUBSTATES, ONDA JE ONAJ STATE IZ SERVICE-A OVAKAV
 
 `state.value[fse.idle]` (I TO IMAJ U VIDU) (KORISTI debugger;)
 
+:three: USE `createRef` INSTEAD OF `useRef`
+
+**REFAKTORISI SVA MESTA GDE SI KORISTIO useRef I ZAMENI IH SA createRef**
