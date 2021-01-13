@@ -194,9 +194,21 @@ const storyMachine = createMachine<
         // NESTED STATES FOR MAJOR SHOWER
         // -----------------------------------------------------
         // -----------------------------------------------------
-        id: "idle_submachine",
-        initial: fseS.partial,
-        states: {
+        /* id: "idle_submachine",
+        initial: fseS.partial, */
+        on: {
+          [EE.TO_ANIMATING]: {
+            target: fse.anim_active,
+            actions: [
+              // -------- left right BUTTONS ANIMATIONS --------
+              assign((_, { payload }) => {
+                return payload;
+              }),
+              "executeSetupsAndAnimations",
+            ],
+          },
+        },
+        /*  states: {
           [fseS.partial]: {
             //
             entry: () => {
@@ -218,7 +230,7 @@ const storyMachine = createMachine<
           [fseS.non_visible]: {
             //
             on: {
-              [EE.TO_ANIMATING]: {
+               [EE.TO_ANIMATING]: {
                 target: fse.anim_active,
                 actions: [
                   // -------- left right BUTTONS ANIMATIONS --------
@@ -245,7 +257,7 @@ const storyMachine = createMachine<
               },
             },
           },
-        },
+        }, */
 
         // -----------------------------------------------------
         // -----------------------------------------------------
