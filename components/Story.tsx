@@ -2,7 +2,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, useEffect, useState, useRef } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 import {
@@ -18,6 +18,8 @@ import { isSSR } from "../utils/isSSR";
 const MAJOR_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
 
 const Story: FunctionComponent = () => {
+  const storyRef = useRef<HTMLDivElement>(null);
+
   // VODI RACUNA DA major MOZE BITI I STRING "undefined"
 
   const [state, send] = useService(storyService);
@@ -70,6 +72,7 @@ const Story: FunctionComponent = () => {
 
   return (
     <section
+      ref={storyRef}
       className={`story ${bellowAboveClass}`}
       // style={{ width, height }}
       css={css`
@@ -92,6 +95,7 @@ const Story: FunctionComponent = () => {
           width: 36vw;
           height: 100vh;
         }
+        /* ------------------------------- */
       `}
     >
       <h4>prev: {MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h4>
