@@ -32,9 +32,24 @@ const Story: FunctionComponent = () => {
 
   // no op
   useEffect(() => {
+    // ANIMACIJE U ODNSU NA SUBSTATE-OVE idle-A
+    // AKO POSTOJI REF KOJI SAM KREIRAO SA createRef
+
+    // OVO MORA ZAVISISTI I OD
+    // state.context.mediaBellow // boolean (ZA MEDIA QUERIES)
+    //
+
     if (storyRef.current) {
-      // console.log({ storyRef: storyRef.current });
+      console.log({ storyRef: storyRef.current });
+      // debugger;
+      if (state && state.value && state.value[fse.idle]) {
+        const substate = state.value[fse.idle];
+
+        console.log(substate);
+      }
     }
+
+    // ----------------------------------------
   }, [storyRef]);
 
   //
@@ -77,18 +92,6 @@ const Story: FunctionComponent = () => {
     currIndex + 1 > MAJOR_ARR_LENGTH - 1 ? 0 : currIndex + 1;
   const prevIndex: number =
     currIndex - 1 < 0 ? MAJOR_ARR_LENGTH - 1 : currIndex - 1;
-
-  // ANIMACIJE U ODNSU NA SUBSTATE-OVE idle-A
-  // AKO POSTOJI REF KOJI SAM KREIRAO SA createRef
-  if (storyRef.current) {
-    if (state && state.value && state.value[fse.idle]) {
-      const substate = state.value[fse.idle];
-
-      console.log(substate);
-    }
-  }
-
-  // ----------------------------------------
 
   return (
     <section
