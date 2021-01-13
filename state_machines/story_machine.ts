@@ -193,6 +193,7 @@ const storyMachine = createMachine<
       // NESTED STATES FOR MAJOR SHOWER
       // -----------------------------------------------------
       // -----------------------------------------------------
+      id: "idle_submachine",
       initial: fseS.partial,
       states: {
         [fseS.partial]: {
