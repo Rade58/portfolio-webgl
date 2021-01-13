@@ -53,7 +53,8 @@ const ComponentName: FunctionComponent = () => {
     state &&
     state.context &&
     state.value &&
-    (state.value === fse.idle || state.value[fse.idle])
+    state.value !== fse.idle &&
+    !state.value[fse.idle]
   ) {
     tl.to(pathNodeListRef.current, {
       duration: 0.1,
