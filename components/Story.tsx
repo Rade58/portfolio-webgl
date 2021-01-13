@@ -82,6 +82,7 @@ const Story: FunctionComponent = () => {
         /* width: 220px; */
         overflow: hidden;
 
+        /* FOR MATCH MEDIA (MEDIA QUERIES) */
         &.bellow {
           width: 100%;
           height: 24vh;

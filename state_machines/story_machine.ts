@@ -115,7 +115,7 @@ export type machineFiniteStatesGenericType =
       context: MachineContextGenericIFull;
     }
 
-  //  MAJOR SHOWER STATES (NESTED STATES)
+  //  Story STATES (NESTED STATES)
   | { value: fseS.non_visible; context: MachineContextGenericIFull }
   | { value: fseS.partial; context: MachineContextGenericIFull }
   | { value: fseS.maximal; context: MachineContextGenericIFull };
