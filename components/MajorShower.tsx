@@ -124,7 +124,7 @@ const MajorShowers: FunctionComponent = () => {
     // console.log({ STATE_VALUE: state.value });
     if (prevRef.current && nextRef.current && currRef.current) {
       if (state && state.value) {
-        if ((state.value as string).includes(fse.idle)) {
+        if (state.value !== fse.idle && !state.value[fse.idle]) {
           //
           // console.log("------ENTERED IDLE------");
 
