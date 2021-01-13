@@ -124,6 +124,7 @@ const MajorShowers: FunctionComponent = () => {
     // console.log({ STATE_VALUE: state.value });
     if (prevRef.current && nextRef.current && currRef.current) {
       if (state && state.value) {
+        // ZATO STO IMA NESTED STATES
         if (state.value === fse.idle || state.value[fse.idle]) {
           //
           // console.log("------ENTERED IDLE------");

@@ -53,6 +53,7 @@ const ComponentName: FunctionComponent = () => {
     state &&
     state.context &&
     state.value &&
+    // ZATO STO IMA NSTED STATES
     state.value !== fse.idle &&
     !state.value[fse.idle]
   ) {
