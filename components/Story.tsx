@@ -30,28 +30,6 @@ const Story: FunctionComponent = () => {
     "bellow"
   );
 
-  // no op
-  useEffect(() => {
-    // ANIMACIJE U ODNSU NA SUBSTATE-OVE idle-A
-    // AKO POSTOJI REF KOJI SAM KREIRAO SA createRef
-
-    // OVO MORA ZAVISISTI I OD
-    // state.context.mediaBellow // boolean (ZA MEDIA QUERIES)
-    //
-
-    if (storyRef.current) {
-      console.log({ storyRef: storyRef.current });
-      // debugger;
-      if (state && state.value && state.value[fse.idle]) {
-        const substate = state.value[fse.idle];
-
-        console.log(substate);
-      }
-    }
-
-    // ----------------------------------------
-  }, [storyRef]);
-
   //
   useEffect(() => {
     if (!isSSR()) {
@@ -81,6 +59,31 @@ const Story: FunctionComponent = () => {
       };
     }
   }, []);
+
+  //  ----------------
+  useEffect(() => {
+    // ANIMACIJE U ODNSU NA SUBSTATE-OVE idle-A
+    // AKO POSTOJI REF KOJI SAM KREIRAO SA createRef
+
+    // OVO MORA ZAVISISTI I OD
+    // state.context.mediaBellow // boolean (ZA MEDIA QUERIES)
+    // SAM ODEFINISEM ANIMACIJE ZA MOBILE
+    //
+
+    if (storyRef.current) {
+      console.log({ storyRef: storyRef.current });
+      // debugger;
+      if (state && state.value && state.value[fse.idle]) {
+        const substate = state.value[fse.idle];
+        const { mediaBellow } = state.context;
+
+        console.log({ substate, mediaBellow });
+      }
+    }
+
+    // ----------------------------------------
+  }, [storyRef]);
+  //  ----------------
 
   if (!major || major === "undefined") {
     return null;
