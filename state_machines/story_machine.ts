@@ -229,6 +229,7 @@ const storyMachine = createMachine<
             on: {
               [EEs.FULL_OPEN]: {
                 //
+                target: fseS.maximal,
               },
             },
           },
@@ -237,6 +238,7 @@ const storyMachine = createMachine<
             on: {
               [EEs.NARROW_IT]: {
                 //
+                target: fseS.partial,
               },
             },
           },
@@ -247,8 +249,11 @@ const storyMachine = createMachine<
             on: {
               [EEs.SLIDE_TO_INVISIBLE]: {
                 //
+                // OVO CE SAMO SAKRITI ELEMENT
               },
+              // BICE FINAL STATE
             },
+            type: "final",
           },
         },
 
