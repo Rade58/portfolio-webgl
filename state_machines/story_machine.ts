@@ -195,7 +195,7 @@ const storyMachine = createMachine<
         // -----------------------------------------------------
         // -----------------------------------------------------
         id: "idle_submachine",
-        // initial: fseS.partial,
+        initial: fseS.partial,
         exit: ["animateOnExitFromIdle"], // FISH DISPURSE
         on: {
           [EE.TO_ANIMATING]: {
@@ -213,21 +213,20 @@ const storyMachine = createMachine<
             ],
           },
         },
-        /* states: {
+        states: {
           [fseS.partial]: {
             //
             entry: () => {
               console.log("PARTIAL ENTRY");
             },
-             on: {
+            on: {
               [EE.TO_ANIMATING]: {
-                target: fse.anim_active,
                 actions: [
                   // -------- left right BUTTONS ANIMATIONS --------
-                  assign((_, { payload }) => {
+                  /*  assign((_, { payload }) => {
                     return payload;
                   }),
-                  "executeSetupsAndAnimations",
+                  "executeSetupsAndAnimations", */
                 ],
               },
             },
@@ -235,14 +234,13 @@ const storyMachine = createMachine<
           [fseS.non_visible]: {
             //
             on: {
-               [EE.TO_ANIMATING]: {
-                target: fse.anim_active,
+              [EE.TO_ANIMATING]: {
                 actions: [
                   // -------- left right BUTTONS ANIMATIONS --------
-                  assign((_, { payload }) => {
+                  /* assign((_, { payload }) => {
                     return payload;
                   }),
-                  "executeSetupsAndAnimations",
+                  "executeSetupsAndAnimations", */
                 ],
               },
             },
@@ -251,19 +249,18 @@ const storyMachine = createMachine<
             //
             on: {
               [EE.TO_ANIMATING]: {
-                target: fse.anim_active,
                 actions: [
                   // -------- left right BUTTONS ANIMATIONS --------
-                  assign((_, { payload }) => {
+                  /*  assign((_, { payload }) => {
                     return payload;
                   }),
-                  "executeSetupsAndAnimations",
+                  "executeSetupsAndAnimations", */
                 ],
               },
             },
           },
         },
- */
+
         // -----------------------------------------------------
         // -----------------------------------------------------
       },
