@@ -54,8 +54,6 @@ const ComponentName: FunctionComponent = () => {
     state.context &&
     state.value &&
     (state.value === fse.idle || state.value[fse.idle])
-    // && includes ZATO STO POSTOJE I NESTED STATES
-    // (state.value as string).includes(fse.idle)
   ) {
     tl.to(pathNodeListRef.current, {
       duration: 0.1,
