@@ -11,6 +11,9 @@ import {
 } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
+
+import { TweenMax, Power2 } from "gsap";
+
 import {
   fse as fsS,
   MAJOR_FINITE_STATES_ARRAY,
@@ -86,6 +89,12 @@ const Story: FunctionComponent = () => {
         if (substate === fseS.partial) {
           // ANIMACIJA ZA PARTIAL
           // SLIDING DOWN
+
+          TweenMax.to(storyRef.current, {
+            duration: 0.4,
+            ease: Power2.easeIn,
+            translateY: "0vh",
+          });
         }
 
         if (substate === fseS.maximal) {
@@ -150,13 +159,16 @@ const Story: FunctionComponent = () => {
         &.bellow {
           width: 100%;
           height: 24vh;
+          /* -------- -------- SETUP -------- -------- */
+          transform: translateY(-22vh);
+          /* -------- */
         }
 
         &.above {
           width: 36vw;
           height: 100vh;
         }
-        /* ------------------------------- */
+        /* -------- -------- -------- -------- -------- */
       `}
     >
       <h4>prev: {MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h4>
