@@ -67,17 +67,8 @@ const Story: FunctionComponent = () => {
   }, []);
 
   //  ---------------- SUBSTATE ANIMATIONS ----------------
-  useEffect(() => {
-    // ANIMACIJE U ODNSU NA SUBSTATE-OVE idle-A
-    // AKO POSTOJI REF KOJI SAM KREIRAO SA createRef
 
-    // OVO MORA ZAVISISTI I OD
-    // state.context.mediaBellow // boolean (ZA MEDIA QUERIES)
-    // SAM ODEFINISEM ANIMACIJE ZA MOBILE
-    //
-
-    // MOZDA  JE BOLJE DA KORISTIM useCallback (REEVALUTE CALLBACK U ODNOSU NA)
-
+  const substatesCallback = useCallback(() => {
     if (storyRef.current) {
       console.log({ storyRef: storyRef.current });
       // debugger;
@@ -88,7 +79,20 @@ const Story: FunctionComponent = () => {
         console.log({ substate, mediaBellow });
       }
     }
-  }, [storyRef]);
+  }, [storyRef, state]);
+
+  useEffect(() => {
+    // ANIMACIJE U ODNSU NA SUBSTATE-OVE idle-A
+    // AKO POSTOJI REF KOJI SAM KREIRAO SA createRef
+
+    // OVO MORA ZAVISISTI I OD
+    // state.context.mediaBellow // boolean (ZA MEDIA QUERIES)
+    // SAM ODEFINISEM ANIMACIJE ZA MOBILE
+    //
+
+    // MOZDA  JE BOLJE DA KORISTIM useCallback (REEVALUTE CALLBACK U ODNOSU NA)
+    substatesCallback();
+  }, [substatesCallback]);
   //  -------------------------------------------------
 
   if (!major || major === "undefined") {
