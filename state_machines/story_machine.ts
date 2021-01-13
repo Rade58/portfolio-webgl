@@ -27,9 +27,11 @@ export enum EE {
 }
 
 export enum EEs {
+  // OVI CE SE MNJATI IZMEDJU SEBE
   NARROW_IT = "NARROW_IT",
   FULL_OPEN = "FULL_OPEN",
-  CLOSE = "CLOSE",
+  // OVAJ CE ZATVORITI PRED ANIMACIJU
+  SLIDE_TO_INVISIBLE = "SLIDE_TO_INVISIBLE",
 }
 
 // ------------------------------------------------------------
@@ -94,10 +96,10 @@ export type machineEventsGenericType =
         isBellow: boolean;
       };
     }
-  // EVENTS FOR IDLE SUBSTATES
+  // ------------ EVENTS FOR IDLE SUBSTATES  ----------------------------
   | { type: EEs.NARROW_IT }
   | { type: EEs.FULL_OPEN }
-  | { type: EEs.CLOSE };
+  | { type: EEs.SLIDE_TO_INVISIBLE };
 
 export type machineFiniteStatesGenericType =
   | {
@@ -220,6 +222,9 @@ const storyMachine = createMachine<
         states: {
           [fseS.partial]: {
             //
+            on: {
+              [EEs.FULL_OPEN]: {},
+            },
           },
           [fseS.non_visible]: {
             //
