@@ -76,7 +76,28 @@ const Story: FunctionComponent = () => {
         const substate = state.value[fse.idle];
         const { mediaBellow } = state.context;
 
-        console.log({ substate, mediaBellow, storyrefCurr: storyRef.current });
+        console.log({ substate, mediaBellow, storyRefCurr: storyRef.current });
+
+        if (!mediaBellow) {
+          //  KASNIJE CU OVDE RADITI NESTO POSEBNO
+          return;
+        }
+
+        if (substate === fseS.partial) {
+          // ANIMACIJA ZA PARTIAL
+          // SLIDING DOWN
+        }
+
+        if (substate === fseS.maximal) {
+          // PROSIRENJE ELEMENTA
+          // DO KONTROLA NARAVNO
+        }
+
+        if (substate === fseS.non_visible) {
+          // CINJENJA DA SE PRVO SMANJI DO PARTIALA, AKO JE
+          // PRESDJENO IVDE IZ MAXIMALA
+          //  I ONDA PONOVO TRANSLATION PO Y U NEVIDLJIVOST
+        }
       }
     }
   }, [storyRef, state]);
