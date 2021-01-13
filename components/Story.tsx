@@ -11,7 +11,7 @@ import {
 } from "../sketch/middle_ground/major_states";
 
 import { useService } from "@xstate/react";
-import { storyService, EE } from "../state_machines/story_machine";
+import { storyService, EE, fse, fseS } from "../state_machines/story_machine";
 
 import { isSSR } from "../utils/isSSR";
 
@@ -81,6 +81,11 @@ const Story: FunctionComponent = () => {
   // ANIMACIJE U ODNSU NA SUBSTATE-OVE idle-A
   // AKO POSTOJI REF KOJI SAM KREIRAO SA createRef
   if (storyRef.current) {
+    if (state && state.value && state.value[fse.idle]) {
+      const substate = state.value[fse.idle];
+
+      console.log(substate);
+    }
   }
 
   // ----------------------------------------
