@@ -285,7 +285,7 @@ const appMachine = createMachine<
               ({ backButton }, __) => {
                 setTimeout(() => {
                   backButton.dispatchEvent(new Event("click"));
-                }, 600);
+                }, 200);
 
                 storyService.send({
                   type: EEsubStory.SLIDE_TO_INVISIBLE,
@@ -300,7 +300,7 @@ const appMachine = createMachine<
               ({ forwardButton }, __) => {
                 setTimeout(() => {
                   forwardButton.dispatchEvent(new Event("click"));
-                }, 600);
+                }, 200);
 
                 storyService.send({
                   type: EEsubStory.SLIDE_TO_INVISIBLE,
