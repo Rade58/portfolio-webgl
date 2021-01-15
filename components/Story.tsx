@@ -179,6 +179,10 @@ const Story: FunctionComponent = () => {
   // ONA STRELICA KOJA BI SE ROTIRALA (NAPRAVICU NOVI SVG DAKLE)
   // AKO JE ZA UVECANJE DOLE ONDA CE UPIRATI DOLE, A U SUPROTNOM CE SE ZAROTIRAVATI
 
+  // STYLE VARIABLES ---------
+  const upDownArrowHeight = "60px";
+  //  -------------------------
+
   return (
     <section
       ref={storyRef}
@@ -220,14 +224,14 @@ const Story: FunctionComponent = () => {
           bottom: 0;
           width: 100%;
           display: flex;
-          height: 60px;
+          height: ${upDownArrowHeight};
           justify-content: center;
         }
 
         & .content {
           border: orange solid 1px;
           text-overflow: ellipsis;
-          height: calc(26vh - 60px);
+          height: calc(26vh - ${upDownArrowHeight});
           overflow: hidden;
 
           & article {
