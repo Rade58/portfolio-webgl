@@ -186,7 +186,7 @@ const Story: FunctionComponent = () => {
         /* -------- -------- -------- -------- -------- */
 
         & button {
-          position: fixed;
+          position: absolute;
           right: 0;
           bottom: 0;
         }
@@ -195,37 +195,39 @@ const Story: FunctionComponent = () => {
       <h4>prev: {MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h4>
       <h1>major: {major}</h1>
       <h4>next: {MAJOR_FINITE_STATES_ARRAY[nextIndex]}</h4>
-      <button
-        onClick={() => {
-          const { mediaBellow } = state.context;
+      {state && state.context && state.context.mediaBellow && (
+        <button
+          onClick={() => {
+            const { mediaBellow } = state.context;
 
-          if (mediaBellow) {
-            if (state && state.value && state.value[fse.idle]) {
-              const substate = state.value[fse.idle];
+            if (mediaBellow) {
+              if (state && state.value && state.value[fse.idle]) {
+                const substate = state.value[fse.idle];
 
-              if (substate === fseS.partial) {
-                console.log({ substate });
-                console.log("full open sent");
+                if (substate === fseS.partial) {
+                  console.log({ substate });
+                  console.log("full open sent");
 
-                send({
-                  type: EEs.FULL_OPEN,
-                });
-              }
+                  send({
+                    type: EEs.FULL_OPEN,
+                  });
+                }
 
-              if (substate === fseS.maximal) {
-                console.log({ substate });
-                console.log("narrow it sent");
+                if (substate === fseS.maximal) {
+                  console.log({ substate });
+                  console.log("narrow it sent");
 
-                send({
-                  type: EEs.NARROW_IT,
-                });
+                  send({
+                    type: EEs.NARROW_IT,
+                  });
+                }
               }
             }
-          }
-        }}
-      >
-        Down
-      </button>
+          }}
+        >
+          Down
+        </button>
+      )}
     </section>
   );
 };
