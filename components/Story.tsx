@@ -225,6 +225,12 @@ const Story: FunctionComponent = () => {
           border: orange solid 1px;
           text-overflow: ellipsis;
         }
+
+        & .placeh {
+          border: tomato inset 1px;
+          width: 100%;
+          height: 60px;
+        }
       `}
     >
       <div className="content">
@@ -242,6 +248,7 @@ const Story: FunctionComponent = () => {
           more recently with desktop publishing software like Aldus PageMaker
           including versions of Lorem Ipsum.
         </p>
+        <div className="placeh" />
       </div>
       {state && state.context && state.context.mediaBellow && (
         <div className="butt-cont">
