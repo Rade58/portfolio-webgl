@@ -197,25 +197,29 @@ const Story: FunctionComponent = () => {
       <h4>next: {MAJOR_FINITE_STATES_ARRAY[nextIndex]}</h4>
       <button
         onClick={() => {
-          if (state && state.value && state.value[fse.idle]) {
-            const substate = state.value[fse.idle];
+          const { mediaBellow } = state.context;
 
-            if (substate === fseS.partial) {
-              console.log({ substate });
-              console.log("full open sent");
+          if (mediaBellow) {
+            if (state && state.value && state.value[fse.idle]) {
+              const substate = state.value[fse.idle];
 
-              send({
-                type: EEs.FULL_OPEN,
-              });
-            }
+              if (substate === fseS.partial) {
+                console.log({ substate });
+                console.log("full open sent");
 
-            if (substate === fseS.maximal) {
-              console.log({ substate });
-              console.log("narrow it sent");
+                send({
+                  type: EEs.FULL_OPEN,
+                });
+              }
 
-              send({
-                type: EEs.NARROW_IT,
-              });
+              if (substate === fseS.maximal) {
+                console.log({ substate });
+                console.log("narrow it sent");
+
+                send({
+                  type: EEs.NARROW_IT,
+                });
+              }
             }
           }
         }}
