@@ -110,7 +110,7 @@ const Story: FunctionComponent = () => {
           TweenMax.to(storyRef.current, {
             duration: 0.4,
             ease: Power2.easeIn,
-            translateY: "80vh",
+            height: "54vh",
             // delay: 0.4,
           });
         }
@@ -161,6 +161,7 @@ const Story: FunctionComponent = () => {
       css={css`
         border: crimson solid 1px;
         position: fixed;
+        z-index: 108;
         top: 0;
         left: 0;
         /* height: 22vh; */
@@ -182,6 +183,12 @@ const Story: FunctionComponent = () => {
           height: 100vh;
         }
         /* -------- -------- -------- -------- -------- */
+
+        & button {
+          position: fixed;
+          right: 0;
+          bottom: 0;
+        }
       `}
     >
       <h4>prev: {MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h4>
@@ -193,12 +200,18 @@ const Story: FunctionComponent = () => {
             const substate = state.value[fse.idle];
 
             if (substate === fseS.partial) {
+              console.log({ substate });
+              console.log("full open sent");
+
               send({
                 type: EEs.FULL_OPEN,
               });
             }
 
             if (substate === fseS.maximal) {
+              console.log({ substate });
+              console.log("narrow it sent");
+
               send({
                 type: EEs.NARROW_IT,
               });
