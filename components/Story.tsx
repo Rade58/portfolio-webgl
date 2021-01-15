@@ -90,19 +90,19 @@ const Story: FunctionComponent = () => {
         if (!mediaBellow) {
           if (substate === fseS.non_visible) {
             TweenMax.to(storyRef.current, {
-              duration: 0.4,
+              duration: 0.2,
               ease: Power2.easeIn,
               width: "0vw",
-              delay: 0.4,
+              // delay: 0.4,
             });
           }
 
           if (substate !== fseS.non_visible) {
             TweenMax.to(storyRef.current, {
-              duration: 0.4,
+              duration: 0.2,
               ease: Power2.easeIn,
               width: "36vw",
-              delay: 0.4,
+              // delay: 0.4,
             });
           }
 
