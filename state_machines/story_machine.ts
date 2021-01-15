@@ -231,6 +231,11 @@ const storyMachine = createMachine<
                 //
                 target: fseS.maximal,
               },
+              [EEs.SLIDE_TO_INVISIBLE]: {
+                //
+                // OVO CE SAMO SAKRITI ELEMENT
+                target: fseS.non_visible,
+              },
             },
           },
           [fseS.maximal]: {
@@ -240,19 +245,18 @@ const storyMachine = createMachine<
                 //
                 target: fseS.partial,
               },
+              [EEs.SLIDE_TO_INVISIBLE]: {
+                //
+                // OVO CE SAMO SAKRITI ELEMENT
+                target: fseS.non_visible,
+              },
             },
           },
           // PRED ANIMACIJU TREBA DA PREDJE U OVAJ STATE
           // MOZDA BI OVO TREBAL OA BUDE INICIJALNO
           [fseS.non_visible]: {
             //
-            on: {
-              [EEs.SLIDE_TO_INVISIBLE]: {
-                //
-                // OVO CE SAMO SAKRITI ELEMENT
-              },
-              // BICE FINAL STATE
-            },
+
             type: "final",
           },
         },

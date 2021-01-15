@@ -120,6 +120,13 @@ const Story: FunctionComponent = () => {
           // CINJENJA DA SE PRVO SMANJI DO PARTIALA, AKO JE
           // PRESDJENO IVDE IZ MAXIMALA
           //  I ONDA PONOVO TRANSLATION PO Y U NEVIDLJIVOST
+
+          TweenMax.to(storyRef.current, {
+            duration: 0.4,
+            ease: Power2.easeIn,
+            height: "24vh",
+            translateY: "-22vh",
+          });
         }
       }
     }
