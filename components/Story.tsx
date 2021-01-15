@@ -20,7 +20,13 @@ import {
 } from "../sketch/middle_ground/major_states";
 
 import { useService } from "@xstate/react";
-import { storyService, EE, fse, fseS } from "../state_machines/story_machine";
+import {
+  storyService,
+  EE,
+  fse,
+  fseS,
+  EEs,
+} from "../state_machines/story_machine";
 
 import { isSSR } from "../utils/isSSR";
 
@@ -101,6 +107,12 @@ const Story: FunctionComponent = () => {
         if (substate === fseS.maximal) {
           // PROSIRENJE ELEMENTA
           // DO KONTROLA NARAVNO
+          TweenMax.to(storyRef.current, {
+            duration: 0.4,
+            ease: Power2.easeIn,
+            translateY: "80vh",
+            // delay: 0.4,
+          });
         }
 
         if (substate === fseS.non_visible) {
@@ -175,6 +187,27 @@ const Story: FunctionComponent = () => {
       <h4>prev: {MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h4>
       <h1>major: {major}</h1>
       <h4>next: {MAJOR_FINITE_STATES_ARRAY[nextIndex]}</h4>
+      <button
+        onClick={() => {
+          if (state && state.value && state.value[fse.idle]) {
+            const substate = state.value[fse.idle];
+
+            if (substate === fseS.partial) {
+              send({
+                type: EEs.FULL_OPEN,
+              });
+            }
+
+            if (substate === fseS.maximal) {
+              send({
+                type: EEs.NARROW_IT,
+              });
+            }
+          }
+        }}
+      >
+        Down
+      </button>
     </section>
   );
 };
