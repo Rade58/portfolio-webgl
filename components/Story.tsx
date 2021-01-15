@@ -100,6 +100,7 @@ const Story: FunctionComponent = () => {
             duration: 0.4,
             ease: Power2.easeIn,
             translateY: "0vh",
+            height: "24vh",
             delay: 0.4,
           });
         }
