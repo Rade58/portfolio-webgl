@@ -6,7 +6,7 @@ import {
   MAJOR_FINITE_STATES_ARRAY,
 } from "../sketch/middle_ground/major_states";
 
-import { storyService, EE as SE } from "./story_machine";
+import { storyService, EE as SE, EEs as EEsubStory } from "./story_machine";
 
 export enum fse {
   animation_active = "animation_active",
@@ -283,6 +283,10 @@ const appMachine = createMachine<
           [EE.CLICK_BACK]: {
             actions: [
               ({ backButton }, __) => {
+                storyService.send({
+                  type: EEsubStory.SLIDE_TO_INVISIBLE,
+                });
+
                 backButton.dispatchEvent(new Event("click"));
               },
             ],
@@ -292,6 +296,10 @@ const appMachine = createMachine<
           [EE.CLICK_FORTH]: {
             actions: [
               ({ forwardButton }, __) => {
+                storyService.send({
+                  type: EEsubStory.SLIDE_TO_INVISIBLE,
+                });
+
                 forwardButton.dispatchEvent(new Event("click"));
               },
             ],

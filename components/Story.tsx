@@ -125,7 +125,7 @@ const Story: FunctionComponent = () => {
             duration: 0.4,
             ease: Power2.easeIn,
             height: "24vh",
-            translateY: "-22vh",
+            translateY: "-24vh",
           });
         }
       }
@@ -182,7 +182,7 @@ const Story: FunctionComponent = () => {
           width: 100%;
           height: 24vh;
           /* -------- -------- SETUP -------- -------- */
-          transform: translateY(-22vh);
+          transform: translateY(-24vh);
           /* -------- */
         }
 
