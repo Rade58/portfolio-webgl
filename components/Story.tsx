@@ -110,7 +110,7 @@ const Story: FunctionComponent = () => {
           TweenMax.to(storyRef.current, {
             duration: 0.4,
             ease: Power2.easeIn,
-            height: "54vh",
+            height: "78vh",
             // delay: 0.4,
           });
         }
