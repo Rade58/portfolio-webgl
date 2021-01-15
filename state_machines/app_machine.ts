@@ -283,11 +283,13 @@ const appMachine = createMachine<
           [EE.CLICK_BACK]: {
             actions: [
               ({ backButton }, __) => {
+                setTimeout(() => {
+                  backButton.dispatchEvent(new Event("click"));
+                }, 600);
+
                 storyService.send({
                   type: EEsubStory.SLIDE_TO_INVISIBLE,
                 });
-
-                backButton.dispatchEvent(new Event("click"));
               },
             ],
 
@@ -296,11 +298,13 @@ const appMachine = createMachine<
           [EE.CLICK_FORTH]: {
             actions: [
               ({ forwardButton }, __) => {
+                setTimeout(() => {
+                  forwardButton.dispatchEvent(new Event("click"));
+                }, 600);
+
                 storyService.send({
                   type: EEsubStory.SLIDE_TO_INVISIBLE,
                 });
-
-                forwardButton.dispatchEvent(new Event("click"));
               },
             ],
 
