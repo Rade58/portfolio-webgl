@@ -196,6 +196,7 @@ const Story: FunctionComponent = () => {
         overflow: hidden;
 
         /* FOR MATCH MEDIA (MEDIA QUERIES) */
+
         &.bellow {
           width: 100%;
           height: 24vh;
@@ -216,13 +217,32 @@ const Story: FunctionComponent = () => {
           right: 0;
           bottom: 0;
           width: 100%;
+          display: flex;
+          justify-content: center;
+        }
+
+        & .content {
+          border: orange solid 1px;
+          text-overflow: ellipsis;
         }
       `}
     >
-      <div className="content"></div>
-      <h4>prev: {MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h4>
-      <h1>major: {major}</h1>
-      <h4>next: {MAJOR_FINITE_STATES_ARRAY[nextIndex]}</h4>
+      <div className="content">
+        <h1>major: {major}</h1>
+        <h4>prev: {MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h4>
+        <h4>next: {MAJOR_FINITE_STATES_ARRAY[nextIndex]}</h4>
+        <p>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry{"'"}s standard dummy text
+          ever since the 1500s, when an unknown printer took a galley of type
+          and scrambled it to make a type specimen book. It has survived not
+          only five centuries, but also the leap into electronic typesetting,
+          remaining essentially unchanged. It was popularised in the 1960s with
+          the release of Letraset sheets containing Lorem Ipsum passages, and
+          more recently with desktop publishing software like Aldus PageMaker
+          including versions of Lorem Ipsum.
+        </p>
+      </div>
       {state && state.context && state.context.mediaBellow && (
         <div className="butt-cont">
           <button
