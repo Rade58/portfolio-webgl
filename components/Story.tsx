@@ -35,6 +35,7 @@ const MAJOR_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
 const Story: FunctionComponent = () => {
   //
   const storyRef = createRef<HTMLElement>();
+  const contentRef = createRef<HTMLDivElement>();
 
   // VODI RACUNA DA major MOZE BITI I STRING "undefined"
 
@@ -78,7 +79,7 @@ const Story: FunctionComponent = () => {
   //  ---------------- SUBSTATE ANIMATIONS ----------------
 
   const substatesCallback = useCallback(() => {
-    if (storyRef.current) {
+    if (storyRef.current && contentRef.current) {
       // console.log({ storyRef: storyRef.current });
       // debugger;
       if (state && state.value && state.value[fse.idle]) {
@@ -117,7 +118,7 @@ const Story: FunctionComponent = () => {
             duration: 0.4,
             ease: Power2.easeIn,
             translateY: "0vh",
-            height: "24vh",
+            height: "26vh",
             delay: 0.4,
           });
         }
@@ -141,8 +142,8 @@ const Story: FunctionComponent = () => {
           TweenMax.to(storyRef.current, {
             duration: 0.2,
             ease: Power2.easeIn,
-            height: "24vh",
-            translateY: "-24vh",
+            height: "26vh",
+            translateY: "-26vh",
           });
         }
       }
@@ -199,7 +200,7 @@ const Story: FunctionComponent = () => {
 
         &.bellow {
           width: 100%;
-          height: 24vh;
+          height: 26vh;
           /* -------- -------- SETUP -------- -------- */
           transform: translateY(-24vh);
           /* -------- */
@@ -219,37 +220,47 @@ const Story: FunctionComponent = () => {
           bottom: 0;
           width: 100%;
           display: flex;
+          height: 60px;
           justify-content: center;
         }
 
         & .content {
           border: orange solid 1px;
           text-overflow: ellipsis;
+          height: calc(26vh - 60px);
+          overflow: hidden;
+
+          & article {
+            /* text-overflow: ellipsis; */
+            /* white-space: nowrap; */
+          }
         }
 
-        & .placeh {
+        /* & .placeh {
           border: tomato inset 1px;
           width: 100%;
           height: 1px;
           margin-bottom: 60px;
-        }
+        } */
       `}
     >
-      <div className="content">
+      <div className="content" ref={contentRef}>
         <h1>major: {major}</h1>
-        <h4>prev: {MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h4>
-        <h4>next: {MAJOR_FINITE_STATES_ARRAY[nextIndex]}</h4>
-        <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry{"'"}s standard dummy text
-          ever since the 1500s, when an unknown printer took a galley of type
-          and scrambled it to make a type specimen book. It has survived not
-          only five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum.
-        </p>
+        <article>
+          <p>
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry{"'"}s standard dummy
+            text ever since the 1500s, when an unknown printer took a galley of
+            type and scrambled it to make a type specimen book. It has survived
+            not only five centuries, but also the leap into electronic
+            typesetting, remaining essentially unchanged. It was popularised in
+            the 1960s with the release of Letraset sheets containing Lorem Ipsum
+            passages, and more recently with desktop publishing software like
+            Aldus PageMaker including versions of Lorem Ipsum.
+          </p>
+          <h4>prev: {MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h4>
+          <h4>next: {MAJOR_FINITE_STATES_ARRAY[nextIndex]}</h4>
+        </article>
         {/* <div className="placeh" /> */}
       </div>
       {state && state.context && state.context.mediaBellow && (
