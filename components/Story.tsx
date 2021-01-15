@@ -139,7 +139,7 @@ const Story: FunctionComponent = () => {
           //  I ONDA PONOVO TRANSLATION PO Y U NEVIDLJIVOST
 
           TweenMax.to(storyRef.current, {
-            duration: 0.4,
+            duration: 0.2,
             ease: Power2.easeIn,
             height: "24vh",
             translateY: "-24vh",
@@ -184,7 +184,8 @@ const Story: FunctionComponent = () => {
       className={`story ${bellowAboveClass}`}
       // style={{ width, height }}
       css={css`
-        border: crimson solid 1px;
+        background-color: rgba(98, 67, 136, 0.788);
+        border: crimson solid 0px;
         position: fixed;
         z-index: 108;
         top: 0;
@@ -209,49 +210,53 @@ const Story: FunctionComponent = () => {
           height: 100vh;
         }
         /* -------- -------- -------- -------- -------- */
-
-        & button {
+        & .butt-cont {
+          border: pink solid 2px;
           position: absolute;
           right: 0;
           bottom: 0;
+          width: 100%;
         }
       `}
     >
+      <div className="content"></div>
       <h4>prev: {MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h4>
       <h1>major: {major}</h1>
       <h4>next: {MAJOR_FINITE_STATES_ARRAY[nextIndex]}</h4>
       {state && state.context && state.context.mediaBellow && (
-        <button
-          onClick={() => {
-            const { mediaBellow } = state.context;
+        <div className="butt-cont">
+          <button
+            onClick={() => {
+              const { mediaBellow } = state.context;
 
-            if (mediaBellow) {
-              if (state && state.value && state.value[fse.idle]) {
-                const substate = state.value[fse.idle];
+              if (mediaBellow) {
+                if (state && state.value && state.value[fse.idle]) {
+                  const substate = state.value[fse.idle];
 
-                if (substate === fseS.partial) {
-                  console.log({ substate });
-                  console.log("full open sent");
+                  if (substate === fseS.partial) {
+                    console.log({ substate });
+                    console.log("full open sent");
 
-                  send({
-                    type: EEs.FULL_OPEN,
-                  });
-                }
+                    send({
+                      type: EEs.FULL_OPEN,
+                    });
+                  }
 
-                if (substate === fseS.maximal) {
-                  console.log({ substate });
-                  console.log("narrow it sent");
+                  if (substate === fseS.maximal) {
+                    console.log({ substate });
+                    console.log("narrow it sent");
 
-                  send({
-                    type: EEs.NARROW_IT,
-                  });
+                    send({
+                      type: EEs.NARROW_IT,
+                    });
+                  }
                 }
               }
-            }
-          }}
-        >
-          Down
-        </button>
+            }}
+          >
+            Down
+          </button>
+        </div>
       )}
     </section>
   );
