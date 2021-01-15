@@ -90,7 +90,7 @@ const Story: FunctionComponent = () => {
         if (!mediaBellow) {
           if (substate === fseS.non_visible) {
             TweenMax.to(storyRef.current, {
-              duration: 0.2,
+              duration: 0.1,
               ease: Power2.easeIn,
               width: "0vw",
               // delay: 0.4,
@@ -99,7 +99,7 @@ const Story: FunctionComponent = () => {
 
           if (substate !== fseS.non_visible) {
             TweenMax.to(storyRef.current, {
-              duration: 0.2,
+              duration: 0.1,
               ease: Power2.easeIn,
               width: "36vw",
               // delay: 0.4,
