@@ -89,6 +89,7 @@ const UpDownButton: FunctionComponent = () => {
             display: flex;
             height: ${upDownArrowHeight};
             justify-content: center;
+            cursor: pointer;
           `}
         >
           <svg

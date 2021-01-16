@@ -234,17 +234,32 @@ const Story: FunctionComponent = () => {
           & h1 {
             text-align: center;
           }
+
+          & .preview {
+            & .tekst {
+              & .three-dots {
+                color: crimson;
+                font-size: 1.2rem;
+              }
+            }
+          }
         }
       `}
     >
       <div className="content">
         <h1>{major.toUpperCase()}</h1>
         <div className="preview">
-          <div className="tekst">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry
-            <span className="three-dots">...</span>
-          </div>
+          {state &&
+            state.context &&
+            state.context.mediaBellow &&
+            state.value &&
+            state.value[fse.idle] &&
+            state.value[fse.idle] === fseS.partial && (
+              <div className="tekst">
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry <span className="three-dots">...</span>
+              </div>
+            )}
         </div>
         <article>
           <p>
