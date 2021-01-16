@@ -31,7 +31,7 @@ const UpDownButton: FunctionComponent = () => {
       // setup
       TweenMax.set(arrow, {
         transformOrigin: "50% 50%",
-        rotateZ: 270,
+        rotateZ: 90,
       });
     }
   }, [butContRef]);
@@ -43,20 +43,32 @@ const UpDownButton: FunctionComponent = () => {
       const substate = state.value[fse.idle];
       // debugger;
       if (state.value[fse.idle] === fseS.partial) {
-        TweenMax.to(arrow, {
-          duration: 0.4,
-          ease: Power4.easeOut,
-          rotateZ: -90 - 360,
-          delay: 0.4,
-        });
+        TweenMax.fromTo(
+          arrow,
+          {
+            duration: 0.2,
+            ease: Power4.easeOut,
+            rotateZ: 90,
+            delay: 0.2,
+          },
+          {
+            rotateZ: -90,
+          }
+        );
       }
 
       if (state.value[fse.idle] === fseS.maximal) {
-        TweenMax.to(arrow, {
-          duration: 0.4,
-          ease: Sine.easeOut,
-          rotateZ: 90,
-        });
+        TweenMax.fromTo(
+          arrow,
+          {
+            duration: 0.2,
+            ease: Sine.easeOut,
+            rotateZ: -90,
+          },
+          {
+            rotateZ: 90,
+          }
+        );
       }
     }
   }, [state]);
