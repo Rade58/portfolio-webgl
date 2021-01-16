@@ -35,7 +35,7 @@ const MAJOR_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
 const Story: FunctionComponent = () => {
   //
   const storyRef = createRef<HTMLElement>();
-  const contentRef = createRef<HTMLDivElement>();
+  // const contentRef = createRef<HTMLDivElement>();
 
   // VODI RACUNA DA major MOZE BITI I STRING "undefined"
 
@@ -79,7 +79,7 @@ const Story: FunctionComponent = () => {
   //  ---------------- SUBSTATE ANIMATIONS ----------------
 
   const substatesCallback = useCallback(() => {
-    if (storyRef.current && contentRef.current) {
+    if (storyRef.current) {
       // console.log({ storyRef: storyRef.current });
       // debugger;
       if (state && state.value && state.value[fse.idle]) {
@@ -208,6 +208,10 @@ const Story: FunctionComponent = () => {
           /* -------- -------- SETUP -------- -------- */
           transform: translateY(-24vh);
           /* -------- */
+
+          & .content {
+            height: calc(100% - ${upDownArrowHeight});
+          }
         }
 
         &.above {
@@ -215,6 +219,7 @@ const Story: FunctionComponent = () => {
           width: 0vw;
           height: 100vh;
         }
+
         /* -------- -------- -------- -------- -------- */
         & .butt-cont {
           border: pink solid 8px;
@@ -230,26 +235,18 @@ const Story: FunctionComponent = () => {
 
         & .content {
           border: orange solid 1px;
-          text-overflow: ellipsis;
-          height: calc(26vh - ${upDownArrowHeight});
+          /* text-overflow: ellipsis; */
+
           overflow: hidden;
-
-          & article {
-            /* text-overflow: ellipsis; */
-            /* white-space: nowrap; */
-          }
         }
-
-        /* & .placeh {
-          border: tomato inset 1px;
-          width: 100%;
-          height: 1px;
-          margin-bottom: 60px;
-        } */
       `}
     >
       <div className="content" ref={contentRef}>
         <h1>major: {major}</h1>
+        <div className="preview">
+          <div className="tekst"></div>
+          <div className="three-dots"></div>
+        </div>
         <article>
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
