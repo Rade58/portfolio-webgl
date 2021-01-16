@@ -44,22 +44,22 @@ const UpDownButton: FunctionComponent = () => {
       // debugger;
       if (state.value[fse.idle] === fseS.partial) {
         TweenMax.to(arrow, {
-          duration: 0.8,
+          duration: 0.4,
           ease: Power4.easeOut,
-          rotateZ: -360 - 90,
-          delay: 0.2,
+          rotateZ: -90 - 360,
+          delay: 0.4,
         });
       }
 
       if (state.value[fse.idle] === fseS.maximal) {
         TweenMax.to(arrow, {
-          duration: 0.8,
+          duration: 0.4,
           ease: Sine.easeOut,
           rotateZ: 90,
         });
       }
     }
-  }, [butContRef, state]);
+  }, [state]);
 
   return (
     <Fragment>
