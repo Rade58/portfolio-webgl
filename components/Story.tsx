@@ -31,6 +31,7 @@ import {
 import { isSSR } from "../utils/isSSR";
 
 import UpDownButton from "./svgs/UpDownButton";
+import PreviewStory from "./PreviewStory";
 
 import { upDownArrowHeight } from "../css_vars";
 
@@ -235,32 +236,19 @@ const Story: FunctionComponent = () => {
             text-align: center;
           }
 
-          & .preview {
+          /* & .preview {
             & .tekst {
               & .three-dots {
-                color: crimson;
-                font-size: 1.2rem;
+
               }
             }
-          }
+          } */
         }
       `}
     >
       <div className="content">
         <h1>{major.toUpperCase()}</h1>
-        <div className="preview">
-          {state &&
-            state.context &&
-            state.context.mediaBellow &&
-            state.value &&
-            state.value[fse.idle] &&
-            state.value[fse.idle] === fseS.partial && (
-              <div className="tekst">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry <span className="three-dots">...</span>
-              </div>
-            )}
-        </div>
+        <PreviewStory />
         <article>
           <p>
             Lorem Ipsum is simply dummy text of the printing and typesetting
