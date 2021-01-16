@@ -70,6 +70,8 @@ const UpDownButton: FunctionComponent = () => {
           }
         );
       }
+
+      butContRef.current.blur();
     }
   }, [state]);
 
@@ -93,6 +95,7 @@ const UpDownButton: FunctionComponent = () => {
           `}
         >
           <svg
+            tabIndex={0}
             /* NO NEED FOR px ON width AND height */
             width="100%"
             // height=""
@@ -103,7 +106,7 @@ const UpDownButton: FunctionComponent = () => {
             xmlns="http://www.w3.org/2000/svg"
             xmlnsXlink="http://www.w3.org/1999/xlink"
             viewBox="1 0 38 28"
-            onClick={() => {
+            onClick={(e) => {
               const { mediaBellow } = state.context;
 
               if (mediaBellow) {
@@ -126,6 +129,46 @@ const UpDownButton: FunctionComponent = () => {
                     send({
                       type: EEs.NARROW_IT,
                     });
+                  }
+                }
+              }
+
+              (e.target as HTMLElement).blur();
+            }}
+            onMouseLeave={(e) => {
+              (e.target as HTMLElement).blur();
+            }}
+            onMouseEnter={(e) => {
+              (e.target as HTMLElement).blur();
+            }}
+            onMouseMove={(e) => {
+              (e.target as HTMLElement).blur();
+            }}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                const { mediaBellow } = state.context;
+
+                if (mediaBellow) {
+                  if (state && state.value && state.value[fse.idle]) {
+                    const substate = state.value[fse.idle];
+
+                    if (substate === fseS.partial) {
+                      console.log({ substate });
+                      console.log("full open sent");
+
+                      send({
+                        type: EEs.FULL_OPEN,
+                      });
+                    }
+
+                    if (substate === fseS.maximal) {
+                      console.log({ substate });
+                      console.log("narrow it sent");
+
+                      send({
+                        type: EEs.NARROW_IT,
+                      });
+                    }
                   }
                 }
               }

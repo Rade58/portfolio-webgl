@@ -56,6 +56,12 @@ const Forth: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
       onMouseLeave={(e) => {
         (e.target as HTMLElement).blur();
       }}
+      onMouseEnter={(e) => {
+        (e.target as HTMLElement).blur();
+      }}
+      onMouseMove={(e) => {
+        (e.target as HTMLElement).blur();
+      }}
       onKeyDown={(e) => {
         if (e.key === "Enter") {
           if (
@@ -96,11 +102,24 @@ const Forth: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
           left: 0;
           width: 598px;
           height: 60px;
+
+          &:hover {
+            outline: none;
+          }
         }
       `}
       ref={forwrdSvgRef}
     >
       <svg
+        onMouseLeave={(e) => {
+          (e.target as HTMLElement).parentElement.blur();
+        }}
+        onMouseEnter={(e) => {
+          (e.target as HTMLElement).parentElement.blur();
+        }}
+        onMouseMove={(e) => {
+          (e.target as HTMLElement).parentElement.blur();
+        }}
         /* NO NEED FOR px ON width AND height */
         width="100%"
         // height="120"
