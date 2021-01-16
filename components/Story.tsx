@@ -30,6 +30,8 @@ import {
 
 import { isSSR } from "../utils/isSSR";
 
+import UpDownButton from "./svgs/UpDownButton";
+
 const MAJOR_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
 
 const Story: FunctionComponent = () => {
@@ -221,17 +223,6 @@ const Story: FunctionComponent = () => {
         }
 
         /* -------- -------- -------- -------- -------- */
-        & .butt-cont {
-          border: pink solid 8px;
-          position: fixed;
-          z-index: 200;
-          right: 0;
-          bottom: 0;
-          width: 100%;
-          display: flex;
-          height: ${upDownArrowHeight};
-          justify-content: center;
-        }
 
         & .content {
           border: orange solid 1px;
@@ -274,41 +265,7 @@ const Story: FunctionComponent = () => {
         </article>
         {/* <div className="placeh" /> */}
       </div>
-      {state && state.context && state.context.mediaBellow && (
-        <div className="butt-cont">
-          <button
-            onClick={() => {
-              const { mediaBellow } = state.context;
-
-              if (mediaBellow) {
-                if (state && state.value && state.value[fse.idle]) {
-                  const substate = state.value[fse.idle];
-
-                  if (substate === fseS.partial) {
-                    console.log({ substate });
-                    console.log("full open sent");
-
-                    send({
-                      type: EEs.FULL_OPEN,
-                    });
-                  }
-
-                  if (substate === fseS.maximal) {
-                    console.log({ substate });
-                    console.log("narrow it sent");
-
-                    send({
-                      type: EEs.NARROW_IT,
-                    });
-                  }
-                }
-              }
-            }}
-          >
-            Down
-          </button>
-        </div>
-      )}
+      <UpDownButton />
     </section>
   );
 };
