@@ -32,6 +32,8 @@ import { isSSR } from "../utils/isSSR";
 
 import UpDownButton from "./svgs/UpDownButton";
 
+import { upDownArrowHeight } from "../css_vars";
+
 const MAJOR_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
 
 const Story: FunctionComponent = () => {
@@ -180,10 +182,6 @@ const Story: FunctionComponent = () => {
   // DODATI DUGMAD ZA UVECANJE/SMANJENJE
   // ONA STRELICA KOJA BI SE ROTIRALA (NAPRAVICU NOVI SVG DAKLE)
   // AKO JE ZA UVECANJE DOLE ONDA CE UPIRATI DOLE, A U SUPROTNOM CE SE ZAROTIRAVATI
-
-  // STYLE VARIABLES ---------
-  const upDownArrowHeight = "60px";
-  //  -------------------------
 
   return (
     <section

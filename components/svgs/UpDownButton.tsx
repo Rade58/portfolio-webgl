@@ -14,17 +14,18 @@ import {
   EEs,
 } from "../../state_machines/story_machine";
 
+import { upDownArrowHeight } from "../../css_vars";
+
 const UpDownButton: FunctionComponent = () => {
   const [state, send] = useService(storyService);
 
-  const upDownArrowHeight = "60px";
   return (
     <Fragment>
       {state && state.context && state.context.mediaBellow && (
         <div
           className="butt-cont"
           css={css`
-            border: pink solid 8px;
+            border: pink solid 0px;
             position: fixed;
             z-index: 200;
             right: 0;
