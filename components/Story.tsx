@@ -241,7 +241,7 @@ const Story: FunctionComponent = () => {
         }
       `}
     >
-      <div className="content" ref={contentRef}>
+      <div className="content">
         <h1>major: {major}</h1>
         <div className="preview">
           <div className="tekst"></div>
