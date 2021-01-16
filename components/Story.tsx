@@ -99,6 +99,7 @@ const Story: FunctionComponent = () => {
               duration: 0.2,
               ease: Power2.easeIn,
               width: "0vw",
+              height: "100%",
               // delay: 0.4,
             });
           }
@@ -107,7 +108,8 @@ const Story: FunctionComponent = () => {
             TweenMax.to(storyRef.current, {
               duration: 0.2,
               ease: Power2.easeIn,
-              width: "36vw",
+              width: "30vw",
+              height: "100%",
               // delay: 0.4,
             });
           }
@@ -124,6 +126,7 @@ const Story: FunctionComponent = () => {
             ease: Power2.easeIn,
             translateY: "0vh",
             height: "26vh",
+            width: "100%",
             delay: 0.3,
           });
         }
@@ -135,6 +138,7 @@ const Story: FunctionComponent = () => {
             duration: 0.2,
             ease: Power2.easeIn,
             height: "78vh",
+            width: "100%",
             // delay: 0.4,
           });
         }
