@@ -8,9 +8,11 @@ import styled from "@emotion/styled";
 import { useService } from "@xstate/react";
 
 import { appService, EE } from "../../state_machines/app_machine";
+import { storyService, fse } from "../../state_machines/story_machine";
 
 const Forth: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
   const [state, send] = useService(appService);
+  const [storyState, sentToStoryMachine] = useService(storyService);
 
   const forwrdSvgRef = useRef<HTMLDivElement>(null);
 
@@ -30,6 +32,9 @@ const Forth: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
 
   return (
     <div
+      className={`forth ${
+        storyState.value === fse.anim_active ? "default_cur" : "pointer_cur"
+      }`}
       style={{
         visibility: visible ? "visible" : "hidden",
         height: visible ? "60px" : "0px",
@@ -74,7 +79,6 @@ const Forth: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
           }
         }
       }}
-      className="forth"
       css={css`
         border: pink solid 0px;
         flex-basis: 46vw;
@@ -82,8 +86,8 @@ const Forth: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
         height: 60px;
         /* flex-shrink: 2; */
         position: relative;
+        /* cursor: pointer; */
         &::after {
-          cursor: pointer;
           position: absolute;
           height: 100%;
           width: 88px;
@@ -91,6 +95,17 @@ const Forth: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
           left: 0;
           content: "";
           /* border: pink solid 4px; */
+        }
+
+        &.default_cur {
+          &::after {
+            cursor: default;
+          }
+        }
+        &.pointer_cur {
+          &::after {
+            cursor: pointer;
+          }
         }
 
         &:hover {

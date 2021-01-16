@@ -7,10 +7,11 @@ import styled from "@emotion/styled";
 
 import { useService } from "@xstate/react";
 import { appService, EE } from "../../state_machines/app_machine";
+import { storyService, fse } from "../../state_machines/story_machine";
 
 const Back: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
   const [state, send] = useService(appService);
-
+  const [storyState, sentToStoryMachine] = useService(storyService);
   const backSvgRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -28,12 +29,14 @@ const Back: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
 
   return (
     <div
+      className={`back ${
+        storyState.value === fse.anim_active ? "default_cur" : "pointer_cur"
+      }`}
       style={{
         visibility: visible ? "visible" : "hidden",
         height: visible ? "60px" : "0px",
         position: visible ? "relative" : "fixed",
       }}
-      className="back"
       role="button"
       tabIndex={0}
       onClick={(e) => {
@@ -84,6 +87,17 @@ const Back: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
           right: 0;
           content: "";
           /* border: pink solid 1px; */
+        }
+
+        &.default_cur {
+          &::after {
+            cursor: default;
+          }
+        }
+        &.pointer_cur {
+          &::after {
+            cursor: pointer;
+          }
         }
 
         &:hover {
