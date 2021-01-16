@@ -2,7 +2,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { FunctionComponent, Fragment, createRef } from "react";
+import { FunctionComponent, Fragment, createRef, useEffect } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
@@ -19,10 +19,20 @@ import { upDownArrowHeight } from "../../css_vars";
 const UpDownButton: FunctionComponent = () => {
   const [state, send] = useService(storyService);
 
+  const butContRef = createRef<HTMLDivElement>();
+
+  useEffect(() => {
+    if (butContRef.current) {
+      const arrow = butContRef.current.querySelector("g#arr-up-down");
+      console.log({ arrow });
+    }
+  }, [butContRef]);
+
   return (
     <Fragment>
       {state && state.context && state.context.mediaBellow && (
         <div
+          ref={butContRef}
           className="butt-cont"
           css={css`
             border: pink solid 0px;
