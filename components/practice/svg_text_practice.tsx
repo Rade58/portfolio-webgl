@@ -48,8 +48,15 @@ const ComponentName: FunctionComponent = () => {
   }, [pathNodeListRef]);
 
   const [state, send] = useService(storyService);
-
-  if (state && state.context && state.value && state.value !== fse.idle) {
+  // debugger;
+  if (
+    state &&
+    state.context &&
+    state.value &&
+    // ZATO STO IMA NSTED STATES
+    state.value !== fse.idle &&
+    !state.value[fse.idle]
+  ) {
     tl.to(pathNodeListRef.current, {
       duration: 0.1,
       translateX: 800,

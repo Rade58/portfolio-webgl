@@ -124,7 +124,8 @@ const MajorShowers: FunctionComponent = () => {
     // console.log({ STATE_VALUE: state.value });
     if (prevRef.current && nextRef.current && currRef.current) {
       if (state && state.value) {
-        if (state.value === fse.idle) {
+        // ZATO STO IMA NESTED STATES
+        if (state.value === fse.idle || state.value[fse.idle]) {
           //
           // console.log("------ENTERED IDLE------");
 
@@ -200,6 +201,7 @@ const MajorShowers: FunctionComponent = () => {
         overflow: hidden;
 
         & h1 {
+          cursor: pointer;
           border: tomato inset 0px;
           font-size: 2.8rem;
           width: 100%;
@@ -207,6 +209,10 @@ const MajorShowers: FunctionComponent = () => {
           align-self: flex-start;
           justify-self: center;
           margin: 0px auto;
+          user-select: none;
+
+          text-decoration-line: underline;
+          text-decoration-color: #ac4982;
         }
 
         & h4 {
@@ -219,6 +225,13 @@ const MajorShowers: FunctionComponent = () => {
           /* &:hover {
             transform: translateY(10px) translateX(10px);
           } */
+
+          text-shadow: -0.5px 0.5px 0 #ac4982, 0.5px 0.5px 0 #ac4982,
+            0.5px -0.5px 0 #ac4982, -0.5px -0.5px 0 #ac4982;
+
+          user-select: none;
+
+          font-weight: 300;
 
           &:nth-of-type(1) {
             margin-left: 18px;
