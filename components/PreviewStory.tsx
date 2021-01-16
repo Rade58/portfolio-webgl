@@ -22,7 +22,7 @@ const PreviewStory: FunctionComponent = () => {
           tekstRef.current,
           {
             opacity: 0,
-            duration: 0.2,
+            duration: 0.08,
             ease: Power3.easeIn,
           },
           {
@@ -36,7 +36,7 @@ const PreviewStory: FunctionComponent = () => {
           tekstRef.current,
           {
             opacity: 1,
-            duration: 0.2,
+            duration: 0.08,
             ease: Power3.easeIn,
           },
           {
