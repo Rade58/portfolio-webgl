@@ -27,6 +27,12 @@ const UpDownButton: FunctionComponent = () => {
     if (butContRef.current) {
       const arrow = butContRef.current.querySelector("g#arr-up-down");
       console.log({ arrow });
+
+      // setup
+      TweenMax.set(arrow, {
+        transformOrigin: "50% 50%",
+        rotateZ: -90,
+      });
     }
   }, [butContRef]);
 
@@ -55,7 +61,7 @@ const UpDownButton: FunctionComponent = () => {
           <svg
             /* NO NEED FOR px ON width AND height */
             width="100%"
-            height=""
+            // height=""
             aria-labelledby="up_down"
             id="svg_up_down"
             role="button" /* or role="imge"*/
