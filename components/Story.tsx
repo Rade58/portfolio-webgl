@@ -119,7 +119,7 @@ const Story: FunctionComponent = () => {
           // SLIDING DOWN
 
           TweenMax.to(storyRef.current, {
-            duration: 0.4,
+            duration: 0.3,
             ease: Power2.easeIn,
             translateY: "0vh",
             height: "26vh",
@@ -131,7 +131,7 @@ const Story: FunctionComponent = () => {
           // PROSIRENJE ELEMENTA
           // DO KONTROLA NARAVNO
           TweenMax.to(storyRef.current, {
-            duration: 0.4,
+            duration: 0.3,
             ease: Power2.easeIn,
             height: "78vh",
             // delay: 0.4,
@@ -147,7 +147,7 @@ const Story: FunctionComponent = () => {
             duration: 0.2,
             ease: Power2.easeIn,
             height: "26vh",
-            translateY: "-26vh",
+            translateY: "-30vh",
           });
         }
       }
