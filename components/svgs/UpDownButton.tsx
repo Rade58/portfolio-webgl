@@ -6,6 +6,8 @@ import { FunctionComponent, Fragment, createRef, useEffect } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
+import { TweenMax, Power4 } from "gsap";
+
 import { useService } from "@xstate/react";
 import {
   storyService,
@@ -27,6 +29,10 @@ const UpDownButton: FunctionComponent = () => {
       console.log({ arrow });
     }
   }, [butContRef]);
+
+  let up: boolean = false;
+
+  up = true;
 
   return (
     <Fragment>
