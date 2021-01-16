@@ -71,7 +71,7 @@ const UpDownButton: FunctionComponent = () => {
         );
       }
 
-      butContRef.current.blur();
+      // butContRef.current.querySelector("svg").blur();
     }
   }, [state]);
 
@@ -92,6 +92,12 @@ const UpDownButton: FunctionComponent = () => {
             height: ${upDownArrowHeight};
             justify-content: center;
             cursor: pointer;
+
+            & svg {
+              &:hover {
+                outline: none;
+              }
+            }
           `}
         >
           <svg
@@ -133,6 +139,9 @@ const UpDownButton: FunctionComponent = () => {
                 }
               }
 
+              (e.target as HTMLElement).blur();
+            }}
+            onMouseOver={(e) => {
               (e.target as HTMLElement).blur();
             }}
             onMouseLeave={(e) => {
