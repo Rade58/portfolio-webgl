@@ -2,7 +2,13 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { FunctionComponent, Fragment, createRef, useEffect } from "react";
+import {
+  FunctionComponent,
+  Fragment,
+  createRef,
+  useEffect,
+  useState,
+} from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
@@ -22,6 +28,8 @@ const UpDownButton: FunctionComponent = () => {
   const [state, send] = useService(storyService);
 
   const butContRef = createRef<HTMLDivElement>();
+
+  const [buttonClicked, setButtonClicked] = useState<boolean>(false);
 
   useEffect(() => {
     if (butContRef.current) {
@@ -70,8 +78,9 @@ const UpDownButton: FunctionComponent = () => {
           }
         );
       }
-
-      // butContRef.current.querySelector("svg").blur();
+      if (buttonClicked) {
+        butContRef.current.querySelector("svg").blur();
+      }
     }
   }, [state]);
 
@@ -139,9 +148,12 @@ const UpDownButton: FunctionComponent = () => {
                 }
               }
 
+              setButtonClicked(true);
+            }}
+            /* onMouseOver={(e) => {
               (e.target as HTMLElement).blur();
             }}
-            onMouseOver={(e) => {
+            onMouseOut={(e) => {
               (e.target as HTMLElement).blur();
             }}
             onMouseLeave={(e) => {
@@ -152,9 +164,10 @@ const UpDownButton: FunctionComponent = () => {
             }}
             onMouseMove={(e) => {
               (e.target as HTMLElement).blur();
-            }}
+            }} */
             onKeyDown={(e) => {
               if (e.key === "Enter") {
+                setButtonClicked(false);
                 const { mediaBellow } = state.context;
 
                 if (mediaBellow) {
