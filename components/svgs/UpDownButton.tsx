@@ -103,7 +103,7 @@ const UpDownButton: FunctionComponent = () => {
             cursor: pointer;
 
             & svg {
-              &:hover {
+              &:active {
                 outline: none;
               }
             }
