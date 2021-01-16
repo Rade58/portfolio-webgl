@@ -2,7 +2,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { FunctionComponent, Fragment } from "react";
+import { FunctionComponent, Fragment, createRef } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
@@ -87,7 +87,7 @@ const UpDownButton: FunctionComponent = () => {
                   strokeLinejoin="round"
                 />
               </g>
-              <g id="arr-left" clipPath="url(#clip000)">
+              <g id="arr-up-down" clipPath="url(#clip000)">
                 <g id="Icons">
                   <g id="Rounded">
                     <g id="Navigation">
