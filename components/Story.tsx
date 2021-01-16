@@ -244,8 +244,11 @@ const Story: FunctionComponent = () => {
       <div className="content">
         <h1>major: {major}</h1>
         <div className="preview">
-          <div className="tekst"></div>
-          <div className="three-dots"></div>
+          <div className="tekst">
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry
+            <span className="three-dots">...</span>
+          </div>
         </div>
         <article>
           <p>
