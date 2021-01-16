@@ -6,7 +6,7 @@ import { FunctionComponent, Fragment, createRef, useEffect } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-import { TweenMax, Power4 } from "gsap";
+import { TweenMax, Power4, Sine } from "gsap";
 
 import { useService } from "@xstate/react";
 import {
@@ -31,14 +31,35 @@ const UpDownButton: FunctionComponent = () => {
       // setup
       TweenMax.set(arrow, {
         transformOrigin: "50% 50%",
-        rotateZ: -90,
+        rotateZ: 270,
       });
     }
   }, [butContRef]);
 
-  let up: boolean = false;
+  useEffect(() => {
+    if (butContRef.current && state && state.value && state.value[fse.idle]) {
+      const arrow = butContRef.current.querySelector("g#arr-up-down");
 
-  up = true;
+      const substate = state.value[fse.idle];
+      // debugger;
+      if (state.value[fse.idle] === fseS.partial) {
+        TweenMax.to(arrow, {
+          duration: 0.8,
+          ease: Power4.easeOut,
+          rotateZ: -360 - 90,
+          delay: 0.2,
+        });
+      }
+
+      if (state.value[fse.idle] === fseS.maximal) {
+        TweenMax.to(arrow, {
+          duration: 0.8,
+          ease: Sine.easeOut,
+          rotateZ: 90,
+        });
+      }
+    }
+  }, [butContRef, state]);
 
   return (
     <Fragment>
