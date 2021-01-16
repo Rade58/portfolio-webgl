@@ -1,6 +1,10 @@
 # About me
 
+I'm an independent creative developer
+
 Hi! I'm Rade. A Developer with passion for programming and all things javascript
+
+I enjoy creating things that live on the internet
 
 A maker, developer,
 
