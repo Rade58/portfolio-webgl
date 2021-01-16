@@ -2,16 +2,50 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { FunctionComponent } from "react";
+import { FunctionComponent, useEffect, createRef } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
-
+import { TweenMax, Power3 } from "gsap";
 import { useService } from "@xstate/react";
 
 import { storyService, fse, fseS } from "../state_machines/story_machine";
 
 const PreviewStory: FunctionComponent = () => {
   const [state, send] = useService(storyService);
+
+  const tekstRef = createRef<HTMLDivElement>();
+
+  useEffect(() => {
+    if (tekstRef.current) {
+      if (state.value[fse.idle] && state.value[fse.idle] === fseS.partial) {
+        TweenMax.fromTo(
+          tekstRef.current,
+          {
+            opacity: 0,
+            duration: 0.2,
+            ease: Power3.easeIn,
+          },
+          {
+            opacity: 1,
+          }
+        );
+      }
+
+      if (state.value[fse.idle] && state.value[fse.idle] === fseS.maximal) {
+        TweenMax.fromTo(
+          tekstRef.current,
+          {
+            opacity: 1,
+            duration: 0.2,
+            ease: Power3.easeIn,
+          },
+          {
+            opacity: 0,
+          }
+        );
+      }
+    }
+  }, [tekstRef]);
 
   return (
     <div
@@ -25,17 +59,12 @@ const PreviewStory: FunctionComponent = () => {
         }
       `}
     >
-      {state &&
-        state.context &&
-        state.context.mediaBellow &&
-        state.value &&
-        state.value[fse.idle] &&
-        state.value[fse.idle] === fseS.partial && (
-          <div className="tekst">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry <span className="three-dots">...</span>
-          </div>
-        )}
+      {state && state.context && state.context.mediaBellow && state.value && (
+        <div className="tekst" ref={tekstRef}>
+          Lorem Ipsum is simply dummy text of the printing and typesetting
+          industry <span className="three-dots">...</span>
+        </div>
+      )}
     </div>
   );
 };
