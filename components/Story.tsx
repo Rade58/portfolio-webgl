@@ -238,11 +238,18 @@ const Story: FunctionComponent = () => {
           /* text-overflow: ellipsis; */
 
           overflow: hidden;
+
+          display: flex;
+          flex-direction: column;
+
+          & h1 {
+            text-align: center;
+          }
         }
       `}
     >
       <div className="content">
-        <h1>major: {major}</h1>
+        <h1>{major.toUpperCase()}</h1>
         <div className="preview">
           <div className="tekst">
             Lorem Ipsum is simply dummy text of the printing and typesetting
