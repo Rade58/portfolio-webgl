@@ -11,14 +11,19 @@ export const centralMajor = (major: sketchFse) => {
   }
 };
 
-export const storyMajor = (major: sketchFse) => {
-  if (major === sketchFse.aboutme) {
-    return "";
-  }
-};
+// ----
+const aboutPreview = "Hello my name Is Rade I am";
+
+// ----
 
 export const storyPreview = (major: sketchFse) => {
   if (major === sketchFse.aboutme) {
-    return "";
+    return aboutPreview;
+  }
+};
+
+export const storyMajor = (major: sketchFse) => {
+  if (major === sketchFse.aboutme) {
+    return `${aboutPreview} `;
   }
 };
