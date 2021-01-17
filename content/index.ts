@@ -17,6 +17,12 @@ export const centralMajor = (major: sketchFse): string => {
   if (major === sketchFse.projects) {
     return "projects";
   }
+  if (major === sketchFse.contact) {
+    return "contact";
+  }
+  if (major === sketchFse.blog) {
+    return "articles";
+  }
 };
 
 export const headingStory = (major: sketchFse): string => {
