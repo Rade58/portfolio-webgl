@@ -23,7 +23,13 @@ const MyImage: FunctionComponent = () => {
         & div.holder {
           border: tomato solid 1px;
           width: 190px;
-          height: 348px;
+          /* height: 348px; */
+        }
+
+        @media (max-width: 720px) {
+          & div.holder {
+            height: 348px;
+          }
         }
       `}
     >
