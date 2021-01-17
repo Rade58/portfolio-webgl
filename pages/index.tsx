@@ -16,6 +16,8 @@ import LoadedAnimation from "../components/LoadedAnimations";
 import StartingModal from "../components/StartingModal";
 import Story from "../components/Story";
 
+import { setup } from "../some_handlers";
+
 // import DOMPurify from "dompurify";
 
 /* import { appService } from "../state_machines/app_machine";
@@ -23,6 +25,8 @@ import animationMachineObserver, {
   config,
   majorStateHolder,
 } from "../mutation_observer"; */
+
+setup();
 
 const Index: FunctionComponent<{
   htmlContentString: string;
