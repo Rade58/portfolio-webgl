@@ -231,10 +231,10 @@ const Story: FunctionComponent = () => {
           width: 0vw;
           height: 100%;
           & .content {
-            height: 98%;
+            height: 100%;
 
             & article {
-              height: 96vh;
+              height: 100%;
               overflow-y: auto;
 
               padding: 28px;
