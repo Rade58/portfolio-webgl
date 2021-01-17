@@ -32,6 +32,7 @@ import { isSSR } from "../utils/isSSR";
 
 import UpDownButton from "./svgs/UpDownButton";
 import PreviewStory from "./PreviewStory";
+import MyImage from "./MyImage";
 
 import { upDownArrowHeight } from "../css_vars";
 
@@ -262,6 +263,7 @@ const Story: FunctionComponent = () => {
         {/* <h1>{major.toUpperCase()}</h1> */}
         <h1>{headingStory(major)}</h1>
         <PreviewStory />
+        {major === fsS.aboutme && <MyImage />}
         <article>
           {storyMajorText(major, "")}
           {/* <h4>prev: {MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h4>
