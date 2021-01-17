@@ -53,13 +53,13 @@ export const storyPreview = (major: sketchFse): string => {
     return aboutPreview;
   }
   if (major === sketchFse.projects) {
-    //
+    return projectsPreview;
   }
   if (major === sketchFse.contact) {
-    //
+    return contactPreview;
   }
   if (major === sketchFse.blog) {
-    //
+    return blogPreview;
   }
 };
 
