@@ -111,7 +111,7 @@ const Story: FunctionComponent = () => {
             TweenMax.to(storyRef.current, {
               duration: 0.2,
               ease: Power2.easeIn,
-              width: "30vw",
+              width: "34vw",
               height: "100%",
               // delay: 0.4,
             });
@@ -198,7 +198,7 @@ const Story: FunctionComponent = () => {
       // style={{ width, height }}
       css={css`
         background-color: rgba(98, 67, 136, 0.788);
-        border: crimson solid 0px;
+        border: crimson solid 1px;
         position: fixed;
         z-index: 108;
         top: 0;
@@ -207,6 +207,10 @@ const Story: FunctionComponent = () => {
         /* height: 100vh; */
         /* width: 220px; */
         overflow: hidden;
+
+        & .content {
+          box-sizing: border-box;
+        }
 
         /* FOR MATCH MEDIA (MEDIA QUERIES) */
 
@@ -225,7 +229,17 @@ const Story: FunctionComponent = () => {
         &.above {
           /* width: 36vw; */
           width: 0vw;
-          height: 100vh;
+          height: 100%;
+          & .content {
+            height: 98%;
+
+            & article {
+              height: 96vh;
+              overflow-y: auto;
+
+              padding: 28px;
+            }
+          }
         }
 
         /* -------- -------- -------- -------- -------- */
