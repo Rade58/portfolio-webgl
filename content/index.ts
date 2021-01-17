@@ -42,7 +42,7 @@ export const headingStory = (major: sketchFse): string => {
 
 // ----
 const aboutPreview = "Hello my name Is Rade I am";
-const projectsPreview = "Here i dome of my";
+const projectsPreview = "Here are some of my";
 const contactPreview = "You can contact me by";
 const blogPreview = "I wrote";
 

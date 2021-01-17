@@ -10,6 +10,8 @@ import { useService } from "@xstate/react";
 
 import { storyService, fse, fseS } from "../state_machines/story_machine";
 
+import { storyPreview } from "../content";
+
 const PreviewStory: FunctionComponent = () => {
   const [state, send] = useService(storyService);
 
@@ -63,8 +65,9 @@ const PreviewStory: FunctionComponent = () => {
     >
       {state && state.context && state.context.mediaBellow && state.value && (
         <div className="tekst" ref={tekstRef}>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry <span className="three-dots">...</span>
+          {state.context.major !== "undefined" &&
+            storyPreview(state.context.major)}
+          <span className="three-dots">...</span>
         </div>
       )}
     </div>

@@ -42,8 +42,16 @@ const Right: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
         height: fit-content;
         flex-shrink: 2;
 
-        & svg:hover {
-          outline: none;
+        & svg {
+          &:hover {
+            outline: none;
+          }
+
+          & g {
+            &:hover {
+              cursor: pointer;
+            }
+          }
         }
       `}
       ref={rightSvgRef}

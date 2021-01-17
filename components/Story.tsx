@@ -35,6 +35,8 @@ import PreviewStory from "./PreviewStory";
 
 import { upDownArrowHeight } from "../css_vars";
 
+import { storyMajorText, headingStory } from "../content";
+
 const MAJOR_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
 
 const Story: FunctionComponent = () => {
@@ -240,6 +242,10 @@ const Story: FunctionComponent = () => {
             text-align: center;
           }
 
+          & article {
+            overflow-y: auto;
+          }
+
           /* & .preview {
             & .tekst {
               & .three-dots {
@@ -251,22 +257,13 @@ const Story: FunctionComponent = () => {
       `}
     >
       <div className="content">
-        <h1>{major.toUpperCase()}</h1>
+        {/* <h1>{major.toUpperCase()}</h1> */}
+        <h1>{headingStory(major)}</h1>
         <PreviewStory />
         <article>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry{"'"}s standard dummy
-            text ever since the 1500s, when an unknown printer took a galley of
-            type and scrambled it to make a type specimen book. It has survived
-            not only five centuries, but also the leap into electronic
-            typesetting, remaining essentially unchanged. It was popularised in
-            the 1960s with the release of Letraset sheets containing Lorem Ipsum
-            passages, and more recently with desktop publishing software like
-            Aldus PageMaker including versions of Lorem Ipsum.
-          </p>
-          <h4>prev: {MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h4>
-          <h4>next: {MAJOR_FINITE_STATES_ARRAY[nextIndex]}</h4>
+          {storyMajorText(major, "")}
+          {/* <h4>prev: {MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h4>
+          <h4>next: {MAJOR_FINITE_STATES_ARRAY[nextIndex]}</h4> */}
         </article>
         {/* <div className="placeh" /> */}
       </div>
