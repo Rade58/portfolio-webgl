@@ -28,7 +28,7 @@ const LoadedAnimations: FunctionComponent = () => {
         default: animationMachineMutationObserver,
       } = module;
 
-      console.log(majorStateHolder);
+      // console.log(majorStateHolder);
 
       // const { appService, EE } = await import("../state_machines/app_machine");
 
