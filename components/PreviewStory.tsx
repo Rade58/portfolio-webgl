@@ -21,12 +21,14 @@ const PreviewStory: FunctionComponent = () => {
         TweenMax.fromTo(
           tekstRef.current,
           {
+            delay: 0.4,
             opacity: 0,
             duration: 0.08,
             ease: Power3.easeIn,
           },
           {
             opacity: 1,
+            delay: 0.4,
           }
         );
       }
