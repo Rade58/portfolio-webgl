@@ -19,6 +19,8 @@ import {
   MAJOR_FINITE_STATES_ARRAY,
 } from "../sketch/middle_ground/major_states";
 
+import { centralMajor } from "../content/";
+
 import { useService } from "@xstate/react";
 import { storyService, fse } from "../state_machines/story_machine";
 
@@ -242,9 +244,13 @@ const MajorShowers: FunctionComponent = () => {
         }
       `}
     >
-      <h1 ref={currRef}>{major}</h1>
-      <h4 ref={prevRef}>{MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h4>
-      <h4 ref={nextRef}>{MAJOR_FINITE_STATES_ARRAY[nextIndex]}</h4>
+      <h1 ref={currRef}>{centralMajor(major)}</h1>
+      <h4 ref={prevRef}>
+        {centralMajor(MAJOR_FINITE_STATES_ARRAY[prevIndex])}
+      </h4>
+      <h4 ref={nextRef}>
+        {centralMajor(MAJOR_FINITE_STATES_ARRAY[nextIndex])}
+      </h4>
     </section>
   );
 };
