@@ -16,3 +16,9 @@ export const storyMajor = (major: sketchFse) => {
     return "";
   }
 };
+
+export const storyPreview = (major: sketchFse) => {
+  if (major === sketchFse.aboutme) {
+    return "";
+  }
+};
