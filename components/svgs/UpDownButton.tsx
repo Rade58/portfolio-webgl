@@ -34,7 +34,7 @@ const UpDownButton: FunctionComponent = () => {
   useEffect(() => {
     if (butContRef.current) {
       const arrow = butContRef.current.querySelector("g#arr-up-down");
-      console.log({ arrow });
+      // console.log({ arrow });
 
       // setup
       TweenMax.set(arrow, {
@@ -129,8 +129,8 @@ const UpDownButton: FunctionComponent = () => {
                   const substate = state.value[fse.idle];
 
                   if (substate === fseS.partial) {
-                    console.log({ substate });
-                    console.log("full open sent");
+                    // console.log({ substate });
+                    // console.log("full open sent");
 
                     send({
                       type: EEs.FULL_OPEN,
@@ -138,8 +138,8 @@ const UpDownButton: FunctionComponent = () => {
                   }
 
                   if (substate === fseS.maximal) {
-                    console.log({ substate });
-                    console.log("narrow it sent");
+                    // console.log({ substate });
+                    // console.log("narrow it sent");
 
                     send({
                       type: EEs.NARROW_IT,
@@ -175,8 +175,8 @@ const UpDownButton: FunctionComponent = () => {
                     const substate = state.value[fse.idle];
 
                     if (substate === fseS.partial) {
-                      console.log({ substate });
-                      console.log("full open sent");
+                      // console.log({ substate });
+                      // console.log("full open sent");
 
                       send({
                         type: EEs.FULL_OPEN,
@@ -184,8 +184,8 @@ const UpDownButton: FunctionComponent = () => {
                     }
 
                     if (substate === fseS.maximal) {
-                      console.log({ substate });
-                      console.log("narrow it sent");
+                      // console.log({ substate });
+                      // console.log("narrow it sent");
 
                       send({
                         type: EEs.NARROW_IT,

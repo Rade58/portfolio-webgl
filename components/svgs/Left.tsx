@@ -6,7 +6,9 @@ import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
 import { useService } from "@xstate/react";
-import { appService, EE } from "../../state_machines/app_machine";
+import { appService, EE, fse } from "../../state_machines/app_machine";
+
+import { isSSR } from "../../utils/isSSR";
 
 const Left: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
   const [state, send] = useService(appService);
