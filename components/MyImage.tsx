@@ -10,13 +10,22 @@ import Image from "next/image";
 
 const MyImage: FunctionComponent = () => {
   return (
-    <div className="my-image">
+    <div
+      className="my-image"
+      css={css`
+        border: olive solid 1px;
+        /* width: 100%; */
+        display: flex;
+        justify-content: center;
+        height: 200px;
+      `}
+    >
       <Image
         src="/my_image.jpg"
         alt="my image"
-        width={200}
-        height={"auto"}
-        layout="intrinsic"
+        layout="responsive"
+        height="100%"
+        width="auto"
       />
     </div>
   );
