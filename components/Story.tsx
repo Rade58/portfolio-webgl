@@ -56,7 +56,7 @@ const Story: FunctionComponent = () => {
     if (!isSSR()) {
       const mqList = window.matchMedia("(max-width: 758px)");
 
-      console.log({ matches: mqList.matches });
+      // console.log({ matches: mqList.matches });
 
       if (mqList.matches) {
         send({ type: EE.GIVE_MEDIA, payload: { isBellow: true } });
@@ -91,7 +91,7 @@ const Story: FunctionComponent = () => {
         const substate = state.value[fse.idle];
         const { mediaBellow } = state.context;
 
-        console.log({ substate, mediaBellow, storyRefCurr: storyRef.current });
+        // console.log({ substate, mediaBellow, storyRefCurr: storyRef.current });
 
         if (!mediaBellow) {
           if (substate === fseS.non_visible) {
