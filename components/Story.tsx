@@ -240,10 +240,12 @@ const Story: FunctionComponent = () => {
 
           & h1 {
             text-align: center;
+            user-select: none;
           }
 
           & article {
             overflow-y: auto;
+            user-select: none;
           }
 
           /* & .preview {
