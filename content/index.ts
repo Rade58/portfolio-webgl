@@ -14,11 +14,23 @@ export const centralMajor = (major: sketchFse): string => {
   if (major === sketchFse.aboutme) {
     return "me";
   }
+  if (major === sketchFse.projects) {
+    return "projects";
+  }
 };
 
 export const headingStory = (major: sketchFse): string => {
   if (major === sketchFse.aboutme) {
     return "About";
+  }
+  if (major === sketchFse.projects) {
+    //
+  }
+  if (major === sketchFse.contact) {
+    //
+  }
+  if (major === sketchFse.blog) {
+    //
   }
 };
 
@@ -31,6 +43,15 @@ export const storyPreview = (major: sketchFse): string => {
   if (major === sketchFse.aboutme) {
     return aboutPreview;
   }
+  if (major === sketchFse.projects) {
+    //
+  }
+  if (major === sketchFse.contact) {
+    //
+  }
+  if (major === sketchFse.blog) {
+    //
+  }
 };
 
 export const storyMajorText = (
@@ -38,6 +59,15 @@ export const storyMajorText = (
   lorem: string | undefined = loremipsum
 ): string => {
   if (major === sketchFse.aboutme) {
-    return `${aboutPreview} ` || loremipsum;
+    return lorem || `${aboutPreview} `;
+  }
+  if (major === sketchFse.projects) {
+    //
+  }
+  if (major === sketchFse.contact) {
+    //
+  }
+  if (major === sketchFse.blog) {
+    //
   }
 };
