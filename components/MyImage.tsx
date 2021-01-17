@@ -17,12 +17,13 @@ const MyImage: FunctionComponent = () => {
         overflow: hidden;
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-content: center;
         height: fit-content;
 
         & div.holder {
           border: tomato solid 1px;
-          width: 120px;
+          width: 190px;
+          height: 348px;
         }
       `}
     >
