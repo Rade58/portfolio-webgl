@@ -201,7 +201,7 @@ const MajorShowers: FunctionComponent = () => {
         overflow: hidden;
 
         & h1 {
-          cursor: pointer;
+          /* cursor: pointer; */
           border: tomato inset 0px;
           font-size: 2.8rem;
           width: 100%;
