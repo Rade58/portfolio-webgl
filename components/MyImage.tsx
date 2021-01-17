@@ -14,19 +14,28 @@ const MyImage: FunctionComponent = () => {
       className="my-image"
       css={css`
         border: olive solid 1px;
-        /* width: 100%; */
+        overflow: hidden;
         display: flex;
         justify-content: center;
-        height: 200px;
+        align-items: center;
+        height: fit-content;
+
+        & div.holder {
+          border: tomato solid 1px;
+          width: 120px;
+        }
       `}
     >
-      <Image
-        src="/my_image.jpg"
-        alt="my image"
-        layout="responsive"
-        height="100%"
-        width="auto"
-      />
+      <div className="holder">
+        <Image
+          src="/my_image.jpg"
+          alt="picture of the author"
+          layout="responsive"
+          height="auto"
+          width="100%"
+          priority={true}
+        />
+      </div>
     </div>
   );
 };
