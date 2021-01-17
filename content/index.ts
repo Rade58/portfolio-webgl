@@ -5,4 +5,14 @@ import {
 import { fse as appFse } from "../state_machines/app_machine";
 import { fse as storyFse } from "../state_machines/story_machine";
 
-export {};
+export const centralMajor = (major: sketchFse) => {
+  if (major === sketchFse.aboutme) {
+    return "";
+  }
+};
+
+export const storyMajor = (major: sketchFse) => {
+  if (major === sketchFse.aboutme) {
+    return "";
+  }
+};
