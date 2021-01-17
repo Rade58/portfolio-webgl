@@ -30,18 +30,21 @@ export const headingStory = (major: sketchFse): string => {
     return "About";
   }
   if (major === sketchFse.projects) {
-    //
+    return "Work";
   }
   if (major === sketchFse.contact) {
-    //
+    return "Get in Touch";
   }
   if (major === sketchFse.blog) {
-    //
+    return "Blog";
   }
 };
 
 // ----
 const aboutPreview = "Hello my name Is Rade I am";
+const projectsPreview = "";
+const contactPreview = "";
+const blogPreview = "";
 
 // ----
 
@@ -68,12 +71,12 @@ export const storyMajorText = (
     return lorem || `${aboutPreview} `;
   }
   if (major === sketchFse.projects) {
-    //
+    return lorem || ``;
   }
   if (major === sketchFse.contact) {
-    //
+    return lorem || ``;
   }
   if (major === sketchFse.blog) {
-    //
+    return lorem || ``;
   }
 };
