@@ -13,22 +13,25 @@ const MyImage: FunctionComponent = () => {
     <div
       className="my-image"
       css={css`
-        border: olive solid 1px;
+        border: olive solid 3px;
         overflow: hidden;
         display: flex;
         justify-content: center;
         align-content: center;
-        height: fit-content;
+        /* height: fit-content; */
+        /* height: 382px; */
+        height: 408px;
+        width: 100%;
 
         & div.holder {
-          border: tomato solid 1px;
-          width: 190px;
-          /* height: 348px; */
+          border: tomato solid 4px;
+          width: 50%;
         }
 
-        @media (max-width: 720px) {
+        @media (max-width: 738px) {
           & div.holder {
-            height: 348px;
+            height: fit-content;
+            width: 10%;
           }
         }
       `}
@@ -39,7 +42,7 @@ const MyImage: FunctionComponent = () => {
           alt="picture of the author"
           layout="responsive"
           height="auto"
-          width="100%"
+          width="auto"
           priority={true}
         />
       </div>
