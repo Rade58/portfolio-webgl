@@ -18,30 +18,41 @@ const MyImage: FunctionComponent = () => {
 
   return (
     <div
-      className={`my-image ${!mediaBellow ? "image-above" : "image-bellow"}`}
+      className="image-cont"
       css={css`
-        border: olive solid 3px;
-        overflow: hidden;
+        border: blanchedalmond 1px solid;
         display: flex;
+        flex-direction: row;
         justify-content: center;
-        align-content: center;
-        height: fit-content;
-
-        & div.holder {
-          width: 100%;
-          height: 100%;
-        }
       `}
     >
-      <div className="holder">
-        <Image
-          src="/my_image.jpg"
-          alt="picture of the author"
-          layout="responsive"
-          height="auto"
-          width="auto"
-          priority={true}
-        />
+      <div
+        className={`my-image ${!mediaBellow ? "image-above" : "image-bellow"}`}
+        css={css`
+          border: olive solid 3px;
+          overflow: hidden;
+          display: flex;
+          justify-content: center;
+          align-content: center;
+          height: fit-content;
+          width: 50%;
+
+          & div.holder {
+            width: 100%;
+            height: 100%;
+          }
+        `}
+      >
+        <div className="holder">
+          <Image
+            src="/my_image.jpg"
+            alt="picture of the author"
+            layout="responsive"
+            height="auto"
+            width="auto"
+            priority={true}
+          />
+        </div>
       </div>
     </div>
   );
