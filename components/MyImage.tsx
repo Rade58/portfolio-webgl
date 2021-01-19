@@ -14,8 +14,6 @@ import { storyService } from "../state_machines/story_machine";
 const MyImage: FunctionComponent = () => {
   const [state, send] = useService(storyService);
 
-  const { mediaBellow } = state.context;
-
   return (
     <div
       className="image-cont"
@@ -27,7 +25,7 @@ const MyImage: FunctionComponent = () => {
       `}
     >
       <div
-        className={`my-image ${!mediaBellow ? "image-above" : "image-bellow"}`}
+        className={`my-image`}
         css={css`
           border: olive solid 3px;
           overflow: hidden;
