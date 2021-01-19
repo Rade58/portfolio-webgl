@@ -11,7 +11,7 @@ export const storyHeaderMargin = `${storyHM}px`;
 export const previewHeight = `${previewH}px`;
 export const previewMargin = `${previewM}px`;
 
-export const storyHeightMax = "80vh";
+export const storyHeightMax = "78vh";
 export const storyHeightMin = `${
   upDownAH + storyHH + 2 * storyHM + previewH + previewM * 2
 }px`;

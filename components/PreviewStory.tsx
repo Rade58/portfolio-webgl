@@ -18,6 +18,7 @@ const PreviewStory: FunctionComponent = () => {
   const [state, send] = useService(storyService);
 
   const tekstRef = createRef<HTMLDivElement>();
+  const previewRef = createRef<HTMLElement>();
 
   useEffect(() => {
     if (tekstRef.current) {
@@ -27,11 +28,13 @@ const PreviewStory: FunctionComponent = () => {
           {
             delay: 0.4,
             opacity: 0,
+            height: 0,
             duration: 0.08,
             ease: Power3.easeIn,
           },
           {
             opacity: 1,
+            height: previewHeight,
             delay: 0.4,
           }
         );
@@ -42,11 +45,13 @@ const PreviewStory: FunctionComponent = () => {
           tekstRef.current,
           {
             opacity: 1,
+            height: previewHeight,
             duration: 0.08,
             ease: Power3.easeIn,
           },
           {
             opacity: 0,
+            height: 0,
           }
         );
       }
