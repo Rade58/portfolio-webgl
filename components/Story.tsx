@@ -44,6 +44,7 @@ import {
   previewMargin,
   storyHeaderHeight,
   storyHeaderMargin,
+  matchMediaMaxWidth,
 } from "../css_vars";
 
 const MAJOR_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
@@ -66,7 +67,7 @@ const Story: FunctionComponent = () => {
   //
   useEffect(() => {
     if (!isSSR()) {
-      const mqList = window.matchMedia("(max-width: 758px)");
+      const mqList = window.matchMedia(`(max-width: ${matchMediaMaxWidth})`);
 
       // console.log({ matches: mqList.matches });
 

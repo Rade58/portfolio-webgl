@@ -15,3 +15,7 @@ export const storyHeightMax = "78vh";
 export const storyHeightMin = `${
   upDownAH + storyHH + 2 * storyHM + previewH + previewM * 2
 }px`;
+
+// MATCH MEDIA
+
+export const matchMediaMaxWidth = "758px";
