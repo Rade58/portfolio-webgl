@@ -34,11 +34,10 @@ import UpDownButton from "./svgs/UpDownButton";
 import PreviewStory from "./PreviewStory";
 import MyImage from "./MyImage";
 
-import { upDownArrowHeight } from "../css_vars";
-
 import { storyMajorText, headingStory } from "../content";
 
 import {
+  upDownArrowHeight,
   storyHeightMax,
   storyHeightMin,
   previewHeight,
