@@ -8,17 +8,24 @@ import styled from "@emotion/styled";
 
 import Image from "next/image";
 
+import { useService } from "@xstate/react";
+import { storyService } from "../state_machines/story_machine";
+
 const MyImage: FunctionComponent = () => {
+  const [state, send] = useService(storyService);
+
+  const { mediaBellow } = state.context;
+
   return (
     <div
-      className="my-image"
+      className={`my-image ${!mediaBellow ? "image-above" : "image-bellow"}`}
       css={css`
         border: olive solid 3px;
         overflow: hidden;
         display: flex;
         justify-content: center;
         align-content: center;
-        height: 342px;
+        height: fit-content;
 
         & div.holder {
           width: 100%;
