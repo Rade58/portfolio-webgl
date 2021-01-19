@@ -129,59 +129,14 @@ const Story: FunctionComponent = () => {
         // -------------------------------
 
         if (substate === fseS.partial) {
-          // ANIMACIJA ZA PARTIAL
-          // SLIDING DOWN
-
-          TweenMax.to(articleRef.current, {
-            duration: 0.2,
-            ease: Power2.easeIn,
-            height: 0,
-          });
-
-          TweenMax.to(storyRef.current, {
-            duration: 0.2,
-            ease: Power2.easeIn,
-            translateY: "0vh",
-            height: "fit-content",
-            delay: 0.3,
-          });
+          //
         }
 
         if (substate === fseS.maximal) {
-          // PROSIRENJE ELEMENTA
-          // DO KONTROLA NARAVNO
-          TweenMax.to(storyRef.current, {
-            duration: 0.2,
-            ease: Power2.easeIn,
-            height: "78vh",
-            width: "100%",
-            // delay: 0.4,
-          });
-
-          TweenMax.to(articleRef.current, {
-            duration: 0.2,
-            ease: Power2.easeIn,
-            height: "100%",
-          });
+          //
         }
 
         if (substate === fseS.non_visible) {
-          // CINJENJA DA SE PRVO SMANJI DO PARTIALA, AKO JE
-          // PRESDJENO IVDE IZ MAXIMALA
-          //  I ONDA PONOVO TRANSLATION PO Y U NEVIDLJIVOST
-
-          TweenMax.to(storyRef.current, {
-            duration: 0.2,
-            ease: Power2.easeIn,
-            height: "0%",
-            translateY: "-30vh",
-          });
-
-          TweenMax.to(articleRef.current, {
-            duration: 0.2,
-            ease: Power2.easeIn,
-            height: "0%",
-          });
         }
       }
     }
@@ -222,6 +177,7 @@ const Story: FunctionComponent = () => {
       className={`story ${bellowAboveClass}`}
       // style={{ width, height }}
       css={css`
+        height: fit-content;
         background-color: rgba(98, 67, 136, 0.788);
         border: crimson solid 1px;
         position: fixed;
@@ -243,7 +199,7 @@ const Story: FunctionComponent = () => {
           width: 100%;
           height: 26vh;
           /* -------- -------- SETUP -------- -------- */
-          transform: translateY(-24vh);
+          transform: translateY(0vh);
           /* -------- */
 
           & .content {
@@ -287,14 +243,6 @@ const Story: FunctionComponent = () => {
             overflow-y: auto;
             user-select: none;
           }
-
-          /* & .preview {
-            & .tekst {
-              & .three-dots {
-
-              }
-            }
-          } */
         }
       `}
     >
