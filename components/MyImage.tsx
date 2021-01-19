@@ -20,7 +20,7 @@ const MyImage: FunctionComponent = () => {
         align-content: center;
         /* height: fit-content; */
         /* height: 382px; */
-        height: 408px;
+        height: 342px;
         width: 100%;
 
         & div.holder {
@@ -28,10 +28,25 @@ const MyImage: FunctionComponent = () => {
           width: 50%;
         }
 
+        @media (max-width: 1034px) {
+          & {
+            height: 200px;
+          }
+        }
+
+        @media (max-width: 918px) {
+          & {
+            height: 200px;
+          }
+        }
+
         @media (max-width: 738px) {
+          & {
+            height: 200vh;
+          }
+
           & div.holder {
-            height: fit-content;
-            width: 10%;
+            width: 42%;
           }
         }
       `}
