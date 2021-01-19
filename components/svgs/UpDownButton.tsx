@@ -92,7 +92,7 @@ const UpDownButton: FunctionComponent = () => {
           className="butt-cont"
           css={css`
             border: pink solid 0px;
-            position: fixed;
+            position: absolute;
             z-index: 200;
             right: 0;
             bottom: 0;
