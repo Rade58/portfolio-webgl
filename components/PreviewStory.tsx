@@ -12,7 +12,11 @@ import { storyService, fse, fseS } from "../state_machines/story_machine";
 
 import { storyPreview } from "../content";
 
-import { upDownArrowHeight, previewHeight, previewMargin } from "../css_vars";
+import {
+  upDownArrowHeight as bottomMargin,
+  previewHeight,
+  previewMargin,
+} from "../css_vars";
 
 const PreviewStory: FunctionComponent = () => {
   const [state, send] = useService(storyService);
@@ -28,65 +32,63 @@ const PreviewStory: FunctionComponent = () => {
           {
             delay: 0.4,
             opacity: 0,
-            height: 0,
             duration: 0.08,
             ease: Power3.easeIn,
           },
           {
             opacity: 1,
-            height: previewHeight,
             delay: 0.4,
           }
         );
-        //
+        // ----------------------------------------------
         TweenMax.fromTo(
           previewRef.current,
           {
             delay: 0.4,
-            opacity: 0,
+
             height: 0,
+            marginBottom: 0,
             duration: 0.08,
             ease: Power3.easeIn,
           },
           {
-            opacity: 1,
             height: previewHeight,
+            marginBottom: bottomMargin,
             delay: 0.4,
           }
         );
       }
-
+      //  -------- <><><><><><><><><><><><><><><><><> --------
       if (state.value[fse.idle] && state.value[fse.idle] === fseS.maximal) {
         TweenMax.fromTo(
           tekstRef.current,
           {
             opacity: 1,
-            height: previewHeight,
+
             duration: 0.08,
             ease: Power3.easeIn,
           },
           {
             opacity: 0,
-            height: 0,
           }
         );
-        //
+        // ----------------------------------------------
         TweenMax.fromTo(
           previewRef.current,
           {
-            opacity: 1,
             height: previewHeight,
+            marginBottom: bottomMargin,
             duration: 0.08,
             ease: Power3.easeIn,
           },
           {
-            opacity: 0,
             height: 0,
+            marginBottom: 0,
           }
         );
       }
     }
-  }, [tekstRef]);
+  }, [tekstRef, previewRef]);
 
   return (
     <div
@@ -96,7 +98,8 @@ const PreviewStory: FunctionComponent = () => {
         box-sizing: border-box;
         height: ${previewHeight};
         margin: ${previewMargin};
-        margin-bottom: ${upDownArrowHeight};
+        margin-bottom: ${bottomMargin};
+        border: pink solid 1px;
 
         & .tekst {
           & .three-dots {
