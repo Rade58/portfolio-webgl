@@ -280,7 +280,7 @@ const Story: FunctionComponent = () => {
       css={css`
         height: fit-content;
         background-color: rgba(98, 67, 136, 0.788);
-        border: crimson solid 1px;
+        border: crimson solid 0px;
         position: fixed;
         z-index: 108;
         top: 0;
@@ -323,7 +323,7 @@ const Story: FunctionComponent = () => {
         /* -------- -------- -------- -------- -------- */
 
         & .content {
-          border: orange solid 1px;
+          /* border: orange solid 1px; */
           /* text-overflow: ellipsis; */
 
           overflow: hidden;
@@ -343,11 +343,11 @@ const Story: FunctionComponent = () => {
             box-sizing: border-box;
             height: ${storyHeaderHeight};
             margin: ${storyHeaderMargin};
-            border: pink solid 1px;
+            /* border: pink solid 1px; */
           }
 
           & article {
-            border: tomato solid 6px;
+            /* border: tomato solid 6px; */
             overflow-y: auto;
             user-select: none;
             height: 90%;
