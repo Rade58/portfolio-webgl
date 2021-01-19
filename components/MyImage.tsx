@@ -18,36 +18,11 @@ const MyImage: FunctionComponent = () => {
         display: flex;
         justify-content: center;
         align-content: center;
-        /* height: fit-content; */
-        /* height: 382px; */
         height: 342px;
-        width: 100%;
 
         & div.holder {
-          border: tomato solid 4px;
-          width: 50%;
-        }
-
-        @media (max-width: 1034px) {
-          & {
-            height: 200px;
-          }
-        }
-
-        @media (max-width: 918px) {
-          & {
-            height: 200px;
-          }
-        }
-
-        @media (max-width: 738px) {
-          & {
-            height: 200vh;
-          }
-
-          & div.holder {
-            width: 42%;
-          }
+          width: 100%;
+          height: 100%;
         }
       `}
     >

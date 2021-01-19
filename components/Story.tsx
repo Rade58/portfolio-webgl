@@ -277,8 +277,8 @@ const Story: FunctionComponent = () => {
         {/* <h1>{major.toUpperCase()}</h1> */}
         <h1>{headingStory(major)}</h1>
         <PreviewStory />
-        {major === fsS.aboutme && <MyImage />}
         <article>
+          {major === fsS.aboutme && <MyImage />}
           {storyMajorText(major, "")}
           {/* <h4>prev: {MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h4>
           <h4>next: {MAJOR_FINITE_STATES_ARRAY[nextIndex]}</h4> */}
