@@ -14,6 +14,8 @@ import { storyService } from "../state_machines/story_machine";
 const MyImage: FunctionComponent = () => {
   const [state, send] = useService(storyService);
 
+  const { mediaBellow } = state.context;
+
   return (
     <div
       className="image-cont"
@@ -25,6 +27,7 @@ const MyImage: FunctionComponent = () => {
       `}
     >
       <div
+        style={{ width: !mediaBellow ? "74%" : "62%" }}
         className={`my-image`}
         css={css`
           border: olive solid 3px;

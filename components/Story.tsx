@@ -169,6 +169,13 @@ const Story: FunctionComponent = () => {
               height: storyHeightMin,
             }
           );
+
+          // ---- article opacity (has no visual effect (no op))--------
+          TweenMax.to(articleRef.current, {
+            duration: 0.1,
+            ease: Power2.easeInOut,
+            opacity: 1,
+          });
         }
 
         if (substate === fseS.maximal) {
@@ -198,6 +205,12 @@ const Story: FunctionComponent = () => {
               height: storyHeightMax,
             }
           );
+          // --------------- atricle opacity (has no visual effect (no op))------------------
+          TweenMax.to(articleRef.current, {
+            duration: 0.1,
+            ease: Power2.easeInOut,
+            opacity: 1,
+          });
         }
 
         if (substate === fseS.non_visible) {
@@ -213,7 +226,18 @@ const Story: FunctionComponent = () => {
               translateY: "-80vh",
             }
           );
-          // ---------------------------------
+          // --------------- atricle opacity (has no visual effect (no op))------------------
+          TweenMax.fromTo(
+            articleRef.current,
+            {
+              duration: 0.1,
+              ease: Power2.easeInOut,
+              opacity: 1,
+            },
+            {
+              opacity: 0,
+            }
+          );
         }
       }
     }
