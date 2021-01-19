@@ -12,7 +12,7 @@ import { storyService, fse, fseS } from "../state_machines/story_machine";
 
 import { storyPreview } from "../content";
 
-import { upDownArrowHeight } from "../css_vars";
+import { upDownArrowHeight, previewHeight, previewMargin } from "../css_vars";
 
 const PreviewStory: FunctionComponent = () => {
   const [state, send] = useService(storyService);
@@ -57,6 +57,9 @@ const PreviewStory: FunctionComponent = () => {
     <div
       className="preview"
       css={css`
+        box-sizing: border-box;
+        height: ${previewHeight};
+        margin: ${previewMargin};
         margin-bottom: ${upDownArrowHeight};
 
         & .tekst {

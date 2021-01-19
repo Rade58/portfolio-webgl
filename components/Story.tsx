@@ -38,7 +38,14 @@ import { upDownArrowHeight } from "../css_vars";
 
 import { storyMajorText, headingStory } from "../content";
 
-import { storyHeightMax, storyHeightMin } from "../css_vars";
+import {
+  storyHeightMax,
+  storyHeightMin,
+  previewHeight,
+  previewMargin,
+  storyHeaderHeight,
+  storyHeaderMargin,
+} from "../css_vars";
 
 const MAJOR_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
 
@@ -273,7 +280,6 @@ const Story: FunctionComponent = () => {
           /* -------- */
 
           & .content {
-            height: calc(100% - ${upDownArrowHeight});
           }
         }
 
@@ -307,6 +313,11 @@ const Story: FunctionComponent = () => {
           & h1 {
             text-align: center;
             user-select: none;
+            /*  */
+            box-sizing: border-box;
+            height: ${storyHeaderHeight};
+            margin: ${storyHeaderMargin};
+            border: pink solid 1px;
           }
 
           & article {

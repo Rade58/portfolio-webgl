@@ -98,6 +98,7 @@ const UpDownButton: FunctionComponent = () => {
             bottom: 0;
             width: 100%;
             display: flex;
+            margin-top: ${upDownArrowHeight};
             height: ${upDownArrowHeight};
             justify-content: center;
             cursor: pointer;
