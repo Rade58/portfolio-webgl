@@ -4,6 +4,7 @@ import {
   EE as EEstory,
   fse as fseStory,
   EEs, //idle substate anticepated events
+  fseS,
 } from "../state_machines/story_machine";
 import { isSSR } from "../utils/isSSR";
 
@@ -28,20 +29,36 @@ export const setup = () => {
             type: EE.CLICK_FORTH,
           });
         }
+      }
 
-        // up and down
+      const { mediaBellow } = storyService.state.context;
 
-        if (appService.state.value && storyService.state.value[fseStory.idle]) {
-          if (e.key === "ArrowUp") {
-            storyService.send({
-              type: EEs.FULL_OPEN,
-            });
+      if (mediaBellow) {
+        if (
+          storyService.state &&
+          storyService.state.value &&
+          storyService.state.value[fseStory.idle]
+        ) {
+          const substate = storyService.state.value[fseStory.idle];
+
+          if (substate === fseS.partial) {
+            // console.log({ substate });
+            console.log("full open sent");
+            if (e.key === "ArrowDown") {
+              storyService.send({
+                type: EEs.FULL_OPEN,
+              });
+            }
           }
 
-          if (e.key === "ArrowDown") {
-            storyService.send({
-              type: EEs.NARROW_IT,
-            });
+          if (substate === fseS.maximal) {
+            // console.log({ substate });
+            console.log("narrow it sent");
+            if (e.key === "ArrowUp") {
+              storyService.send({
+                type: EEs.NARROW_IT,
+              });
+            }
           }
         }
       }
