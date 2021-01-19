@@ -121,6 +121,12 @@ const Story: FunctionComponent = () => {
           return;
         }
 
+        // SETTING BECAUSE OF SCREEN SIZES
+        TweenMax.set(storyRef.current, {
+          width: "100%",
+        });
+        // -------------------------------
+
         if (substate === fseS.partial) {
           // ANIMACIJA ZA PARTIAL
           // SLIDING DOWN
@@ -136,7 +142,6 @@ const Story: FunctionComponent = () => {
             ease: Power2.easeIn,
             translateY: "0vh",
             height: "fit-content",
-            width: "100%",
             delay: 0.3,
           });
         }
