@@ -43,6 +43,7 @@ const MAJOR_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
 const Story: FunctionComponent = () => {
   //
   const storyRef = createRef<HTMLElement>();
+  const articleRef = createRef<HTMLElement>();
   // const contentRef = createRef<HTMLDivElement>();
 
   // VODI RACUNA DA major MOZE BITI I STRING "undefined"
@@ -87,7 +88,7 @@ const Story: FunctionComponent = () => {
   //  ---------------- SUBSTATE ANIMATIONS ----------------
 
   const substatesCallback = useCallback(() => {
-    if (storyRef.current) {
+    if (storyRef.current && articleRef.current) {
       // console.log({ storyRef: storyRef.current });
       // debugger;
       if (state && state.value && state.value[fse.idle]) {
@@ -124,11 +125,17 @@ const Story: FunctionComponent = () => {
           // ANIMACIJA ZA PARTIAL
           // SLIDING DOWN
 
+          TweenMax.to(articleRef.current, {
+            duration: 0.2,
+            ease: Power2.easeIn,
+            height: 0,
+          });
+
           TweenMax.to(storyRef.current, {
             duration: 0.2,
             ease: Power2.easeIn,
             translateY: "0vh",
-            height: "26vh",
+            height: "fit-content",
             width: "100%",
             delay: 0.3,
           });
@@ -144,6 +151,12 @@ const Story: FunctionComponent = () => {
             width: "100%",
             // delay: 0.4,
           });
+
+          TweenMax.to(articleRef.current, {
+            duration: 0.2,
+            ease: Power2.easeIn,
+            height: "100%",
+          });
         }
 
         if (substate === fseS.non_visible) {
@@ -154,13 +167,19 @@ const Story: FunctionComponent = () => {
           TweenMax.to(storyRef.current, {
             duration: 0.2,
             ease: Power2.easeIn,
-            height: "26vh",
+            height: "0%",
             translateY: "-30vh",
+          });
+
+          TweenMax.to(articleRef.current, {
+            duration: 0.2,
+            ease: Power2.easeIn,
+            height: "0%",
           });
         }
       }
     }
-  }, [storyRef, state]);
+  }, [storyRef, articleRef, state]);
 
   useEffect(() => {
     // ANIMACIJE U ODNSU NA SUBSTATE-OVE idle-A
@@ -277,7 +296,7 @@ const Story: FunctionComponent = () => {
         {/* <h1>{major.toUpperCase()}</h1> */}
         <h1>{headingStory(major)}</h1>
         <PreviewStory />
-        <article>
+        <article ref={articleRef}>
           {major === fsS.aboutme && <MyImage />}
           {storyMajorText(major, "")}
           {/* <h4>prev: {MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h4>

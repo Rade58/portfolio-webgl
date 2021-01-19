@@ -12,6 +12,8 @@ import { storyService, fse, fseS } from "../state_machines/story_machine";
 
 import { storyPreview } from "../content";
 
+import { upDownArrowHeight } from "../css_vars";
+
 const PreviewStory: FunctionComponent = () => {
   const [state, send] = useService(storyService);
 
@@ -55,6 +57,8 @@ const PreviewStory: FunctionComponent = () => {
     <div
       className="preview"
       css={css`
+        margin-bottom: ${upDownArrowHeight};
+
         & .tekst {
           & .three-dots {
             color: crimson;
