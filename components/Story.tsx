@@ -218,7 +218,7 @@ const Story: FunctionComponent = () => {
           TweenMax.fromTo(
             storyRef.current,
             {
-              duration: 0.4,
+              duration: 0.1,
               translateY: 0,
               ease: Power2.easeIn,
             },
