@@ -18,13 +18,29 @@ const PreviewStory: FunctionComponent = () => {
   const [state, send] = useService(storyService);
 
   const tekstRef = createRef<HTMLDivElement>();
-  const previewRef = createRef<HTMLElement>();
+  const previewRef = createRef<HTMLDivElement>();
 
   useEffect(() => {
-    if (tekstRef.current) {
+    if (tekstRef.current && previewRef.current) {
       if (state.value[fse.idle] && state.value[fse.idle] === fseS.partial) {
         TweenMax.fromTo(
           tekstRef.current,
+          {
+            delay: 0.4,
+            opacity: 0,
+            height: 0,
+            duration: 0.08,
+            ease: Power3.easeIn,
+          },
+          {
+            opacity: 1,
+            height: previewHeight,
+            delay: 0.4,
+          }
+        );
+        //
+        TweenMax.fromTo(
+          previewRef.current,
           {
             delay: 0.4,
             opacity: 0,
@@ -54,12 +70,27 @@ const PreviewStory: FunctionComponent = () => {
             height: 0,
           }
         );
+        //
+        TweenMax.fromTo(
+          previewRef.current,
+          {
+            opacity: 1,
+            height: previewHeight,
+            duration: 0.08,
+            ease: Power3.easeIn,
+          },
+          {
+            opacity: 0,
+            height: 0,
+          }
+        );
       }
     }
   }, [tekstRef]);
 
   return (
     <div
+      ref={previewRef}
       className="preview"
       css={css`
         box-sizing: border-box;
