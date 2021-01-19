@@ -16,6 +16,7 @@ import {
   upDownArrowHeight as bottomMargin,
   previewHeight,
   previewMargin,
+  matchMediaMaxWidth,
 } from "../css_vars";
 
 const PreviewStory: FunctionComponent = () => {
@@ -90,8 +91,14 @@ const PreviewStory: FunctionComponent = () => {
     }
   }, [tekstRef, previewRef]);
 
+  const { mediaBellow } = state.context;
+
   return (
     <div
+      style={{
+        height: !mediaBellow ? 0 : previewHeight,
+        marginBottom: !mediaBellow ? 0 : previewMargin,
+      }}
       ref={previewRef}
       className="preview"
       css={css`

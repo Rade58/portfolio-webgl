@@ -291,6 +291,7 @@ const Story: FunctionComponent = () => {
               overflow-y: auto;
 
               padding: 28px;
+              padding-top: 4px;
             }
           }
         }
@@ -327,6 +328,7 @@ const Story: FunctionComponent = () => {
             user-select: none;
             height: 90%;
             margin: 8px;
+            margin-top: 2px;
           }
         }
       `}
