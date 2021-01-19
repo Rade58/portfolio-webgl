@@ -12,7 +12,7 @@ import {
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-import { TweenMax, Power2 } from "gsap";
+import { TweenMax, Power2, Power4 } from "gsap";
 
 import {
   fse as fsS,
@@ -37,6 +37,8 @@ import MyImage from "./MyImage";
 import { upDownArrowHeight } from "../css_vars";
 
 import { storyMajorText, headingStory } from "../content";
+
+import { storyHeightMax, storyHeightMin } from "../css_vars";
 
 const MAJOR_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
 
@@ -85,6 +87,10 @@ const Story: FunctionComponent = () => {
     }
   }, []);
 
+  // ------------------------------ ANIM VALUES
+  /* const storyHeightMax = "84vh";
+  const storyHeightMin = "24vh" */
+
   //  ---------------- SUBSTATE ANIMATIONS ----------------
 
   const substatesCallback = useCallback(() => {
@@ -127,16 +133,80 @@ const Story: FunctionComponent = () => {
           width: "100%",
         });
         // -------------------------------
+        // -------------------------------
 
         if (substate === fseS.partial) {
-          //
+          // translate Y -----------------------
+          TweenMax.to(storyRef.current, {
+            duration: 0.4,
+            translateY: 0,
+            ease: Power2.easeIn,
+          });
+          // ----------------------------------
+          // ----------------------------------
+          // ------- height     ARTICLE
+          /* TweenMax.set(articleRef.current, {
+            height: 0,
+          }); */
+          //  ---------------------------------
+          //  ---------------------------------
+          //  ---------------------------------
+          TweenMax.fromTo(
+            storyRef.current,
+            {
+              duration: 0.3,
+              ease: Power4.easeIn,
+              height: storyHeightMax,
+            },
+            {
+              height: storyHeightMin,
+            }
+          );
         }
 
         if (substate === fseS.maximal) {
-          //
+          // translate Y ---------------------------
+          TweenMax.to(storyRef.current, {
+            duration: 0.4,
+            translateY: 0,
+            ease: Power2.easeIn,
+          });
+          // ---------------------------------------
+          // ---------------------------------------
+          // ------- height     ARTICLE
+          /* TweenMax.set(articleRef.current, {
+            height: "70vh",
+          }); */
+          //  ---------------------------------
+          //  ---------------------------------
+          //  ---------------------------------
+          TweenMax.fromTo(
+            storyRef.current,
+            {
+              height: storyHeightMin,
+              duration: 0.2,
+              ease: Power4.easeIn,
+            },
+            {
+              height: storyHeightMax,
+            }
+          );
         }
 
         if (substate === fseS.non_visible) {
+          // translate Y ---------------------
+          TweenMax.fromTo(
+            storyRef.current,
+            {
+              duration: 0.4,
+              translateY: 0,
+              ease: Power2.easeIn,
+            },
+            {
+              translateY: "-80vh",
+            }
+          );
+          // ---------------------------------
         }
       }
     }
