@@ -121,6 +121,7 @@ const Story: FunctionComponent = () => {
           return;
         }
 
+        // RELATED TO mediaBellow
         // SETTING BECAUSE OF SCREEN SIZES
         TweenMax.set(storyRef.current, {
           width: "100%",
