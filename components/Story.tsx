@@ -266,10 +266,6 @@ const Story: FunctionComponent = () => {
         /* width: 220px; */
         overflow: hidden;
 
-        & .content {
-          box-sizing: border-box;
-        }
-
         /* FOR MATCH MEDIA (MEDIA QUERIES) */
 
         &.bellow {
@@ -310,6 +306,11 @@ const Story: FunctionComponent = () => {
           display: flex;
           flex-direction: column;
 
+          box-sizing: border-box;
+
+          margin: 8px;
+          height: 89%;
+
           & h1 {
             text-align: center;
             user-select: none;
@@ -321,8 +322,11 @@ const Story: FunctionComponent = () => {
           }
 
           & article {
+            border: tomato solid 6px;
             overflow-y: auto;
             user-select: none;
+            height: 90%;
+            margin: 8px;
           }
         }
       `}
