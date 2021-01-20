@@ -376,8 +376,20 @@ const Story: FunctionComponent = () => {
               width: 6px;
             }
 
-            scrollbar-color: crimson pink;
+            scrollbar-color: crimson tomato;
             scrollbar-width: thin;
+
+            &::-webkit-scrollbar-track {
+              background-color: violet;
+              border-radius: 6px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+              background-color: blanchedalmond;
+              border-radius: 4px;
+              border: #b13d6d solid 1px;
+            }
+
             /* ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]] */
             /*      ------------------------------    */
           }
