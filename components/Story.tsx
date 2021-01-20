@@ -12,7 +12,7 @@ import {
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-import { TweenMax, Power2, Power4 } from "gsap";
+import { TweenMax, Power2, Power4, Power1 } from "gsap";
 
 import {
   fse as fsS,
@@ -257,6 +257,22 @@ const Story: FunctionComponent = () => {
   }, [substatesCallback]);
   //  -------------------------------------------------
 
+  useEffect(() => {
+    if (articleRef.current) {
+      /* articleRef.current.scrollTo({
+        top: 0,
+      }); */
+
+      // articleRef.current.scrollTop = 0;
+
+      TweenMax.to(articleRef.current, {
+        duration: 0.4,
+        ease: Power1.easeIn,
+        scrollTop: 0,
+      });
+    }
+  }, [articleRef, state]);
+
   if (!major || major === "undefined") {
     return null;
   }
@@ -361,7 +377,7 @@ const Story: FunctionComponent = () => {
         {/* <h1>{major.toUpperCase()}</h1> */}
         <h1>{headingStory(major)}</h1>
         <PreviewStory />
-        <article ref={articleRef}>
+        <article ref={articleRef} className="story-article">
           {major === fsS.aboutme && <MyImage />}
           {storyMajorText(major, "")}
           {/* <h4>prev: {MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h4>
