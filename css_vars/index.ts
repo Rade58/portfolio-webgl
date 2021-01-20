@@ -19,3 +19,5 @@ export const storyHeightMin = `${
 // MATCH MEDIA
 
 export const matchMediaMaxWidth = "758px";
+
+export const aboveMediaArticleMargin = "12px";

@@ -12,7 +12,7 @@ import {
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-import { TweenMax, Power2, Power4 } from "gsap";
+import { TweenMax, Power2, Power4, Power1 } from "gsap";
 
 import {
   fse as fsS,
@@ -257,6 +257,22 @@ const Story: FunctionComponent = () => {
   }, [substatesCallback]);
   //  -------------------------------------------------
 
+  useEffect(() => {
+    if (articleRef.current) {
+      /* articleRef.current.scrollTo({
+        top: 0,
+      }); */
+
+      // articleRef.current.scrollTop = 0;
+
+      TweenMax.to(articleRef.current, {
+        duration: 0.4,
+        ease: Power1.easeIn,
+        scrollTop: 0,
+      });
+    }
+  }, [articleRef, state]);
+
   if (!major || major === "undefined") {
     return null;
   }
@@ -323,7 +339,11 @@ const Story: FunctionComponent = () => {
         /* -------- -------- -------- -------- -------- */
 
         & .content {
+<<<<<<< HEAD
           /* border: orange solid 1px; */
+=======
+          border: orange solid 0px;
+>>>>>>> 2_10_STORY_SCROLLBAR
           /* text-overflow: ellipsis; */
 
           overflow: hidden;
@@ -343,16 +363,52 @@ const Story: FunctionComponent = () => {
             box-sizing: border-box;
             height: ${storyHeaderHeight};
             margin: ${storyHeaderMargin};
+<<<<<<< HEAD
             /* border: pink solid 1px; */
           }
 
           & article {
             /* border: tomato solid 6px; */
+=======
+            border: pink solid 0px;
+          }
+
+          & article {
+            border: tomato solid 0px;
+>>>>>>> 2_10_STORY_SCROLLBAR
             overflow-y: auto;
             user-select: none;
-            height: 90%;
+            /* height: 100%; */
             margin: 8px;
             margin-top: 2px;
+
+            /* --------- SCROOLLBAR STYLING --------- */
+            /* ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]] */
+            &::-webkit-scrollbar {
+              width: 12px;
+            }
+
+            scrollbar-color: crimson tomato;
+            scrollbar-width: thin;
+
+            &::-webkit-scrollbar-track {
+              background-color: violet;
+              border-radius: 6px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+              background-color: blanchedalmond;
+              border-radius: 6px;
+              border: #b13d6d solid 1px;
+            }
+
+            /* &::-webkit-scrollbar-button {
+              background-color: red;
+              width: 2px;
+            }
+ */
+            /* ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]] */
+            /*      ------------------------------    */
           }
         }
       `}
@@ -361,7 +417,7 @@ const Story: FunctionComponent = () => {
         {/* <h1>{major.toUpperCase()}</h1> */}
         <h1>{headingStory(major)}</h1>
         <PreviewStory />
-        <article ref={articleRef}>
+        <article ref={articleRef} className="story-article">
           {major === fsS.aboutme && <MyImage />}
           {storyMajorText(major, "")}
           {/* <h4>prev: {MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h4>
