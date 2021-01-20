@@ -390,6 +390,11 @@ const Story: FunctionComponent = () => {
               border: #b13d6d solid 1px;
             }
 
+            /* &::-webkit-scrollbar-button {
+              background-color: red;
+              width: 2px;
+            }
+ */
             /* ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]] */
             /*      ------------------------------    */
           }
