@@ -12,7 +12,7 @@ import {
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-import { TweenMax, Power2, Power4, Power1, Elastic } from "gsap";
+import { TweenMax, Power2, Power4, Power1, Quint } from "gsap";
 
 import {
   fse as fsS,
@@ -174,8 +174,8 @@ const Story: FunctionComponent = () => {
           TweenMax.fromTo(
             articleRef.current,
             {
-              duration: 0.2,
-              ease: Elastic.easeOut,
+              duration: 0.3,
+              ease: Quint.easeOut,
               opacity: 1,
               translateX: "0%",
             },
@@ -217,8 +217,8 @@ const Story: FunctionComponent = () => {
           TweenMax.fromTo(
             articleRef.current,
             {
-              duration: 0.2,
-              ease: Elastic.easeOut,
+              duration: 0.3,
+              ease: Quint.easeOut,
               opacity: 0,
               translateX: "-100%",
             },
@@ -246,8 +246,8 @@ const Story: FunctionComponent = () => {
           TweenMax.fromTo(
             articleRef.current,
             {
-              duration: 0.2,
-              ease: Elastic.easeIn,
+              duration: 0.3,
+              ease: Quint.easeOut,
               opacity: 1,
               translateX: "100%",
             },
