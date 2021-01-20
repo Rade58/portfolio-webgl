@@ -339,11 +339,7 @@ const Story: FunctionComponent = () => {
         /* -------- -------- -------- -------- -------- */
 
         & .content {
-<<<<<<< HEAD
-          /* border: orange solid 1px; */
-=======
           border: orange solid 0px;
->>>>>>> 2_10_STORY_SCROLLBAR
           /* text-overflow: ellipsis; */
 
           overflow: hidden;
@@ -363,19 +359,11 @@ const Story: FunctionComponent = () => {
             box-sizing: border-box;
             height: ${storyHeaderHeight};
             margin: ${storyHeaderMargin};
-<<<<<<< HEAD
-            /* border: pink solid 1px; */
-          }
-
-          & article {
-            /* border: tomato solid 6px; */
-=======
             border: pink solid 0px;
           }
 
           & article {
             border: tomato solid 0px;
->>>>>>> 2_10_STORY_SCROLLBAR
             overflow-y: auto;
             user-select: none;
             /* height: 100%; */
