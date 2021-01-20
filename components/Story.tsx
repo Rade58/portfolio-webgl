@@ -370,12 +370,16 @@ const Story: FunctionComponent = () => {
             margin: 8px;
             margin-top: 2px;
 
-            /* -------- SCROOLLBAR STYLING -------- */
+            /* --------- SCROOLLBAR STYLING --------- */
+            /* ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]] */
             &::-webkit-scrollbar {
               width: 6px;
             }
 
-            /*      ------------------------    */
+            scrollbar-color: crimson pink;
+            scrollbar-width: thin;
+            /* ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]] */
+            /*      ------------------------------    */
           }
         }
       `}
