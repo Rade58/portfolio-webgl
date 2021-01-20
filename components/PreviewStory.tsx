@@ -27,6 +27,8 @@ const PreviewStory: FunctionComponent = () => {
 
   useEffect(() => {
     if (tekstRef.current && previewRef.current) {
+      console.log(state.value);
+
       if (state.value[fse.idle] && state.value[fse.idle] === fseS.partial) {
         TweenMax.fromTo(
           tekstRef.current,
@@ -89,23 +91,44 @@ const PreviewStory: FunctionComponent = () => {
         );
       }
     }
-  }, [tekstRef, previewRef]);
+  }, [state]);
 
   const { mediaBellow } = state.context;
+
+  let height = "0px";
+  let margin = "0px";
+
+  if (!mediaBellow) {
+    height = "0px";
+    margin = "0px";
+  } else {
+    if (state.value && state.value[fse.idle]) {
+      if (state.value[fse.idle] === fseS.partial) {
+        height = previewHeight;
+        margin = previewMargin;
+      }
+
+      if (state.value[fse.idle] === fseS.maximal) {
+        height = "0px";
+        margin = "0px";
+      }
+    }
+  }
 
   return (
     <div
       style={{
-        height: !mediaBellow ? 0 : previewHeight,
-        marginBottom: !mediaBellow ? 0 : previewMargin,
+        // ovo je problem
+        height,
+        marginBottom: margin,
       }}
       ref={previewRef}
       className="preview"
       css={css`
         box-sizing: border-box;
-        height: ${previewHeight};
+        /*  height: ${previewHeight};
         margin: ${previewMargin};
-        margin-bottom: ${bottomMargin};
+        margin-bottom: ${bottomMargin}; */
         border: pink solid 1px;
 
         & .tekst {
