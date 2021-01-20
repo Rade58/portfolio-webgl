@@ -373,7 +373,7 @@ const Story: FunctionComponent = () => {
             /* --------- SCROOLLBAR STYLING --------- */
             /* ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]] */
             &::-webkit-scrollbar {
-              width: 8px;
+              width: 12px;
             }
 
             scrollbar-color: crimson tomato;
