@@ -12,7 +12,7 @@ import {
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-import { TweenMax, Power2, Power4, Power1 } from "gsap";
+import { TweenMax, Power2, Power4, Power1, Elastic } from "gsap";
 
 import {
   fse as fsS,
@@ -171,11 +171,19 @@ const Story: FunctionComponent = () => {
           );
 
           // ---- article opacity (has no visual effect (no op))--------
-          TweenMax.to(articleRef.current, {
-            duration: 0.1,
-            ease: Power2.easeInOut,
-            opacity: 1,
-          });
+          TweenMax.fromTo(
+            articleRef.current,
+            {
+              duration: 0.2,
+              ease: Elastic.easeOut,
+              opacity: 0,
+              translateX: "-100%",
+            },
+            {
+              opacity: 1,
+              translateX: "0%",
+            }
+          );
         }
 
         if (substate === fseS.maximal) {
@@ -206,11 +214,19 @@ const Story: FunctionComponent = () => {
             }
           );
           // --------------- atricle opacity (has no visual effect (no op))------------------
-          TweenMax.to(articleRef.current, {
-            duration: 0.1,
-            ease: Power2.easeInOut,
-            opacity: 1,
-          });
+          TweenMax.fromTo(
+            articleRef.current,
+            {
+              duration: 0.2,
+              ease: Elastic.easeOut,
+              opacity: 0,
+              translateX: "100%",
+            },
+            {
+              opacity: 1,
+              translateX: "0%",
+            }
+          );
         }
 
         if (substate === fseS.non_visible) {
@@ -230,12 +246,14 @@ const Story: FunctionComponent = () => {
           TweenMax.fromTo(
             articleRef.current,
             {
-              duration: 0.1,
-              ease: Power2.easeInOut,
+              duration: 0.2,
+              ease: Elastic.easeIn,
               opacity: 1,
+              translateX: "100%",
             },
             {
               opacity: 0,
+              translateX: "0%",
             }
           );
         }
