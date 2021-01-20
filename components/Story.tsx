@@ -373,7 +373,7 @@ const Story: FunctionComponent = () => {
             /* --------- SCROOLLBAR STYLING --------- */
             /* ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]] */
             &::-webkit-scrollbar {
-              width: 6px;
+              width: 8px;
             }
 
             scrollbar-color: crimson tomato;
@@ -386,7 +386,7 @@ const Story: FunctionComponent = () => {
 
             &::-webkit-scrollbar-thumb {
               background-color: blanchedalmond;
-              border-radius: 4px;
+              border-radius: 6px;
               border: #b13d6d solid 1px;
             }
 
