@@ -235,7 +235,7 @@ const Story: FunctionComponent = () => {
             storyRef.current,
             {
               duration: 0.1,
-              translateY: 0,
+              translateY: "0vh",
               ease: Power2.easeIn,
             },
             {
