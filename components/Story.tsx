@@ -296,7 +296,7 @@ const Story: FunctionComponent = () => {
       css={css`
         height: fit-content;
         background-color: rgba(98, 67, 136, 0.788);
-        border: crimson solid 1px;
+        border: crimson solid 0px;
         position: fixed;
         z-index: 108;
         top: 0;
@@ -339,7 +339,7 @@ const Story: FunctionComponent = () => {
         /* -------- -------- -------- -------- -------- */
 
         & .content {
-          border: orange solid 1px;
+          border: orange solid 0px;
           /* text-overflow: ellipsis; */
 
           overflow: hidden;
@@ -363,7 +363,7 @@ const Story: FunctionComponent = () => {
           }
 
           & article {
-            border: tomato solid 6px;
+            border: tomato solid 0px;
             overflow-y: auto;
             user-select: none;
             /* height: 100%; */

@@ -30,7 +30,7 @@ const MyImage: FunctionComponent = () => {
         style={{ width: !mediaBellow ? "74%" : "62%" }}
         className={`my-image`}
         css={css`
-          border: olive solid 3px;
+          border: olive solid 0px;
           overflow: hidden;
           display: flex;
           justify-content: center;
