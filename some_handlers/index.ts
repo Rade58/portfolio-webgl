@@ -50,7 +50,7 @@ export const setup = () => {
 
           if (substate === fseS.partial) {
             // console.log({ substate });
-            console.log("full open sent");
+            // console.log("full open sent");
             if (e.key === "ArrowDown") {
               storyService.send({
                 type: EEs.FULL_OPEN,
@@ -60,7 +60,7 @@ export const setup = () => {
 
           if (substate === fseS.maximal) {
             // console.log({ substate });
-            console.log("narrow it sent");
+            // console.log("narrow it sent");
             if (e.key === "ArrowUp") {
               storyService.send({
                 type: EEs.NARROW_IT,
@@ -73,8 +73,7 @@ export const setup = () => {
 
     // CLICK ON BODY ------------------------------------
     document.body.addEventListener("click", (e) => {
-      debugger;
-
+      // debugger;
       // console.log()
     });
   }
