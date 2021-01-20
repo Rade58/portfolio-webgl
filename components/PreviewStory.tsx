@@ -17,6 +17,7 @@ import {
   previewHeight,
   previewMargin,
   matchMediaMaxWidth,
+  aboveMediaArticleMargin,
 } from "../css_vars";
 
 const PreviewStory: FunctionComponent = () => {
@@ -120,7 +121,7 @@ const PreviewStory: FunctionComponent = () => {
       style={{
         // ovo je problem
         height,
-        marginBottom: !mediaBellow ? "12px" : margin,
+        marginBottom: !mediaBellow ? aboveMediaArticleMargin : margin,
       }}
       ref={previewRef}
       className="preview"
