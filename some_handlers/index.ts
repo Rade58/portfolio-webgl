@@ -10,6 +10,8 @@ import { isSSR } from "../utils/isSSR";
 
 export const setup = () => {
   if (!isSSR()) {
+    // KEYDOWNS -------------------------------------
+
     window.addEventListener("keydown", (e) => {
       // console.log(storyService.state);
 
@@ -41,6 +43,11 @@ export const setup = () => {
         ) {
           const substate = storyService.state.value[fseStory.idle];
 
+          /*  console.log({ target: e.currentTarget });
+          console.log({ target: e.target });
+
+          debugger; */
+
           if (substate === fseS.partial) {
             // console.log({ substate });
             console.log("full open sent");
@@ -62,6 +69,13 @@ export const setup = () => {
           }
         }
       }
+    });
+
+    // CLICK ON BODY ------------------------------------
+    document.body.addEventListener("click", (e) => {
+      debugger;
+
+      // console.log()
     });
   }
 };
