@@ -359,7 +359,7 @@ const Story: FunctionComponent = () => {
             box-sizing: border-box;
             height: ${storyHeaderHeight};
             margin: ${storyHeaderMargin};
-            border: pink solid 1px;
+            border: pink solid 0px;
           }
 
           & article {

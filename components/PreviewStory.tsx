@@ -128,7 +128,7 @@ const PreviewStory: FunctionComponent = () => {
       css={css`
         box-sizing: border-box;
 
-        border: pink solid 1px;
+        border: pink solid 0px;
 
         & .tekst {
           & .three-dots {
