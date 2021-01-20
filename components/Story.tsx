@@ -220,7 +220,7 @@ const Story: FunctionComponent = () => {
               duration: 0.2,
               ease: Elastic.easeOut,
               opacity: 0,
-              translateX: "100%",
+              translateX: "-100%",
             },
             {
               opacity: 1,
