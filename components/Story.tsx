@@ -350,7 +350,7 @@ const Story: FunctionComponent = () => {
             border: tomato solid 6px;
             overflow-y: auto;
             user-select: none;
-            height: 90%;
+            /* height: 100%; */
             margin: 8px;
             margin-top: 2px;
           }

@@ -120,15 +120,13 @@ const PreviewStory: FunctionComponent = () => {
       style={{
         // ovo je problem
         height,
-        marginBottom: margin,
+        marginBottom: !mediaBellow ? "12px" : margin,
       }}
       ref={previewRef}
       className="preview"
       css={css`
         box-sizing: border-box;
-        /*  height: ${previewHeight};
-        margin: ${previewMargin};
-        margin-bottom: ${bottomMargin}; */
+
         border: pink solid 1px;
 
         & .tekst {
