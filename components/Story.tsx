@@ -314,6 +314,11 @@ const Story: FunctionComponent = () => {
       css={css`
         height: fit-content;
         background-color: rgba(98, 67, 136, 0.788);
+        background-image: radial-gradient(
+          circle farthest-corner at -4% -12.9%,
+          rgba(74, 98, 110, 1) 0.3%,
+          rgba(30, 33, 48, 1) 90.2%
+        );
         border: crimson solid 0px;
         position: fixed;
         z-index: 108;
