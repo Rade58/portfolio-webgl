@@ -2,12 +2,19 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { FunctionComponent } from "react";
+import { FunctionComponent, RefObject } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-const ArticleStory: FunctionComponent = ({ children }) => {
-  return <article>{children}</article>;
+interface PropsI {
+  articleReference: RefObject<HTMLElement>;
+}
+
+const ArticleStory: FunctionComponent<PropsI> = ({
+  children,
+  articleReference,
+}) => {
+  return <article ref={articleReference}>{children}</article>;
 };
 
 export default ArticleStory;
