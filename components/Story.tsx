@@ -129,6 +129,20 @@ const Story: FunctionComponent = () => {
               height: "100%",
               // delay: 0.4,
             });
+
+            TweenMax.fromTo(
+              articleRef.current,
+              {
+                duration: 0.3,
+                ease: Quint.easeOut,
+                opacity: 0,
+                translateX: "-100%",
+              },
+              {
+                opacity: 1,
+                translateX: "0%",
+              }
+            );
           }
 
           return;
