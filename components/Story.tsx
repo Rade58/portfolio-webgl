@@ -459,22 +459,6 @@ const Story: FunctionComponent = () => {
           <h4>next: {MAJOR_FINITE_STATES_ARRAY[nextIndex]}</h4> */}
         </article>
         {/* <div className="placeh" /> */}
-        {/* samo proba */}
-        {/* <article
-          id="article"
-          css={css`
-            &#article {
-              border: crimson solid 2px;
-
-              OVO CE BITI ZA TURNING OFF
-              visibility: hidden;
-              height: 0;
-              margin: 0;
-            }
-          `}
-        >
-          proba article text
-        </article> */}
       </div>
       <UpDownButton />
     </section>
