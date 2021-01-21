@@ -263,11 +263,11 @@ const Story: FunctionComponent = () => {
               duration: 0.3,
               ease: Quint.easeOut,
               opacity: 1,
-              translateX: "100%",
+              translateX: "0%",
             },
             {
               opacity: 0,
-              translateX: "0%",
+              translateX: "105%",
             }
           );
         }
