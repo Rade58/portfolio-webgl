@@ -316,9 +316,10 @@ const Story: FunctionComponent = () => {
         background-color: rgba(98, 67, 136, 0.788);
         background-image: radial-gradient(
           circle farthest-corner at -4% -12.9%,
-          rgba(74, 98, 110, 1) 0.3%,
-          rgba(30, 33, 48, 1) 90.2%
+          rgba(74, 98, 110, 0.78) 0.3%,
+          rgba(30, 33, 48, 0.8) 90.2%
         );
+        color: rgb(224, 195, 220);
         border: crimson solid 0px;
         position: fixed;
         z-index: 108;
@@ -348,13 +349,18 @@ const Story: FunctionComponent = () => {
           height: 100%;
           & .content {
             height: 100%;
+            padding-bottom: 18px;
 
             & article {
-              height: 100%;
+              height: 95vh;
               overflow-y: auto;
+              border: pink solid 0px;
+              box-sizing: content-box;
 
               padding: 28px;
-              padding-top: 4px;
+              padding-top: 0px;
+              padding-bottom: 0px;
+              margin-bottom: 8px;
             }
           }
         }
