@@ -12,7 +12,7 @@ import {
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-import { TweenMax, Power2, Power4, Power1 } from "gsap";
+import { TweenMax, Power2, Power4, Power1, Quint } from "gsap";
 
 import {
   fse as fsS,
@@ -129,6 +129,20 @@ const Story: FunctionComponent = () => {
               height: "100%",
               // delay: 0.4,
             });
+
+            TweenMax.fromTo(
+              articleRef.current,
+              {
+                duration: 0.3,
+                ease: Quint.easeOut,
+                opacity: 0,
+                translateX: "-100%",
+              },
+              {
+                opacity: 1,
+                translateX: "0%",
+              }
+            );
           }
 
           return;
@@ -171,11 +185,19 @@ const Story: FunctionComponent = () => {
           );
 
           // ---- article opacity (has no visual effect (no op))--------
-          TweenMax.to(articleRef.current, {
-            duration: 0.1,
-            ease: Power2.easeInOut,
-            opacity: 1,
-          });
+          TweenMax.fromTo(
+            articleRef.current,
+            {
+              duration: 0.3,
+              ease: Quint.easeOut,
+              opacity: 1,
+              translateX: "0%",
+            },
+            {
+              opacity: 0,
+              translateX: "-100%",
+            }
+          );
         }
 
         if (substate === fseS.maximal) {
@@ -206,11 +228,19 @@ const Story: FunctionComponent = () => {
             }
           );
           // --------------- atricle opacity (has no visual effect (no op))------------------
-          TweenMax.to(articleRef.current, {
-            duration: 0.1,
-            ease: Power2.easeInOut,
-            opacity: 1,
-          });
+          TweenMax.fromTo(
+            articleRef.current,
+            {
+              duration: 0.3,
+              ease: Quint.easeOut,
+              opacity: 0,
+              translateX: "-100%",
+            },
+            {
+              opacity: 1,
+              translateX: "0%",
+            }
+          );
         }
 
         if (substate === fseS.non_visible) {
@@ -219,7 +249,7 @@ const Story: FunctionComponent = () => {
             storyRef.current,
             {
               duration: 0.1,
-              translateY: 0,
+              translateY: "0vh",
               ease: Power2.easeIn,
             },
             {
@@ -230,12 +260,14 @@ const Story: FunctionComponent = () => {
           TweenMax.fromTo(
             articleRef.current,
             {
-              duration: 0.1,
-              ease: Power2.easeInOut,
+              duration: 0.3,
+              ease: Quint.easeOut,
               opacity: 1,
+              translateX: "0%",
             },
             {
               opacity: 0,
+              translateX: "105%",
             }
           );
         }
@@ -296,6 +328,13 @@ const Story: FunctionComponent = () => {
       css={css`
         height: fit-content;
         background-color: rgba(98, 67, 136, 0.788);
+        background-image: radial-gradient(
+          circle farthest-corner at -4% -12.9%,
+          rgba(74, 98, 110, 0.78) 0.3%,
+          rgba(30, 33, 48, 0.8) 90.2%
+        );
+        color: rgb(228, 186, 200);
+        text-shadow: 0.5px 0.8px 0.5px #852b76;
         border: crimson solid 0px;
         position: fixed;
         z-index: 108;
@@ -316,6 +355,9 @@ const Story: FunctionComponent = () => {
           /* -------- */
 
           & .content {
+            & article {
+              padding-right: 14px;
+            }
           }
         }
 
@@ -325,13 +367,18 @@ const Story: FunctionComponent = () => {
           height: 100%;
           & .content {
             height: 100%;
+            padding-bottom: 18px;
 
             & article {
-              height: 100%;
+              height: 95vh;
               overflow-y: auto;
+              border: pink solid 0px;
+              box-sizing: content-box;
 
               padding: 28px;
-              padding-top: 4px;
+              padding-top: 0px;
+              padding-bottom: 0px;
+              margin-bottom: 8px;
             }
           }
         }
@@ -366,7 +413,7 @@ const Story: FunctionComponent = () => {
             border: tomato solid 0px;
             overflow-y: auto;
             user-select: none;
-            /* height: 100%; */
+
             margin: 8px;
             margin-top: 2px;
 

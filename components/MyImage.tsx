@@ -20,7 +20,7 @@ const MyImage: FunctionComponent = () => {
     <div
       className="image-cont"
       css={css`
-        border: blanchedalmond 1px solid;
+        border: blanchedalmond 0px solid;
         display: flex;
         flex-direction: row;
         justify-content: center;
