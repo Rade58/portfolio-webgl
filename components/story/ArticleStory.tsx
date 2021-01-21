@@ -6,8 +6,8 @@ import { FunctionComponent } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-const ArticleStory: FunctionComponent = () => {
-  return null;
+const ArticleStory: FunctionComponent = ({ children }) => {
+  return <article>{children}</article>;
 };
 
 export default ArticleStory;
