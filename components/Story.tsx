@@ -319,7 +319,8 @@ const Story: FunctionComponent = () => {
           rgba(74, 98, 110, 0.78) 0.3%,
           rgba(30, 33, 48, 0.8) 90.2%
         );
-        color: rgb(224, 195, 220);
+        color: rgb(228, 186, 200);
+        text-shadow: 0.8px 0.6px 0.6px #e73c612d;
         border: crimson solid 0px;
         position: fixed;
         z-index: 108;
