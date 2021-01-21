@@ -17,23 +17,89 @@ import {
 
 import { isSSR } from "../../utils/isSSR";
 
-import { storyMajorText } from "../../content";
+import {} from "../../content";
+
+import { fse as majorFsesEnum } from "../../sketch/middle_ground/major_states";
 
 interface PropsI {
   articleReference: RefObject<HTMLElement>;
-  visible: boolean;
+  majorName: majorFsesEnum;
 }
 
 const ArticleStory: FunctionComponent<PropsI> = ({
   children,
   articleReference,
+  majorName,
 }) => {
   const [state, send] = useService(storyService);
 
-  const { major } = state.context;
+  const { major, mediaBellow } = state.context;
+  // ZA style ATRIBUTE
+  /*
+      visibility: hidden;
+      height: 0;
+      margin: 0;
+  */
+  //  mediaBellow
+
+  //
+  if (major === "undefined") {
+    return null;
+  }
 
   return (
-    <article className="story-article" ref={articleReference}>
+    <article
+      id={majorName}
+      className={`story-article ${
+        mediaBellow ? "media-bellow" : "media-above"
+      } ${majorName === major}`}
+      css={css`
+        &#${majorName} {
+          &.media-bellow {
+            height: 100%;
+
+            &.not-presented {
+              visibility: hidden;
+              height: 0;
+            }
+
+            &.presented {
+              visibility: visible;
+              height: 100%;
+            }
+          }
+
+          &.media-above {
+            height: 95vh;
+
+            &.not-presented {
+              visibility: hidden;
+              height: 0;
+              margin-bottom: 0;
+            }
+
+            &.presented {
+              visibility: visible;
+              height: 100%;
+              margin-bottom: 8px;
+            }
+          }
+
+          /* &.not-presented {
+            visibility: hidden;
+            height: 0;
+            margin: 0;
+          }
+
+          &.presented {
+            visibility: visible;
+            height: 0;
+            margin: 0;
+          } */
+        }
+      `}
+      ref={articleReference}
+    >
       {children}
     </article>
   );
