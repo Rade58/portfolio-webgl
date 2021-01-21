@@ -21,6 +21,7 @@ import { storyMajorText } from "../../content";
 
 interface PropsI {
   articleReference: RefObject<HTMLElement>;
+  visible: boolean;
 }
 
 const ArticleStory: FunctionComponent<PropsI> = ({
