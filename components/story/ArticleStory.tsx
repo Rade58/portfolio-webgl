@@ -52,7 +52,7 @@ const ArticleStory: FunctionComponent<PropsI> = ({
       id={majorName}
       className={`story-article ${
         mediaBellow ? "media-bellow" : "media-above"
-      } ${majorName === major}`}
+      } ${majorName === major ? "presented" : "not-presented"}`}
       css={css`
         &#${majorName} {
           &.media-bellow {
@@ -84,18 +84,6 @@ const ArticleStory: FunctionComponent<PropsI> = ({
               margin-bottom: 8px;
             }
           }
-
-          /* &.not-presented {
-            visibility: hidden;
-            height: 0;
-            margin: 0;
-          }
-
-          &.presented {
-            visibility: visible;
-            height: 0;
-            margin: 0;
-          } */
         }
       `}
       ref={articleReference}
