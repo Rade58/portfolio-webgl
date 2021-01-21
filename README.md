@@ -15,3 +15,5 @@ Work in progress
 :five: Story COMPONENT TREBA DA IMA `oveflowY: scroll`
 
 STILIZUJ SCROLLBAR
+
+:six: IMAGE IPAK TREBA DA BUDE NA DNU ABOUTME PAGE-A
