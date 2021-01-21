@@ -17,6 +17,8 @@ import {
 
 import { isSSR } from "../../utils/isSSR";
 
+import { storyMajorText } from "../../content";
+
 interface PropsI {
   articleReference: RefObject<HTMLElement>;
 }
@@ -25,7 +27,15 @@ const ArticleStory: FunctionComponent<PropsI> = ({
   children,
   articleReference,
 }) => {
-  return <article ref={articleReference}>{children}</article>;
+  const [state, send] = useService(storyService);
+
+  const { major } = state.context;
+
+  return (
+    <article className="story-article" ref={articleReference}>
+      {children}
+    </article>
+  );
 };
 
 export default ArticleStory;
