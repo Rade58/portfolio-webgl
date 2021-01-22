@@ -2,12 +2,28 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { FunctionComponent } from "react";
+import { FunctionComponent, RefObject } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-const AboutMe: FunctionComponent = () => {
-  return null;
+import ArticleStory from "./ArticleStory";
+import MyImage from "../MyImage";
+
+import { fse as majorFsesEnum } from "../../sketch/middle_ground/major_states";
+
+interface PropsI {
+  aboutMeArticleRef: RefObject<HTMLElement>;
+}
+
+const AboutMe: FunctionComponent<PropsI> = ({ aboutMeArticleRef }) => {
+  return (
+    <ArticleStory
+      articleReference={aboutMeArticleRef}
+      majorName={majorFsesEnum.aboutme}
+    >
+      <MyImage />
+    </ArticleStory>
+  );
 };
 
 export default AboutMe;

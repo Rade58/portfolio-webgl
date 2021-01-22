@@ -34,6 +34,8 @@ import UpDownButton from "./svgs/UpDownButton";
 import PreviewStory from "./PreviewStory";
 import MyImage from "./MyImage";
 
+import ArticleStory from "../components/story/ArticleStory";
+
 import { storyMajorText, headingStory } from "../content";
 
 import {
