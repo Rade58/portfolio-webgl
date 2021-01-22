@@ -17,18 +17,18 @@ import { fse as majorFsesEnum } from "../../sketch/middle_ground/major_states";
 import { storyMajorText } from "../../content";
 
 interface PropsI {
-  contactArticleRef: RefObject<HTMLElement>;
+  projectsArticleRef: RefObject<HTMLElement>;
 }
 
-const Projects: FunctionComponent<PropsI> = ({ contactArticleRef }) => {
+const Projects: FunctionComponent<PropsI> = ({ projectsArticleRef }) => {
   const [state, send] = useService(storyService);
 
   const { major } = state.context;
 
   return (
     <ArticleStory
-      articleReference={contactArticleRef}
-      majorName={majorFsesEnum.contact}
+      articleReference={projectsArticleRef}
+      majorName={majorFsesEnum.projects}
     >
       {major !== "undefined" ? storyMajorText(major, "") : ""}
     </ArticleStory>
