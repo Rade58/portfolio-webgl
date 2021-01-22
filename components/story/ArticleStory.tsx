@@ -94,7 +94,6 @@ const ArticleStory: FunctionComponent<PropsI> = ({
       `}
       ref={articleReference}
     >
-      NEKI TEST TEKST
       {children}
     </article>
   );
