@@ -126,11 +126,7 @@ const Story: FunctionComponent = () => {
       aboutMeArticleRef.current &&
       contactArticleRef.current &&
       projectsArticleRef.current &&
-      blogArticleRef.current &&
-      state &&
-      state.context &&
-      state.context.major &&
-      state.context.major !== "undefined"
+      blogArticleRef.current
     ) {
       // console.log({ storyRef: storyRef.current });
       // debugger;
