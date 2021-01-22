@@ -31,6 +31,7 @@ const AboutMe: FunctionComponent<PropsI> = ({ aboutMeArticleRef }) => {
       articleReference={aboutMeArticleRef}
       majorName={majorFsesEnum.aboutme}
     >
+      looking like a 100$
       <MyImage />
       {major !== "undefined" ? storyMajorText(major, "") : ""}
     </ArticleStory>
