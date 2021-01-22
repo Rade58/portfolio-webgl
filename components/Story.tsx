@@ -155,7 +155,7 @@ const Story: FunctionComponent = () => {
               height: "100%",
               // delay: 0.4,
             });
-
+            // debugger;
             TweenMax.fromTo(
               articleRefs[major].current,
               {
@@ -323,7 +323,8 @@ const Story: FunctionComponent = () => {
   //  -------------------------------------------------
 
   useEffect(() => {
-    if (articleRefs[major].current) {
+    // debugger;
+    if (articleRefs[major] && articleRefs[major].current) {
       /* articleRef.current.scrollTo({
         top: 0,
       }); */
