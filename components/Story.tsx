@@ -66,6 +66,13 @@ const Story: FunctionComponent = () => {
   const projectsArticleRef = createRef<HTMLElement>();
   const blogMeArticleRef = createRef<HTMLElement>();
 
+  const articleRefs = {
+    [fsS.aboutme]: aboutMeArticleRef,
+    [fsS.contact]: contactArticleRef,
+    [fsS.projects]: projectsArticleRef,
+    [fsS.blog]: blogMeArticleRef,
+  };
+
   // const contentRef = createRef<HTMLDivElement>();
 
   // VODI RACUNA DA major MOZE BITI I STRING "undefined"
