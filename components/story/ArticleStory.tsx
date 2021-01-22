@@ -17,8 +17,6 @@ import {
 
 import { isSSR } from "../../utils/isSSR";
 
-import {} from "../../content";
-
 import { fse as majorFsesEnum } from "../../sketch/middle_ground/major_states";
 
 interface PropsI {
