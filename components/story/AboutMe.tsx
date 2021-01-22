@@ -6,22 +6,33 @@ import { FunctionComponent, RefObject } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
+import { useService } from "@xstate/react";
+
+import { storyService } from "../../state_machines/story_machine";
+
 import ArticleStory from "./ArticleStory";
 import MyImage from "../MyImage";
 
 import { fse as majorFsesEnum } from "../../sketch/middle_ground/major_states";
+
+import { storyMajorText } from "../../content";
 
 interface PropsI {
   aboutMeArticleRef: RefObject<HTMLElement>;
 }
 
 const AboutMe: FunctionComponent<PropsI> = ({ aboutMeArticleRef }) => {
+  const [state, send] = useService(storyService);
+
+  const { major } = state.context;
+
   return (
     <ArticleStory
       articleReference={aboutMeArticleRef}
       majorName={majorFsesEnum.aboutme}
     >
       <MyImage />
+      {major !== "undefined" ? storyMajorText(major, "") : ""}
     </ArticleStory>
   );
 };
