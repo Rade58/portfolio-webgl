@@ -441,7 +441,7 @@ const Story: FunctionComponent = () => {
               background-color: red;
               width: 2px;
             }
- */
+            */
             /* ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]] */
             /*      ------------------------------    */
           }
@@ -449,16 +449,12 @@ const Story: FunctionComponent = () => {
       `}
     >
       <div className="content">
-        {/* <h1>{major.toUpperCase()}</h1> */}
         <h1>{headingStory(major)}</h1>
         <PreviewStory />
         <article ref={articleRef} className="story-article">
           {major === fsS.aboutme && <MyImage />}
           {storyMajorText(major, "")}
-          {/* <h4>prev: {MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h4>
-          <h4>next: {MAJOR_FINITE_STATES_ARRAY[nextIndex]}</h4> */}
         </article>
-        {/* <div className="placeh" /> */}
       </div>
       <UpDownButton />
     </section>
