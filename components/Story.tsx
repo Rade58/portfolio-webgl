@@ -34,7 +34,12 @@ import UpDownButton from "./svgs/UpDownButton";
 import PreviewStory from "./PreviewStory";
 import MyImage from "./MyImage";
 
-import ArticleStory from "../components/story/ArticleStory";
+// story stuff
+import AboutMe from "./story/AboutMe";
+import Projects from "./story/Projects";
+import Contact from "./story/Contact";
+import Blog from "./story/Blog";
+//
 
 import { storyMajorText, headingStory } from "../content";
 
