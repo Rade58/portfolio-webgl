@@ -84,6 +84,12 @@ const ArticleStory: FunctionComponent<PropsI> = ({
               margin-bottom: 8px;
             }
           }
+
+          & > div {
+            &.content-holder {
+              margin: 0;
+            }
+          }
         }
       `}
       ref={articleReference}
