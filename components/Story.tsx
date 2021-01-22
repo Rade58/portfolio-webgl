@@ -60,6 +60,12 @@ const Story: FunctionComponent = () => {
   //
   const storyRef = createRef<HTMLElement>();
   const articleRef = createRef<HTMLElement>();
+
+  const aboutMeArticleRef = createRef<HTMLElement>();
+  const contactArticleRef = createRef<HTMLElement>();
+  const projectsArticleRef = createRef<HTMLElement>();
+  const blogMeArticleRef = createRef<HTMLElement>();
+
   // const contentRef = createRef<HTMLDivElement>();
 
   // VODI RACUNA DA major MOZE BITI I STRING "undefined"
