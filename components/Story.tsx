@@ -64,13 +64,13 @@ const Story: FunctionComponent = () => {
   const aboutMeArticleRef = createRef<HTMLElement>();
   const contactArticleRef = createRef<HTMLElement>();
   const projectsArticleRef = createRef<HTMLElement>();
-  const blogMeArticleRef = createRef<HTMLElement>();
+  const blogArticleRef = createRef<HTMLElement>();
 
   const articleRefs = {
     [fsS.aboutme]: aboutMeArticleRef,
     [fsS.contact]: contactArticleRef,
     [fsS.projects]: projectsArticleRef,
-    [fsS.blog]: blogMeArticleRef,
+    [fsS.blog]: blogArticleRef,
   };
 
   // const contentRef = createRef<HTMLDivElement>();
@@ -293,7 +293,15 @@ const Story: FunctionComponent = () => {
         }
       }
     }
-  }, [storyRef, articleRef, state]);
+  }, [
+    storyRef,
+    articleRef,
+    aboutMeArticleRef,
+    contactArticleRef,
+    projectsArticleRef,
+    blogArticleRef,
+    state,
+  ]);
 
   useEffect(() => {
     // ANIMACIJE U ODNSU NA SUBSTATE-OVE idle-A
@@ -478,7 +486,7 @@ const Story: FunctionComponent = () => {
         <AboutMe aboutMeArticleRef={aboutMeArticleRef} />
         <Projects projectsArticleRef={projectsArticleRef} />
         <Contact contactArticleRef={contactArticleRef} />
-        <Blog blogArticleRef={blogMeArticleRef} />
+        <Blog blogArticleRef={blogArticleRef} />
       </div>
       <UpDownButton />
     </section>
