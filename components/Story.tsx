@@ -34,6 +34,13 @@ import UpDownButton from "./svgs/UpDownButton";
 import PreviewStory from "./PreviewStory";
 import MyImage from "./MyImage";
 
+// story stuff
+import AboutMe from "./story/AboutMe";
+import Projects from "./story/Projects";
+import Contact from "./story/Contact";
+import Blog from "./story/Blog";
+//
+
 import { storyMajorText, headingStory } from "../content";
 
 import {
@@ -52,7 +59,20 @@ const MAJOR_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
 const Story: FunctionComponent = () => {
   //
   const storyRef = createRef<HTMLElement>();
-  const articleRef = createRef<HTMLElement>();
+  // const articleRef = createRef<HTMLElement>();
+
+  const aboutMeArticleRef = createRef<HTMLElement>();
+  const contactArticleRef = createRef<HTMLElement>();
+  const projectsArticleRef = createRef<HTMLElement>();
+  const blogArticleRef = createRef<HTMLElement>();
+
+  const articleRefs = {
+    [fsS.aboutme]: aboutMeArticleRef,
+    [fsS.contact]: contactArticleRef,
+    [fsS.projects]: projectsArticleRef,
+    [fsS.blog]: blogArticleRef,
+  };
+
   // const contentRef = createRef<HTMLDivElement>();
 
   // VODI RACUNA DA major MOZE BITI I STRING "undefined"
@@ -101,7 +121,13 @@ const Story: FunctionComponent = () => {
   //  ---------------- SUBSTATE ANIMATIONS ----------------
 
   const substatesCallback = useCallback(() => {
-    if (storyRef.current && articleRef.current) {
+    if (
+      storyRef.current &&
+      aboutMeArticleRef.current &&
+      contactArticleRef.current &&
+      projectsArticleRef.current &&
+      blogArticleRef.current
+    ) {
       // console.log({ storyRef: storyRef.current });
       // debugger;
       if (state && state.value && state.value[fse.idle]) {
@@ -129,9 +155,9 @@ const Story: FunctionComponent = () => {
               height: "100%",
               // delay: 0.4,
             });
-
+            // debugger;
             TweenMax.fromTo(
-              articleRef.current,
+              articleRefs[major].current,
               {
                 duration: 0.3,
                 ease: Quint.easeOut,
@@ -186,7 +212,7 @@ const Story: FunctionComponent = () => {
 
           // ---- article opacity (has no visual effect (no op))--------
           TweenMax.fromTo(
-            articleRef.current,
+            articleRefs[major].current,
             {
               duration: 0.3,
               ease: Quint.easeOut,
@@ -229,7 +255,7 @@ const Story: FunctionComponent = () => {
           );
           // --------------- atricle opacity (has no visual effect (no op))------------------
           TweenMax.fromTo(
-            articleRef.current,
+            articleRefs[major].current,
             {
               duration: 0.3,
               ease: Quint.easeOut,
@@ -258,7 +284,7 @@ const Story: FunctionComponent = () => {
           );
           // --------------- atricle opacity (has no visual effect (no op))------------------
           TweenMax.fromTo(
-            articleRef.current,
+            articleRefs[major].current,
             {
               duration: 0.3,
               ease: Quint.easeOut,
@@ -273,7 +299,14 @@ const Story: FunctionComponent = () => {
         }
       }
     }
-  }, [storyRef, articleRef, state]);
+  }, [
+    storyRef,
+    aboutMeArticleRef,
+    contactArticleRef,
+    projectsArticleRef,
+    blogArticleRef,
+    state,
+  ]);
 
   useEffect(() => {
     // ANIMACIJE U ODNSU NA SUBSTATE-OVE idle-A
@@ -290,20 +323,27 @@ const Story: FunctionComponent = () => {
   //  -------------------------------------------------
 
   useEffect(() => {
-    if (articleRef.current) {
+    // debugger;
+    if (articleRefs[major] && articleRefs[major].current) {
       /* articleRef.current.scrollTo({
         top: 0,
       }); */
 
       // articleRef.current.scrollTop = 0;
 
-      TweenMax.to(articleRef.current, {
+      TweenMax.to(articleRefs[major].current, {
         duration: 0.4,
         ease: Power1.easeIn,
         scrollTop: 0,
       });
     }
-  }, [articleRef, state]);
+  }, [
+    aboutMeArticleRef,
+    contactArticleRef,
+    projectsArticleRef,
+    blogArticleRef,
+    state,
+  ]);
 
   if (!major || major === "undefined") {
     return null;
@@ -441,7 +481,7 @@ const Story: FunctionComponent = () => {
               background-color: red;
               width: 2px;
             }
- */
+            */
             /* ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]] */
             /*      ------------------------------    */
           }
@@ -449,16 +489,16 @@ const Story: FunctionComponent = () => {
       `}
     >
       <div className="content">
-        {/* <h1>{major.toUpperCase()}</h1> */}
         <h1>{headingStory(major)}</h1>
         <PreviewStory />
-        <article ref={articleRef} className="story-article">
+        {/* <article ref={articleRef} className="story-article">
           {major === fsS.aboutme && <MyImage />}
           {storyMajorText(major, "")}
-          {/* <h4>prev: {MAJOR_FINITE_STATES_ARRAY[prevIndex]}</h4>
-          <h4>next: {MAJOR_FINITE_STATES_ARRAY[nextIndex]}</h4> */}
-        </article>
-        {/* <div className="placeh" /> */}
+        </article> */}
+        <AboutMe aboutMeArticleRef={aboutMeArticleRef} />
+        <Projects projectsArticleRef={projectsArticleRef} />
+        <Contact contactArticleRef={contactArticleRef} />
+        <Blog blogArticleRef={blogArticleRef} />
       </div>
       <UpDownButton />
     </section>

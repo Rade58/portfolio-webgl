@@ -17,8 +17,6 @@ import {
 
 import { isSSR } from "../../utils/isSSR";
 
-import {} from "../../content";
-
 import { fse as majorFsesEnum } from "../../sketch/middle_ground/major_states";
 
 interface PropsI {
@@ -84,6 +82,12 @@ const ArticleStory: FunctionComponent<PropsI> = ({
               margin-bottom: 8px;
             }
           }
+          /* mozda ne treba */
+          /* & > div {
+            &.content-holder {
+              margin: 0;
+            }
+          } */
         }
       `}
       ref={articleReference}
