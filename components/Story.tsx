@@ -59,7 +59,7 @@ const MAJOR_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
 const Story: FunctionComponent = () => {
   //
   const storyRef = createRef<HTMLElement>();
-  const articleRef = createRef<HTMLElement>();
+  // const articleRef = createRef<HTMLElement>();
 
   const aboutMeArticleRef = createRef<HTMLElement>();
   const contactArticleRef = createRef<HTMLElement>();
@@ -121,7 +121,17 @@ const Story: FunctionComponent = () => {
   //  ---------------- SUBSTATE ANIMATIONS ----------------
 
   const substatesCallback = useCallback(() => {
-    if (storyRef.current && articleRef.current) {
+    if (
+      storyRef.current &&
+      aboutMeArticleRef.current &&
+      contactArticleRef.current &&
+      projectsArticleRef.current &&
+      blogArticleRef.current &&
+      state &&
+      state.context &&
+      state.context.major &&
+      state.context.major !== "undefined"
+    ) {
       // console.log({ storyRef: storyRef.current });
       // debugger;
       if (state && state.value && state.value[fse.idle]) {
@@ -151,7 +161,7 @@ const Story: FunctionComponent = () => {
             });
 
             TweenMax.fromTo(
-              articleRef.current,
+              articleRefs[major].current,
               {
                 duration: 0.3,
                 ease: Quint.easeOut,
@@ -206,7 +216,7 @@ const Story: FunctionComponent = () => {
 
           // ---- article opacity (has no visual effect (no op))--------
           TweenMax.fromTo(
-            articleRef.current,
+            articleRefs[major].current,
             {
               duration: 0.3,
               ease: Quint.easeOut,
@@ -249,7 +259,7 @@ const Story: FunctionComponent = () => {
           );
           // --------------- atricle opacity (has no visual effect (no op))------------------
           TweenMax.fromTo(
-            articleRef.current,
+            articleRefs[major].current,
             {
               duration: 0.3,
               ease: Quint.easeOut,
@@ -278,7 +288,7 @@ const Story: FunctionComponent = () => {
           );
           // --------------- atricle opacity (has no visual effect (no op))------------------
           TweenMax.fromTo(
-            articleRef.current,
+            articleRefs[major].current,
             {
               duration: 0.3,
               ease: Quint.easeOut,
@@ -295,7 +305,6 @@ const Story: FunctionComponent = () => {
     }
   }, [
     storyRef,
-    articleRef,
     aboutMeArticleRef,
     contactArticleRef,
     projectsArticleRef,
@@ -318,20 +327,26 @@ const Story: FunctionComponent = () => {
   //  -------------------------------------------------
 
   useEffect(() => {
-    if (articleRef.current) {
+    if (articleRefs[major].current) {
       /* articleRef.current.scrollTo({
         top: 0,
       }); */
 
       // articleRef.current.scrollTop = 0;
 
-      TweenMax.to(articleRef.current, {
+      TweenMax.to(articleRefs[major].current, {
         duration: 0.4,
         ease: Power1.easeIn,
         scrollTop: 0,
       });
     }
-  }, [articleRef, state]);
+  }, [
+    aboutMeArticleRef,
+    contactArticleRef,
+    projectsArticleRef,
+    blogArticleRef,
+    state,
+  ]);
 
   if (!major || major === "undefined") {
     return null;
