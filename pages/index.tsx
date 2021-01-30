@@ -16,6 +16,8 @@ import LoadedAnimation from "../components/LoadedAnimations";
 import StartingModal from "../components/StartingModal";
 import Story from "../components/Story";
 
+import sanityClient from "../sanity/sanity_client";
+
 import { setup } from "../some_handlers";
 
 // import DOMPurify from "dompurify";
@@ -63,7 +65,7 @@ const Index: FunctionComponent<{
   );
 };
 
-export function getStaticProps() {
+export async function getStaticProps() {
   const htmlPath = path.resolve(process.cwd(), "./👽RadeDev🦉.html");
 
   // console.log({ htmlPath });
@@ -76,6 +78,14 @@ export function getStaticProps() {
   const imageContent = fs.readFileSync(imagePath);
   const imageString = imageContent.toString("base64");
   // console.log({ imageString });
+
+  // SANITY CLIENT
+  const sanityTestData = await sanityClient.fetch(/* groq */ `*[_type == 'post']{
+    title
+  }`);
+  //
+
+  console.log({ sanityTestData });
 
   return {
     props: {
