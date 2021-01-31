@@ -6,7 +6,7 @@ export default {
   fields: [
     { name: "title", title: "Title", type: "string" },
     { name: "previewText", title: "Preview Text", type: "string" },
-    { name: "bogati", title: "Bogati Tekst", type: "bogatiText" },
+    { name: "bogati", title: "Bogati Tekst", type: "bogatiTekst" },
     {
       name: "myImage",
       title: "My Image",
