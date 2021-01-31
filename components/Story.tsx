@@ -56,6 +56,10 @@ import {
   matchMediaMaxWidth,
 } from "../css_vars";
 
+// SERIALIZERS
+import serializers from "./sanity_serializers";
+//
+
 const MAJOR_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
 
 const Story: FunctionComponent<{ data: any }> = ({ data }) => {
@@ -505,6 +509,7 @@ const Story: FunctionComponent<{ data: any }> = ({ data }) => {
           blocks={data[0].bogati}
           dataset="production"
           projectId="4mpb3bwc"
+          serializers={serializers}
         />
       </div>
       <UpDownButton />
