@@ -18,6 +18,6 @@ POGLEDAJ OVAJ TUTORIJAL
 
 <https://hackernoon.com/5-cool-things-you-can-do-with-the-sanity-cli-39030e91d040>
 
-DA VIDIS STA MOZES
+DA VIDIS STA MOZES KUCAJ
 
 - `sanity documents`
