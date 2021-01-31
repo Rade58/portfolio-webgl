@@ -1,8 +1,8 @@
 export default {
   name: "devsvgs",
-  title: "Eeveloper Svgs",
+  title: "Developer Svgs",
   type: "document",
-  field: [
+  fields: [
     {
       name: "title",
       title: "Title",
