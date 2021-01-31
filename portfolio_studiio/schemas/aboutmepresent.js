@@ -24,7 +24,7 @@ export default {
       of: [
         {
           type: "reference",
-          to: { type: "devsvgs" },
+          to: { type: "devsvg" },
         },
       ],
     },
