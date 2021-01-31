@@ -25,6 +25,7 @@ export default {
         {
           type: "reference",
           to: { type: "devsvg" },
+          // weak: true,
         },
       ],
     },

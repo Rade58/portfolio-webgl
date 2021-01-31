@@ -86,10 +86,13 @@ export async function getStaticProps() {
   // title
   // }`);
 
+  // ZABORAVIO SI DA REFERENCIRAS U STUDIO-U SVE SVG-JEVE KA OREFERENCE U
+  // About Me
   const aboutMe = await sanityClient.fetch(/* groq */ `*[_type == "aboutmepresent"]{
     title,
     previewText,
-    devSvgs[] -> {title, devImage}
+    bogati,
+    devSvgs
 
   }`);
   //
