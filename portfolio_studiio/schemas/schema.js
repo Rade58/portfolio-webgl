@@ -11,6 +11,7 @@ import post from "./post";
 import author from "./author";
 
 // JA DODAO I REFERENCIRAO
+import bogatiTekst from "./bogatiTekst";
 import aboutmepresent from "./aboutmepresent";
 //
 
@@ -28,6 +29,7 @@ export default createSchema({
     category,
 
     // MOJE
+    bogatiTekst,
     aboutmepresent,
     //
 
