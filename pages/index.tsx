@@ -89,11 +89,7 @@ export async function getStaticProps() {
   const aboutMe = await sanityClient.fetch(/* groq */ `*[_type == "aboutmepresent"]{
     title,
     previewText,
-    "devSvgs": devsvg[]{
-      title -> devsvg.title,
-      devImage -> devsvg.devImage
-
-    }
+    devSvgs[] -> {title, devImage}
 
   }`);
   //
