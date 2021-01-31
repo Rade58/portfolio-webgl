@@ -33,8 +33,10 @@ setup();
 const Index: FunctionComponent<{
   htmlContentString: string;
   imageString: string;
-}> = ({ htmlContentString, imageString }) => {
+  aboutMe: any;
+}> = ({ htmlContentString, imageString, aboutMe }) => {
   // console.log({ htmlContentString });
+  console.log({ aboutMe });
 
   const {
     Provider: AppContextProvider,
@@ -59,7 +61,7 @@ const Index: FunctionComponent<{
         <StartingModal imageData={imageString} />
         <LoadedAnimation />
         <ControlAnim />
-        <Story />
+        <Story data={aboutMe} />
       </Fragment>
     </AppContextProvider>
   );
@@ -87,7 +89,7 @@ export async function getStaticProps() {
   const aboutMe = await sanityClient.fetch(/* groq */ `*[_type == "aboutmepresent"]{
     title,
     previewText,
-    body,
+    bogati,
     myImage
   }`);
   //
@@ -99,6 +101,7 @@ export async function getStaticProps() {
       // blah: 1,
       htmlContentString /*: htmlCleanContentString*/,
       imageString,
+      aboutMe,
     },
   };
 }

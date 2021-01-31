@@ -41,6 +41,8 @@ import Contact from "./story/Contact";
 import Blog from "./story/Blog";
 //
 
+import BlockContent from "@sanity/block-content-to-react";
+
 import { storyMajorText, headingStory } from "../content";
 
 import {
@@ -56,7 +58,7 @@ import {
 
 const MAJOR_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
 
-const Story: FunctionComponent = () => {
+const Story: FunctionComponent<{ data: any }> = ({ data }) => {
   //
   const storyRef = createRef<HTMLElement>();
   // const articleRef = createRef<HTMLElement>();
@@ -499,6 +501,11 @@ const Story: FunctionComponent = () => {
         <Projects projectsArticleRef={projectsArticleRef} />
         <Contact contactArticleRef={contactArticleRef} />
         <Blog blogArticleRef={blogArticleRef} />
+        <BlockContent
+          blocks={data[0].bogati}
+          dataset="production"
+          projectId="4mpb3bwc"
+        />
       </div>
       <UpDownButton />
     </section>
