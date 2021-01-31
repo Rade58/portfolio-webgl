@@ -89,7 +89,6 @@ export async function getStaticProps() {
     previewText,
     body,
     myImage
-
   }`);
   //
 
