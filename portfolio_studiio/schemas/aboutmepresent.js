@@ -16,5 +16,17 @@ export default {
         hotspot: true,
       },
     },
+    // ZANIMLJIVO: KREIRAO SAM FIELD ZA NIZ REFERENCI
+    {
+      name: "devSvgs",
+      title: "Developer Svgs",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: { type: "devsvgs" },
+        },
+      ],
+    },
   ],
 };

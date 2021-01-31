@@ -13,6 +13,7 @@ import author from "./author";
 // JA DODAO I REFERENCIRAO
 import bogatiTekst from "./bogatiTekst";
 import aboutmepresent from "./aboutmepresent";
+import devsvgs from "./devsvgs";
 //
 
 // Then we give our schema to the builder and provide the result to Sanity
@@ -31,6 +32,7 @@ export default createSchema({
     // MOJE
     bogatiTekst,
     aboutmepresent,
+    devsvgs,
     //
 
     // When added to this list, object types can be used as
