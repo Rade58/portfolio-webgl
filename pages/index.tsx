@@ -80,12 +80,20 @@ export async function getStaticProps() {
   // console.log({ imageString });
 
   // SANITY CLIENT
-  const sanityTestData = await sanityClient.fetch(/* groq */ `*[_type == 'post']{
-    title
+  // const sanityTestData = await sanityClient.fetch(/* groq */ `*[_type == 'post']{
+  // title
+  // }`);
+
+  const aboutMe = await sanityClient.fetch(/* groq */ `*[_type == "aboutmepresent"]{
+    title,
+    previewText,
+    body,
+    myImage
+
   }`);
   //
 
-  console.log({ sanityTestData });
+  console.log({ aboutMe });
 
   return {
     props: {
