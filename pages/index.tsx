@@ -92,7 +92,7 @@ export async function getStaticProps() {
   }`);
   //
 
-  console.log({ aboutMe });
+  console.log(JSON.stringify({ aboutMe }));
 
   return {
     props: {
