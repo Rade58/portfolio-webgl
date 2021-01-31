@@ -505,12 +505,14 @@ const Story: FunctionComponent<{ data: any }> = ({ data }) => {
         <Projects projectsArticleRef={projectsArticleRef} />
         <Contact contactArticleRef={contactArticleRef} />
         <Blog blogArticleRef={blogArticleRef} />
+        {/* KORISTIM SAMO DA BIH TESTIRAO */}
         <BlockContent
           blocks={data[0].bogati}
           dataset="production"
           projectId="4mpb3bwc"
           serializers={serializers}
         />
+        {/* ---------------------------- */}
       </div>
       <UpDownButton />
     </section>
