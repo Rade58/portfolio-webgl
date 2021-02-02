@@ -12,6 +12,8 @@ import { storyService, fse, fseS } from "../state_machines/story_machine";
 
 import { storyPreview } from "../content";
 
+import { fse as majorFse } from "../sketch/middle_ground/major_states";
+
 import {
   upDownArrowHeight as bottomMargin,
   previewHeight,
@@ -20,7 +22,16 @@ import {
   aboveMediaArticleMargin,
 } from "../css_vars";
 
-const PreviewStory: FunctionComponent<{ data: any }> = ({ data }) => {
+interface PropsStoryI {
+  data: {
+    [majorFse.aboutme]: any;
+    [majorFse.projects]: any;
+    [majorFse.contact]: any;
+    [majorFse.blog]: any;
+  };
+}
+
+const PreviewStory: FunctionComponent<PropsStoryI> = ({ data }) => {
   const [state, send] = useService(storyService);
 
   const tekstRef = createRef<HTMLDivElement>();
@@ -142,7 +153,9 @@ const PreviewStory: FunctionComponent<{ data: any }> = ({ data }) => {
         <div className="tekst" ref={tekstRef}>
           {/* {state.context.major !== "undefined" &&
             storyPreview(state.context.major)} */}
-          {state.context.major !== "undefined" && data.previewText}
+          {state.context.major !== "undefined" &&
+            data[state.context.major] &&
+            data[state.context.major].previewText}
           <span className="three-dots">...</span>
         </div>
       )}

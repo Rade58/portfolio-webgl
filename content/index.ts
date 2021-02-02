@@ -64,16 +64,16 @@ const blogPreview = "I wrote";
 
 export const storyPreview = (major: sketchFse): string => {
   if (major === sketchFse.aboutme) {
-    return aboutPreview;
+    return sketchFse.aboutme;
   }
   if (major === sketchFse.projects) {
-    return projectsPreview;
+    return sketchFse.projects;
   }
   if (major === sketchFse.contact) {
-    return contactPreview;
+    return sketchFse.contact;
   }
   if (major === sketchFse.blog) {
-    return blogPreview;
+    return sketchFse.blog;
   }
 };
 
