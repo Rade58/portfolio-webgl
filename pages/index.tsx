@@ -88,11 +88,22 @@ export async function getStaticProps() {
 
   // ZABORAVIO SI DA REFERENCIRAS U STUDIO-U SVE SVG-JEVE KA OREFERENCE U
   // About Me
+  // ZA SVG-JEVE MI NE TREBA SLIKA ODREDJENIH DIMENZIJA
+  // ZATO NISAM KORISTIO URL BUILDER, A I KAKO VIDIS PROVEZBAOO SAM
+  // 'KOMPLIKOVANIJI' QUERY (MISLIM NA devSvgs QUERY KOJI JE NIZ REFERENCI)
   const aboutMe = await sanityClient.fetch(/* groq */ `*[_type == "aboutmepresent"]{
     title,
     previewText,
     bogati,
-    devSvgs
+    devSvgs[] -> {
+      title,
+      devImage {
+        asset -> {
+          url
+        }
+      }
+
+    }
 
   }`);
   //
