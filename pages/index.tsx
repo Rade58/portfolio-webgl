@@ -113,6 +113,14 @@ export async function getStaticProps() {
 
   }`);
   //
+  // TOP LEVEL QUERY, KOJI TREBA DA UZME SVE MAJOR DOKUMANTE
+  const topLevel = await sanityClient.fetch(/* groq */ `*[_type == 'story']{
+    "aboutme": aboutmepresent[major == 'aboutme']{
+      title
+    }
+  }`);
+
+  console.log(JSON.stringify({ topLevel }));
 
   console.log(JSON.stringify({ aboutMe }));
 
