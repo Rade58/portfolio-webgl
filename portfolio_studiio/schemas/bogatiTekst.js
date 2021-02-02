@@ -33,7 +33,7 @@ export default {
         decorators: [
           { title: "Strong", value: "strong" },
           { title: "Emphasis", value: "em" },
-          // DODAJEM NOVE DOKORATORE, ZA SADA SAMO 1
+          // DODAJEM NOVE DOKORATORE
           { title: "EmoText", value: "emotext" },
           //
         ],
