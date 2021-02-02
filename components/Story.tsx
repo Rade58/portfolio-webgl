@@ -506,6 +506,7 @@ const Story: FunctionComponent<{ data: any }> = ({ data }) => {
         <Contact contactArticleRef={contactArticleRef} />
         <Blog blogArticleRef={blogArticleRef} />
         {/* KORISTIM SAMO DA BIH TESTIRAO */}
+        {/* KASNIJE CE DATA BITI BRANCHED OUT ZA SVAKU OD GORNJIH KOMPONENTI */}
         <BlockContent
           blocks={data[0].bogati}
           dataset="production"
