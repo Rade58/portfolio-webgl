@@ -114,7 +114,7 @@ export async function getStaticProps() {
   }`);
   //
   // TOP LEVEL QUERY, KOJI TREBA DA UZME SVE MAJOR DOKUMANTE
-  const topLevel = await sanityClient.fetch(/* groq */ `*[_type == 'story']{
+  const stories = await sanityClient.fetch(/* groq */ `*[_type == 'story']{
     // aboutme
     aboutme -> {
       title, previewText, bogati, major,
@@ -135,7 +135,7 @@ export async function getStaticProps() {
     // projects
   }`);
 
-  console.log(JSON.stringify({ topLevel }));
+  console.log(JSON.stringify({ stories }));
 
   console.log(JSON.stringify({ aboutMe }));
 
@@ -144,7 +144,7 @@ export async function getStaticProps() {
       // blah: 1,
       htmlContentString /*: htmlCleanContentString*/,
       imageString,
-      aboutMe: topLevel[0].aboutme,
+      aboutMe: stories[0].aboutme,
     },
   };
 }

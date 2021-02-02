@@ -1,7 +1,7 @@
 export default {
   name: "contactpresent",
   title: "Contact",
-  type: "documenet",
+  type: "document",
   fields: [
     { name: "major", title: "major", type: "string" },
     { name: "title", title: "Title", type: "string" },
