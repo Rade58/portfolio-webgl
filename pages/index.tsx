@@ -122,6 +122,14 @@ export async function getStaticProps() {
         asset -> {
           url
         }
+      },
+      devSvgs[] -> {
+        title,
+        devImage {
+          asset -> {
+            url
+          }
+        }
       }
     }
     // projects
@@ -129,14 +137,14 @@ export async function getStaticProps() {
 
   console.log(JSON.stringify({ topLevel }));
 
-  // console.log(JSON.stringify({ aboutMe }));
+  console.log(JSON.stringify({ aboutMe }));
 
   return {
     props: {
       // blah: 1,
       htmlContentString /*: htmlCleanContentString*/,
       imageString,
-      aboutMe,
+      aboutMe: topLevel[0].aboutme,
     },
   };
 }
