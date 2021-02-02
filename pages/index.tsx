@@ -155,6 +155,7 @@ export const getStaticProps: GetStaticProps = async () => {
     contact -> {
       title, previewText, bogati, major
     },
+    // blog
     blog -> {
       title, previewText, bogati, major,
     }
