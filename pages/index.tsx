@@ -95,6 +95,7 @@ export async function getStaticProps() {
     title,
     previewText,
     bogati,
+    aboutme,
     devSvgs[] -> {
       title,
       devImage {
