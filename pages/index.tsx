@@ -36,7 +36,7 @@ const Index: FunctionComponent<{
   aboutMe: any;
 }> = ({ htmlContentString, imageString, aboutMe }) => {
   // console.log({ htmlContentString });
-  console.log({ aboutMe });
+  // console.log({ aboutMe });
 
   const {
     Provider: AppContextProvider,
@@ -115,9 +115,16 @@ export async function getStaticProps() {
   //
   // TOP LEVEL QUERY, KOJI TREBA DA UZME SVE MAJOR DOKUMANTE
   const topLevel = await sanityClient.fetch(/* groq */ `*[_type == 'story']{
+    // aboutme
     aboutme -> {
-      title
+      title, previewText, bogati, major,
+      myImage {
+        asset -> {
+          url
+        }
+      }
     }
+    // projects
   }`);
 
   console.log(JSON.stringify({ topLevel }));
