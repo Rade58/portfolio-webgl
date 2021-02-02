@@ -60,9 +60,18 @@ import {
 import serializers from "./sanity_serializers";
 //
 
+interface PropsStoryI {
+  data: {
+    [fsS.aboutme]: any;
+    [fsS.projects]: any;
+    [fsS.contact]: any;
+    [fsS.blog]: any;
+  };
+}
+
 const MAJOR_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
 
-const Story: FunctionComponent<{ data: any }> = ({ data }) => {
+const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
   //
   const storyRef = createRef<HTMLElement>();
   // const articleRef = createRef<HTMLElement>();
@@ -502,11 +511,20 @@ const Story: FunctionComponent<{ data: any }> = ({ data }) => {
           {storyMajorText(major, "")}
         </article> */}
         {/* ---------------------------------------------- */}
-        <AboutMe data={data} aboutMeArticleRef={aboutMeArticleRef} />
+        <AboutMe
+          data={data[fsS.aboutme]}
+          aboutMeArticleRef={aboutMeArticleRef}
+        />
         {/* ---------------------------------------------- */}
-        <Projects projectsArticleRef={projectsArticleRef} />
-        <Contact contactArticleRef={contactArticleRef} />
-        <Blog blogArticleRef={blogArticleRef} />
+        <Projects
+          data={data[fsS.projects]}
+          projectsArticleRef={projectsArticleRef}
+        />
+        <Contact
+          data={data[fsS.contact]}
+          contactArticleRef={contactArticleRef}
+        />
+        <Blog data={data[fsS.blog]} blogArticleRef={blogArticleRef} />
         {/* ---------------------------------------------- */}
         {/* KORISTIM SAMO DA BIH TESTIRAO */}
         {/* KASNIJE CE DATA BITI BRANCHED OUT ZA SVAKU OD GORNJIH KOMPONENTI */}

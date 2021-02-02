@@ -30,10 +30,21 @@ import animationMachineObserver, {
   majorStateHolder,
 } from "../mutation_observer"; */
 
+import { fse as majorFse } from "../sketch/middle_ground/major_states";
+
 setup();
 
+interface PropsStoryI {
+  data: {
+    [majorFse.aboutme]: any;
+    [majorFse.projects]: any;
+    [majorFse.contact]: any;
+    [majorFse.blog]: any;
+  };
+}
+
 interface PagePropsI {
-  data: any;
+  data: PropsStoryI;
   htmlContentString: string;
   imageString: string;
 }
