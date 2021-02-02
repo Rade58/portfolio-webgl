@@ -40,6 +40,8 @@ import Projects from "./story/Projects";
 import Contact from "./story/Contact";
 import Blog from "./story/Blog";
 //
+import HeadingStory from "./HeadingStory";
+//
 
 import BlockContent from "@sanity/block-content-to-react";
 
@@ -501,7 +503,8 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
       `}
     >
       <div className="content">
-        <h1>{headingStory(major)}</h1>
+        {/* <h1>{headingStory(major)}</h1> */}
+        <HeadingStory data={data} currentMajor={major} />
         <PreviewStory data={data} />
         {/* <article ref={articleRef} className="story-article">
           {major === fsS.aboutme && <MyImage />}
