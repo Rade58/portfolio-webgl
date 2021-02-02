@@ -6,6 +6,8 @@ import { FunctionComponent, RefObject } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
+import BlockContent from "@sanity/block-content-to-react";
+
 import { useService } from "@xstate/react";
 
 import { storyService } from "../../state_machines/story_machine";
@@ -17,23 +19,32 @@ import { fse as majorFsesEnum } from "../../sketch/middle_ground/major_states";
 
 import { storyMajorText } from "../../content";
 
+import serializers from "../sanity_serializers";
+
 interface PropsI {
   aboutMeArticleRef: RefObject<HTMLElement>;
+  data: any;
 }
 
-const AboutMe: FunctionComponent<PropsI> = ({ aboutMeArticleRef }) => {
+const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
   const [state, send] = useService(storyService);
 
   const { major } = state.context;
-
+  // debugger;
   return (
     <ArticleStory
       articleReference={aboutMeArticleRef}
       majorName={majorFsesEnum.aboutme}
     >
+      <BlockContent
+        blocks={data.bogati}
+        dataset="production"
+        projectId="4mpb3bwc"
+        serializers={serializers}
+      />
       looking like a 100$
-      <MyImage />
-      {major !== "undefined" ? storyMajorText(major, "") : ""}
+      <MyImage url={data.myImage.asset.url} />
+      {/* {major !== "undefined" ? storyMajorText(major, "") : ""} */}
     </ArticleStory>
   );
 };

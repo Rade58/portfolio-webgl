@@ -20,7 +20,11 @@ import {
   aboveMediaArticleMargin,
 } from "../css_vars";
 
-const PreviewStory: FunctionComponent = () => {
+const PreviewStory: FunctionComponent = (
+  {
+    // majorFromSanity,
+  }
+) => {
   const [state, send] = useService(storyService);
 
   const tekstRef = createRef<HTMLDivElement>();

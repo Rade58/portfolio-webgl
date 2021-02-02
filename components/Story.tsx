@@ -501,18 +501,18 @@ const Story: FunctionComponent<{ data: any }> = ({ data }) => {
           {major === fsS.aboutme && <MyImage />}
           {storyMajorText(major, "")}
         </article> */}
-        <AboutMe aboutMeArticleRef={aboutMeArticleRef} />
+        <AboutMe data={data[0]} aboutMeArticleRef={aboutMeArticleRef} />
         <Projects projectsArticleRef={projectsArticleRef} />
         <Contact contactArticleRef={contactArticleRef} />
         <Blog blogArticleRef={blogArticleRef} />
         {/* KORISTIM SAMO DA BIH TESTIRAO */}
         {/* KASNIJE CE DATA BITI BRANCHED OUT ZA SVAKU OD GORNJIH KOMPONENTI */}
-        <BlockContent
+        {/* <BlockContent
           blocks={data[0].bogati}
           dataset="production"
           projectId="4mpb3bwc"
           serializers={serializers}
-        />
+        /> */}
         {/* --------------------------------------------- */}
         {/* --------------------------------------------- */}
       </div>
