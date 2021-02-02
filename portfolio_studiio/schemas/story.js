@@ -10,6 +10,23 @@ export default {
       type: "reference",
       to: { type: "aboutmepresent" },
     },
-    // nodacu i ostale reference
+    {
+      name: "contact",
+      title: "Contact",
+      type: "reference",
+      to: { type: "contactpresent" },
+    },
+    {
+      name: "projects",
+      title: "Projects",
+      type: "reference",
+      to: { type: "projectspresent" },
+    },
+    {
+      name: "blog",
+      title: "Blog",
+      type: "reference",
+      to: { type: "blogreference" },
+    },
   ],
 };
