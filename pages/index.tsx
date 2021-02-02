@@ -2,6 +2,8 @@
 /* eslint jsx-a11y/anchor-is-valid: 1 */
 import { FunctionComponent, Fragment, useReducer } from "react";
 
+import { GetStaticProps } from "next";
+
 /* import {
   MAJOR_FINITE_STATES_ARRAY,
   fse,
@@ -30,11 +32,17 @@ import animationMachineObserver, {
 
 setup();
 
-const Index: FunctionComponent<{
+interface PagePropsI {
+  data: any;
   htmlContentString: string;
   imageString: string;
-  aboutMe: any;
-}> = ({ htmlContentString, imageString, aboutMe }) => {
+}
+
+const Index: FunctionComponent<PagePropsI> = ({
+  htmlContentString,
+  imageString,
+  data,
+}) => {
   // console.log({ htmlContentString });
   // console.log({ aboutMe });
 
@@ -61,13 +69,13 @@ const Index: FunctionComponent<{
         <StartingModal imageData={imageString} />
         <LoadedAnimation />
         <ControlAnim />
-        <Story data={aboutMe} />
+        <Story data={data} />
       </Fragment>
     </AppContextProvider>
   );
 };
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps = async () => {
   const htmlPath = path.resolve(process.cwd(), "./👽RadeDev🦉.html");
 
   // console.log({ htmlPath });
@@ -157,6 +165,6 @@ export async function getStaticProps() {
       aboutMe: stories[0].aboutme,
     },
   };
-}
+};
 
 export default Index;
