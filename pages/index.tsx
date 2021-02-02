@@ -131,8 +131,18 @@ export async function getStaticProps() {
           }
         }
       }
-    }
+    },
     // projects
+    projects -> {
+      title, previewText, bogati, major
+    },
+    // contact
+    contact -> {
+      title, previewText, bogati, major
+    },
+    blog -> {
+      title, previewText, bogati, major,
+    }
   }`);
 
   console.log(JSON.stringify({ stories }));
