@@ -60,13 +60,10 @@ import {
 import serializers from "./sanity_serializers";
 //
 
+import { SanityDataI } from "../sanity/data_types";
+
 interface PropsStoryI {
-  data: {
-    [fsS.aboutme]: any;
-    [fsS.projects]: any;
-    [fsS.contact]: any;
-    [fsS.blog]: any;
-  };
+  data: SanityDataI;
 }
 
 const MAJOR_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;

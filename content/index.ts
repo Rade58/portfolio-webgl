@@ -62,7 +62,7 @@ const blogPreview = "I wrote";
 
 // ----
 
-export const storyPreview = (major: sketchFse): string => {
+export const currentMajor = (major: sketchFse): string => {
   if (major === sketchFse.aboutme) {
     return sketchFse.aboutme;
   }

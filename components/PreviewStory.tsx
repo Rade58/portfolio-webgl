@@ -10,7 +10,7 @@ import { useService } from "@xstate/react";
 
 import { storyService, fse, fseS } from "../state_machines/story_machine";
 
-import { storyPreview } from "../content";
+import { currentMajor } from "../content";
 
 import { fse as majorFse } from "../sketch/middle_ground/major_states";
 
@@ -22,13 +22,10 @@ import {
   aboveMediaArticleMargin,
 } from "../css_vars";
 
+import { SanityDataI } from "../sanity/data_types";
+
 interface PropsStoryI {
-  data: {
-    [majorFse.aboutme]: any;
-    [majorFse.projects]: any;
-    [majorFse.contact]: any;
-    [majorFse.blog]: any;
-  };
+  data: SanityDataI;
 }
 
 const PreviewStory: FunctionComponent<PropsStoryI> = ({ data }) => {
