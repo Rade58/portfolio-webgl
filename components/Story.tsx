@@ -496,7 +496,7 @@ const Story: FunctionComponent<{ data: any }> = ({ data }) => {
     >
       <div className="content">
         <h1>{headingStory(major)}</h1>
-        <PreviewStory />
+        <PreviewStory data={data[0]} />
         {/* <article ref={articleRef} className="story-article">
           {major === fsS.aboutme && <MyImage />}
           {storyMajorText(major, "")}

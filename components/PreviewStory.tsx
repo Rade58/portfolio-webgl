@@ -20,11 +20,7 @@ import {
   aboveMediaArticleMargin,
 } from "../css_vars";
 
-const PreviewStory: FunctionComponent = (
-  {
-    // majorFromSanity,
-  }
-) => {
+const PreviewStory: FunctionComponent<{ data: any }> = ({ data }) => {
   const [state, send] = useService(storyService);
 
   const tekstRef = createRef<HTMLDivElement>();
@@ -144,8 +140,9 @@ const PreviewStory: FunctionComponent = (
     >
       {state && state.context && state.context.mediaBellow && state.value && (
         <div className="tekst" ref={tekstRef}>
-          {state.context.major !== "undefined" &&
-            storyPreview(state.context.major)}
+          {/* {state.context.major !== "undefined" &&
+            storyPreview(state.context.major)} */}
+          {state.context.major !== "undefined" && data.previewText}
           <span className="three-dots">...</span>
         </div>
       )}
