@@ -13,6 +13,9 @@ import author from "./author";
 // JA DODAO I REFERENCIRAO
 import bogatiTekst from "./bogatiTekst";
 import aboutmepresent from "./aboutmepresent";
+import contactpresent from "./contactpresent";
+import projectpresent from "./projectspresent";
+import blogpresent from "./blogpresent";
 import devsvg from "./devsvg";
 import story from "./story";
 //
@@ -33,6 +36,9 @@ export default createSchema({
     // MOJE
     bogatiTekst,
     aboutmepresent,
+    contactpresent,
+    projectpresent,
+    blogpresent,
     devsvg,
     story,
     //
