@@ -34,17 +34,13 @@ import { fse as majorFse } from "../sketch/middle_ground/major_states";
 
 setup();
 
-interface PropsStoryI {
+interface PagePropsI {
   data: {
     [majorFse.aboutme]: any;
     [majorFse.projects]: any;
     [majorFse.contact]: any;
     [majorFse.blog]: any;
   };
-}
-
-interface PagePropsI {
-  data: PropsStoryI;
   htmlContentString: string;
   imageString: string;
 }
