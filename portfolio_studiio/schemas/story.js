@@ -10,5 +10,6 @@ export default {
       type: "reference",
       to: { type: "aboutmepresent" },
     },
+    // nodacu i ostale reference
   ],
 };
