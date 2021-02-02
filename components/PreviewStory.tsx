@@ -44,11 +44,13 @@ const PreviewStory: FunctionComponent<PropsStoryI> = ({ data }) => {
           {
             delay: 0.4,
             opacity: 0,
+            height: 0,
             duration: 0.08,
             ease: Power3.easeIn,
           },
           {
             opacity: 1,
+            height: "28px",
             delay: 0.4,
           }
         );
@@ -76,14 +78,18 @@ const PreviewStory: FunctionComponent<PropsStoryI> = ({ data }) => {
           tekstRef.current,
           {
             opacity: 1,
-
+            height: "28px",
+            top: 0,
             duration: 0.08,
             ease: Power3.easeIn,
           },
           {
             opacity: 0,
+            top: 28,
+            height: "0px",
           }
         );
+
         // ----------------------------------------------
         TweenMax.fromTo(
           previewRef.current,
@@ -137,8 +143,11 @@ const PreviewStory: FunctionComponent<PropsStoryI> = ({ data }) => {
         box-sizing: border-box;
 
         border: pink solid 0px;
+        position: relative;
 
         & .tekst {
+          height: 28px;
+
           & .three-dots {
             color: crimson;
             font-size: 1.2rem;
