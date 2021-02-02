@@ -106,27 +106,27 @@ export const getStaticProps: GetStaticProps = async () => {
   // ZA SVG-JEVE MI NE TREBA SLIKA ODREDJENIH DIMENZIJA
   // ZATO NISAM KORISTIO URL BUILDER, A I KAKO VIDIS PROVEZBAOO SAM
   // 'KOMPLIKOVANIJI' QUERY (MISLIM NA devSvgs QUERY KOJI JE NIZ REFERENCI)
-  const aboutMe = await sanityClient.fetch(/* groq */ `*[_type == "aboutmepresent"]{
-    title,
-    previewText,
-    bogati,
-    major,
-    myImage {
-      asset -> {
-        url
-      }
-    },
-    devSvgs[] -> {
-      title,
-      devImage {
-        asset -> {
-          url
-        }
-      }
-
-    }
-
-  }`);
+  // const aboutMe = await sanityClient.fetch(/* groq */ `*[_type == "aboutmepresent"]{
+  // title,
+  // previewText,
+  // bogati,
+  // major,
+  // myImage {
+  // asset -> {
+  // url
+  // }
+  // },
+  // devSvgs[] -> {
+  // title,
+  // devImage {
+  // asset -> {
+  // url
+  // }
+  // }
+  //
+  // }
+  //
+  // }`);
   //
   // TOP LEVEL QUERY, KOJI TREBA DA UZME SVE MAJOR DOKUMANTE
   const stories = await sanityClient.fetch(/* groq */ `*[_type == 'story']{
@@ -162,7 +162,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   console.log(JSON.stringify({ stories }));
 
-  console.log(JSON.stringify({ aboutMe }));
+  // console.log(JSON.stringify({ aboutMe }));
 
   return {
     props: {
