@@ -41,7 +41,7 @@ export const centralMajor = (major: sketchFse): string => {
 
 export const headingStory = (major: sketchFse): string => {
   if (major === sketchFse.aboutme) {
-    return "About";
+    return "Hey I'm Rade";
   }
   if (major === sketchFse.projects) {
     return "Work";
