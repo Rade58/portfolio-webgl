@@ -51,7 +51,7 @@ const Index: FunctionComponent<PagePropsI> = ({
   data,
 }) => {
   // console.log({ htmlContentString });
-  // console.log({ aboutMe });
+  console.log({ data });
 
   const {
     Provider: AppContextProvider,
@@ -169,7 +169,7 @@ export const getStaticProps: GetStaticProps = async () => {
       // blah: 1,
       htmlContentString /*: htmlCleanContentString*/,
       imageString,
-      aboutMe: stories[0].aboutme,
+      data: stories[0],
     },
   };
 };
