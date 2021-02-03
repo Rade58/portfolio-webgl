@@ -38,7 +38,7 @@
     "@emotion/react": "^11.1.1",
     "@emotion/styled": "^11.0.0",
     "@sanity/block-content-to-react": "^2.0.7",
-    "@sanity/client": "^2.1.4",
+    "@sanity/client": "^2.2.6",
     "@sanity/image-url": "^0.140.19",
     "@theme-ui/presets": "^0.3.4",
     "@theme-ui/typography": "^0.3.4",
