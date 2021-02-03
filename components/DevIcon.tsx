@@ -12,7 +12,7 @@ interface DeviconPropI {
   title: string;
   devImage: string;
   wikiUrl?: string;
-  textColor: string;
+  textColor?: string;
   additionalBracketText?: string;
 }
 
@@ -24,16 +24,25 @@ const DevIcon: FunctionComponent<DeviconPropI> = ({
   additionalBracketText,
 }) => {
   return (
-    <span
+    <div
       className={`devicon-${title}`}
       css={css`
+        display: flex;
+        border: crimson solid 1px;
+        justify-content: flex-start;
+        align-self: center;
+        flex-wrap: wrap;
+        width: fit-content;
+
         & > span.devicon-image-container {
           width: 30px;
           display: inline-block;
+          margin-right: 8px;
         }
 
         & .devicon-title {
-          color: ${textColor};
+          color: ${textColor || "#fff"};
+          margin-right: 8px;
         }
       `}
     >
@@ -66,7 +75,7 @@ const DevIcon: FunctionComponent<DeviconPropI> = ({
       {additionalBracketText && (
         <span className="additioanl-text">({additionalBracketText})</span>
       )}
-    </span>
+    </div>
   );
 };
 

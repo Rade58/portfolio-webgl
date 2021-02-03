@@ -45,10 +45,11 @@ const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
       />
       {/* PRIMER KAKO BI PREDSTAVIO IKONU ZA TYPESCRIPT */}
       <DevIcon
-        title={data.devSvgs[0].devImage.title}
+        title={data.devSvgs[0].title}
         devImage={data.devSvgs[0].devImage.asset.url}
         wikiUrl="https://en.wikipedia.org/wiki/TypeScript"
-        textColor="#3178c6"
+        // textColor="#3178c6"
+        additionalBracketText="open source language which builds on JavaScript"
       />
       {/* --------------------------------------------- */}
       looking like a 100$
