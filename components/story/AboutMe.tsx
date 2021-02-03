@@ -14,6 +14,7 @@ import { storyService } from "../../state_machines/story_machine";
 
 import ArticleStory from "./ArticleStory";
 import MyImage from "../MyImage";
+import DevIcon from "../DevIcon";
 
 import { fse as majorFsesEnum } from "../../sketch/middle_ground/major_states";
 
@@ -42,6 +43,7 @@ const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
         projectId="4mpb3bwc"
         serializers={serializers}
       />
+      {/* <DevIcon  /> */}
       looking like a 100$
       <MyImage url={data.myImage.asset.url} />
       {/* {major !== "undefined" ? storyMajorText(major, "") : ""} */}
