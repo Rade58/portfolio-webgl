@@ -67,6 +67,13 @@ const ArticleStory: FunctionComponent<PropsI> = ({
             &.presented {
               visibility: visible;
               height: 100%;
+            }
+
+            & > p:first-of-type {
+              margin-top: 0;
+            }
+
+            & > div:first-of-type {
               & > p:first-of-type {
                 margin-top: 0;
               }
