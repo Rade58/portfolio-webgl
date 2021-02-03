@@ -42,7 +42,7 @@ const PreviewStory: FunctionComponent<PropsStoryI> = ({ data }) => {
         TweenMax.fromTo(
           tekstRef.current,
           {
-            delay: 0.4,
+            // delay: 0.4,
             opacity: 0,
             height: 0,
             duration: 0.08,
@@ -51,14 +51,14 @@ const PreviewStory: FunctionComponent<PropsStoryI> = ({ data }) => {
           {
             opacity: 1,
             height: "28px",
-            delay: 0.4,
+            // delay: 0.4,
           }
         );
         // ----------------------------------------------
         TweenMax.fromTo(
           previewRef.current,
           {
-            delay: 0.4,
+            // delay: 0.4,
 
             height: 0,
             marginBottom: 0,
@@ -68,7 +68,7 @@ const PreviewStory: FunctionComponent<PropsStoryI> = ({ data }) => {
           {
             height: previewHeight,
             marginBottom: bottomMargin,
-            delay: 0.4,
+            // delay: 0.4,
           }
         );
       }
