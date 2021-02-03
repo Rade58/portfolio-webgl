@@ -48,6 +48,7 @@ const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
         title={data.devSvgs[0].devImage.title}
         devImage={data.devSvgs[0].devImage.asset.url}
         wikiUrl="https://en.wikipedia.org/wiki/TypeScript"
+        textColor="#3178c6"
       />
       {/* --------------------------------------------- */}
       looking like a 100$
