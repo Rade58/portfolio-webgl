@@ -9,5 +9,6 @@ export default {
       type: "string",
     },
     { name: "devImage", title: "Developer Image", type: "image" },
+    { name: "wikiUrl", title: "Official website", type: "string" },
   ],
 };
