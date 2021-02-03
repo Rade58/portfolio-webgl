@@ -23,12 +23,15 @@ const DevIcon: FunctionComponent<DeviconPropI> = ({
     <span
       className={`devicon-${title}`}
       css={css`
-        width: 30px;
+        & > span.devicon-image-container {
+          width: 30px;
+          display: inline-block;
+        }
       `}
     >
       <span className="devicon-image-container">
         {wikiUrl ? (
-          <a href={wikiUrl}>
+          <a href={wikiUrl} target="_blank">
             <Image
               width="auto"
               height="auto"

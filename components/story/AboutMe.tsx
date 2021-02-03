@@ -43,7 +43,13 @@ const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
         projectId="4mpb3bwc"
         serializers={serializers}
       />
-      {/* <DevIcon  /> */}
+      {/* PRIMER KAKO BI PREDSTAVIO IKONU ZA TYPESCRIPT */}
+      <DevIcon
+        title={data.devSvgs[0].devImage.title}
+        devImage={data.devSvgs[0].devImage.asset.url}
+        wikiUrl="https://en.wikipedia.org/wiki/TypeScript"
+      />
+      {/* --------------------------------------------- */}
       looking like a 100$
       <MyImage url={data.myImage.asset.url} />
       {/* {major !== "undefined" ? storyMajorText(major, "") : ""} */}
