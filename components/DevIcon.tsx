@@ -26,9 +26,16 @@ interface DeviconPropsWithEmojiI {
   additionalBracketText?: string;
 }
 
-type deviconProps = DeviconPropsWithEmojiI | DeviconPropwithSvgI;
+type deviconProps = DeviconPropsWithEmojiI & DeviconPropwithSvgI;
 
-const DevIcon: FunctionComponent<deviconProps> = ({}) => {
+const DevIcon: FunctionComponent<deviconProps> = ({
+  additionalBracketText,
+  devImage,
+  emoji,
+  textDecorColor,
+  title,
+  wikiUrl,
+}) => {
   return (
     <div
       className={`devicon-${title}`}
