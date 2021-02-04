@@ -38,6 +38,12 @@ const DevIcon: FunctionComponent<DeviconPropI> = ({
           width: 30px;
           display: inline-block;
           margin-right: 8px;
+
+          text-decoration: none;
+        }
+
+        & > .additional-text {
+          border: pink solid 1px;
         }
 
         & .devicon-title {
@@ -48,7 +54,7 @@ const DevIcon: FunctionComponent<DeviconPropI> = ({
     >
       <span className="devicon-image-container">
         {wikiUrl ? (
-          <a href={wikiUrl} target="_blank">
+          <a href={wikiUrl} target="_blank" rel="noreferrer">
             <Image
               width="auto"
               height="auto"
@@ -73,7 +79,7 @@ const DevIcon: FunctionComponent<DeviconPropI> = ({
         <span className="devicon-title">{title}</span>
       )}
       {additionalBracketText && (
-        <span className="additioanl-text">({additionalBracketText})</span>
+        <span className="additional-text">({additionalBracketText})</span>
       )}
     </div>
   );
