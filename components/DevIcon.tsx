@@ -8,25 +8,29 @@ import styled from "@emotion/styled";
 
 import Image from "next/image";
 
-interface DeviconPropwithSvgI {
+interface BaseDeviconPropsI {
+  title: string;
+  textDecorColor: string;
+  wikiUrl: string;
+  additionalBracketText?: string;
+}
+
+interface DeviconPropsSvgI extends BaseDeviconPropsI {
   devImage: string;
-  //
-  title: string;
-  textDecorColor: string;
-  wikiUrl: string;
-  additionalBracketText?: string;
 }
 
-interface DeviconPropsWithEmojiI {
+interface DeviconPropsEmojiI extends BaseDeviconPropsI {
   emoji: string;
-  //
-  title: string;
-  textDecorColor: string;
-  wikiUrl: string;
-  additionalBracketText?: string;
 }
 
-type deviconProps = DeviconPropsWithEmojiI & DeviconPropwithSvgI;
+type deviconProps = DeviconPropsEmojiI & DeviconPropsSvgI;
+
+/* const devicon: deviconProps = {
+  emoji: "",
+  textDecorColor: "",
+  title: "",
+  wikiUrl: "",
+}; */
 
 const DevIcon: FunctionComponent<deviconProps> = ({
   additionalBracketText,
