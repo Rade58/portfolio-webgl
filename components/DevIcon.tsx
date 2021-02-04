@@ -42,13 +42,13 @@ const DevIcon: FunctionComponent<DeviconPropI> = ({
           text-decoration: none;
         }
 
-        & > .additional-text {
+        & > .text-content {
           border: pink solid 1px;
+          margin-right: 8px;
         }
 
         & .devicon-title {
           color: ${textColor || "#fff"};
-          margin-right: 8px;
         }
       `}
     >
@@ -71,16 +71,18 @@ const DevIcon: FunctionComponent<DeviconPropI> = ({
           />
         )}
       </span>
-      {wikiUrl ? (
-        <a href={wikiUrl}>
+      <span className="text-content">
+        {wikiUrl ? (
+          <a href={wikiUrl}>
+            <span className="devicon-title">{title}</span>
+          </a>
+        ) : (
           <span className="devicon-title">{title}</span>
-        </a>
-      ) : (
-        <span className="devicon-title">{title}</span>
-      )}
-      {additionalBracketText && (
-        <span className="additional-text">({additionalBracketText})</span>
-      )}
+        )}
+        {additionalBracketText && (
+          <span className="additional-text">({additionalBracketText})</span>
+        )}
+      </span>
     </div>
   );
 };
