@@ -10,5 +10,6 @@ export default {
     },
     { name: "devImage", title: "Developer Image", type: "image" },
     { name: "wikiUrl", title: "Official website", type: "string" },
+    { name: "textDecorColor", title: "Text Decoration Color", type: "string" },
   ],
 };

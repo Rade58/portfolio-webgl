@@ -11,8 +11,8 @@ import Image from "next/image";
 interface DeviconPropI {
   title: string;
   devImage: string;
-  wikiUrl?: string;
-  textColor?: string;
+  textDecorColor: string;
+  wikiUrl: string;
   additionalBracketText?: string;
 }
 
@@ -20,7 +20,7 @@ const DevIcon: FunctionComponent<DeviconPropI> = ({
   title,
   devImage,
   wikiUrl,
-  textColor,
+  textDecorColor,
   additionalBracketText,
 }) => {
   return (
@@ -28,33 +28,43 @@ const DevIcon: FunctionComponent<DeviconPropI> = ({
       className={`devicon-${title}`}
       css={css`
         display: flex;
-        border: crimson solid 1px;
+        border: crimson solid 0px;
         justify-content: flex-start;
         /* flex-wrap: wrap; */
         width: fit-content;
 
         & > span.devicon-image-container {
           display: block;
-          margin-right: 8px;
+          margin-right: 12px;
           flex-shrink: 0;
           flex-grow: 0;
+          margin-left: 8px;
 
           text-decoration: none;
-          border: crimson solid 1px;
+          border: crimson solid 0px;
           width: 30px;
           & .image-wrapper {
-            border: crimson solid 1px;
+            border: crimson solid 0px;
             margin-top: 4px;
             margin-bottom: 4px;
           }
         }
 
         & > .text-content {
-          border: pink solid 1px;
-        }
+          border: pink solid 0px;
 
-        & .devicon-title {
-          color: ${textColor || "#fff"};
+          & > a {
+            text-decoration-color: #fff;
+            color: inherit;
+            text-decoration-line: underline;
+            text-decoration-style: dashed;
+
+            &:hover {
+              text-decoration-style: solid;
+              text-decoration-color: ${textDecorColor};
+              text-decoration-thickness: 2.2px;
+            }
+          }
         }
       `}
     >
@@ -88,7 +98,7 @@ const DevIcon: FunctionComponent<DeviconPropI> = ({
           <span className="devicon-title">{title}</span>
         )}
         {additionalBracketText && (
-          <span className="additional-text">({additionalBracketText})</span>
+          <span className="additional-text"> ({additionalBracketText})</span>
         )}
       </span>
     </div>
