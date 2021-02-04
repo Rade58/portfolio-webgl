@@ -49,6 +49,7 @@ const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
         devImage={data.devSvgs[0].devImage.asset.url}
         wikiUrl="https://en.wikipedia.org/wiki/TypeScript"
         textDecorColor="#3178c6"
+        emoji={""}
         additionalBracketText="open source language which builds on JavaScript"
       />
       {/* --------------------------------------------- */}

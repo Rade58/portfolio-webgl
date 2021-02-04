@@ -2,29 +2,33 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { FunctionComponent } from "react";
+import { FC as FunctionComponent } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
 import Image from "next/image";
 
-interface DeviconPropI {
-  title: string;
+interface DeviconPropwithSvgI {
   devImage: string;
-  emoji?: string;
+  //
+  title: string;
   textDecorColor: string;
   wikiUrl: string;
   additionalBracketText?: string;
 }
 
-const DevIcon: FunctionComponent<DeviconPropI> = ({
-  emoji,
-  title,
-  devImage,
-  wikiUrl,
-  textDecorColor,
-  additionalBracketText,
-}) => {
+interface DeviconPropsWithEmojiI {
+  emoji: string;
+  //
+  title: string;
+  textDecorColor: string;
+  wikiUrl: string;
+  additionalBracketText?: string;
+}
+
+type deviconProps = DeviconPropsWithEmojiI | DeviconPropwithSvgI;
+
+const DevIcon: FunctionComponent<deviconProps> = ({}) => {
   return (
     <div
       className={`devicon-${title}`}
