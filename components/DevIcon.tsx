@@ -30,21 +30,27 @@ const DevIcon: FunctionComponent<DeviconPropI> = ({
         display: flex;
         border: crimson solid 1px;
         justify-content: flex-start;
-        align-self: center;
-        flex-wrap: wrap;
+        /* flex-wrap: wrap; */
         width: fit-content;
 
         & > span.devicon-image-container {
-          width: 30px;
-          display: inline-block;
+          display: block;
           margin-right: 8px;
+          flex-shrink: 0;
+          flex-grow: 0;
 
           text-decoration: none;
+          border: crimson solid 1px;
+          width: 30px;
+          & .image-wrapper {
+            border: crimson solid 1px;
+            margin-top: 4px;
+            margin-bottom: 4px;
+          }
         }
 
         & > .text-content {
           border: pink solid 1px;
-          margin-right: 8px;
         }
 
         & .devicon-title {
@@ -54,14 +60,16 @@ const DevIcon: FunctionComponent<DeviconPropI> = ({
     >
       <span className="devicon-image-container">
         {wikiUrl ? (
-          <a href={wikiUrl} target="_blank" rel="noreferrer">
-            <Image
-              width="auto"
-              height="auto"
-              layout="responsive"
-              src={devImage}
-            />
-          </a>
+          <div className="image-wrapper">
+            <a href={wikiUrl} target="_blank" rel="noreferrer">
+              <Image
+                width="auto"
+                height="auto"
+                layout="responsive"
+                src={devImage}
+              />
+            </a>
+          </div>
         ) : (
           <Image
             width="auto"
