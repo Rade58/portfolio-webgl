@@ -11,12 +11,14 @@ import Image from "next/image";
 interface DeviconPropI {
   title: string;
   devImage: string;
+  emoji?: string;
   textDecorColor: string;
   wikiUrl: string;
   additionalBracketText?: string;
 }
 
 const DevIcon: FunctionComponent<DeviconPropI> = ({
+  emoji,
   title,
   devImage,
   wikiUrl,
