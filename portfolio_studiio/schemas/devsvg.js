@@ -9,6 +9,11 @@ export default {
       type: "boolean",
     },
     {
+      name: "emoji",
+      title: "Emoji",
+      type: "string",
+    },
+    {
       name: "title",
       title: "Title",
       type: "string",
