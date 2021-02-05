@@ -66,6 +66,11 @@ const DevIcon: FunctionComponent<deviconProps> = ({
           text-decoration: none;
           border: olive solid 1px;
           width: 48px;
+
+          & .emoji-holder {
+            text-align: center;
+          }
+
           & .image-wrapper {
             border: crimson solid 0px;
           }
@@ -95,7 +100,7 @@ const DevIcon: FunctionComponent<deviconProps> = ({
           <div className="image-wrapper">
             <a href={wikiUrl} target="_blank" rel="noreferrer">
               {emoji ? (
-                emoji
+                <span className="emoji-holder">{emoji}</span>
               ) : (
                 <Image
                   width="auto"
@@ -107,7 +112,7 @@ const DevIcon: FunctionComponent<deviconProps> = ({
             </a>
           </div>
         ) : emoji ? (
-          emoji
+          <span className="emoji-holder">{emoji}</span>
         ) : (
           <Image
             width="auto"
