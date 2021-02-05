@@ -57,13 +57,19 @@ const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
           isEmoji,
           emoji,
           title,
-          devImage: {
-            asset: { url },
-          },
+          devImage,
           additionalBracketText,
           textDecorColor,
           wikiUrl,
         }) => {
+          // debugger;
+
+          let url: string;
+
+          if (devImage.asset && devImage.asset.url) {
+            url = devImage.asset.url;
+          }
+
           return isEmoji ? (
             <DevIcon
               //
