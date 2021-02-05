@@ -51,7 +51,7 @@ const DevIcon: FunctionComponent<deviconProps> = ({
       className={`devicon-${title}`}
       css={css`
         display: flex;
-        border: crimson solid 0px;
+        border: crimson solid 1px;
         justify-content: flex-start;
         /* flex-wrap: wrap; */
         width: fit-content;
@@ -64,17 +64,16 @@ const DevIcon: FunctionComponent<deviconProps> = ({
           margin-left: 8px;
 
           text-decoration: none;
-          border: crimson solid 0px;
-          width: 30px;
+          border: olive solid 1px;
+          width: 48px;
           & .image-wrapper {
             border: crimson solid 0px;
-            margin-top: 4px;
-            margin-bottom: 4px;
           }
         }
 
         & > .text-content {
-          border: pink solid 0px;
+          border: pink solid 1px;
+          padding: 2px auto;
 
           & > a {
             text-decoration-color: #fff;

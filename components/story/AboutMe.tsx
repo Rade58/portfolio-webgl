@@ -66,7 +66,7 @@ const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
 
           let url: string;
 
-          if (devImage.asset && devImage.asset.url) {
+          if (devImage && devImage.asset && devImage.asset.url) {
             url = devImage.asset.url;
           }
 
@@ -78,6 +78,7 @@ const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
               wikiUrl={wikiUrl}
               textDecorColor={textDecorColor}
               additionalBracketText={additionalBracketText}
+              key={title}
             />
           ) : (
             <DevIcon
@@ -87,6 +88,7 @@ const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
               wikiUrl={wikiUrl}
               textDecorColor={textDecorColor}
               additionalBracketText={additionalBracketText}
+              key={title}
             />
           );
         }
