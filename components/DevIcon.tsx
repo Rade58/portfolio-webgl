@@ -34,6 +34,10 @@ type deviconProps = DeviconPropsEmojiI | DeviconPropsSvgI;
   wikiUrl: "",
 }; */
 
+/**
+ *
+ * @description emoji or devImage (can't do both)
+ */
 const DevIcon: FunctionComponent<deviconProps> = ({
   additionalBracketText,
   devImage,
