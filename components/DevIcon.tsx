@@ -68,7 +68,10 @@ const DevIcon: FunctionComponent<deviconProps> = ({
           width: 48px;
 
           & .emoji-holder {
-            text-align: center;
+            display: flex;
+            font-size: 1.8rem;
+            justify-content: center;
+            align-items: center;
           }
 
           & .image-wrapper {
