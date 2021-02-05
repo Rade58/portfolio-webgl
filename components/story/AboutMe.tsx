@@ -44,13 +44,13 @@ const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
         serializers={serializers}
       />
       {/* PRIMER KAKO BI PREDSTAVIO IKONU ZA TYPESCRIPT */}
-      <DevIcon
+      {/* <DevIcon
         title={data.devSvgs[0].title}
         devImage={data.devSvgs[0].devImage.asset.url}
         wikiUrl="https://en.wikipedia.org/wiki/TypeScript"
         textDecorColor="#3178c6"
         additionalBracketText="open source language which builds on JavaScript"
-      />
+      /> */}
       {/* MAPPING THROU ALL DEVICONS */}
       {data.devSvgs.map(
         ({
