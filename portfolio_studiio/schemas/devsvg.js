@@ -4,6 +4,11 @@ export default {
   type: "document",
   fields: [
     {
+      name: "isEmoji",
+      title: "Is emoji",
+      type: "boolean",
+    },
+    {
       name: "title",
       title: "Title",
       type: "string",
