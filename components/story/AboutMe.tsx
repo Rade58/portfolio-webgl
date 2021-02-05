@@ -51,6 +51,38 @@ const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
         textDecorColor="#3178c6"
         additionalBracketText="open source language which builds on JavaScript"
       />
+      {/* MAPPING THROU ALL DEVICONS */}
+      {data.devSvgs.map(
+        ({
+          isEmoji,
+          emoji,
+          title,
+          devImage,
+          additionalBracketText,
+          textDecorColor,
+          wikiUrl,
+        }) => {
+          return isEmoji ? (
+            <DevIcon
+              //
+              emoji={emoji}
+              title={title}
+              wikiUrl={wikiUrl}
+              textDecorColor={textDecorColor}
+              additionalBracketText={additionalBracketText}
+            />
+          ) : (
+            <DevIcon
+              //
+              devImage={devImage}
+              title={title}
+              wikiUrl={wikiUrl}
+              textDecorColor={textDecorColor}
+              additionalBracketText={additionalBracketText}
+            />
+          );
+        }
+      )}
       {/* --------------------------------------------- */}
       looking like a 100$
       <MyImage url={data.myImage.asset.url} />
