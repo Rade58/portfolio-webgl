@@ -91,12 +91,16 @@ const DevIcon: FunctionComponent<deviconProps> = ({
         {wikiUrl ? (
           <div className="image-wrapper">
             <a href={wikiUrl} target="_blank" rel="noreferrer">
-              <Image
-                width="auto"
-                height="auto"
-                layout="responsive"
-                src={devImage}
-              />
+              {emoji ? (
+                emoji
+              ) : (
+                <Image
+                  width="auto"
+                  height="auto"
+                  layout="responsive"
+                  src={devImage}
+                />
+              )}
             </a>
           </div>
         ) : (
