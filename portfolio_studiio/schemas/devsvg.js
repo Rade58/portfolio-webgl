@@ -24,7 +24,7 @@ export default {
     {
       name: "additionalBracketText",
       title: "Additional Bracket Text",
-      title: "string",
+      type: "string",
     },
   ],
 };

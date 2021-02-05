@@ -3,13 +3,13 @@
 `#61dafb`
 `#282c34`
 
-# next-js
 
-`#fff`
 
 # EMOTION
 
 👩‍🎤 
+
+`#C43BAD`
 
 # javascript
 
@@ -26,3 +26,7 @@
 # xstate
 
 `#000000`
+
+# gatsby
+
+`#663399`
