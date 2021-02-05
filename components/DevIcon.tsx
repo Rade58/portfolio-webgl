@@ -17,13 +17,15 @@ interface BaseDeviconPropsI {
 
 interface DeviconPropsSvgI extends BaseDeviconPropsI {
   devImage: string;
+  emoji?: never;
 }
 
 interface DeviconPropsEmojiI extends BaseDeviconPropsI {
   emoji: string;
+  devImage?: never;
 }
 
-type deviconProps = DeviconPropsEmojiI & DeviconPropsSvgI;
+type deviconProps = DeviconPropsEmojiI | DeviconPropsSvgI;
 
 /* const devicon: deviconProps = {
   emoji: "",
