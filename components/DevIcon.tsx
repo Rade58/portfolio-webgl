@@ -107,6 +107,8 @@ const DevIcon: FunctionComponent<deviconProps> = ({
               )}
             </a>
           </div>
+        ) : emoji ? (
+          emoji
         ) : (
           <Image
             width="auto"

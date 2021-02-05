@@ -57,7 +57,9 @@ const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
           isEmoji,
           emoji,
           title,
-          devImage,
+          devImage: {
+            asset: { url },
+          },
           additionalBracketText,
           textDecorColor,
           wikiUrl,
@@ -74,7 +76,7 @@ const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
           ) : (
             <DevIcon
               //
-              devImage={devImage}
+              devImage={url}
               title={title}
               wikiUrl={wikiUrl}
               textDecorColor={textDecorColor}

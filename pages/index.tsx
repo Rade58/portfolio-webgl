@@ -144,7 +144,12 @@ export const getStaticProps: GetStaticProps = async () => {
           asset -> {
             url
           }
-        }
+        },
+        isEmoji,
+        emoji,
+        wikiUrl,
+        textDecorColor,
+        additionalBracketText
       }
     },
     // projects
