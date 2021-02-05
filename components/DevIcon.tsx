@@ -119,7 +119,7 @@ const DevIcon: FunctionComponent<deviconProps> = ({
       </span>
       <span className="text-content">
         {wikiUrl ? (
-          <a href={wikiUrl}>
+          <a href={wikiUrl} target="_blank" rel="noreferrer">
             <span className="devicon-title">{title}</span>
           </a>
         ) : (
