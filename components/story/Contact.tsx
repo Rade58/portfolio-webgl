@@ -13,6 +13,8 @@ import { storyService } from "../../state_machines/story_machine";
 
 import ArticleStory from "./ArticleStory";
 
+import SocialIcon from "../SocialIcon";
+
 import { fse as majorFsesEnum } from "../../sketch/middle_ground/major_states";
 
 import { storyMajorText } from "../../content";
@@ -41,6 +43,16 @@ const Contact: FunctionComponent<PropsI> = ({ contactArticleRef, data }) => {
         projectId="4mpb3bwc"
         serializers={serializers}
       />
+      Icons:
+      {data.socialIcons.map(({ name, isEmail, email, url, socialImage }) => {
+        const {
+          asset: { url: socialImageUrl },
+        } = socialImage;
+
+        console.log({ name, isEmail, email, url, socialImageUrl });
+
+        return null;
+      })}
     </ArticleStory>
   );
 };
