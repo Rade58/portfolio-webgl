@@ -98,7 +98,7 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
           <div className="email-text">{email}</div>
           <button
             onClick={async () => {
-              console.log("click");
+              // console.log("click");
 
               if (!navigator.clipboard) {
                 return;
