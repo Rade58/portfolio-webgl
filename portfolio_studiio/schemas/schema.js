@@ -17,6 +17,7 @@ import contactpresent from "./contactpresent";
 import projectpresent from "./projectspresent";
 import blogpresent from "./blogpresent";
 import devsvg from "./devsvg";
+import socialsvg from "./socialsvg";
 import story from "./story";
 //
 
@@ -40,6 +41,7 @@ export default createSchema({
     projectpresent,
     blogpresent,
     devsvg,
+    socialsvg,
     story,
     //
 
