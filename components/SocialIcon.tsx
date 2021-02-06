@@ -39,9 +39,13 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
       css={css`
         border: crimson solid 1px;
 
-        & .image-container {
-          border: olive solid 1px;
-          width: 48px;
+        & .social-section {
+          margin: 2px 4px;
+
+          & .image-container {
+            border: olive solid 1px;
+            width: 48px;
+          }
         }
 
         &.email {
@@ -59,17 +63,19 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
       `}
     >
       {!email ? (
-        <a href={socialUrl} target="_blank" rel="noreferrer">
-          <div className="image-container">
-            <Image
-              src={socialImageUrl}
-              layout="responsive"
-              width="auto"
-              height="auto"
-              alt="social icon"
-            />
-          </div>
-        </a>
+        <section className="social-section">
+          <a href={socialUrl} target="_blank" rel="noreferrer">
+            <div className="image-container">
+              <Image
+                src={socialImageUrl}
+                layout="responsive"
+                width="auto"
+                height="auto"
+                alt="social icon"
+              />
+            </div>
+          </a>
+        </section>
       ) : (
         <section className="email-section">
           <div className="email-container">
@@ -78,6 +84,7 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
               layout="responsive"
               width="auto"
               height="auto"
+              alt="social icon"
             />
           </div>
         </section>
