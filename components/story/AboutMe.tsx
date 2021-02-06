@@ -51,7 +51,7 @@ const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
         textDecorColor="#3178c6"
         additionalBracketText="open source language which builds on JavaScript"
       /> */}
-      {/* MAPPING THROU ALL DEVICONS */}
+      {/* MAPPING THROUGH ALL DEVICONS */}
       {data.devSvgs.map(
         ({
           isEmoji,
@@ -94,8 +94,49 @@ const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
         }
       )}
       {/* --------------------------------------------- */}
-      These are some other skills I picked up so far: {"\n"}I would like to
-      learn these: looking like a 100$
+      These are some other skills I picked up so far:
+      {data.otherDevSvgs.map(
+        ({
+          isEmoji,
+          emoji,
+          title,
+          devImage,
+          additionalBracketText,
+          textDecorColor,
+          wikiUrl,
+        }) => {
+          // debugger;
+
+          let url: string;
+
+          if (devImage && devImage.asset && devImage.asset.url) {
+            url = devImage.asset.url;
+          }
+
+          return isEmoji ? (
+            <DevIcon
+              //
+              emoji={emoji}
+              title={title}
+              wikiUrl={wikiUrl}
+              textDecorColor={textDecorColor}
+              additionalBracketText={additionalBracketText}
+              key={title}
+            />
+          ) : (
+            <DevIcon
+              //
+              devImage={url}
+              title={title}
+              wikiUrl={wikiUrl}
+              textDecorColor={textDecorColor}
+              additionalBracketText={additionalBracketText}
+              key={title}
+            />
+          );
+        }
+      )}
+      This is me looking like a 100$
       <MyImage url={data.myImage.asset.url} />
       {/* {major !== "undefined" ? storyMajorText(major, "") : ""} */}
     </ArticleStory>
