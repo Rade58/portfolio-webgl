@@ -6,14 +6,24 @@ import { FunctionComponent } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-interface SocialIconEmailProps {
-  any: any;
-}
-interface SocialIconUsualProps {
-  any: any;
+interface SocialIconCommonPropsI {
+  name: string;
+  isEmail: boolean;
+  socialImageUrl: string;
 }
 
-const SocialIcon: FunctionComponent = () => {
+interface SocialIconEmailPropsI extends SocialIconCommonPropsI {
+  email: string;
+  imageUrl?: never;
+}
+interface SocialIconUsualPropsI extends SocialIconCommonPropsI {
+  socialUrl: string;
+  emmail?: never;
+}
+
+type SocialIconPropsI = SocialIconEmailPropsI | SocialIconUsualPropsI;
+
+const SocialIcon: FunctionComponent<SocialIconPropsI> = () => {
   return null;
 };
 
