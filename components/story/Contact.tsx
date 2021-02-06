@@ -47,8 +47,9 @@ const Contact: FunctionComponent<PropsI> = ({ contactArticleRef, data }) => {
       <section
         className="social-icons-container"
         css={css`
-          display: flex;
           border: pink solid 1px;
+          display: flex;
+          flex-wrap: wrap;
         `}
       >
         {data.socialIcons.map(({ name, isEmail, email, url, socialImage }) => {

@@ -46,10 +46,22 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
 
         &.email {
           border: red solid 4px;
+          width: 100%;
         }
       `}
     >
-      <a href={socialUrl} target="_blank" rel="noreferrer">
+      {!email ? (
+        <a href={socialUrl} target="_blank" rel="noreferrer">
+          <div className="image-container">
+            <Image
+              src={socialImageUrl}
+              layout="responsive"
+              width="auto"
+              height="auto"
+            />
+          </div>
+        </a>
+      ) : (
         <div className="image-container">
           <Image
             src={socialImageUrl}
@@ -58,7 +70,7 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
             height="auto"
           />
         </div>
-      </a>
+      )}
     </div>
   );
 
