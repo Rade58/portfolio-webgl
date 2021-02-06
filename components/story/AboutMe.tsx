@@ -94,7 +94,7 @@ const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
         }
       )}
       {/* --------------------------------------------- */}
-      These are some other skills I picked up so far:
+      These are some other techologies I also worked with:
       {data.otherDevSvgs.map(
         ({
           isEmoji,
