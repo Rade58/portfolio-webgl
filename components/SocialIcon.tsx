@@ -47,6 +47,7 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
         &.email {
           border: red solid 4px;
           width: 100%;
+          margin: 8px;
         }
       `}
     >
@@ -58,6 +59,7 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
               layout="responsive"
               width="auto"
               height="auto"
+              alt="social icon"
             />
           </div>
         </a>

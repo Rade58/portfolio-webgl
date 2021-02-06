@@ -111,6 +111,7 @@ const DevIcon: FunctionComponent<deviconProps> = ({
                   height="auto"
                   layout="responsive"
                   src={devImage}
+                  alt="dev icon"
                 />
               )}
             </a>
@@ -123,6 +124,7 @@ const DevIcon: FunctionComponent<deviconProps> = ({
             height="auto"
             layout="responsive"
             src={devImage}
+            alt="dev icon"
           />
         )}
       </span>
