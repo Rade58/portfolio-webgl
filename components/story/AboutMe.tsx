@@ -94,7 +94,8 @@ const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
         }
       )}
       {/* --------------------------------------------- */}
-      looking like a 100$
+      These are some other skills I picked up so far: {"\n"}I would like to
+      learn these: looking like a 100$
       <MyImage url={data.myImage.asset.url} />
       {/* {major !== "undefined" ? storyMajorText(major, "") : ""} */}
     </ArticleStory>

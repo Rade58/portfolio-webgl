@@ -30,5 +30,18 @@ export default {
         },
       ],
     },
+    {
+      name: "otherDevSvgs",
+      title: "Other Developer Icons",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: {
+            type: "devsvg",
+          },
+        },
+      ],
+    },
   ],
 };
