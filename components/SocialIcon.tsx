@@ -54,9 +54,15 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
           margin: 8px;
 
           & .email-section {
+            display: flex;
+
             & .email-container {
               border: purple solid 1px;
               width: 48px;
+            }
+
+            & .email-text {
+              border: olive solid 1px;
             }
           }
         }
@@ -87,6 +93,8 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
               alt="social icon"
             />
           </div>
+          <div className="email-text">{email}</div>
+          <button>copy</button>
         </section>
       )}
     </div>
