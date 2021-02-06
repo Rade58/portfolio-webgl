@@ -51,6 +51,24 @@ const Contact: FunctionComponent<PropsI> = ({ contactArticleRef, data }) => {
 
         console.log({ name, isEmail, email, url, socialImageUrl });
 
+        if (!isEmail) {
+          return (
+            <SocialIcon
+              socialUrl={url}
+              name={name}
+              socialImageUrl={socialImageUrl}
+            />
+          );
+        } else {
+          return (
+            <SocialIcon
+              email={email}
+              name={name}
+              socialImageUrl={socialImageUrl}
+            />
+          );
+        }
+
         return null;
       })}
     </ArticleStory>

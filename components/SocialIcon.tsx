@@ -8,7 +8,6 @@ import styled from "@emotion/styled";
 
 interface SocialIconCommonPropsI {
   name: string;
-  isEmail: boolean;
   socialImageUrl: string;
 }
 
@@ -28,7 +27,6 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
     socialUrl,
     email,
     //
-    isEmail,
     name,
     socialImageUrl,
   } = props;
