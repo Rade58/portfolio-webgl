@@ -99,13 +99,6 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
       )}
     </div>
   );
-
-  if (email) {
-  } else {
-    return null;
-  }
-
-  return <div>{JSON.stringify({ props })}</div>;
 };
 
 export default SocialIcon;
