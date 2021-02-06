@@ -41,7 +41,7 @@ export const centralMajor = (major: sketchFse): string => {
 
 export const headingStory = (major: sketchFse): string => {
   if (major === sketchFse.aboutme) {
-    return "About";
+    return "Hey I'm Rade";
   }
   if (major === sketchFse.projects) {
     return "Work";
@@ -62,18 +62,18 @@ const blogPreview = "I wrote";
 
 // ----
 
-export const storyPreview = (major: sketchFse): string => {
+export const currentMajor = (major: sketchFse): string => {
   if (major === sketchFse.aboutme) {
-    return aboutPreview;
+    return sketchFse.aboutme;
   }
   if (major === sketchFse.projects) {
-    return projectsPreview;
+    return sketchFse.projects;
   }
   if (major === sketchFse.contact) {
-    return contactPreview;
+    return sketchFse.contact;
   }
   if (major === sketchFse.blog) {
-    return blogPreview;
+    return sketchFse.blog;
   }
 };
 

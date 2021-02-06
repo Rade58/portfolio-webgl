@@ -52,6 +52,8 @@ const ArticleStory: FunctionComponent<PropsI> = ({
         mediaBellow ? "media-bellow" : "media-above"
       } ${majorName === major ? "presented" : "not-presented"}`}
       css={css`
+        margin-top: 0;
+
         &#${majorName} {
           &.media-bellow {
             height: 100%;
@@ -59,11 +61,22 @@ const ArticleStory: FunctionComponent<PropsI> = ({
             &.not-presented {
               visibility: hidden;
               height: 0;
+              margin: 0;
             }
 
             &.presented {
               visibility: visible;
               height: 100%;
+            }
+
+            & > p:first-of-type {
+              margin-top: 0;
+            }
+
+            & > div:first-of-type {
+              & > p:first-of-type {
+                margin-top: 0;
+              }
             }
           }
 

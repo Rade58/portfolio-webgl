@@ -11,7 +11,7 @@ import Image from "next/image";
 import { useService } from "@xstate/react";
 import { storyService } from "../state_machines/story_machine";
 
-const MyImage: FunctionComponent = () => {
+const MyImage: FunctionComponent<{ url: string }> = ({ url }) => {
   const [state, send] = useService(storyService);
 
   const { mediaBellow } = state.context;
@@ -46,7 +46,7 @@ const MyImage: FunctionComponent = () => {
       >
         <div className="holder">
           <Image
-            src="/my_image.jpg"
+            src={url}
             alt="picture of the author"
             layout="responsive"
             height="auto"

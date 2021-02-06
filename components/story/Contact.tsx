@@ -7,6 +7,7 @@ import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
 import { useService } from "@xstate/react";
+import BlockContent from "@sanity/block-content-to-react";
 
 import { storyService } from "../../state_machines/story_machine";
 
@@ -16,11 +17,14 @@ import { fse as majorFsesEnum } from "../../sketch/middle_ground/major_states";
 
 import { storyMajorText } from "../../content";
 
+import serializers from "../sanity_serializers";
+
 interface PropsI {
   contactArticleRef: RefObject<HTMLElement>;
+  data: any;
 }
 
-const Contact: FunctionComponent<PropsI> = ({ contactArticleRef }) => {
+const Contact: FunctionComponent<PropsI> = ({ contactArticleRef, data }) => {
   const [state, send] = useService(storyService);
 
   const { major } = state.context;
@@ -30,7 +34,13 @@ const Contact: FunctionComponent<PropsI> = ({ contactArticleRef }) => {
       articleReference={contactArticleRef}
       majorName={majorFsesEnum.contact}
     >
-      {major !== "undefined" ? storyMajorText(major, "") : ""}
+      {/* {major !== "undefined" ? storyMajorText(major, "") : ""} */}
+      <BlockContent
+        blocks={data.bogati}
+        dataset="production"
+        projectId="4mpb3bwc"
+        serializers={serializers}
+      />
     </ArticleStory>
   );
 };

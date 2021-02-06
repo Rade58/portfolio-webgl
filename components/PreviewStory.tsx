@@ -10,7 +10,9 @@ import { useService } from "@xstate/react";
 
 import { storyService, fse, fseS } from "../state_machines/story_machine";
 
-import { storyPreview } from "../content";
+import { currentMajor } from "../content";
+
+import { fse as majorFse } from "../sketch/middle_ground/major_states";
 
 import {
   upDownArrowHeight as bottomMargin,
@@ -20,7 +22,13 @@ import {
   aboveMediaArticleMargin,
 } from "../css_vars";
 
-const PreviewStory: FunctionComponent = () => {
+import { SanityDataI } from "../sanity/data_types";
+
+interface PropsStoryI {
+  data: SanityDataI;
+}
+
+const PreviewStory: FunctionComponent<PropsStoryI> = ({ data }) => {
   const [state, send] = useService(storyService);
 
   const tekstRef = createRef<HTMLDivElement>();
@@ -34,21 +42,23 @@ const PreviewStory: FunctionComponent = () => {
         TweenMax.fromTo(
           tekstRef.current,
           {
-            delay: 0.4,
+            // delay: 0.4,
             opacity: 0,
+            height: 0,
             duration: 0.08,
             ease: Power3.easeIn,
           },
           {
             opacity: 1,
-            delay: 0.4,
+            height: "28px",
+            // delay: 0.4,
           }
         );
         // ----------------------------------------------
         TweenMax.fromTo(
           previewRef.current,
           {
-            delay: 0.4,
+            // delay: 0.4,
 
             height: 0,
             marginBottom: 0,
@@ -58,7 +68,7 @@ const PreviewStory: FunctionComponent = () => {
           {
             height: previewHeight,
             marginBottom: bottomMargin,
-            delay: 0.4,
+            // delay: 0.4,
           }
         );
       }
@@ -68,14 +78,18 @@ const PreviewStory: FunctionComponent = () => {
           tekstRef.current,
           {
             opacity: 1,
-
+            height: "28px",
+            top: 0,
             duration: 0.08,
             ease: Power3.easeIn,
           },
           {
             opacity: 0,
+            top: 28,
+            height: "0px",
           }
         );
+
         // ----------------------------------------------
         TweenMax.fromTo(
           previewRef.current,
@@ -129,8 +143,11 @@ const PreviewStory: FunctionComponent = () => {
         box-sizing: border-box;
 
         border: pink solid 0px;
+        position: relative;
 
         & .tekst {
+          height: 28px;
+
           & .three-dots {
             color: crimson;
             font-size: 1.2rem;
@@ -140,8 +157,11 @@ const PreviewStory: FunctionComponent = () => {
     >
       {state && state.context && state.context.mediaBellow && state.value && (
         <div className="tekst" ref={tekstRef}>
+          {/* {state.context.major !== "undefined" &&
+            storyPreview(state.context.major)} */}
           {state.context.major !== "undefined" &&
-            storyPreview(state.context.major)}
+            data[state.context.major] &&
+            data[state.context.major].previewText}
           <span className="three-dots">...</span>
         </div>
       )}

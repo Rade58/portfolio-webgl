@@ -59,6 +59,8 @@ module.exports = (phase, { defaultConfig }) => {
     return config;
   };
 
+  newConfig.images.domains = ["cdn.sanity.io"];
+
   return withPlugins([envPlugin, svgReactPlugin])(phase, {
     newConfig,
   });

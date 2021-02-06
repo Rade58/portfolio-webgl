@@ -40,6 +40,10 @@ import Projects from "./story/Projects";
 import Contact from "./story/Contact";
 import Blog from "./story/Blog";
 //
+import HeadingStory from "./HeadingStory";
+//
+
+import BlockContent from "@sanity/block-content-to-react";
 
 import { storyMajorText, headingStory } from "../content";
 
@@ -54,9 +58,19 @@ import {
   matchMediaMaxWidth,
 } from "../css_vars";
 
+// SERIALIZERS
+import serializers from "./sanity_serializers";
+//
+
+import { SanityDataI } from "../sanity/data_types";
+
+interface PropsStoryI {
+  data: SanityDataI;
+}
+
 const MAJOR_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
 
-const Story: FunctionComponent = () => {
+const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
   //
   const storyRef = createRef<HTMLElement>();
   // const articleRef = createRef<HTMLElement>();
@@ -151,7 +165,7 @@ const Story: FunctionComponent = () => {
             TweenMax.to(storyRef.current, {
               duration: 0.2,
               ease: Power2.easeIn,
-              width: "34vw",
+              width: "38vw",
               height: "100%",
               // delay: 0.4,
             });
@@ -489,16 +503,39 @@ const Story: FunctionComponent = () => {
       `}
     >
       <div className="content">
-        <h1>{headingStory(major)}</h1>
-        <PreviewStory />
+        {/* <h1>{headingStory(major)}</h1> */}
+        <HeadingStory data={data} currentMajor={major} />
+        <PreviewStory data={data} />
         {/* <article ref={articleRef} className="story-article">
           {major === fsS.aboutme && <MyImage />}
           {storyMajorText(major, "")}
         </article> */}
-        <AboutMe aboutMeArticleRef={aboutMeArticleRef} />
-        <Projects projectsArticleRef={projectsArticleRef} />
-        <Contact contactArticleRef={contactArticleRef} />
-        <Blog blogArticleRef={blogArticleRef} />
+        {/* ---------------------------------------------- */}
+        <AboutMe
+          data={data[fsS.aboutme]}
+          aboutMeArticleRef={aboutMeArticleRef}
+        />
+        {/* ---------------------------------------------- */}
+        <Projects
+          data={data[fsS.projects]}
+          projectsArticleRef={projectsArticleRef}
+        />
+        <Contact
+          data={data[fsS.contact]}
+          contactArticleRef={contactArticleRef}
+        />
+        <Blog data={data[fsS.blog]} blogArticleRef={blogArticleRef} />
+        {/* ---------------------------------------------- */}
+        {/* KORISTIM SAMO DA BIH TESTIRAO */}
+        {/* KASNIJE CE DATA BITI BRANCHED OUT ZA SVAKU OD GORNJIH KOMPONENTI */}
+        {/* <BlockContent
+          blocks={data[0].bogati}
+          dataset="production"
+          projectId="4mpb3bwc"
+          serializers={serializers}
+        /> */}
+        {/* --------------------------------------------- */}
+        {/* --------------------------------------------- */}
       </div>
       <UpDownButton />
     </section>
