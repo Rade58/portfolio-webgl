@@ -14,17 +14,26 @@ interface SocialIconCommonPropsI {
 
 interface SocialIconEmailPropsI extends SocialIconCommonPropsI {
   email: string;
-  imageUrl?: never;
+  socialUrl?: never;
 }
 interface SocialIconUsualPropsI extends SocialIconCommonPropsI {
   socialUrl: string;
-  emmail?: never;
+  email?: never;
 }
 
 type SocialIconPropsI = SocialIconEmailPropsI | SocialIconUsualPropsI;
 
-const SocialIcon: FunctionComponent<SocialIconPropsI> = () => {
-  return null;
+const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
+  const {
+    socialUrl,
+    email,
+    //
+    isEmail,
+    name,
+    socialImageUrl,
+  } = props;
+
+  return <div>{JSON.stringify({ props })}</div>;
 };
 
 export default SocialIcon;
