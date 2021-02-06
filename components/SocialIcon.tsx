@@ -2,11 +2,13 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { FunctionComponent } from "react";
+import { FunctionComponent, createRef } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
 import Image from "next/image";
+
+import { isSSR } from "../utils/isSSR";
 
 interface SocialIconCommonPropsI {
   name: string;
@@ -94,7 +96,13 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
             />
           </div>
           <div className="email-text">{email}</div>
-          <button>copy</button>
+          <button
+            onClick={() => {
+              console.log("click");
+            }}
+          >
+            copy
+          </button>
         </section>
       )}
     </div>
