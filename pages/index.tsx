@@ -173,7 +173,18 @@ export const getStaticProps: GetStaticProps = async () => {
     },
     // contact
     contact -> {
-      title, previewText, bogati, major
+      title, previewText, bogati, major,
+      socialIcons[] -> {
+        name,
+        isEmail,
+        email,
+        url,
+        socialImage {
+          asset -> {
+            url
+          }
+        }
+      }
     },
     // blog
     blog -> {
