@@ -54,6 +54,7 @@ const Contact: FunctionComponent<PropsI> = ({ contactArticleRef, data }) => {
         if (!isEmail) {
           return (
             <SocialIcon
+              key={name}
               socialUrl={url}
               name={name}
               socialImageUrl={socialImageUrl}
@@ -62,6 +63,7 @@ const Contact: FunctionComponent<PropsI> = ({ contactArticleRef, data }) => {
         } else {
           return (
             <SocialIcon
+              key={name}
               email={email}
               name={name}
               socialImageUrl={socialImageUrl}

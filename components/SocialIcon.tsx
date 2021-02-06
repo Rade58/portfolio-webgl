@@ -6,6 +6,8 @@ import { FunctionComponent } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
+import Image from "next/image";
+
 interface SocialIconCommonPropsI {
   name: string;
   socialImageUrl: string;
@@ -30,6 +32,26 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
     name,
     socialImageUrl,
   } = props;
+
+  return (
+    <div className="social-icon">
+      <a href={socialUrl} target="_blank" rel="noreferrer">
+        <div className="image-container">
+          <Image
+            src={socialImageUrl}
+            layout="responsive"
+            width="auto"
+            height="auto"
+          />
+        </div>
+      </a>
+    </div>
+  );
+
+  if (email) {
+  } else {
+    return null;
+  }
 
   return <div>{JSON.stringify({ props })}</div>;
 };
