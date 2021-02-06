@@ -48,6 +48,13 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
           border: red solid 4px;
           width: 100%;
           margin: 8px;
+
+          & .email-section {
+            & .email-container {
+              border: purple solid 1px;
+              width: 48px;
+            }
+          }
         }
       `}
     >
@@ -64,14 +71,16 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
           </div>
         </a>
       ) : (
-        <div className="image-container">
-          <Image
-            src={socialImageUrl}
-            layout="responsive"
-            width="auto"
-            height="auto"
-          />
-        </div>
+        <section className="email-section">
+          <div className="email-container">
+            <Image
+              src={socialImageUrl}
+              layout="responsive"
+              width="auto"
+              height="auto"
+            />
+          </div>
+        </section>
       )}
     </div>
   );
