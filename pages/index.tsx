@@ -150,7 +150,22 @@ export const getStaticProps: GetStaticProps = async () => {
         wikiUrl,
         textDecorColor,
         additionalBracketText
+      },
+
+      otherDevSvgs[] -> {
+        title,
+        devImage {
+          asset -> {
+            url
+          }
+        },
+        isEmoji,
+        emoji,
+        wikiUrl,
+        textDecorColor,
+        additionalBracketText
       }
+
     },
     // projects
     projects -> {
