@@ -107,6 +107,8 @@ interface ContextFullI {
   middlePlaneMesh: Mesh;
   scene: Scene;
   camera: PerspectiveCamera;
+  // eslint-disable-next-line
+  // @ts-ignore
   seaWireframe: LineSegments<WireframeGeometry, ShaderMaterial>;
   sunMesh: Mesh;
   spacehipShaderMaterial: ShaderMaterial;
@@ -146,6 +148,8 @@ interface MachineContextGenericI {
   middlePlaneMesh: Mesh | null;
   scene: Scene | null;
   camera: PerspectiveCamera | null;
+  // eslint-disable-next-line
+  // @ts-ignore
   seaWireframe: LineSegments<WireframeGeometry, ShaderMaterial> | null;
   sunMesh: Mesh | null;
   spacehipShaderMaterial: ShaderMaterial | null;
@@ -173,6 +177,8 @@ type machineEventGenericType =
         cageMesh?: Mesh;
         spaceshipMesh?: Mesh;
         middlePlaneMesh?: Mesh;
+        // eslint-disable-next-line
+        // @ts-ignore
         seaWireframe?: LineSegments<WireframeGeometry, ShaderMaterial>;
         spacehipShaderMaterial?: ShaderMaterial;
         controls?: {
