@@ -45,11 +45,6 @@ const Contact: FunctionComponent<PropsI> = ({ contactArticleRef, data }) => {
       />
       Icons:
       {data.socialIcons.map(({ name, isEmail, email, url, socialImage }) => {
-        let socialimageUrl: string;
-
-        if (8) {
-        }
-
         const {
           asset: { url: socialImageUrl },
         } = socialImage;
