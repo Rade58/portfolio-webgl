@@ -34,7 +34,21 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
   } = props;
 
   return (
-    <div className="social-icon">
+    <div
+      className={`social-icon ${!email ? "" : "email"}`}
+      css={css`
+        border: crimson solid 1px;
+
+        & .image-container {
+          border: olive solid 1px;
+          width: 48px;
+        }
+
+        &.email {
+          border: red solid 4px;
+        }
+      `}
+    >
       <a href={socialUrl} target="_blank" rel="noreferrer">
         <div className="image-container">
           <Image

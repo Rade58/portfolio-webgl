@@ -44,35 +44,41 @@ const Contact: FunctionComponent<PropsI> = ({ contactArticleRef, data }) => {
         serializers={serializers}
       />
       Icons:
-      {data.socialIcons.map(({ name, isEmail, email, url, socialImage }) => {
-        const {
-          asset: { url: socialImageUrl },
-        } = socialImage;
+      <section
+        className="social-icons-container"
+        css={css`
+          display: flex;
+          border: pink solid 1px;
+        `}
+      >
+        {data.socialIcons.map(({ name, isEmail, email, url, socialImage }) => {
+          const {
+            asset: { url: socialImageUrl },
+          } = socialImage;
 
-        console.log({ name, isEmail, email, url, socialImageUrl });
+          console.log({ name, isEmail, email, url, socialImageUrl });
 
-        if (!isEmail) {
-          return (
-            <SocialIcon
-              key={name}
-              socialUrl={url}
-              name={name}
-              socialImageUrl={socialImageUrl}
-            />
-          );
-        } else {
-          return (
-            <SocialIcon
-              key={name}
-              email={email}
-              name={name}
-              socialImageUrl={socialImageUrl}
-            />
-          );
-        }
-
-        return null;
-      })}
+          if (!isEmail) {
+            return (
+              <SocialIcon
+                key={name}
+                socialUrl={url}
+                name={name}
+                socialImageUrl={socialImageUrl}
+              />
+            );
+          } else {
+            return (
+              <SocialIcon
+                key={name}
+                email={email}
+                name={name}
+                socialImageUrl={socialImageUrl}
+              />
+            );
+          }
+        })}
+      </section>
     </ArticleStory>
   );
 };
