@@ -162,7 +162,7 @@ const PreviewStory: FunctionComponent<PropsStoryI> = ({ data }) => {
           {state.context.major !== "undefined" &&
             data[state.context.major] &&
             data[state.context.major].previewText}
-          <span className="three-dots">...</span>
+          <span className="three-dots"> ...</span>
         </div>
       )}
     </div>
