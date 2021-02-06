@@ -97,8 +97,18 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
           </div>
           <div className="email-text">{email}</div>
           <button
-            onClick={() => {
+            onClick={async () => {
               console.log("click");
+
+              if (!navigator.clipboard) {
+                return;
+              }
+
+              try {
+                await navigator.clipboard.writeText(email);
+              } catch (error) {
+                console.error("Failed to copy!", error);
+              }
             }}
           >
             copy
