@@ -64,12 +64,12 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
             }
 
             & .email-container {
-              border: purple solid 1px;
+              border: purple solid 0px;
               width: 48px;
             }
 
             & .email-text {
-              border: olive inset 2px;
+              border: #bb2fc0 inset 2px;
               user-select: text;
               padding: 3.8px;
 
