@@ -79,7 +79,7 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
                 layout="responsive"
                 width="auto"
                 height="auto"
-                alt="social icon"
+                alt={`${name}-icon`}
               />
             </div>
           </a>
@@ -92,7 +92,7 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
               layout="responsive"
               width="auto"
               height="auto"
-              alt="social icon"
+              alt={`${name}-icon`}
             />
           </div>
           <div className="email-text">{email}</div>
