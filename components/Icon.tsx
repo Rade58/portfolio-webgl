@@ -10,13 +10,16 @@ import Image from "next/image";
 
 interface IconPropsI {
   url: string;
+  color: string;
 }
 
-const Icon: FunctionComponent<IconPropsI> = ({ url }) => {
+const Icon: FunctionComponent<IconPropsI> = ({ url, color }) => {
   return (
     <div
       css={css`
-        border: crimson solid 1px;
+        --color: ${color};
+
+        border: var(--color) solid 4px;
       `}
     >
       <Image
