@@ -17,7 +17,6 @@ interface IconPropsI {
 const Icon: FunctionComponent<IconPropsI> = ({ url, color, name }) => {
   return (
     <div
-      id={name}
       css={css`
         --color: ${color};
 
@@ -26,27 +25,25 @@ const Icon: FunctionComponent<IconPropsI> = ({ url, color, name }) => {
           color: var(--color);
         }
 
-        #icon-style {
+        #${name} {
           fill: var(--color);
         }
       `}
     >
       <svg
-        style={{ height: "0px" }}
+        style={{ height: "0px", visibility: "hidden" }}
         /* NO NEED FOR px ON width AND height */
-        width=""
-        height=""
-        aria-labelledby="your title id goes here"
-        id="svg"
+        width="0"
+        height="0"
+        aria-labelledby="external-icon"
+        id={name}
         role="presentation" /* or role="imge"*/
         lang="en"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
         viewBox="0 0 380 210"
       >
-        <title id="reference this id by aria-labelledby">
-          Your Title Goes here
-        </title>
+        <title id="external-icon">External Icon</title>
       </svg>
 
       <Image layout="responsive" src="/test.svg" width="auto" height="auto" />
