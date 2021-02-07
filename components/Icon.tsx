@@ -44,10 +44,8 @@ const Icon: FunctionComponent<IconPropsI> = ({ url, color, name }) => {
         viewBox="0 0 380 210"
       >
         <title id="external-icon">External Icon</title>
-        <symbol id="icon-1" viewBox="0 0 1024 1024">
-          <title>Kinda like alt text</title>
-          <path className={`${name}`} d="..."></path>
-        </symbol>
+
+        <path fill={color} id={`${name}`} d="M199.1,142" />
       </svg>
 
       <Image layout="responsive" src="/test.svg" width="auto" height="auto" />
