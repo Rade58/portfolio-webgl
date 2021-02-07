@@ -7,10 +7,11 @@ export default {
     {
       name: "color",
       title: "Color",
-      type: "array",
-      of: [
-        //
-      ],
+      type: "reference",
+      // SINGLE DOCUMENT REFERECE
+      to: {
+        type: "iconcolor",
+      },
     },
     { name: "icon", title: "Icon", type: "image" },
   ],
