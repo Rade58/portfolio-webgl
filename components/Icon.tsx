@@ -25,13 +25,7 @@ const Icon: FunctionComponent<IconPropsI> = ({ url, color }) => {
         }
       `}
     >
-      <Image
-        layout="responsive"
-        src="/test.svg"
-        width="auto"
-        height="auto"
-        loading="eager"
-      />
+      <Image layout="responsive" src="/test.svg" width="auto" height="auto" />
       <span>Tekst</span>
     </div>
   );
