@@ -20,15 +20,19 @@ const Icon: FunctionComponent<IconPropsI> = ({ url, color }) => {
         --color: ${color};
 
         border: var(--color) solid 4px;
+        & * {
+          color: var(--color);
+        }
       `}
     >
-      <Image
+      {/* <Image
         layout="responsive"
         src={url}
         width="auto"
         height="auto"
         loading="eager"
-      />
+      /> */}
+      <span>Tekst</span>
     </div>
   );
 };
