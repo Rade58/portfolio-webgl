@@ -57,6 +57,11 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
 
           & .email-section {
             display: flex;
+            align-items: center;
+
+            & > * {
+              margin-right: 8px;
+            }
 
             & .email-container {
               border: purple solid 1px;
@@ -65,6 +70,10 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
 
             & .email-text {
               border: olive solid 1px;
+            }
+
+            & .copy-button {
+              height: fit-content;
             }
           }
         }
@@ -97,6 +106,7 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
           </div>
           <div className="email-text">{email}</div>
           <button
+            className="copy-button"
             onClick={async () => {
               // console.log("click");
 
