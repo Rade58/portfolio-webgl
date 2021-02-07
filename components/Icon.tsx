@@ -36,7 +36,7 @@ const Icon: FunctionComponent<IconPropsI> = ({ url, color, name }) => {
         width="0"
         height="0"
         aria-labelledby="external-icon"
-        id={name}
+        id={`${name}-svgz`}
         role="presentation" /* or role="imge"*/
         lang="en"
         xmlns="http://www.w3.org/2000/svg"
@@ -44,6 +44,10 @@ const Icon: FunctionComponent<IconPropsI> = ({ url, color, name }) => {
         viewBox="0 0 380 210"
       >
         <title id="external-icon">External Icon</title>
+        <symbol id="icon-1" viewBox="0 0 1024 1024">
+          <title>Kinda like alt text</title>
+          <path className={`${name}`} d="..."></path>
+        </symbol>
       </svg>
 
       <Image layout="responsive" src="/test.svg" width="auto" height="auto" />
