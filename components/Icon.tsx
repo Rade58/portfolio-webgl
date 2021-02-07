@@ -23,6 +23,12 @@ const Icon: FunctionComponent<IconPropsI> = ({ url, color }) => {
         & * {
           color: var(--color);
         }
+
+        & svg {
+          & path {
+            fill: var(--color);
+          }
+        }
       `}
     >
       <Image layout="responsive" src="/test.svg" width="auto" height="auto" />
