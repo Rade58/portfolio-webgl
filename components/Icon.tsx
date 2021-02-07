@@ -6,8 +6,28 @@ import { FunctionComponent } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-const Icon: FunctionComponent = () => {
-  return null;
+import Image from "next/image";
+
+interface IconPropsI {
+  url: string;
+}
+
+const Icon: FunctionComponent<IconPropsI> = ({ url }) => {
+  return (
+    <div
+      css={css`
+        border: crimson solid 1px;
+      `}
+    >
+      <Image
+        layout="responsive"
+        src={url}
+        width="auto"
+        height="auto"
+        loading="eager"
+      />
+    </div>
+  );
 };
 
 export default Icon;
