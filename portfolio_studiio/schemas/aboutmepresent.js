@@ -17,7 +17,7 @@ export default {
         hotspot: true,
       },
     },
-    // ZANIMLJIVO: KREIRAO SAM FIELD ZA NIZ REFERENCI
+    // ZANIMLJIVO: KREIRAO SAM FIELD ZA NIZ REFERENCI (AKO TE ZANIMA KAKO IZGLEDA REFERENCA ZA SINGLE DOCUMENT, POGLEDAJ DEFINICIJUU story KOLEKCIJE)
     {
       name: "devSvgs",
       title: "Developer Svgs",

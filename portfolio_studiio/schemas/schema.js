@@ -19,6 +19,7 @@ import blogpresent from "./blogpresent";
 import devsvg from "./devsvg";
 import socialsvg from "./socialsvg";
 import commonsvg from "./commonsvg";
+import iconcolor from "./iconcolor";
 import story from "./story";
 //
 
@@ -44,6 +45,7 @@ export default createSchema({
     devsvg,
     socialsvg,
     commonsvg,
+    iconcolor,
     story,
     //
 
