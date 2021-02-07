@@ -11,11 +11,13 @@ import Image from "next/image";
 interface IconPropsI {
   url: string;
   color: string;
+  name: string;
 }
 
-const Icon: FunctionComponent<IconPropsI> = ({ url, color }) => {
+const Icon: FunctionComponent<IconPropsI> = ({ url, color, name }) => {
   return (
     <div
+      id={name}
       css={css`
         --color: ${color};
 
@@ -24,10 +26,8 @@ const Icon: FunctionComponent<IconPropsI> = ({ url, color }) => {
           color: var(--color);
         }
 
-        & svg {
-          & path {
-            fill: var(--color);
-          }
+        .icon-style {
+          fill: var(--color);
         }
       `}
     >
