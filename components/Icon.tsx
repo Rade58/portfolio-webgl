@@ -26,6 +26,7 @@ interface IconPropsI {
 const Icon: FunctionComponent<IconPropsI> = ({ url, color, name }) => {
   return (
     <div
+      className="common-icon"
       css={css`
         --color: ${color};
 
@@ -43,7 +44,14 @@ const Icon: FunctionComponent<IconPropsI> = ({ url, color, name }) => {
         }
       `}
     >
-      <ReactSVG src={url} />
+      <ReactSVG
+        src={url}
+        loading={() => {
+          console.log({ url });
+
+          return <p>loading...</p>;
+        }}
+      />
     </div>
   );
 };
