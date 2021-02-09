@@ -31,11 +31,13 @@ const Icon: FunctionComponent<IconPropsI> = ({ url, color, name }) => {
         --color: ${color};
 
         /* U CILJU TEST (UKLONICU KASNIJE) */
-        border: var(--color) solid 4px;
-        & * {
+        border: var(--color) solid 1px;
+        /* & * {
           color: var(--color);
-        }
+        } */
         /* --------------------------------- */
+
+        width: 38px;
 
         & svg {
           & .fillingz {
