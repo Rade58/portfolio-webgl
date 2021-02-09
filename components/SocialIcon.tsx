@@ -10,6 +10,8 @@ import Image from "next/image";
 
 import { isSSR } from "../utils/isSSR";
 
+import Icon from "./Icon";
+
 interface SocialIconCommonPropsI {
   name: string;
   socialImageUrl: string;
@@ -18,9 +20,11 @@ interface SocialIconCommonPropsI {
 interface SocialIconEmailPropsI extends SocialIconCommonPropsI {
   email: string;
   socialUrl?: never;
+  copyButtonUrl: string;
 }
 interface SocialIconUsualPropsI extends SocialIconCommonPropsI {
   socialUrl: string;
+  copyButtonUrl: string;
   email?: never;
 }
 
@@ -30,9 +34,11 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
   const {
     socialUrl,
     email,
+    copyButtonUrl,
     //
     name,
     socialImageUrl,
+    //
   } = props;
 
   return (
