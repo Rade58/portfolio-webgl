@@ -40,7 +40,7 @@ const Icon: FunctionComponent<IconPropsI> = ({ url, color, name, width }) => {
         --color: ${color};
 
         /* U CILJU TEST (UKLONICU KASNIJE) */
-        border: var(--color) solid 1px;
+        /* border: var(--color) solid 1px; */
         /* & * {
           color: var(--color);
         } */
