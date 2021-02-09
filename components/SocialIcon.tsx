@@ -19,13 +19,15 @@ interface SocialIconCommonPropsI {
 
 interface SocialIconEmailPropsI extends SocialIconCommonPropsI {
   email: string;
+  copyIconUrl: string;
+  copyIconColor: string;
   socialUrl?: never;
-  copyButtonUrl: string;
 }
 interface SocialIconUsualPropsI extends SocialIconCommonPropsI {
   socialUrl: string;
-  copyButtonUrl: string;
   email?: never;
+  copyIconUrl: never;
+  copyIconColor: never;
 }
 
 type SocialIconPropsI = SocialIconEmailPropsI | SocialIconUsualPropsI;
@@ -34,7 +36,9 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
   const {
     socialUrl,
     email,
-    copyButtonUrl,
+    copyIconColor,
+    copyIconUrl,
+
     //
     name,
     socialImageUrl,
@@ -92,7 +96,7 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
         }
       `}
     >
-      {!email ? (
+      {!email && !copyIconUrl && !copyIconColor ? (
         <section className="social-section">
           <a href={socialUrl} target="_blank" rel="noreferrer">
             <div className="image-container">
@@ -118,6 +122,7 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
             />
           </div>
           <div className="email-text">{email}</div>
+          <Icon name="copy" url={copyIconUrl} color={copyIconColor} />
           <button
             className="copy-button"
             onClick={async () => {
