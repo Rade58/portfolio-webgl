@@ -30,6 +30,12 @@ const Icon: FunctionComponent<IconPropsI> = ({ url, color, name }) => {
           color: var(--color);
         }
         /* --------------------------------- */
+
+        & svg {
+          & .fillingz {
+            fill: var(--color);
+          }
+        }
       `}
     >
       <svg
@@ -47,15 +53,6 @@ const Icon: FunctionComponent<IconPropsI> = ({ url, color, name }) => {
         viewBox="0 0 380 210"
       >
         <title id="svg_style_holder">Your Title Goes here</title>
-        <style>
-          {
-            /* css */ `
-            .fillingz {
-              fill: var(--color);
-            }
-          `
-          }
-        </style>
       </svg>
 
       <Image layout="responsive" src="/test.svg" width="auto" height="auto" />
