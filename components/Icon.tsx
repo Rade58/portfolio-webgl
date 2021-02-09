@@ -9,8 +9,8 @@ import styled from "@emotion/styled";
 // OVO MI NE TREBA
 // import Image from "next/image";
 
-// KORISTIM react-svg
-import { ReactSVG } from "react-svg";
+// KORISTIM react-svg (NE KORISTIM)
+// import { ReactSVG } from "react-svg";
 //
 
 // BOLJE DA UNAPRED DEFINISEM DOZVOLJENA IMANA
@@ -55,14 +55,15 @@ const Icon: FunctionComponent<IconPropsI> = ({ url, color, name, width }) => {
         }
       `}
     >
-      <ReactSVG
+      {/* NE POSTOJI VISE OVAJ PAKET */}
+      {/* <ReactSVG
         src={url}
         loading={() => {
           console.log({ url });
 
           return <p>loading...</p>;
         }}
-      />
+      /> */}
     </div>
   );
 };
