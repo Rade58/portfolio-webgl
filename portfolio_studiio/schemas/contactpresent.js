@@ -21,5 +21,18 @@ export default {
         },
       ],
     },
+    {
+      name: "commonIcons",
+      title: "Common Icons For Buttons",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: {
+            type: "commonsvg",
+          },
+        },
+      ],
+    },
   ],
 };
