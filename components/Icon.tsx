@@ -25,6 +25,14 @@ interface IconPropsI {
 }
 
 const Icon: FunctionComponent<IconPropsI> = ({ url, color, name, width }) => {
+  let iconWidth: number;
+
+  if (width) {
+    iconWidth = width;
+  } else {
+    iconWidth = 38;
+  }
+
   return (
     <div
       className="common-icon"
@@ -38,7 +46,7 @@ const Icon: FunctionComponent<IconPropsI> = ({ url, color, name, width }) => {
         } */
         /* --------------------------------- */
 
-        width: ${width}px;
+        width: ${iconWidth}px;
 
         & svg {
           & .fillingz {
