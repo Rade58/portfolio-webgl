@@ -45,7 +45,7 @@ const Projects: FunctionComponent<PropsI> = ({ projectsArticleRef, data }) => {
         serializers={serializers}
       />
       {/* SAMO U CILJU PROBE, UKLONICU KASNIJE */}
-      <Icon url="/test.svg" color="crimson" name="copy" />
+      <Icon url="/test.svg" color="crimson" name="copy" width={28} />
       {/* ------------------------------ */}
     </ArticleStory>
   );
