@@ -43,9 +43,9 @@ const Contact: FunctionComponent<PropsI> = ({ contactArticleRef, data }) => {
   let copyIconObjectData: CopyIconDataI;
 
   for (const ob of commonIcons) {
-    if (ob.name === "copy") {
+    if (ob.title === "copy") {
       copyIconObjectData = {
-        name: ob.name,
+        name: ob.title,
         url: ob.icon.asset.url,
         // DUPLO color JER JE REC O REFERENCI (QUERY-OVAO SI OVO KAO REFERENCU)
         color: ob.color.color,

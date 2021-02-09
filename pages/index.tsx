@@ -186,7 +186,7 @@ export const getStaticProps: GetStaticProps = async () => {
         }
       },
       commonIcons[] -> {
-        name,
+        title,
         // VODI RACUNA DA JE I color REFERENC
         color ->,
         //
