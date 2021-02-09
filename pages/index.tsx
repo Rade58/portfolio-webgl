@@ -184,6 +184,14 @@ export const getStaticProps: GetStaticProps = async () => {
             url
           }
         }
+      },
+      commonIcons[] -> {
+        name, color,
+        icon {
+          asset -> {
+            url
+          }
+        }
       }
     },
     // blog
