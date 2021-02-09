@@ -8,10 +8,14 @@ import styled from "@emotion/styled";
 
 import Image from "next/image";
 
+// BOLJE DA UNAPRED DEFINISEM DOZVOLJENA IMANA
+// KOJA CU KORISTITI I U SANITY-JU, PRI POHRANJIVANJU
+type nameType = "copy" | "paste";
+
 interface IconPropsI {
   url: string;
   color: string;
-  name: string;
+  name: nameType;
 }
 
 const Icon: FunctionComponent<IconPropsI> = ({ url, color, name }) => {
@@ -20,32 +24,29 @@ const Icon: FunctionComponent<IconPropsI> = ({ url, color, name }) => {
       css={css`
         --color: ${color};
 
+        /* U CILJU TEST (UKLONICU KASNIJE) */
         border: var(--color) solid 4px;
         & * {
           color: var(--color);
         }
-
-        #${name} {
-          fill: var(--color);
-        }
+        /* --------------------------------- */
       `}
     >
       <svg
-        style={{ height: "0px", visibility: "hidden" }}
+        tabIndex={-1}
         /* NO NEED FOR px ON width AND height */
-        width="0"
-        height="0"
-        aria-labelledby="external-icon"
-        id={`${name}-svgz`}
+        style={{ visibility: "hidden" }}
+        width="0px"
+        height="0px"
+        aria-labelledby="svg_style_holder"
+        id={`svg-style-holder-${name}`}
         role="presentation" /* or role="imge"*/
         lang="en"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
         viewBox="0 0 380 210"
       >
-        <title id="external-icon">External Icon</title>
-
-        <path fill={color} id={`${name}`} d="M199.1,142" />
+        <title id="svg_style_holder">Your Title Goes here</title>
       </svg>
 
       <Image layout="responsive" src="/test.svg" width="auto" height="auto" />
