@@ -186,7 +186,10 @@ export const getStaticProps: GetStaticProps = async () => {
         }
       },
       commonIcons[] -> {
-        name, color,
+        name,
+        // VODI RACUNA DA JE I color REFERENC
+        color ->,
+        //
         icon {
           asset -> {
             url
