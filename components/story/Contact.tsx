@@ -47,7 +47,8 @@ const Contact: FunctionComponent<PropsI> = ({ contactArticleRef, data }) => {
       copyIconObjectData = {
         name: ob.name,
         url: ob.icon.asset.url,
-        color: ob.color,
+        // DUPLO color JER JE REC O REFERENCI (QUERY-OVAO SI OVO KAO REFERENCU)
+        color: ob.color.color,
       };
     }
   }
