@@ -31,6 +31,29 @@ const Contact: FunctionComponent<PropsI> = ({ contactArticleRef, data }) => {
 
   const { major } = state.context;
 
+  // COMMON ICON NORMALIZATION
+  const { commonIcons } = data;
+
+  interface CopyIconDataI {
+    name: string;
+    url: string;
+    color: string;
+  }
+
+  let copyIconObjectData: CopyIconDataI;
+
+  for (const ob of commonIcons) {
+    if (ob.name === "copy") {
+      copyIconObjectData = {
+        name: ob.name,
+        url: ob.icon.asset.url,
+        color: ob.color,
+      };
+    }
+  }
+
+  //
+
   return (
     <ArticleStory
       articleReference={contactArticleRef}
@@ -75,6 +98,8 @@ const Contact: FunctionComponent<PropsI> = ({ contactArticleRef, data }) => {
                 email={email}
                 name={name}
                 socialImageUrl={socialImageUrl}
+                copyIconColor={copyIconObjectData.color}
+                copyIconUrl={copyIconObjectData.url}
               />
             );
           }

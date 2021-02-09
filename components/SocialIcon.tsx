@@ -26,8 +26,8 @@ interface SocialIconEmailPropsI extends SocialIconCommonPropsI {
 interface SocialIconUsualPropsI extends SocialIconCommonPropsI {
   socialUrl: string;
   email?: never;
-  copyIconUrl: never;
-  copyIconColor: never;
+  copyIconUrl?: never;
+  copyIconColor?: never;
 }
 
 type SocialIconPropsI = SocialIconEmailPropsI | SocialIconUsualPropsI;
