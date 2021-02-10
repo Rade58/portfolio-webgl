@@ -28,6 +28,7 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
       css={css`
         &.email-section {
           display: flex;
+          flex-wrap: wrap;
           align-items: center;
 
           & > * {
@@ -58,9 +59,15 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
             border: outset 2px ${copyIconColor};
             background-color: #e7acdd;
           }
+
+          & .text-before {
+            width: 100%;
+            border: pink solid 0px;
+          }
         }
       `}
     >
+      <div className="text-before">You can conatact me via email:</div>
       <div className="email-container">
         <Image
           src={socialImageUrl}

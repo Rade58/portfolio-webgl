@@ -50,6 +50,17 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
       css={css`
         border: crimson solid 1px;
 
+        /* &.social-icon {
+          &:nth-of-type(2) {
+            &::before {
+              content: "You can hit me up on:";
+              display: block;
+              position: relative;
+              top: 200;
+            }
+          }
+        } */
+
         & .social-section {
           margin: 2px 4px;
 

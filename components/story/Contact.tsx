@@ -45,7 +45,6 @@ const Contact: FunctionComponent<PropsI> = ({ contactArticleRef, data }) => {
         projectId="4mpb3bwc"
         serializers={serializers}
       />
-      Icons:
       <section
         className="social-icons-container"
         css={css`
