@@ -10,11 +10,12 @@ import Image from "next/image";
 
 import { isSSR } from "../utils/isSSR";
 
-import Icon from "./Icon";
+import MailCopy from "./MailCopy";
 
 interface SocialIconCommonPropsI {
   name: string;
   socialImageUrl: string;
+  copyIconWidth?: number;
 }
 
 interface SocialIconEmailPropsI extends SocialIconCommonPropsI {
@@ -42,6 +43,7 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
     //
     name,
     socialImageUrl,
+    copyIconWidth,
     //
   } = props;
 
@@ -111,38 +113,12 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
           </a>
         </section>
       ) : (
-        <section className="email-section">
-          <div className="email-container">
-            <Image
-              src={socialImageUrl}
-              layout="responsive"
-              width="auto"
-              height="auto"
-              alt={`${name}-icon`}
-            />
-          </div>
-          <div className="email-text">{email}</div>
-          {/* KASNIJE CU PODESITI DA OVO BUDE DUGME, SADA SAMO ISPROBAVAM */}
-          <Icon name="copy" url={copyIconUrl} color={copyIconColor} />
-          <button
-            className="copy-button"
-            onClick={async () => {
-              // console.log("click");
-
-              if (!navigator.clipboard) {
-                return;
-              }
-
-              try {
-                await navigator.clipboard.writeText(email);
-              } catch (error) {
-                console.error("Failed to copy!", error);
-              }
-            }}
-          >
-            copy
-          </button>
-        </section>
+        <MailCopy
+          copyIconColor={copyIconColor}
+          email={email}
+          socialImageUrl={socialImageUrl}
+          copyIconWidth={copyIconWidth}
+        />
       )}
     </div>
   );

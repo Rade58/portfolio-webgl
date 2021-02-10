@@ -101,6 +101,7 @@ const Contact: FunctionComponent<PropsI> = ({ contactArticleRef, data }) => {
                 socialImageUrl={socialImageUrl}
                 copyIconColor={copyIconObjectData.color}
                 copyIconUrl={copyIconObjectData.url}
+                copyIconWidth={18}
               />
             );
           }
