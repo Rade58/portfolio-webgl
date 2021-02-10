@@ -44,6 +44,8 @@ const Icon: FunctionComponent<IconPropsI> = ({ url, color, name, width }) => {
       css={css`
         --color: ${color};
 
+        --filllingz: ${color};
+
         /* U CILJU TEST (UKLONICU KASNIJE) */
         /* border: var(--color) solid 1px; */
         /* & * {
@@ -75,6 +77,7 @@ const Icon: FunctionComponent<IconPropsI> = ({ url, color, name, width }) => {
         width="auto"
         height="auto"
       /> */}
+      <XStateSvg />
     </div>
   );
 };
