@@ -9,6 +9,8 @@ import styled from "@emotion/styled";
 import Image from "next/image";
 import CopyIcon from "./icons/common_icons/CopyIcon";
 
+import EmailIcon from "./icons/email/EmailIcon";
+
 interface MailCopyPropsI {
   socialImageUrl: string;
   email: string;
@@ -69,13 +71,15 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
     >
       <div className="text-before">You can conatact me via email:</div>
       <div className="email-container">
-        <Image
+        {/* <Image
           src={socialImageUrl}
           layout="responsive"
           width="auto"
           height="auto"
           alt={`email-icon`}
-        />
+        /> */}
+        <EmailIcon color={copyIconColor} width={28} />
+        {/*  */}
       </div>
       <div className="email-text">{email}</div>
       <button
