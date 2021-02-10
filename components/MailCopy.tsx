@@ -43,17 +43,20 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
             border: ${copyIconColor} inset 2px;
             height: 38px;
             user-select: text;
-            padding: 3.8px;
+            padding: 4.8px;
             margin-right: 0px;
+            font-weight: 300;
 
             &::selection {
-              color: crimson;
+              color: ${copyIconColor};
               background-color: blanchedalmond;
             }
           }
 
           & .copy-button {
             height: 38px;
+            border: outset 2px ${copyIconColor};
+            background-color: #e7acdd;
           }
         }
       `}
