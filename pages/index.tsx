@@ -182,17 +182,6 @@ export const getStaticProps: GetStaticProps = async () => {
             url
           }
         }
-      },
-      commonIcons[] -> {
-        title,
-        // VODI RACUNA DA JE I color REFERENC
-        color ->,
-        //
-        icon {
-          asset -> {
-            url
-          }
-        }
       }
     },
     // blog
@@ -201,11 +190,7 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   }`);
 
-  console.log(JSON.stringify({ stories }));
-
-  // const svgUrl = stories.contact.commonIcons[0].icon.asset.url;
-
-  // console.log(JSON.stringify({ aboutMe }));
+  console.log(JSON.stringify({ stories }, null, 2));
 
   return {
     props: {
