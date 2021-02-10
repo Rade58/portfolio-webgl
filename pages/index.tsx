@@ -4,10 +4,6 @@ import { FunctionComponent, Fragment, useReducer } from "react";
 
 import { GetStaticProps } from "next";
 
-// ZA TRANSFORMISANJE SVG-JA
-import svgr from "@svgr/core";
-//
-
 /* import {
   MAJOR_FINITE_STATES_ARRAY,
   fse,
@@ -25,8 +21,6 @@ import Story from "../components/Story";
 import sanityClient from "../sanity/sanity_client";
 
 import { setup } from "../some_handlers";
-
-// import DOMPurify from "dompurify";
 
 /* import { appService } from "../state_machines/app_machine";
 import animationMachineObserver, {
