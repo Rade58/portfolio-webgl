@@ -25,8 +25,7 @@ dotenvLoad();
 
 const svgReactPlugin = withReactSvg({
   // OVDE INCLUDE-UJEM FOLDER GDE CE BITI SVGS
-  // MEDJUTIM JA ZA SADA NEMAM TAKAV FOLDER
-  include: path.resolve(__dirname, "svgs"),
+  include: path.resolve(__dirname, "svgs_for_inlining"),
 
   // KADA BUDEM IMPORT-OVAO SVG-JEVE IZ OVOG FOLDERA, USTVARI
   // NECE SE IMPORTOVATI STRING (PATH ILI SVG)

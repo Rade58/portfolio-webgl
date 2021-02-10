@@ -6,7 +6,8 @@ import { FunctionComponent } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-import Image from "next/image";
+// ---------------------------------------------------
+// import Image from "next/image";
 
 // KORISTIM react-svg (NE KORISTIM)
 // import { ReactSVG } from "react-svg";
@@ -14,6 +15,11 @@ import Image from "next/image";
 
 // BOLJE DA UNAPRED DEFINISEM DOZVOLJENA IMANA
 // KOJA CU KORISTITI I U SANITY-JU, PRI POHRANJIVANJU
+// ---------------------------------------------------
+
+import XStateSvg from "../svgs_for_inlining/common_icons/XState.svg";
+//
+
 type nameType = "copy" | "paste";
 
 interface IconPropsI {
@@ -63,12 +69,12 @@ const Icon: FunctionComponent<IconPropsI> = ({ url, color, name, width }) => {
           return <p>loading...</p>;
         }}
       /> */}
-      <Image
+      {/* <Image
         layout="responsive"
         src="/x-state.svg"
         width="auto"
         height="auto"
-      />
+      /> */}
     </div>
   );
 };
