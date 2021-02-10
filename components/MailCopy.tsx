@@ -23,7 +23,41 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
   copyIconWidth,
 }) => {
   return (
-    <section className="email-section">
+    <section
+      className="email-section"
+      css={css`
+        &.email-section {
+          display: flex;
+          align-items: center;
+
+          & > * {
+            margin-right: 8px;
+          }
+
+          & .email-container {
+            border: ${copyIconColor} solid 0px;
+            width: 48px;
+          }
+
+          & .email-text {
+            border: ${copyIconColor} inset 2px;
+            height: 38px;
+            user-select: text;
+            padding: 3.8px;
+            margin-right: 0px;
+
+            &::selection {
+              color: crimson;
+              background-color: blanchedalmond;
+            }
+          }
+
+          & .copy-button {
+            height: 38px;
+          }
+        }
+      `}
+    >
       <div className="email-container">
         <Image
           src={socialImageUrl}

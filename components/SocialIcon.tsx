@@ -63,35 +63,6 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
           border: red solid 1px;
           width: 100%;
           margin: 8px;
-
-          & .email-section {
-            display: flex;
-            align-items: center;
-
-            & > * {
-              margin-right: 8px;
-            }
-
-            & .email-container {
-              border: purple solid 0px;
-              width: 48px;
-            }
-
-            & .email-text {
-              border: #bb2fc0 inset 2px;
-              user-select: text;
-              padding: 3.8px;
-
-              &::selection {
-                color: crimson;
-                background-color: blanchedalmond;
-              }
-            }
-
-            & .copy-button {
-              height: fit-content;
-            }
-          }
         }
       `}
     >
