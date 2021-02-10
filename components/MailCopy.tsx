@@ -39,7 +39,9 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
 
           & .email-container {
             border: ${copyIconColor} solid 0px;
-            width: 48px;
+            width: ${copyIconWidth + 12}px;
+            display: flex;
+            justify-content: center;
           }
 
           & .email-text {
