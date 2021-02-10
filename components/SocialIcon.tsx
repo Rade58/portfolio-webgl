@@ -20,14 +20,12 @@ interface SocialIconCommonPropsI {
 
 interface SocialIconEmailPropsI extends SocialIconCommonPropsI {
   email: string;
-  copyIconUrl: string;
   copyIconColor: string;
   socialUrl?: never;
 }
 interface SocialIconUsualPropsI extends SocialIconCommonPropsI {
   socialUrl: string;
   email?: never;
-  copyIconUrl?: never;
   copyIconColor?: never;
 }
 
@@ -38,7 +36,6 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
     socialUrl,
     email,
     copyIconColor,
-    copyIconUrl,
 
     //
     name,
@@ -98,7 +95,7 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
         }
       `}
     >
-      {!email && !copyIconUrl && !copyIconColor ? (
+      {!email && !copyIconColor ? (
         <section className="social-section">
           <a href={socialUrl} target="_blank" rel="noreferrer">
             <div className="image-container">

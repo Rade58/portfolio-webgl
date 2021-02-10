@@ -31,28 +31,6 @@ const Contact: FunctionComponent<PropsI> = ({ contactArticleRef, data }) => {
 
   const { major } = state.context;
 
-  // COMMON ICON NORMALIZATION
-  const { commonIcons } = data;
-
-  interface CopyIconDataI {
-    name: string;
-    url: string;
-    color: string;
-  }
-
-  let copyIconObjectData: CopyIconDataI;
-
-  for (const ob of commonIcons) {
-    if (ob.title === "copy") {
-      copyIconObjectData = {
-        name: ob.title,
-        url: ob.icon.asset.url,
-        // DUPLO color JER JE REC O REFERENCI (QUERY-OVAO SI OVO KAO REFERENCU)
-        color: ob.color.color,
-      };
-    }
-  }
-
   //
 
   return (
@@ -99,9 +77,8 @@ const Contact: FunctionComponent<PropsI> = ({ contactArticleRef, data }) => {
                 email={email}
                 name={name}
                 socialImageUrl={socialImageUrl}
-                copyIconColor={copyIconObjectData.color}
-                copyIconUrl={copyIconObjectData.url}
                 copyIconWidth={18}
+                copyIconColor={}
               />
             );
           }
