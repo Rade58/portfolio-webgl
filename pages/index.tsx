@@ -209,7 +209,7 @@ export const getStaticProps: GetStaticProps = async () => {
 
   console.log(JSON.stringify({ stories }));
 
-  const svgUrl = stories.contact.commonIcons[0].icon.asset.url;
+  // const svgUrl = stories.contact.commonIcons[0].icon.asset.url;
 
   // console.log(JSON.stringify({ aboutMe }));
 
