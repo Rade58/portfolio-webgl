@@ -29,5 +29,13 @@ export default {
         type: "iconcolor",
       },
     },
+    {
+      name: "email",
+      title: "Email",
+      type: "reference",
+      to: {
+        type: "email",
+      },
+    },
   ],
 };
