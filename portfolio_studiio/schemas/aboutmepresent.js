@@ -43,5 +43,13 @@ export default {
         },
       ],
     },
+    {
+      name: "iconColor",
+      title: "Color For Common Icons",
+      type: "reference",
+      to: {
+        type: "iconcolor",
+      },
+    },
   ],
 };

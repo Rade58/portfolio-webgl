@@ -182,7 +182,8 @@ export const getStaticProps: GetStaticProps = async () => {
             url
           }
         }
-      }
+      },
+      "iconColor": iconColor ->
     },
     // blog
     blog -> {
