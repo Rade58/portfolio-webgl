@@ -7,13 +7,11 @@ import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
 interface IconPropsI {
-  url: string;
   color: string;
   width?: number;
 }
 
 const IconHolder: FunctionComponent<IconPropsI> = ({
-  url,
   color,
   width,
   children,
