@@ -122,7 +122,7 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
             />
           </div>
           <div className="email-text">{email}</div>
-          {/* KASNIJE CU PODESITI DA OVO BUDE DUGME, SADA SAMI ISPROBAVAM */}
+          {/* KASNIJE CU PODESITI DA OVO BUDE DUGME, SADA SAMO ISPROBAVAM */}
           <Icon name="copy" url={copyIconUrl} color={copyIconColor} />
           <button
             className="copy-button"
