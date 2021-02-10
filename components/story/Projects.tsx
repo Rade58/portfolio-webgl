@@ -14,8 +14,6 @@ import { storyService } from "../../state_machines/story_machine";
 
 import ArticleStory from "./ArticleStory";
 
-import Icon from "../Icon";
-
 import { fse as majorFsesEnum } from "../../sketch/middle_ground/major_states";
 
 import { storyMajorText } from "../../content";
@@ -45,7 +43,7 @@ const Projects: FunctionComponent<PropsI> = ({ projectsArticleRef, data }) => {
         serializers={serializers}
       />
       {/* SAMO U CILJU PROBE, UKLONICU KASNIJE */}
-      <Icon url="/test.svg" color="crimson" name="copy" width={28} />
+
       {/* ------------------------------ */}
     </ArticleStory>
   );
