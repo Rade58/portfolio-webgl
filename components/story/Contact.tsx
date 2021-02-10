@@ -78,7 +78,7 @@ const Contact: FunctionComponent<PropsI> = ({ contactArticleRef, data }) => {
                 name={name}
                 socialImageUrl={socialImageUrl}
                 copyIconWidth={18}
-                copyIconColor={}
+                copyIconColor={data.iconColor.color}
               />
             );
           }
