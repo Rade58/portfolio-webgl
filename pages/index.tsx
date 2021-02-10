@@ -4,6 +4,10 @@ import { FunctionComponent, Fragment, useReducer } from "react";
 
 import { GetStaticProps } from "next";
 
+// ZA TRANSFORMISANJE SVG-JA
+import svgr from "@svgr/core";
+//
+
 /* import {
   MAJOR_FINITE_STATES_ARRAY,
   fse,
@@ -204,6 +208,8 @@ export const getStaticProps: GetStaticProps = async () => {
   }`);
 
   console.log(JSON.stringify({ stories }));
+
+  const svgUrl = stories.contact.commonIcons[0].icon.asset.url;
 
   // console.log(JSON.stringify({ aboutMe }));
 
