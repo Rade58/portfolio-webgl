@@ -6,17 +6,6 @@ import { FunctionComponent } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-// ---------------------------------------------------
-// import Image from "next/image";
-
-// KORISTIM react-svg (NE KORISTIM)
-// import { ReactSVG } from "react-svg";
-//
-
-// BOLJE DA UNAPRED DEFINISEM DOZVOLJENA IMANA
-// KOJA CU KORISTITI I U SANITY-JU, PRI POHRANJIVANJU
-// ---------------------------------------------------
-
 import XStateSvg from "../svgs_for_inlining/common_icons/XState.svg";
 //
 
@@ -44,7 +33,7 @@ const Icon: FunctionComponent<IconPropsI> = ({ url, color, name, width }) => {
       css={css`
         --color: ${color};
 
-        --filllingz: ${color};
+        --fillingz: ${color};
 
         /* U CILJU TEST (UKLONICU KASNIJE) */
         /* border: var(--color) solid 1px; */
