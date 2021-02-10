@@ -63,7 +63,12 @@ const Icon: FunctionComponent<IconPropsI> = ({ url, color, name, width }) => {
           return <p>loading...</p>;
         }}
       /> */}
-      <Image layout="responsive" src="x-state.svg" width="auto" height="auto" />
+      <Image
+        layout="responsive"
+        src="/x-state.svg"
+        width="auto"
+        height="auto"
+      />
     </div>
   );
 };
