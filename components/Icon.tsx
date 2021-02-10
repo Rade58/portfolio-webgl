@@ -6,8 +6,7 @@ import { FunctionComponent } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-// OVO MI NE TREBA
-// import Image from "next/image";
+import Image from "next/image";
 
 // KORISTIM react-svg (NE KORISTIM)
 // import { ReactSVG } from "react-svg";
@@ -64,6 +63,7 @@ const Icon: FunctionComponent<IconPropsI> = ({ url, color, name, width }) => {
           return <p>loading...</p>;
         }}
       /> */}
+      <Image layout="responsive" src="x-state.svg" width="auto" height="auto" />
     </div>
   );
 };
