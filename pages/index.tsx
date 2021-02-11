@@ -174,8 +174,6 @@ export const getStaticProps: GetStaticProps = async () => {
       title, previewText, bogati, major,
       socialIcons[] -> {
         name,
-        isEmail,
-        email,
         url,
         socialImage {
           asset -> {
