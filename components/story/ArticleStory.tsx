@@ -29,7 +29,7 @@ const ArticleStory: FunctionComponent<PropsI> = ({
   articleReference,
   majorName,
 }) => {
-  const [state, send] = useService(storyService);
+  const [state, __] = useService(storyService);
 
   const { major, mediaBellow } = state.context;
   // ZA style ATRIBUTE
