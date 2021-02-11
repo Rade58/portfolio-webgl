@@ -16,5 +16,11 @@ export default {
         type: "iconcolor",
       },
     },
+    {
+      name: "github",
+      title: "Github",
+      type: "reference",
+      of: { type: "githubinfo" },
+    },
   ],
 };
