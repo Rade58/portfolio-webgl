@@ -89,11 +89,37 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
         tabIndex={0}
         role="textbox"
         className="email-text"
-        onClick={(e) => {
-          console.log(e);
+        onClick={async (e) => {
+          // console.log(e);
+
+          const nodeToBeSelected: Node = e.target as Node;
+
+          if (document && window && window.getSelection) {
+            const selection = window.getSelection();
+            const range = document.createRange();
+
+            range.selectNodeContents(nodeToBeSelected);
+
+            selection.removeAllRanges();
+            selection.addRange(range);
+          }
         }}
         onKeyDown={(e) => {
-          console.log(e);
+          // console.log(e);
+
+          if ((e.key = "Enter")) {
+            const nodeToBeSelected: Node = e.target as Node;
+
+            if (document && window && window.getSelection) {
+              const selection = window.getSelection();
+              const range = document.createRange();
+
+              range.selectNodeContents(nodeToBeSelected);
+
+              selection.removeAllRanges();
+              selection.addRange(range);
+            }
+          }
         }}
       >
         {email}
