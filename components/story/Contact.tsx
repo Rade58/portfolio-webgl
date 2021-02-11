@@ -72,7 +72,11 @@ const Contact: FunctionComponent<PropsI> = ({ contactArticleRef, data }) => {
           );
         })}
       </section>
-      <MailCopy />
+      <MailCopy
+        copyIconColor={data.iconColor.color}
+        email={data.myEmail}
+        copyIconWidth={16}
+      />
     </ArticleStory>
   );
 };
