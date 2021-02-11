@@ -5,6 +5,5 @@ export default {
   fields: [
     //
     { name: "currentMail", title: "Current Email", type: "email" },
-    { name: "emailIcon", title: "EmailIcon", type: "image" },
   ],
 };

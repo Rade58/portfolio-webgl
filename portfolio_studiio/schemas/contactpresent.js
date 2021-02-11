@@ -34,7 +34,7 @@ export default {
       title: "Email",
       type: "reference",
       to: {
-        type: "email",
+        type: "mymail",
       },
     },
   ],
