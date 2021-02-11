@@ -86,8 +86,14 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
         {/*  */}
       </div>
       <div
+        tabIndex={0}
+        role="option"
+        aria-selected="true"
         className="email-text"
         onClick={(e) => {
+          console.log(e);
+        }}
+        onKeyDown={(e) => {
           console.log(e);
         }}
       >
