@@ -85,7 +85,14 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
         <EmailIcon color={copyIconColor} width={28} />
         {/*  */}
       </div>
-      <div className="email-text">{email}</div>
+      <div
+        className="email-text"
+        onClick={(e) => {
+          console.log(e);
+        }}
+      >
+        {email}
+      </div>
       <button
         className="copy-button"
         onClick={async () => {
