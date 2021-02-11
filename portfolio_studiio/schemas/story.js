@@ -20,7 +20,7 @@ export default {
       name: "projects",
       title: "Projects",
       type: "reference",
-      to: { type: "projectpresent" },
+      to: { type: "projectspresent" },
     },
     {
       name: "blog",
