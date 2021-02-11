@@ -75,9 +75,7 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
         }
       `}
     >
-      <div className="text-before" ref={emailTextRef}>
-        Or you can send me an email:
-      </div>
+      <div className="text-before">Or you can send me an email:</div>
       <div className="email-container">
         {/* <Image
           src={socialImageUrl}
@@ -90,6 +88,7 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
         {/*  */}
       </div>
       <div
+        ref={emailTextRef}
         tabIndex={0}
         role="textbox"
         className="email-text"
@@ -168,9 +167,10 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
           // console.log("mousedown");
 
           if (emailTextRef.current) {
-            const nodeToBeSelected: Node = emailTextRef.current as Node;
+            const nodeToBeSelected: Node = emailTextRef.current;
 
             if (document && window && window.getSelection) {
+              console.log(emailTextRef.current);
               const selection = window.getSelection();
               const range = document.createRange();
 
