@@ -14,7 +14,7 @@ interface CopyIconPropsI {
   width?: number;
 }
 
-const ComponentName: FunctionComponent<CopyIconPropsI> = ({ color, width }) => {
+const CopyIcon: FunctionComponent<CopyIconPropsI> = ({ color, width }) => {
   return (
     <Iconholder color={color} width={width}>
       <CopySvg />
@@ -22,4 +22,4 @@ const ComponentName: FunctionComponent<CopyIconPropsI> = ({ color, width }) => {
   );
 };
 
-export default ComponentName;
+export default CopyIcon;
