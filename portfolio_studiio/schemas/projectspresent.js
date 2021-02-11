@@ -20,7 +20,7 @@ export default {
       name: "github",
       title: "Github",
       type: "reference",
-      of: { type: "githubinfo" },
+      to: { type: "githubinfo" },
     },
   ],
 };
