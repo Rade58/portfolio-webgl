@@ -30,6 +30,10 @@ const IconHolder: FunctionComponent<IconPropsI> = ({
       css={css`
         --iconColor: ${color};
         width: ${iconWidth}px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
       `}
     >
       {children}
