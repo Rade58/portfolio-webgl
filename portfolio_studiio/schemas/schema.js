@@ -19,7 +19,7 @@ import blogpresent from "./blogpresent";
 import devsvg from "./devsvg";
 import socialsvg from "./socialsvg";
 import mymail from "./mymail";
-
+import githubinfo from "./githubinfo";
 import iconcolor from "./iconcolor";
 import story from "./story";
 //
@@ -46,6 +46,7 @@ export default createSchema({
     devsvg,
     socialsvg,
     mymail,
+    githubinfo,
 
     iconcolor,
     story,
