@@ -15,38 +15,28 @@ import MailCopy from "./MailCopy";
 interface SocialIconCommonPropsI {
   name: string;
   socialImageUrl: string;
-  copyIconWidth?: number;
 }
 
-interface SocialIconEmailPropsI extends SocialIconCommonPropsI {
-  email: string;
-  copyIconColor: string;
-  socialUrl?: never;
-}
 interface SocialIconUsualPropsI extends SocialIconCommonPropsI {
   socialUrl: string;
-  email?: never;
-  copyIconColor?: never;
 }
 
-type SocialIconPropsI = SocialIconEmailPropsI | SocialIconUsualPropsI;
+type SocialIconPropsI = SocialIconUsualPropsI;
 
 const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
   const {
     socialUrl,
-    email,
-    copyIconColor,
 
     //
     name,
     socialImageUrl,
-    copyIconWidth,
+
     //
   } = props;
 
   return (
     <div
-      className={`social-icon ${!email ? "" : "email"}`}
+      className={`social-icon`}
       css={css`
         border: crimson solid 1px;
 
@@ -69,36 +59,21 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
             width: 48px;
           }
         }
-
-        &.email {
-          border: red solid 1px;
-          width: 100%;
-          margin: 8px;
-        }
       `}
     >
-      {!email && !copyIconColor ? (
-        <section className="social-section">
-          <a href={socialUrl} target="_blank" rel="noreferrer">
-            <div className="image-container">
-              <Image
-                src={socialImageUrl}
-                layout="responsive"
-                width="auto"
-                height="auto"
-                alt={`${name}-icon`}
-              />
-            </div>
-          </a>
-        </section>
-      ) : (
-        <MailCopy
-          copyIconColor={copyIconColor}
-          email={email}
-          socialImageUrl={socialImageUrl}
-          copyIconWidth={copyIconWidth}
-        />
-      )}
+      <section className="social-section">
+        <a href={socialUrl} target="_blank" rel="noreferrer">
+          <div className="image-container">
+            <Image
+              src={socialImageUrl}
+              layout="responsive"
+              width="auto"
+              height="auto"
+              alt={`${name}-icon`}
+            />
+          </div>
+        </a>
+      </section>
     </div>
   );
 };

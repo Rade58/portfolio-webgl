@@ -12,14 +12,12 @@ import CopyIcon from "./icons/common_icons/CopyIcon";
 import EmailIcon from "./icons/email/EmailIcon";
 
 interface MailCopyPropsI {
-  socialImageUrl: string;
   email: string;
   copyIconColor: string;
   copyIconWidth?: number;
 }
 
 const MailCopy: FunctionComponent<MailCopyPropsI> = ({
-  socialImageUrl,
   copyIconColor,
   email,
   copyIconWidth,
@@ -67,6 +65,13 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
           & .text-before {
             width: 100%;
             border: pink solid 0px;
+          }
+
+          /* ispitaj ovo */
+          &.email {
+            border: red solid 1px;
+            width: 100%;
+            margin: 8px;
           }
         }
       `}

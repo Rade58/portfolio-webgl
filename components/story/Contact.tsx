@@ -53,34 +53,21 @@ const Contact: FunctionComponent<PropsI> = ({ contactArticleRef, data }) => {
           flex-wrap: wrap;
         `}
       >
-        {data.socialIcons.map(({ name, isEmail, email, url, socialImage }) => {
+        {data.socialIcons.map(({ name, url, socialImage }) => {
           const {
             asset: { url: socialImageUrl },
           } = socialImage;
 
-          console.log({ name, isEmail, email, url, socialImageUrl });
+          console.log({ name, url, socialImageUrl });
 
-          if (!isEmail) {
-            return (
-              <SocialIcon
-                key={name}
-                socialUrl={url}
-                name={name}
-                socialImageUrl={socialImageUrl}
-              />
-            );
-          } else {
-            return (
-              <SocialIcon
-                key={name}
-                email={email}
-                name={name}
-                socialImageUrl={socialImageUrl}
-                copyIconWidth={18}
-                copyIconColor={data.iconColor.color}
-              />
-            );
-          }
+          return (
+            <SocialIcon
+              key={name}
+              socialUrl={url}
+              name={name}
+              socialImageUrl={socialImageUrl}
+            />
+          );
         })}
       </section>
     </ArticleStory>
