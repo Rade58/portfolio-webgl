@@ -182,7 +182,9 @@ export const getStaticProps: GetStaticProps = async () => {
         }
       },
       "iconColor": iconColor ->,
-      "email": email -> email.currentMail
+      "email": email -> {
+        currentMail
+      }
     },
     // blog
     blog -> {
