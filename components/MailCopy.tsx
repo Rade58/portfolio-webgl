@@ -163,10 +163,23 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
           }
         }}
         onMouseDown={(e) => {
-          console.log(e);
+          const nodeToBeSelected: Node = e.target as Node;
+
+          if (document && window && window.getSelection) {
+            const selection = window.getSelection();
+            const range = document.createRange();
+
+            range.selectNodeContents(nodeToBeSelected);
+
+            selection.removeAllRanges();
+            selection.addRange(range);
+          }
         }}
         onMouseUp={(e) => {
-          console.log(e);
+          if (document && window && window.getSelection) {
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+          }
         }}
       >
         <CopyIcon color={copyIconColor} width={copyIconWidth} />
