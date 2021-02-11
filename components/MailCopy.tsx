@@ -162,6 +162,12 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
             }
           }
         }}
+        onMouseDown={(e) => {
+          console.log(e);
+        }}
+        onMouseUp={(e) => {
+          console.log(e);
+        }}
       >
         <CopyIcon color={copyIconColor} width={copyIconWidth} />
       </button>
