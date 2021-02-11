@@ -15,6 +15,8 @@ import ArticleStory from "./ArticleStory";
 
 import SocialIcon from "../SocialIcon";
 
+import MailCopy from "../MailCopy";
+
 import { fse as majorFsesEnum } from "../../sketch/middle_ground/major_states";
 
 import { storyMajorText } from "../../content";
@@ -70,6 +72,7 @@ const Contact: FunctionComponent<PropsI> = ({ contactArticleRef, data }) => {
           );
         })}
       </section>
+      <MailCopy />
     </ArticleStory>
   );
 };
