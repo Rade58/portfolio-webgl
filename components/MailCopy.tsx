@@ -35,7 +35,7 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
 
           border: red solid 1px;
           width: 100%;
-          margin-top: 8px;
+          margin-top: 18px;
 
           & > * {
             margin-right: 8px;
@@ -71,6 +71,7 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
           & .text-before {
             width: 100%;
             border: pink solid 0px;
+            margin-bottom: 8px;
           }
         }
       `}
