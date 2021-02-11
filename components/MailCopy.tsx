@@ -33,7 +33,7 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
 
           border: red solid 1px;
           width: 100%;
-          margin: 8px;
+          margin-top: 8px;
 
           & > * {
             margin-right: 8px;
@@ -73,7 +73,7 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
         }
       `}
     >
-      <div className="text-before">You can conatact me via email:</div>
+      <div className="text-before">Or you can send me an email:</div>
       <div className="email-container">
         {/* <Image
           src={socialImageUrl}
