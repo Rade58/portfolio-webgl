@@ -45,7 +45,7 @@ export default createSchema({
     blogpresent,
     devsvg,
     socialsvg,
-    email,
+    mymail,
 
     iconcolor,
     story,
