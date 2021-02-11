@@ -9,16 +9,6 @@ export default {
       type: "string",
     },
     {
-      name: "isEmail",
-      title: "Is Email",
-      type: "boolean",
-    },
-    {
-      name: "email",
-      title: "Email",
-      type: "string",
-    },
-    {
       name: "url",
       title: "Url",
       type: "url",
