@@ -121,6 +121,14 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
             }
           }
         }}
+        onBlur={async (e) => {
+          const nodeToBeSelected: Node = e.target as Node;
+
+          if (document && window && window.getSelection) {
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+          }
+        }}
       >
         {email}
       </div>
@@ -137,6 +145,21 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
             await navigator.clipboard.writeText(email);
           } catch (error) {
             console.error("Failed to copy!", error);
+          }
+        }}
+        onKeyPress={async (e) => {
+          // console.log("click");
+
+          if (!navigator.clipboard) {
+            return;
+          }
+
+          if ((e.key = "Enter")) {
+            try {
+              await navigator.clipboard.writeText(email);
+            } catch (error) {
+              console.error("Failed to copy!", error);
+            }
           }
         }}
       >
