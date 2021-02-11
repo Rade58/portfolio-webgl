@@ -31,6 +31,10 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
           flex-wrap: wrap;
           align-items: center;
 
+          border: red solid 1px;
+          width: 100%;
+          margin: 8px;
+
           & > * {
             margin-right: 8px;
           }
@@ -65,13 +69,6 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
           & .text-before {
             width: 100%;
             border: pink solid 0px;
-          }
-
-          /* ispitaj ovo */
-          &.email {
-            border: red solid 1px;
-            width: 100%;
-            margin: 8px;
           }
         }
       `}
