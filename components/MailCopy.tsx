@@ -112,18 +112,16 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
           // console.log(e);
 
           if ((e.key = "Enter")) {
-            if (emailTextRef.current) {
-              const nodeToBeSelected: Node = emailTextRef.current as Node;
+            const nodeToBeSelected: Node = e.target as Node;
 
-              if (document && window && window.getSelection) {
-                const selection = window.getSelection();
-                const range = document.createRange();
+            if (document && window && window.getSelection) {
+              const selection = window.getSelection();
+              const range = document.createRange();
 
-                range.selectNodeContents(nodeToBeSelected);
+              range.selectNodeContents(nodeToBeSelected);
 
-                selection.removeAllRanges();
-                selection.addRange(range);
-              }
+              selection.removeAllRanges();
+              selection.addRange(range);
             }
           }
         }}
@@ -167,19 +165,24 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
           }
         }}
         onMouseDown={(e) => {
-          const nodeToBeSelected: Node = e.target as Node;
+          // console.log("mousedown");
 
-          if (document && window && window.getSelection) {
-            const selection = window.getSelection();
-            const range = document.createRange();
+          if (emailTextRef.current) {
+            const nodeToBeSelected: Node = emailTextRef.current as Node;
 
-            range.selectNodeContents(nodeToBeSelected);
+            if (document && window && window.getSelection) {
+              const selection = window.getSelection();
+              const range = document.createRange();
 
-            selection.removeAllRanges();
-            selection.addRange(range);
+              range.selectNodeContents(nodeToBeSelected);
+
+              selection.removeAllRanges();
+              selection.addRange(range);
+            }
           }
         }}
         onMouseUp={(e) => {
+          // console.log("mouseup");
           if (document && window && window.getSelection) {
             const selection = window.getSelection();
             selection.removeAllRanges();
