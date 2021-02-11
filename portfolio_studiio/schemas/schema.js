@@ -14,7 +14,7 @@ import author from "./author";
 import bogatiTekst from "./bogatiTekst";
 import aboutmepresent from "./aboutmepresent";
 import contactpresent from "./contactpresent";
-import projectpresent from "./projectspresent";
+import projectspresent from "./projectspresent";
 import blogpresent from "./blogpresent";
 import devsvg from "./devsvg";
 import socialsvg from "./socialsvg";
@@ -41,7 +41,7 @@ export default createSchema({
     bogatiTekst,
     aboutmepresent,
     contactpresent,
-    projectpresent,
+    projectspresent,
     blogpresent,
     devsvg,
     socialsvg,
