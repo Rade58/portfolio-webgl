@@ -2,7 +2,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { FunctionComponent } from "react";
+import { FunctionComponent, createRef } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
@@ -22,6 +22,8 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
   email,
   copyIconWidth,
 }) => {
+  const emailTextRef = createRef<HTMLDivElement>();
+
   return (
     <section
       className="email-section"
@@ -73,7 +75,9 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
         }
       `}
     >
-      <div className="text-before">Or you can send me an email:</div>
+      <div className="text-before" ref={emailTextRef}>
+        Or you can send me an email:
+      </div>
       <div className="email-container">
         {/* <Image
           src={socialImageUrl}
@@ -108,22 +112,22 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
           // console.log(e);
 
           if ((e.key = "Enter")) {
-            const nodeToBeSelected: Node = e.target as Node;
+            if (emailTextRef.current) {
+              const nodeToBeSelected: Node = emailTextRef.current as Node;
 
-            if (document && window && window.getSelection) {
-              const selection = window.getSelection();
-              const range = document.createRange();
+              if (document && window && window.getSelection) {
+                const selection = window.getSelection();
+                const range = document.createRange();
 
-              range.selectNodeContents(nodeToBeSelected);
+                range.selectNodeContents(nodeToBeSelected);
 
-              selection.removeAllRanges();
-              selection.addRange(range);
+                selection.removeAllRanges();
+                selection.addRange(range);
+              }
             }
           }
         }}
         onBlur={async (e) => {
-          const nodeToBeSelected: Node = e.target as Node;
-
           if (document && window && window.getSelection) {
             const selection = window.getSelection();
             selection.removeAllRanges();
