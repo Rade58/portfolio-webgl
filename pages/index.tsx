@@ -181,10 +181,20 @@ export const getStaticProps: GetStaticProps = async () => {
           }
         }
       },
+      // OVDE POKAZUJEM KAKO JE SVE MOGUCE PISATI KADA
+      // SE QUERY-UJE REFERENCA
+      // OVDE CU DOBITI CEO OBJEKAT (A DODAO SAM I ALIAS STO JE MANJE VAZNO
+      // CISTO SAM PROVERIO DA LI ALIAS MOZE IMATI ISTO IME, I ON MOZE IMATI ISTO IME)
+      // ISTO TAKO MOGAO SAM URADITI -> {  i ovde query-evati propertije koje zelim  }
+      // U OVOM SLUCAJU JA CU IMATI SAMO JEDAN PROPERTI U OBJEKTU
       "iconColor": iconColor ->,
-      "email": email -> {
-        currentMail
-      }
+      // JA SAM IZNAD TREBAO URADITI SLEDECE STO SAM URADIO (NISAM SAMO JER TI POKAZUJEM STA MOZES)
+      // OVDE ODMAH UZIMAM PROPERTI currentMail SA REFERENCE
+      // I ZADAJEM GA ZA ALIAS KOJI SAM SMISLIO
+      // TAKO DA SADA OVDE NEMEM OBJEKAT KOA VREDNOST
+      // VREDNOST CE BITI STRING
+      "myEmail": email -> currentMail
+
     },
     // blog
     blog -> {
