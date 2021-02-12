@@ -135,6 +135,8 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
   //  ---------------- SUBSTATE ANIMATIONS ----------------
 
   const substatesCallback = useCallback(() => {
+    console.log({ callback: "CALLBACK EXECUTED" });
+
     if (
       storyRef.current &&
       aboutMeArticleRef.current &&
