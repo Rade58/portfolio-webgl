@@ -38,7 +38,7 @@ export enum EEs {
 // ------------------------------------------------------------
 
 export interface MachineContextGenericI {
-  // TEST CONTEXT
+  // TEST CONTEXT (UKLONICU KASNIJE)
   test: number;
   //
 
@@ -55,7 +55,7 @@ export interface MachineContextGenericI {
   fishRight: SVGElement | null;
 }
 export interface MachineContextGenericIFull {
-  // TEST CONTEXT
+  // TEST CONTEXT (UKLONICU KASNIJE)
   test: number;
   //
 
@@ -240,13 +240,14 @@ const storyMachine = createMachine<
             //
             on: {
               [EEs.FULL_OPEN]: {
-                // SAMO test UKLONI KASNIJE
                 actions: [
+                  // SAMO test UKLONI KASNIJE --------
                   assign({
                     test: ({ test }, __) => {
                       return test + 1;
                     },
                   }),
+                  // ---------------------------------
                 ],
                 //
                 //
@@ -263,13 +264,14 @@ const storyMachine = createMachine<
             //
             on: {
               [EEs.NARROW_IT]: {
-                // SAMO test UKLONI KASNIJE
                 actions: [
+                  // SAMO test UKLONI KASNIJE --------
                   assign({
                     test: ({ test }, __) => {
                       return test + 1;
                     },
                   }),
+                  // ---------------------------------
                 ],
                 //
                 target: fseS.partial,
