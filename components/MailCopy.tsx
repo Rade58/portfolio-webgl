@@ -66,6 +66,10 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
             height: 38px;
             border: outset 2px ${copyIconColor};
             background-color: #e7acdd;
+
+            &:hover {
+              outline: none;
+            }
           }
 
           & .text-before {
