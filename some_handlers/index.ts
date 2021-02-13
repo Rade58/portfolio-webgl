@@ -72,6 +72,10 @@ export const setup = () => {
               /* storyService.send({
                 type: EEs.NARROW_IT,
               }); */
+              // ALI MORAM DODATI OVO
+              storyService.send({
+                type: EEs.ARROW_UP_TRANS,
+              });
             }
           }
         }

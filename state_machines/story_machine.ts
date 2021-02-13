@@ -32,8 +32,10 @@ export enum EEs {
   FULL_OPEN = "FULL_OPEN", // OTVARA SAMO DO KONTROLA
   // OVAJ CE ZATVORITI PRED ANIMACIJU
   SLIDE_TO_INVISIBLE = "SLIDE_TO_INVISIBLE",
-  // EVENT SAMO ZA ARROW UP
+  // EVENT SAMO ZA ARROW UP, ALI BIE IH DVA
+  // JEDAN JE NON TRANSITION, A DRUGI JE ZA TRANSITION
   ARROW_UP_PUSHED = "ARROW_UP_PUSHED",
+  ARROW_UP_TRANS = "ARROW_UP_TRANS",
 }
 
 // ------------------------------------------------------------
@@ -118,7 +120,8 @@ export type machineEventsGenericType =
   | { type: EEs.NARROW_IT }
   | { type: EEs.FULL_OPEN }
   | { type: EEs.SLIDE_TO_INVISIBLE }
-  | { type: EEs.ARROW_UP_PUSHED };
+  | { type: EEs.ARROW_UP_PUSHED }
+  | { type: EEs.ARROW_UP_TRANS };
 
 export type machineFiniteStatesGenericType =
   | {
@@ -307,6 +310,13 @@ const storyMachine = createMachine<
                 },
                 target: fseS.partial, */
                 //  -----------------------------------------------
+              },
+              // OVO CE SLUZITI ZA TRANSITION
+              [EEs.ARROW_UP_TRANS]: {
+                cond: ({ arrowUpPushedCount }, __) => {
+                  return arrowUpPushedCount === 2;
+                },
+                target: fseS.partial,
               },
               //  -------------_________-------------
               //  -------------_________-------------
