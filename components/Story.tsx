@@ -245,8 +245,8 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
           // -----------________----------_____________
           // -----------________----------_____________
 
-          if (state.event === EEs.ARROW_UP_PUSHED) {
-            console.log(state.event);
+          if (state.event.type === EEs.ARROW_UP_PUSHED) {
+            console.log(state.event.type);
           }
 
           // -----------________----------_____________
