@@ -65,6 +65,12 @@ export const setup = () => {
               storyService.send({
                 type: EEs.NARROW_IT,
               });
+
+              // -----------_______---------_______
+              storyService.send({
+                type: EEs.ARROW_UP_PUSHED,
+              });
+              // -----------_______---------_______
             }
           }
         }
