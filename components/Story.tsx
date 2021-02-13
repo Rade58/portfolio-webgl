@@ -242,6 +242,16 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
         }
 
         if (substate === fseS.maximal) {
+          // -----------________----------_____________
+          // -----------________----------_____________
+
+          if (state.event === EEs.ARROW_UP_PUSHED) {
+            console.log(state.event);
+          }
+
+          // -----------________----------_____________
+          // -----------________----------_____________
+
           // translate Y ---------------------------
           TweenMax.to(storyRef.current, {
             duration: 0.4,

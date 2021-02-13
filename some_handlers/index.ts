@@ -69,9 +69,9 @@ export const setup = () => {
               });
               // -----------_______---------_______
               // UMESTO OVOGA
-              storyService.send({
+              /* storyService.send({
                 type: EEs.NARROW_IT,
-              });
+              }); */
             }
           }
         }
