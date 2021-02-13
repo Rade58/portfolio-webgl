@@ -255,6 +255,9 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
         if (substate === fseS.maximal) {
           // -----------________----------_____________
           // -----------________----------_____________
+          articleRefs[major];
+          // -----------________----------_____________
+          // -----------________----------_____________
 
           if (
             (state.event.type === EEs.ARROW_UP_PUSHED &&
@@ -262,7 +265,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             (state.event.type === EEs.ARROW_UP_TRANS &&
               state.context.arrowUpPushedCount < 2)
           ) {
-            console.log("SOMETHING -->", state.event.type);
+            // console.log("SOMETHING -->", state.event.type);
             return;
           }
 

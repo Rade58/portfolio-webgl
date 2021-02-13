@@ -574,10 +574,10 @@ storyService.onTransition((state, event) => {
   // console.log({ stateVlue: state.value });
   // console.log({ context: state.context });
   // console.log(state.context.test);
-  console.log({
+  /* console.log({
     state: state.value,
     arrowUpPushedCount: state.context.arrowUpPushedCount,
-  });
+  }); */
 });
 
 storyService.start();
