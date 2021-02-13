@@ -62,15 +62,16 @@ export const setup = () => {
             // console.log({ substate });
             // console.log("narrow it sent");
             if (e.key === "ArrowUp") {
-              storyService.send({
-                type: EEs.NARROW_IT,
-              });
-
+              // OVO DAKLE IDE
               // -----------_______---------_______
               storyService.send({
                 type: EEs.ARROW_UP_PUSHED,
               });
               // -----------_______---------_______
+              // UMESTO OVOGA
+              storyService.send({
+                type: EEs.NARROW_IT,
+              });
             }
           }
         }
