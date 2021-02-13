@@ -70,6 +70,9 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
             &:hover {
               outline: none;
             }
+            &:active {
+              outline: none;
+            }
           }
 
           & .text-before {
@@ -140,6 +143,17 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
       </div>
       <button
         className="copy-button"
+        onMouseLeave={(e) => {
+          e.currentTarget.style.outline = "none";
+        }}
+        onMouseOver={(e) => {
+          e.currentTarget.style.outline = "none";
+        }}
+        onFocus={(e) => {
+          if (e.currentTarget.attributes.getNamedItem("style")) {
+            e.currentTarget.attributes.removeNamedItem("style");
+          }
+        }}
         onClick={async () => {
           // console.log("click");
 
@@ -162,6 +176,19 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
 
           if ((e.key = "Enter")) {
             try {
+              const nodeToBeSelected: Node = emailTextRef.current;
+
+              if (document && window && window.getSelection) {
+                console.log(emailTextRef.current);
+                const selection = window.getSelection();
+                const range = document.createRange();
+
+                range.selectNodeContents(nodeToBeSelected);
+
+                selection.removeAllRanges();
+                selection.addRange(range);
+              }
+
               await navigator.clipboard.writeText(email);
             } catch (error) {
               console.error("Failed to copy!", error);
@@ -191,6 +218,15 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
           if (document && window && window.getSelection) {
             const selection = window.getSelection();
             selection.removeAllRanges();
+          }
+        }}
+        onKeyUp={(e) => {
+          // console.log("mouseup");
+          if ((e.key = "Enter")) {
+            if (document && window && window.getSelection) {
+              const selection = window.getSelection();
+              selection.removeAllRanges();
+            }
           }
         }}
       >
