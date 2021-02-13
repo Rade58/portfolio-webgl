@@ -153,7 +153,10 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
 
         if (!mediaBellow) {
           //
-          if (state.event.type !== EEs.ARROW_UP_PUSHED) {
+          if (
+            state.event.type !== EEs.ARROW_UP_PUSHED &&
+            state.event.type !== EEs.ARROW_UP_TRANS
+          ) {
             if (substate === fseS.non_visible) {
               TweenMax.to(storyRef.current, {
                 duration: 0.2,
@@ -194,7 +197,10 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
 
         // RELATED TO mediaBellow
         // SETTING BECAUSE OF SCREEN SIZES
-        if (state.event.type !== EEs.ARROW_UP_PUSHED) {
+        if (
+          state.event.type !== EEs.ARROW_UP_PUSHED &&
+          state.event.type !== EEs.ARROW_UP_TRANS
+        ) {
           TweenMax.set(storyRef.current, {
             width: "100%",
           });
@@ -250,7 +256,10 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
           // -----------________----------_____________
           // -----------________----------_____________
 
-          if (state.event.type === EEs.ARROW_UP_PUSHED) {
+          if (
+            state.event.type === EEs.ARROW_UP_PUSHED ||
+            state.event.type === EEs.ARROW_UP_TRANS
+          ) {
             console.log(state.event.type);
             return;
           }
@@ -362,7 +371,10 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
 
       // articleRef.current.scrollTop = 0;
 
-      if (state.event.type !== EEs.ARROW_UP_PUSHED) {
+      if (
+        state.event.type !== EEs.ARROW_UP_PUSHED &&
+        state.event.type !== EEs.ARROW_UP_TRANS
+      ) {
         TweenMax.to(articleRefs[major].current, {
           duration: 0.4,
           ease: Power1.easeIn,

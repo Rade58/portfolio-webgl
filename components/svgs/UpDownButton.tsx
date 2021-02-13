@@ -66,7 +66,10 @@ const UpDownButton: FunctionComponent = () => {
       }
 
       if (state.value[fse.idle] === fseS.maximal) {
-        if (state.event.type !== EEs.ARROW_UP_PUSHED) {
+        if (
+          state.event.type !== EEs.ARROW_UP_PUSHED &&
+          state.event.type !== EEs.ARROW_UP_TRANS
+        ) {
           TweenMax.fromTo(
             arrow,
             {
