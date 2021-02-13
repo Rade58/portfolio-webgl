@@ -32,6 +32,8 @@ export enum EEs {
   FULL_OPEN = "FULL_OPEN", // OTVARA SAMO DO KONTROLA
   // OVAJ CE ZATVORITI PRED ANIMACIJU
   SLIDE_TO_INVISIBLE = "SLIDE_TO_INVISIBLE",
+  // EVENT SAMO ZA ARROW UP
+  ARROW_UP_PUSHED = "ARROW_UP_PUSHED",
 }
 
 // ------------------------------------------------------------
@@ -40,6 +42,10 @@ export enum EEs {
 export interface MachineContextGenericI {
   // TEST CONTEXT (UKLONICU KASNIJE)
   test: number;
+  //
+
+  // ARROW UP PUSHED COUNT
+  arrowUpPushedCount: number;
   //
 
   mediaBellow: boolean;
@@ -57,6 +63,10 @@ export interface MachineContextGenericI {
 export interface MachineContextGenericIFull {
   // TEST CONTEXT (UKLONICU KASNIJE)
   test: number;
+  //
+
+  // ARROW UP PUSHED COUNT
+  arrowUpPushedCount: number;
   //
 
   mediaBellow: boolean;
@@ -143,6 +153,10 @@ const storyMachine = createMachine<
     context: {
       // TEST CONTEXT
       test: 0,
+      //
+
+      // ARROW UP PUSHED COUNT
+      arrowUpPushedCount: 0,
       //
 
       mediaBellow: true,
