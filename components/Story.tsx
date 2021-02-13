@@ -255,7 +255,8 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
         if (substate === fseS.maximal) {
           // -----------________----------_____________
           // -----------________----------_____________
-          console.log(articleRefs[major]);
+          console.log(articleRefs[major].current);
+          articleRefs[major].current.focus();
           // -----------________----------_____________
           // -----------________----------_____________
 
