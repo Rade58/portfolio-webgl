@@ -142,7 +142,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
       projectsArticleRef.current &&
       blogArticleRef.current
     ) {
-      console.log({ callback: "CALLBACK EXECUTED" });
+      // console.log({ callback: "CALLBACK EXECUTED" });
       // console.log({ storyRef: storyRef.current });
       // debugger;
       if (state && state.value && state.value[fse.idle]) {
