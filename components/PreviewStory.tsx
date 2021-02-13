@@ -36,7 +36,7 @@ const PreviewStory: FunctionComponent<PropsStoryI> = ({ data }) => {
 
   useEffect(() => {
     if (tekstRef.current && previewRef.current) {
-      console.log(state.value);
+      // console.log(state.value);
 
       if (state.value[fse.idle] && state.value[fse.idle] === fseS.partial) {
         TweenMax.fromTo(

@@ -60,7 +60,7 @@ const Contact: FunctionComponent<PropsI> = ({ contactArticleRef, data }) => {
             asset: { url: socialImageUrl },
           } = socialImage;
 
-          console.log({ name, url, socialImageUrl });
+          // console.log({ name, url, socialImageUrl });
 
           return (
             <SocialIcon
