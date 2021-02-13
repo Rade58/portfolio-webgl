@@ -315,7 +315,18 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
               opacity: 1,
               translateX: "0%",
             }
-          );
+          ).then(() => {
+            if (articleRefs[major] && articleRefs[major].current) {
+              articleRefs[major].current.focus();
+              // articleRefs[major].current.scrollTop = -20;
+
+              TweenMax.to(articleRefs[major].current, {
+                duration: 0.4,
+                ease: Quint.easeOut,
+                scrollTop: 0,
+              });
+            }
+          });
 
           /* articleRefs[major].current.scrollTop = 0;
           articleRefs[major].current.focus(); */
