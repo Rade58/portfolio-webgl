@@ -78,6 +78,11 @@ const Back: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
         height: 60px;
         /* flex-shrink: 2; */
         position: relative;
+
+        &:hover {
+          outline: none;
+        }
+
         &::after {
           cursor: pointer;
           position: absolute;

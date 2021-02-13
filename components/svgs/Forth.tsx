@@ -87,6 +87,11 @@ const Forth: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
         /* flex-shrink: 2; */
         position: relative;
         /* cursor: pointer; */
+
+        &:hover {
+          outline: none;
+        }
+
         &::after {
           position: absolute;
           height: 100%;
