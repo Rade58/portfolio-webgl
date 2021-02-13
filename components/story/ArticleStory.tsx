@@ -48,6 +48,8 @@ const ArticleStory: FunctionComponent<PropsI> = ({
   return (
     <article
       id={majorName}
+      // eslint-disable-next-line
+      tabIndex={0}
       className={`story-article ${
         mediaBellow ? "media-bellow" : "media-above"
       } ${majorName === major ? "presented" : "not-presented"}`}
@@ -55,6 +57,10 @@ const ArticleStory: FunctionComponent<PropsI> = ({
         margin-top: 0;
 
         &#${majorName} {
+          &:focus {
+            outline: none;
+          }
+
           &.media-bellow {
             height: 100%;
 
