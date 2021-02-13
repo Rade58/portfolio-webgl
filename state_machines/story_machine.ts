@@ -255,6 +255,7 @@ const storyMachine = createMachine<
           // DEFINISI ANIMACIJE U ODNOOSU NA OVA TRI STATE-A
 
           [fseS.partial]: {
+            entry: [assign({ arrowUpPushedCount: 0 })],
             //
             on: {
               [EEs.FULL_OPEN]: {
