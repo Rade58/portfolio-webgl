@@ -38,6 +38,10 @@ export enum EEs {
 // ------------------------------------------------------------
 
 export interface MachineContextGenericI {
+  // TEST CONTEXT
+  test: number;
+  //
+
   mediaBellow: boolean;
   bTl: TimelineMax;
   fTl: TimelineMax;
@@ -51,6 +55,10 @@ export interface MachineContextGenericI {
   fishRight: SVGElement | null;
 }
 export interface MachineContextGenericIFull {
+  // TEST CONTEXT
+  test: number;
+  //
+
   mediaBellow: boolean;
   bTl: TimelineMax;
   fTl: TimelineMax;
@@ -133,6 +141,10 @@ const storyMachine = createMachine<
     id: "story_machine",
     initial: fse.idle,
     context: {
+      // TEST CONTEXT
+      test: 0,
+      //
+
       mediaBellow: true,
       bTl: new TimelineMax(),
       fTl: new TimelineMax(),
@@ -228,6 +240,15 @@ const storyMachine = createMachine<
             //
             on: {
               [EEs.FULL_OPEN]: {
+                // SAMO test UKLONI KASNIJE
+                actions: [
+                  assign({
+                    test: ({ test }, __) => {
+                      return test + 1;
+                    },
+                  }),
+                ],
+                //
                 //
                 target: fseS.maximal,
               },
@@ -242,6 +263,14 @@ const storyMachine = createMachine<
             //
             on: {
               [EEs.NARROW_IT]: {
+                // SAMO test UKLONI KASNIJE
+                actions: [
+                  assign({
+                    test: ({ test }, __) => {
+                      return test + 1;
+                    },
+                  }),
+                ],
                 //
                 target: fseS.partial,
               },
@@ -496,6 +525,7 @@ export const storyService = interpret(storyMachine);
 storyService.onTransition((state, event) => {
   // console.log({ stateVlue: state.value });
   // console.log({ context: state.context });
+  console.log(state.context.test);
 });
 
 storyService.start();
