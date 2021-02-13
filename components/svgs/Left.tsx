@@ -43,6 +43,10 @@ const Left: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
         height: fit-content;
         flex-shrink: 2;
 
+        &:hover {
+          outline: none;
+        }
+
         & svg {
           &:hover {
             outline: none;
