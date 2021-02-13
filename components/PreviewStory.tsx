@@ -74,36 +74,38 @@ const PreviewStory: FunctionComponent<PropsStoryI> = ({ data }) => {
       }
       //  -------- <><><><><><><><><><><><><><><><><> --------
       if (state.value[fse.idle] && state.value[fse.idle] === fseS.maximal) {
-        TweenMax.fromTo(
-          tekstRef.current,
-          {
-            opacity: 1,
-            height: "28px",
-            top: 0,
-            duration: 0.08,
-            ease: Power3.easeIn,
-          },
-          {
-            opacity: 0,
-            top: 28,
-            height: "0px",
-          }
-        );
+        if (state.event.type !== EEs.ARROW_UP_PUSHED) {
+          TweenMax.fromTo(
+            tekstRef.current,
+            {
+              opacity: 1,
+              height: "28px",
+              top: 0,
+              duration: 0.08,
+              ease: Power3.easeIn,
+            },
+            {
+              opacity: 0,
+              top: 28,
+              height: "0px",
+            }
+          );
 
-        // ----------------------------------------------
-        TweenMax.fromTo(
-          previewRef.current,
-          {
-            height: previewHeight,
-            marginBottom: bottomMargin,
-            duration: 0.08,
-            ease: Power3.easeIn,
-          },
-          {
-            height: 0,
-            marginBottom: 0,
-          }
-        );
+          // ----------------------------------------------
+          TweenMax.fromTo(
+            previewRef.current,
+            {
+              height: previewHeight,
+              marginBottom: bottomMargin,
+              duration: 0.08,
+              ease: Power3.easeIn,
+            },
+            {
+              height: 0,
+              marginBottom: 0,
+            }
+          );
+        }
       }
     }
   }, [state]);

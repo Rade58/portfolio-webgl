@@ -362,11 +362,13 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
 
       // articleRef.current.scrollTop = 0;
 
-      TweenMax.to(articleRefs[major].current, {
-        duration: 0.4,
-        ease: Power1.easeIn,
-        scrollTop: 0,
-      });
+      if (state.event.type !== EEs.ARROW_UP_PUSHED) {
+        TweenMax.to(articleRefs[major].current, {
+          duration: 0.4,
+          ease: Power1.easeIn,
+          scrollTop: 0,
+        });
+      }
     }
   }, [
     aboutMeArticleRef,
