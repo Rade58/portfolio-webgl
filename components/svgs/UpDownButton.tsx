@@ -66,17 +66,19 @@ const UpDownButton: FunctionComponent = () => {
       }
 
       if (state.value[fse.idle] === fseS.maximal) {
-        TweenMax.fromTo(
-          arrow,
-          {
-            duration: 0.2,
-            ease: Sine.easeOut,
-            rotateZ: -90,
-          },
-          {
-            rotateZ: 90,
-          }
-        );
+        if (state.event.type !== EEs.ARROW_UP_PUSHED) {
+          TweenMax.fromTo(
+            arrow,
+            {
+              duration: 0.2,
+              ease: Sine.easeOut,
+              rotateZ: -90,
+            },
+            {
+              rotateZ: 90,
+            }
+          );
+        }
       }
       if (buttonClicked) {
         butContRef.current.querySelector("svg").blur();
