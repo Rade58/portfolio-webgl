@@ -257,10 +257,12 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
           // -----------________----------_____________
 
           if (
-            state.event.type === EEs.ARROW_UP_PUSHED ||
-            state.event.type === EEs.ARROW_UP_TRANS
+            (state.event.type === EEs.ARROW_UP_PUSHED &&
+              state.context.arrowUpPushedCount < 2) ||
+            (state.event.type === EEs.ARROW_UP_TRANS &&
+              state.context.arrowUpPushedCount < 2)
           ) {
-            console.log(state.event.type);
+            console.log("SOMETHING -->", state.event.type);
             return;
           }
 

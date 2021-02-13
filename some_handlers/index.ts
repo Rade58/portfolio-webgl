@@ -64,18 +64,18 @@ export const setup = () => {
             if (e.key === "ArrowUp") {
               // OVO DAKLE IDE
               // -----------_______---------_______
-              storyService.send({
+              /* storyService.send({
                 type: EEs.ARROW_UP_PUSHED,
-              });
+              }); */
               // -----------_______---------_______
               // UMESTO OVOGA
-              /* storyService.send({
-                type: EEs.NARROW_IT,
-              }); */
-              // ALI MORAM DODATI OVO
               storyService.send({
-                type: EEs.ARROW_UP_TRANS,
+                type: EEs.NARROW_IT,
               });
+              // ALI MORAM DODATI OVO
+              /*  storyService.send({
+                type: EEs.ARROW_UP_TRANS,
+              }); */
             }
           }
         }
