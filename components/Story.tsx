@@ -209,6 +209,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
         // -------------------------------
 
         if (substate === fseS.partial) {
+          articleRefs[major].current.scrollTop = 0;
           // translate Y -----------------------
           TweenMax.to(storyRef.current, {
             duration: 0.4,
@@ -256,8 +257,9 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
           // -----------________----------_____________
           // -----------________----------_____________
           // console.log(articleRefs[major].current);
-          articleRefs[major].current.focus();
-          articleRefs[major].current.scrollTop = 0;
+          /* articleRefs[major].current.scrollTop = 0;
+          articleRefs[major].current.focus(); */
+
           // -----------________----------_____________
           // -----------________----------_____________
 
@@ -314,6 +316,9 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
               translateX: "0%",
             }
           );
+
+          /* articleRefs[major].current.scrollTop = 0;
+          articleRefs[major].current.focus(); */
         }
 
         if (substate === fseS.non_visible) {

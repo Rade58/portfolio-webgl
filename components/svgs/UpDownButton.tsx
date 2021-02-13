@@ -112,6 +112,14 @@ const UpDownButton: FunctionComponent = () => {
               &:active {
                 outline: none;
               }
+
+              &:hover {
+                outline: none;
+              }
+
+              /*  &:focus {
+                outline: none;
+              } */
             }
           `}
         >
