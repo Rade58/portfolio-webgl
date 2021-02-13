@@ -117,7 +117,8 @@ export type machineEventsGenericType =
   // ------------ EVENTS FOR IDLE SUBSTATES  ----------------------------
   | { type: EEs.NARROW_IT }
   | { type: EEs.FULL_OPEN }
-  | { type: EEs.SLIDE_TO_INVISIBLE };
+  | { type: EEs.SLIDE_TO_INVISIBLE }
+  | { type: EEs.ARROW_UP_PUSHED };
 
 export type machineFiniteStatesGenericType =
   | {
@@ -290,6 +291,19 @@ const storyMachine = createMachine<
                 //
                 target: fseS.partial,
               },
+              //  -------------_________-------------
+              //  -------------_________-------------
+              [EEs.ARROW_UP_PUSHED]: {
+                actions: [
+                  assign({
+                    arrowUpPushedCount: ({ arrowUpPushedCount }, __) => {
+                      return arrowUpPushedCount + 1;
+                    },
+                  }),
+                ],
+              },
+              //  -------------_________-------------
+              //  -------------_________-------------
               [EEs.SLIDE_TO_INVISIBLE]: {
                 //
                 // OVO CE SAMO SAKRITI ELEMENT
