@@ -84,7 +84,7 @@ const UpDownButton: FunctionComponent = () => {
         }
       }
       if (buttonClicked) {
-        butContRef.current.querySelector("svg").blur();
+        // butContRef.current.querySelector("svg").blur();
       }
     }
   }, [state]);
