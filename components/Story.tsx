@@ -317,8 +317,9 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             }
           ).then(() => {
             if (articleRefs[major] && articleRefs[major].current) {
+              articleRefs[major].current.scrollTop = -20;
               articleRefs[major].current.focus();
-              // articleRefs[major].current.scrollTop = -20;
+              articleRefs[major].current.scrollTop = -20;
 
               TweenMax.to(articleRefs[major].current, {
                 duration: 0.4,
