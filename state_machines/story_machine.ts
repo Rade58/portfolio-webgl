@@ -302,10 +302,10 @@ const storyMachine = createMachine<
                   }),
                 ],
                 // ------- ARROW UP CONTITION TO partial TRANSITION
-                cond: ({ arrowUpPushedCount }, __) => {
+                /* cond: ({ arrowUpPushedCount }, __) => {
                   return arrowUpPushedCount === 2;
                 },
-                target: fseS.partial,
+                target: fseS.partial, */
                 //  -----------------------------------------------
               },
               //  -------------_________-------------
@@ -562,8 +562,11 @@ export const storyService = interpret(storyMachine);
 storyService.onTransition((state, event) => {
   // console.log({ stateVlue: state.value });
   // console.log({ context: state.context });
-  console.log(state.context.test);
-  console.log({ arrowUpPushedCount: state.context.arrowUpPushedCount });
+  // console.log(state.context.test);
+  console.log({
+    state: state.value,
+    arrowUpPushedCount: state.context.arrowUpPushedCount,
+  });
 });
 
 storyService.start();
