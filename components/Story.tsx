@@ -152,38 +152,41 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
         // console.log({ substate, mediaBellow, storyRefCurr: storyRef.current });
 
         if (!mediaBellow) {
-          if (substate === fseS.non_visible) {
-            TweenMax.to(storyRef.current, {
-              duration: 0.2,
-              ease: Power2.easeIn,
-              width: "0vw",
-              height: "100%",
-              // delay: 0.4,
-            });
-          }
+          //
+          if (state.event.type !== EEs.ARROW_UP_PUSHED) {
+            if (substate === fseS.non_visible) {
+              TweenMax.to(storyRef.current, {
+                duration: 0.2,
+                ease: Power2.easeIn,
+                width: "0vw",
+                height: "100%",
+                // delay: 0.4,
+              });
+            }
 
-          if (substate !== fseS.non_visible) {
-            TweenMax.to(storyRef.current, {
-              duration: 0.2,
-              ease: Power2.easeIn,
-              width: "38vw",
-              height: "100%",
-              // delay: 0.4,
-            });
-            // debugger;
-            TweenMax.fromTo(
-              articleRefs[major].current,
-              {
-                duration: 0.3,
-                ease: Quint.easeOut,
-                opacity: 0,
-                translateX: "-100%",
-              },
-              {
-                opacity: 1,
-                translateX: "0%",
-              }
-            );
+            if (substate !== fseS.non_visible) {
+              TweenMax.to(storyRef.current, {
+                duration: 0.2,
+                ease: Power2.easeIn,
+                width: "38vw",
+                height: "100%",
+                // delay: 0.4,
+              });
+              // debugger;
+              TweenMax.fromTo(
+                articleRefs[major].current,
+                {
+                  duration: 0.3,
+                  ease: Quint.easeOut,
+                  opacity: 0,
+                  translateX: "-100%",
+                },
+                {
+                  opacity: 1,
+                  translateX: "0%",
+                }
+              );
+            }
           }
 
           return;
@@ -191,9 +194,11 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
 
         // RELATED TO mediaBellow
         // SETTING BECAUSE OF SCREEN SIZES
-        TweenMax.set(storyRef.current, {
-          width: "100%",
-        });
+        if (state.event.type !== EEs.ARROW_UP_PUSHED) {
+          TweenMax.set(storyRef.current, {
+            width: "100%",
+          });
+        }
         // -------------------------------
         // -------------------------------
 
@@ -247,6 +252,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
 
           if (state.event.type === EEs.ARROW_UP_PUSHED) {
             console.log(state.event.type);
+            return;
           }
 
           // -----------________----------_____________
