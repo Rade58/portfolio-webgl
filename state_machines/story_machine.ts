@@ -301,6 +301,12 @@ const storyMachine = createMachine<
                     },
                   }),
                 ],
+                // ------- ARROW UP CONTITION TO partial TRANSITION
+                cond: ({ arrowUpPushedCount }, __) => {
+                  return arrowUpPushedCount === 2;
+                },
+                target: fseS.partial,
+                //  -----------------------------------------------
               },
               //  -------------_________-------------
               //  -------------_________-------------
@@ -310,6 +316,7 @@ const storyMachine = createMachine<
                 target: fseS.non_visible,
               },
             },
+            exit: [assign({ arrowUpPushedCount: 0 })],
           },
           // PRED ANIMACIJU TREBA DA PREDJE U OVAJ STATE
           // MOZDA BI OVO TREBAL OA BUDE INICIJALNO
