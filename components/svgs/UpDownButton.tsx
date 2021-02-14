@@ -20,6 +20,7 @@ import {
   fse,
   fseS,
   EEs,
+  EE,
 } from "../../state_machines/story_machine";
 
 import { upDownArrowHeight } from "../../css_vars";
@@ -47,6 +48,13 @@ const UpDownButton: FunctionComponent = () => {
   useEffect(() => {
     if (butContRef.current && state && state.value && state.value[fse.idle]) {
       const arrow = butContRef.current.querySelector("g#arr-up-down");
+
+      if (
+        state.event.type === EE.DISABLE_OUTLINE ||
+        state.event.type === EE.ENABLE_OUTLINE
+      ) {
+        return;
+      }
 
       const substate = state.value[fse.idle];
       // debugger;
