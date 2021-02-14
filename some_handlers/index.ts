@@ -98,6 +98,11 @@ export const setup = () => {
 
     // TAB KEY ON BODY (ENABLE OUTLINE)
     document.body.addEventListener("keydown", (e) => {
+      console.log(
+        storyService.state.context.focusingInsideStoryAllowed,
+        storyService.state.context.mediaBellow
+      );
+
       if (e.key === "Tab") {
         if (!storyService.state.context.outlineAllowed) {
           console.log(e.key);

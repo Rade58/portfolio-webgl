@@ -307,7 +307,12 @@ const storyMachine = createMachine<
           // DEFINISI ANIMACIJE U ODNOOSU NA OVA TRI STATE-A
 
           [fseS.partial]: {
-            entry: [assign({ arrowUpPushedCount: 0 })],
+            entry: [
+              assign({ arrowUpPushedCount: 0 }),
+              assign({
+                focusingInsideStoryAllowed: (_, __) => false,
+              }),
+            ],
             //
             on: {
               [EEs.FULL_OPEN]: {
@@ -376,7 +381,7 @@ const storyMachine = createMachine<
             },
             exit: [
               assign({ arrowUpPushedCount: 0 }),
-              assign({ focusingInsideStoryAllowed: (_, __) => false }),
+              // assign({ focusingInsideStoryAllowed: (_, __) => false }),
             ],
           },
           // PRED ANIMACIJU TREBA DA PREDJE U OVAJ STATE
