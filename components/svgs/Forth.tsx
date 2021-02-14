@@ -35,7 +35,7 @@ const Forth: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
     <div
       className={`forth ${
         storyState.value === fse.anim_active ? "default_cur" : "pointer_cur"
-      } ${storyState.context.outlineAllowed ? "outline-allowed" : ""}`}
+      } ${!storyState.context.outlineAllowed ? "outline-disallowed" : ""}`}
       style={{
         visibility: visible ? "visible" : "hidden",
         height: visible ? "60px" : "0px",
@@ -91,7 +91,7 @@ const Forth: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
 
         /* --------------------------------- */
         /* --------------------------------- */
-        &.outline-allowed {
+        &.outline-disallowed {
           &:focus {
             outline: none;
           }

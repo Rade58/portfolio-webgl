@@ -55,7 +55,7 @@ const Right: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
 
           /* --------------------------------- */
           /* --------------------------------- */
-          &.outline-allowed {
+          &.outline-disallowed {
             &:focus {
               outline: none;
             }
@@ -74,7 +74,7 @@ const Right: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
     >
       <svg
         className={`${
-          storyState.context.outlineAllowed ? "outline-allowed" : ""
+          !storyState.context.outlineAllowed ? "outline-disallowed" : ""
         }`}
         tabIndex={0}
         onClick={() => {
