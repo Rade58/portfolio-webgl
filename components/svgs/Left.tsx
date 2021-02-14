@@ -75,16 +75,16 @@ const Left: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
           }
         }}
         onMouseLeave={(e) => {
-          (e.currentTarget as HTMLElement).blur();
+          (e.target as HTMLElement).blur();
         }}
         onMouseEnter={(e) => {
-          (e.currentTarget as HTMLElement).blur();
+          (e.target as HTMLElement).blur();
         }}
         onMouseMove={(e) => {
-          (e.currentTarget as HTMLElement).blur();
+          (e.target as HTMLElement).blur();
         }}
         onMouseOver={(e) => {
-          (e.currentTarget as HTMLElement).blur();
+          (e.target as HTMLElement).blur();
         }}
         onKeyDown={(e) => {
           if (e.key === "Enter") {
