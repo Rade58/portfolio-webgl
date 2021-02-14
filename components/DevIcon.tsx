@@ -90,6 +90,10 @@ const DevIcon: FunctionComponent<deviconProps> = ({
             text-decoration-line: underline;
             text-decoration-style: dashed;
 
+            /* FOCUS DISABLE ON partial STATE */
+
+            /* ------------------------------ */
+
             &:hover {
               text-decoration-style: solid;
               text-decoration-color: ${textDecorColor};
