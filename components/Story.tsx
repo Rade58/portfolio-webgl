@@ -408,7 +408,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
         state.event.type !== EEs.ARROW_UP_TRANS
       ) {
         TweenMax.to(articleRefs[major].current, {
-          duration: 0.4,
+          duration: 0.2,
           ease: Power1.easeIn,
           scrollTop: 0,
         });

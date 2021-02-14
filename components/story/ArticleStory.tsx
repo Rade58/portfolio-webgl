@@ -52,13 +52,20 @@ const ArticleStory: FunctionComponent<PropsI> = ({
       tabIndex={0}
       className={`story-article ${
         mediaBellow ? "media-bellow" : "media-above"
-      } ${majorName === major ? "presented" : "not-presented"}`}
+      } ${majorName === major ? "presented" : "not-presented"} ${
+        !state.context.outlineAllowed ? "outline-disabled" : ""
+      }`}
       css={css`
         margin-top: 0;
 
         &#${majorName} {
-          &:focus {
+          /* &:focus {
             outline: none;
+          } */
+          &.outline-disabled {
+            &:focus {
+              outline: none;
+            }
           }
 
           &.media-bellow {
