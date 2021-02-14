@@ -31,7 +31,7 @@ const Back: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
     <div
       className={`back ${
         storyState.value === fse.anim_active ? "default_cur" : "pointer_cur"
-      }`}
+      } ${storyState.context.outlineAllowed ? "outline-allowed" : ""}`}
       style={{
         visibility: visible ? "visible" : "hidden",
         height: visible ? "60px" : "0px",
@@ -50,7 +50,7 @@ const Back: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
           send({ type: EE.CLICK_BACK });
         }
       }}
-      onMouseLeave={(e) => {
+      /* onMouseLeave={(e) => {
         (e.target as HTMLElement).blur();
       }}
       onMouseEnter={(e) => {
@@ -58,7 +58,7 @@ const Back: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
       }}
       onMouseMove={(e) => {
         (e.target as HTMLElement).blur();
-      }}
+      }} */
       onKeyDown={(e) => {
         if (e.key === "Enter") {
           if (
@@ -78,10 +78,6 @@ const Back: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
         height: 60px;
         /* flex-shrink: 2; */
         position: relative;
-
-        &:hover {
-          outline: none;
-        }
 
         &::after {
           cursor: pointer;
@@ -105,10 +101,6 @@ const Back: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
           }
         }
 
-        &:hover {
-          outline: none;
-        }
-
         & svg {
           position: absolute;
           right: 0;
@@ -118,6 +110,15 @@ const Back: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
           &:hover {
             outline: none;
           }
+          /* --------------------------------- */
+          /* --------------------------------- */
+          &.outline-allowed {
+            &:focus {
+              outline: none;
+            }
+          }
+          /* --------------------------------- */
+          /* --------------------------------- */
         }
       `}
       ref={backSvgRef}

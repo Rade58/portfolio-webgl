@@ -9,6 +9,7 @@ import { useService } from "@xstate/react";
 
 import { appService, EE } from "../../state_machines/app_machine";
 import { storyService, fse } from "../../state_machines/story_machine";
+import { setPriority } from "os";
 
 const Forth: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
   const [state, send] = useService(appService);
@@ -34,7 +35,7 @@ const Forth: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
     <div
       className={`forth ${
         storyState.value === fse.anim_active ? "default_cur" : "pointer_cur"
-      }`}
+      } ${storyState.context.outlineAllowed ? "outline-allowed" : ""}`}
       style={{
         visibility: visible ? "visible" : "hidden",
         height: visible ? "60px" : "0px",
@@ -58,7 +59,7 @@ const Forth: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
           send({ type: EE.CLICK_FORTH });
         }
       }}
-      onMouseLeave={(e) => {
+      /* onMouseLeave={(e) => {
         (e.target as HTMLElement).blur();
       }}
       onMouseEnter={(e) => {
@@ -66,7 +67,7 @@ const Forth: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
       }}
       onMouseMove={(e) => {
         (e.target as HTMLElement).blur();
-      }}
+      }} */
       onKeyDown={(e) => {
         if (e.key === "Enter") {
           if (
@@ -87,10 +88,6 @@ const Forth: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
         /* flex-shrink: 2; */
         position: relative;
         /* cursor: pointer; */
-
-        &:hover {
-          outline: none;
-        }
 
         &::after {
           position: absolute;
@@ -113,10 +110,6 @@ const Forth: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
           }
         }
 
-        &:hover {
-          outline: none;
-        }
-
         & svg {
           position: absolute;
           left: 0;
@@ -126,6 +119,15 @@ const Forth: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
           &:hover {
             outline: none;
           }
+          /* --------------------------------- */
+          /* --------------------------------- */
+          &.outline-allowed {
+            &:focus {
+              outline: none;
+            }
+          }
+          /* --------------------------------- */
+          /* --------------------------------- */
         }
       `}
       ref={forwrdSvgRef}
