@@ -52,10 +52,6 @@ export enum EEs {
 export interface MachineContextGenericI {
   // ZA FOCUS
 
-  // TEST CONTEXT (UKLONICU KASNIJE)
-  test: number;
-  //
-
   // ARROW UP PUSHED COUNT
   arrowUpPushedCount: number;
   //
@@ -73,10 +69,6 @@ export interface MachineContextGenericI {
   fishRight: SVGElement | null;
 }
 export interface MachineContextGenericIFull {
-  // TEST CONTEXT (UKLONICU KASNIJE)
-  test: number;
-  //
-
   // ARROW UP PUSHED COUNT
   arrowUpPushedCount: number;
   //
@@ -165,10 +157,6 @@ const storyMachine = createMachine<
     id: "story_machine",
     initial: fse.idle,
     context: {
-      // TEST CONTEXT
-      test: 0,
-      //
-
       // ARROW UP PUSHED COUNT
       arrowUpPushedCount: 0,
       //
@@ -271,11 +259,6 @@ const storyMachine = createMachine<
               [EEs.FULL_OPEN]: {
                 actions: [
                   // SAMO test UKLONI KASNIJE --------
-                  assign({
-                    test: ({ test }, __) => {
-                      return test + 1;
-                    },
-                  }),
                   // ---------------------------------
                 ],
                 //
@@ -295,11 +278,6 @@ const storyMachine = createMachine<
               [EEs.NARROW_IT]: {
                 actions: [
                   // SAMO test UKLONI KASNIJE --------
-                  assign({
-                    test: ({ test }, __) => {
-                      return test + 1;
-                    },
-                  }),
                   // ---------------------------------
                 ],
                 //
