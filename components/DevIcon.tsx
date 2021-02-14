@@ -112,7 +112,12 @@ const DevIcon: FunctionComponent<deviconProps> = ({
         {wikiUrl ? (
           <div className="image-wrapper">
             <a
-              tabIndex={state.context.focusingInsideStoryAllowed ? 0 : -1}
+              tabIndex={
+                state.context.mediaBellow &&
+                state.context.focusingInsideStoryAllowed
+                  ? 0
+                  : -1
+              }
               href={wikiUrl}
               target="_blank"
               rel="noreferrer"
@@ -145,7 +150,12 @@ const DevIcon: FunctionComponent<deviconProps> = ({
       <span className="text-content">
         {wikiUrl ? (
           <a
-            tabIndex={state.context.focusingInsideStoryAllowed ? 0 : -1}
+            tabIndex={
+              state.context.mediaBellow &&
+              state.context.focusingInsideStoryAllowed
+                ? 0
+                : -1
+            }
             href={wikiUrl}
             target="_blank"
             rel="noreferrer"
