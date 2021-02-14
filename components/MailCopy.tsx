@@ -140,7 +140,7 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
             selection.addRange(range);
           }
         }}
-        onKeyDown={(e) => {
+        onKeyDown={async (e) => {
           // console.log(e);
 
           if ((e.key = "Enter")) {
@@ -154,6 +154,16 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
 
               selection.removeAllRanges();
               selection.addRange(range);
+            }
+
+            if (!navigator.clipboard) {
+              return;
+            }
+
+            try {
+              await navigator.clipboard.writeText(email);
+            } catch (error) {
+              console.error("Failed to copy", error);
             }
           }
         }}
