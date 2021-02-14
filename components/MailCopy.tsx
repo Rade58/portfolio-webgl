@@ -29,6 +29,8 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
 
   const [state, __] = useService(storyService);
 
+  // POPRAVI OUTLINE
+
   return (
     <section
       className="email-section"
@@ -61,6 +63,12 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
             margin-right: 0px;
             font-weight: 300;
 
+            &.outline-disabled {
+              &:focus {
+                outline: none;
+              }
+            }
+
             &::selection {
               color: ${copyIconColor};
               background-color: blanchedalmond;
@@ -72,9 +80,15 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
             border: outset 2px ${copyIconColor};
             background-color: #e7acdd;
 
-            &:hover {
-              outline: none;
+            &.outline-disabled {
+              &:focus {
+                outline: none;
+              }
             }
+
+            /* &:hover {
+              outline: none;
+            } */
             &:active {
               outline: none;
             }
