@@ -100,6 +100,7 @@ export const setup = () => {
     document.body.addEventListener("keydown", (e) => {
       if (e.key === "Tab") {
         if (!storyService.state.context.outlineAllowed) {
+          console.log(e.key);
           storyService.send({
             type: EEstory.ENABLE_OUTLINE,
           });

@@ -127,7 +127,7 @@ const Back: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
         className={`${
           storyState.context.outlineAllowed ? "outline-allowed" : ""
         }`}
-        onMouseLeave={(e) => {
+        /* onMouseLeave={(e) => {
           (e.target as HTMLElement).parentElement.blur();
         }}
         onMouseEnter={(e) => {
@@ -135,7 +135,7 @@ const Back: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
         }}
         onMouseMove={(e) => {
           (e.target as HTMLElement).parentElement.blur();
-        }}
+        }} */
         /* NO NEED FOR px ON width AND height */
         // width="100%"
         // height="120"
