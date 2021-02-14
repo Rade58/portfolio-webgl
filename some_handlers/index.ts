@@ -82,7 +82,7 @@ export const setup = () => {
       }
     });
 
-    // CLICK ON BODY ------------------------------------
+    // CLICK ON BODY (DISABLE OUTLINE) ------------------------------------
     document.body.addEventListener("click", (e) => {
       // debugger;
       // console.log()
@@ -95,5 +95,7 @@ export const setup = () => {
         });
       }
     });
+
+    // TAB KEY ON BODY (ENABLE OUTLINE)
   }
 };
