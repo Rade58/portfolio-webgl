@@ -8,10 +8,13 @@ import styled from "@emotion/styled";
 import { useService } from "@xstate/react";
 import { appService, EE, fse } from "../../state_machines/app_machine";
 
+import { storyService } from "../../state_machines/story_machine";
+
 import { isSSR } from "../../utils/isSSR";
 
 const Left: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
   const [state, send] = useService(appService);
+  const [storyState, __] = useService(storyService);
 
   const leftSvgRef = useRef<HTMLDivElement>(null);
 
@@ -72,6 +75,9 @@ const Left: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
       ref={leftSvgRef}
     >
       <svg
+        className={`${
+          storyState.context.outlineAllowed ? "outline-allowed" : ""
+        }`}
         tabIndex={0}
         onClick={(e) => {
           console.log("click back");

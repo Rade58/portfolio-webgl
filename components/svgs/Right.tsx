@@ -8,9 +8,11 @@ import styled from "@emotion/styled";
 import { useService } from "@xstate/react";
 
 import { appService, EE } from "../../state_machines/app_machine";
+import { storyService } from "../../state_machines/story_machine";
 
 const Right: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
   const [state, send] = useService(appService);
+  const [storyState, __] = useService(storyService);
 
   const rightSvgRef = useRef<HTMLDivElement>(null);
 
@@ -51,6 +53,16 @@ const Right: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
             outline: none;
           }
 
+          /* --------------------------------- */
+          /* --------------------------------- */
+          &.outline-allowed {
+            &:focus {
+              outline: none;
+            }
+          }
+          /* --------------------------------- */
+          /* --------------------------------- */
+
           & g {
             &:hover {
               cursor: pointer;
@@ -61,6 +73,9 @@ const Right: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
       ref={rightSvgRef}
     >
       <svg
+        className={`${
+          storyState.context.outlineAllowed ? "outline-allowed" : ""
+        }`}
         tabIndex={0}
         onClick={() => {
           console.log("click forward");
@@ -73,7 +88,7 @@ const Right: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
             send({ type: EE.CLICK_FORTH });
           }
         }}
-        onMouseLeave={(e) => {
+        /* onMouseLeave={(e) => {
           (e.target as HTMLElement).blur();
         }}
         onMouseEnter={(e) => {
@@ -84,7 +99,7 @@ const Right: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
         }}
         onMouseOver={(e) => {
           (e.target as HTMLElement).blur();
-        }}
+        }} */
         onKeyDown={(e) => {
           if (e.key === "Enter") {
             if (
