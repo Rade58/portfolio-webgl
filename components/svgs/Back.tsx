@@ -31,7 +31,7 @@ const Back: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
     <div
       className={`back ${
         storyState.value === fse.anim_active ? "default_cur" : "pointer_cur"
-      }`}
+      } ${storyState.context.outlineAllowed ? "outline-allowed" : ""}`}
       style={{
         visibility: visible ? "visible" : "hidden",
         height: visible ? "60px" : "0px",
@@ -79,6 +79,16 @@ const Back: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
         /* flex-shrink: 2; */
         position: relative;
 
+        /* --------------------------------- */
+        /* --------------------------------- */
+        &.outline-allowed {
+          &:focus {
+            outline: none;
+          }
+        }
+        /* --------------------------------- */
+        /* --------------------------------- */
+
         &::after {
           cursor: pointer;
           position: absolute;
@@ -110,23 +120,11 @@ const Back: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
           &:hover {
             outline: none;
           }
-          /* --------------------------------- */
-          /* --------------------------------- */
-          &.outline-allowed {
-            &:focus {
-              outline: none;
-            }
-          }
-          /* --------------------------------- */
-          /* --------------------------------- */
         }
       `}
       ref={backSvgRef}
     >
       <svg
-        className={`${
-          storyState.context.outlineAllowed ? "outline-allowed" : ""
-        }`}
         /* onMouseLeave={(e) => {
           (e.target as HTMLElement).parentElement.blur();
         }}

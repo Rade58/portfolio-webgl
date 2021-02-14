@@ -35,7 +35,7 @@ const Forth: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
     <div
       className={`forth ${
         storyState.value === fse.anim_active ? "default_cur" : "pointer_cur"
-      }`}
+      } ${storyState.context.outlineAllowed ? "outline-allowed" : ""}`}
       style={{
         visibility: visible ? "visible" : "hidden",
         height: visible ? "60px" : "0px",
@@ -89,6 +89,16 @@ const Forth: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
         position: relative;
         /* cursor: pointer; */
 
+        /* --------------------------------- */
+        /* --------------------------------- */
+        &.outline-allowed {
+          &:focus {
+            outline: none;
+          }
+        }
+        /* --------------------------------- */
+        /* --------------------------------- */
+
         &::after {
           position: absolute;
           height: 100%;
@@ -119,23 +129,11 @@ const Forth: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
           &:hover {
             outline: none;
           }
-          /* --------------------------------- */
-          /* --------------------------------- */
-          &.outline-allowed {
-            &:focus {
-              outline: none;
-            }
-          }
-          /* --------------------------------- */
-          /* --------------------------------- */
         }
       `}
       ref={forwrdSvgRef}
     >
       <svg
-        className={`${
-          storyState.context.outlineAllowed ? "outline-allowed" : ""
-        }`}
         /* onMouseLeave={(e) => {
           (e.target as HTMLElement).parentElement.blur();
         }}
