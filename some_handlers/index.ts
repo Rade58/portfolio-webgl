@@ -98,10 +98,12 @@ export const setup = () => {
 
     // TAB KEY ON BODY (ENABLE OUTLINE)
     document.body.addEventListener("keydown", (e) => {
-      if (!storyService.state.context.outlineAllowed) {
-        storyService.send({
-          type: EEstory.ENABLE_OUTLINE,
-        });
+      if (e.key === "Tab") {
+        if (!storyService.state.context.outlineAllowed) {
+          storyService.send({
+            type: EEstory.ENABLE_OUTLINE,
+          });
+        }
       }
     });
   }
