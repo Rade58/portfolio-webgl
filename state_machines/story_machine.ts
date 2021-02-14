@@ -128,6 +128,12 @@ export type machineEventsGenericType =
         isBellow: boolean;
       };
     }
+  // ----------------------------------------------------
+  | { type: EE.DISABLE_OUTLINE }
+  | { type: EE.ENABLE_OUTLINE }
+  | { type: EE.DISABLE_STORY_FOCUS }
+  | { type: EE.ENABLE_STORY_FOCUS }
+
   // ------------ EVENTS FOR IDLE SUBSTATES  ----------------------------
   | { type: EEs.NARROW_IT }
   | { type: EEs.FULL_OPEN }
@@ -188,6 +194,38 @@ const storyMachine = createMachine<
       right: null,
     },
     on: {
+      // FOCUS AND OUTLINE
+      [EE.DISABLE_OUTLINE]: {
+        actions: [
+          assign({
+            outlineAllowed: (_, __) => false,
+          }),
+        ],
+      },
+      [EE.ENABLE_OUTLINE]: {
+        actions: [
+          assign({
+            outlineAllowed: (_, __) => true,
+          }),
+        ],
+      },
+      [EE.DISABLE_STORY_FOCUS]: {
+        actions: [
+          assign({
+            focusingInsideStoryAllowed: (_, __) => false,
+          }),
+        ],
+      },
+      [EE.ENABLE_STORY_FOCUS]: {
+        actions: [
+          assign({
+            focusingInsideStoryAllowed: (_, __) => true,
+          }),
+        ],
+      },
+
+      // ---------------------------------------------
+
       [EE.GIVE_MEDIA]: {
         actions: assign(({ mediaBellow }, { payload: { isBellow } }) => {
           // console.log({ isBellow });
