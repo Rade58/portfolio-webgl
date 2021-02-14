@@ -327,6 +327,11 @@ const storyMachine = createMachine<
             },
           },
           [fseS.maximal]: {
+            entry: [
+              assign({
+                focusingInsideStoryAllowed: (_, __) => true,
+              }),
+            ],
             //
             on: {
               [EEs.NARROW_IT]: {
@@ -369,7 +374,10 @@ const storyMachine = createMachine<
                 target: fseS.non_visible,
               },
             },
-            exit: [assign({ arrowUpPushedCount: 0 })],
+            exit: [
+              assign({ arrowUpPushedCount: 0 }),
+              assign({ focusingInsideStoryAllowed: (_, __) => false }),
+            ],
           },
           // PRED ANIMACIJU TREBA DA PREDJE U OVAJ STATE
           // MOZDA BI OVO TREBAL OA BUDE INICIJALNO
