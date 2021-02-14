@@ -6,6 +6,9 @@ import { FunctionComponent, createRef } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
+import { useService } from "@xstate/react";
+import { storyService } from "../state_machines/story_machine";
+
 import Image from "next/image";
 import CopyIcon from "./icons/common_icons/CopyIcon";
 
@@ -23,6 +26,8 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
   copyIconWidth,
 }) => {
   const emailTextRef = createRef<HTMLDivElement>();
+
+  const [state, __] = useService(storyService);
 
   return (
     <section
@@ -97,7 +102,11 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
       </div>
       <div
         ref={emailTextRef}
-        tabIndex={0}
+        tabIndex={
+          state.context.mediaBellow && state.context.focusingInsideStoryAllowed
+            ? 0
+            : -1
+        }
         role="textbox"
         className="email-text"
         onClick={async (e) => {
@@ -142,6 +151,11 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
         {email}
       </div>
       <button
+        tabIndex={
+          state.context.mediaBellow && state.context.focusingInsideStoryAllowed
+            ? 0
+            : -1
+        }
         className="copy-button"
         onMouseLeave={(e) => {
           e.currentTarget.style.outline = "none";
