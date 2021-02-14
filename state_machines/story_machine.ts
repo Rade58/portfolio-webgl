@@ -25,6 +25,7 @@ export enum EE {
   GIVE_SVGS = "GIVE_SVGS",
   GIVE_MEDIA = "GIVE_MEDIA",
 
+  // ------------------------------------------
   // ALLOWING DISALLLOWING OUTLINE
   ENABLE_OUTLINE = "ENABLE_OUTLINE",
   DISABLE_OUTLINE = "DISABLE_OUTLINE",
@@ -32,6 +33,7 @@ export enum EE {
   // DISABLE ENBLE STORY FOCUS
   ENABLE_STORY_FOCUS = "ENABLE_STORY_FOCUS",
   DISABLE_STORY_FOCUS = "DISABLE_STORY_FOCUS",
+  // ------------------------------------------
 }
 
 export enum EEs {
@@ -51,6 +53,9 @@ export enum EEs {
 
 export interface MachineContextGenericI {
   // ZA FOCUS
+  outlineAllowed: boolean;
+  focusingInsideStoryAllowed: boolean;
+  //
 
   // ARROW UP PUSHED COUNT
   arrowUpPushedCount: number;
@@ -69,6 +74,11 @@ export interface MachineContextGenericI {
   fishRight: SVGElement | null;
 }
 export interface MachineContextGenericIFull {
+  // ZA FOCUS
+  outlineAllowed: boolean;
+  focusingInsideStoryAllowed: boolean;
+  //
+
   // ARROW UP PUSHED COUNT
   arrowUpPushedCount: number;
   //
@@ -157,6 +167,12 @@ const storyMachine = createMachine<
     id: "story_machine",
     initial: fse.idle,
     context: {
+      //
+      outlineAllowed: true,
+      focusingInsideStoryAllowed: true,
+
+      //
+
       // ARROW UP PUSHED COUNT
       arrowUpPushedCount: 0,
       //
