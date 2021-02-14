@@ -122,7 +122,9 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
             : -1
         }
         role="textbox"
-        className="email-text"
+        className={`email-text ${
+          !state.context.outlineAllowed ? "outline-disabled" : ""
+        }`}
         onClick={async (e) => {
           // console.log(e);
 
@@ -170,8 +172,10 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
             ? 0
             : -1
         }
-        className="copy-button"
-        onMouseLeave={(e) => {
+        className={`copy-button ${
+          !state.context.outlineAllowed ? "outline-disabled" : ""
+        }`}
+        /* onMouseLeave={(e) => {
           e.currentTarget.style.outline = "none";
         }}
         onMouseOver={(e) => {
@@ -181,7 +185,7 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
           if (e.currentTarget.attributes.getNamedItem("style")) {
             e.currentTarget.attributes.removeNamedItem("style");
           }
-        }}
+        }} */
         onClick={async () => {
           // console.log("click");
 
