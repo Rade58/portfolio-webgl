@@ -53,6 +53,20 @@ const UpDownButton: FunctionComponent = () => {
         state.event.type === EE.DISABLE_OUTLINE ||
         state.event.type === EE.ENABLE_OUTLINE
       ) {
+        console.log(state.value);
+
+        if (state.value[fse.idle] === fseS.partial) {
+          TweenMax.set(arrow, {
+            rotateZ: -90,
+          });
+        }
+
+        if (state.value[fse.idle] === fseS.maximal) {
+          TweenMax.set(arrow, {
+            rotateZ: 90,
+          });
+        }
+
         return;
       }
 
@@ -117,21 +131,20 @@ const UpDownButton: FunctionComponent = () => {
             cursor: pointer;
 
             & svg {
-              &:active {
-                outline: none;
-              }
-
-              &:hover {
-                outline: none;
-              }
-
               /*  &:focus {
                 outline: none;
               } */
+
+              &.outline-disabled {
+                outline: none;
+              }
             }
           `}
         >
           <svg
+            className={`${
+              !state.context.outlineAllowed ? "outline-disabled" : ""
+            }`}
             tabIndex={0}
             /* NO NEED FOR px ON width AND height */
             width="100%"
