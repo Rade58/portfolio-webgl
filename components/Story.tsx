@@ -374,6 +374,13 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
   ]);
 
   useEffect(() => {
+    if (
+      state.event.type === EE.DISABLE_OUTLINE ||
+      state.event.type === EE.ENABLE_OUTLINE
+    ) {
+      return;
+    }
+
     // ANIMACIJE U ODNSU NA SUBSTATE-OVE idle-A
     // AKO POSTOJI REF KOJI SAM KREIRAO SA createRef
 
