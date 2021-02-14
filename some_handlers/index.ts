@@ -88,7 +88,7 @@ export const setup = () => {
       // console.log()
 
       // DISABLING OUTLINE-A
-
+      console.log("clicked", storyService.state.context.outlineAllowed);
       if (storyService.state.context.outlineAllowed) {
         storyService.send({
           type: EEstory.DISABLE_OUTLINE,
