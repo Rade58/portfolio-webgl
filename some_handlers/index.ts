@@ -86,6 +86,14 @@ export const setup = () => {
     document.body.addEventListener("click", (e) => {
       // debugger;
       // console.log()
+
+      // DISABLING OUTLINE-A
+
+      if (storyService.state.context.outlineAllowed) {
+        storyService.send({
+          type: EEstory.DISABLE_OUTLINE,
+        });
+      }
     });
   }
 };
