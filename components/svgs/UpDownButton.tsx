@@ -29,6 +29,7 @@ const UpDownButton: FunctionComponent = () => {
   const [state, send] = useService(storyService);
 
   const butContRef = createRef<HTMLDivElement>();
+  const iconRef = createRef<SVGSVGElement>();
 
   const [buttonClicked, setButtonClicked] = useState<boolean>(false);
 
@@ -84,7 +85,11 @@ const UpDownButton: FunctionComponent = () => {
           {
             rotateZ: -90,
           }
-        );
+        ).then(() => {
+          if (iconRef.current) {
+            iconRef.current.focus();
+          }
+        });
       }
 
       if (state.value[fse.idle] === fseS.maximal) {
@@ -142,6 +147,7 @@ const UpDownButton: FunctionComponent = () => {
           `}
         >
           <svg
+            ref={iconRef}
             className={`${
               !state.context.outlineAllowed ? "outline-disabled" : ""
             }`}
