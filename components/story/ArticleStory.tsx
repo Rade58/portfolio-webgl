@@ -2,7 +2,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { FunctionComponent, RefObject } from "react";
+import { FunctionComponent, RefObject, useEffect } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
@@ -39,6 +39,14 @@ const ArticleStory: FunctionComponent<PropsI> = ({
       margin: 0;
   */
   //  mediaBellow
+
+  useEffect(() => {
+    if (!mediaBellow) {
+      if (majorName === major) {
+        articleReference.current.focus();
+      }
+    }
+  }, [major, mediaBellow]);
 
   //
   if (major === "undefined") {
