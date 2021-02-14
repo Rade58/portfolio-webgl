@@ -8,6 +8,9 @@ import styled from "@emotion/styled";
 
 import Image from "next/image";
 
+import { useService } from "@xstate/react";
+import { storyService } from "../state_machines/story_machine";
+
 interface BaseDeviconPropsI {
   title: string;
   textDecorColor: string;
@@ -46,6 +49,8 @@ const DevIcon: FunctionComponent<deviconProps> = ({
   title,
   wikiUrl,
 }) => {
+  const [state, send] = useService(storyService);
+
   return (
     <div
       className={`devicon-${title}`}
@@ -106,7 +111,12 @@ const DevIcon: FunctionComponent<deviconProps> = ({
       <span className="devicon-image-container">
         {wikiUrl ? (
           <div className="image-wrapper">
-            <a href={wikiUrl} target="_blank" rel="noreferrer">
+            <a
+              tabIndex={state.context.focusingInsideStoryAllowed ? 0 : -1}
+              href={wikiUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
               {emoji ? (
                 <span className="emoji-holder">{emoji}</span>
               ) : (
@@ -134,7 +144,12 @@ const DevIcon: FunctionComponent<deviconProps> = ({
       </span>
       <span className="text-content">
         {wikiUrl ? (
-          <a href={wikiUrl} target="_blank" rel="noreferrer">
+          <a
+            tabIndex={state.context.focusingInsideStoryAllowed ? 0 : -1}
+            href={wikiUrl}
+            target="_blank"
+            rel="noreferrer"
+          >
             <span className="devicon-title">{title}</span>
           </a>
         ) : (
