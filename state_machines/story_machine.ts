@@ -24,6 +24,11 @@ export enum EE {
   //
   GIVE_SVGS = "GIVE_SVGS",
   GIVE_MEDIA = "GIVE_MEDIA",
+
+  // ALLOWING DISALLLOWING FOCUS
+  ENABLE_FOCUS = "ENABLE_FOCUS",
+  DISABLE_FOCUS = "DISABLE_FOCUS",
+  //
 }
 
 export enum EEs {
@@ -42,6 +47,8 @@ export enum EEs {
 // ------------------------------------------------------------
 
 export interface MachineContextGenericI {
+  // ZA FOCUS
+
   // TEST CONTEXT (UKLONICU KASNIJE)
   test: number;
   //
