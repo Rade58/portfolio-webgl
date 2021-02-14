@@ -31,7 +31,7 @@ const Back: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
     <div
       className={`back ${
         storyState.value === fse.anim_active ? "default_cur" : "pointer_cur"
-      } ${storyState.context.outlineAllowed ? "outline-allowed" : ""}`}
+      }`}
       style={{
         visibility: visible ? "visible" : "hidden",
         height: visible ? "60px" : "0px",
@@ -124,6 +124,9 @@ const Back: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
       ref={backSvgRef}
     >
       <svg
+        className={`${
+          storyState.context.outlineAllowed ? "outline-allowed" : ""
+        }`}
         onMouseLeave={(e) => {
           (e.target as HTMLElement).parentElement.blur();
         }}

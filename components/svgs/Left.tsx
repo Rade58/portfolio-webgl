@@ -52,6 +52,16 @@ const Left: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
             outline: none;
           }
 
+          /* --------------------------------- */
+          /* --------------------------------- */
+          &.outline-allowed {
+            &:focus {
+              outline: none;
+            }
+          }
+          /* --------------------------------- */
+          /* --------------------------------- */
+
           & g {
             &:hover {
               cursor: pointer;
@@ -74,7 +84,7 @@ const Left: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
             send({ type: EE.CLICK_BACK });
           }
         }}
-        onMouseLeave={(e) => {
+        /* onMouseLeave={(e) => {
           (e.target as HTMLElement).blur();
         }}
         onMouseEnter={(e) => {
@@ -85,7 +95,7 @@ const Left: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
         }}
         onMouseOver={(e) => {
           (e.target as HTMLElement).blur();
-        }}
+        }} */
         onKeyDown={(e) => {
           if (e.key === "Enter") {
             if (
