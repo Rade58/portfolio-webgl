@@ -174,8 +174,8 @@ const storyMachine = createMachine<
     initial: fse.idle,
     context: {
       //
-      outlineAllowed: true,
-      focusingInsideStoryAllowed: true,
+      outlineAllowed: false,
+      focusingInsideStoryAllowed: false,
 
       //
 
