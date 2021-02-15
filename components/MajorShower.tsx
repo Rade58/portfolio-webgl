@@ -245,13 +245,17 @@ const MajorShowers: FunctionComponent = () => {
             align-self: flex-end;
             border: pink solid 1px;
             width: fit-content;
+
+            position: relative;
+            bottom: -12px;
+
             /* position: relative; */
             /* backface-visibility: hidden; */
             /* -webkit-font-smoothing: subpixel-antialiased; */
 
             /* &:hover {
             transform: translateY(10px) translateX(10px);
-          } */
+            } */
 
             text-shadow: -0.5px 0.5px 0 #ac4982, 0.5px 0.5px 0 #ac4982,
               0.5px -0.5px 0 #ac4982, -0.5px -0.5px 0 #ac4982;
@@ -267,13 +271,13 @@ const MajorShowers: FunctionComponent = () => {
               margin-right: 18px;
             } */
 
-            &:first-of-type {
+            /* &:first-of-type {
               left: 5%;
             }
 
             &:last-of-type {
               right: 5%;
-            }
+            } */
           }
         }
       `}
