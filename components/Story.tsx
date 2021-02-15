@@ -12,7 +12,7 @@ import {
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-import { TweenMax, Power2, Power4, Power1, Quint, Elastic, Bounce } from "gsap";
+import { TweenMax, Power2, Power4, Power1, Quint, Elastic } from "gsap";
 
 import {
   fse as fsS,
@@ -206,10 +206,8 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             width: "100%",
           });
         }
-        // ----------------------------------------------------
-        // ----------------------------------------------------
-        // -------------------XXXXXX  AFTER ANIM XXXXXXX-------
-        // ----------------------------------------------------
+        // -------------------------------
+        // -------------------------------
 
         if (state.context.commingFromAnimActive) {
           console.log("FROM ANIMATION WE COME");
@@ -217,9 +215,9 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
           TweenMax.fromTo(
             storyRef.current,
             {
-              duration: 3,
+              duration: 2,
               translateY: "-120%",
-              ease: Bounce.easeOut,
+              ease: Elastic.easeOut,
             },
             {
               translateY: "0%",
@@ -229,24 +227,14 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
           return;
         }
 
-        console.log(
-          "---------------XXXXX---------------XXXX------------------XXXXX----------XXXX-----------"
-        );
-
         if (substate === fseS.partial) {
           articleRefs[major].current.scrollTop = 0;
           // translate Y -----------------------
-          TweenMax.fromTo(
-            storyRef.current,
-            {
-              duration: 3,
-              ease: Bounce.easeOut,
-              translateY: "-120%",
-            },
-            {
-              translateY: "0%",
-            }
-          );
+          TweenMax.to(storyRef.current, {
+            duration: 0.4,
+            translateY: 0,
+            ease: Power2.easeIn,
+          });
           // ----------------------------------
           // ----------------------------------
           // ------- height     ARTICLE
@@ -308,18 +296,11 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
           // -----------________----------_____________
 
           // translate Y ---------------------------
-          TweenMax.fromTo(
-            storyRef.current,
-            {
-              duration: 3,
-
-              translateY: "-120%",
-              ease: Power2.easeIn,
-            },
-            {
-              translateY: "0%",
-            }
-          );
+          TweenMax.to(storyRef.current, {
+            duration: 0.4,
+            translateY: 0,
+            ease: Power2.easeIn,
+          });
           // ---------------------------------------
           // ---------------------------------------
           // ------- height     ARTICLE
@@ -378,11 +359,11 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             storyRef.current,
             {
               duration: 0.1,
-              translateY: "0%",
+              translateY: "0vh",
               ease: Power2.easeIn,
             },
             {
-              translateY: "-120%",
+              translateY: "-80vh",
             }
           );
           // --------------- atricle opacity (has no visual effect (no op))------------------
