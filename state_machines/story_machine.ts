@@ -328,6 +328,9 @@ const storyMachine = createMachine<
               assign({
                 focusingInsideStoryAllowed: (_, __) => false,
               }),
+              assign({
+                commingFromAnimActive: (_, __) => false,
+              }),
             ],
             //
             on: {
@@ -351,6 +354,9 @@ const storyMachine = createMachine<
             entry: [
               assign({
                 focusingInsideStoryAllowed: (_, __) => true,
+              }),
+              assign({
+                commingFromAnimActive: (_, __) => false,
               }),
             ],
             //
