@@ -52,7 +52,10 @@ export enum EEs {
 // ------------------------------------------------------------
 
 export interface MachineContextGenericI {
-  // NAZNACICE DA JE PREDHODNO STANJE BILO anim_active
+  // NAZNACICE DA JE PREDHODNO STANJE BILO POCETNO
+  // STANJE KADA SE ZAVRSAVA PRVA ANIMACIJA
+  // OVO CONTEXTUAL STANJE MOZE BITI TRUE, SVE DOK GA IDLE
+  // NE PROMENI I PODESI NA false
   commingFromAnimActive: boolean;
   //
 
