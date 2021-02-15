@@ -119,7 +119,7 @@ const MajorShowers: FunctionComponent = () => {
         setSetupHappened(true);
       }
     }
-  }, [prevRef.current, nextRef.current, currRef.current, setupHappened]);
+  }, [prevRef, nextRef, currRef, setupHappened]);
 
   useEffect(() => {
     animationSetupCallback();
@@ -172,7 +172,7 @@ const MajorShowers: FunctionComponent = () => {
         }
       }
     }
-  }, [state]);
+  }, [state, currRef, nextRef, prevRef]);
 
   if (!major || major === "undefined") {
     return null;
