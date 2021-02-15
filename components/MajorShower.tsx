@@ -146,6 +146,7 @@ const MajorShowers: FunctionComponent = () => {
           console.log("------ENTERED IDLE------");
 
           TweenMax.to(currRef.current, {
+            delay: 0.4,
             translateY: "0%",
             scale: 1,
             duration: 1.2,
