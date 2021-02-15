@@ -210,10 +210,12 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
         // -------------------------------
 
         if (state.context.commingFromAnimActive) {
+          console.log("FROM ANIMATION WE COME");
+
           TweenMax.fromTo(
             storyRef.current,
             {
-              duration: 0.4,
+              duration: 2,
               translateY: "-120%",
               ease: Elastic.easeOut,
             },

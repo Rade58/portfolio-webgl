@@ -328,9 +328,6 @@ const storyMachine = createMachine<
               assign({
                 focusingInsideStoryAllowed: (_, __) => false,
               }),
-              assign({
-                commingFromAnimActive: (_, __) => false,
-              }),
             ],
             //
             on: {
@@ -349,14 +346,16 @@ const storyMachine = createMachine<
                 target: fseS.non_visible,
               },
             },
+            exit: [
+              assign({
+                commingFromAnimActive: (_, __) => false,
+              }),
+            ],
           },
           [fseS.maximal]: {
             entry: [
               assign({
                 focusingInsideStoryAllowed: (_, __) => true,
-              }),
-              assign({
-                commingFromAnimActive: (_, __) => false,
               }),
             ],
             //
@@ -404,6 +403,9 @@ const storyMachine = createMachine<
             exit: [
               assign({ arrowUpPushedCount: 0 }),
               // assign({ focusingInsideStoryAllowed: (_, __) => false }),
+              assign({
+                commingFromAnimActive: (_, __) => false,
+              }),
             ],
           },
           // PRED ANIMACIJU TREBA DA PREDJE U OVAJ STATE
