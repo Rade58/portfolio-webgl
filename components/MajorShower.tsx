@@ -215,6 +215,11 @@ const MajorShowers: FunctionComponent = () => {
 
           text-decoration-line: underline;
           text-decoration-color: #ac4982;
+
+          &:hover {
+            cursor: pointer;
+            text-decoration-color: #ac4983;
+          }
         }
 
         & h4 {
