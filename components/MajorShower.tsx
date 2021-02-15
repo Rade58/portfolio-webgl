@@ -157,12 +157,12 @@ const MajorShowers: FunctionComponent = () => {
           });
 
           TweenMax.to(nextRef.current, {
-            translateX: "250%",
+            translateX: "350%",
             duration: 1.2,
             ease: Power2.easeOut,
           });
           TweenMax.to(prevRef.current, {
-            translateX: "-250%",
+            translateX: "-350%",
             duration: 1.2,
             ease: Power2.easeOut,
           });
