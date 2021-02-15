@@ -71,6 +71,10 @@ interface PropsStoryI {
 const MAJOR_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
 
 const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
+  // STATE KOJI CE OMOGUCITI SAMO FIRST LIDING DOWN OF STORY
+  const [firstStoryAnim, setFirstStoryAnim] = useState<boolean>(true);
+  //
+
   //
   const storyRef = createRef<HTMLElement>();
   // const articleRef = createRef<HTMLElement>();
@@ -210,7 +214,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
         // -------------------------------
 
         console.log("FIRST STORY ANIM -> ", state.context.firstStoryAnimation);
-        if (state.context.firstStoryAnimation) {
+        if (firstStoryAnim) {
           console.log("FROM ANIMATION WE COME");
 
           TweenMax.fromTo(
@@ -225,6 +229,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             }
           );
 
+          setFirstStoryAnim(false);
           return;
         }
 
@@ -391,6 +396,8 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
     projectsArticleRef,
     blogArticleRef,
     state,
+    firstStoryAnim,
+    setFirstStoryAnim,
   ]);
 
   useEffect(() => {
