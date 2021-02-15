@@ -145,6 +145,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
       // console.log({ callback: "CALLBACK EXECUTED" });
       // console.log({ storyRef: storyRef.current });
       // debugger;
+
       if (state && state.value && state.value[fse.idle]) {
         const substate = state.value[fse.idle];
         const { mediaBellow } = state.context;

@@ -8,7 +8,13 @@ import styled from "@emotion/styled";
 import { TweenMax, Power3 } from "gsap";
 import { useService } from "@xstate/react";
 
-import { storyService, fse, fseS, EEs } from "../state_machines/story_machine";
+import {
+  storyService,
+  fse,
+  fseS,
+  EEs,
+  EE,
+} from "../state_machines/story_machine";
 
 import { currentMajor } from "../content";
 
@@ -35,6 +41,13 @@ const PreviewStory: FunctionComponent<PropsStoryI> = ({ data }) => {
   const previewRef = createRef<HTMLDivElement>();
 
   useEffect(() => {
+    if (
+      state.event.type === EE.DISABLE_OUTLINE ||
+      state.event.type === EE.ENABLE_OUTLINE
+    ) {
+      return;
+    }
+
     if (tekstRef.current && previewRef.current) {
       // console.log(state.value);
 
