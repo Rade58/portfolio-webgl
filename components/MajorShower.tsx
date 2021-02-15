@@ -29,7 +29,7 @@ const MAJOR_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
 const MajorShowers: FunctionComponent = () => {
   const [state, send] = useService(storyService);
 
-  const { major } = state.context;
+  const { major, mediaBellow } = state.context;
 
   const prevRef = useRef<HTMLHeadingElement>(null);
   const nextRef = useRef<HTMLHeadingElement>(null);
@@ -184,7 +184,6 @@ const MajorShowers: FunctionComponent = () => {
 
   return (
     <section
-      className="story"
       css={css`
         border: crimson solid 0px;
         position: fixed;
@@ -220,11 +219,13 @@ const MajorShowers: FunctionComponent = () => {
 
           color: #141922;
 
-          &:hover {
-            cursor: pointer;
-            text-decoration-color: rgba(21, 23, 53, 0.582);
+          &.bellow {
+            &:hover {
+              cursor: pointer;
+              text-decoration-color: rgba(21, 23, 53, 0.582);
 
-            color: #1b2442;
+              color: #1b2442;
+            }
           }
         }
 
@@ -257,16 +258,21 @@ const MajorShowers: FunctionComponent = () => {
     >
       {/* eslint-disable-next-line */}
       <h1
+        className={`${mediaBellow ? "bellow" : ""}`}
         ref={currRef}
         onClick={(e) => {
           //
-          send({ type: EEs.FULL_OPEN });
+          if (mediaBellow) {
+            send({ type: EEs.FULL_OPEN });
+          }
         }}
         onKeyDown={(e) => {
           //
           if (e.key === "Enter") {
             //
-            send({ type: EEs.FULL_OPEN });
+            if (mediaBellow) {
+              send({ type: EEs.FULL_OPEN });
+            }
           }
         }}
       >
