@@ -56,7 +56,7 @@ export interface MachineContextGenericI {
   // STANJE KADA SE ZAVRSAVA PRVA ANIMACIJA
   // OVO CONTEXTUAL STANJE MOZE BITI TRUE, SVE DOK GA IDLE
   // NE PROMENI I PODESI NA false
-  commingFromAnimActive: boolean;
+  firstStoryAnimation: boolean;
   //
 
   // ZA FOCUS
@@ -81,8 +81,11 @@ export interface MachineContextGenericI {
   fishRight: SVGElement | null;
 }
 export interface MachineContextGenericIFull {
-  // NAZNACICE DA JE PREDHODNO STANJE BILO anim_active
-  commingFromAnimActive: boolean;
+  // NAZNACICE DA JE PREDHODNO STANJE BILO POCETNO
+  // STANJE KADA SE ZAVRSAVA PRVA ANIMACIJA
+  // OVO CONTEXTUAL STANJE MOZE BITI TRUE, SVE DOK GA IDLE
+  // NE PROMENI I PODESI NA false
+  firstStoryAnimation: boolean;
   //
 
   // ZA FOCUS
@@ -185,7 +188,9 @@ const storyMachine = createMachine<
     initial: fse.idle,
     context: {
       //
-      commingFromAnimActive: false,
+      firstStoryAnimation: true, // CISTO DA BUDEM SIGURAN DA CE
+      // NA POCETKU BITI OK, MOGU ZADATI DA OVO BUDE true
+      // I PRILIKOM NEKIH SETUPA, KAO TO SU ZDAVANJE SVG-JEVA
       //
       //
       outlineAllowed: false,
@@ -249,6 +254,13 @@ const storyMachine = createMachine<
       },
       [EE.GIVE_SVGS]: {
         actions: [
+          // OVO SAM OVDE SAMO PRIDODAO OVO
+          // KAKO BI SE POSTARAO DA OVO BUDE true
+          assign({
+            firstStoryAnimation: (_, __) => true,
+          }),
+          //
+
           assign((_, { payload }) => {
             const { fishLeft } = payload;
 
@@ -300,9 +312,6 @@ const storyMachine = createMachine<
         initial: fseS.partial,
         exit: [
           "animateOnExitFromIdle", // FISH DISPURSE
-          assign({
-            commingFromAnimActive: (_, __) => false,
-          }),
         ],
         on: {
           [EE.TO_ANIMATING]: {
@@ -350,9 +359,7 @@ const storyMachine = createMachine<
               },
             },
             exit: [
-              assign({
-                commingFromAnimActive: (_, __) => false,
-              }),
+              //
             ],
           },
           [fseS.maximal]: {
@@ -406,9 +413,6 @@ const storyMachine = createMachine<
             exit: [
               assign({ arrowUpPushedCount: 0 }),
               // assign({ focusingInsideStoryAllowed: (_, __) => false }),
-              assign({
-                commingFromAnimActive: (_, __) => false,
-              }),
             ],
           },
           // PRED ANIMACIJU TREBA DA PREDJE U OVAJ STATE
@@ -477,10 +481,6 @@ const storyMachine = createMachine<
                 );
             }
           },
-          // ZADAJEM DA BI KASNIJE U IDLE-OVIM SUBSTATE-OVIMA, OVO NAZNACAVA DA SE DOLAZI IZ ANIM ACTIVE-A
-          assign({
-            commingFromAnimActive: (_, __) => true,
-          }),
         ],
       },
     },
