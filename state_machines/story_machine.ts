@@ -187,7 +187,18 @@ const storyMachine = createMachine<
     id: "story_machine",
     initial: fse.idle,
     context: {
-      //
+      // NOOP
+      // NOOP
+      // NOOP
+      // NOOP
+      // NOOP
+      // NOOP
+      // NOOP
+      // NOOP
+      // NOOP
+      // NOOP
+      // NOOP
+      // NOOP
       firstStoryAnimation: true, // OVO CE INICIJELNO BITI true
       // A idle CE BITI INITIAL STATE (STO ZNACI DA NE TREBAM NISTA
       // RADITI ON ENTRY)
