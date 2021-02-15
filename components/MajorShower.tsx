@@ -39,7 +39,15 @@ const MajorShowers: FunctionComponent = () => {
 
   const [setupHappened, setSetupHappened] = useState<boolean>(false);
 
+  const [lastAnimIdle, setLastAnimIdle] = useState<
+    fse.anim_active | fse.idle
+  >();
+
   const animationSetupCallback = useCallback(() => {
+    if (setupHappened) {
+      return;
+    }
+
     console.log("-----SETUP HAPPENED-----");
     if (!setupHappened) {
       if (prevRef.current && nextRef.current && currRef.current) {
@@ -130,7 +138,10 @@ const MajorShowers: FunctionComponent = () => {
     if (prevRef.current && nextRef.current && currRef.current) {
       if (state && state.value) {
         // ZATO STO IMA NESTED STATES
-        if (state.value === fse.idle || state.value[fse.idle]) {
+        if (
+          (state.value === fse.idle && lastAnimIdle !== fse.idle) ||
+          (state.value[fse.idle] && lastAnimIdle !== fse.idle)
+        ) {
           //
           console.log("------ENTERED IDLE------");
 
@@ -146,9 +157,14 @@ const MajorShowers: FunctionComponent = () => {
             duration: 1.2,
             ease: Elastic.easeOut,
           });
+
+          setLastAnimIdle(fse.idle);
         }
 
-        if (state.value === fse.anim_active) {
+        if (
+          state.value === fse.anim_active &&
+          lastAnimIdle !== fse.anim_active
+        ) {
           //
           console.log("------ENTERED ANIM_ACTIVE------");
 
@@ -169,10 +185,12 @@ const MajorShowers: FunctionComponent = () => {
             duration: 1.8,
             ease: Power2.easeOut,
           });
+
+          setLastAnimIdle(fse.anim_active);
         }
       }
     }
-  }, [state, currRef, nextRef, prevRef]);
+  }, [state, currRef, nextRef, prevRef, setLastAnimIdle, lastAnimIdle]);
 
   if (!major || major === "undefined") {
     return null;
