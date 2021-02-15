@@ -185,17 +185,17 @@ const MajorShowers: FunctionComponent = () => {
   return (
     <section
       css={css`
-        border: crimson solid 0px;
+        border: crimson solid 1px;
         position: fixed;
         top: 60vh;
         left: center;
         bottom: 68px;
 
         display: flex;
-        flex-basis: 348px;
+        flex-basis: fit-content;
         max-width: 100vw;
-        flex-grow: 1;
-        flex-shrink: 1;
+        flex-grow: 0;
+        flex-shrink: 0;
         justify-content: space-between;
         flex-wrap: wrap;
 
@@ -229,29 +229,46 @@ const MajorShowers: FunctionComponent = () => {
           }
         }
 
-        & h4 {
-          align-self: flex-end;
-          border: pink solid 0px;
-          position: relative;
-          /* backface-visibility: hidden; */
-          /* -webkit-font-smoothing: subpixel-antialiased; */
+        & .h4cont {
+          border: crimson solid 1px;
+          width: 160px;
+          display: flex;
 
-          /* &:hover {
+          margin: 0 auto;
+
+          & h4 {
+            align-self: flex-end;
+            border: pink solid 1px;
+            width: fit-content;
+            /* position: relative; */
+            /* backface-visibility: hidden; */
+            /* -webkit-font-smoothing: subpixel-antialiased; */
+
+            /* &:hover {
             transform: translateY(10px) translateX(10px);
           } */
 
-          text-shadow: -0.5px 0.5px 0 #ac4982, 0.5px 0.5px 0 #ac4982,
-            0.5px -0.5px 0 #ac4982, -0.5px -0.5px 0 #ac4982;
+            text-shadow: -0.5px 0.5px 0 #ac4982, 0.5px 0.5px 0 #ac4982,
+              0.5px -0.5px 0 #ac4982, -0.5px -0.5px 0 #ac4982;
 
-          user-select: none;
+            user-select: none;
 
-          font-weight: 300;
+            font-weight: 300;
 
-          &:nth-of-type(1) {
-            margin-left: 18px;
-          }
-          &:nth-of-type(2) {
-            margin-right: 18px;
+            /* &:nth-of-type(1) {
+              margin-left: 18px;
+            }
+            &:nth-of-type(2) {
+              margin-right: 18px;
+            } */
+
+            &:first-of-type {
+              left: 5%;
+            }
+
+            &:last-of-type {
+              right: 5%;
+            }
           }
         }
       `}
@@ -278,12 +295,14 @@ const MajorShowers: FunctionComponent = () => {
       >
         {centralMajor(major)}
       </h1>
-      <h4 ref={prevRef}>
-        {centralMajor(MAJOR_FINITE_STATES_ARRAY[prevIndex])}
-      </h4>
-      <h4 ref={nextRef}>
-        {centralMajor(MAJOR_FINITE_STATES_ARRAY[nextIndex])}
-      </h4>
+      <div className="h4cont">
+        <h4 ref={prevRef}>
+          {centralMajor(MAJOR_FINITE_STATES_ARRAY[prevIndex])}
+        </h4>
+        <h4 ref={nextRef}>
+          {centralMajor(MAJOR_FINITE_STATES_ARRAY[nextIndex])}
+        </h4>
+      </div>
     </section>
   );
 };
