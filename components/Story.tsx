@@ -209,6 +209,22 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
         // -------------------------------
         // -------------------------------
 
+        if (state.context.commingFromAnimActive) {
+          TweenMax.fromTo(
+            storyRef.current,
+            {
+              duration: 0.4,
+              translateY: "-120%",
+              ease: Elastic.easeOut,
+            },
+            {
+              translateY: "0%",
+            }
+          );
+
+          return;
+        }
+
         if (substate === fseS.partial) {
           articleRefs[major].current.scrollTop = 0;
           // translate Y -----------------------
