@@ -209,7 +209,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
         // -------------------------------
         // -------------------------------
 
-        if (state.context.commingFromAnimActive) {
+        /* if (state.context.commingFromAnimActive) {
           console.log("FROM ANIMATION WE COME");
 
           TweenMax.fromTo(
@@ -224,15 +224,15 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             }
           );
 
-          return;
-        }
+          // return;
+        } */
 
         if (substate === fseS.partial) {
           articleRefs[major].current.scrollTop = 0;
           // translate Y -----------------------
           TweenMax.to(storyRef.current, {
-            duration: 0.4,
-            translateY: 0,
+            duration: 0.8,
+            translateY: "0%",
             ease: Power2.easeIn,
           });
           // ----------------------------------
