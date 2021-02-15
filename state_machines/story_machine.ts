@@ -295,7 +295,12 @@ const storyMachine = createMachine<
         // -----------------------------------------------------
         id: "idle_submachine",
         initial: fseS.partial,
-        exit: ["animateOnExitFromIdle"], // FISH DISPURSE
+        exit: [
+          "animateOnExitFromIdle", // FISH DISPURSE
+          assign({
+            commingFromAnimActive: (_, __) => false,
+          }),
+        ],
         on: {
           [EE.TO_ANIMATING]: {
             target: fse.anim_active,
@@ -403,6 +408,9 @@ const storyMachine = createMachine<
             type: "final",
           },
         },
+
+        // ------------------------------------------------
+        // ------------------------------------------------
 
         // -----------------------------------------------------
         // -----------------------------------------------------
