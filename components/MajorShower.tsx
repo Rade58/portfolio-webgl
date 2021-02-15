@@ -5,9 +5,10 @@ import { jsx } from "theme-ui";
 import {
   FunctionComponent,
   useEffect,
-  useRef,
+  // useRef,
   useState,
   useCallback,
+  createRef,
 } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
@@ -31,9 +32,9 @@ const MajorShowers: FunctionComponent = () => {
 
   const { major, mediaBellow } = state.context;
 
-  const prevRef = useRef<HTMLHeadingElement>(null);
-  const nextRef = useRef<HTMLHeadingElement>(null);
-  const currRef = useRef<HTMLHeadingElement>(null);
+  const prevRef = createRef<HTMLHeadingElement>();
+  const nextRef = createRef<HTMLHeadingElement>();
+  const currRef = createRef<HTMLHeadingElement>();
   // const currFiniteStateRef = useRef<fse | "undefined">("undefined");
 
   const [setupHappened, setSetupHappened] = useState<boolean>(false);
