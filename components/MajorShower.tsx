@@ -81,6 +81,7 @@ const MajorShowers: FunctionComponent = () => {
           force3D: true,
           translateY: -8.8,
           rotateZ: 8.8,
+          rotateX: -8.2,
           // translateX: "1%",
           // scaleX: 1.2,
           // scaleY: 1.2,
@@ -98,6 +99,7 @@ const MajorShowers: FunctionComponent = () => {
           force3D: true,
           translateY: 8.8,
           rotateZ: -8.8,
+          rotateX: 8.2,
           // translateX: "-1%",
           // scaleX: 1.2,
           // scaleY: 1.2,
@@ -135,7 +137,7 @@ const MajorShowers: FunctionComponent = () => {
             translateY: "0%",
             scale: 1,
             duration: 0.4,
-            ease: Elastic.easeIn,
+            ease: Elastic.easeOut,
           });
 
           TweenMax.to([prevRef.current, nextRef.current], {
@@ -248,6 +250,8 @@ const MajorShowers: FunctionComponent = () => {
 
             position: relative;
             bottom: -12px;
+
+            font-size: 1.2rem;
 
             /* position: relative; */
             /* backface-visibility: hidden; */
