@@ -209,6 +209,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
         // -------------------------------
         // -------------------------------
 
+        console.log("FIRST STORY ANIM -> ", state.context.firstStoryAnimation);
         if (state.context.firstStoryAnimation) {
           console.log("FROM ANIMATION WE COME");
 

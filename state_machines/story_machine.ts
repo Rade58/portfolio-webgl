@@ -188,9 +188,12 @@ const storyMachine = createMachine<
     initial: fse.idle,
     context: {
       //
-      firstStoryAnimation: true, // CISTO DA BUDEM SIGURAN DA CE
-      // NA POCETKU BITI OK, MOGU ZADATI DA OVO BUDE true
-      // I PRILIKOM NEKIH SETUPA, KAO TO SU ZDAVANJE SVG-JEVA
+      firstStoryAnimation: true, // OVO CE INICIJELNO BITI true
+      // A idle CE BITI INITIAL STATE (STO ZNACI DA NE TREBAM NISTA
+      // RADITI ON ENTRY)
+      // SAMO TREBAM DA PO IZLASKU IZ IDLE-A, POMNUTO PROMENIM NA false
+      // I TAKO SAM OSIGURAO DA OVO NIKAD U BUDUCNOSTI BUDE
+      // true
       //
       //
       outlineAllowed: false,
@@ -254,13 +257,6 @@ const storyMachine = createMachine<
       },
       [EE.GIVE_SVGS]: {
         actions: [
-          // OVO SAM OVDE SAMO PRIDODAO OVO
-          // KAKO BI SE POSTARAO DA OVO BUDE true
-          assign({
-            firstStoryAnimation: (_, __) => true,
-          }),
-          //
-
           assign((_, { payload }) => {
             const { fishLeft } = payload;
 
@@ -313,9 +309,11 @@ const storyMachine = createMachine<
         exit: [
           "animateOnExitFromIdle", // FISH DISPURSE
           //
+          //
           assign({
             firstStoryAnimation: (_, __) => false,
           }),
+          //
         ],
         on: {
           [EE.TO_ANIMATING]: {
