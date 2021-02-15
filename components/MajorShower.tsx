@@ -201,7 +201,10 @@ const MajorShowers: FunctionComponent = () => {
 
         overflow: hidden;
 
+        padding-top: 28px;
+
         & h1 {
+          /* margin-top: 68px; */
           /* cursor: pointer; */
           border: tomato inset 0px;
           font-size: 2.8rem;
@@ -231,8 +234,10 @@ const MajorShowers: FunctionComponent = () => {
 
         & .h4cont {
           border: crimson solid 1px;
-          width: 160px;
+          width: 180px;
           display: flex;
+
+          justify-content: space-between;
 
           margin: 0 auto;
 
