@@ -312,6 +312,10 @@ const storyMachine = createMachine<
         initial: fseS.partial,
         exit: [
           "animateOnExitFromIdle", // FISH DISPURSE
+          //
+          assign({
+            firstStoryAnimation: (_, __) => false,
+          }),
         ],
         on: {
           [EE.TO_ANIMATING]: {
