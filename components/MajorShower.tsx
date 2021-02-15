@@ -39,7 +39,7 @@ const MajorShowers: FunctionComponent = () => {
   const [setupHappened, setSetupHappened] = useState<boolean>(false);
 
   const animationSetupCallback = useCallback(() => {
-    // console.log("-----LOGZINGZINGZ-----");
+    console.log("-----SETUP HAPPENED-----");
     if (!setupHappened) {
       if (prevRef.current && nextRef.current && currRef.current) {
         // tween max setup
@@ -131,7 +131,7 @@ const MajorShowers: FunctionComponent = () => {
         // ZATO STO IMA NESTED STATES
         if (state.value === fse.idle || state.value[fse.idle]) {
           //
-          // console.log("------ENTERED IDLE------");
+          console.log("------ENTERED IDLE------");
 
           TweenMax.to(currRef.current, {
             translateY: "0%",
@@ -149,7 +149,7 @@ const MajorShowers: FunctionComponent = () => {
 
         if (state.value === fse.anim_active) {
           //
-          // console.log("------ENTERED ANIM_ACTIVE------");
+          console.log("------ENTERED ANIM_ACTIVE------");
 
           TweenMax.to(currRef.current, {
             translateY: "-150%",
