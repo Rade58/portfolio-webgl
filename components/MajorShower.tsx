@@ -216,9 +216,11 @@ const MajorShowers: FunctionComponent = () => {
           text-decoration-line: underline;
           text-decoration-color: #ac4982;
 
+          text-shadow: 2px 2px 2px rgb(158, 60, 98), -1px -1px 1px #a04871;
+
           &:hover {
             cursor: pointer;
-            text-decoration-color: rgba(172, 73, 131, 0.521);
+            text-decoration-color: rgba(172, 73, 131, 0.788);
           }
         }
 
