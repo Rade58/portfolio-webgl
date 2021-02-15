@@ -218,7 +218,7 @@ const MajorShowers: FunctionComponent = () => {
 
           &:hover {
             cursor: pointer;
-            text-decoration-color: #ac4983;
+            text-decoration-color: rgba(172, 73, 131, 0.521);
           }
         }
 
@@ -254,13 +254,13 @@ const MajorShowers: FunctionComponent = () => {
         ref={currRef}
         onClick={(e) => {
           //
-          send({ type: EEs.NARROW_IT });
+          send({ type: EEs.FULL_OPEN });
         }}
         onKeyDown={(e) => {
           //
           if (e.key === "Enter") {
             //
-            send({ type: EEs.NARROW_IT });
+            send({ type: EEs.FULL_OPEN });
           }
         }}
       >
