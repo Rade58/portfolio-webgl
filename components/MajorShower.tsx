@@ -223,6 +223,8 @@ const MajorShowers: FunctionComponent = () => {
           &:hover {
             cursor: pointer;
             text-decoration-color: rgba(21, 23, 53, 0.582);
+
+            color: #1b2442;
           }
         }
 
