@@ -52,6 +52,10 @@ export enum EEs {
 // ------------------------------------------------------------
 
 export interface MachineContextGenericI {
+  // NAZNACICE DA JE PREDHODNO STANJE BILO anim_active
+  commingFromAnimActive: boolean;
+  //
+
   // ZA FOCUS
   outlineAllowed: boolean;
   focusingInsideStoryAllowed: boolean;
@@ -74,6 +78,10 @@ export interface MachineContextGenericI {
   fishRight: SVGElement | null;
 }
 export interface MachineContextGenericIFull {
+  // NAZNACICE DA JE PREDHODNO STANJE BILO anim_active
+  commingFromAnimActive: boolean;
+  //
+
   // ZA FOCUS
   outlineAllowed: boolean;
   focusingInsideStoryAllowed: boolean;
@@ -173,6 +181,9 @@ const storyMachine = createMachine<
     id: "story_machine",
     initial: fse.idle,
     context: {
+      //
+      commingFromAnimActive: false,
+      //
       //
       outlineAllowed: false,
       focusingInsideStoryAllowed: false,
@@ -407,45 +418,51 @@ const storyMachine = createMachine<
             }),
           },
         },
-        exit: ({ fTl, fishLeft, fishRight }, __) => {
-          if (fishLeft) {
-            const gs = fishLeft.querySelectorAll("g#fish_left____ > g");
+        exit: [
+          ({ fTl, fishLeft, fishRight }, __) => {
+            if (fishLeft) {
+              const gs = fishLeft.querySelectorAll("g#fish_left____ > g");
 
-            fTl
-              .to(
-                gs,
-                {
-                  translateX: 0,
-                  duration: 0.1,
-                  ease: Power2.easeIn,
-                  stagger: 0.08,
-                }
-                // "-=0.01"
-              )
-              .to(gs, { rotateZ: 0, stagger: 0.06, ease: Sine.easeIn });
-          }
+              fTl
+                .to(
+                  gs,
+                  {
+                    translateX: 0,
+                    duration: 0.1,
+                    ease: Power2.easeIn,
+                    stagger: 0.08,
+                  }
+                  // "-=0.01"
+                )
+                .to(gs, { rotateZ: 0, stagger: 0.06, ease: Sine.easeIn });
+            }
 
-          if (fishRight) {
-            const gs = fishRight.querySelectorAll("g#fish_right____ > g");
+            if (fishRight) {
+              const gs = fishRight.querySelectorAll("g#fish_right____ > g");
 
-            fTl
-              .to(
-                gs,
-                {
-                  translateX: 0,
-                  duration: 0.1,
-                  ease: Power4.easeOut,
-                  stagger: 0.08,
-                },
-                `-=${6 * 0.1 + 0.01 * 2}`
-              )
-              .to(
-                gs,
-                { rotateZ: 0, stagger: 0.06, ease: Sine.easeIn },
-                `-=${6 * 0.01}`
-              );
-          }
-        },
+              fTl
+                .to(
+                  gs,
+                  {
+                    translateX: 0,
+                    duration: 0.1,
+                    ease: Power4.easeOut,
+                    stagger: 0.08,
+                  },
+                  `-=${6 * 0.1 + 0.01 * 2}`
+                )
+                .to(
+                  gs,
+                  { rotateZ: 0, stagger: 0.06, ease: Sine.easeIn },
+                  `-=${6 * 0.01}`
+                );
+            }
+          },
+          // ZADAJEM DA BI KASNIJE U IDLE-OVIM SUBSTATE-OVIMA, OVO NAZNACAVA DA SE DOLAZI IZ ANIM ACTIVE-A
+          assign({
+            commingFromAnimActive: (_, __) => true,
+          }),
+        ],
       },
     },
   },
