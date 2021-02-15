@@ -148,7 +148,7 @@ const MajorShowers: FunctionComponent = () => {
           TweenMax.to(currRef.current, {
             translateY: "0%",
             scale: 1,
-            duration: 0.4,
+            duration: 1.2,
             ease: Elastic.easeOut,
           });
 
