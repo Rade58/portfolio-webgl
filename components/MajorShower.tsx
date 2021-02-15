@@ -22,7 +22,7 @@ import {
 import { centralMajor } from "../content/";
 
 import { useService } from "@xstate/react";
-import { storyService, fse } from "../state_machines/story_machine";
+import { storyService, fse, EEs } from "../state_machines/story_machine";
 
 const MAJOR_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
 
@@ -249,7 +249,23 @@ const MajorShowers: FunctionComponent = () => {
         }
       `}
     >
-      <h1 ref={currRef}>{centralMajor(major)}</h1>
+      {/* eslint-disable-next-line */}
+      <h1
+        ref={currRef}
+        onClick={(e) => {
+          //
+          send({ type: EEs.NARROW_IT });
+        }}
+        onKeyDown={(e) => {
+          //
+          if (e.key === "Enter") {
+            //
+            send({ type: EEs.NARROW_IT });
+          }
+        }}
+      >
+        {centralMajor(major)}
+      </h1>
       <h4 ref={prevRef}>
         {centralMajor(MAJOR_FINITE_STATES_ARRAY[prevIndex])}
       </h4>
