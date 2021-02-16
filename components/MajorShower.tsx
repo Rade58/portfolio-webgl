@@ -361,8 +361,19 @@ const MajorShowers: FunctionComponent = () => {
               });
             }
           }}
-          onKeyPress={() => {
+          onKeyPress={(e) => {
             //
+            if (
+              (e.key === "Enter" &&
+                appState &&
+                appState.context &&
+                appState.context.currentAnimeMachineFinitestate === "idle") ||
+              appState.context.currentAnimeMachineFinitestate === "init"
+            ) {
+              sendToAppMachine({
+                type: EE.CLICK_BACK,
+              });
+            }
           }}
         >
           {centralMajor(MAJOR_FINITE_STATES_ARRAY[prevIndex])}
@@ -383,8 +394,19 @@ const MajorShowers: FunctionComponent = () => {
               });
             }
           }}
-          onKeyPress={() => {
+          onKeyPress={(e) => {
             //
+            if (
+              (e.key === "Enter" &&
+                appState &&
+                appState.context &&
+                appState.context.currentAnimeMachineFinitestate === "idle") ||
+              appState.context.currentAnimeMachineFinitestate === "init"
+            ) {
+              sendToAppMachine({
+                type: EE.CLICK_FORTH,
+              });
+            }
           }}
         >
           {centralMajor(MAJOR_FINITE_STATES_ARRAY[nextIndex])}
