@@ -63,7 +63,7 @@ const Right: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
           /* --------------------------------- */
           /* --------------------------------- */
 
-          & g {
+          & > g {
             &:hover {
               cursor: pointer;
             }
