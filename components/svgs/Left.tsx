@@ -70,6 +70,52 @@ const Left: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
               cursor: pointer;
             }
           }
+
+          & g {
+            &#left {
+              & > g {
+                &#circle {
+                  & path {
+                    fill: #0c0c1a;
+                  }
+
+                  &:active {
+                    & path {
+                      stroke: #212138;
+                    }
+                  }
+
+                  &:hover {
+                    & path {
+                      fill: #131d3d;
+                    }
+                  }
+                }
+
+                &#arr-left {
+                  & path {
+                    fill: #d74b5c;
+                  }
+                }
+              }
+
+              &:hover {
+                & > g {
+                  &#circle {
+                    & path {
+                      fill: #1f1f35;
+                    }
+                  }
+
+                  &#arr-left {
+                    & path {
+                      fill: #2c5b70;
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       `}
       ref={leftSvgRef}
@@ -132,7 +178,8 @@ const Left: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
             <path
               id="Vector"
               d="M20 5C14.4772 5 10 9.47715 10 15C10 20.5228 14.4772 25 20 25C25.5228 25 30 20.5228 30 15C30 9.47715 25.5228 5 20 5Z"
-              stroke="black"
+              // stroke="black"
+              // fill="yellow"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -149,7 +196,7 @@ const Left: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
                         fillRule="evenodd"
                         clipRule="evenodd"
                         d="M22.71 20.29C23.1 19.9 23.1 19.27 22.71 18.88L18.83 15L22.71 11.12C23.1 10.73 23.1 10.1 22.71 9.71C22.32 9.32 21.69 9.32 21.3 9.71L16.71 14.3C16.32 14.69 16.32 15.32 16.71 15.71L21.3 20.3C21.68 20.68 22.32 20.68 22.71 20.29Z"
-                        fill="#D74B5C"
+                        // fill="#D74B5C"
                       />
                     </g>
                   </g>
