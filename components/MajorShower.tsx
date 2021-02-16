@@ -302,6 +302,19 @@ const MajorShowers: FunctionComponent = () => {
             &:last-of-type {
               right: 5%;
             } */
+
+            /* ------------------------------------------------- */
+
+            &:hover {
+              cursor: pointer;
+              color: #864188;
+            }
+
+            &:active {
+              color: #e2395d;
+            }
+
+            /* ------------------------------------------------- */
           }
         }
       `}
