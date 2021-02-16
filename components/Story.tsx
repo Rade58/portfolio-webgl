@@ -192,7 +192,8 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             });
 
             TweenMax.to(storyRef.current, {
-              duration: 0.6,
+              delay: 0.4,
+              duration: 0.8,
               ease: Power4.easeOut,
               width: "38vw",
               height: "100%",
