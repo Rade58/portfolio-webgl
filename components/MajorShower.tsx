@@ -288,8 +288,8 @@ const MajorShowers: FunctionComponent = () => {
             transform: translateY(10px) translateX(10px);
             } */
 
-            text-shadow: -0.5px 0.5px 0 #ac4982, 0.5px 0.5px 0 #ac4982,
-              0.5px -0.5px 0 #ac4982, -0.5px -0.5px 0 #ac4982;
+            text-shadow: -0.5px 0.5px 0 #96435c, 0.5px 0.5px 0 #ac4982,
+              0.5px -0.5px 0 #58265a, -0.5px -0.5px 0 #ac4982;
 
             user-select: none;
 
@@ -315,6 +315,8 @@ const MajorShowers: FunctionComponent = () => {
             &:hover {
               cursor: pointer;
               color: #864188;
+              text-decoration: overline;
+              text-decoration-color: #202341;
             }
 
             &:active {
