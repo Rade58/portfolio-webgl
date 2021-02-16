@@ -129,6 +129,16 @@ const Forth: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
           &:hover {
             outline: none;
           }
+
+          & g {
+            g:hover {
+              &[class^="bone"] {
+                & path {
+                  fill: crimson;
+                }
+              }
+            }
+          }
         }
       `}
       ref={forwrdSvgRef}
