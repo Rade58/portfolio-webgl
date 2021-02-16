@@ -126,18 +126,11 @@ const Forth: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
           width: 598px;
           height: 60px;
 
+          /* border: pink solid 1px; */
+
           &:hover {
             outline: none;
-          }
-
-          & g {
-            g:hover {
-              &[class^="bone"] {
-                & path {
-                  fill: crimson;
-                }
-              }
-            }
+            /* border-color: crimson; */
           }
         }
       `}
