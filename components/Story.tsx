@@ -213,9 +213,8 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
         // -------------------------------
         // -------------------------------
 
-        console.log("FIRST STORY ANIM -> ", state.context.firstStoryAnimation);
         if (firstStoryAnim) {
-          console.log("FROM ANIMATION WE COME");
+          console.log("FIRST STORY ANIMATION");
 
           TweenMax.fromTo(
             storyRef.current,

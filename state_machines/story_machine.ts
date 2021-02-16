@@ -52,13 +52,6 @@ export enum EEs {
 // ------------------------------------------------------------
 
 export interface MachineContextGenericI {
-  // NAZNACICE DA JE PREDHODNO STANJE BILO POCETNO
-  // STANJE KADA SE ZAVRSAVA PRVA ANIMACIJA
-  // OVO CONTEXTUAL STANJE MOZE BITI TRUE, SVE DOK GA IDLE
-  // NE PROMENI I PODESI NA false
-  firstStoryAnimation: boolean;
-  //
-
   // ZA FOCUS
   outlineAllowed: boolean;
   focusingInsideStoryAllowed: boolean;
@@ -81,13 +74,6 @@ export interface MachineContextGenericI {
   fishRight: SVGElement | null;
 }
 export interface MachineContextGenericIFull {
-  // NAZNACICE DA JE PREDHODNO STANJE BILO POCETNO
-  // STANJE KADA SE ZAVRSAVA PRVA ANIMACIJA
-  // OVO CONTEXTUAL STANJE MOZE BITI TRUE, SVE DOK GA IDLE
-  // NE PROMENI I PODESI NA false
-  firstStoryAnimation: boolean;
-  //
-
   // ZA FOCUS
   outlineAllowed: boolean;
   focusingInsideStoryAllowed: boolean;
@@ -187,24 +173,6 @@ const storyMachine = createMachine<
     id: "story_machine",
     initial: fse.idle,
     context: {
-      // NOOP
-      // NOOP
-      // NOOP
-      // NOOP
-      // NOOP
-      // NOOP
-      // NOOP
-      // NOOP
-      // NOOP
-      // NOOP
-      // NOOP
-      // NOOP
-      firstStoryAnimation: true, // OVO CE INICIJELNO BITI true
-      // A idle CE BITI INITIAL STATE (STO ZNACI DA NE TREBAM NISTA
-      // RADITI ON ENTRY)
-      // SAMO TREBAM DA PO IZLASKU IZ IDLE-A, POMNUTO PROMENIM NA false
-      // I TAKO SAM OSIGURAO DA OVO NIKAD U BUDUCNOSTI BUDE
-      // true
       //
       //
       outlineAllowed: false,
@@ -321,9 +289,7 @@ const storyMachine = createMachine<
           "animateOnExitFromIdle", // FISH DISPURSE
           //
           //
-          assign({
-            firstStoryAnimation: (_, __) => false,
-          }),
+
           //
         ],
         on: {
