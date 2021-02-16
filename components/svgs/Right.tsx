@@ -77,17 +77,17 @@ const Right: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
                     fill: #0c0c1a;
                   }
 
-                  &:active {
+                  /* &:active {
                     & path {
                       stroke: #212138;
                     }
-                  }
+                  } */
 
-                  &:hover {
+                  /* &:hover {
                     & path {
                       fill: #131d3d;
                     }
-                  }
+                  } */
                 }
 
                 &#arr-right {
@@ -110,6 +110,12 @@ const Right: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
                       fill: #2c5b70;
                     }
                   }
+                }
+              }
+
+              &:active {
+                & path {
+                  stroke: #212138;
                 }
               }
             }
@@ -177,7 +183,7 @@ const Right: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
               d="M20 5C14.4772 5 10 9.47715 10 15C10 20.5228 14.4772 25 20 25C25.5228 25 30 20.5228 30 15C30 9.47715 25.5228 5 20 5Z"
               // stroke="black"
               // fill="crimson"
-              strokeWidth="2"
+              strokeWidth="3"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
