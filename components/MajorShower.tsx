@@ -210,7 +210,7 @@ const MajorShowers: FunctionComponent = () => {
   return (
     <section
       css={css`
-        border: crimson solid 1px;
+        border: crimson solid 0px;
         position: fixed;
         top: 60vh;
         left: center;
@@ -258,7 +258,7 @@ const MajorShowers: FunctionComponent = () => {
         }
 
         & .h4cont {
-          border: crimson solid 1px;
+          border: crimson solid 0px;
           width: 180px;
           display: flex;
 
@@ -268,7 +268,7 @@ const MajorShowers: FunctionComponent = () => {
 
           & h4 {
             align-self: flex-end;
-            border: pink solid 1px;
+            border: pink solid 0px;
             width: fit-content;
 
             position: relative;
