@@ -24,11 +24,14 @@ import { centralMajor } from "../content/";
 
 import { useService } from "@xstate/react";
 import { storyService, fse, EEs } from "../state_machines/story_machine";
+import { appService, EE } from "../state_machines/app_machine";
 
 const MAJOR_ARR_LENGTH = MAJOR_FINITE_STATES_ARRAY.length;
 
 const MajorShowers: FunctionComponent = () => {
   const [state, send] = useService(storyService);
+
+  const [appState, sendToAppMachine] = useService(appService);
 
   const { major, mediaBellow } = state.context;
 
@@ -342,10 +345,48 @@ const MajorShowers: FunctionComponent = () => {
         {centralMajor(major)}
       </h1>
       <div className="h4cont">
-        <h4 ref={prevRef}>
+        {/* eslint-disable-next-line */}
+        <h4
+          ref={prevRef}
+          onClick={() => {
+            //
+            if (
+              (appState &&
+                appState.context &&
+                appState.context.currentAnimeMachineFinitestate === "idle") ||
+              appState.context.currentAnimeMachineFinitestate === "init"
+            ) {
+              sendToAppMachine({
+                type: EE.CLICK_BACK,
+              });
+            }
+          }}
+          onKeyPress={() => {
+            //
+          }}
+        >
           {centralMajor(MAJOR_FINITE_STATES_ARRAY[prevIndex])}
         </h4>
-        <h4 ref={nextRef}>
+        {/* eslint-disable-next-line */}
+        <h4
+          ref={nextRef}
+          onClick={() => {
+            //
+            if (
+              (appState &&
+                appState.context &&
+                appState.context.currentAnimeMachineFinitestate === "idle") ||
+              appState.context.currentAnimeMachineFinitestate === "init"
+            ) {
+              sendToAppMachine({
+                type: EE.CLICK_FORTH,
+              });
+            }
+          }}
+          onKeyPress={() => {
+            //
+          }}
+        >
           {centralMajor(MAJOR_FINITE_STATES_ARRAY[nextIndex])}
         </h4>
       </div>
