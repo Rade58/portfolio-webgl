@@ -163,26 +163,26 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             state.event.type !== EEs.ARROW_UP_TRANS
           ) { */
           if (substate === fseS.non_visible) {
-            TweenMax.fromTo(
-              articleRefs[major].current,
-              {
-                duration: 0.8,
-                ease: Power4.easeOut,
-                opacity: 1,
-                translateX: "0%",
-              },
-              {
-                opacity: 0,
-                translateX: "-200%",
-              }
-            );
-
             TweenMax.to(storyRef.current, {
               duration: 0.3,
               ease: Power2.easeIn,
               width: "0vw",
               height: "100%",
               // delay: 0.4,
+            }).then(() => {
+              TweenMax.fromTo(
+                articleRefs[major].current,
+                {
+                  duration: 0.8,
+                  ease: Power4.easeOut,
+                  opacity: 1,
+                  translateX: "0%",
+                },
+                {
+                  opacity: 0,
+                  translateX: "-200%",
+                }
+              );
             });
           }
 
@@ -194,7 +194,8 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
               height: "100%",
               // delay: 0.4,
             }).then(() => {
-              console.log(articleRefs[major].current);
+              //
+              // console.log(articleRefs[major].current);
 
               TweenMax.fromTo(
                 articleRefs[major].current,
