@@ -126,9 +126,8 @@ const Forth: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
           width: 598px;
           height: 60px;
 
-          /* border: pink solid 1px; */
-
           &:hover {
+            /* border: pink solid 1px; */
             outline: none;
             /* border-color: crimson; */
           }
