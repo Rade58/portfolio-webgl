@@ -254,6 +254,10 @@ const MajorShowers: FunctionComponent = () => {
 
               color: #1b2442;
             }
+
+            &:active {
+              color: #7a2658;
+            }
           }
         }
 
