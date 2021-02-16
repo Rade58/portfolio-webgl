@@ -186,8 +186,13 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
           }
 
           if (substate !== fseS.non_visible) {
+            TweenMax.set(articleRefs[major].current, {
+              opacity: 0,
+              translateX: "-400%",
+            });
+
             TweenMax.to(storyRef.current, {
-              duration: 0.8,
+              duration: 0.6,
               ease: Power4.easeOut,
               width: "38vw",
               height: "100%",
@@ -199,7 +204,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
               TweenMax.fromTo(
                 articleRefs[major].current,
                 {
-                  duration: 0.4,
+                  duration: 0.3,
                   ease: Bounce.easeOut,
                   opacity: 0,
                   translateX: "-200%",
