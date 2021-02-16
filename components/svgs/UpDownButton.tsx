@@ -150,18 +150,18 @@ const UpDownButton: FunctionComponent = () => {
                 }
 
                 & path.circular-stuff {
-                  fill: #231d38;
+                  fill: #14121d;
                 }
 
                 &:hover {
                   & path.arrow-path {
-                    fill: #2f2b52;
+                    fill: #b15ca3;
                   }
                 }
 
                 &:hover {
                   & path.circular-stuff {
-                    fill: #1f2b3d;
+                    fill: #091936;
                   }
                 }
               }
