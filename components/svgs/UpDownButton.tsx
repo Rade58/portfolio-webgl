@@ -164,6 +164,12 @@ const UpDownButton: FunctionComponent = () => {
                     fill: #091936;
                   }
                 }
+
+                &:active {
+                  & path.circular-stuff {
+                    stroke: #23182b;
+                  }
+                }
               }
             }
           `}
@@ -268,7 +274,7 @@ const UpDownButton: FunctionComponent = () => {
                   d="M20 5C14.4772 5 10 9.47715 10 15C10 20.5228 14.4772 25 20 25C25.5228 25 30 20.5228 30 15C30 9.47715 25.5228 5 20 5Z"
                   // stroke="green"
                   // fill="green"
-                  strokeWidth="1"
+                  strokeWidth="2"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
