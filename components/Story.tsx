@@ -488,6 +488,9 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
         /* width: 220px; */
         overflow: hidden;
 
+        /* ---- bottom and right box-shadow (PROBAJ DA POPRAVIS OVO DA IZGLEDA BOLJE
+        (ALI IMAJ NA UMU DA STO JE VISE SHADOW LAYER-A TO CES VISE IMATI PERFORMANCE PROBLEMA N STRANICI)) */
+        box-shadow: 0.4px 0.8px 0.8px 0.4px rgba(17, 11, 29, 0.137);
         /* FOR MATCH MEDIA (MEDIA QUERIES) */
 
         &.bellow {
