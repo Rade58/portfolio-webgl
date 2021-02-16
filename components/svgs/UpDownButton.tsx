@@ -133,7 +133,6 @@ const UpDownButton: FunctionComponent = () => {
             margin-top: ${upDownArrowHeight};
             height: ${upDownArrowHeight};
             justify-content: center;
-            cursor: pointer;
 
             & svg {
               /*  &:focus {
@@ -144,13 +143,26 @@ const UpDownButton: FunctionComponent = () => {
                 outline: none;
               }
 
-              & .arrow-path {
-                fill: #d74b5c;
-              }
+              & g#up-down {
+                cursor: pointer;
+                & path.arrow-path {
+                  fill: #d74b5c;
+                }
 
-              &:hover {
-                & .arrow-path {
-                  fill: #2f2b52;
+                & path.circular-stuff {
+                  fill: #231d38;
+                }
+
+                &:hover {
+                  & path.arrow-path {
+                    fill: #2f2b52;
+                  }
+                }
+
+                &:hover {
+                  & path.circular-stuff {
+                    fill: #1f2b3d;
+                  }
                 }
               }
             }
@@ -251,10 +263,12 @@ const UpDownButton: FunctionComponent = () => {
             <g id="up-down">
               <g id="up-down-circle">
                 <path
+                  className="circular-stuff"
                   id="Vector"
                   d="M20 5C14.4772 5 10 9.47715 10 15C10 20.5228 14.4772 25 20 25C25.5228 25 30 20.5228 30 15C30 9.47715 25.5228 5 20 5Z"
-                  stroke="black"
-                  strokeWidth="2"
+                  // stroke="green"
+                  // fill="green"
+                  strokeWidth="1"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
