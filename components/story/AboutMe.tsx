@@ -44,14 +44,9 @@ const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
         projectId="4mpb3bwc"
         serializers={serializers}
       />
-      {/* PRIMER KAKO BI PREDSTAVIO IKONU ZA TYPESCRIPT */}
-      {/* <DevIcon
-        title={data.devSvgs[0].title}
-        devImage={data.devSvgs[0].devImage.asset.url}
-        wikiUrl="https://en.wikipedia.org/wiki/TypeScript"
-        textDecorColor="#3178c6"
-        additionalBracketText="open source language which builds on JavaScript"
-      /> */}
+      {/* ---------------- SEPARATOR ------------------ */}
+      <Separator emoji={`⌨️`} />
+      {/* --------------------------------------------- */}
       {/* MAPPING THROUGH ALL DEVICONS */}
       {data.devSvgs.map(
         ({
@@ -95,6 +90,7 @@ const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
         }
       )}
       {/* --------------------------------------------- */}
+      <Separator emoji={`🖱️`} />
       These are some other techologies I also worked with:
       {data.otherDevSvgs.map(
         ({
