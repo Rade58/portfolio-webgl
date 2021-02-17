@@ -10,6 +10,7 @@ type directionType = "inwards" | "outwards" | "left" | "right";
 
 interface SeparatorCommonPropsI {
   direction?: directionType;
+  thickness?: number;
 }
 
 interface SeparatorEmojiPropsI extends SeparatorCommonPropsI {
@@ -28,8 +29,11 @@ const Separator: FunctionComponent<separatorPropsType> = ({
   emoji,
   nonEmoji,
   direction: directionValue,
+  thickness: separatorThickness,
 }) => {
   const direction: directionType = directionValue ? directionValue : "outwards";
+
+  const thickness: number = separatorThickness ? separatorThickness : 2;
 
   const leftLinGrad = /* css */ `
     linear-gradient(
@@ -66,7 +70,7 @@ const Separator: FunctionComponent<separatorPropsType> = ({
           /* margin-left: 12%; */
           margin-top: 4vh;
           margin-bottom: 4vh;
-          height: 2px;
+          height: ${thickness}px;
           width: 100%;
 
           /* ---------------------------------------------- */
