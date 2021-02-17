@@ -82,7 +82,7 @@ const Contact: FunctionComponent<PropsI> = ({ contactArticleRef, data }) => {
           );
         })}
       </section>
-      <Separator nonEmoji thickness={4} direction="inwards" />
+      <Separator nonEmoji thickness={3} direction="inwards" />
       <MailCopy
         copyIconColor={data.iconColor.color}
         email={data.myEmail}

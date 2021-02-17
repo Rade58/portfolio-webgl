@@ -162,6 +162,7 @@ const PreviewStory: FunctionComponent<PropsStoryI> = ({ data }) => {
 
         border: pink solid 0px;
         position: relative;
+        padding-left: 8px;
 
         & .tekst {
           height: 28px;

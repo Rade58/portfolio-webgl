@@ -583,7 +583,11 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             overflow-y: auto;
             user-select: none;
 
-            margin: 8px;
+            /* margin: 8px; */
+            padding-left: 8px;
+            padding-right: 2px;
+            padding-bottom: 12px;
+
             margin-top: 2px;
 
             /* --------- SCROOLLBAR STYLING --------- */

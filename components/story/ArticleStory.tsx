@@ -65,6 +65,7 @@ const ArticleStory: FunctionComponent<PropsI> = ({
       }`}
       css={css`
         margin-top: 0;
+        margin-left: 0;
 
         &#${majorName} {
           /* &:focus {

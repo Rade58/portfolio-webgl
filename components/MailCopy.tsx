@@ -41,8 +41,10 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
           align-items: center;
 
           border: red solid 0px;
-          width: 100%;
+          width: fit-content;
           margin-top: 18px;
+
+          margin-left: 18px;
 
           & > * {
             margin-right: 8px;
