@@ -6,8 +6,11 @@ import { FunctionComponent } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
+type directionType = "inwards" | "outwards";
+
 interface SeparatorPropsI {
   emoji: string;
+  direction: directionType;
 }
 
 const Separator: FunctionComponent<SeparatorPropsI> = ({ emoji }) => {
