@@ -24,7 +24,27 @@ interface SeparatorClenPropsI extends SeparatorCommonPropsI {
 
 type separatorPropsType = SeparatorEmojiPropsI | SeparatorClenPropsI;
 
-const Separator: FunctionComponent<separatorPropsType> = ({ emoji }) => {
+const Separator: FunctionComponent<separatorPropsType> = ({
+  emoji,
+  clean,
+  direction,
+}) => {
+  const leftLinGrad = /* css */ `
+    linear-gradient(
+      90deg,
+      rgba(83, 139, 148, 0.16290266106442575) 18%,
+      rgba(158, 90, 106, 1) 80%
+    )
+  `;
+
+  const rightLinGrad = /* css */ `
+    linear-gradient(
+      90deg,
+      rgba(158, 90, 106, 1) 80%,
+      rgba(83, 139, 148, 0.16290266106442575) 18%
+    )
+  `;
+
   return (
     <section
       className="sepa"
@@ -41,7 +61,7 @@ const Separator: FunctionComponent<separatorPropsType> = ({ emoji }) => {
 
           /* ---------------------------------------------- */
 
-          &.separator-1 {
+          /* &.separator-1 {
             background-image: linear-gradient(
               90deg,
               rgba(158, 90, 106, 1) 18%,
@@ -54,7 +74,7 @@ const Separator: FunctionComponent<separatorPropsType> = ({ emoji }) => {
               rgba(83, 139, 148, 0.16290266106442575) 18%,
               rgba(158, 90, 106, 1) 80%
             );
-          }
+          } */
 
           /* ---------------------------------------------- */
 
@@ -81,21 +101,13 @@ const Separator: FunctionComponent<separatorPropsType> = ({ emoji }) => {
           &.separator-1 {
             &.inwards {
               /*  */
-              background-image: linear-gradient(
-                90deg,
-                rgba(158, 90, 106, 1) 18%,
-                rgba(83, 139, 148, 0.16290266106442575) 80%
-              );
+              background-image: ${rightLinGrad};
             }
           }
           &.separator-2 {
             &.inwards {
               /*  */
-              background-image: linear-gradient(
-                90deg,
-                rgba(83, 139, 148, 0.16290266106442575) 18%,
-                rgba(158, 90, 106, 1) 80%
-              );
+              background-image: ${leftLinGrad};
             }
           }
           &.separator-1 {
@@ -130,19 +142,15 @@ const Separator: FunctionComponent<separatorPropsType> = ({ emoji }) => {
           &.separator-2 {
             &.right {
               /*  */
-              background-image: linear-gradient(
-                90deg,
-                rgba(158, 90, 106, 1) 80%,
-                rgba(83, 139, 148, 0.16290266106442575) 18%
-              );
+              background-image: ${rightLinGrad};
             }
           }
         }
       `}
     >
-      <div className="separator separator-1" />
-      {emoji && <div>{emoji}</div>}
-      <div className="separator separator-2" />
+      <div className={`separator-1 ${direction}`} />
+      {emoji && !clean && <div>{emoji}</div>}
+      <div className={`separator-2 ${direction}`} />
     </section>
   );
 };
