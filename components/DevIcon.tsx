@@ -56,7 +56,7 @@ const DevIcon: FunctionComponent<deviconProps> = ({
       className={`devicon-${title}`}
       css={css`
         display: flex;
-        border: crimson solid 1px;
+        border: crimson solid 0px;
         justify-content: flex-start;
         /* flex-wrap: wrap; */
         width: fit-content;
@@ -71,8 +71,8 @@ const DevIcon: FunctionComponent<deviconProps> = ({
           margin-left: 8px;
 
           text-decoration: none;
-          border: olive solid 1px;
-          width: 48px;
+          border: olive solid 0px;
+          width: 38px;
 
           & .emoji-holder {
             display: flex;
@@ -82,7 +82,7 @@ const DevIcon: FunctionComponent<deviconProps> = ({
           }
 
           & .image-wrapper {
-            border: crimson solid 4px;
+            border: crimson solid 0px;
             width: 100%;
             height: fit-content;
             & a {
@@ -90,7 +90,7 @@ const DevIcon: FunctionComponent<deviconProps> = ({
               & > div {
                 /* */
                 margin: auto 0;
-                border: pink solid 1px;
+                border: pink solid 0px;
                 /* margin-top: 6px; */
               }
             }
@@ -98,7 +98,7 @@ const DevIcon: FunctionComponent<deviconProps> = ({
         }
 
         & > .text-content {
-          border: pink solid 1px;
+          border: pink solid 0px;
           padding: 2px auto;
           display: flex;
           align-items: center;
@@ -115,7 +115,7 @@ const DevIcon: FunctionComponent<deviconProps> = ({
             text-decoration-line: underline;
             text-decoration-style: dashed;
 
-            border: crimson solid 1px;
+            border: crimson solid 0px;
             /* margin-top: 25px; */
 
             /* FOCUS DISABLE ON partial STATE */
