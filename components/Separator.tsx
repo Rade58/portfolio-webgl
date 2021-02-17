@@ -6,7 +6,7 @@ import { FunctionComponent } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-type directionType = "inwards" | "outwards";
+type directionType = "inwards" | "outwards" | "left" | "right";
 
 interface SeparatorCommonPropsI {
   direction: directionType;
@@ -39,6 +39,8 @@ const Separator: FunctionComponent<separatorPropsType> = ({ emoji }) => {
           height: 2px;
           width: 100%;
 
+          /* ---------------------------------------------- */
+
           &.separator-1 {
             background-image: linear-gradient(
               90deg,
@@ -53,11 +55,93 @@ const Separator: FunctionComponent<separatorPropsType> = ({ emoji }) => {
               rgba(158, 90, 106, 1) 80%
             );
           }
+
+          /* ---------------------------------------------- */
+
+          &.separator-1 {
+            &.outwards {
+              /*  */
+              background-image: linear-gradient(
+                90deg,
+                rgba(83, 139, 148, 0.16290266106442575) 80%,
+                rgba(158, 90, 106, 1) 18%
+              );
+            }
+          }
+          &.separator-2 {
+            &.outwards {
+              /*  */
+              background-image: linear-gradient(
+                90deg,
+                rgba(158, 90, 106, 1) 80%,
+                rgba(83, 139, 148, 0.16290266106442575) 18%
+              );
+            }
+          }
+          &.separator-1 {
+            &.inwards {
+              /*  */
+              background-image: linear-gradient(
+                90deg,
+                rgba(158, 90, 106, 1) 18%,
+                rgba(83, 139, 148, 0.16290266106442575) 80%
+              );
+            }
+          }
+          &.separator-2 {
+            &.inwards {
+              /*  */
+              background-image: linear-gradient(
+                90deg,
+                rgba(83, 139, 148, 0.16290266106442575) 18%,
+                rgba(158, 90, 106, 1) 80%
+              );
+            }
+          }
+          &.separator-1 {
+            &.left {
+              /*  */
+              background-image: linear-gradient(
+                90deg,
+                rgba(83, 139, 148, 0.16290266106442575) 18%,
+                rgba(158, 90, 106, 1) 80%
+              );
+            }
+          }
+          &.separator-2 {
+            &.left {
+              background-image: linear-gradient(
+                90deg,
+                rgba(83, 139, 148, 0.16290266106442575) 18%,
+                rgba(158, 90, 106, 1) 80%
+              );
+            }
+          }
+          &.separator-1 {
+            &.right {
+              /*  */
+              background-image: linear-gradient(
+                90deg,
+                rgba(158, 90, 106, 1) 80%,
+                rgba(83, 139, 148, 0.16290266106442575) 18%
+              );
+            }
+          }
+          &.separator-2 {
+            &.right {
+              /*  */
+              background-image: linear-gradient(
+                90deg,
+                rgba(158, 90, 106, 1) 80%,
+                rgba(83, 139, 148, 0.16290266106442575) 18%
+              );
+            }
+          }
         }
       `}
     >
       <div className="separator separator-1" />
-      <div>{emoji}</div>
+      {emoji && <div>{emoji}</div>}
       <div className="separator separator-2" />
     </section>
   );
