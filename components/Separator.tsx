@@ -82,6 +82,10 @@ const Separator: FunctionComponent<separatorPropsType> = ({
           &.separator-1 {
             margin-left: 12vw; // OVO JE POGODNO ZA @media
 
+            @media (max-width: ${matchMediaMaxWidth}) {
+              margin-left: 0.8vw;
+            }
+
             &.outwards {
               /*  */
               background-image: ${leftLinGrad};
