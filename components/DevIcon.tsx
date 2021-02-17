@@ -61,6 +61,7 @@ const DevIcon: FunctionComponent<deviconProps> = ({
         /* flex-wrap: wrap; */
         width: fit-content;
         margin-top: 8px;
+        margin-left: 18px;
 
         & > span.devicon-image-container {
           display: flex;

@@ -45,7 +45,7 @@ const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
         serializers={serializers}
       />
       {/* ---------------- SEPARATOR ------------------ */}
-      <Separator emoji={`⌨️`} direction="right" />
+      <Separator emoji={`⌨️`} direction="outwards" />
       {/* --------------------------------------------- */}
       {/* MAPPING THROUGH ALL DEVICONS */}
       {data.devSvgs.map(
@@ -134,11 +134,12 @@ const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
         }
       )}
       {/* ------------------------------------------------- */}
-      <Separator nonEmoji direction="outwards" />
+      <Separator nonEmoji direction="outwards" thickness={3} />
       {/* ------------------------------------------------- */}
       This is me looking like a 100$
       <MyImage url={data.myImage.asset.url} />
       {/* {major !== "undefined" ? storyMajorText(major, "") : ""} */}
+      <Separator nonEmoji direction="inwards" thickness={3} />
     </ArticleStory>
   );
 };
