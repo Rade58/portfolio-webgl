@@ -14,12 +14,12 @@ interface SeparatorCommonPropsI {
 
 interface SeparatorEmojiPropsI extends SeparatorCommonPropsI {
   emoji: string;
-  clean: never;
+  clean?: never;
 }
 
 interface SeparatorClenPropsI extends SeparatorCommonPropsI {
   clean: true;
-  emoji: never;
+  emoji?: never;
 }
 
 type separatorPropsType = SeparatorEmojiPropsI | SeparatorClenPropsI;
@@ -81,21 +81,13 @@ const Separator: FunctionComponent<separatorPropsType> = ({
           &.separator-1 {
             &.outwards {
               /*  */
-              background-image: linear-gradient(
-                90deg,
-                rgba(83, 139, 148, 0.16290266106442575) 80%,
-                rgba(158, 90, 106, 1) 18%
-              );
+              background-image: ${leftLinGrad};
             }
           }
           &.separator-2 {
             &.outwards {
               /*  */
-              background-image: linear-gradient(
-                90deg,
-                rgba(158, 90, 106, 1) 80%,
-                rgba(83, 139, 148, 0.16290266106442575) 18%
-              );
+              background-image: ${rightLinGrad};
             }
           }
           &.separator-1 {
@@ -113,30 +105,18 @@ const Separator: FunctionComponent<separatorPropsType> = ({
           &.separator-1 {
             &.left {
               /*  */
-              background-image: linear-gradient(
-                90deg,
-                rgba(83, 139, 148, 0.16290266106442575) 18%,
-                rgba(158, 90, 106, 1) 80%
-              );
+              background-image: ${leftLinGrad};
             }
           }
           &.separator-2 {
             &.left {
-              background-image: linear-gradient(
-                90deg,
-                rgba(83, 139, 148, 0.16290266106442575) 18%,
-                rgba(158, 90, 106, 1) 80%
-              );
+              background-image: ${leftLinGrad};
             }
           }
           &.separator-1 {
             &.right {
               /*  */
-              background-image: linear-gradient(
-                90deg,
-                rgba(158, 90, 106, 1) 80%,
-                rgba(83, 139, 148, 0.16290266106442575) 18%
-              );
+              background-image: ${rightLinGrad};
             }
           }
           &.separator-2 {

@@ -45,7 +45,7 @@ const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
         serializers={serializers}
       />
       {/* ---------------- SEPARATOR ------------------ */}
-      <Separator emoji={`⌨️`} />
+      <Separator emoji={`⌨️`} direction="right" />
       {/* --------------------------------------------- */}
       {/* MAPPING THROUGH ALL DEVICONS */}
       {data.devSvgs.map(
@@ -90,7 +90,7 @@ const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
         }
       )}
       {/* --------------------------------------------- */}
-      <Separator emoji={`🖱️`} />
+      <Separator emoji={`🖱️`} direction="inwards" />
       These are some other techologies I also worked with:
       {data.otherDevSvgs.map(
         ({
