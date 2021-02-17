@@ -8,12 +8,23 @@ import styled from "@emotion/styled";
 
 type directionType = "inwards" | "outwards";
 
-interface SeparatorPropsI {
-  emoji: string;
+interface SeparatorCommonPropsI {
   direction: directionType;
 }
 
-const Separator: FunctionComponent<SeparatorPropsI> = ({ emoji }) => {
+interface SeparatorEmojiPropsI extends SeparatorCommonPropsI {
+  emoji: string;
+  clean: never;
+}
+
+interface SeparatorClenPropsI extends SeparatorCommonPropsI {
+  clean: true;
+  emoji: never;
+}
+
+type separatorPropsType = SeparatorEmojiPropsI | SeparatorClenPropsI;
+
+const Separator: FunctionComponent<separatorPropsType> = ({ emoji }) => {
   return (
     <section
       className="sepa"
