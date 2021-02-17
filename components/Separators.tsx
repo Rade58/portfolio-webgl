@@ -11,7 +11,13 @@ interface SeparatorPropsI {
 }
 
 const Separators: FunctionComponent<SeparatorPropsI> = ({ emoji }) => {
-  return <div></div>;
+  return (
+    <section className="sepa">
+      <div className="separator separator-1" />
+      <div>{emoji}</div>
+      <div className="separator separator-2" />
+    </section>
+  );
 };
 
 export default Separators;
