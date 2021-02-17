@@ -88,12 +88,17 @@ const DevIcon: FunctionComponent<deviconProps> = ({
         & > .text-content {
           border: pink solid 1px;
           padding: 2px auto;
+          display: flex;
+          align-items: center;
 
           & > a {
             text-decoration-color: #fff;
             color: inherit;
             text-decoration-line: underline;
             text-decoration-style: dashed;
+
+            border: crimson solid 1px;
+            /* margin-top: 25px; */
 
             /* FOCUS DISABLE ON partial STATE */
 
