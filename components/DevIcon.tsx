@@ -63,7 +63,8 @@ const DevIcon: FunctionComponent<deviconProps> = ({
         margin-top: 8px;
 
         & > span.devicon-image-container {
-          display: block;
+          display: flex;
+          align-items: center;
           margin-right: 12px;
           flex-shrink: 0;
           flex-grow: 0;
@@ -81,7 +82,18 @@ const DevIcon: FunctionComponent<deviconProps> = ({
           }
 
           & .image-wrapper {
-            border: crimson solid 0px;
+            border: crimson solid 4px;
+            width: 100%;
+            height: fit-content;
+            & a {
+              /* display: flex; */
+              & > div {
+                /* */
+                margin: auto 0;
+                border: pink solid 1px;
+                /* margin-top: 6px; */
+              }
+            }
           }
         }
 
@@ -90,6 +102,12 @@ const DevIcon: FunctionComponent<deviconProps> = ({
           padding: 2px auto;
           display: flex;
           align-items: center;
+
+          & .additional-text {
+            /* align-self: center; */
+            margin-left: 12px;
+            line-height: 1.2;
+          }
 
           & > a {
             text-decoration-color: #fff;
