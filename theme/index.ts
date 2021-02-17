@@ -9,8 +9,7 @@ const theme: Theme = {
   colors: {
     ...presetTheme.colors,
   },
-  // eslint-disable-next-line
-  // @ts-ignore
+
   styles: {
     ...presetTheme.styles,
   },
