@@ -134,7 +134,7 @@ const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
         }
       )}
       {/* ------------------------------------------------- */}
-      <Separator clean direction="outwards" />
+      <Separator nonEmoji direction="outwards" />
       {/* ------------------------------------------------- */}
       This is me looking like a 100$
       <MyImage url={data.myImage.asset.url} />

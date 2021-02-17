@@ -14,11 +14,11 @@ interface SeparatorCommonPropsI {
 
 interface SeparatorEmojiPropsI extends SeparatorCommonPropsI {
   emoji: string;
-  clean?: never;
+  nonEmoji?: never;
 }
 
 interface SeparatorClenPropsI extends SeparatorCommonPropsI {
-  clean: true;
+  nonEmoji: true;
   emoji?: never;
 }
 
@@ -26,7 +26,7 @@ type separatorPropsType = SeparatorEmojiPropsI | SeparatorClenPropsI;
 
 const Separator: FunctionComponent<separatorPropsType> = ({
   emoji,
-  clean,
+  nonEmoji,
   direction: directionValue,
 }) => {
   const direction: directionType = directionValue ? directionValue : "outwards";
@@ -132,7 +132,7 @@ const Separator: FunctionComponent<separatorPropsType> = ({
       `}
     >
       <div className={`separator separator-1 ${direction}`} />
-      {emoji && !clean && <div className="emoji">{emoji}</div>}
+      {emoji && !nonEmoji && <div className="emoji">{emoji}</div>}
       <div className={`separator separator-2 ${direction}`} />
     </section>
   );
