@@ -10,7 +10,7 @@ interface SeparatorPropsI {
   emoji: string;
 }
 
-const Separators: FunctionComponent<SeparatorPropsI> = ({ emoji }) => {
+const Separator: FunctionComponent<SeparatorPropsI> = ({ emoji }) => {
   return (
     <section
       className="sepa"
@@ -48,4 +48,4 @@ const Separators: FunctionComponent<SeparatorPropsI> = ({ emoji }) => {
   );
 };
 
-export default Separators;
+export default Separator;
