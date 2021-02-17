@@ -20,9 +20,10 @@ const Separator: FunctionComponent<SeparatorPropsI> = ({ emoji }) => {
         & div.separator {
           margin-right: 12%;
           margin-left: 12%;
-          margin-top: 1vh;
-          margin-bottom: 1vh;
+          margin-top: 4vh;
+          margin-bottom: 4vh;
           height: 2px;
+          width: 100%;
 
           &.separator-1 {
             background-image: linear-gradient(
