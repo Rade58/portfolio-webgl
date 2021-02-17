@@ -56,7 +56,7 @@ const Separator: FunctionComponent<separatorPropsType> = ({
         align-items: center;
 
         & > .emoji {
-          font-size: 1.4rem;
+          font-size: 1.6rem;
         }
 
         & div.separator {
