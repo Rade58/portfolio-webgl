@@ -548,6 +548,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
               padding-top: 0px;
               padding-bottom: 0px;
               margin-bottom: 8px;
+              padding-left: 12px;
             }
           }
         }
