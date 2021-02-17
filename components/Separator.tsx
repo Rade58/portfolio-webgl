@@ -65,6 +65,8 @@ const Separator: FunctionComponent<separatorPropsType> = ({
 
         & > .emoji {
           font-size: 1.6rem;
+          text-align: center;
+          margin: 0 4px;
         }
 
         & div.separator {
@@ -80,11 +82,10 @@ const Separator: FunctionComponent<separatorPropsType> = ({
           /* ---------------------------------------------- */
 
           &.separator-1 {
-            margin-left: 12vw; // OVO JE POGODNO ZA @media
-
             @media (max-width: ${matchMediaMaxWidth}) {
-              margin-left: 0.8vw;
+              margin-left: 12vw;
             }
+            margin-left: 0.8vw;
 
             &.outwards {
               /*  */
@@ -105,7 +106,10 @@ const Separator: FunctionComponent<separatorPropsType> = ({
           }
 
           &.separator-2 {
-            margin-right: 12vw; // OVO JE POGODNO ZA @media
+            @media (max-width: ${matchMediaMaxWidth}) {
+              margin-right: 12vw;
+            }
+            margin-right: 0.8vw;
 
             &.inwards {
               background-image: ${leftLinGrad};
