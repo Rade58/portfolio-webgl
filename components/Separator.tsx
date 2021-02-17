@@ -75,21 +75,6 @@ const Separator: FunctionComponent<separatorPropsType> = ({
 
           /* ---------------------------------------------- */
 
-          /* &.separator-1 {
-            background-image: linear-gradient(
-              90deg,
-              rgba(158, 90, 106, 1) 18%,
-              rgba(83, 139, 148, 0.16290266106442575) 80%
-            );
-          }
-          &.separator-2 {
-            background-image: linear-gradient(
-              90deg,
-              rgba(83, 139, 148, 0.16290266106442575) 18%,
-              rgba(158, 90, 106, 1) 80%
-            );
-          } */
-
           /* ---------------------------------------------- */
 
           &.separator-1 {
@@ -117,18 +102,15 @@ const Separator: FunctionComponent<separatorPropsType> = ({
             margin-right: 12vw;
 
             &.inwards {
-              /*  */
               background-image: ${leftLinGrad};
             }
             &.outwards {
-              /*  */
               background-image: ${rightLinGrad};
             }
             &.left {
               background-image: ${leftLinGrad};
             }
             &.right {
-              /*  */
               background-image: ${rightLinGrad};
             }
           }
