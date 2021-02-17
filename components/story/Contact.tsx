@@ -12,10 +12,9 @@ import BlockContent from "@sanity/block-content-to-react";
 import { storyService } from "../../state_machines/story_machine";
 
 import ArticleStory from "./ArticleStory";
-
 import SocialIcon from "../SocialIcon";
-
 import MailCopy from "../MailCopy";
+import Separator from "../Separator";
 
 import { fse as majorFsesEnum } from "../../sketch/middle_ground/major_states";
 
@@ -73,6 +72,7 @@ const Contact: FunctionComponent<PropsI> = ({ contactArticleRef, data }) => {
           );
         })}
       </section>
+      <Separator nonEmoji thickness={4} direction="outwards" />
       <MailCopy
         copyIconColor={data.iconColor.color}
         email={data.myEmail}
