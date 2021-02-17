@@ -46,6 +46,8 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
       css={css`
         border: crimson solid 0px;
 
+        margin-right: 18px;
+
         /* &.social-icon {
           &:nth-of-type(2) {
             &::before {

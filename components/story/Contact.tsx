@@ -52,7 +52,17 @@ const Contact: FunctionComponent<PropsI> = ({ contactArticleRef, data }) => {
           border: pink solid 0px;
           display: flex;
           flex-wrap: wrap;
-          justify-content: space-around;
+          justify-content: flex-start;
+
+          & div.social-icon {
+            &:first-of-type {
+              margin-left: auto;
+            }
+
+            &:last-of-type {
+              margin-right: auto;
+            }
+          }
         `}
       >
         {data.socialIcons.map(({ name, url, socialImage }) => {
@@ -72,7 +82,7 @@ const Contact: FunctionComponent<PropsI> = ({ contactArticleRef, data }) => {
           );
         })}
       </section>
-      <Separator nonEmoji thickness={4} direction="outwards" />
+      <Separator nonEmoji thickness={4} direction="inwards" />
       <MailCopy
         copyIconColor={data.iconColor.color}
         email={data.myEmail}
