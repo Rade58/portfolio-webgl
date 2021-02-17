@@ -6,6 +6,8 @@ import { FunctionComponent } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
+import { matchMediaMaxWidth } from "../css_vars";
+
 type directionType = "inwards" | "outwards" | "left" | "right";
 
 interface SeparatorCommonPropsI {
@@ -78,7 +80,7 @@ const Separator: FunctionComponent<separatorPropsType> = ({
           /* ---------------------------------------------- */
 
           &.separator-1 {
-            margin-left: 12vw;
+            margin-left: 12vw; // OVO JE POGODNO ZA @media
 
             &.outwards {
               /*  */
@@ -99,7 +101,7 @@ const Separator: FunctionComponent<separatorPropsType> = ({
           }
 
           &.separator-2 {
-            margin-right: 12vw;
+            margin-right: 12vw; // OVO JE POGODNO ZA @media
 
             &.inwards {
               background-image: ${leftLinGrad};
