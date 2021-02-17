@@ -32,7 +32,7 @@ const Separator: FunctionComponent<separatorPropsType> = ({
   const leftLinGrad = /* css */ `
     linear-gradient(
       90deg,
-      rgba(83, 139, 148, 0.16290266106442575) 18%,
+      rgba(26, 73, 80, 0.163) 18%,
       rgba(158, 90, 106, 1) 80%
     )
   `;
@@ -41,19 +41,27 @@ const Separator: FunctionComponent<separatorPropsType> = ({
     linear-gradient(
       90deg,
       rgba(158, 90, 106, 1) 18%,
-      rgba(83, 139, 148, 0.16290266106442575) 80%
+      rgba(26, 73, 80, 0.163) 80%
     )
   `;
+
+  // NE ZABORAVI DA STAVIS I DEBLJINU LINIJE
 
   return (
     <section
       className="sepa"
       css={css`
         display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & > .emoji {
+          font-size: 1.4rem;
+        }
 
         & div.separator {
-          margin-right: 12%;
-          margin-left: 12%;
+          /* margin-right: 12%; */
+          /* margin-left: 12%; */
           margin-top: 4vh;
           margin-bottom: 4vh;
           height: 2px;
@@ -79,47 +87,40 @@ const Separator: FunctionComponent<separatorPropsType> = ({
           /* ---------------------------------------------- */
 
           &.separator-1 {
+            margin-left: 12vw;
+
             &.outwards {
               /*  */
               background-image: ${leftLinGrad};
             }
-          }
-          &.separator-2 {
-            &.outwards {
-              /*  */
-              background-image: ${rightLinGrad};
-            }
-          }
-          &.separator-1 {
             &.inwards {
               /*  */
               background-image: ${rightLinGrad};
             }
-          }
-          &.separator-2 {
-            &.inwards {
-              /*  */
-              background-image: ${leftLinGrad};
-            }
-          }
-          &.separator-1 {
             &.left {
               /*  */
               background-image: ${leftLinGrad};
             }
-          }
-          &.separator-2 {
-            &.left {
-              background-image: ${leftLinGrad};
-            }
-          }
-          &.separator-1 {
             &.right {
               /*  */
               background-image: ${rightLinGrad};
             }
           }
+
           &.separator-2 {
+            margin-right: 12vw;
+
+            &.inwards {
+              /*  */
+              background-image: ${leftLinGrad};
+            }
+            &.outwards {
+              /*  */
+              background-image: ${rightLinGrad};
+            }
+            &.left {
+              background-image: ${leftLinGrad};
+            }
             &.right {
               /*  */
               background-image: ${rightLinGrad};
@@ -129,7 +130,7 @@ const Separator: FunctionComponent<separatorPropsType> = ({
       `}
     >
       <div className={`separator separator-1 ${direction}`} />
-      {emoji && !clean && <div>{emoji}</div>}
+      {emoji && !clean && <div className="emoji">{emoji}</div>}
       <div className={`separator separator-2 ${direction}`} />
     </section>
   );
