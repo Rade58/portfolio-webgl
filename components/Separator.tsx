@@ -9,7 +9,7 @@ import styled from "@emotion/styled";
 type directionType = "inwards" | "outwards" | "left" | "right";
 
 interface SeparatorCommonPropsI {
-  direction: directionType;
+  direction?: directionType;
 }
 
 interface SeparatorEmojiPropsI extends SeparatorCommonPropsI {
@@ -27,8 +27,10 @@ type separatorPropsType = SeparatorEmojiPropsI | SeparatorClenPropsI;
 const Separator: FunctionComponent<separatorPropsType> = ({
   emoji,
   clean,
-  direction,
+  direction: directionValue,
 }) => {
+  const direction: directionType = directionValue ? directionValue : "outwards";
+
   const leftLinGrad = /* css */ `
     linear-gradient(
       90deg,
