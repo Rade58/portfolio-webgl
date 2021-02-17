@@ -40,8 +40,8 @@ const Separator: FunctionComponent<separatorPropsType> = ({
   const rightLinGrad = /* css */ `
     linear-gradient(
       90deg,
-      rgba(158, 90, 106, 1) 80%,
-      rgba(83, 139, 148, 0.16290266106442575) 18%
+      rgba(158, 90, 106, 1) 18%,
+      rgba(83, 139, 148, 0.16290266106442575) 80%
     )
   `;
 
@@ -128,9 +128,9 @@ const Separator: FunctionComponent<separatorPropsType> = ({
         }
       `}
     >
-      <div className={`separator-1 ${direction}`} />
+      <div className={`separator separator-1 ${direction}`} />
       {emoji && !clean && <div>{emoji}</div>}
-      <div className={`separator-2 ${direction}`} />
+      <div className={`separator separator-2 ${direction}`} />
     </section>
   );
 };
