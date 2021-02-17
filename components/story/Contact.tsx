@@ -50,9 +50,10 @@ const Contact: FunctionComponent<PropsI> = ({ contactArticleRef, data }) => {
       <section
         className="social-icons-container"
         css={css`
-          border: pink solid 1px;
+          border: pink solid 0px;
           display: flex;
           flex-wrap: wrap;
+          justify-content: space-around;
         `}
       >
         {data.socialIcons.map(({ name, url, socialImage }) => {

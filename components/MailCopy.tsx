@@ -40,7 +40,7 @@ const MailCopy: FunctionComponent<MailCopyPropsI> = ({
           flex-wrap: wrap;
           align-items: center;
 
-          border: red solid 1px;
+          border: red solid 0px;
           width: 100%;
           margin-top: 18px;
 

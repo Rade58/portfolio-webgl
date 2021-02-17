@@ -44,7 +44,7 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
     <div
       className={`social-icon`}
       css={css`
-        border: crimson solid 1px;
+        border: crimson solid 0px;
 
         /* &.social-icon {
           &:nth-of-type(2) {
@@ -65,7 +65,7 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
           }
 
           & .image-container {
-            border: olive solid 1px;
+            border: olive solid 0px;
             width: 48px;
           }
         }
