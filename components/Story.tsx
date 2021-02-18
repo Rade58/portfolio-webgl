@@ -531,12 +531,16 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
         }
 
         &.above {
-          /* width: 36vw; */
           width: 0vw;
+          /* width: 36vw; */
           height: 100%;
           & .content {
             height: 100%;
             padding-bottom: 18px;
+
+            position: relative;
+            left: -8px;
+            width: 98%;
 
             & article {
               height: 95vh;
@@ -544,7 +548,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
               border: pink solid 0px;
               box-sizing: content-box;
 
-              padding: 28px;
+              padding-right: 8px;
               padding-top: 0px;
               padding-bottom: 0px;
               margin-bottom: 8px;
