@@ -527,7 +527,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             /* --------------------------------------- */
             position: relative;
             left: -8px;
-            width: 98.6%;
+            width: 100%;
 
             & article {
               padding-left: 18px;
@@ -543,26 +543,32 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
           /* width: 36vw; */
           height: 100%;
           & .content {
+            border: crimson solid 0px;
             height: 100%;
             padding-bottom: 18px;
+            padding-left: 16px;
 
             /* --------------------------------------- */
             position: relative;
-            left: -8px;
-            width: 98%;
+            left: -6px;
+            width: 100%;
 
             & article {
+              width: 95%;
               height: 95vh;
               overflow-y: auto;
               border: pink solid 0px;
               box-sizing: content-box;
+
+              position: relative;
+              left: -12px;
 
               padding-right: 8px;
               padding-top: 0px;
               padding-bottom: 0px;
               margin-bottom: 8px;
               margin-top: 0px;
-              padding-left: 12px;
+              padding-left: 18px;
             }
           }
         }
