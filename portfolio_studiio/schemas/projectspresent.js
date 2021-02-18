@@ -22,5 +22,17 @@ export default {
       type: "reference",
       to: { type: "githubinfo" },
     },
+    // KROZ OVO CU DAKLE DA BIRAM LISTU PROJEKATA
+    {
+      name: "projects",
+      title: "List Of Projects",
+      type: "array",
+      of: [
+        {
+          type: "reference",
+          to: { type: "mockproject" },
+        },
+      ],
+    },
   ],
 };

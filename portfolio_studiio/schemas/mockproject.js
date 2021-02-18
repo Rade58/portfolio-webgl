@@ -50,5 +50,12 @@ export default {
         layout: "tags",
       },
     },
+    // I IMAM SNAPSHOT PROJECT-A
+    {
+      name: "snapshot",
+      title: "Snapshot",
+      type: "image",
+    },
+    //
   ],
 };
