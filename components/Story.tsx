@@ -482,6 +482,10 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
   const prevIndex: number =
     currIndex - 1 < 0 ? MAJOR_ARR_LENGTH - 1 : currIndex - 1;
 
+  // ----
+
+  const aboveSizes = ["1400px", "1300px", "1000px"];
+
   // DODATI DUGMAD ZA UVECANJE/SMANJENJE
   // ONA STRELICA KOJA BI SE ROTIRALA (NAPRAVICU NOVI SVG DAKLE)
   // AKO JE ZA UVECANJE DOLE ONDA CE UPIRATI DOLE, A U SUPROTNOM CE SE ZAROTIRAVATI
@@ -525,7 +529,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
 
           & h1 {
             margin: ${storyHeaderMargin};
-            border: pink solid 1px;
+            border: pink solid 0px;
           }
 
           & .content {
@@ -569,7 +573,18 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             width: 100%;
 
             & article {
-              width: 95%;
+              width: 96.8%;
+
+              @media (max-width: ${aboveSizes[0]}) {
+                width: 96%;
+              }
+              @media (max-width: ${aboveSizes[1]}) {
+                width: 95.8%;
+              }
+              @media (max-width: ${aboveSizes[2]}) {
+                width: 95%;
+              }
+
               height: 95vh;
               overflow-y: auto;
               border: pink solid 0px;
