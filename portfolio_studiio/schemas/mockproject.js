@@ -29,5 +29,23 @@ export default {
         ],
       },
     },
+    {
+      name: "link",
+      title: "Link Of The Project",
+      type: "url",
+    },
+    // OVO JE VISE OVDE U CILJU VEZBE NE VERUJEM DA CU KORISTITI
+    // ALI OPTIONS SU DAKLE ONO STO POKAZUJE KAKO CE
+    // U STUDIO-U IZGLEDATI TAJ DIALOG, TAJ FORMUALAR
+    // INTUITIVNO JE
+    {
+      name: "tags",
+      title: "Tags",
+      type: "array",
+      of: [{ type: "string" }],
+      options: {
+        layout: "tags",
+      },
+    },
   ],
 };
