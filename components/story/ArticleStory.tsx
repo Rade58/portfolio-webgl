@@ -82,12 +82,14 @@ const ArticleStory: FunctionComponent<PropsI> = ({
 
             &.not-presented {
               visibility: hidden;
+              display: none;
               height: 0;
               margin: 0;
             }
 
             &.presented {
               visibility: visible;
+              display: block;
               height: 100%;
             }
 
@@ -107,12 +109,14 @@ const ArticleStory: FunctionComponent<PropsI> = ({
 
             &.not-presented {
               visibility: hidden;
+              display: none;
               height: 0;
               margin-bottom: 0;
             }
 
             &.presented {
               visibility: visible;
+              display: block;
               height: 100%;
               margin-bottom: 8px;
             }

@@ -570,7 +570,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
         /* -------- -------- -------- -------- -------- */
 
         & .content {
-          border: orange solid 1px;
+          border: orange solid 0px;
           /* text-overflow: ellipsis; */
 
           overflow: hidden;
@@ -589,7 +589,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
           box-sizing: border-box;
 
           /* margin: 8px; */
-          height: 98%;
+          height: 88.8%;
 
           & h1 {
             text-align: center;
@@ -602,7 +602,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
           }
 
           & article {
-            border: tomato solid 1px;
+            border: tomato solid 0px;
             overflow-y: auto;
             overflow-x: hidden;
             user-select: none;
