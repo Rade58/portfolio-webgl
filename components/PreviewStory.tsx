@@ -162,10 +162,12 @@ const PreviewStory: FunctionComponent<PropsStoryI> = ({ data }) => {
 
         border: pink solid 0px;
         position: relative;
-        padding-left: 8px;
+        padding-left: 18px;
+        padding-bottom: 0px;
 
         & .tekst {
           height: 28px;
+          padding-bottom: 0px;
 
           & .three-dots {
             color: crimson;

@@ -524,8 +524,16 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
           /* -------- */
 
           & .content {
+            /* --------------------------------------- */
+            position: relative;
+            left: -8px;
+            width: 98.6%;
+
             & article {
+              padding-left: 18px;
               padding-right: 14px;
+
+              /* position: ; */
             }
           }
         }
@@ -538,7 +546,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             height: 100%;
             padding-bottom: 18px;
 
-            /* OVO MORA DA SE DEFINISE IZA BELLOW */
+            /* --------------------------------------- */
             position: relative;
             left: -8px;
             width: 98%;
@@ -553,6 +561,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
               padding-top: 0px;
               padding-bottom: 0px;
               margin-bottom: 8px;
+              margin-top: 0px;
               padding-left: 12px;
             }
           }
@@ -561,18 +570,21 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
         /* -------- -------- -------- -------- -------- */
 
         & .content {
-          border: orange solid 0px;
+          border: orange solid 1px;
           /* text-overflow: ellipsis; */
 
           overflow: hidden;
 
           display: flex;
           flex-direction: column;
+          justify-content: flex-start;
+          /* align-items: flex-start; */
+          align-content: flex-start;
 
           box-sizing: border-box;
 
-          margin: 8px;
-          height: 89%;
+          /* margin: 8px; */
+          height: 98%;
 
           & h1 {
             text-align: center;
