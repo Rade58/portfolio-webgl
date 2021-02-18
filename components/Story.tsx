@@ -576,10 +576,15 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
           overflow: hidden;
 
           display: flex;
+          flex-wrap: nowrap;
           flex-direction: column;
           justify-content: flex-start;
-          /* align-items: flex-start; */
+
           align-content: flex-start;
+
+          & > * {
+            flex-grow: 1;
+          }
 
           box-sizing: border-box;
 
@@ -597,16 +602,20 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
           }
 
           & article {
-            border: tomato solid 0px;
+            border: tomato solid 1px;
             overflow-y: auto;
+            overflow-x: hidden;
             user-select: none;
+
+            height: fit-content;
 
             /* margin: 8px; */
             padding-left: 8px;
             padding-right: 2px;
             padding-bottom: 12px;
 
-            margin-top: 2px;
+            margin-top: 0px;
+            margin-bottom: 0px;
 
             /* --------- SCROOLLBAR STYLING --------- */
             /* ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]] */
