@@ -37,11 +37,14 @@ export default {
     // OVO JE VISE OVDE U CILJU VEZBE NE VERUJEM DA CU KORISTITI
     // ALI OPTIONS SU DAKLE ONO STO POKAZUJE KAKO CE
     // U STUDIO-U IZGLEDATI TAJ DIALOG, TAJ FORMUALAR
-    // INTUITIVNO JE
+    // INTUITIVNO JE (AKO NE ZNAS STA layout PREDSTAVLJA, TRAZI U DOCSIMA
+    // ALI U SUSTINI PREDSTAVLJA KAKO TREBA DA IZGLEDA TAJ PICKER
+    // U STUDIO-U)
     {
       name: "tags",
       title: "Tags",
       type: "array",
+      // PVO ZNACI DA KREIRAS NIZ STRINGOVA
       of: [{ type: "string" }],
       options: {
         layout: "tags",

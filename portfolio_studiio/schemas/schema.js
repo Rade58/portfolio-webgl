@@ -21,6 +21,10 @@ import socialsvg from "./socialsvg";
 import mymail from "./mymail";
 import githubinfo from "./githubinfo";
 import iconcolor from "./iconcolor";
+// MOCK KOLEKCIJE KOJE  SU U CILJU TESTIRANJA (PROJECTS I BLOG
+// SEKCIJE STORY-JA (PORTFOLIO-A))
+import mockproject from "./mockproject";
+//
 import story from "./story";
 //
 
@@ -47,8 +51,11 @@ export default createSchema({
     socialsvg,
     mymail,
     githubinfo,
-
     iconcolor,
+    //
+    mockproject,
+    //
+
     story,
     //
 
