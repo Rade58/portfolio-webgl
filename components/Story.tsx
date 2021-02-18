@@ -538,6 +538,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             height: 100%;
             padding-bottom: 18px;
 
+            /* OVO MORA DA SE DEFINISE IZA BELLOW */
             position: relative;
             left: -8px;
             width: 98%;
