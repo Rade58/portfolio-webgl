@@ -555,7 +555,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
           & h1 {
             display: flex;
             flex-wrap: nowrap;
-            border: pink solid 1px;
+            border: pink solid 0px;
             justify-content: center;
             width: max-content;
             margin: ${storyHeaderMargin} auto;
