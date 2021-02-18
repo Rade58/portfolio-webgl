@@ -523,6 +523,11 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
           transform: translateY(0vh);
           /* -------- */
 
+          & h1 {
+            margin: ${storyHeaderMargin};
+            border: pink solid 1px;
+          }
+
           & .content {
             /* --------------------------------------- */
             position: relative;
@@ -542,6 +547,16 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
           width: 0vw;
           /* width: 36vw; */
           height: 100%;
+
+          & h1 {
+            display: flex;
+            flex-wrap: nowrap;
+            border: pink solid 1px;
+            justify-content: center;
+            width: max-content;
+            margin: ${storyHeaderMargin} auto;
+          }
+
           & .content {
             border: crimson solid 0px;
             height: 100%;
@@ -603,8 +618,8 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             /*  */
             box-sizing: border-box;
             height: ${storyHeaderHeight};
-            margin: ${storyHeaderMargin};
-            border: pink solid 0px;
+            /* margin: ${storyHeaderMargin}; */
+            /* border: pink solid 0px; */
           }
 
           & article {
