@@ -615,6 +615,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             padding-bottom: 12px;
 
             margin-top: 0px;
+
             margin-bottom: 0px;
 
             /* --------- SCROOLLBAR STYLING --------- */
