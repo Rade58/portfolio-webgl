@@ -18,5 +18,11 @@ export default {
         type: M.iconcolor,
       },
     },
+    {
+      name: "articles",
+      title: "Articles",
+      type: T.array,
+      of: [{ type: T.reference, to: { type: M.mockarticle } }],
+    },
   ],
 };
