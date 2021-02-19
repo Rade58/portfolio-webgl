@@ -1,3 +1,6 @@
+/**
+ * @description Ovo mozda nije konacna lista
+ */
 enum FieldTypes {
   array = "array",
   block = "block",
@@ -16,6 +19,9 @@ enum FieldTypes {
   span = "span",
   text = "text",
   url = "url",
+  /**
+   * @description nisam siguran da li email postoji
+   */
   email = "email",
 }
 

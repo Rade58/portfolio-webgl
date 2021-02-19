@@ -1,7 +1,10 @@
+import T from "./type_names";
+import M from "./type_names/my_types";
+
 export default {
-  name: "socialsvg",
+  name: M.socialsvg,
   title: "Social Media Svg",
-  type: "document",
+  type: T.document,
   fields: [
     {
       name: "name",
