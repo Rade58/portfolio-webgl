@@ -4,6 +4,8 @@ import projectspresent from "../projectspresent";
 export const enum MyTypes {
   // story
   story = "story",
+  // ----------------------------------------------------------
+
   // TYPE-OVI REFERENCED BY STORY
   aboutmepresent = "aboutmepresent",
   contactpresent = "contactpresent",
@@ -12,11 +14,24 @@ export const enum MyTypes {
   // TYPE-OVI KOJE REFERENCIRA aboutmepresent
   devsvg = "devsvg",
 
+  // ----------------------------------------
+
   // TYPE-OVI KOJE REFERENCIRA contactpresent
   mymail = "mymail",
   socialsvg = "socialsvg",
 
+  // ----------------------------------------
+
   // TYPE-OVI KOJE REFERENCIRA projectspresent
+  githubinfo = "githubinfo",
+  // mocks KOJE CU KASNIJE UKLONITI
+  mockproject = "mockproject",
+
+  // ------------------------------------------
+
+  // TYPE-OVI KOJE REFERENCIRA blogpresent
+
+  // ------------------------------------------
 
   //  (OTHER document types USED AS REFERENCES)
   // TYPE-OVI KOJE REFRENCIRAJU   SVI   'present'   TYPE-OVI
@@ -31,6 +46,8 @@ export const enum MyTypes {
   // -------------------------------
   // TYPE-OVI KOJI SU DOSLI SA INSTALACIJOM STUDIO-A (A KOJE CU EVENTUALLY UKLONITI
   // MEDJUTIM DOBRI SU DA IH POGLEDAM U CILJU EDUKACIJE)
-
+  post = "post",
+  category = "category",
+  author = "author",
   //
 }
