@@ -24,6 +24,7 @@ import iconcolor from "./iconcolor";
 // MOCK KOLEKCIJE KOJE  SU U CILJU TESTIRANJA (PROJECTS I BLOG
 // SEKCIJE STORY-JA (PORTFOLIO-A))
 import mockproject from "./mockproject";
+import mockarticle from "./mockarticle";
 //
 import story from "./story";
 //
@@ -54,6 +55,7 @@ export default createSchema({
     iconcolor,
     //
     mockproject,
+    mockarticle,
     //
 
     story,
