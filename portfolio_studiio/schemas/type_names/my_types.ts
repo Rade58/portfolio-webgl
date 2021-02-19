@@ -29,6 +29,8 @@ enum MyTypesEnum {
   // ------------------------------------------
 
   // TYPE-OVI KOJE REFERENCIRA blogpresent
+  // mocks KOJE CU KASNIJE UKLONITI
+  mockarticle = "mockarticle",
 
   // ------------------------------------------
 
