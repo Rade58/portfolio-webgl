@@ -1,6 +1,3 @@
-import blogpresent from "../blogpresent";
-import projectspresent from "../projectspresent";
-
 export const enum MyTypes {
   // story
   story = "story",
