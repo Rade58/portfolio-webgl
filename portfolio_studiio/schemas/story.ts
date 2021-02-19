@@ -1,32 +1,35 @@
+import T from "./type_names";
+import M from "./type_names/my_types";
+
 export default {
-  name: "story",
+  name: M.story,
   title: "Story",
-  type: "document",
+  type: T.document,
   fields: [
     // OVO JE REFERENCA ALI SAMO ZA SINGLE DOCUMENT
     {
       name: "aboutme",
       title: "About Me",
-      type: "reference",
-      to: { type: "aboutmepresent" },
+      type: T.reference,
+      to: { type: M.aboutmepresent },
     },
     {
       name: "contact",
       title: "Contact",
-      type: "reference",
-      to: { type: "contactpresent" },
+      type: T.reference,
+      to: { type: M.contactpresent },
     },
     {
       name: "projects",
       title: "Projects",
-      type: "reference",
-      to: { type: "projectspresent" },
+      type: T.reference,
+      to: { type: M.projectspresent },
     },
     {
       name: "blog",
       title: "Blog",
-      type: "reference",
-      to: { type: "blogpresent" },
+      type: T.reference,
+      to: { type: M.blogpresent },
     },
   ],
 };
