@@ -12,8 +12,8 @@ export default {
       type: T.string,
     },
     {
-      name: "date",
-      title: "Date",
+      name: "dateTime",
+      title: "Date And Time",
       type: T.datetime,
     },
     {
