@@ -36,7 +36,7 @@ export default {
     {
       name: "otherDevSvgs",
       title: "Other Developer Icons",
-      type: "array",
+      type: T.array,
       of: [
         {
           type: T.reference,
