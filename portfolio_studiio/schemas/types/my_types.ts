@@ -1,4 +1,4 @@
-export const enum MyTypes {
+enum MyTypesEnum {
   // story
   story = "story",
   // ----------------------------------------------------------
@@ -8,6 +8,8 @@ export const enum MyTypes {
   contactpresent = "contactpresent",
   projectspresent = "projectspresent",
   blogpresent = "blogpresent",
+
+  // -----------------------------------------
   // TYPE-OVI KOJE REFERENCIRA aboutmepresent
   devsvg = "devsvg",
 
@@ -51,3 +53,5 @@ export const enum MyTypes {
   blockContent = "blockContent",
   //
 }
+
+export default MyTypesEnum;

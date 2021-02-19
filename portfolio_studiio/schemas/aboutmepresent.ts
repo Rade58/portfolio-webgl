@@ -1,17 +1,20 @@
+import T from "./types";
+import M from "./types/my_types";
+
 export default {
-  name: "aboutmepresent",
+  name: M.aboutmepresent,
   title: "About Me",
-  type: "document",
+  type: T.document,
 
   fields: [
-    { name: "major", title: "major", type: "string" },
-    { name: "title", title: "Title", type: "string" },
-    { name: "previewText", title: "Preview Text", type: "string" },
-    { name: "bogati", title: "Bogati Tekst", type: "bogatiTekst" },
+    { name: "major", title: "major", type: T.string },
+    { name: "title", title: "Title", type: T.string },
+    { name: "previewText", title: "Preview Text", type: T.string },
+    { name: "bogati", title: "Bogati Tekst", type: M.bogatiTekst },
     {
       name: "myImage",
       title: "My Image",
-      type: "image",
+      type: T.image,
       options: {
         // MISLIM DA CE OVO OMOGUCITI TRANSFORMACIJU SLIKE U KRUG
         hotspot: true,
@@ -21,11 +24,11 @@ export default {
     {
       name: "devSvgs",
       title: "Developer Svgs",
-      type: "array",
+      type: T.array,
       of: [
         {
-          type: "reference",
-          to: { type: "devsvg" },
+          type: T.reference,
+          to: { type: M.devsvg },
           // weak: true,
         },
       ],
@@ -36,9 +39,9 @@ export default {
       type: "array",
       of: [
         {
-          type: "reference",
+          type: T.reference,
           to: {
-            type: "devsvg",
+            type: M.devsvg,
           },
         },
       ],
@@ -46,9 +49,9 @@ export default {
     {
       name: "iconColor",
       title: "Color For Common Icons",
-      type: "reference",
+      type: T.reference,
       to: {
-        type: "iconcolor",
+        type: M.iconcolor,
       },
     },
   ],

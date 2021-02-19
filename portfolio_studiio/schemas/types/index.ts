@@ -1,5 +1,3 @@
-import { MyTypes } from "./my_types";
-
 enum FieldTypes {
   array = "array",
   block = "block",
@@ -19,7 +17,5 @@ enum FieldTypes {
   text = "text",
   url = "url",
 }
-
-export type MyTypesEnum = MyTypes;
 
 export default FieldTypes;
