@@ -364,3 +364,5 @@ VIDI OVJ BLOG POST
 <https://www.npmjs.com/package/@sanity/types>
 
 CISTO DA ZNAS
+
+# DODAJ I DEV IMAGE ZA GLSL
