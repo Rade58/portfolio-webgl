@@ -5,14 +5,18 @@
 //  OZNACENO SA marks.decorators
 //  PROCITAJ OVO DA BOLJE RAZUMES  https://www.sanity.io/docs/configuration
 
+import T from "./type_names";
+import M from "./type_names/my_types";
+import D from "./type_names/decorators";
+
 export default {
-  name: "bogatiTekst",
+  name: M.bogatiTekst,
   title: "Bogati Tekst",
-  type: "array",
+  type: T.array,
   of: [
     {
       title: "Block",
-      type: "block",
+      type: T.block,
       // Styles let you set what your user can mark up blocks with. These
       // correspond with HTML tags, but you can set any title or value
       // you want and decide how you want to deal with it where you want to
@@ -33,21 +37,21 @@ export default {
         decorators: [
           { title: "Strong", value: "strong" },
           { title: "Emphasis", value: "em" },
-          // DODAJEM NOVE DOKORATORE
-          { title: "EmoText", value: "emotext" },
-          //
+          // ------- DODAJEM NOVE DEKORATORE (DA NAUCCIM KAKO SE OVO RADI)
+          { title: "EmoText", value: D.emotext },
+          //-------
         ],
         // Annotations can be any object structure – e.g. a link or a footnote.
         annotations: [
           {
             title: "URL",
             name: "link",
-            type: "object",
+            type: T.object,
             fields: [
               {
                 title: "URL",
                 name: "href",
-                type: "url",
+                type: T.url,
               },
             ],
           },
@@ -58,7 +62,7 @@ export default {
     // primitive types such as 'string' and 'number' in the same array
     // as a block type.
     {
-      type: "image",
+      type: T.image,
       options: { hotspot: true },
     },
   ],
