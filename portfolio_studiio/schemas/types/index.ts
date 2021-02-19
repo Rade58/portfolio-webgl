@@ -1,5 +1,9 @@
+import { MyTypes } from "./my_types";
+
 enum FieldTypes {
-  a = "a",
+  array = "array",
 }
+
+export type MyTypesEnum = MyTypes;
 
 export default FieldTypes;
