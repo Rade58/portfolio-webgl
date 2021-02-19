@@ -1,22 +1,25 @@
+import T from "./type_names";
+import M from "./type_names/my_types";
+
 export default {
-  name: "contactpresent",
+  name: M.contactpresent,
   title: "Contact",
-  type: "document",
+  type: T.document,
   fields: [
-    { name: "major", title: "major", type: "string" },
-    { name: "title", title: "Title", type: "string" },
-    { name: "previewText", title: "Preview Text", type: "string" },
-    { name: "bogati", title: "Bogati Tekst", type: "bogatiTekst" },
+    { name: "major", title: "major", type: T.string },
+    { name: "title", title: "Title", type: T.string },
+    { name: "previewText", title: "Preview Text", type: T.string },
+    { name: "bogati", title: "Bogati Tekst", type: M.bogatiTekst },
     {
       name: "socialIcons",
       title: "Social Icons",
-      type: "array",
+      type: T.array,
 
       of: [
         {
-          type: "reference",
+          type: T.reference,
           to: {
-            type: "socialsvg",
+            type: M.socialsvg,
           },
         },
       ],
@@ -24,17 +27,17 @@ export default {
     {
       name: "iconColor",
       title: "Color For Common Icons",
-      type: "reference",
+      type: T.reference,
       to: {
-        type: "iconcolor",
+        type: M.iconcolor,
       },
     },
     {
       name: "email",
       title: "Email",
-      type: "reference",
+      type: T.reference,
       to: {
-        type: "mymail",
+        type: M.mymail,
       },
     },
   ],
