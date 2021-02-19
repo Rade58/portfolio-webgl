@@ -1,27 +1,30 @@
+import T from "./type_names";
+import M from "./type_names/my_types";
+
 export default {
-  name: "mockproject",
+  name: M.mockproject,
   title: "Mock Project",
-  type: "document",
+  type: T.document,
   fields: [
     {
       name: "title",
       title: "Title",
-      type: "string",
+      type: T.string,
     },
     {
       name: "date",
       title: "Date",
-      type: "datetime",
+      type: T.datetime,
     },
     {
       name: "description",
       title: "Description",
-      type: "text",
+      type: T.text,
     },
     {
       name: "projectType",
       title: "Project Type",
-      type: "string",
+      type: T.string,
       options: {
         list: [
           { title: "Personal", value: "personal" },
@@ -32,7 +35,7 @@ export default {
     {
       name: "link",
       title: "Link Of The Project",
-      type: "url",
+      type: T.url,
     },
     // OVO JE VISE OVDE U CILJU VEZBE NE VERUJEM DA CU KORISTITI
     // ALI OPTIONS SU DAKLE ONO STO POKAZUJE KAKO CE
@@ -43,9 +46,9 @@ export default {
     {
       name: "tags",
       title: "Tags",
-      type: "array",
+      type: T.array,
       // PVO ZNACI DA KREIRAS NIZ STRINGOVA
-      of: [{ type: "string" }],
+      of: [{ type: T.string }],
       options: {
         layout: "tags",
       },
@@ -54,7 +57,7 @@ export default {
     {
       name: "snapshot",
       title: "Snapshot",
-      type: "image",
+      type: T.image,
     },
     //
   ],

@@ -1,6 +1,9 @@
+import T from "./type_names";
+import M from "./type_names/my_types";
+
 export default {
-  name: "iconcolor",
+  name: M.iconcolor,
   title: "Icon Color",
-  type: "document",
-  fields: [{ name: "color", title: "Color", type: "string" }],
+  type: T.document,
+  fields: [{ name: "color", title: "Color", type: T.string }],
 };
