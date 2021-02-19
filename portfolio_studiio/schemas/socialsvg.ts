@@ -9,17 +9,17 @@ export default {
     {
       name: "name",
       title: "Name",
-      type: "string",
+      type: T.string,
     },
     {
       name: "url",
       title: "Url",
-      type: "url",
+      type: T.url,
     },
     {
       name: "socialImage",
       title: "Social Image",
-      type: "image",
+      type: T.image,
     },
   ],
 };
