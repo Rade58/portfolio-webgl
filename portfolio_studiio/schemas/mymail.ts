@@ -1,9 +1,12 @@
+import T from "./type_names";
+import M from "./type_names/my_types";
+
 export default {
-  name: "mymail",
+  name: M.mymail,
   title: "Email",
-  type: "document",
+  type: T.document,
   fields: [
     //
-    { name: "currentMail", title: "Current Email", type: "email" },
+    { name: "currentMail", title: "Current Email", type: T.email },
   ],
 };

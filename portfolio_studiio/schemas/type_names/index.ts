@@ -16,6 +16,7 @@ enum FieldTypes {
   span = "span",
   text = "text",
   url = "url",
+  email = "email",
 }
 
 export default FieldTypes;
