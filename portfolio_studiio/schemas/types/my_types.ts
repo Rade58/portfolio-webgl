@@ -43,11 +43,14 @@ export const enum MyTypes {
   // U MOJIM `present` TYPE-OVIMA (U SUSTINUI U PITANJU JE SAMO BOGATI TEKST)
   bogatiTekst = "bogatiTekst",
 
-  // -------------------------------
+  // -----------------------------------------------------------------------------------
   // TYPE-OVI KOJI SU DOSLI SA INSTALACIJOM STUDIO-A (A KOJE CU EVENTUALLY UKLONITI
   // MEDJUTIM DOBRI SU DA IH POGLEDAM U CILJU EDUKACIJE)
   post = "post",
   category = "category",
   author = "author",
+
+  // /\ BLOCK CONTENT /\
+  blockContent = "blockContent",
   //
 }
