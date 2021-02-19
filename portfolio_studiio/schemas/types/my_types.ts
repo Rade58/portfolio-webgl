@@ -1,3 +1,5 @@
 export const enum MyTypes {
-  a = "a",
+  // story
+  story = "story",
+  aboutmepresent = "aboutmepresent",
 }

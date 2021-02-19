@@ -358,3 +358,9 @@ MOZDA SAMO TREBAS IZABRATI LEPSU BOJU SA STRELICE
 VIDI OVJ BLOG POST
 
 <https://css-tricks.com/how-to-create-a-commenting-engine-with-next-js-and-sanity/>
+
+# INSTALIRO SAM SANITY TYPES, ONI MOGU BITI OD POMOCI KADA QUERY-UJES DATA ODNOSNO KADA TYPE-UJES NESTO U STA CES STAVITI ONO STO SI QUERY-EOVAO
+
+<https://www.npmjs.com/package/@sanity/types>
+
+CISTO DA ZNAS
