@@ -391,6 +391,8 @@ NA PRIMER ZA BLOG MOZES RECI I U ONOM BODY TEKST
 
 `These are some of my posts, tutorials and protips`
 
+`Check some of my posts, tutorials and protips about all kinds of subjects that excite me`
+
 **TREBA DA IMAS RECIMO PORED OBICNIH TAGOV I TRI TAG, KOJI GOVORE DA LI JE REC O ARTICLE-U, TUTORIAL-U ILI PROTIP-U**
 
 # ONAJ SVG POCETNI TEKST KOJI, TREBALO BI DA BUDE INTERAKTIVAN ON HOVER
