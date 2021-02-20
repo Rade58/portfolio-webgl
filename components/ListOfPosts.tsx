@@ -19,7 +19,7 @@ interface ListOfPostsPropsI {
 }
 
 const ListOfPosts: FunctionComponent<ListOfPostsPropsI> = ({ posts }) => {
-  return null;
+  return <div>{JSON.stringify({ posts }, null, 2)}</div>;
 };
 
 export default ListOfPosts;

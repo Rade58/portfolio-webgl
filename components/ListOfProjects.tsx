@@ -9,8 +9,15 @@ import styled from "@emotion/styled";
 import Separator from "./Separator";
 import ProjectCard from "./ProjectCard";
 
-const ListOfProjects: FunctionComponent = () => {
-  return null;
+interface ListOfProjectsPropsI {
+  projects: { title: string; dateTime: string; description: string };
+}
+[];
+
+const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
+  projects,
+}) => {
+  return <div>{JSON.stringify({ projects }, null, 2)}</div>;
 };
 
 export default ListOfProjects;
