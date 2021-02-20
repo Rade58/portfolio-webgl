@@ -220,6 +220,12 @@ export const getStaticProps: GetStaticProps = async () => {
     // blog
     blog -> {
       title, previewText, bogati, major,
+      articles[] -> {
+        title,
+        date,
+        link,
+        tags
+      }
     }
   }`);
 
