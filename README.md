@@ -394,6 +394,9 @@ NA PRIMER ZA BLOG MOZES RECI I U ONOM BODY TEKST
 
 `These are some of the projects and programs I built over the years.`
 
+
+`When I'm not coding I'm listening to music or podcasts`
+
 **TREBA DA IMAS RECIMO PORED OBICNIH TAGOV I TRI TAG, KOJI GOVORE DA LI JE REC O ARTICLE-U, TUTORIAL-U ILI PROTIP-U**
 
 # ONAJ SVG POCETNI TEKST KOJI, TREBALO BI DA BUDE INTERAKTIVAN ON HOVER
