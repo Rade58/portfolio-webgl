@@ -15,7 +15,9 @@ interface SinglePostI {
 const ArticleCard: FunctionComponent<SinglePostI> = ({ data }) => {
   const { date, link, tags, title } = data;
 
-  return <pre>{JSON.stringify(data, null, 2)}</pre>;
+  return <div className="post-card">{title}</div>;
+
+  // return <pre>{JSON.stringify(data, null, 2)}</pre>;
 };
 
 export default ArticleCard;
