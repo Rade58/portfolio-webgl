@@ -9,13 +9,15 @@ import styled from "@emotion/styled";
 import Separator from "./Separator";
 import PostCard from "./PostCard";
 
+export interface SinglePostI {
+  title: string;
+  date: string;
+  link: string;
+  tags: string[];
+}
+
 interface ListOfPostsPropsI {
-  posts: {
-    title: string;
-    date: string;
-    link: string;
-    tags: string[];
-  }[];
+  posts: SinglePostI[];
 }
 
 const ListOfPosts: FunctionComponent<ListOfPostsPropsI> = ({ posts }) => {
