@@ -23,7 +23,7 @@ const ProjectCard: FunctionComponent<SingleProjectI> = ({ data }) => {
     tags,
   } = data;
 
-  return <div>{JSON.stringify(data, null, 2)}</div>;
+  return <pre>{JSON.stringify(data, null, 2)}</pre>;
 };
 
 export default ProjectCard;
