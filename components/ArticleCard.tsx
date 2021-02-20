@@ -6,8 +6,8 @@ import { FunctionComponent } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-const ComponentName: FunctionComponent = () => {
+const ArticleCard: FunctionComponent = () => {
   return null;
 };
 
-export default ComponentName;
+export default ArticleCard;
