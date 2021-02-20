@@ -26,7 +26,15 @@ interface ListOfProjectsPropsI {
 const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
   projects,
 }) => {
-  return <div>{JSON.stringify({ projects }, null, 2)}</div>;
+  return (
+    <div className="list-of-projects">
+      {projects.map((data) => (
+        <ProjectCard key={data.title} data={data} />
+      ))}
+    </div>
+  );
+
+  // return <div>{JSON.stringify({ projects }, null, 2)}</div>;
 };
 
 export default ListOfProjects;

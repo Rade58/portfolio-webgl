@@ -6,7 +6,11 @@ import { FunctionComponent } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-import { SinglePostI } from "./ListOfPosts";
+import { SinglePostI as SPI } from "./ListOfPosts";
+
+interface SinglePostI {
+  data: SPI;
+}
 
 const ArticleCard: FunctionComponent<SinglePostI> = () => {
   return null;

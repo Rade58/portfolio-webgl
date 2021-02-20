@@ -21,7 +21,15 @@ interface ListOfPostsPropsI {
 }
 
 const ListOfPosts: FunctionComponent<ListOfPostsPropsI> = ({ posts }) => {
-  return <div>{JSON.stringify({ posts }, null, 2)}</div>;
+  return (
+    <div className="list-of-posts">
+      {posts.map((data) => (
+        <PostCard key={data.title} data={data} />
+      ))}
+    </div>
+  );
+
+  // return <div>{JSON.stringify({ posts }, null, 2)}</div>;
 };
 
 export default ListOfPosts;

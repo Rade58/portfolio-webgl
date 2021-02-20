@@ -6,7 +6,11 @@ import { FunctionComponent } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-import { SingleProjectI } from "./ListOfProjects";
+import { SingleProjectI as SPI } from "./ListOfProjects";
+
+interface SingleProjectI {
+  data: SPI;
+}
 
 const ProjectCard: FunctionComponent<SingleProjectI> = () => {
   return null;
