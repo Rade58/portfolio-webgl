@@ -391,7 +391,7 @@ NA PRIMER ZA BLOG MOZES RECI I U ONOM BODY TEKST
 
 `These are some of my posts, tutorials and protips`
 
-`Check some of my posts, tutorials and protips about all kinds of subjects that excite me`
+`Check some of my posts, tutorials and protips about all kinds of exciting subjects. They will definitely be worth your time.`
 
 **TREBA DA IMAS RECIMO PORED OBICNIH TAGOV I TRI TAG, KOJI GOVORE DA LI JE REC O ARTICLE-U, TUTORIAL-U ILI PROTIP-U**
 
