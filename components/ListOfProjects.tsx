@@ -6,6 +6,9 @@ import { FunctionComponent } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
+import Separator from "./Separator";
+import ProjectCard from "./ProjectCard";
+
 const ListOfProjects: FunctionComponent = () => {
   return null;
 };

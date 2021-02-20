@@ -13,6 +13,8 @@ import BlockContent from "@sanity/block-content-to-react";
 import { storyService } from "../../state_machines/story_machine";
 
 import ArticleStory from "./ArticleStory";
+import ListOfPosts from "../ListOfPosts";
+import Separator from "../Separator";
 
 import { fse as majorFsesEnum } from "../../sketch/middle_ground/major_states";
 
@@ -44,6 +46,9 @@ const Blog: FunctionComponent<PropsI> = ({ blogArticleRef, data }) => {
         projectId="4mpb3bwc"
         serializers={serializers}
       />
+
+      {/* ---------------------- */}
+      <ListOfPosts />
     </ArticleStory>
   );
 };

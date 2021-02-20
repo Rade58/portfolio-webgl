@@ -13,6 +13,8 @@ import BlockContent from "@sanity/block-content-to-react";
 import { storyService } from "../../state_machines/story_machine";
 
 import ArticleStory from "./ArticleStory";
+import ListOfProjects from "../ListOfProjects";
+import Separator from "../Separator";
 
 import { fse as majorFsesEnum } from "../../sketch/middle_ground/major_states";
 
