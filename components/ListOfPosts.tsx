@@ -22,7 +22,14 @@ interface ListOfPostsPropsI {
 
 const ListOfPosts: FunctionComponent<ListOfPostsPropsI> = ({ posts }) => {
   return (
-    <div className="list-of-posts">
+    <div
+      className="list-of-posts"
+      css={css`
+        & > * {
+          border: crimson solid 1px;
+        }
+      `}
+    >
       {posts.map((data) => (
         <PostCard key={data.title} data={data} />
       ))}

@@ -27,7 +27,14 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
   projects,
 }) => {
   return (
-    <div className="list-of-projects">
+    <div
+      className="list-of-projects"
+      css={css`
+        & > * {
+          border: crimson solid 1px;
+        }
+      `}
+    >
       {projects.map((data) => (
         <ProjectCard key={data.title} data={data} />
       ))}
