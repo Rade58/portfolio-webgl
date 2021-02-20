@@ -12,7 +12,17 @@ interface SingleProjectI {
   data: SPI;
 }
 
-const ProjectCard: FunctionComponent<SingleProjectI> = () => {
+const ProjectCard: FunctionComponent<SingleProjectI> = ({ data }) => {
+  const {
+    dateTime,
+    description,
+    title,
+    link,
+    projectType,
+    snapshot,
+    tags,
+  } = data;
+
   return null;
 };
 

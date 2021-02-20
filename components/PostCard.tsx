@@ -12,7 +12,9 @@ interface SinglePostI {
   data: SPI;
 }
 
-const ArticleCard: FunctionComponent<SinglePostI> = () => {
+const ArticleCard: FunctionComponent<SinglePostI> = ({ data }) => {
+  const { date, link, tags, title } = data;
+
   return null;
 };
 
