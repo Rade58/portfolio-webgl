@@ -389,7 +389,7 @@ ALI I NAZIV TUTORIAL
 
 NA PRIMER ZA BLOG MOZES RECI I U ONOM BODY TEKST
 
-`These are some of my articles, tutorials and protips`
+`These are some of my posts, tutorials and protips`
 
 **TREBA DA IMAS RECIMO PORED OBICNIH TAGOV I TRI TAG, KOJI GOVORE DA LI JE REC O ARTICLE-U, TUTORIAL-U ILI PROTIP-U**
 
