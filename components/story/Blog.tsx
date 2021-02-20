@@ -47,8 +47,8 @@ const Blog: FunctionComponent<PropsI> = ({ blogArticleRef, data }) => {
         serializers={serializers}
       />
 
-      {/* ---------------------- */}
-      <ListOfPosts />
+      {/* ----------------------------- */}
+      <ListOfPosts posts={data.articles} />
     </ArticleStory>
   );
 };

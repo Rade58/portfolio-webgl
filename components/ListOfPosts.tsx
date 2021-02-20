@@ -9,8 +9,17 @@ import styled from "@emotion/styled";
 import Separator from "./Separator";
 import PostCard from "./PostCard";
 
-const ListOfArticles: FunctionComponent = () => {
+interface ListOfPostsPropsI {
+  posts: {
+    title: string;
+    date: string;
+    link: string;
+    tags: string[];
+  }[];
+}
+
+const ListOfPosts: FunctionComponent<ListOfPostsPropsI> = ({ posts }) => {
   return null;
 };
 
-export default ListOfArticles;
+export default ListOfPosts;
