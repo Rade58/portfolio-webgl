@@ -49,6 +49,8 @@ const Projects: FunctionComponent<PropsI> = ({ projectsArticleRef, data }) => {
       {/* SAMO U CILJU PROBE, UKLONICU KASNIJE */}
 
       {/* ------------------------------ */}
+
+      <ListOfProjects projects={data.projects} />
     </ArticleStory>
   );
 };
