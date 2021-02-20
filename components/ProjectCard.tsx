@@ -6,7 +6,9 @@ import { FunctionComponent } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-const ProjectCard: FunctionComponent = () => {
+import { SingleProjectI } from "./ListOfProjects";
+
+const ProjectCard: FunctionComponent<SingleProjectI> = () => {
   return null;
 };
 

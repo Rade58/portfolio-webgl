@@ -6,7 +6,9 @@ import { FunctionComponent } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-const ArticleCard: FunctionComponent = () => {
+import { SinglePostI } from "./ListOfPosts";
+
+const ArticleCard: FunctionComponent<SinglePostI> = () => {
   return null;
 };
 
