@@ -175,6 +175,19 @@ export const getStaticProps: GetStaticProps = async () => {
             url
           }
         }
+      },
+      projects[] -> {
+        title,
+        dateTime,
+        description,
+        projectType,
+        link,
+        tags,
+        snapshot {
+          asset -> {
+            url
+          }
+        }
       }
     },
     // contact
