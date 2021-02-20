@@ -391,6 +391,9 @@ NA PRIMER ZA BLOG MOZES RECI I U ONOM BODY TEKST
 
 `Check some of my posts, tutorials and protips about all kinds of exciting subjects. I tend to explain everything in detail, and I tend to write like I write for myself,  as much as I can, because I have a habit of revisting my posts if I forget something.  So majority of my posts end up a bit extensive, but definitely they will  be worth your time, because they definitely worth my time. Majority of my articles is project based, becuse I like documenting what I do, especially if I'm building project that excites me and which is using technologies that I want to explore to the maximum.`
 
+
+`These are some of the projects and programs I built over the years.`
+
 **TREBA DA IMAS RECIMO PORED OBICNIH TAGOV I TRI TAG, KOJI GOVORE DA LI JE REC O ARTICLE-U, TUTORIAL-U ILI PROTIP-U**
 
 # ONAJ SVG POCETNI TEKST KOJI, TREBALO BI DA BUDE INTERAKTIVAN ON HOVER
