@@ -10,7 +10,15 @@ import Separator from "./Separator";
 import ProjectCard from "./ProjectCard";
 
 interface ListOfProjectsPropsI {
-  projects: { title: string; dateTime: string; description: string };
+  projects: {
+    title: string;
+    dateTime: string;
+    description: string;
+    projectType: string;
+    link: string;
+    tags: string[];
+    snapshot: { asset: { url: string } };
+  };
 }
 [];
 
