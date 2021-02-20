@@ -30,6 +30,8 @@ const Projects: FunctionComponent<PropsI> = ({ projectsArticleRef, data }) => {
 
   const { major } = state.context;
 
+  console.log({ projectsData: data });
+
   return (
     <ArticleStory
       articleReference={projectsArticleRef}
