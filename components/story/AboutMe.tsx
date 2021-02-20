@@ -47,6 +47,7 @@ const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
       {/* ---------------- SEPARATOR ------------------ */}
       <Separator emoji={`⌨️`} direction="outwards" />
       {/* --------------------------------------------- */}
+      Favorite things with whom I{"'"}m currently tinkering are:
       {/* MAPPING THROUGH ALL DEVICONS */}
       {data.devSvgs.map(
         ({

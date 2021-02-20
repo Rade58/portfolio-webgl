@@ -394,7 +394,7 @@ NA PRIMER ZA BLOG MOZES RECI I U ONOM BODY TEKST
 ***
 ***
 
-`These are some of the notable projects and programs I built over the years` (DODAJ I GITHUB LINK)
+`These are some of my favorite projects and programs I built over the years` (DODAJ I GITHUB LINK)
 
 I tend to host majority of my code over here:
 
