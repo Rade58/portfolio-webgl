@@ -82,9 +82,26 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
                 padding-left: var(--left-padding);
               }
             }
+
+            &:hover {
+              & > a {
+                & .track-right {
+                  background-image: ${verticalGradient6};
+                }
+              }
+            }
           }
+
           &:nth-of-type(2n + 1) {
             background-image: ${backgroundImage1Reverse};
+
+            &:hover {
+              & > a {
+                & .track-left {
+                  background-image: ${verticalGradient7};
+                }
+              }
+            }
           }
 
           & > a {
@@ -96,11 +113,11 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
             & > aside.track {
               background-color: rgba(96, 72, 128, 0.637);
 
-              width: 26px;
+              width: var(--left-padding);
               /* height: 100%; */
 
               &.track-left {
-                background-image: ${verticalGradient7};
+                background-image: ${verticalGradient4};
               }
 
               &.track-right {
