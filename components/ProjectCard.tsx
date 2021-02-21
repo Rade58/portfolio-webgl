@@ -53,7 +53,7 @@ const ProjectCard: FunctionComponent<SingleProjectI> = ({
           <time dateTime={dateTime}>
             {moment(dateTime).format("MMMM Do YYYY, h:mm:ss a")}
           </time>
-          {JSON.stringify({ emoji, tags })}
+          {JSON.stringify({ tags })}
         </div>
         {direction === "right" && <aside className="track track-right" />}
       </a>
