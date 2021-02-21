@@ -6,6 +6,8 @@ import { FunctionComponent } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
+import moment from "moment";
+
 import { SingleProjectI as SPI } from "./ListOfProjects";
 
 interface SingleProjectI {
@@ -33,7 +35,9 @@ const ProjectCard: FunctionComponent<SingleProjectI> = ({ data }) => {
         <div className="cont">
           <h1>{title}</h1>
           <p className="descr">{description}</p>
-          <time dateTime={dateTime}>{new Date(dateTime).toLocaleString()}</time>
+          <time dateTime={dateTime}>
+            {moment(dateTime).format("MMMM Do YYYY, h:mm:ss a")}
+          </time>
           <br />
           project type:
           <h3>{projectType}</h3>

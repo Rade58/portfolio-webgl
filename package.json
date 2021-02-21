@@ -56,6 +56,7 @@
     "glsl-noise": "0.0.0",
     "glslify": "^7.1.1",
     "gsap": "^3.6.0",
+    "moment": "^2.29.1",
     "next": "^10.0.6",
     "next-compose-plugins": "^2.2.1",
     "next-env": "^1.1.1",
