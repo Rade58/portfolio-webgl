@@ -31,7 +31,8 @@ const ProjectCard: FunctionComponent<SingleProjectI> = ({ data }) => {
       <a href={link} target="_blank" rel="noreferrer">
         <h1>{title}</h1>
         <p className="descr">{description}</p>
-        <time dateTime={dateTime}>{dateTime}</time>
+        <time dateTime={dateTime}>{new Date(dateTime).toLocaleString()}</time>
+        <br />
         project type:
         <h3>{projectType}</h3>
       </a>

@@ -61,6 +61,11 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
           &:nth-of-type(2n + 1) {
             background-image: ${backgroundImage1Reverse};
           }
+
+          & > a {
+            color: inherit;
+            text-decoration-line: none;
+          }
         }
       `}
     >
