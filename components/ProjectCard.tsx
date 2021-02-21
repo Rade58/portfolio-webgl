@@ -43,8 +43,10 @@ const ProjectCard: FunctionComponent<SingleProjectI> = ({
             {moment(dateTime).format("MMMM Do YYYY, h:mm:ss a")}
           </time>
           <div className="project-type">
-            project type:
-            <h3>{projectType}</h3>
+            <h3>
+              <span className="project-type">project type: </span>
+              {projectType}
+            </h3>
           </div>
         </div>
         {direction === "right" && <aside className="track track-right" />}

@@ -131,6 +131,21 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
 
               display: flex;
               flex-direction: column;
+
+              & h1 {
+                border: pink solid 0px;
+                margin: 0;
+                padding: 0;
+                height: fit-content;
+              }
+
+              & p {
+                margin-top: 4px;
+              }
+
+              & h3 {
+                margin: 0;
+              }
             }
           }
 
