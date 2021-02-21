@@ -23,7 +23,17 @@ const ProjectCard: FunctionComponent<SingleProjectI> = ({ data }) => {
     tags,
   } = data;
 
-  return <div className="project-card">{title}</div>;
+  return (
+    <div
+      className="project-card"
+      css={css`
+        background-image: url(${snapshot.asset.url});
+        height: 100px;
+      `}
+    >
+      {title}
+    </div>
+  );
 
   // return <pre>{JSON.stringify(data, null, 2)}</pre>;
 };

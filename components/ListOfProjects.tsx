@@ -49,7 +49,7 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
 
           border-radius: 8px;
 
-          &:nth-of-type(2n) {
+          /* &:nth-of-type(2n) {
             background-image: linear-gradient(
               to right,
               rgb(63, 44, 56),
@@ -62,7 +62,7 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
               rgb(38, 45, 59),
               rgb(63, 44, 56)
             );
-          }
+          } */
         }
       `}
     >
