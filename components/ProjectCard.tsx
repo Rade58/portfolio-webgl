@@ -29,6 +29,7 @@ const ProjectCard: FunctionComponent<SingleProjectI> = ({ data }) => {
   return (
     <div className="project-card">
       <a href={link} target="_blank" rel="noreferrer">
+        <aside className="track" />
         <div className="cont">
           <h1>{title}</h1>
           <p className="descr">{description}</p>

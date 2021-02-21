@@ -71,9 +71,20 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
             color: inherit;
             text-decoration-line: none;
 
+            display: flex;
+
+            & > aside.track {
+              background-color: crimson;
+              width: 26px;
+              /* height: 100%; */
+            }
+
             & > .cont {
               border: pink solid 0px;
               padding: 12px;
+
+              display: flex;
+              flex-direction: column;
             }
           }
 
