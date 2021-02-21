@@ -45,7 +45,11 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
       className="list-of-projects"
       css={css`
         --left-padding: 26px;
-        --text-color1: #d88ece;
+        --text-color1: #e4809e;
+        --text-color2: #848d94;
+        --text-color4: #647fbd;
+        --text-color5: #c78eaf;
+        --text-color3: rgb(223, 236, 234);
 
         border: olive solid 1px;
         width: 100%;
@@ -144,19 +148,25 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
 
               & time {
                 font-size: 0.9rem;
+                color: var(--text-color2);
               }
 
               & p {
                 margin-top: 4px;
                 margin-bottom: 4px;
+                color: var(--text-color3);
               }
 
               & h3 {
-                font-weight: 500;
+                font-weight: 400;
                 margin: 0;
+                color: var(--text-color4);
+                font-size: 1.1rem;
+
                 & .project-type {
                   font-weight: 300;
                   font-size: 0.9rem;
+                  color: var(--text-color2);
                 }
               }
             }
