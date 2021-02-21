@@ -180,6 +180,7 @@ export const getStaticProps: GetStaticProps = async () => {
         title,
         dateTime,
         description,
+        emoji,
         projectType,
         link,
         tags,

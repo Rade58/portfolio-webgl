@@ -27,6 +27,7 @@ export interface SingleProjectI {
   title: string;
   dateTime: string;
   description: string;
+  emoji: string;
   projectType: string;
   link: string;
   tags: string[];
