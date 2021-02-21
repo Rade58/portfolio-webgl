@@ -144,7 +144,12 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
               }
 
               & h3 {
+                font-weight: 500;
                 margin: 0;
+                & .project-type {
+                  font-weight: 300;
+                  font-size: 0.9rem;
+                }
               }
             }
           }
