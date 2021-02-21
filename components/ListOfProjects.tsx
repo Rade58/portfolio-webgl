@@ -34,7 +34,7 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
       css={css`
         border: olive solid 1px;
         width: 100%;
-        padding-top: 18px;
+        padding-top: 8px;
 
         display: flex;
         flex-wrap: wrap;
@@ -44,7 +44,7 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
           /* box-shadow:  ;*/
 
           height: fit-content;
-          border: crimson solid 1px;
+          border: crimson solid 0px;
           flex-basis: 280px;
           flex-shrink: 0;
           flex-grow: 1;
@@ -52,7 +52,8 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
           margin: 8px 6px;
           padding: 0;
 
-          border-radius: 8px;
+          border-radius: 0px 18px 0px 18px;
+          overflow: hidden;
 
           &:nth-of-type(2n) {
             background-image: ${backgroundImage1};
@@ -66,14 +67,14 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
             text-decoration-line: none;
 
             & > .cont {
-              border: pink solid 1px;
+              border: pink solid 0px;
               padding: 12px;
             }
           }
 
           &:hover {
             & > a {
-              color: #cf79a4;
+              color: #a8a8de;
 
               & > .cont {
                 opacity: 0.6;
