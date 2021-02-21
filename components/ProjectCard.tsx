@@ -38,7 +38,11 @@ const ProjectCard: FunctionComponent<SingleProjectI> = ({
       <a href={link} target="_blank" rel="noreferrer">
         {direction === "left" && <aside className="track track-left" />}
         <div className="cont">
-          <h1>{title}</h1>
+          <h1>
+            {direction === "left" && `${emoji} `}
+            {title}
+            {direction === "left" && ` ${emoji}`}
+          </h1>
           <p className="descr">{description}</p>
           <div className="project-type">
             <h3>
