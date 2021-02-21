@@ -39,7 +39,7 @@ const ProjectCard: FunctionComponent<SingleProjectI> = ({
         {direction === "left" && <aside className="track track-left" />}
         <div className="cont">
           <h1>
-            {direction === "left" && `${emoji} `}
+            {direction === "right" && `${emoji} `}
             {title}
             {direction === "left" && ` ${emoji}`}
           </h1>
