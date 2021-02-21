@@ -19,7 +19,10 @@ const ProjectCard: FunctionComponent<SingleProjectI> = ({ data }) => {
     title,
     link,
     projectType,
+    // SNAPSHOT CE BITI NO-OP
+    // NE SVIDJA MI SE KAKO IZGLEDA
     snapshot,
+    //
     tags,
   } = data;
 
@@ -27,7 +30,7 @@ const ProjectCard: FunctionComponent<SingleProjectI> = ({ data }) => {
     <div
       className="project-card"
       css={css`
-        background-image: url(${snapshot.asset.url});
+        /* background-image: url(${snapshot.asset.url}); */
         background-size: cover;
         height: 100px;
       `}

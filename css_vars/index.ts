@@ -34,6 +34,14 @@ export const backgroundImage1 = /* css */ `
   )
 `;
 
+export const backgroundImage1Reverse = /* css */ `
+  linear-gradient(
+    to right,
+    rgb(63, 44, 56),
+    rgb(38, 45, 59)
+  )
+`;
+
 // NEKE ZANIMLJIVE BOJE ZA BACKGROUND
 export const backgroundColor1 = "#1b2227";
 export const backgroundColor2 = "#2a3438";
