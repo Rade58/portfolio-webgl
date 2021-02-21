@@ -58,3 +58,21 @@ export const verticalGradient2 = /* css */ `
 export const verticalGradient3 = /* css */ `
   linear-gradient( 0.9deg,  rgba(0,40,70,1) -4.8%, rgba(255,115,115,1) 82.7%, rgba(255,175,123,1) 97.2% )
 `;
+
+export const verticalGradient4 = /* css */ `
+  linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%)
+`;
+export const verticalGradient5 = /* css */ `
+  linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114))
+`;
+export const verticalGradient6 = /* css */ `
+  linear-gradient( 109.8deg,  rgba(250,111,152,1) 5.6%, rgba(255,189,55,1) 91.5% )
+`;
+export const verticalGradient7 = /* css */ `
+  linear-gradient( 113.1deg,  rgba(254,140,48,1) 14%, rgba(253,75,101,1) 80.5%, rgba(255,53,109,1) 100.6% )
+`;
+
+//
+export const circularGradient8 = /* css */ `
+  radial-gradient( circle farthest-corner at 1.2% 5.3%,  rgba(255,85,166,1) 0%, rgba(255,154,98,1) 100.2% )
+`;

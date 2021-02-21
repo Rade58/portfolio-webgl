@@ -6,7 +6,13 @@ import { FunctionComponent } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-import { backgroundImage1, backgroundImage1Reverse } from "../css_vars";
+import {
+  backgroundImage1,
+  backgroundImage1Reverse,
+  verticalGradient1,
+  verticalGradient2,
+  verticalGradient3,
+} from "../css_vars";
 
 import Separator from "./Separator";
 import ProjectCard from "./ProjectCard";
@@ -75,6 +81,9 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
 
             & > aside.track {
               background-color: rgba(96, 72, 128, 0.637);
+
+              background-image: ${verticalGradient3};
+
               width: 26px;
               /* height: 100%; */
             }
