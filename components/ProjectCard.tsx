@@ -39,15 +39,15 @@ const ProjectCard: FunctionComponent<SingleProjectI> = ({
         <div className="cont">
           <h1>{title}</h1>
           <p className="descr">{description}</p>
-          <time dateTime={dateTime}>
-            {moment(dateTime).format("MMMM Do YYYY, h:mm:ss a")}
-          </time>
           <div className="project-type">
             <h3>
               <span className="project-type">project type: </span>
               {projectType}
             </h3>
           </div>
+          <time dateTime={dateTime}>
+            {moment(dateTime).format("MMMM Do YYYY, h:mm:ss a")}
+          </time>
         </div>
         {direction === "right" && <aside className="track track-right" />}
       </a>

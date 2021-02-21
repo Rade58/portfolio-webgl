@@ -45,6 +45,7 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
       className="list-of-projects"
       css={css`
         --left-padding: 26px;
+        --text-color1: #d88ece;
 
         border: olive solid 1px;
         width: 100%;
@@ -137,10 +138,17 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
                 margin: 0;
                 padding: 0;
                 height: fit-content;
+                color: var(--text-color1);
+                font-size: 1.2rem;
+              }
+
+              & time {
+                font-size: 0.9rem;
               }
 
               & p {
                 margin-top: 4px;
+                margin-bottom: 4px;
               }
 
               & h3 {
