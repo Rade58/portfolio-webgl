@@ -92,7 +92,7 @@ const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
       )}
       {/* --------------------------------------------- */}
       <Separator emoji={`🖱️`} direction="inwards" />
-      These are some other techologies I also worked with:
+      These are some other techologies I also like working with:
       {data.otherDevSvgs.map(
         ({
           isEmoji,

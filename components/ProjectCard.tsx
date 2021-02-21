@@ -38,9 +38,10 @@ const ProjectCard: FunctionComponent<SingleProjectI> = ({ data }) => {
           <time dateTime={dateTime}>
             {moment(dateTime).format("MMMM Do YYYY, h:mm:ss a")}
           </time>
-          <br />
-          project type:
-          <h3>{projectType}</h3>
+          <div className="project-type">
+            project type:
+            <h3>{projectType}</h3>
+          </div>
         </div>
       </a>
     </div>
