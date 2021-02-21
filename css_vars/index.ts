@@ -21,3 +21,19 @@ export const storyHeightMin = `${
 export const matchMediaMaxWidth = "892px";
 
 export const aboveMediaArticleMargin = "12px";
+
+//
+
+// NEKI DOBRI BACKGROUND IMAGE-OVI
+
+export const backgroundImage1 = /* css */ `
+  linear-gradient(
+    to right,
+    rgb(38, 45, 59),
+    rgb(63, 44, 56)
+  )
+`;
+
+// NEKE ZANIMLJIVE BOJE ZA BACKGROUND
+export const backgroundColor1 = "#1b2227";
+export const backgroundColor2 = "#2a3438";

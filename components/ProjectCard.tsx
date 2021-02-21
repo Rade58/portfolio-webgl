@@ -28,6 +28,7 @@ const ProjectCard: FunctionComponent<SingleProjectI> = ({ data }) => {
       className="project-card"
       css={css`
         background-image: url(${snapshot.asset.url});
+        background-size: cover;
         height: 100px;
       `}
     >
