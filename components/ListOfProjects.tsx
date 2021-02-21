@@ -74,7 +74,7 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
             display: flex;
 
             & > aside.track {
-              background-color: crimson;
+              background-color: rgba(96, 72, 128, 0.637);
               width: 26px;
               /* height: 100%; */
             }
