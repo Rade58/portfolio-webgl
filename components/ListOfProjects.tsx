@@ -44,6 +44,8 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
     <div
       className="list-of-projects"
       css={css`
+        --left-padding: 26px;
+
         border: olive solid 1px;
         width: 100%;
         padding-top: 8px;
@@ -74,6 +76,12 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
 
           &:nth-of-type(2n) {
             background-image: ${backgroundImage1};
+
+            & > a {
+              & > .cont {
+                padding-left: var(--left-padding);
+              }
+            }
           }
           &:nth-of-type(2n + 1) {
             background-image: ${backgroundImage1Reverse};
