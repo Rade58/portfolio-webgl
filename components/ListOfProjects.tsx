@@ -9,9 +9,15 @@ import styled from "@emotion/styled";
 import {
   backgroundImage1,
   backgroundImage1Reverse,
+  //
   verticalGradient1,
   verticalGradient2,
   verticalGradient3,
+  verticalGradient4,
+  verticalGradient5,
+  verticalGradient6,
+  verticalGradient7,
+  circularGradient1,
 } from "../css_vars";
 
 import Separator from "./Separator";
@@ -82,10 +88,16 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
             & > aside.track {
               background-color: rgba(96, 72, 128, 0.637);
 
-              background-image: ${verticalGradient3};
-
               width: 26px;
               /* height: 100%; */
+
+              &.track-left {
+                background-image: ${verticalGradient7};
+              }
+
+              &.track-right {
+                background-image: ${verticalGradient4};
+              }
             }
 
             & > .cont {
@@ -109,8 +121,12 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
         }
       `}
     >
-      {projects.map((data) => (
-        <ProjectCard key={data.title} data={data} />
+      {projects.map((data, index) => (
+        <ProjectCard
+          key={data.title}
+          data={data}
+          direction={!(index % 2) ? "left" : "right"}
+        />
       ))}
     </div>
   );

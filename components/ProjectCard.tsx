@@ -12,9 +12,13 @@ import { SingleProjectI as SPI } from "./ListOfProjects";
 
 interface SingleProjectI {
   data: SPI;
+  direction: "left" | "right";
 }
 
-const ProjectCard: FunctionComponent<SingleProjectI> = ({ data }) => {
+const ProjectCard: FunctionComponent<SingleProjectI> = ({
+  data,
+  direction,
+}) => {
   const {
     dateTime,
     description,
@@ -31,7 +35,7 @@ const ProjectCard: FunctionComponent<SingleProjectI> = ({ data }) => {
   return (
     <div className="project-card">
       <a href={link} target="_blank" rel="noreferrer">
-        <aside className="track" />
+        {direction === "left" && <aside className="track track-left" />}
         <div className="cont">
           <h1>{title}</h1>
           <p className="descr">{description}</p>
@@ -43,6 +47,7 @@ const ProjectCard: FunctionComponent<SingleProjectI> = ({ data }) => {
             <h3>{projectType}</h3>
           </div>
         </div>
+        {direction === "right" && <aside className="track track-right" />}
       </a>
     </div>
   );
