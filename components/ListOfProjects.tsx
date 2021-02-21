@@ -39,11 +39,13 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+        align-items: stretch;
+        align-content: stretch;
 
         & > div.project-card {
           /* box-shadow:  ;*/
 
-          height: fit-content;
+          /* height: fit-content; */
           border: crimson solid 0px;
           flex-basis: 280px;
           flex-shrink: 0;
@@ -53,6 +55,9 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
           padding: 0;
 
           border-radius: 0px 18px 0px 18px;
+
+          box-shadow: 0 2.2px 22.5px rgba(31, 28, 54, 0.226);
+
           overflow: hidden;
 
           &:nth-of-type(2n) {
