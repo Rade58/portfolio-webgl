@@ -22,6 +22,11 @@ export default {
       type: T.text,
     },
     {
+      name: "emoji",
+      title: "Emoji",
+      type: T.string,
+    },
+    {
       name: "projectType",
       title: "Project Type",
       type: T.string,
