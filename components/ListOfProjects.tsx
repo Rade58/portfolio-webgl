@@ -43,17 +43,16 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
         & > div.project-card {
           /* box-shadow:  ;*/
 
-          height: 280px;
-          border: crimson solid 0px;
+          height: fit-content;
+          border: crimson solid 1px;
           flex-basis: 280px;
           flex-shrink: 0;
           flex-grow: 1;
 
           margin: 8px 6px;
+          padding: 0;
 
           border-radius: 8px;
-
-          padding: 10px;
 
           &:nth-of-type(2n) {
             background-image: ${backgroundImage1};
@@ -65,6 +64,21 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
           & > a {
             color: inherit;
             text-decoration-line: none;
+
+            & > .cont {
+              border: pink solid 1px;
+              padding: 12px;
+            }
+          }
+
+          &:hover {
+            & > a {
+              color: #cf79a4;
+
+              & > .cont {
+                opacity: 0.6;
+              }
+            }
           }
         }
       `}
