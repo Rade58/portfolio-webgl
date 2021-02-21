@@ -38,20 +38,22 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
 
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-evenly;
+        justify-content: space-between;
 
         & > div.project-card {
           /* box-shadow:  ;*/
 
           height: 280px;
           border: crimson solid 0px;
-          flex-basis: 288px;
+          flex-basis: 280px;
           flex-shrink: 0;
           flex-grow: 1;
 
-          margin-top: 8px;
+          margin: 8px 6px;
 
           border-radius: 8px;
+
+          padding: 10px;
 
           &:nth-of-type(2n) {
             background-image: ${backgroundImage1};
