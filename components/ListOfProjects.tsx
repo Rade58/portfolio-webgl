@@ -6,6 +6,8 @@ import { FunctionComponent } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
+import { backgroundImage1, backgroundImage1Reverse } from "../css_vars";
+
 import Separator from "./Separator";
 import ProjectCard from "./ProjectCard";
 
@@ -40,6 +42,8 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
 
         & > div.project-card {
           /* box-shadow:  ;*/
+
+          height: 280px;
           border: crimson solid 0px;
           flex-basis: 288px;
           flex-shrink: 0;
@@ -49,20 +53,12 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
 
           border-radius: 8px;
 
-          /* &:nth-of-type(2n) {
-            background-image: linear-gradient(
-              to right,
-              rgb(63, 44, 56),
-              rgb(38, 45, 59)
-            );
+          &:nth-of-type(2n) {
+            background-image: ${backgroundImage1};
           }
           &:nth-of-type(2n + 1) {
-            background-image: linear-gradient(
-              to right,
-              rgb(38, 45, 59),
-              rgb(63, 44, 56)
-            );
-          } */
+            background-image: ${backgroundImage1Reverse};
+          }
         }
       `}
     >
