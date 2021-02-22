@@ -2,7 +2,7 @@
 /** @jsxRuntime classic */
 /** @jsx jsx */
 import { jsx } from "theme-ui";
-import { FunctionComponent } from "react";
+import { FunctionComponent, Fragment } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
@@ -41,6 +41,7 @@ interface ListOfProjectsPropsI {
 
 const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
   projects,
+  storyIsBellow,
 }) => {
   return (
     <div
@@ -62,6 +63,16 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
         justify-content: space-between;
         align-items: stretch;
         align-content: stretch;
+
+        &.list-of-projects section.sepa.sepa.sepa {
+          width: 100%;
+          /* border: pink solid 8px; */
+          margin-top: 2px;
+          margin-bottom: 2px;
+          padding-top: 3px;
+          padding-bottom: 3px;
+          height: 6px;
+        }
 
         & > div.project-card {
           /* box-shadow:  ;*/
@@ -187,11 +198,22 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
       `}
     >
       {projects.map((data, index) => (
-        <ProjectCard
-          key={data.title}
-          data={data}
-          direction={!(index % 2) ? "left" : "right"}
-        />
+        <Fragment key={data.title}>
+          <ProjectCard
+            data={data}
+            direction={!(index % 2) ? "left" : "right"}
+          />
+          {storyIsBellow && (
+            <Separator
+              nonEmoji
+              direction={index % 2 ? "inwards" : "outwards"}
+              thickness={1}
+            />
+          )}
+          {!storyIsBellow && index % 2 !== 0 && (
+            <Separator nonEmoji direction={"outwards"} thickness={1} />
+          )}
+        </Fragment>
       ))}
     </div>
   );
