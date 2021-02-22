@@ -55,6 +55,10 @@ export enum EEs {
 // ------------------------------------------------------------
 
 export interface MachineContextGenericI {
+  // THRESHOLD
+  storyIsBellow: boolean;
+  //
+
   // ZA FOCUS
   outlineAllowed: boolean;
   focusingInsideStoryAllowed: boolean;
@@ -77,6 +81,10 @@ export interface MachineContextGenericI {
   fishRight: SVGElement | null;
 }
 export interface MachineContextGenericIFull {
+  // THRESHOLD
+  storyIsBellow: boolean;
+  //
+
   // ZA FOCUS
   outlineAllowed: boolean;
   focusingInsideStoryAllowed: boolean;
@@ -131,6 +139,12 @@ export type machineEventsGenericType =
         isBellow: boolean;
       };
     }
+  | {
+      type: EE.ABOVE_THRESHOLD;
+    }
+  | {
+      type: EE.BELLOW_THRESHOLD;
+    }
   // ----------------------------------------------------
   | { type: EE.DISABLE_OUTLINE }
   | { type: EE.ENABLE_OUTLINE }
@@ -177,6 +191,10 @@ const storyMachine = createMachine<
     initial: fse.idle,
     context: {
       //
+      // THRESHOLD
+      storyIsBellow: false,
+
+      //
       //
       outlineAllowed: false,
       focusingInsideStoryAllowed: false,
@@ -198,6 +216,25 @@ const storyMachine = createMachine<
       right: null,
     },
     on: {
+      // THRESHOLD
+      [EE.ABOVE_THRESHOLD]: {
+        //
+        actions: [
+          assign({
+            storyIsBellow: (_, __) => false,
+          }),
+        ],
+      },
+      [EE.BELLOW_THRESHOLD]: {
+        //
+        actions: [
+          assign({
+            storyIsBellow: (_, __) => true,
+          }),
+        ],
+      },
+      //
+      // ---------
       // FOCUS AND OUTLINE
       [EE.DISABLE_OUTLINE]: {
         actions: [
