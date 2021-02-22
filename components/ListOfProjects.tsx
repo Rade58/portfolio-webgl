@@ -211,7 +211,7 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
             />
           )}
           {!storyIsBellow && index % 2 !== 0 && (
-            <Separator nonEmoji direction={"outwards"} thickness={1} />
+            <Separator nonEmoji direction={"inwards"} thickness={1} />
           )}
         </Fragment>
       ))}
