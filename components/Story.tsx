@@ -475,6 +475,11 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
 
   // ---------------- THRESHOLDS ----------------
 
+  const [
+    storyThresholdIsBelllow,
+    setStoryThresholdIsBellow,
+  ] = useState<boolean>(false);
+
   const resizeCallback = useCallback(() => {
     if (storyRef.current) {
       const story = storyRef.current;
@@ -485,13 +490,9 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
         const rect = story.getBoundingClientRect();
 
         if (rect.width < storyThreshold) {
-          send({
-            type: EE.BELLOW_THRESHOLD,
-          });
+          setStoryThresholdIsBellow(true);
         } else {
-          send({
-            type: EE.ABOVE_THRESHOLD,
-          });
+          setStoryThresholdIsBellow(false);
         }
       }
     }
@@ -519,19 +520,15 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
         const rect = story.getBoundingClientRect();
 
         if (rect.width < storyThreshold) {
-          send({
-            type: EE.BELLOW_THRESHOLD,
-          });
+          setStoryThresholdIsBellow(true);
         } else {
-          send({
-            type: EE.ABOVE_THRESHOLD,
-          });
+          setStoryThresholdIsBellow(false);
         }
       }
     }
   }, [storyRef]);
 
-  console.log(state.context.storyIsBellow);
+  console.log({ storyThresholdIsBelllow });
 
   // --------------------------------------------------
 
