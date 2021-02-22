@@ -498,12 +498,17 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
   }, [storyRef]);
 
   useEffect(() => {
-    window.addEventListener("resize", resizeCallback);
-
-    return () => {
-      window.removeEventListener("resize", resizeCallback);
-    };
+    if (storyRef.current) {
+      window.addEventListener("resize", resizeCallback);
+    }
   }, [resizeCallback]);
+
+  useEffect(
+    () => () => {
+      window.removeEventListener("resize", resizeCallback);
+    },
+    []
+  );
 
   useEffect(() => {
     const story = storyRef.current;
