@@ -473,8 +473,12 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
 
   useEffect(() => {
     if (storyRef.current) {
+      const story = storyRef.current;
+
       window.addEventListener("resize", () => {
-        console.log(storyRef.current.getBoundingClientRect());
+        if (story && story instanceof HTMLElement) {
+          console.log({ story });
+        }
       });
     }
   }, [storyRef]);
