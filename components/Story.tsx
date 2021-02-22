@@ -656,7 +656,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
               border: pink solid 1px;
               /* padding-right: 18px; */
 
-              & * {
+              & > * {
                 direction: ltr;
                 margin-right: 8px;
               }
