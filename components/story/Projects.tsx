@@ -54,7 +54,7 @@ const Projects: FunctionComponent<PropsI> = ({
       {/* SAMO U CILJU PROBE, UKLONICU KASNIJE */}
 
       {/* ------------------------------ */}
-      <Separator nonEmoji direction="outwards" thickness="2" />
+      <Separator nonEmoji direction="outwards" thickness={2} />
 
       <ListOfProjects storyIsBellow={storyIsBellow} projects={data.projects} />
     </ArticleStory>
