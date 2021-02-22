@@ -7,7 +7,16 @@ import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
 const InBetweenText: FunctionComponent = ({ children }) => {
-  return <div className="in-between-text">{children}</div>;
+  return (
+    <div
+      css={css`
+        border: pink solid 1px;
+      `}
+      className="in-between-text"
+    >
+      {children}
+    </div>
+  );
 };
 
 export default InBetweenText;
