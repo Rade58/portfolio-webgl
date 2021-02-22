@@ -47,7 +47,7 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
     <div
       className="list-of-projects"
       css={css`
-        --left-padding: 26px;
+        --left-padding: 14px;
         --text-color1: #e4809e;
         --text-color2: #848d94;
         --text-color4: #647fbd;
@@ -149,6 +149,7 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
 
               display: flex;
               flex-direction: column;
+              width: 100%;
 
               & h1 {
                 border: pink solid 0px;
