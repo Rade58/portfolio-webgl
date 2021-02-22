@@ -610,7 +610,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
         }
 
         &.above {
-          width: 0vw;
+          max-width: 600px;
           /* width: 36vw; */
           height: 100%;
 
@@ -629,9 +629,27 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             padding-bottom: 18px;
             padding-left: 16px;
 
-            /* --------------------------------------- */
+            /* --------------  direction stuff -------------- */
+            /* ----------------------------------------------- */
+            & > article.story-article {
+              direction: rtl;
+
+              & * {
+                direction: ltr;
+              }
+
+              & div[class^="devicon"] {
+                justify-content: flex-end;
+                margin-left: 8px;
+                margin-right: auto;
+              }
+            }
+
+            /* ----------------------------------------------- */
+            /* ----------------------------------------------- */
+
             position: relative;
-            left: -6px;
+            /* left: -6px; */
             width: 100%;
 
             & article {

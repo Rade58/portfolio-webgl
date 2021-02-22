@@ -29,16 +29,16 @@ export const aboveMediaArticleMargin = "12px";
 export const backgroundImage1 = /* css */ `
   linear-gradient(
     to right,
-    rgb(38, 45, 59),
-    rgb(63, 44, 56)
+    rgb(38, 45, 59, 0.38),
+    rgb(63, 44, 56, 0.38)
   )
 `;
 
 export const backgroundImage1Reverse = /* css */ `
   linear-gradient(
     to right,
-    rgb(63, 44, 56),
-    rgb(38, 45, 59)
+    rgb(63, 44, 56, 0.38),
+    rgb(38, 45, 59, 0.38)
   )
 `;
 
