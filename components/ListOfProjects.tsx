@@ -54,7 +54,7 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
         --text-color5: #c78eaf;
         --text-color3: rgb(223, 236, 234);
 
-        border: olive solid 1px;
+        border: olive solid 0px;
         width: 100%;
         padding-top: 8px;
 
@@ -67,11 +67,11 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
         &.list-of-projects section.sepa.sepa.sepa {
           width: 100%;
           /* border: pink solid 8px; */
-          margin-top: 2px;
-          margin-bottom: 2px;
-          padding-top: 3px;
-          padding-bottom: 3px;
-          height: 6px;
+          margin-top: 1px;
+          margin-bottom: 1px;
+          padding-top: 2px;
+          padding-bottom: 2px;
+          height: 4px;
         }
 
         & > div.project-card {
