@@ -475,21 +475,35 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
 
   // ---------------- THRESHOLDS ----------------
 
-  useEffect(() => {
+  const resizeCallback = useCallback(() => {
     if (storyRef.current) {
       const story = storyRef.current;
 
-      window.addEventListener("resize", () => {
-        if (story && story instanceof HTMLElement) {
-          // console.log({ story });
+      if (story && story instanceof HTMLElement) {
+        // console.log({ story });
 
-          const rect = story.getBoundingClientRect();
+        const rect = story.getBoundingClientRect();
 
-          console.log(rect.width < storyThreshold);
+        if (rect.width < storyThreshold) {
+          send({
+            type: EE.BELLOW_THRESHOLD,
+          });
+        } else {
+          send({
+            type: EE.ABOVE_THRESHOLD,
+          });
         }
-      });
+      }
     }
   }, [storyRef]);
+
+  useEffect(() => {
+    window.addEventListener("resize", resizeCallback);
+
+    return () => {
+      window.removeEventListener("resize", resizeCallback);
+    };
+  }, [resizeCallback]);
 
   useEffect(() => {
     const story = storyRef.current;
@@ -498,6 +512,16 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
       //
       if (story && story instanceof HTMLElement) {
         const rect = story.getBoundingClientRect();
+
+        if (rect.width < storyThreshold) {
+          send({
+            type: EE.BELLOW_THRESHOLD,
+          });
+        } else {
+          send({
+            type: EE.ABOVE_THRESHOLD,
+          });
+        }
       }
     }
   }, [storyRef]);
