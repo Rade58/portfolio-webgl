@@ -473,6 +473,8 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
     state,
   ]);
 
+  // ---------------- THRESHOLDS ----------------
+
   useEffect(() => {
     if (storyRef.current) {
       const story = storyRef.current;
@@ -488,6 +490,14 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
       });
     }
   }, [storyRef]);
+
+  useEffect(() => {
+    if (storyRef.current) {
+      //
+    }
+  }, [storyRef]);
+
+  // --------------------------------------------------
 
   if (!major || major === "undefined") {
     return null;
