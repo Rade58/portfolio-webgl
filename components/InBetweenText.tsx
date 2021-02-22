@@ -6,8 +6,8 @@ import { FunctionComponent } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-const BetweenText: FunctionComponent = () => {
-  return null;
+const InBetweenText: FunctionComponent = ({ children }) => {
+  return <div className="in-between-text">{children}</div>;
 };
 
-export default BetweenText;
+export default InBetweenText;

@@ -16,6 +16,7 @@ import ArticleStory from "./ArticleStory";
 import MyImage from "../MyImage";
 import DevIcon from "../DevIcon";
 import Separator from "../Separator";
+import InBetweenText from "../InBetweenText";
 
 import { fse as majorFsesEnum } from "../../sketch/middle_ground/major_states";
 
@@ -47,7 +48,9 @@ const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
       {/* ---------------- SEPARATOR ------------------ */}
       <Separator emoji={`⌨️`} direction="outwards" />
       {/* --------------------------------------------- */}
-      Favorite things with whom I{"'"}m currently tinkering are:
+      <InBetweenText>
+        Favorite things with whom I{"'"}m currently tinkering are:
+      </InBetweenText>
       {/* MAPPING THROUGH ALL DEVICONS */}
       {data.devSvgs.map(
         ({
@@ -92,7 +95,9 @@ const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
       )}
       {/* --------------------------------------------- */}
       <Separator emoji={`🖱️`} direction="inwards" />
-      These are some other techologies I also like working with:
+      <InBetweenText>
+        These are some other techologies I also like working with:
+      </InBetweenText>
       {data.otherDevSvgs.map(
         ({
           isEmoji,
@@ -137,7 +142,7 @@ const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
       {/* ------------------------------------------------- */}
       <Separator nonEmoji direction="outwards" thickness={3} />
       {/* ------------------------------------------------- */}
-      This is me looking like a 100$
+      <InBetweenText>This is me looking like a 100$</InBetweenText>
       <MyImage url={data.myImage.asset.url} />
       {/* {major !== "undefined" ? storyMajorText(major, "") : ""} */}
       <Separator nonEmoji direction="inwards" thickness={3} />
