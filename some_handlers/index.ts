@@ -114,12 +114,5 @@ export const setup = () => {
     });
 
     //
-
-    window.addEventListener("resize", () => {
-      const story = document.querySelector("section.story") as HTMLElement;
-
-      console.log({ story });
-      console.log(story.getBoundingClientRect());
-    });
   }
 };
