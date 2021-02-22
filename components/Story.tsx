@@ -471,6 +471,14 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
     state,
   ]);
 
+  useEffect(() => {
+    if (storyRef.current) {
+      window.addEventListener("resize", () => {
+        console.log(storyRef.current.getBoundingClientRect());
+      });
+    }
+  }, [storyRef]);
+
   if (!major || major === "undefined") {
     return null;
   }
