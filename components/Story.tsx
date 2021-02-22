@@ -653,8 +653,12 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             & > article.story-article {
               direction: rtl;
 
+              border: pink solid 1px;
+              /* padding-right: 18px; */
+
               & * {
                 direction: ltr;
+                margin-right: 8px;
               }
 
               & div[class^="devicon"] {
@@ -668,7 +672,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             /* ----------------------------------------------- */
 
             position: relative;
-            /* left: -6px; */
+            left: -3.8px;
             width: 100%;
 
             & article {
