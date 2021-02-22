@@ -62,6 +62,8 @@ import {
 import serializers from "./sanity_serializers";
 //
 
+import { storyThreshold } from "../breakpoints";
+
 import { SanityDataI } from "../sanity/data_types";
 
 interface PropsStoryI {
@@ -477,7 +479,11 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
 
       window.addEventListener("resize", () => {
         if (story && story instanceof HTMLElement) {
-          console.log({ story });
+          // console.log({ story });
+
+          const rect = story.getBoundingClientRect();
+
+          console.log(rect.width < storyThreshold);
         }
       });
     }
