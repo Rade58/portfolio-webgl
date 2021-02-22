@@ -492,8 +492,13 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
   }, [storyRef]);
 
   useEffect(() => {
-    if (storyRef.current) {
+    const story = storyRef.current;
+
+    if (story) {
       //
+      if (story && story instanceof HTMLElement) {
+        const rect = story.getBoundingClientRect();
+      }
     }
   }, [storyRef]);
 
