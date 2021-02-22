@@ -159,6 +159,25 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
         // console.log({ substate, mediaBellow, storyRefCurr: storyRef.current });
 
         if (!mediaBellow) {
+          if (firstStoryAnim) {
+            console.log("FIRST STORY ANIMATION");
+
+            TweenMax.fromTo(
+              storyRef.current,
+              {
+                duration: 2,
+                translateY: "-120%",
+                ease: Elastic.easeOut,
+              },
+              {
+                translateY: "0%",
+              }
+            );
+
+            setFirstStoryAnim(false);
+            return;
+          }
+
           //
           /*  if (
             state.event.type !== EEs.ARROW_UP_PUSHED &&
