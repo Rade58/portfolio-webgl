@@ -88,7 +88,7 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
 
           border-radius: 0px 18px 0px 18px;
 
-          box-shadow: 0 2.2px 22.5px rgba(31, 28, 54, 0.226);
+          box-shadow: 0 2.2px 8.5px rgba(31, 28, 54, 0.726);
 
           overflow: hidden;
 
