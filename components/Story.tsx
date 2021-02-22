@@ -526,6 +526,8 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
     }
   }, [storyRef]);
 
+  console.log(state.context.storyIsBellow);
+
   // --------------------------------------------------
 
   if (!major || major === "undefined") {
