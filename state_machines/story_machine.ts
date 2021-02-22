@@ -24,6 +24,8 @@ export enum EE {
   //
   GIVE_SVGS = "GIVE_SVGS",
   GIVE_MEDIA = "GIVE_MEDIA",
+
+  // no op
   // EVENT-OVI KOJI CE DA POKAZUJU DA LI JE STORY ISPOD ILI IZNAD THRESHOLDA
   BELLOW_THRESHOLD = "BELLOW_THRESHOLD",
   ABOVE_THRESHOLD = "ABOVE_THRESHOLD",
@@ -55,7 +57,7 @@ export enum EEs {
 // ------------------------------------------------------------
 
 export interface MachineContextGenericI {
-  // THRESHOLD
+  // THRESHOLD (no op)
   storyIsBellow: boolean;
   //
 
@@ -81,7 +83,7 @@ export interface MachineContextGenericI {
   fishRight: SVGElement | null;
 }
 export interface MachineContextGenericIFull {
-  // THRESHOLD
+  // THRESHOLD   (noop)
   storyIsBellow: boolean;
   //
 
@@ -216,7 +218,8 @@ const storyMachine = createMachine<
       right: null,
     },
     on: {
-      // THRESHOLD
+      // THRESHOLD -----------------------------------
+      // no op
       [EE.ABOVE_THRESHOLD]: {
         //
         actions: [
@@ -233,7 +236,7 @@ const storyMachine = createMachine<
           }),
         ],
       },
-      //
+      // ---------------------------------------------
       // ---------
       // FOCUS AND OUTLINE
       [EE.DISABLE_OUTLINE]: {
