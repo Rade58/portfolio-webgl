@@ -507,6 +507,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
   useEffect(
     () => () => {
       window.removeEventListener("resize", resizeCallback);
+      console.log("UNMOUNTING");
     },
     []
   );
@@ -528,7 +529,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
     }
   }, [storyRef]);
 
-  console.log({ storyThresholdIsBelllow });
+  // console.log({ storyThresholdIsBelllow });
 
   // --------------------------------------------------
 
