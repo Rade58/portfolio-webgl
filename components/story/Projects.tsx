@@ -25,9 +25,14 @@ import serializers from "../sanity_serializers";
 interface PropsI {
   projectsArticleRef: RefObject<HTMLElement>;
   data: any;
+  storyIsBellow: boolean;
 }
 
-const Projects: FunctionComponent<PropsI> = ({ projectsArticleRef, data }) => {
+const Projects: FunctionComponent<PropsI> = ({
+  projectsArticleRef,
+  storyIsBellow,
+  data,
+}) => {
   const [state, send] = useService(storyService);
 
   const { major } = state.context;
@@ -50,7 +55,7 @@ const Projects: FunctionComponent<PropsI> = ({ projectsArticleRef, data }) => {
 
       {/* ------------------------------ */}
 
-      <ListOfProjects projects={data.projects} />
+      <ListOfProjects storyIsBellow={storyIsBellow} projects={data.projects} />
     </ArticleStory>
   );
 };

@@ -36,6 +36,7 @@ export interface SingleProjectI {
 
 interface ListOfProjectsPropsI {
   projects: SingleProjectI[];
+  storyIsBellow: boolean;
 }
 
 const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({

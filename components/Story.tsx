@@ -762,6 +762,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
         />
         {/* ---------------------------------------------- */}
         <Projects
+          storyIsBellow={storyThresholdIsBelllow}
           data={data[fsS.projects]}
           projectsArticleRef={projectsArticleRef}
         />
