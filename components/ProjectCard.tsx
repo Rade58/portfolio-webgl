@@ -8,6 +8,8 @@ import styled from "@emotion/styled";
 
 import moment from "moment";
 
+import Separator from "./Separator";
+
 import { SingleProjectI as SPI } from "./ListOfProjects";
 
 interface SingleProjectI {
