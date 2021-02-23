@@ -117,5 +117,14 @@ export const gradient10 = /* css */ `
 export const gradient11 = /* css */ `
   linear-gradient(to top, #fa709a 0%, #fee140 100%)
 `;
+export const gradient12 = /* css */ `
+  linear-gradient(to top, #d299c2 0%, #fef9d7 100%)
+`;
+export const gradient13 = /* css */ `
+  linear-gradient(to top, #9795f0 0%, #fbc8d4 100%)
+`;
+export const gradient14 = /* css */ `
+  linear-gradient(to top, #ff0844 0%, #ffb199 100%)
+`;
 // --------------------------------
 // --------------------------------
