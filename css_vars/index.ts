@@ -150,5 +150,4 @@ export const niceTegetGradient = /* css */ `
 `;
 export const niceMakeupGradient = /* css */ `
   linear-gradient(45deg, #874da2 0%, #c43a30 100%)
-
 `;
