@@ -84,7 +84,7 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
           flex-grow: 1;
 
           margin: 8px 6px;
-          margin-left: 10px;
+          margin-left: 14px;
 
           padding: 0;
 
