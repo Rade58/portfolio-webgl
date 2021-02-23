@@ -106,13 +106,16 @@ export const gradient7 = /* css */ `
   radial-gradient( circle farthest-corner at 10% 20%,  rgba(69,86,102,1) 0%, rgba(34,34,34,1) 90% )
 `;
 export const gradient8 = /* css */ `
-  linear-gradient( to top,  rgba(0,40,70,1) -4.8%, rgba(255,115,115,1) 82.7%, rgba(255,175,123,1) 97.2% )
+  linear-gradient( 45deg,  rgba(0,40,70,1) -4.8%, rgba(255,115,115,1) 82.7%, rgba(255,175,123,1) 97.2% )
 `;
 export const gradient9 = /* css */ `
   linear-gradient( to bottom,  rgba(25,50,70,0.81) 10.7%, rgba(155,65,25,0.72) 39.5%, rgba(255,192,0,0.81) 69.7% )
 `;
 export const gradient10 = /* css */ `
   linear-gradient( to bottom,  rgba(0,40,70,1) -4.8%, rgba(255,115,115,1) 82.7%, rgba(255,175,123,1) 97.2% )
+`;
+export const gradient11 = /* css */ `
+  linear-gradient(to top, #fa709a 0%, #fee140 100%)
 `;
 // --------------------------------
 // --------------------------------

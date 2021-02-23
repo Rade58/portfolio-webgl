@@ -64,6 +64,18 @@ import {
   verticalGradient6,
   verticalGradient7,
   circularGradient1,
+  //
+  gradient1,
+  gradient2,
+  gradient3,
+  gradient4,
+  gradient5,
+  gradient6,
+  gradient7,
+  gradient8,
+  gradient9,
+  gradient10,
+  gradient11,
 } from "../css_vars";
 
 // SERIALIZERS
@@ -769,8 +781,11 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
 
             /* --------- SCROOLLBAR STYLING --------- */
             /* ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]] */
+            /* firefox */
+            scrollbar-width: thin;
+            /*  */
             &::-webkit-scrollbar {
-              width: 9px;
+              width: 10px;
             }
 
             /* scrollbar-color: crimson tomato; */
@@ -779,15 +794,28 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             &::-webkit-scrollbar-track {
               background-color: violet;
               border-radius: 2.8px;
-              background-image: ${verticalGradient4};
+              background-image: ${gradient7};
+              border: #352d64 inset 1px;
+              box-shadow: 1px 1px 1px 1px rgba(36, 28, 70, 0.096);
+
+              padding: 2px;
             }
 
             &::-webkit-scrollbar-thumb {
               background-color: blanchedalmond;
               border-radius: 2.8px;
               border: #b13d6d solid 0px;
-              box-shadow: 1px 1px 1px 1px crimson;
-              background-image: ${verticalGradient6};
+              box-shadow: 1px 1px 1px 1px rgba(63, 33, 194, 0.301);
+              background-image: ${gradient11};
+              /* width: 8px; */
+              margin: 2px;
+            }
+
+            &::-webkit-scrollbar-corner {
+              background-color: red;
+            }
+
+            &::-webkit-scrollbar-button {
             }
 
             /* &::-webkit-scrollbar-button {
