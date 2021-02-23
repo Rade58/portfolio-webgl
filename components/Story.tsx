@@ -77,6 +77,12 @@ import {
   gradient10,
   gradient11,
   niceTegetGradient,
+  niceBlackGradient,
+  niceBlueGradient,
+  niceGrayGradient,
+  niceMakeupGradient,
+  niceOrageGradient,
+  niceRedishGradient,
 } from "../css_vars";
 
 // SERIALIZERS
@@ -647,7 +653,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
               &::-webkit-scrollbar-thumb {
                 border-radius: 2.8px;
                 box-shadow: 1px 1px 1px 1px rgba(63, 33, 194, 0.301);
-                background-image: ${niceTegetGradient};
+                background-image: ${niceBlackGradient};
               }
             }
           }
@@ -820,8 +826,8 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
               background-color: red;
             }
 
-            &::-webkit-scrollbar-button {
-            }
+            /*  &::-webkit-scrollbar-button {
+            } */
 
             /* &::-webkit-scrollbar-button {
               background-color: red;
