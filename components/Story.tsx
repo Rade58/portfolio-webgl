@@ -56,6 +56,14 @@ import {
   storyHeaderHeight,
   storyHeaderMargin,
   matchMediaMaxWidth,
+  verticalGradient1,
+  verticalGradient2,
+  verticalGradient3,
+  verticalGradient4,
+  verticalGradient5,
+  verticalGradient6,
+  verticalGradient7,
+  circularGradient1,
 } from "../css_vars";
 
 // SERIALIZERS
@@ -65,16 +73,6 @@ import serializers from "./sanity_serializers";
 import { storyThreshold } from "../breakpoints";
 
 import { SanityDataI } from "../sanity/data_types";
-
-import {
-  verticalGradient1,
-  verticalGradient2,
-  verticalGradient3,
-  verticalGradient4,
-  verticalGradient5,
-  verticalGradient6,
-  verticalGradient7,
-} from "../css_vars";
 
 interface PropsStoryI {
   data: SanityDataI;
@@ -781,6 +779,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             &::-webkit-scrollbar-track {
               background-color: violet;
               border-radius: 2.8px;
+              background-image: ${verticalGradient1};
             }
 
             &::-webkit-scrollbar-thumb {
@@ -788,6 +787,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
               border-radius: 2.8px;
               border: #b13d6d solid 0px;
               box-shadow: 1px 1px 1px 1px crimson;
+              background-image: ${circularGradient1};
             }
 
             /* &::-webkit-scrollbar-button {
