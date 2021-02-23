@@ -76,3 +76,8 @@ export const verticalGradient7 = /* css */ `
 export const circularGradient1 = /* css */ `
   radial-gradient( circle farthest-corner at 1.2% 5.3%,  rgba(255,85,166,1) 0%, rgba(255,154,98,1) 100.2% )
 `;
+
+//
+export const tagsBackgroundImage = /* css */ `
+  linear-gradient(to top, rgba(161, 140, 209, 0.248) 0%, rgba(251, 194, 235, 0.349) 100%)
+`;
