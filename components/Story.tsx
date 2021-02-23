@@ -697,6 +697,11 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
                 margin-left: 8px;
                 margin-right: auto;
               }
+
+              &::-webkit-scrollbar-button {
+                display: block;
+                background: #b13d6d;
+              }
             }
 
             /* ----------------------------------------------- */
