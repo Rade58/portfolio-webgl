@@ -145,3 +145,10 @@ export const niceGrayGradient = /* css */ `
 export const niceOrageGradient = /* css */ `
   linear-gradient(-60deg, #ff5858 0%, #f09819 100%)
 `;
+export const niceTegetGradient = /* css */ `
+  linear-gradient(-20deg, #2b5876 0%, #4e4376 100%)
+`;
+export const niceMakeupGradient = /* css */ `
+  linear-gradient(45deg, #874da2 0%, #c43a30 100%)
+
+`;
