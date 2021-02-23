@@ -76,6 +76,7 @@ import {
   gradient9,
   gradient10,
   gradient11,
+  niceTegetGradient,
 } from "../css_vars";
 
 // SERIALIZERS
@@ -643,7 +644,11 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
               padding-left: 14px;
               padding-right: 14px;
 
-              /* position: ; */
+              &::-webkit-scrollbar-thumb {
+                border-radius: 2.8px;
+                box-shadow: 1px 1px 1px 1px rgba(63, 33, 194, 0.301);
+                background-image: ${niceTegetGradient};
+              }
             }
           }
         }
