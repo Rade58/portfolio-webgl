@@ -66,6 +66,16 @@ import { storyThreshold } from "../breakpoints";
 
 import { SanityDataI } from "../sanity/data_types";
 
+import {
+  verticalGradient1,
+  verticalGradient2,
+  verticalGradient3,
+  verticalGradient4,
+  verticalGradient5,
+  verticalGradient6,
+  verticalGradient7,
+} from "../css_vars";
+
 interface PropsStoryI {
   data: SanityDataI;
 }
@@ -760,21 +770,22 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             /* --------- SCROOLLBAR STYLING --------- */
             /* ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]] */
             &::-webkit-scrollbar {
-              width: 12px;
+              width: 10px;
             }
 
-            scrollbar-color: crimson tomato;
+            /* scrollbar-color: crimson tomato; */
             scrollbar-width: thin;
 
             &::-webkit-scrollbar-track {
               background-color: violet;
-              border-radius: 6px;
+              border-radius: 2.8px;
             }
 
             &::-webkit-scrollbar-thumb {
               background-color: blanchedalmond;
-              border-radius: 6px;
-              border: #b13d6d solid 1px;
+              border-radius: 2.8px;
+              border: #b13d6d solid 0px;
+              box-shadow: 1px 1px 1px 1px crimson;
             }
 
             /* &::-webkit-scrollbar-button {
