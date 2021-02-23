@@ -653,7 +653,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             & > article.story-article {
               direction: rtl;
 
-              border: pink solid 1px;
+              border: pink solid 0px;
               /* padding-right: 18px; */
 
               & > * {
