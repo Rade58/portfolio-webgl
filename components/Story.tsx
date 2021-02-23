@@ -649,11 +649,19 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             & article {
               padding-left: 14px;
               padding-right: 14px;
+              &::-webkit-scrollbar-track {
+                background-image: ${verticalGradient4};
+                box-shadow: 2px 2px 2px 2px rgba(38, 65, 83, 0.555);
+              }
 
               &::-webkit-scrollbar-thumb {
                 border-radius: 2.8px;
                 box-shadow: 1px 1px 1px 1px rgba(63, 33, 194, 0.301);
                 background-image: ${niceBlackGradient};
+
+                &:hover {
+                  background-image: ${niceTegetGradient};
+                }
               }
             }
           }
@@ -698,9 +706,20 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
                 margin-right: auto;
               }
 
-              &::-webkit-scrollbar-button {
-                display: block;
-                background: #b13d6d;
+              &::-webkit-scrollbar-track {
+                background-image: ${gradient7};
+                border: #352d64 inset 1px;
+                box-shadow: 1px 1px 1px 1px rgba(36, 28, 70, 0.096);
+              }
+
+              &::-webkit-scrollbar-thumb {
+                border: #b13d6d solid 0px;
+                box-shadow: 1px 1px 1px 1px rgba(63, 33, 194, 0.301);
+                background-image: ${gradient11};
+
+                &:hover {
+                  background-image: ${niceRedishGradient};
+                }
               }
             }
 
@@ -808,11 +827,8 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             scrollbar-width: thin;
 
             &::-webkit-scrollbar-track {
-              background-color: violet;
+              /* background-color: violet; */
               border-radius: 2.8px;
-              background-image: ${gradient7};
-              border: #352d64 inset 1px;
-              box-shadow: 1px 1px 1px 1px rgba(36, 28, 70, 0.096);
 
               padding: 2px;
             }
@@ -820,16 +836,18 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             &::-webkit-scrollbar-thumb {
               background-color: blanchedalmond;
               border-radius: 2.8px;
-              border: #b13d6d solid 0px;
-              box-shadow: 1px 1px 1px 1px rgba(63, 33, 194, 0.301);
-              background-image: ${gradient11};
+
               /* width: 8px; */
               margin: 2px;
             }
 
-            &::-webkit-scrollbar-corner {
-              background-color: red;
+            &::-webkit-scrollbar-track-piece {
+              border: rimson outset 4px;
             }
+
+            /* &::-webkit-scrollbar-corner {
+              background-color: red;
+            } */
 
             /*  &::-webkit-scrollbar-button {
             } */
