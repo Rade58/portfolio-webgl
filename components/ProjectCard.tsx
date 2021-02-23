@@ -9,6 +9,7 @@ import styled from "@emotion/styled";
 import moment from "moment";
 
 import Separator from "./Separator";
+import Tags from "./Tags";
 
 import { SingleProjectI as SPI } from "./ListOfProjects";
 
@@ -57,6 +58,7 @@ const ProjectCard: FunctionComponent<SingleProjectI> = ({
           </time>
           {JSON.stringify({ tags })}
         </div>
+        <Tags tags={tags} />
         {direction === "right" && <aside className="track track-right" />}
       </a>
     </div>
