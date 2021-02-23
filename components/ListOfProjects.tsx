@@ -208,11 +208,11 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
             <Separator
               nonEmoji
               direction={index % 2 ? "inwards" : "outwards"}
-              thickness={1}
+              thickness={2}
             />
           )}
           {!storyIsBellow && index % 2 !== 0 && (
-            <Separator nonEmoji direction={"inwards"} thickness={1} />
+            <Separator nonEmoji direction={"inwards"} thickness={2} />
           )}
         </Fragment>
       ))}

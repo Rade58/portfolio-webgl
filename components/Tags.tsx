@@ -17,6 +17,7 @@ const Tags: FunctionComponent<TagsPropsI> = ({ tags }) => {
       css={css`
         border: pink solid 1px;
         display: flex;
+        flex-wrap: wrap;
 
         width: fit-content;
 

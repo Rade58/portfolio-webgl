@@ -56,9 +56,9 @@ const ProjectCard: FunctionComponent<SingleProjectI> = ({
           <time dateTime={dateTime}>
             {moment(dateTime).format("MMMM Do YYYY, h:mm:ss a")}
           </time>
-          {JSON.stringify({ tags })}
+          {/* {JSON.stringify({ tags })} */}
+          <Tags tags={tags} />
         </div>
-        <Tags tags={tags} />
         {direction === "right" && <aside className="track track-right" />}
       </a>
     </div>
