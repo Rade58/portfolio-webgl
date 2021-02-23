@@ -779,7 +779,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             &::-webkit-scrollbar-track {
               background-color: violet;
               border-radius: 2.8px;
-              background-image: ${verticalGradient1};
+              background-image: ${verticalGradient4};
             }
 
             &::-webkit-scrollbar-thumb {
@@ -787,7 +787,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
               border-radius: 2.8px;
               border: #b13d6d solid 0px;
               box-shadow: 1px 1px 1px 1px crimson;
-              background-image: ${circularGradient1};
+              background-image: ${verticalGradient6};
             }
 
             /* &::-webkit-scrollbar-button {

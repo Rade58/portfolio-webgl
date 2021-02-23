@@ -81,3 +81,38 @@ export const circularGradient1 = /* css */ `
 export const tagsBackgroundImage = /* css */ `
   linear-gradient(to top, rgba(161, 140, 209, 0.248) 0%, rgba(251, 194, 235, 0.349) 100%)
 `;
+
+// -------- MORE GRADIENTS --------
+// --------------------------------
+export const gradient1 = /* css */ `
+  radial-gradient( circle farthest-corner at 3.1% 8.2%,  rgba(248,250,107,1) 0%, rgba(238,148,148,1) 98.2% )
+`;
+export const gradient2 = /* css */ `
+  radial-gradient( circle farthest-corner at 10% 20%,  rgba(4,159,108,1) 0%, rgba(194,254,113,1) 90.1% )
+`;
+export const gradient3 = /* css */ `
+  linear-gradient(to down, rgb(242, 112, 156), rgb(255, 148, 114))
+`;
+export const gradient4 = /* css */ `
+  linear-gradient(to top, rgb(182, 244, 146), rgb(51, 139, 147))
+`;
+export const gradient5 = /* css */ `
+  linear-gradient( to top,  rgba(156,252,248,1) 11.2%, rgba(110,123,251,1) 91.1% )
+`;
+export const gradient6 = /* css */ `
+  linear-gradient(to bottom, #3a1c71, #d76d77, #ffaf7b)
+`;
+export const gradient7 = /* css */ `
+  radial-gradient( circle farthest-corner at 10% 20%,  rgba(69,86,102,1) 0%, rgba(34,34,34,1) 90% )
+`;
+export const gradient8 = /* css */ `
+  linear-gradient( to top,  rgba(0,40,70,1) -4.8%, rgba(255,115,115,1) 82.7%, rgba(255,175,123,1) 97.2% )
+`;
+export const gradient9 = /* css */ `
+  linear-gradient( to bottom,  rgba(25,50,70,0.81) 10.7%, rgba(155,65,25,0.72) 39.5%, rgba(255,192,0,0.81) 69.7% )
+`;
+export const gradient10 = /* css */ `
+  linear-gradient( to bottom,  rgba(0,40,70,1) -4.8%, rgba(255,115,115,1) 82.7%, rgba(255,175,123,1) 97.2% )
+`;
+// --------------------------------
+// --------------------------------
