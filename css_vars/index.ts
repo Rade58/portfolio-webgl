@@ -136,3 +136,12 @@ export const niceBlackGradient = /* css */ `
 export const niceBlueGradient = /* css */ `
   linear-gradient(to top, #09203f 0%, #537895 100%)
 `;
+export const niceRedishGradient = /* css */ `
+  linear-gradient(to top, #f77062 0%, #fe5196 100%)
+`;
+export const niceGrayGradient = /* css */ `
+  linear-gradient(60deg, #29323c 0%, #485563 100%)
+`;
+export const niceOrageGradient = /* css */ `
+  linear-gradient(-60deg, #ff5858 0%, #f09819 100%)
+`;
