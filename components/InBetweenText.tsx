@@ -10,7 +10,9 @@ const InBetweenText: FunctionComponent = ({ children }) => {
   return (
     <div
       css={css`
-        border: pink solid 1px;
+        border: pink solid 0px;
+        margin-top: 8px;
+        padding-bottom: 4px;
       `}
       className="in-between-text"
     >
