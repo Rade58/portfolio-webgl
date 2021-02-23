@@ -129,7 +129,7 @@ export const gradient14 = /* css */ `
 
 // --------------------------------
 // --------------------------------
-// MORE GRADIENTS
+// MORE GRADIENTS (MOZES DA IH KORISTIS KADA BUDES PRAVIO GLAVNICU SITE-A)
 export const niceBlackGradient = /* css */ `
   linear-gradient(to right, #434343 0%, black 100%)
 `;
