@@ -133,3 +133,6 @@ export const gradient14 = /* css */ `
 export const niceBlackGradient = /* css */ `
   linear-gradient(to right, #434343 0%, black 100%)
 `;
+export const niceBlueGradient = /* css */ `
+  linear-gradient(to top, #09203f 0%, #537895 100%)
+`;
