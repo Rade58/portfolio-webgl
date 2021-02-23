@@ -12,9 +12,27 @@ interface TagsPropsI {
 
 const Tags: FunctionComponent<TagsPropsI> = ({ tags }) => {
   return (
-    <aside>
+    <aside
+      className="tags project-tags"
+      css={css`
+        border: pink solid 1px;
+        display: flex;
+
+        width: fit-content;
+
+        & > * {
+          flex-grow: 0;
+          flex-shrink: 0;
+          border: crimson solid 1px;
+          margin: 1px;
+        }
+      `}
+    >
       {tags.map((tag) => (
-        <div key={tag}>{tag}</div>
+        <div key={tag}>
+          {"#"}
+          {tag}
+        </div>
       ))}
     </aside>
   );
