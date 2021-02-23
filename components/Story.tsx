@@ -770,7 +770,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             /* --------- SCROOLLBAR STYLING --------- */
             /* ]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]] */
             &::-webkit-scrollbar {
-              width: 10px;
+              width: 9px;
             }
 
             /* scrollbar-color: crimson tomato; */
