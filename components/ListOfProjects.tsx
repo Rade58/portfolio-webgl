@@ -158,16 +158,22 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
                 height: fit-content;
                 color: var(--text-color1);
                 font-size: 1.2rem;
+
+                display: flex;
+                margin-left: 8%;
               }
 
               & time {
                 font-size: 0.9rem;
                 color: var(--text-color2);
+                border: olive solid 0px;
+                width: 218px;
+                margin-left: auto;
               }
 
               & p {
                 margin-top: 4px;
-                margin-bottom: 4px;
+                margin-bottom: 1px;
                 color: var(--text-color3);
               }
 
@@ -176,6 +182,10 @@ const ListOfProjects: FunctionComponent<ListOfProjectsPropsI> = ({
                 margin: 0;
                 color: var(--text-color4);
                 font-size: 1.1rem;
+                margin-top: 1px;
+                border: olive solid 0px;
+                width: 218px;
+                margin-left: auto;
 
                 & .project-type {
                   font-weight: 300;

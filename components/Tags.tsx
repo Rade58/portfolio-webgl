@@ -20,6 +20,9 @@ const Tags: FunctionComponent<TagsPropsI> = ({ tags }) => {
         flex-wrap: wrap;
 
         width: fit-content;
+        margin-top: 4px;
+        margin-left: auto;
+        margin-right: auto;
 
         & > * {
           flex-grow: 0;
