@@ -126,5 +126,10 @@ export const gradient13 = /* css */ `
 export const gradient14 = /* css */ `
   linear-gradient(to top, #ff0844 0%, #ffb199 100%)
 `;
+
 // --------------------------------
 // --------------------------------
+// MORE GRADIENTS
+export const niceBlackGradient = /* css */ `
+  linear-gradient(to right, #434343 0%, black 100%)
+`;
