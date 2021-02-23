@@ -626,11 +626,11 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
           & .content {
             /* --------------------------------------- */
             position: relative;
-            left: -8px;
+            /* left: -8px; */
             width: 100%;
 
             & article {
-              padding-left: 18px;
+              padding-left: 14px;
               padding-right: 14px;
 
               /* position: ; */
@@ -739,6 +739,8 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
 
           /* margin: 8px; */
           height: 88.8%;
+
+          /* width: 102%; */
 
           & h1 {
             text-align: center;

@@ -77,6 +77,8 @@ const ArticleStory: FunctionComponent<PropsI> = ({
             }
           }
 
+          /* width: 100%; */
+
           &.media-bellow {
             height: 100%;
 
