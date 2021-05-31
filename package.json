@@ -5,7 +5,17 @@
   "repository": "git@github.com:Rade58/portfolio.git",
   "author": "Rade58 <bajic.rade2@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "lint": "eslint --ignore-path ./.gitignore --fix \"./**/*.{js,ts,jsx,tsx}\"",
+    "lint:check": "eslint --ignore-path ./.gitignore --quiet \"./**/*.{js,ts,jsx,tsx}\"",
+    "format": "prettier --ignore-path ./.gitignore --write \"./**/*.{html,json,js,ts,jsx,tsx,css}\"",
+    "format:check": "prettier --ignore-path ./.gitignore --check \"./**/*.{html,json,js,ts,jsx,tsx,css}\""
+  },
   "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "@types/node": "^15.6.1",
+    "@types/react": "^17.0.8",
+    "@types/react-dom": "^17.0.5",
     "@typescript-eslint/eslint-plugin": "^4.25.0",
     "@typescript-eslint/parser": "^4.25.0",
     "eslint": "^7.27.0",
@@ -13,8 +23,9 @@
     "eslint-plugin-graphql": "^4.0.0",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "prettier": "^2.3.0"
-  }
+    "prettier": "^2.3.0",
+    "typescript": "^4.3.2"
+  },
+  "dependencies": {}
 }
