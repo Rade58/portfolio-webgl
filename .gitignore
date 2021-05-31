@@ -4,6 +4,14 @@ node_modules
 
 .vercel
 
+# client
+client/node_modules
+client/.vercel
+client/.next
+
 # dev SKETCHES JAVASCRIPT FILES
-dev_sketches/**/*.js
-sketch/**/**/*.js
+client/dev_sketches/**/*.js
+client/sketch/**/**/*.js
+
+# portfolio_studio (sanity)
+portfolio_studio/node_modules
