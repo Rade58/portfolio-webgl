@@ -516,7 +516,7 @@ const storyMachine = createMachine<
         { bTl, left, right, major, fishLeft, fishRight },
         __
       ) => {
-        console.log({ left, right });
+        // console.log({ left, right });
 
         if (major === "undefined") {
           if (fishLeft) {

@@ -32,7 +32,7 @@ const Blog: FunctionComponent<PropsI> = ({ blogArticleRef, data }) => {
 
   const { major } = state.context;
 
-  console.log({ blogData: data });
+  // console.log({ blogData: data });
 
   return (
     <ArticleStory

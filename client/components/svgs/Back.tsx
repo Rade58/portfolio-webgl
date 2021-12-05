@@ -19,9 +19,9 @@ const Back: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
       send({
         type: EE.BRING_SVG,
         payload: {
-          backwardsSvg: (backSvgRef.current.querySelector(
+          backwardsSvg: backSvgRef.current.querySelector(
             "svg"
-          ) as unknown) as SVGElement,
+          ) as unknown as SVGElement,
         },
       });
     }
@@ -40,7 +40,7 @@ const Back: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
       role="button"
       tabIndex={0}
       onClick={(e) => {
-        console.log("click back");
+        // console.log("click back");
         if (
           (state &&
             state.context &&

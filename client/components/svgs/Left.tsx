@@ -23,9 +23,9 @@ const Left: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
       send({
         type: EE.BRING_SVG,
         payload: {
-          leftBSvg: (leftSvgRef.current.querySelector(
+          leftBSvg: leftSvgRef.current.querySelector(
             "svg"
-          ) as unknown) as SVGElement,
+          ) as unknown as SVGElement,
         },
       });
     }
@@ -126,7 +126,7 @@ const Left: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
         }`}
         tabIndex={0}
         onClick={(e) => {
-          console.log("click back");
+          // console.log("click back");
           if (
             (state &&
               state.context &&

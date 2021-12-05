@@ -127,9 +127,8 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
   const [state, send] = useService(storyService);
 
   const { major } = state.context;
-  const [bellowAboveClass, setBellowAboveClass] = useState<"bellow" | "above">(
-    "bellow"
-  );
+  const [bellowAboveClass, setBellowAboveClass] =
+    useState<"bellow" | "above">("bellow");
 
   //
   useEffect(() => {
@@ -187,7 +186,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
 
         if (!mediaBellow) {
           if (firstStoryAnim) {
-            console.log("FIRST STORY ANIMATION");
+            // console.log("FIRST STORY ANIMATION");
 
             TweenMax.fromTo(
               storyRef.current,
@@ -285,7 +284,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
         // -------------------------------
 
         if (firstStoryAnim) {
-          console.log("FIRST STORY ANIMATION");
+          // console.log("FIRST STORY ANIMATION");
 
           TweenMax.fromTo(
             storyRef.current,
@@ -521,10 +520,8 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
 
   // ---------------- THRESHOLDS ----------------
 
-  const [
-    storyThresholdIsBelllow,
-    setStoryThresholdIsBellow,
-  ] = useState<boolean>(false);
+  const [storyThresholdIsBelllow, setStoryThresholdIsBellow] =
+    useState<boolean>(false);
 
   const resizeCallback = useCallback(() => {
     if (storyRef.current) {
@@ -553,7 +550,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
   useEffect(
     () => () => {
       window.removeEventListener("resize", resizeCallback);
-      console.log("UNMOUNTING");
+      // console.log("UNMOUNTING");
     },
     []
   );

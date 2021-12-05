@@ -54,7 +54,7 @@ const UpDownButton: FunctionComponent = () => {
         state.event.type === EE.DISABLE_OUTLINE ||
         state.event.type === EE.ENABLE_OUTLINE
       ) {
-        console.log(state.value);
+        // console.log(state.value);
 
         if (state.value[fse.idle] === fseS.partial) {
           TweenMax.set(arrow, {

@@ -21,9 +21,9 @@ const Right: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
       send({
         type: EE.BRING_SVG,
         payload: {
-          rightBSvg: (rightSvgRef.current.querySelector(
+          rightBSvg: rightSvgRef.current.querySelector(
             "svg"
-          ) as unknown) as SVGElement,
+          ) as unknown as SVGElement,
         },
       });
     }
@@ -130,7 +130,7 @@ const Right: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
         }`}
         tabIndex={0}
         onClick={() => {
-          console.log("click forward");
+          // console.log("click forward");
           if (
             (state &&
               state.context &&

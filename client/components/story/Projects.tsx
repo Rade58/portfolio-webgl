@@ -37,7 +37,7 @@ const Projects: FunctionComponent<PropsI> = ({
 
   const { major } = state.context;
 
-  console.log({ projectsData: data });
+  // console.log({ projectsData: data });
 
   return (
     <ArticleStory

@@ -23,9 +23,9 @@ const Forth: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
       send({
         type: EE.BRING_SVG,
         payload: {
-          forwardsSvg: (forwrdSvgRef.current.querySelector(
+          forwardsSvg: forwrdSvgRef.current.querySelector(
             "svg"
-          ) as unknown) as SVGElement,
+          ) as unknown as SVGElement,
         },
       });
     }
@@ -49,7 +49,7 @@ const Forth: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
           (e.target as HTMLElement).offsetLeft,
           (e.target as HTMLElement).offsetLeft
         ); */
-        console.log("click forward");
+        // console.log("click forward");
         if (
           (state &&
             state.context &&

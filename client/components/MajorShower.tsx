@@ -42,16 +42,15 @@ const MajorShowers: FunctionComponent = () => {
 
   const [setupHappened, setSetupHappened] = useState<boolean>(false);
 
-  const [lastAnimIdle, setLastAnimIdle] = useState<
-    fse.anim_active | fse.idle
-  >();
+  const [lastAnimIdle, setLastAnimIdle] =
+    useState<fse.anim_active | fse.idle>();
 
   const animationSetupCallback = useCallback(() => {
     if (setupHappened) {
       return;
     }
 
-    console.log("-----SETUP HAPPENED-----");
+    // console.log("-----SETUP HAPPENED-----");
     if (!setupHappened) {
       if (prevRef.current && nextRef.current && currRef.current) {
         // tween max setup
@@ -146,7 +145,7 @@ const MajorShowers: FunctionComponent = () => {
           (state.value[fse.idle] && lastAnimIdle !== fse.idle)
         ) {
           //
-          console.log("------ENTERED IDLE------");
+          // console.log("------ENTERED IDLE------");
 
           TweenMax.to(currRef.current, {
             delay: 0.4,
@@ -170,7 +169,7 @@ const MajorShowers: FunctionComponent = () => {
           lastAnimIdle !== fse.anim_active
         ) {
           //
-          console.log("------ENTERED ANIM_ACTIVE------");
+          // console.log("------ENTERED ANIM_ACTIVE------");
 
           TweenMax.to(currRef.current, {
             translateY: "-150%",

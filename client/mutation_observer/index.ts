@@ -8,7 +8,7 @@ export const majorStateHolder = document.querySelector(
 
 const animationMachineObserver = new MutationObserver(
   (mutationList, observer) => {
-    console.log("mutations");
+    // console.log("mutations");
 
     for (const mutation of mutationList) {
       // debugger;
@@ -16,12 +16,14 @@ const animationMachineObserver = new MutationObserver(
         appService.send({
           type: EE.OBSERVER,
           payload: {
-            currentAnimeMachineFinitestate: /* (mutation.target as HTMLDivElement)
-                        .dataset.finiteState */ majorStateHolder
-              .dataset.finiteState as fseAnim,
-            currentAnimeMachineMajorState: /* (mutation.target as HTMLDivElement)
-                        .dataset.majorState */ majorStateHolder
-              .dataset.majorState as fseAnim,
+            currentAnimeMachineFinitestate:
+              /* (mutation.target as HTMLDivElement)
+                        .dataset.finiteState */ majorStateHolder.dataset
+                .finiteState as fseAnim,
+            currentAnimeMachineMajorState:
+              /* (mutation.target as HTMLDivElement)
+                        .dataset.majorState */ majorStateHolder.dataset
+                .majorState as fseAnim,
             canLoadControls:
               majorStateHolder.dataset.firstRenderHappened === "happened"
                 ? true

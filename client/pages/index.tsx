@@ -49,7 +49,7 @@ const Portfolio: FunctionComponent<PagePropsI> = ({
   data,
 }) => {
   // console.log({ htmlContentString });
-  console.log({ data });
+  // console.log({ data });
 
   const {
     Provider: AppContextProvider,
@@ -233,7 +233,7 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   }`);
 
-  console.log(JSON.stringify({ stories }, null, 2));
+  // console.log(JSON.stringify({ stories }, null, 2));
 
   return {
     props: {
