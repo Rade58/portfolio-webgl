@@ -26,10 +26,8 @@ const ComponentName: FunctionComponent = () => {
 
   const [storyState, sendToStoeyMachine] = useService(storyService);
 
-  const {
-    currentAnimeMachineFinitestate,
-    currentAnimeMachineMajorState,
-  } = appState.context;
+  const { currentAnimeMachineFinitestate, currentAnimeMachineMajorState } =
+    appState.context;
 
   const { major } = storyState.context;
 
@@ -37,6 +35,7 @@ const ComponentName: FunctionComponent = () => {
     <div
       css={css`
         width: 100%;
+        /* border: pink solid 4px; */
       `}
     >
       {storyState.value} ------ {major} -----{" "}

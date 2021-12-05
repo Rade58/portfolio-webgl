@@ -81,7 +81,7 @@ const Forth: FunctionComponent<{ visible?: boolean }> = ({ visible }) => {
         }
       }}
       css={css`
-        border: pink solid 0px;
+        /* border: pink solid 4px; */
         flex-basis: 46vw;
         /* flex-grow: 1; */
         height: 60px;

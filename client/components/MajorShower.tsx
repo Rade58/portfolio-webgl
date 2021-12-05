@@ -275,7 +275,7 @@ const MajorShowers: FunctionComponent = () => {
             width: fit-content;
 
             position: relative;
-            bottom: -12px;
+            bottom: 0px;
 
             font-size: 1.2rem;
 
@@ -316,6 +316,10 @@ const MajorShowers: FunctionComponent = () => {
               color: #864188;
               text-decoration: underline;
               text-decoration-color: #202341;
+
+              /*  */
+              /* border: crimson solid 2px; */
+              /*  */
 
               /* &:first-of-type {
                 text-decoration-line: overline;

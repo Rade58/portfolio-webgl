@@ -43,10 +43,8 @@ const ControlAnim: FunctionComponent = () => {
     return null;
   }
 
-  const {
-    currentAnimeMachineFinitestate,
-    currentAnimeMachineMajorState,
-  } = state.context;
+  const { currentAnimeMachineFinitestate, currentAnimeMachineMajorState } =
+    state.context;
 
   const majorIsNotUndef = currentAnimeMachineMajorState !== "undefined";
 
@@ -56,7 +54,7 @@ const ControlAnim: FunctionComponent = () => {
       <section
         className="anim_control"
         css={css`
-          border: crimson solid 0px;
+          /* border: crimson solid 4px; */
           position: fixed;
           /* top: 0; */
           left: 0;
