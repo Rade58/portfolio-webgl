@@ -142,7 +142,7 @@ const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
       {/* ------------------------------------------------- */}
       <Separator nonEmoji direction="outwards" thickness={3} />
       {/* ------------------------------------------------- */}
-      <InBetweenText>This is me looking like a 100$</InBetweenText>
+      <InBetweenText>This is me</InBetweenText>
       <MyImage url={data.myImage.asset.url} />
       {/* {major !== "undefined" ? storyMajorText(major, "") : ""} */}
       <Separator nonEmoji direction="inwards" thickness={3} />
