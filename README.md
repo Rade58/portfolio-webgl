@@ -1,2 +1,1 @@
-# WebGL personal/portfolio website built with sanity, nextjs and canvas-sketch
-
+# WebGL personal/portfolio website built with nextjs and canvas-sketch
