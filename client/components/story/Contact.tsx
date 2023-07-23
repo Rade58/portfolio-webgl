@@ -43,7 +43,7 @@ const Contact: FunctionComponent<PropsI> = ({ contactArticleRef }) => {
     >
       {/* {major !== "undefined" ? storyMajorText(major, "") : ""} */}
       <StoryIframe
-        path="https://radedev.com"
+        path="https://radedev.com/get-in-touch"
       />
       
     </ArticleStory>
