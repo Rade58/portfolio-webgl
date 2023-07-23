@@ -6,32 +6,37 @@ import React, { FunctionComponent, RefObject, useState } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
-
 interface Props {
   path: string;
   title: string;
 }
 
-const StoryIframe: FunctionComponent<Props> = ({title, path = "https://radedev.com" }) => {
-  const [isLoaded, setIsLoaded ] = useState<boolean>(false)
+const StoryIframe: FunctionComponent<Props> = ({
+  title,
+  path = "https://radedev.com",
+}) => {
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
-  return <>
-  
-  <div css={css`
-        height: 8vh;
-      `}></div>
-      {!isLoaded && <div
+  return (
+    <>
+      <div
         css={css`
-          color: crimson;
-          font-size: 2rem;
-          position: absolute;
-          top: 20px;
-          left: 42%;
+          height: 8vh;
         `}
-      >
-        <div 
+      ></div>
+      {!isLoaded && (
+        <div
           css={css`
-                            & {
+            color: crimson;
+            font-size: 2rem;
+            position: absolute;
+            top: 20px;
+            left: 42%;
+          `}
+        >
+          <div
+            css={css`
+              & {
                 display: inline-block;
                 position: relative;
                 width: 80px;
@@ -46,19 +51,19 @@ const StoryIframe: FunctionComponent<Props> = ({title, path = "https://radedev.c
                 background: #c0b5c9;
                 animation-timing-function: cubic-bezier(0, 1, 1, 0);
               }
-              & div:nth-child(1) {
+              & div:nth-of-type(1) {
                 left: 8px;
                 animation: lds-ellipsis1 0.6s infinite;
               }
-              & div:nth-child(2) {
+              & div:nth-of-type(2) {
                 left: 8px;
                 animation: lds-ellipsis2 0.6s infinite;
               }
-              & div:nth-child(3) {
+              & div:nth-of-type(3) {
                 left: 32px;
                 animation: lds-ellipsis2 0.6s infinite;
               }
-              & div:nth-child(4) {
+              & div:nth-of-type(4) {
                 left: 56px;
                 animation: lds-ellipsis3 0.6s infinite;
               }
@@ -86,17 +91,19 @@ const StoryIframe: FunctionComponent<Props> = ({title, path = "https://radedev.c
                   transform: translate(24px, 0);
                 }
               }
-          
-          `}
-        
-        ><div></div><div></div><div></div><div></div></div>
-        </div>}
+            `}
+          >
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </div>
+      )}
       <iframe
         css={css`
           border: #363132 0px solid;
           border-radius: 24px;
-
-          
         `}
         // style={{visibility: isLoaded? "visible": "hidden"}}
         src={path}
@@ -104,15 +111,18 @@ const StoryIframe: FunctionComponent<Props> = ({title, path = "https://radedev.c
         height="86%"
         title={title}
         onLoadStart={() => {
-          // console.log("loaded")
-          setIsLoaded(true)
+          console.log("loaded");
+          setIsLoaded(true);
+        }}
+        onLoad={() => {
+          console.log("loaded");
+          setIsLoaded(true);
         }}
       >
         Your browser does not support iframes.
       </iframe>
-  
-  </>;
-}
+    </>
+  );
+};
 
-
-export default StoryIframe
+export default StoryIframe;
