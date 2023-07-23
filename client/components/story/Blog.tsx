@@ -21,6 +21,7 @@ import { fse as majorFsesEnum } from "../../sketch/middle_ground/major_states";
 import { storyMajorText } from "../../content";
 
 import serializers from "../sanity_serializers";
+import StoryIframe from "./StoryIframe";
 
 interface PropsI {
   blogArticleRef: RefObject<HTMLElement>;
@@ -47,17 +48,9 @@ const Blog: FunctionComponent<PropsI> = ({ blogArticleRef }) => {
         projectId="4mpb3bwc"
         serializers={serializers}
       /> */}
-      <div css={css`
-        height: 8vh;
-      `}></div>
-      <iframe
-        src="https://radedev.com/digital-garden"
-        width="100%"
-        height="86%"
-        title="Digital Garden"
-      >
-        Your browser does not support iframes.
-      </iframe>
+      <StoryIframe 
+        path="https://radedev.com/digital-garden"
+      />
       
       {/* ----------------------------- */}
       {/* <ListOfPosts posts={data.articles} /> */}

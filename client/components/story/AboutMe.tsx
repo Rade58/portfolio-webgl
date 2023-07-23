@@ -23,6 +23,7 @@ import { fse as majorFsesEnum } from "../../sketch/middle_ground/major_states";
 import { storyMajorText } from "../../content";
 
 import serializers from "../sanity_serializers";
+import StoryIframe from "./StoryIframe";
 
 
 
@@ -46,44 +47,9 @@ const AboutMe: FunctionComponent<PropsI> = ({ aboutMeArticleRef }) => {
     // @ts-expect-error
       majorName={"aboutme"}
     >
-      <div css={css`
-        height: 8vh;
-      `}></div>
-      {!isLoaded && <div
-        css={css`
-          color: crimson;
-          font-size: 2rem;
-          position: absolute;
-          top: 20px;
-          left: 42%;
-        `}
-      >
-        <div>
-
-        Loading...
-        </div>
-        
-        
-        </div>}
-      <iframe
-        css={css`
-          border: #363132 0px solid;
-          border-radius: 24px;
-
-          
-        `}
-        // style={{visibility: isLoaded? "visible": "hidden"}}
-        src="https://radedev.com"
-        width="100%"
-        height="86%"
-        title="About Me"
-        onLoad={() => {
-          console.log("loaded")
-          setIsLoaded(true)
-        }}
-      >
-        Your browser does not support iframes.
-      </iframe>
+      <StoryIframe 
+        path="https://radedev.com"
+      />
       
     </ArticleStory>
   );

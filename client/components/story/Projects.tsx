@@ -21,6 +21,7 @@ import { fse as majorFsesEnum } from "../../sketch/middle_ground/major_states";
 import { storyMajorText } from "../../content";
 
 import serializers from "../sanity_serializers";
+import StoryIframe from "./StoryIframe";
 
 interface PropsI {
   projectsArticleRef: RefObject<HTMLElement>;
@@ -58,17 +59,9 @@ const Projects: FunctionComponent<PropsI> = ({
       {/* <Separator nonEmoji direction="outwards" thickness={4} /> */}
 
       {/* <ListOfProjects storyIsBellow={storyIsBellow} projects={data.projects} /> */}
-      <div css={css`
-        height: 8vh;
-      `}></div>
-      <iframe
-        src="https://radedev.com/portfolio"
-        width="100%"
-        height="86%"
-        title="Rade Bajić"
-      >
-        Your browser does not support iframes.
-      </iframe>
+      <StoryIframe
+        path="https://radedev.com/portfolio"
+      />
     </ArticleStory>
   );
 };

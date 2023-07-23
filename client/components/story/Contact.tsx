@@ -21,6 +21,7 @@ import { fse as majorFsesEnum } from "../../sketch/middle_ground/major_states";
 import { storyMajorText } from "../../content";
 
 import serializers from "../sanity_serializers";
+import StoryIframe from "./StoryIframe";
 
 interface PropsI {
   contactArticleRef: RefObject<HTMLElement>;
@@ -41,17 +42,9 @@ const Contact: FunctionComponent<PropsI> = ({ contactArticleRef }) => {
       majorName={"contact"}
     >
       {/* {major !== "undefined" ? storyMajorText(major, "") : ""} */}
-      <div css={css`
-        height: 8vh;
-      `}></div>
-      <iframe
-        src="https://radedev.com/get-in-touch"
-        width="100%"
-        height="86%"
-        title="Get In Touch"
-      >
-        Your browser does not support iframes.
-      </iframe>
+      <StoryIframe
+        path="https://radedev.com"
+      />
       
     </ArticleStory>
   );
