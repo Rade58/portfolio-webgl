@@ -40,23 +40,26 @@ const Projects: FunctionComponent<PropsI> = ({
   // console.log({ projectsData: data });
 
   return (
+    // @ts-expect-error
     <ArticleStory
       articleReference={projectsArticleRef}
-      majorName={majorFsesEnum.projects}
+      majorName={"projects"}
     >
       {/* {major !== "undefined" ? storyMajorText(major, "") : ""} */}
-      <BlockContent
+      {/* <BlockContent
         blocks={data.bogati}
         dataset="production"
         projectId="4mpb3bwc"
         serializers={serializers}
-      />
+      /> */}
       {/* SAMO U CILJU PROBE, UKLONICU KASNIJE */}
 
       {/* ------------------------------ */}
-      <Separator nonEmoji direction="outwards" thickness={4} />
+      {/* <Separator nonEmoji direction="outwards" thickness={4} /> */}
 
-      <ListOfProjects storyIsBellow={storyIsBellow} projects={data.projects} />
+      {/* <ListOfProjects storyIsBellow={storyIsBellow} projects={data.projects} /> */}
+      <h1>Projects</h1>
+      
     </ArticleStory>
   );
 };

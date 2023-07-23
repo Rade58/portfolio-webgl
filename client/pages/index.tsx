@@ -18,7 +18,7 @@ import LoadedAnimation from "../components/LoadedAnimations";
 import StartingModal from "../components/StartingModal";
 import Story from "../components/Story";
 
-import sanityClient from "../sanity/sanity_client";
+// import sanityClient from "../sanity/sanity_client";
 
 import { setup } from "../some_handlers";
 
@@ -130,108 +130,7 @@ export const getStaticProps: GetStaticProps = async () => {
   // }`);
   //
   // TOP LEVEL QUERY, KOJI TREBA DA UZME SVE MAJOR DOKUMANTE
-  const stories = await sanityClient.fetch(/* groq */ `*[_type == 'story']{
-    // aboutme
-    aboutme -> {
-      title, previewText, bogati, major,
-      myImage {
-        asset -> {
-          url
-        }
-      },
-      devSvgs[] -> {
-        title,
-        devImage {
-          asset -> {
-            url
-          }
-        },
-        isEmoji,
-        emoji,
-        wikiUrl,
-        textDecorColor,
-        additionalBracketText
-      },
-
-      otherDevSvgs[] -> {
-        title,
-        devImage {
-          asset -> {
-            url
-          }
-        },
-        isEmoji,
-        emoji,
-        wikiUrl,
-        textDecorColor,
-        additionalBracketText
-      }
-
-    },
-    // projects
-    projects -> {
-      title, previewText, bogati, major,
-      github -> {
-        url,
-        icon {
-          asset -> {
-            url
-          }
-        }
-      },
-      projects[] -> {
-        title,
-        dateTime,
-        description,
-        emoji,
-        projectType,
-        link,
-        tags,
-        snapshot {
-          asset -> {
-            url
-          }
-        }
-      }
-    },
-    // contact
-    contact -> {
-      title, previewText, bogati, major,
-      socialIcons[] -> {
-        name,
-        url,
-        socialImage {
-          asset -> {
-            url
-          }
-        }
-      },
-      // OVDE POKAZUJEM KAKO JE SVE MOGUCE PISATI KADA
-      // SE QUERY-UJE REFERENCA
-      // OVDE CU DOBITI CEO OBJEKAT (A DODAO SAM I ALIAS STO JE MANJE VAZNO
-      // CISTO SAM PROVERIO DA LI ALIAS MOZE IMATI ISTO IME, I ON MOZE IMATI ISTO IME)
-      // ISTO TAKO MOGAO SAM URADITI -> {  i ovde query-evati propertije koje zelim  }
-      // U OVOM SLUCAJU JA CU IMATI SAMO JEDAN PROPERTI U OBJEKTU
-      "iconColor": iconColor ->,
-      // JA SAM IZNAD TREBAO URADITI SLEDECE STO SAM URADIO (NISAM SAMO JER TI POKAZUJEM STA MOZES)
-      // OVDE ODMAH UZIMAM PROPERTI currentMail SA REFERENCE
-      // I ZADAJEM GA ZA ALIAS KOJI SAM SMISLIO
-      // TAKO DA SADA OVDE NEMEM OBJEKAT KOA VREDNOST
-      // VREDNOST CE BITI STRING
-      "myEmail": email -> currentMail
-
-    },
-    // blog
-    blog -> {
-      title, previewText, bogati, major,
-      articles[] -> {
-        title,
-        date,
-        link,
-        tags
-      }
-    }
-  }`);
+ 
 
   // console.log(JSON.stringify({ stories }, null, 2));
 
@@ -240,7 +139,7 @@ export const getStaticProps: GetStaticProps = async () => {
       // blah: 1,
       htmlContentString /*: htmlCleanContentString*/,
       imageString,
-      data: stories[0],
+      // data: stories[0],
     },
   };
 };

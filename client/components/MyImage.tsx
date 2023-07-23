@@ -49,8 +49,8 @@ const MyImage: FunctionComponent<{ url: string }> = ({ url }) => {
             src={url}
             alt="picture of the author"
             layout="responsive"
-            height="auto"
-            width="auto"
+            // height="auto"
+            // width="auto"
             priority={true}
           />
         </div>

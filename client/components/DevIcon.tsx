@@ -151,8 +151,8 @@ const DevIcon: FunctionComponent<deviconProps> = ({
                 <span className="emoji-holder">{emoji}</span>
               ) : (
                 <Image
-                  width="auto"
-                  height="auto"
+                  // width="auto"
+                  // height="auto"
                   layout="responsive"
                   src={devImage}
                   alt={`${title}-icon`}
@@ -164,8 +164,8 @@ const DevIcon: FunctionComponent<deviconProps> = ({
           <span className="emoji-holder">{emoji}</span>
         ) : (
           <Image
-            width="auto"
-            height="auto"
+            // width="auto"
+            // height="auto"
             layout="responsive"
             src={devImage}
             alt={`${title}-icon`}

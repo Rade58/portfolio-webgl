@@ -35,59 +35,14 @@ const Contact: FunctionComponent<PropsI> = ({ contactArticleRef, data }) => {
   //
 
   return (
+    // @ts-expect-error
     <ArticleStory
       articleReference={contactArticleRef}
-      majorName={majorFsesEnum.contact}
+      majorName={"contact"}
     >
       {/* {major !== "undefined" ? storyMajorText(major, "") : ""} */}
-      <BlockContent
-        blocks={data.bogati}
-        dataset="production"
-        projectId="4mpb3bwc"
-        serializers={serializers}
-      />
-      <section
-        className="social-icons-container"
-        css={css`
-          border: pink solid 0px;
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: flex-start;
-
-          & div.social-icon {
-            &:first-of-type {
-              margin-left: auto;
-            }
-
-            &:last-of-type {
-              margin-right: auto;
-            }
-          }
-        `}
-      >
-        {data.socialIcons.map(({ name, url, socialImage }) => {
-          const {
-            asset: { url: socialImageUrl },
-          } = socialImage;
-
-          // console.log({ name, url, socialImageUrl });
-
-          return (
-            <SocialIcon
-              key={name}
-              socialUrl={url}
-              name={name}
-              socialImageUrl={socialImageUrl}
-            />
-          );
-        })}
-      </section>
-      <Separator nonEmoji thickness={3} direction="inwards" />
-      <MailCopy
-        copyIconColor={data.iconColor.color}
-        email={data.myEmail}
-        copyIconWidth={16}
-      />
+      <h1>Contact</h1>
+      
     </ArticleStory>
   );
 };

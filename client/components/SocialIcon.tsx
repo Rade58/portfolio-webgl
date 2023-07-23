@@ -87,8 +87,8 @@ const SocialIcon: FunctionComponent<SocialIconPropsI> = (props) => {
             <Image
               src={socialImageUrl}
               layout="responsive"
-              width="auto"
-              height="auto"
+              // width="auto"
+              // height="auto"
               alt={`${name}-icon`}
             />
           </div>

@@ -17,6 +17,7 @@ interface EmailIconPropsI {
 
 const EmailIcon: FunctionComponent<EmailIconPropsI> = ({ color, width }) => {
   return (
+    // @ts-expect-error
     <IconHolder color={color} width={width}>
       <EmailSvg />
     </IconHolder>

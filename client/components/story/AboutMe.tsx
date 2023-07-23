@@ -35,117 +35,12 @@ const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
   const { major } = state.context;
   // debugger;
   return (
+    // @ts-expect-error
     <ArticleStory
       articleReference={aboutMeArticleRef}
-      majorName={majorFsesEnum.aboutme}
+      majorName={"aboutme"}
     >
-      <BlockContent
-        blocks={data.bogati}
-        dataset="production"
-        projectId="4mpb3bwc"
-        serializers={serializers}
-      />
-      {/* ---------------- SEPARATOR ------------------ */}
-      <Separator emoji={`⌨️`} direction="outwards" />
-      {/* --------------------------------------------- */}
-      <InBetweenText>
-        Favorite things with whom I{"'"}m currently tinkering are:
-      </InBetweenText>
-      {/* MAPPING THROUGH ALL DEVICONS */}
-      {data.devSvgs.map(
-        ({
-          isEmoji,
-          emoji,
-          title,
-          devImage,
-          additionalBracketText,
-          textDecorColor,
-          wikiUrl,
-        }) => {
-          // debugger;
-
-          let url: string;
-
-          if (devImage && devImage.asset && devImage.asset.url) {
-            url = devImage.asset.url;
-          }
-
-          return isEmoji ? (
-            <DevIcon
-              //
-              emoji={emoji}
-              title={title}
-              wikiUrl={wikiUrl}
-              textDecorColor={textDecorColor}
-              additionalBracketText={additionalBracketText}
-              key={title}
-            />
-          ) : (
-            <DevIcon
-              //
-              devImage={url}
-              title={title}
-              wikiUrl={wikiUrl}
-              textDecorColor={textDecorColor}
-              additionalBracketText={additionalBracketText}
-              key={title}
-            />
-          );
-        }
-      )}
-      {/* --------------------------------------------- */}
-      <Separator emoji={`🖱️`} direction="inwards" />
-      <InBetweenText>
-        These are some other techologies I also like working with:
-      </InBetweenText>
-      {data.otherDevSvgs.map(
-        ({
-          isEmoji,
-          emoji,
-          title,
-          devImage,
-          additionalBracketText,
-          textDecorColor,
-          wikiUrl,
-        }) => {
-          // debugger;
-
-          let url: string;
-
-          if (devImage && devImage.asset && devImage.asset.url) {
-            url = devImage.asset.url;
-          }
-
-          return isEmoji ? (
-            <DevIcon
-              //
-              emoji={emoji}
-              title={title}
-              wikiUrl={wikiUrl}
-              textDecorColor={textDecorColor}
-              additionalBracketText={additionalBracketText}
-              key={title}
-            />
-          ) : (
-            <DevIcon
-              //
-              devImage={url}
-              title={title}
-              wikiUrl={wikiUrl}
-              textDecorColor={textDecorColor}
-              additionalBracketText={additionalBracketText}
-              key={title}
-            />
-          );
-        }
-      )}
-      {/* ------------------------------------------------- */}
-      <Separator nonEmoji direction="outwards" thickness={3} />
-      {/* ------------------------------------------------- */}
-      <InBetweenText>This is me</InBetweenText>
-      <MyImage url={data.myImage.asset.url} />
-      {/* {major !== "undefined" ? storyMajorText(major, "") : ""} */}
-      <Separator nonEmoji direction="inwards" thickness={3} />
+      <h1>About me</h1>
     </ArticleStory>
   );
 };

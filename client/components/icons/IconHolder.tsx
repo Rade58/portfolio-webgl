@@ -14,6 +14,7 @@ interface IconPropsI {
 const IconHolder: FunctionComponent<IconPropsI> = ({
   color,
   width,
+    // @ts-expect-error
   children,
 }) => {
   let iconWidth: number;

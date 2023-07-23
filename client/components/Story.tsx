@@ -862,28 +862,30 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
     >
       <div className="content">
         {/* <h1>{headingStory(major)}</h1> */}
-        <HeadingStory data={data} currentMajor={major} />
-        <PreviewStory data={data} />
+        {/* <HeadingStory data={data} currentMajor={major} /> */}
+        {/* <PreviewStory data={data} /> */}
         {/* <article ref={articleRef} className="story-article">
           {major === fsS.aboutme && <MyImage />}
           {storyMajorText(major, "")}
         </article> */}
         {/* ---------------------------------------------- */}
         <AboutMe
-          data={data[fsS.aboutme]}
+          // data={data[fsS.aboutme]}
           aboutMeArticleRef={aboutMeArticleRef}
         />
         {/* ---------------------------------------------- */}
         <Projects
           storyIsBellow={storyThresholdIsBelllow}
-          data={data[fsS.projects]}
+          // data={data[fsS.projects]}
           projectsArticleRef={projectsArticleRef}
         />
         <Contact
-          data={data[fsS.contact]}
+          // data={data[fsS.contact]}
           contactArticleRef={contactArticleRef}
         />
-        <Blog data={data[fsS.blog]} blogArticleRef={blogArticleRef} />
+        <Blog 
+        // data={data[fsS.blog]}
+         blogArticleRef={blogArticleRef} />
         {/* ---------------------------------------------- */}
         {/* KORISTIM SAMO DA BIH TESTIRAO */}
         {/* KASNIJE CE DATA BITI BRANCHED OUT ZA SVAKU OD GORNJIH KOMPONENTI */}

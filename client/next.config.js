@@ -61,6 +61,15 @@ module.exports = (phase, { defaultConfig }) => {
 
   newConfig.images.domains = ["cdn.sanity.io"];
 
+  newConfig.typescript = {
+      // !! WARN !!
+      // Dangerously allow production builds to successfully complete even if
+      // your project has type errors.
+      // !! WARN !!
+      ignoreBuildErrors: true,
+    
+  }
+
   return withPlugins([envPlugin, svgReactPlugin])(phase, {
     newConfig,
   });

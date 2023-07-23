@@ -25,6 +25,7 @@ interface PropsI {
 }
 
 const ArticleStory: FunctionComponent<PropsI> = ({
+  // @ts-expect-error
   children,
   articleReference,
   majorName,

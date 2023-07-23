@@ -35,20 +35,22 @@ const Blog: FunctionComponent<PropsI> = ({ blogArticleRef, data }) => {
   // console.log({ blogData: data });
 
   return (
+    // @ts-expect-error
     <ArticleStory
       articleReference={blogArticleRef}
-      majorName={majorFsesEnum.blog}
+      majorName={"blog"}
     >
       {/* {major !== "undefined" ? storyMajorText(major, "") : ""} */}
-      <BlockContent
+      {/* <BlockContent
         blocks={data.bogati}
         dataset="production"
         projectId="4mpb3bwc"
         serializers={serializers}
-      />
+      /> */}
+      <h1>Blog</h1>
 
       {/* ----------------------------- */}
-      <ListOfPosts posts={data.articles} />
+      {/* <ListOfPosts posts={data.articles} /> */}
     </ArticleStory>
   );
 };

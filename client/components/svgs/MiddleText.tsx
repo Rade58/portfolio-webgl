@@ -38,7 +38,7 @@ const ComponentName: FunctionComponent = () => {
         /* border: pink solid 4px; */
       `}
     >
-      {storyState.value} ------ {major} -----{" "}
+      {/* {storyState.value} ------ {major} -----{" "} */}
       {/* {currentAnimeMachineFinitestate} */}
     </div>
   );

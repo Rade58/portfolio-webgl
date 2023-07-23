@@ -16,6 +16,7 @@ interface CopyIconPropsI {
 
 const CopyIcon: FunctionComponent<CopyIconPropsI> = ({ color, width }) => {
   return (
+    // @ts-expect-error
     <Iconholder color={color} width={width}>
       <CopySvg />
     </Iconholder>

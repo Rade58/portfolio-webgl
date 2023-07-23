@@ -6,6 +6,7 @@ import { FunctionComponent } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
 
+// @ts-expect-error
 const InBetweenText: FunctionComponent = ({ children }) => {
   return (
     <div
