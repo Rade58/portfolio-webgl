@@ -191,6 +191,7 @@ const storyMachine = createMachine<
   {
     id: "story_machine",
     initial: fse.idle,
+    predictableActionArguments: true,
     context: {
       //
       // THRESHOLD
@@ -476,7 +477,7 @@ const storyMachine = createMachine<
                     duration: 0.1,
                     ease: Power2.easeIn,
                     stagger: 0.08,
-                  }
+                  },
                   // "-=0.01"
                 )
                 .to(gs, { rotateZ: 0, stagger: 0.06, ease: Sine.easeIn });
@@ -494,12 +495,12 @@ const storyMachine = createMachine<
                     ease: Power4.easeOut,
                     stagger: 0.08,
                   },
-                  `-=${6 * 0.1 + 0.01 * 2}`
+                  `-=${6 * 0.1 + 0.01 * 2}`,
                 )
                 .to(
                   gs,
                   { rotateZ: 0, stagger: 0.06, ease: Sine.easeIn },
-                  `-=${6 * 0.01}`
+                  `-=${6 * 0.01}`,
                 );
             }
           },
@@ -514,7 +515,7 @@ const storyMachine = createMachine<
       }), */
       executeSetupsAndAnimations: (
         { bTl, left, right, major, fishLeft, fishRight },
-        __
+        __,
       ) => {
         // console.log({ left, right });
 
@@ -624,7 +625,7 @@ const storyMachine = createMachine<
                   // scale: 0,
                   ease: Sine.easeIn,
                 },
-                "-=0.6"
+                "-=0.6",
               )
               .to(circle, {
                 transformOrigin: "50%",
@@ -649,7 +650,7 @@ const storyMachine = createMachine<
                 duration: 0.1,
                 ease: Power2.easeIn,
                 stagger: 0.08,
-              }
+              },
               // "-=0.01"
             )
             .to(gs, { rotateZ: 180, stagger: 0.06, ease: Sine.easeIn });
@@ -667,18 +668,18 @@ const storyMachine = createMachine<
                 ease: Power4.easeOut,
                 stagger: 0.08,
               },
-              `-=${6 * 0.1 + 0.01 * 2}`
+              `-=${6 * 0.1 + 0.01 * 2}`,
             )
             .to(
               gs,
               { rotateZ: 180, stagger: 0.06, ease: Sine.easeIn },
-              `-=${6 * 0.01}`
+              `-=${6 * 0.01}`,
             );
         }
       },
     },
     //
-  }
+  },
 );
 
 export const storyService = interpret(storyMachine);

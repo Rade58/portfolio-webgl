@@ -16,7 +16,7 @@ const ComponentName: FunctionComponent = () => {
   useEffect(() => {
     if (!pathNodeListRef.current) {
       pathNodeListRef.current = document.querySelectorAll(
-        ".svg_text_holder path"
+        ".svg_text_holder path",
       );
 
       tl.to(pathNodeListRef.current, {
@@ -104,7 +104,7 @@ const ComponentName: FunctionComponent = () => {
         xmlnsXlink="http://www.w3.org/1999/xlink"
         viewBox="0 0 488 80"
       >
-        <title id="some_text">Hi it{"'"}s a me</title>
+        <title id="some_text">Hi its a me</title>
         <g id="Frame 1">
           <path
             id="H"

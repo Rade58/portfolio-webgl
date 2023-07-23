@@ -34,7 +34,7 @@ export interface MachineContextGenericI {
   wheelAllowed: boolean;
   currentAnimeMachineFinitestate: animeFse | undefined;
   currentAnimeMachineMajorState:
-    | typeof MAJOR_FINITE_STATES_ARRAY[number]
+    | (typeof MAJOR_FINITE_STATES_ARRAY)[number]
     | undefined
     | "undefined";
   majorStateHolder: HTMLDivElement | null;
@@ -54,7 +54,7 @@ export type machineEventGenericType =
       type: EE.INIT;
       payload: {
         currentAnimeMachineFinitestate: animeFse;
-        currentAnimeMachineMajorState: typeof MAJOR_FINITE_STATES_ARRAY[number];
+        currentAnimeMachineMajorState: (typeof MAJOR_FINITE_STATES_ARRAY)[number];
         majorStateHolder: HTMLDivElement;
         backButton: HTMLButtonElement;
         forwardButton: HTMLButtonElement;
@@ -64,7 +64,7 @@ export type machineEventGenericType =
   | {
       type: EE.OBSERVER;
       payload: {
-        currentAnimeMachineMajorState: typeof MAJOR_FINITE_STATES_ARRAY[number];
+        currentAnimeMachineMajorState: (typeof MAJOR_FINITE_STATES_ARRAY)[number];
         currentAnimeMachineFinitestate: animeFse;
         canLoadControls: boolean;
       };
@@ -109,6 +109,7 @@ const appMachine = createMachine<
   {
     id: "app_machine",
     initial: fse.init,
+    predictableActionArguments: true,
     context: {
       backwardsSvg: null,
       forwardsSvg: null,
@@ -350,14 +351,14 @@ const appMachine = createMachine<
       },
       ifSvgsAreHere: (
         { backwardsSvg, forwardsSvg, leftBSvg, rightBSvg },
-        __
+        __,
       ) => {
         return backwardsSvg && forwardsSvg && leftBSvg && rightBSvg
           ? true
           : false;
       },
     },
-  }
+  },
 );
 
 export const appService = interpret(appMachine);
