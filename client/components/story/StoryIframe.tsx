@@ -9,9 +9,10 @@ import styled from "@emotion/styled";
 
 interface Props {
   path: string;
+  title: string;
 }
 
-const StoryIframe: FunctionComponent<Props> = ({ path = "https://radedev.com" }) => {
+const StoryIframe: FunctionComponent<Props> = ({title, path = "https://radedev.com" }) => {
   const [isLoaded, setIsLoaded ] = useState<boolean>(false)
 
   return <>
@@ -101,9 +102,9 @@ const StoryIframe: FunctionComponent<Props> = ({ path = "https://radedev.com" })
         src={path}
         width="100%"
         height="86%"
-        title="About Me"
-        onLoad={() => {
-          console.log("loaded")
+        title={title}
+        onLoadStart={() => {
+          // console.log("loaded")
           setIsLoaded(true)
         }}
       >

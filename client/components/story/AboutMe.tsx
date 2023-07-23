@@ -25,9 +25,6 @@ import { storyMajorText } from "../../content";
 import serializers from "../sanity_serializers";
 import StoryIframe from "./StoryIframe";
 
-
-
-
 interface PropsI {
   aboutMeArticleRef: RefObject<HTMLElement>;
   // data: any;
@@ -36,21 +33,17 @@ interface PropsI {
 const AboutMe: FunctionComponent<PropsI> = ({ aboutMeArticleRef }) => {
   const [state, send] = useService(storyService);
 
-  const [isLoaded, setIsLoaded ] = useState<boolean>(false)
+  const [isLoaded, setIsLoaded] = useState<boolean>(false);
 
   const { major } = state.context;
   // debugger;
   return (
-
     <ArticleStory
       articleReference={aboutMeArticleRef}
-    // @ts-expect-error
+      // @ts-expect-error
       majorName={"aboutme"}
     >
-      <StoryIframe 
-        path="https://radedev.com"
-      />
-      
+      <StoryIframe title="About Me" path="https://radedev.com" />
     </ArticleStory>
   );
 };

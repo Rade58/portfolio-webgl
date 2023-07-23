@@ -43,7 +43,7 @@ const Projects: FunctionComponent<PropsI> = ({
   return (
     <ArticleStory
       articleReference={projectsArticleRef}
-    // @ts-expect-error
+      // @ts-expect-error
       majorName={"projects"}
     >
       {/* {major !== "undefined" ? storyMajorText(major, "") : ""} */}
@@ -59,9 +59,7 @@ const Projects: FunctionComponent<PropsI> = ({
       {/* <Separator nonEmoji direction="outwards" thickness={4} /> */}
 
       {/* <ListOfProjects storyIsBellow={storyIsBellow} projects={data.projects} /> */}
-      <StoryIframe
-        path="https://radedev.com/portfolio"
-      />
+      <StoryIframe title="Projects" path="https://radedev.com/portfolio" />
     </ArticleStory>
   );
 };

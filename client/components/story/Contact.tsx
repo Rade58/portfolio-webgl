@@ -38,14 +38,14 @@ const Contact: FunctionComponent<PropsI> = ({ contactArticleRef }) => {
   return (
     <ArticleStory
       articleReference={contactArticleRef}
-    // @ts-expect-error
+      // @ts-expect-error
       majorName={"contact"}
     >
       {/* {major !== "undefined" ? storyMajorText(major, "") : ""} */}
       <StoryIframe
+        title="Get In Touch"
         path="https://radedev.com/get-in-touch"
       />
-      
     </ArticleStory>
   );
 };
