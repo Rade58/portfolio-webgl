@@ -41,7 +41,17 @@ const AboutMe: FunctionComponent<PropsI> = ({ aboutMeArticleRef }) => {
     // @ts-expect-error
       majorName={"aboutme"}
     >
-      <h1>About me</h1>
+      <div css={css`
+        height: 8vh;
+      `}></div>
+      <iframe
+        src="https://radedev.com"
+        width="100%"
+        height="86%"
+        title="About Me"
+      >
+        Your browser does not support iframes.
+      </iframe>
     </ArticleStory>
   );
 };

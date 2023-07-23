@@ -47,8 +47,18 @@ const Blog: FunctionComponent<PropsI> = ({ blogArticleRef }) => {
         projectId="4mpb3bwc"
         serializers={serializers}
       /> */}
-      <h1>Blog</h1>
-
+      <div css={css`
+        height: 8vh;
+      `}></div>
+      <iframe
+        src="https://radedev.com/digital-garden"
+        width="100%"
+        height="86%"
+        title="Digital Garden"
+      >
+        Your browser does not support iframes.
+      </iframe>
+      
       {/* ----------------------------- */}
       {/* <ListOfPosts posts={data.articles} /> */}
     </ArticleStory>

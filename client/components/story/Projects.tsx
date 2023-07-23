@@ -58,8 +58,17 @@ const Projects: FunctionComponent<PropsI> = ({
       {/* <Separator nonEmoji direction="outwards" thickness={4} /> */}
 
       {/* <ListOfProjects storyIsBellow={storyIsBellow} projects={data.projects} /> */}
-      <h1>Projects</h1>
-      
+      <div css={css`
+        height: 8vh;
+      `}></div>
+      <iframe
+        src="https://radedev.com/portfolio"
+        width="100%"
+        height="86%"
+        title="Rade Bajić"
+      >
+        Your browser does not support iframes.
+      </iframe>
     </ArticleStory>
   );
 };
