@@ -24,14 +24,14 @@ import serializers from "../sanity_serializers";
 
 interface PropsI {
   projectsArticleRef: RefObject<HTMLElement>;
-  data: any;
+  // data: any;
   storyIsBellow: boolean;
 }
 
 const Projects: FunctionComponent<PropsI> = ({
   projectsArticleRef,
   storyIsBellow,
-  data,
+  // data,
 }) => {
   const [state, send] = useService(storyService);
 
@@ -40,9 +40,9 @@ const Projects: FunctionComponent<PropsI> = ({
   // console.log({ projectsData: data });
 
   return (
-    // @ts-expect-error
     <ArticleStory
       articleReference={projectsArticleRef}
+    // @ts-expect-error
       majorName={"projects"}
     >
       {/* {major !== "undefined" ? storyMajorText(major, "") : ""} */}

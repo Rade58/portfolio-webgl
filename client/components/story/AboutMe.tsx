@@ -26,18 +26,19 @@ import serializers from "../sanity_serializers";
 
 interface PropsI {
   aboutMeArticleRef: RefObject<HTMLElement>;
-  data: any;
+  // data: any;
 }
 
-const AboutMe: FunctionComponent<PropsI> = ({ data, aboutMeArticleRef }) => {
+const AboutMe: FunctionComponent<PropsI> = ({ aboutMeArticleRef }) => {
   const [state, send] = useService(storyService);
 
   const { major } = state.context;
   // debugger;
   return (
-    // @ts-expect-error
+
     <ArticleStory
       articleReference={aboutMeArticleRef}
+    // @ts-expect-error
       majorName={"aboutme"}
     >
       <h1>About me</h1>

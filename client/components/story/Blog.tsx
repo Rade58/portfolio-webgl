@@ -24,10 +24,10 @@ import serializers from "../sanity_serializers";
 
 interface PropsI {
   blogArticleRef: RefObject<HTMLElement>;
-  data: any;
+  // data: any;
 }
 
-const Blog: FunctionComponent<PropsI> = ({ blogArticleRef, data }) => {
+const Blog: FunctionComponent<PropsI> = ({ blogArticleRef }) => {
   const [state, send] = useService(storyService);
 
   const { major } = state.context;
@@ -35,9 +35,9 @@ const Blog: FunctionComponent<PropsI> = ({ blogArticleRef, data }) => {
   // console.log({ blogData: data });
 
   return (
-    // @ts-expect-error
     <ArticleStory
       articleReference={blogArticleRef}
+    // @ts-expect-error
       majorName={"blog"}
     >
       {/* {major !== "undefined" ? storyMajorText(major, "") : ""} */}
