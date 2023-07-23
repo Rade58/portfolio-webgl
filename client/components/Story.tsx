@@ -127,8 +127,9 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
   const [state, send] = useService(storyService);
 
   const { major } = state.context;
-  const [bellowAboveClass, setBellowAboveClass] =
-    useState<"bellow" | "above">("bellow");
+  const [bellowAboveClass, setBellowAboveClass] = useState<"bellow" | "above">(
+    "bellow",
+  );
 
   //
   useEffect(() => {
@@ -197,7 +198,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
               },
               {
                 translateY: "0%",
-              }
+              },
             );
 
             setFirstStoryAnim(false);
@@ -221,7 +222,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
               {
                 opacity: 0,
                 translateX: "-200%",
-              }
+              },
             );
             TweenMax.to(storyRef.current, {
               duration: 0.4,
@@ -260,7 +261,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
                 {
                   opacity: 1,
                   translateX: "0%",
-                }
+                },
               );
             });
             // debugger;
@@ -295,7 +296,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             },
             {
               translateY: "0%",
-            }
+            },
           );
 
           setFirstStoryAnim(false);
@@ -328,7 +329,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             },
             {
               height: storyHeightMin,
-            }
+            },
           );
 
           // ---- article opacity (has no visual effect (no op))--------
@@ -343,7 +344,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             {
               opacity: 0,
               translateX: "-100%",
-            }
+            },
           );
         }
 
@@ -395,7 +396,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             },
             {
               height: storyHeightMax,
-            }
+            },
           );
           // --------------- atricle opacity (has no visual effect (no op))------------------
           TweenMax.fromTo(
@@ -409,7 +410,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             {
               opacity: 1,
               translateX: "0%",
-            }
+            },
           ).then(() => {
             if (articleRefs[major] && articleRefs[major].current) {
               // articleRefs[major].current.scrollTop = -20;
@@ -439,7 +440,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             },
             {
               translateY: "-80vh",
-            }
+            },
           );
           // --------------- atricle opacity (has no visual effect (no op))------------------
           TweenMax.fromTo(
@@ -453,7 +454,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
             {
               opacity: 0,
               translateX: "105%",
-            }
+            },
           );
         }
       }
@@ -552,7 +553,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
       window.removeEventListener("resize", resizeCallback);
       // console.log("UNMOUNTING");
     },
-    []
+    [],
   );
 
   useEffect(() => {
@@ -883,9 +884,10 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
           // data={data[fsS.contact]}
           contactArticleRef={contactArticleRef}
         />
-        <Blog 
-        // data={data[fsS.blog]}
-         blogArticleRef={blogArticleRef} />
+        <Blog
+          // data={data[fsS.blog]}
+          blogArticleRef={blogArticleRef}
+        />
         {/* ---------------------------------------------- */}
         {/* KORISTIM SAMO DA BIH TESTIRAO */}
         {/* KASNIJE CE DATA BITI BRANCHED OUT ZA SVAKU OD GORNJIH KOMPONENTI */}

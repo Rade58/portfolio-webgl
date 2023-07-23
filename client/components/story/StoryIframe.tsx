@@ -5,6 +5,7 @@ import { jsx } from "@emotion/react";
 import React, { FunctionComponent, RefObject, useState } from "react";
 import { css } from "@emotion/core";
 import styled from "@emotion/styled";
+import Picture from "../imgz/Picture";
 
 interface Props {
   path: string;
@@ -31,10 +32,58 @@ const StoryIframe: FunctionComponent<Props> = ({
                 bottom: 0;
                 left: 0;
                 right: 0;
-                border: crimson solid 2px;
+                border: crimson solid 0px;
+
+                & .imgz-hold {
+                  display: flex;
+                  justify-content: center;
+                  overflow: hidden;
+                  border-radius: 50% 50%;
+                }
+
+                & .content-hold {
+                  display: flex;
+                  justify-content: center;
+                }
+
+                & .about-content {
+                  margin-top: 10px;
+                  padding: 0px 26px;
+                }
+                & .hdngz {
+                  height: 46px;
+                }
               `}
             >
-              <h1>About me</h1>
+              <div className="hdngz"></div>
+              <h1 className="">Hey I'm Rade</h1>
+              <div className="imgz-hold">
+                <Picture
+                  url="https://res.cloudinary.com/radedev/image/upload/v1680297299/1.%20radedev/fourteen_dyhc0f.jpg"
+                  alt="Rade"
+                />
+              </div>
+              <div className="content-hold">
+                <p className="about-content">
+                  I'm a web developer focused on building high-quality,
+                  user-friendly applications using the latest technologies. I
+                  primarily love using Node.js ecosystem to develop applications
+                  with Typescript, Next.js, and Prisma ORM with PostgreSQL
+                  database, which allows me to create efficient and powerful
+                  applications. I thrive on solving complex technical challenges
+                  and finding innovative solutions to difficult problems. author
+                  My passion for development is fueled by the drive to provide
+                  top-notch solutions that meet the needs of my clients. I am
+                  constantly striving to improve my skills and stay up-to-date
+                  with the latest technologies. Outside of work, I enjoy
+                  spending my free time listening to music, taking long walks,
+                  and exploring new podcasts. These activities help me relax and
+                  clear my mind, allowing me to approach my work with fresh
+                  ideas and renewed focus. I'm excited to see where my career in
+                  web development will take me and I'm always looking for new
+                  opportunities to grow and expand my skills.
+                </p>
+              </div>
             </div>
           )}
           <div
