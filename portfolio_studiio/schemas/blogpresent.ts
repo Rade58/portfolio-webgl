@@ -19,8 +19,8 @@ export default {
       },
     },
     {
-      name: "articles",
-      title: "Articles",
+      name: "dashboard",
+      title: "Dashboard",
       type: T.array,
       of: [{ type: T.reference, to: { type: M.mockarticle } }],
     },
