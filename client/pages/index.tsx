@@ -37,7 +37,7 @@ interface PagePropsI {
     [majorFse.aboutme]: any;
     [majorFse.projects]: any;
     [majorFse.contact]: any;
-    [majorFse.blog]: any;
+    [majorFse.dashboard]: any;
   };
   htmlContentString: string;
   imageString: string;
@@ -59,7 +59,7 @@ const Portfolio: FunctionComponent<PagePropsI> = ({
 
   const [reducedState, dispatchToReducer] = useReducer(
     appReducer,
-    defaultState.reducedState
+    defaultState.reducedState,
   );
 
   return (
@@ -130,7 +130,6 @@ export const getStaticProps: GetStaticProps = async () => {
   // }`);
   //
   // TOP LEVEL QUERY, KOJI TREBA DA UZME SVE MAJOR DOKUMANTE
- 
 
   // console.log(JSON.stringify({ stories }, null, 2));
 

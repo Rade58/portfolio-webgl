@@ -34,8 +34,8 @@ export const centralMajor = (major: sketchFse): string => {
   if (major === sketchFse.contact) {
     return "contact";
   }
-  if (major === sketchFse.blog) {
-    return "articles";
+  if (major === sketchFse.dashboard) {
+    return "dashboard";
   }
 };
 
@@ -47,10 +47,10 @@ export const headingStory = (major: sketchFse): string => {
     return "Work";
   }
   if (major === sketchFse.contact) {
-    return "Get in Touch";
+    return "Contact";
   }
-  if (major === sketchFse.blog) {
-    return "Blog";
+  if (major === sketchFse.dashboard) {
+    return "Dashboard";
   }
 };
 
@@ -58,7 +58,7 @@ export const headingStory = (major: sketchFse): string => {
 const aboutPreview = "Hello my name Is Rade I am";
 const projectsPreview = "Here are some of my";
 const contactPreview = "You can contact me by";
-const blogPreview = "I wrote";
+const blogPreview = "Dashboard";
 
 // ----
 
@@ -72,14 +72,14 @@ export const currentMajor = (major: sketchFse): string => {
   if (major === sketchFse.contact) {
     return sketchFse.contact;
   }
-  if (major === sketchFse.blog) {
-    return sketchFse.blog;
+  if (major === sketchFse.dashboard) {
+    return sketchFse.dashboard;
   }
 };
 
 export const storyMajorText = (
   major: sketchFse,
-  lorem: string | undefined
+  lorem: string | undefined,
 ): string => {
   if (typeof lorem === "string") {
     lorem = loremipsum;
@@ -94,7 +94,7 @@ export const storyMajorText = (
   if (major === sketchFse.contact) {
     return lorem || `${contactPreview} `;
   }
-  if (major === sketchFse.blog) {
+  if (major === sketchFse.dashboard) {
     return lorem || `${blogPreview} `;
   }
 };

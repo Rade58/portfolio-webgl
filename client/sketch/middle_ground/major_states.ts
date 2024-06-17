@@ -9,7 +9,7 @@ export enum fse {
   aboutme = "aboutme",
   projects = "projects",
   contact = "contact",
-  blog = "blog",
+  dashboard = "dashboard",
   // ANIMATION STATES
   animation0 = "animation0",
   animation1 = "animation1",
@@ -24,5 +24,5 @@ export const MAJOR_FINITE_STATES_ARRAY = [
   fse.aboutme,
   fse.projects,
   fse.contact,
-  fse.blog,
+  fse.dashboard,
 ];

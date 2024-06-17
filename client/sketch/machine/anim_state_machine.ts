@@ -252,7 +252,7 @@ type machineFiniteStateGenericType =
       context: ContextFullI;
     }
   | {
-      value: fse.blog;
+      value: fse.dashboard;
       context: ContextFullI;
     }
   | { value: fse.animation0; context: ContextFullI }

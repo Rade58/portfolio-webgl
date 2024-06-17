@@ -39,7 +39,7 @@ const Blog: FunctionComponent<PropsI> = ({ blogArticleRef }) => {
     <ArticleStory
       articleReference={blogArticleRef}
       // @ts-expect-error
-      majorName={"blog"}
+      majorName={"dashboard"}
     >
       {/* {major !== "undefined" ? storyMajorText(major, "") : ""} */}
       {/* <BlockContent
@@ -48,10 +48,7 @@ const Blog: FunctionComponent<PropsI> = ({ blogArticleRef }) => {
         projectId="4mpb3bwc"
         serializers={serializers}
       /> */}
-      <StoryIframe
-        path="https://radedev.com/digital-garden"
-        title="Digital Garden"
-      />
+      <StoryIframe path="https://radedev.com/dashboard" title="Dashboard" />
 
       {/* ----------------------------- */}
       {/* <ListOfPosts posts={data.articles} /> */}

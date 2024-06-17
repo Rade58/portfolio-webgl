@@ -4,5 +4,5 @@ export interface SanityDataI {
   [fse.aboutme]: any;
   [fse.projects]: any;
   [fse.contact]: any;
-  [fse.blog]: any;
+  [fse.dashboard]: any;
 }

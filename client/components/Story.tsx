@@ -117,7 +117,7 @@ const Story: FunctionComponent<PropsStoryI> = ({ data }) => {
     [fsS.aboutme]: aboutMeArticleRef,
     [fsS.contact]: contactArticleRef,
     [fsS.projects]: projectsArticleRef,
-    [fsS.blog]: blogArticleRef,
+    [fsS.dashboard]: blogArticleRef,
   };
 
   // const contentRef = createRef<HTMLDivElement>();
